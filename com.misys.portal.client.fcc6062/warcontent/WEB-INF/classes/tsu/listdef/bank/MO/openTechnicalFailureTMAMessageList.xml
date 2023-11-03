@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="file_name" default_order_type="d" page="50">
+
+	<!-- Columns -->
+	<column name="file_name" align="center" width="20%" loca_key="FILENAME"/>
+    <column name="creation_dttm" align="center" width="20%" loca_key="CREATIONDTTM"/>
+    
+	<column name="OutputContent@output_id" align="center" width="20%" loca_key="ISS_DATE" hidden="y"/>
+
+	<column name="download" width="8%" loca_key="COLUMN_ACTIONS">
+		<url downloadAction="y" >
+			<parameter name="OUTPUT_ID" column="OutputContent@output_id"/>
+			<parameter name="FILE_NAME" column="file_name"/>
+			<parameter name="OPERATION_CODE" binding_code="DOWNLOAD"/>
+			<parameter name="ERROR_CODE" business_code="N305_SVF"/>
+		</url>
+	</column>
+	
+	<!-- parameters -->
+	<parameter
+		name="file_name"
+		size="20"
+		max_length="50"
+		loca_key="FILENAME"
+		input="y"
+		default=""/>
+   <parameter
+		name="creation_date"
+		type="range"
+		input="y"
+		max_length="10"
+		range_from_label="CREATION_DATE_FROM"
+		range_to_label="CREATION_DATE_TO"
+		default="blank"/>
+		
+	<!-- candidates -->
+	<candidate name="outputkeys">
+		<filter>
+			<criteria>
+				<column name="file_name" />
+				<operator type="like" />
+				<value type="parameter">
+					file_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="creation_dttm" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					creation_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="creation_dttm" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					creation_date@to
+				</value>
+			</criteria>
+		</filter>
+	</candidate> 
+
+</listdef>

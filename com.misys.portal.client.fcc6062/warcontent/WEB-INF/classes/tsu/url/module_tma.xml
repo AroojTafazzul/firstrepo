@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="bank" scope="product">
+	<name>module_tma</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<bindingParam>mode</bindingParam>
+	<bindingParam>messagetype</bindingParam>
+	<methodParam>tnxtype</methodParam>
+	<methodParam>templateid</methodParam>
+	<methodParam>referenceid</methodParam>
+	<methodParam>tnxid</methodParam>
+	<methodParam>baselinereferenceid</methodParam>
+	<staticParam>menuaction</staticParam>
+	<!-- <action>
+		<actionCode>OpenGeneralTMA</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openGeneralModule</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>-</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+	</action>
+	 Create initial baseline	
+	<action>
+		<actionCode>OpenTMAInitialBaselineFromScratch</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>createInitialBaselineFromScratch</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>CREATE_INITIAL_BASELINE</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenTMAInitialBaselineFromScratch</menuaction>
+	</action>
+	Create initial baseline from existing (list)
+	<action>
+		<actionCode>OpenTMAInitialBaselineFromExisting</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openExistingBaselinesList</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>FROM_EXISTING_LIST</operation>
+		<mode>-</mode>
+		<option>INITIAL_BASELINE</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenTMAInitialBaselineFromExisting</menuaction>
+	</action>
+	Create TMA message from existing baseline
+	<action>
+		<actionCode>openTMAMessageFromExistingBaseline</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openExistingBaselinesList</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>CREATE_MESSAGE</operation>
+		<mode>-</mode>
+		<option>FROM_EXISTING</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>%</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>openTMAMessageFromExistingBaseline</menuaction>
+	</action> -->
+	<!-- Retrieve draft initial baseline -->
+	<!-- <action>
+		<actionCode>OpenDraftTMAInitialBaselineList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAInitialBaselineList</method>
+		<permission>tradeadmin_tm_save</permission>
+		<operation>PENDING_INITIAL_BASELINE_LIST</operation>
+		<mode>DRAFT</mode>
+		<option>-</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenDraftTMAInitialBaselineList</menuaction>
+	</action>
+	 Retrieve unsigned initial baseline
+	<action>
+		<actionCode>OpenUnsignedTMAInitialBaselineList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAInitialBaselineList</method>
+		<permission>tradeadmin_tm_save</permission>
+		<operation>PENDING_INITIAL_BASELINE_LIST</operation>
+		<mode>UNSIGNED</mode>
+		<option>-</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenUnsignedTMAInitialBaselineList</menuaction>
+	</action> -->
+	<!-- Open draft initial baseline -->
+	<!-- <action>
+		<actionCode>OpenDraftTMAInitialBaseline</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAInitialBaseline</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>PENDING_INITIAL_BASELINE_LIST</operation>
+		<mode>DRAFT</mode>
+		<option>-</option>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenDraftTMAInitialBaseline</menuaction>
+	</action>
+	Open unsigned initial baseline
+	<action>
+		<actionCode>OpenUnsignedTMAInitialBaseline</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAInitialBaseline</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>PENDING_INITIAL_BASELINE_LIST</operation>
+		<mode>UNSIGNED</mode>
+		<option>-</option>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenUnsignedTMAInitialBaseline</menuaction>
+	</action>
+
+
+	Save/Submit TMA message
+	<action>
+		<actionCode>SaveTMAMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>saveTMAMessage</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>SAVE</operation>
+		<option>-</option>
+		<mode>%</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>%</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+	</action>
+	<action>
+		<actionCode>SubmitTMAMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>submitTMAMessage</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>SUBMIT</operation>
+		<option>-</option>
+		<mode>%</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>%</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+	</action> -->
+
+	<!-- Message creation from existing baseline -->
+	<!-- <action>
+		<actionCode>OpenTMAMessageCreationExistingBaselineList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openExistingBaselinesList</method>
+		<permission>tradeadmin_tm_create_msg_access</permission>
+		<operation>FROM_EXISTING_BASELINE</operation>
+		<option>MESSAGE_CREATION</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>OpenTMAMessageCreationExistingBaselineList</menuaction>
+	</action> -->
+	<!-- <action>
+		<actionCode>OpenTMAMessageCreationTMAMessageList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openExistingTMAMessagesList</method>
+		<permission>tradeadmin_tm_create_msg_access</permission>
+		<operation>FROM_EXISTING_tm_MESSAGE</operation>
+		<option>MESSAGE_CREATION</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>OpenTMAMessageCreationTMAMessageList</menuaction>
+	</action> -->
+	<!-- <action>
+		<actionCode>TMAMessageCreation</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>createTMAMessageFromExistingBaseline</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>FROM_EXISTING_BASELINE</operation>
+		<option>MESSAGE_CREATION</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>%</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>%</baselinereferenceid>
+		<menuaction>OpenTMAMessageCreationExistingBaselineList</menuaction>
+	</action>
+	<action>
+		<actionCode>TMAMessageCreation</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>createTMAMessageFromExistingTMAMessage</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>FROM_EXISTING_tm_MESSAGE</operation>
+		<option>MESSAGE_CREATION</option>
+		<mode>-</mode>
+		<tnxid>%</tnxid>
+		<messagetype>%</messagetype>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>OpenTMAMessageCreationTMAMessageList</menuaction>
+	</action> -->
+
+	<!--  Create status report request -->
+	<!-- <action>
+		<actionCode>OpenTMAStatusReportRequest</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>createStatusReportRequest</method>
+		<permission>tradeadmin_tm_status_report_access</permission>
+		<operation>CREATE_STATUS_REPORT_REQUEST</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenTMAStatusReportRequest</menuaction>
+	</action> -->
+
+	<!--  Create transaction report request -->
+	<!-- <action>
+		<actionCode>OpenTMATransactionReportRequest</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>createTransactionReportRequest</method>
+		<permission>tradeadmin_tm_transaction_report_access</permission>
+		<operation>CREATE_TRANSACTION_REPORT_REQUEST</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenTMATransactionReportRequest</menuaction>
+	</action> -->
+
+	<!--  Create activity report request -->
+	<!-- <action>
+		<actionCode>OpenTMAActivityReportRequest</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>createActivityReportRequest</method>
+		<permission>tradeadmin_tm_activity_report_request</permission>
+		<operation>CREATE_ACTIVITY_REPORT_REQUEST</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenTMAActivityReportRequest</menuaction>
+	</action> -->
+
+	<!--  Create activity report setup request -->
+	<action>
+		<actionCode>OpenTMAActivityReportSetupRequest</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>createActivityReportSetupRequest</method>
+		<permission>tradeadmin_tm_activity_report_setup_request</permission>
+		<operation>CREATE_ACTIVITY_REPORT_SETUP_REQUEST</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenTMAActivityReportSetupRequest</menuaction>
+	</action>
+
+
+	<!-- Retrieve draft message -->
+	<!-- <action>
+		<actionCode>OpenDraftTMAMessageList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAMessageList</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>PENDING_MESSAGE_LIST</operation>
+		<mode>DRAFT</mode>
+		<option>-</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenDraftTMAMessageList</menuaction>
+	</action> -->
+	<!--  Retrieve unsigned message -->
+	<!-- <action>
+		<actionCode>OpenUnsignedTMAMessageList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAMessageList</method>
+		<permission>tradeadmin_tm_create_msg_access</permission>
+		<operation>PENDING_MESSAGE_LIST</operation>
+		<mode>UNSIGNED</mode>
+		<option>-</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenUnsignedTMAMessageList</menuaction>
+	</action> -->
+	<!-- <action>
+		<actionCode>OpenDraftTMAMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAInitialBaseline</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>PENDING_MESSAGE_LIST</operation>
+		<mode>DRAFT</mode>
+		<option>-</option>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenDraftTMAInitialBaseline</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenUnsignedTMAMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTMAInitialBaseline</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>PENDING_MESSAGE_LIST</operation>
+		<mode>UNSIGNED</mode>
+		<option>-</option>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenDraftTMAInitialBaseline</menuaction>
+	</action> -->
+	
+	<!-- Baseline inquiry -->
+<!-- 	<action>
+		<actionCode>TMAInquiryPendingBaselinesList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>inquiryPendingBaselinesList</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>BASELINE_LIST</operation>
+		<mode>INQUIRY</mode>
+		<option>PENDING</option>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>TMAInquiryPendingBaselinesList</menuaction>
+	</action>
+
+	<action>
+		<actionCode>TMAInquiryExistingBaselinesList</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>inquiryExistingBaselinesList</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>BASELINE_LIST</operation>
+		<mode>INQUIRY</mode>
+		<option>EXISTING</option>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>TMAInquiryExistingBaselinesList</menuaction>
+	</action>
+
+	Message inquiry
+	<action>
+		<actionCode>InquiryTMTransactions</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>LIST_INQUIRY</operation>
+		<mode>-</mode>
+		<option>-</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>InquiryTMTransactions</menuaction>
+	</action>
+	
+	Pending Messages 
+	<action>
+		<actionCode>OpenTMAPendingMessagesList</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>LIST_PENDING</operation>
+		<mode>-</mode>
+		<option>-</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenTMAPendingMessagesList</menuaction>
+	</action>
+	<action>
+		<actionCode>InquiryTMTransactionsHistoryView</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>inquiryHistory</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>LIST_INQUIRY</operation>
+		<option>HISTORY</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>InquiryTMTransactions</menuaction>
+		<psml>product_dashboard</psml>
+	</action> -->
+	<!--  <action>
+		<actionCode>OpenTechnicalFailureTMAMessageList</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_tm_tech_fail_access</permission>
+		<operation>-</operation>
+		<option>TECHNICAL_ERROR</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>OpenTechnicalFailureTMAMessageList</menuaction>
+	</action> -->
+	<!--  <action>
+		<actionCode>OpenTMADuplicateEventsList</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_tm_dup_events_access</permission>
+		<operation>LIST_DUPLICATE</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>OpenTMADuplicateEventsList</menuaction>
+	</action>  -->
+	<!-- <action>
+		<actionCode>OpenTMAConflictingEventsList</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_tm_conflctng_events_access</permission>
+		<operation>LIST_CONFLICTING</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>OpenTMAConflictingEventsList</menuaction>
+	</action> -->
+	<!-- <action>
+		<actionCode>OpenTMABusinessFailureEventsList</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_tm_business_fail_events_access</permission>
+		<operation>LIST_BUSINESS_FAILURE</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<menuaction>OpenTMABusinessFailureEventsList</menuaction>
+	</action> -->
+	<!-- <action>
+		<actionCode>SubmitTMAMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>submitTMAMessage</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>SUBMIT</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>%</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>%</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+	</action> -->
+	<!-- <action>
+		<actionCode>OpenDraftTMAMessagesList</actionCode>
+		<class>TMACenterListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>-</operation>
+		<mode>DRAFT</mode>
+		<option>-</option>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<messagetype>-</messagetype>
+    	<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenDraftTMAMessagesList</menuaction>
+	</action>
+	Save/Submit TMA message
+	<action>
+		<actionCode>SaveTMAMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>saveTMAMessage</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>SAVE</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>%</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>%</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+	</action> -->
+	<!-- <action>
+		<actionCode>OpenDraftTMAMessages</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>openPendingTM</method>
+		<permission>tradeadmin_tm_save</permission>
+		<operation>-</operation>
+		<option>-</option>
+		<mode>DRAFT</mode>
+		<tnxid>%</tnxid>
+		<messagetype>-</messagetype>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>-</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+		<menuaction>OpenDraftTMAMessagesList</menuaction>
+	</action> -->
+	<!-- <action>
+		<actionCode>SaveStatusReportMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>saveTMAMessage</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>SAVE</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>%</tnxid>
+		<messagetype>037</messagetype>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>%</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+	</action>
+	<action>
+		<actionCode>SubmitStatusReportMessage</actionCode>
+		<class>TMACenterPortlet</class>
+		<method>submitTMAMessage</method>
+		<permission>tradeadmin_tm_access</permission>
+		<operation>SUBMIT</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>%</tnxid>
+		<messagetype>037</messagetype>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>%</tnxtype>
+		<baselinereferenceid>-</baselinereferenceid>
+	</action> -->
+</module>

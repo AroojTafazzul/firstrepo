@@ -1,0 +1,145 @@
+{
+	"pagePermission": "se_access",
+	"SE": [
+		{
+			"enquiryHeaderComponent": {
+				"layoutClass": "p-grid",
+				"buttons": [
+					{
+						"buttonType": "complianceDocuments",
+						"buttonName": "CAListing",
+						"layout": "6",
+						"styleClass": "primaryButton1",
+						"routerLink": "productListing",
+						"render": true,
+						"queryParams": {
+							"productCode": "LN",
+							"option": "DT"
+						},
+						"permission": "se_access"
+					}
+				],
+				"txnStatusButton": [
+				]
+			}
+		},
+		{
+			"enquiryDetailComponent": {
+				"layoutClass": "p-col-12",
+				"noOfColoums": 4,
+				"Displaykeys": [
+					{
+						"apiMapping": "complianceDocumentId",
+						"label": "complianceDocumentId",
+						"feildType": "text",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "complianceDocumentType",
+						"label": "complianceDocumentType",
+						"feildType": "text",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "complianceDocumentDueDate",
+						"label": "complianceDocumentDueDate",
+						"feildType": "text",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "complianceDocumentCustomer",
+						"label": "complianceDocumentCustomer",
+						"feildType": "text",
+						"layoutClass": "p-col-2"
+					}
+				]
+			}
+		},
+		{
+			"enquiryTabComponent": {
+				"layoutClass": "p-col-12",
+				"displayTabs": [
+					{
+						"transactionDetails": {
+							"permission": "",
+							"id": "transactionDetails",
+							"label": "transactionDetails",
+							"child": {
+								"layoutClass": "p-col-12",
+								"componentKey": "reviewTransactionDetailsComponent",
+								"listdefPath": "",
+								"data": "render"
+							}
+						}
+					},
+					{
+						"additionalInformation": {
+							"permission": "",
+							"id": "additionalInformation",
+							"label": "additionalInformation",
+							"child": {
+								"layoutClass": "p-col-12",
+								"componentKey": "additionalInfoTabComponent",
+								"listdefPath": "",
+								"data": "render"
+							}
+						}
+					},
+					{
+						"master": {
+							"permission": "",
+							"id": "master",
+							"label": "master",
+							"child": {
+								"layoutClass": "p-col-12",
+								"componentKey": "",
+								"listdefPath": "",
+								"data": "render"
+							}
+						}
+					}
+				],
+				"tnxStatus": [
+					{
+						"01": [
+							{
+								"01": [
+									"transactionDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"02": [
+									"transactionDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"03": [
+									"transactionDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"04": [
+									"transactionDetails",
+									"additionalInformation"
+								]
+							}
+						]
+					},
+					{
+						"MASTER": [
+							{
+								"ACKNOWLEDGED": [
+									"transactionDetails",
+									"additionalInformation"
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,164 @@
+<!--   Release:R3 Date:2001-01-19 Time:12:40:15 -->
+<!-- *********************************************************** -->
+<!--  Copyright Bolero International Limited 2000
+
+Bolero International Limited hereby grants to any person using or
+considering the use of the information in this publication a non-exclusive,
+royalty-free, worldwide, and revocable license (1) to use and implement that
+information, including document type definitions and other specifications,
+and (2) to copy all or part of this publication in any form, provided that
+all such copies clearly retain the foregoing copyright notice.
+
+Bolero International Limited makes no warranty or representation of any kind
+regarding these specifications or the right of any person to implement them
+free of infringement claims by others in accordance with the above licence.
+The above licence shall be void if the licensee alleges against Bolero
+International Limited that the information in this publication infringes a
+patent held or claimed by the licensee or a company controlled by or under
+common control with the licensee. -->
+<!-- *********************************************************** -->
+<!-- *********************************************************** -->
+<!-- Despatch Advice 351 V1 R3 P.DTD-P -->
+<!-- *********************************************************** -->
+<!ELEMENT DespatchAdvice (Header,Body)>
+<!ELEMENT Header (cmp:DocumentID,cmp:DocType,cmp:Status)>
+<!ELEMENT cmp:DocumentID (cmp:RID,cmp:GeneralID,cmp:Version?)>
+<!ELEMENT cmp:DocType (cmp:DocTypeCode,cmp:DocTypeDescription?)>
+<!ELEMENT Body (GeneralInformation,Parties,TermsAndConditions,RoutingSummary,Consignment,PackingDetail,DeliveryDetails?,AdditionalInformation?)>
+<!ELEMENT GeneralInformation (dateOfIssue,PlaceOfIssue?,despatchDate?)>
+<!ELEMENT PlaceOfIssue ((locationCode|locationName))>
+<!ELEMENT Parties (Buyer,Seller,Carrier?,Consignee?,FreightForwarder?)>
+<!ELEMENT Buyer (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT OrganizationIdentification (organizationReference,organizationReferenceType?)>
+<!ELEMENT AddressInformation (FullAddress?,NormalisedAddress?)>
+<!ELEMENT FullAddress (line+)>
+<!ELEMENT NormalisedAddress (City?,StateOrProvince?,Country?,postalCode?)>
+<!ELEMENT City ((locationCode|locationName))>
+<!ELEMENT StateOrProvince ((stateOrProvinceCode|stateOrProvinceName))>
+<!ELEMENT Country ((countryCode|countryName))>
+<!ELEMENT ContactDetails (personName?,departmentName?,telephoneNumber?,faxNumber?,e-MailAddress?)>
+<!ELEMENT Seller (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT Carrier (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT Consignee (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT FreightForwarder (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT TermsAndConditions (termsAndConditionsReference?,clause*)>
+<!ELEMENT RoutingSummary (MeansOfTransport?,PlaceOfReceipt?,PlaceOfLoading?,PlaceOfDischarge,PlaceOfDelivery?)>
+<!ELEMENT MeansOfTransport ((SeaTransportIdentification|FlightDetails|RailTransportIdentification|RoadTransportIdentification))>
+<!ELEMENT SeaTransportIdentification (Vessel,VoyageDetail)>
+<!ELEMENT Vessel (vesselName)>
+<!ELEMENT VoyageDetail (voyageNumber?,departureDate?)>
+<!ELEMENT FlightDetails (flightNumber,departureDate)>
+<!ELEMENT RailTransportIdentification (locomotiveNumber,railCarNumber)>
+<!ELEMENT RoadTransportIdentification (licencePlateIdentification)>
+<!ELEMENT PlaceOfReceipt ((locationCode|locationName))>
+<!ELEMENT PlaceOfLoading ((locationCode|locationName))>
+<!ELEMENT PlaceOfDischarge ((locationCode|locationName))>
+<!ELEMENT PlaceOfDelivery ((locationCode|locationName))>
+<!ELEMENT Consignment (ConsignmentSummary?,ConsignmentDetail)>
+<!ELEMENT ConsignmentSummary (ReceiptCodes?,DeliveryCodes?,TotCtnrsPkgsRcvdByCarrier?)>
+<!ELEMENT ReceiptCodes (contractAndCarriageConditionCode?,serviceRequirementCode?)>
+<!ELEMENT DeliveryCodes (contractAndCarriageConditionCode?,serviceRequirementCode?)>
+<!ELEMENT TotCtnrsPkgsRcvdByCarrier (numberOfContainersOrPackages,typeOfContainerOrPackage?)>
+<!ELEMENT ConsignmentDetail (Commodity+)>
+<!ELEMENT Commodity (CtnrsPkgsRcvdByCarrier?,CommodityDescription,commodityCode?,DangerousGoodsDetail?,NetWeight?,GrossWeight?,NetVolume?,GrossVolume?,CommodityDimensions?,PackageSummary?,HandlingInstructions?,ReceiptCodes?,DeliveryCodes?,Container*)>
+<!ELEMENT CtnrsPkgsRcvdByCarrier (numberOfContainersOrPackages,typeOfContainerOrPackage?)>
+<!ELEMENT CommodityDescription (line+)>
+<!ELEMENT DangerousGoodsDetail (line+)>
+<!ELEMENT NetWeight (value,weightUnitCode)>
+<!ELEMENT GrossWeight (value,weightUnitCode)>
+<!ELEMENT NetVolume (value,volumeUnitCode)>
+<!ELEMENT GrossVolume (value,volumeUnitCode)>
+<!ELEMENT CommodityDimensions (heightValue,widthValue,lengthValue,dimensionUnitCode)>
+<!ELEMENT PackageSummary (PackageCount+,marksAndNumbers*)>
+<!ELEMENT PackageCount (numberOfPackages,typeOfPackage)>
+<!ELEMENT HandlingInstructions (line+)>
+<!ELEMENT Container (containerIdentifier,containerDescription?,ContainerSizeAndCodes,seal*,fumigated?,liveReefer?)>
+<!ELEMENT ContainerSizeAndCodes (containerGroupTypeCode?,ContainerSizeAndDetailedTypeCode?)>
+<!ELEMENT ContainerSizeAndDetailedTypeCode (detailedContainerTypeCode,containerHeightAndWidthCode?,containerLengthCode?)>
+<!ELEMENT PackingDetail (Product?,Package+)>
+<!ELEMENT Product (PurchaseOrderIdentifier?,productName?,ProductIdentifiers?,ProductCharacterisitics?,ProductQuantity?)>
+<!ELEMENT PurchaseOrderIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT ProductIdentifiers (productIdentification?,C_ProductIdentifier*)>
+<!ELEMENT C_ProductIdentifier (c_ProductIdentifierType,c_ProductIdentifierValue,c_ProductIdentifierQualifier?)>
+<!ELEMENT ProductCharacterisitics (C_ProductCharacteristic*)>
+<!ELEMENT C_ProductCharacteristic (c_ProductCharacteristicType,c_ProductCharacteristicValue,c_ProductCharacteristicQualifier?)>
+<!ELEMENT ProductQuantity (value,unitOfMeasureCode)>
+<!ELEMENT Package (PackageCount+,marksAndNumbers+,PackageDimensions?,NetWeight?,GrossWeight?,GrossVolume?,Content?)>
+<!ELEMENT PackageDimensions (heightValue,widthValue,lengthValue,dimensionUnitCode)>
+<!ELEMENT Content ((Product+|Package))>
+<!ELEMENT DeliveryDetails (NormalisedAddress,DeliveryInstructions)>
+<!ELEMENT DeliveryInstructions (line+)>
+<!ELEMENT AdditionalInformation (line+)>
+<!ELEMENT cmp:RID (#PCDATA) >
+<!ELEMENT cmp:GeneralID (#PCDATA) >
+<!ELEMENT cmp:Version (#PCDATA) >
+<!ELEMENT cmp:DocTypeCode (#PCDATA) >
+<!ELEMENT cmp:DocTypeDescription (#PCDATA) >
+<!ELEMENT cmp:Status (#PCDATA) >
+<!ELEMENT dateOfIssue (#PCDATA) >
+<!ELEMENT locationCode (#PCDATA) >
+<!ELEMENT locationName (#PCDATA) >
+<!ELEMENT despatchDate (#PCDATA) >
+<!ELEMENT organizationName (#PCDATA) >
+<!ELEMENT organizationReference (#PCDATA) >
+<!ELEMENT organizationReferenceType (#PCDATA) >
+<!ELEMENT line (#PCDATA) >
+<!ELEMENT stateOrProvinceCode (#PCDATA) >
+<!ELEMENT stateOrProvinceName (#PCDATA) >
+<!ELEMENT countryCode (#PCDATA) >
+<!ELEMENT countryName (#PCDATA) >
+<!ELEMENT postalCode (#PCDATA) >
+<!ELEMENT personName (#PCDATA) >
+<!ELEMENT departmentName (#PCDATA) >
+<!ELEMENT telephoneNumber (#PCDATA) >
+<!ELEMENT faxNumber (#PCDATA) >
+<!ELEMENT e-MailAddress (#PCDATA) >
+<!ELEMENT termsAndConditionsReference (#PCDATA) >
+<!ELEMENT clause (#PCDATA) >
+<!ELEMENT vesselName (#PCDATA) >
+<!ELEMENT voyageNumber (#PCDATA) >
+<!ELEMENT departureDate (#PCDATA) >
+<!ELEMENT flightNumber (#PCDATA) >
+<!ELEMENT locomotiveNumber (#PCDATA) >
+<!ELEMENT railCarNumber (#PCDATA) >
+<!ELEMENT licencePlateIdentification (#PCDATA) >
+<!ELEMENT contractAndCarriageConditionCode (#PCDATA) >
+<!ELEMENT serviceRequirementCode (#PCDATA) >
+<!ELEMENT numberOfContainersOrPackages (#PCDATA) >
+<!ELEMENT typeOfContainerOrPackage (#PCDATA) >
+<!ELEMENT commodityCode (#PCDATA) >
+<!ELEMENT value (#PCDATA) >
+<!ELEMENT weightUnitCode (#PCDATA) >
+<!ELEMENT volumeUnitCode (#PCDATA) >
+<!ELEMENT heightValue (#PCDATA) >
+<!ELEMENT widthValue (#PCDATA) >
+<!ELEMENT lengthValue (#PCDATA) >
+<!ELEMENT dimensionUnitCode (#PCDATA) >
+<!ELEMENT numberOfPackages (#PCDATA) >
+<!ELEMENT typeOfPackage (#PCDATA) >
+<!ELEMENT marksAndNumbers (#PCDATA) >
+<!ELEMENT containerIdentifier (#PCDATA) >
+<!ELEMENT containerDescription (#PCDATA) >
+<!ELEMENT containerGroupTypeCode (#PCDATA) >
+<!ELEMENT detailedContainerTypeCode (#PCDATA) >
+<!ELEMENT containerHeightAndWidthCode (#PCDATA) >
+<!ELEMENT containerLengthCode (#PCDATA) >
+<!ELEMENT seal (#PCDATA) >
+<!ELEMENT fumigated (#PCDATA) >
+<!ELEMENT liveReefer (#PCDATA) >
+<!ELEMENT documentCreatorIdentifier (#PCDATA) >
+<!ELEMENT documentNumber (#PCDATA) >
+<!ELEMENT documentVersion (#PCDATA) >
+<!ELEMENT productName (#PCDATA) >
+<!ELEMENT productIdentification (#PCDATA) >
+<!ELEMENT c_ProductIdentifierType (#PCDATA) >
+<!ELEMENT c_ProductIdentifierValue (#PCDATA) >
+<!ELEMENT c_ProductIdentifierQualifier (#PCDATA) >
+<!ELEMENT c_ProductCharacteristicType (#PCDATA) >
+<!ELEMENT c_ProductCharacteristicValue (#PCDATA) >
+<!ELEMENT c_ProductCharacteristicQualifier (#PCDATA) >
+<!ELEMENT unitOfMeasureCode (#PCDATA) >
+<!ATTLIST Header 
+ xmlns:cmp CDATA #FIXED
+" http://www.bolero.net/io/xmlns/header/1.0" > 
+<!-- End of DTD Despatch Advice -->

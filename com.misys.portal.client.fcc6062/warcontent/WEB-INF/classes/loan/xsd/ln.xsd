@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sch="http://www.ascc.net/xml/schematron" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for Loan. 
+			Copyright (c) 2000-2010 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd" />
+
+	
+    <xs:simpleType name="LoanIQAmount">
+        <xs:annotation>
+            <xs:documentation>The amount can be positif or negatif.</xs:documentation>
+		</xs:annotation>        
+        <xs:restriction base="xs:token">
+            <xs:pattern value="-?[0-9]+([.][0-9]{1,6})?"/>
+            <xs:maxLength value="23"/>
+        </xs:restriction>
+    </xs:simpleType>						
+	
+	<xs:simpleType name="Status">
+		<xs:annotation>
+			<xs:documentation>Status, can be active (A) or inactive (I)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACTIVE" />
+			<xs:enumeration value="INACTIVE" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="LoanType">
+		<xs:annotation>
+			<xs:documentation>Loan type
+			REG  - Regular loan
+			RLOC - Revolving Loan (Facility)
+			TRA  - Tranche of an RLOC (Facility underlying loan)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="REG" />
+			<xs:enumeration value="RLOC" />
+			<xs:enumeration value="TRA" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ReportingMethod">
+		<xs:annotation>
+			<xs:documentation>Reporting Method
+			AA - Actual / Actual
+			SS - Scheduled / Scheduled
+			NY - Net Yield (Scheduled / Actual)
+			YA - Yield All (Actual / Scheduled)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AA" />
+			<xs:enumeration value="SS" />
+			<xs:enumeration value="NY" />
+			<xs:enumeration value="YA" />
+		</xs:restriction>
+	</xs:simpleType>
+
+    <xs:element name="payments" type="payments" nillable="true"/>
+    <xs:element name="payment" type="payment" nillable="true"/>
+	<xs:complexType name="payments">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="payment"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="payment">
+        <xs:sequence>
+            <xs:element minOccurs="1" name="code" type="PaymentCode" />
+            <xs:element minOccurs="1" name="amt" type="LoanIQAmount" />
+            <xs:element minOccurs="1" name="cur_code" type="currency" />
+            <xs:element minOccurs="1" name="paymt_date" type="Date" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="loans" type="loans" nillable="true"/>
+    <xs:complexType name="loans">
+        <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="unbounded" ref="ln_tnx_record"/>
+        </xs:sequence>
+    </xs:complexType>
+	<xs:simpleType name="PaymentCode">
+		<xs:annotation>
+			<xs:documentation>Payment type
+			PRIN  - Principal 
+			INTR  - Net Yield Interest
+			CSNDY - Cash Non Delivery - (breakage for non RLOCs)
+			EFFE  - Expedited Funding Fee
+			FEF   - Free Form Event
+			INTAR - Interest On Arrears
+			LAPAY - Late Payment
+			LDYFE - Late Delivery Fee
+			PPYPM - Prepayment Premium
+			DFINT - Default Interest
+			BKGFE - Breakage Fee - RLOC
+			MUFE  - Minimum Usage - RLOC
+			UNFCY - Unused Facility - RLOC
+			SWAP  - SWAP Fee - RLOC
+			OHFES - Other Fee - RLOC
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PRIN" />
+			<xs:enumeration value="INTR" />
+			<xs:enumeration value="BKGFE" />
+			<xs:enumeration value="CSNDY" />
+			<xs:enumeration value="EFFE" />
+			<xs:enumeration value="FEF" />
+			<xs:enumeration value="INTAR" />
+			<xs:enumeration value="LAPAY" />
+			<xs:enumeration value="LDYFE" />
+			<xs:enumeration value="MUFE" />
+			<xs:enumeration value="PPYPM" />
+			<xs:enumeration value="UNFCY" />
+			<xs:enumeration value="DFINT" />
+			<xs:enumeration value="SWAP" />
+			<xs:enumeration value="OHFES" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="is_auto_rollover_enabled">
+		<xs:annotation>
+			<xs:documentation>is_auto_rollover_enabled, can be active (Y) or inactive (N)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y" />
+			<xs:enumeration value="N" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="is_swingline">
+		<xs:annotation>
+			<xs:documentation>is_swingline, can be active (Y) or inactive (N)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y" />
+			<xs:enumeration value="N" />
+		</xs:restriction>
+    </xs:simpleType>
+
+	<xs:element name="ln_tnx_record">
+		<xs:annotation>
+			<xs:documentation>Loan Business Rules</xs:documentation>
+			<xs:appinfo>
+
+				<!-- LN - Check transaction type code -->
+				<sch:pattern 
+					name="LN - Check the transaction type code" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:assert 
+							test="tnx_type_code = '01' or tnx_type_code = '03' or tnx_type_code = '13'">
+							The transaction type code <value-of select="tnx_type_code"/> is not authorised.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+
+				<!-- LN - Check transaction status code -->
+				<sch:pattern 
+					name="LN - Check the status type code" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:assert 
+							test="tnx_stat_code = '01' or tnx_stat_code = '02' or tnx_stat_code = '03'">
+							The transaction status code <value-of select="tnx_stat_code"/> is not authorised.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+
+				<!-- ********************* -->
+				<!-- LN New Business Rules -->
+				<!-- ********************* -->
+
+				<!-- LN New mandatory fields -->
+				<sch:pattern 
+					name="LN New Incomplete - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+								  tnx_stat_code = '01' and
+									((not(company_name) or company_name = '')
+									or (not(product_code) or product_code = '')
+									or (not(appl_date) or appl_date = ''))">
+							Some mandatory elements are missing (incomplete mode). 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<sch:pattern 
+					name="LN New Uncontrolled/Controlled - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and 
+								  (tnx_stat_code = '02' or tnx_stat_code = '03') and
+									((not(company_name) or company_name = '')
+									or (not(product_code) or product_code = '')
+									or (not(appl_date) or appl_date = '')
+									or (not(exp_date) or exp_date = '')
+									or (not(expiry_place) or expiry_place = '')
+									or (not(LN_cur_code) or LN_cur_code = '')
+									or (not(LN_amt) or LN_amt = '')
+									or (not(borrower_name) or borrower_name = '')
+									or (not(borrower_address_line_1) or borrower_address_line_1 = '')
+									or (not(beneficiary_name) or beneficiary_name = '')
+									or (not(beneficiary_address_line_1) or beneficiary_address_line_1 = '')
+									or (not(cr_avl_by_code) or cr_avl_by_code = '')
+									or (not(issuing_bank/abbv_name) or issuing_bank/abbv_name = '')
+									or (not(credit_available_with_bank/name) or credit_available_with_bank/name = '')
+									or (not(narrative_description_goods) or narrative_description_goods = '')
+									or (not(narrative_documents_required) or narrative_documents_required = '')
+									or (not(adv_send_mode) or adv_send_mode = ''))">
+							Some mandatory elements are missing (uncontrolled/controlled mode). 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- LN New not authorised fields -->
+				<sch:pattern 
+					name="LN New - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(ref_id 
+									or bo_ref_id 
+									or tnx_id 
+									or company_id 
+									or imp_bill_ref_id 
+									or iss_date
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or bo_comment 
+									or amd_details 
+									or amd_no
+									or amd_date
+									or narrative_full_details 
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- LN New - Constraints -->
+				<sch:pattern 
+					name="LN New - Check the draft term exists if credit available by deferred or mixed payment" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and (tnx_stat_code = '02' or tnx_stat_code = '03') and
+									((cr_avl_by_code = '04' or cr_avl_by_code = '05') 
+									and (not(draft_term) or draft_term = ''))">
+							The draft term must be defined if the credit is available by deferred or mixed payment.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern> 
+				<sch:pattern 
+					name="LN New - Check the draft term and drawee details bank exist if credit available by acceptance or negociation" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and (tnx_stat_code = '02' or tnx_stat_code = '03') and
+									((cr_avl_by_code = '02' or cr_avl_by_code = '03') 
+									and ((not(draft_term) or draft_term = '') 
+										or (not(drawee_details_bank/name) or drawee_details_bank_name = '')))">
+							The draft term and drawee details bank must be defined if the credit is available by acceptance or negociation.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern> 
+				<sch:pattern 
+					name="LN New - Check the draft term is not defined when the credit is available by payment" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and cr_avl_by_code = '01' and draft_term != ''">
+							The draft term must not be defined if the credit is available by payment.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern> 
+				<sch:pattern 
+					name="LN New - Check the named place associated with the incoterm exists if an incoterm exists" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and (tnx_stat_code = '02' or tnx_stat_code = '03') and
+									(inco_term != '' and (not(inco_place) or inco_place = ''))">
+							The named place associated with the incoterm must be defined if an incoterm exists.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern> 
+				<sch:pattern 
+					name="LN New - Check that at least the last shipment date or the shipment period is populated" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and (tnx_stat_code = '02' or tnx_stat_code = '03') and
+									((not(last_ship_date) or last_ship_date = '') 
+									and (not(narrative_shipment_period) or narrative_shipment_period = ''))">
+							The last shipment date or the shipment period must be defined.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern> 
+				<sch:pattern 
+					name="LN New - Check the last shipment date and the shipment period are mutually exclusive" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(last_ship_date != '' and narrative_shipment_period != '')">
+							The last shipment date and the shipment period are mutually exclusive.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN New - Check the issue date is posterior or equal to the application date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+								(number(concat(concat(substring(appl_date,7,4), substring(appl_date,4,2)), substring(appl_date,1,2))) &lt;
+								number(concat(concat(substring(iss_date,7,4), substring(iss_date,4,2)), substring(iss_date,1,2))))">
+							The issue date must be posterior or equal to the application date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN New - Check the issue date is prior or equal to the expiry date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+								(number(concat(concat(substring(exp_date,7,4), substring(exp_date,4,2)), substring(exp_date,1,2))) &lt;
+								number(concat(concat(substring(iss_date,7,4), substring(iss_date,4,2)), substring(iss_date,1,2))))">
+							The issue date must be prior or equal to the expiry date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN New - Check the last shipment date is posterior or equal to the application date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and last_ship_date != '' and
+								(number(concat(concat(substring(last_ship_date,7,4), substring(last_ship_date,4,2)), substring(last_ship_date,1,2))) &lt;
+								number(concat(concat(substring(appl_date,7,4), substring(appl_date,4,2)), substring(appl_date,1,2))))">
+							The last shipment date must be posterior or equal to the application date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN New - Check the expiry date is posterior or equal to the application date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and last_ship_date != '' and
+								(number(concat(concat(substring(exp_date,7,4), substring(exp_date,4,2)), substring(exp_date,1,2))) &lt;
+								number(concat(concat(substring(appl_date,7,4), substring(appl_date,4,2)), substring(appl_date,1,2))))">
+							The expiry date must be posterior or equal to the applicaton date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN New - Check the expiry date is posterior or equal to the last shipment date if it exists" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and last_ship_date != '' and
+								(number(concat(concat(substring(exp_date,7,4), substring(exp_date,4,2)), substring(exp_date,1,2))) &lt;
+								number(concat(concat(substring(last_ship_date,7,4), substring(last_ship_date,4,2)), substring(last_ship_date,1,2))))">
+							The expiry date must be posterior or equal to the last shipment date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN New - Check a standby LN is irrevocable to be Transferable" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(irv_flag = 'N' and ntrf_flag = 'N' and stnd_by_LN_flag = 'Y')">
+							A standby LN must be irrevocable to  be transferrable.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN New - Check that the tolerance and the maximum credit description are mutually exclusive" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(max_cr_desc_code != '' and (neg_tol_pct != '' or pstv_tol_pct != ''))">
+							The positive or negative tolerances and the maximum credit amount are mutually exclusive.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- *********************** -->
+				<!-- LN Amend Business Rules -->
+				<!-- *********************** -->
+
+				<!-- LN Amend mandatory fields -->
+				<sch:pattern 
+					name="LN Amend - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(sub_tnx_type_code) or sub_tnx_type_code = '')
+									or (not(exp_date) or exp_date = '')
+									or (not(amd_date) or amd_date = '')
+									or (not(adv_send_mode) or adv_send_mode = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- LN Amend not authorised fields -->
+				<sch:pattern 
+					name="LN Amend - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(template_id
+									or tnx_id
+									or company_id
+									or imp_bill_ref_id
+									or entity
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or appl_date
+									or iss_date
+									or amd_no
+									or LN_cur_code
+									or LN_amt
+									or LN_liab_amt
+									or beneficiary_abbv_name
+									or beneficiary_name
+									or beneficiary_address_line_1
+									or beneficiary_address_line_2
+									or beneficiary_dom
+									or beneficiary_country
+									or beneficiary_reference
+									or borrower_abbv_name
+									or borrower_name
+									or borrower_address_line_1
+									or borrower_address_line_2
+									or borrower_dom
+									or borrower_country
+									or borrower_reference
+									or expiry_place
+									or inco_term
+									or inco_place
+									or part_ship_detl
+									or tran_ship_detl
+									or draft_term
+									or cty_of_dest
+									or rvlv_LN_type_code
+									or max_no_of_rvlv
+									or cr_avl_by_code
+									or dir_reim_flag
+									or irv_flag
+									or ntrf_flag
+									or stnd_by_LN_flag
+									or cfm_inst_code
+									or cfm_flag
+									or cfm_chrg_brn_by_code
+									or corr_chrg_brn_by_code
+									or open_chrg_brn_by_code
+									or bo_comment
+									or eucp_flag
+									or eucp_version
+									or eucp_presentation_place
+									or advising_bank/abbv_name
+									or advising_bank/name
+									or advising_bank/address_line_1
+									or advising_bank/address_line_2
+									or advising_bank/dom
+									or advising_bank/reference
+									or advise_thru_bank/abbv_name
+									or advise_thru_bank/name
+									or advise_thru_bank/address_line_1
+									or advise_thru_bank/address_line_2
+									or advise_thru_bank/dom
+									or advise_thru_bank/reference
+									or credit_available_with_bank/abbv_name
+									or credit_available_with_bank/name
+									or credit_available_with_bank/address_line_1
+									or credit_available_with_bank/address_line_2
+									or credit_available_with_bank/dom
+									or credit_available_with_bank/reference
+									or drawee_details_bank/abbv_name
+									or drawee_details_bank/name
+									or drawee_details_bank/address_line_1
+									or drawee_details_bank/address_line_2
+									or drawee_details_bank/dom
+									or drawee_details_bank/reference
+									or narrative_description_goods
+									or narrative_documents_required
+									or narrative_additional_instructions
+									or narrative_charges
+									or narrative_payment_instructions
+									or narrative_period_presentation
+									or narrative_sender_to_receiver
+									or narrative_full_details
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- LN Amend - Constraints -->
+				<sch:pattern 
+					name="LN Amend - Check the maximum credit description, negative tolerance and positive tolerance are eventually all defined" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(
+									(max_cr_desc_code != '' and (not(neg_tol_pct) or not(pstv_tol_pct))) or
+									(neg_tol_pct != '' and (not(max_cr_desc_code) or not(pstv_tol_pct))) or
+									(pstv_tol_pct != '' and (not(max_cr_desc_code) or not(neg_tol_pct)))
+									)">
+							The maximum credit description, negative tolerance and positive tolerance must all be defined.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN Amend - Check the last shipment date and shipment period are eventually all defined" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(
+									(last_ship_date != '' and not(narrative_shipment_period)) or
+									(narrative_shipment_period != '' and not(last_ship_date))
+									)">
+							The last shipment date and shipment period must all be defined.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN Amend - Check the amendment date is prior or equal to the expiry date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and 
+								(number(concat(concat(substring(exp_date,7,4), substring(exp_date,4,2)), substring(exp_date,1,2))) &lt;
+								number(concat(concat(substring(amd_date,7,4), substring(amd_date,4,2)), substring(amd_date,1,2))))">
+							The amendment date must be prior or equal to the expiry date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN Amend - Check the expiry date is posterior or equal to the last shipment date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and last_ship_date != '' and
+								(number(concat(concat(substring(exp_date,7,4), substring(exp_date,4,2)), substring(exp_date,1,2))) &lt;
+								number(concat(concat(substring(last_ship_date,7,4), substring(last_ship_date,4,2)), substring(last_ship_date,1,2))))">
+							The expiry date must be posterior or equal to the last shipment date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN Amend - Check the last shipment date and the shipment period are mutually exclusive" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and 
+									(last_ship_date != '' and narrative_shipment_period != '')">
+							The last shipment date and the shipment period are mutually exclusive.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="LN Amend - Check the positive or negative tolerances and the maximum credit amount are mutually exclusive." 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and 
+									(max_cr_desc_code != '' and (neg_tol_pct != '' or pstv_tol_pct != ''))">
+							The positive or negative tolerances and the maximum credit amount are mutually exclusive.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- ************************* -->
+				<!-- LN Inquire Business Rules -->
+				<!-- ************************* -->
+
+				<!-- LN Inquire mandatory fields -->
+				<sch:pattern 
+					name="LN Inquire - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(free_format_text) or free_format_text = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- LN Inquire not authorised fields -->
+				<sch:pattern 
+					name="LN Inquire - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									(template_id
+									or tnx_id
+									or company_id
+									or imp_bill_ref_id
+									or entity
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or adv_send_mode
+									or tnx_id
+									or appl_date
+									or iss_date
+									or exp_date
+									or amd_date
+									or amd_no
+									or last_ship_date
+									or tnx_cur_code
+									or tnx_amt
+									or LN_cur_code
+									or LN_amt
+									or LN_liab_amt
+									or LN_type
+									or beneficiary_abbv_name
+									or beneficiary_name
+									or beneficiary_address_line_1
+									or beneficiary_address_line_2
+									or beneficiary_dom
+									or beneficiary_country
+									or beneficiary_reference
+									or borrower_abbv_name
+									or borrower_name
+									or borrower_address_line_1
+									or borrower_address_line_2
+									or borrower_dom
+									or borrower_country
+									or borrower_reference
+									or expiry_place
+									or inco_term
+									or inco_place
+									or part_ship_detl
+									or tran_ship_detl
+									or ship_from
+									or ship_loading
+									or ship_discharge
+									or ship_to
+									or draft_term
+									or cty_of_dest
+									or rvlv_LN_type_code
+									or max_no_of_rvlv
+									or neg_tol_pct
+									or pstv_tol_pct
+									or max_cr_desc_code
+									or cr_avl_by_code
+									or dir_reim_flag
+									or irv_flag
+									or ntrf_flag
+									or stnd_by_LN_flag
+									or cfm_inst_code
+									or cfm_flag
+									or cfm_chrg_brn_by_code
+									or corr_chrg_brn_by_code
+									or open_chrg_brn_by_code
+									or principal_act_no
+									or fee_act_no
+									or bo_comment
+									or amd_details
+									or eucp_flag
+									or eucp_version
+									or eucp_presentation_place
+									or advising_bank/abbv_name
+									or advising_bank/name
+									or advising_bank/address_line_1
+									or advising_bank/address_line_2
+									or advising_bank/dom
+									or advising_bank/reference
+									or advise_thru_bank/abbv_name
+									or advise_thru_bank/name
+									or advise_thru_bank/address_line_1
+									or advise_thru_bank/address_line_2
+									or advise_thru_bank/dom
+									or advise_thru_bank/reference
+									or credit_available_with_bank/abbv_name
+									or credit_available_with_bank/name
+									or credit_available_with_bank/address_line_1
+									or credit_available_with_bank/address_line_2
+									or credit_available_with_bank/dom
+									or credit_available_with_bank/reference
+									or drawee_details_bank/abbv_name
+									or drawee_details_bank/name
+									or drawee_details_bank/address_line_1
+									or drawee_details_bank/address_line_2
+									or drawee_details_bank/dom
+									or drawee_details_bank/reference
+									or narrative_description_goods
+									or narrative_documents_required
+									or narrative_additional_instructions
+									or narrative_charges
+									or narrative_payment_instructions
+									or narrative_period_presentation
+									or narrative_sender_to_receiver
+									or narrative_full_details
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- LN Inquire - Response to advice of discrepancy constraints -->
+				<sch:pattern 
+					name="LN Inquire - Check the maximum credit description, negative tolerance and positive tolerance are eventually all defined" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ln_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and sub_tnx_type_code != '' and
+									(sub_tnx_type_code != '08' and sub_tnx_type_code != '09')">
+							Not authorised sub -transaction type code.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element minOccurs="0" ref="appl_date">
+						<xs:annotation>
+							<xs:documentation>Application 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="brch_code">
+						<xs:annotation>
+							<xs:documentation>Branch code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ref_id">
+						<xs:annotation>
+							<xs:documentation>Loan reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Back office attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_id">
+						<xs:annotation>
+							<xs:documentation>Transaction id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="bo_tnx_id">
+						<xs:annotation>
+							<xs:documentation>Back office attributed transaction reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="bo_deal_id" type="TwentyCharacters">
+						<xs:annotation>
+							<xs:documentation>Back office deal reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" name="bo_deal_name" type="FiftyCharacters">
+						<xs:annotation>
+							<xs:documentation>Back office deal name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" name="bo_facility_id" type="TwentyCharacters">
+						<xs:annotation>
+							<xs:documentation>Back office facility reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" name="bo_facility_name" type="FiftyCharacters">
+						<xs:annotation>
+							<xs:documentation>Back office facility name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="company_id">
+						<xs:annotation>
+							<xs:documentation>Id of the company </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="company_name">
+						<xs:annotation>
+							<xs:documentation>Name of the company</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cust_ref_id">
+						<xs:annotation>
+							<xs:documentation>Customer attributed reference id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="entity">
+						<xs:annotation>
+							<xs:documentation>Entity</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="fcn" type="TwentyCharacters">
+						<xs:annotation>
+							<xs:documentation>Facility Control Number (FCN)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_reference" type="ThirtyFourCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_abbv_name" type="ThirtyFiveCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower abbv name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_name" type="ThirtyFiveCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_address_line_1" type="ThirtyFiveCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_address_line_2" type="ThirtyFourCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_dom" type="ThirtyFiveCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_contact_number" type="ThirtyFiveCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="borrower_email" type="ThirtyFiveCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>borrower reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="effective_date" type="Date">
+						<xs:annotation>
+							<xs:documentation>Effective date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ln_cur_code" type="currency">
+						<xs:annotation>
+							<xs:documentation>Loan currency code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ln_amt" type="LoanIQAmount">
+						<xs:annotation>
+							<xs:documentation>Loan initial (requested) amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ln_liab_amt" type="LoanIQAmount">
+						<xs:annotation>
+							<xs:documentation>Loan liability amount (current balance).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="loan_type" type="LoanType">
+						<xs:annotation>
+							<xs:documentation>Loan type</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ln_maturity_date" type="Date">
+						<xs:annotation>
+							<xs:documentation>Loan maturity date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="maturity_date">
+						<xs:annotation>
+							<xs:documentation>Transaction maturity date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="pricing_option" type="TwentyCharacters">
+						<xs:annotation>
+							<xs:documentation>Loan's Pricing Option</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="fx_conversion_rate" type="rate">
+						<xs:annotation>
+							<xs:documentation> Fx Convservsion Rate.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="fac_cur_code" type="currency">
+						<xs:annotation>
+							<xs:documentation>Facility currency code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element minOccurs="0" maxOccurs="1" name="match_funding" type="YesNo" nillable="true">
+						<xs:annotation>
+							<xs:documentation>
+								Flag to define if the pricing option is Match Funded.
+								Values are 'Y' for Yes and 'N' for No.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="rem_inst_description" nillable="true">
+						<xs:annotation>
+							<xs:documentation>
+								Remittance Instruction Description.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="rem_inst_location_code" nillable="true">
+						<xs:annotation>
+							<xs:documentation>
+								Remittance Instruction Location Code.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="rem_inst_servicing_group_alias" nillable="true">
+						<xs:annotation>
+							<xs:documentation>
+								Remittance Instruction Servicing Group Alias.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="product_code">
+						<xs:annotation>
+							<xs:documentation>Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rate">
+						<xs:annotation>
+							<xs:documentation>Loan rate.</xs:documentation>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element minOccurs="0" name="reporting_method" type="ReportingMethod">
+						<xs:annotation>
+							<xs:documentation>Reporting method</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="repricing_date" type="Date" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Repricing date.</xs:documentation>
+						</xs:annotation>					
+					</xs:element>					
+					<xs:element minOccurs="0" name="repricing_frequency" type="FourCharacters" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Repricing frequency.</xs:documentation>
+						</xs:annotation>					
+					</xs:element>					
+					<xs:element minOccurs="0" name="risk_type" type="TwentyCharacters">
+						<xs:annotation>
+							<xs:documentation>Risk type.</xs:documentation>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element minOccurs="0" name="status" type="Status">
+						<xs:annotation>
+							<xs:documentation>Status</xs:documentation>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element minOccurs="0" name="is_auto_rollover_enabled" type="is_auto_rollover_enabled">
+						<xs:annotation>
+							<xs:documentation>is_auto_rollover_enabled</xs:documentation>
+						</xs:annotation>					
+					</xs:element>					
+					<xs:element minOccurs="0" name="eoc_ddlpi" type="Date">
+						<xs:annotation>
+							<xs:documentation>End Of Cycle Due Date of Last Instalment (EOC DDLPI)</xs:documentation>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element minOccurs="0" name="eom_ddlpi" type="Date">
+						<xs:annotation>
+							<xs:documentation>End Of Month Due Date of Last Instalment (EOM DDLPI)</xs:documentation>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>In order to identify the type of 
+								transaction applied to one file during a 
+								particular event of its life (and hence 
+								attached to a transaction id), we introduce the 
+								notion of transaction type 
+								code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>In some cases, an additional code 
+								is required to further define the type of the 
+								transaction. This is the case for the amendment 
+								of an Import LC or a Banker's Guarantee where 
+								the transaction type code is AMEND, but where 
+								the system needs to know more precisely the 
+								type of amendment in order to prepare the 
+								display of its details accordingly. It is also 
+								the case for the creation of such an Import LC 
+								if it is initiated through the Upload 
+								feature.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="prod_stat_code">
+						<xs:annotation>
+							<xs:documentation>The product status code is in 
+								charge of indicating which is the functional 
+								status currently born by the transaction file. 
+								Thanks to this code, we can know if the 
+								transaction initiation has been approved by the 
+								bank and into which state the record has been 
+								updated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>During the course of a 
+								transaction input by the customer, control and 
+								finally submission to the bank for processing, 
+								and subsequently input and eventually control 
+								and release of the reporting by the bank 
+								officer, the transaction record is going 
+								through several stages</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Inputter user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Input date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Controller user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Control date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_user_id">
+						<xs:annotation>
+							<xs:documentation>Releaser user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_dttm">
+						<xs:annotation>
+							<xs:documentation>Release date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office inputter 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office input 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office controller 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office control 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office release user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office release 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_val_date">
+						<xs:annotation>
+							<xs:documentation>Transaction value 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="tnx_amt" type="LoanIQAmount">
+						<xs:annotation>
+							<xs:documentation>Transaction amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="interest_amt" type="LoanIQAmount">
+						<xs:annotation>
+							<xs:documentation>Interest amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="non_cash_amt" type="LoanIQAmount">
+						<xs:annotation>
+							<xs:documentation>non cash principal</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="additional_amt" type="LoanIQAmount">
+						<xs:annotation>
+							<xs:documentation>additional principal</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="interest_days" type="positiveInteger">
+						<xs:annotation>
+							<xs:documentation>number of interest days</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="prepayment_term" type="positiveInteger">
+						<xs:annotation>
+							<xs:documentation>prepayment term</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="period" type="positiveInteger">
+						<xs:annotation>
+							<xs:documentation>prepayment term</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="period_start_date" type="Date">
+						<xs:annotation>
+							<xs:documentation>Yield Maintenance Start Date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="period_end_date" type="Date">
+						<xs:annotation>
+							<xs:documentation>Yield Maintenance End Date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="factor" type="positiveInteger">
+						<xs:annotation>
+							<xs:documentation>Present value factor</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="period_over" type="positiveInteger">
+						<xs:annotation>
+							<xs:documentation>Elapsed Yield Maintenance Period</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="period_left" type="positiveInteger">
+						<xs:annotation>
+							<xs:documentation>Remaining Yield Maintenance Period</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="amd_date">
+						<xs:annotation>
+							<xs:documentation>Amendment date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_no">
+						<xs:annotation>
+							<xs:documentation>Amendment number.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_details">
+						<xs:annotation>
+							<xs:documentation>Amendment details.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_comment">
+						<xs:annotation>
+							<xs:documentation>Back office comment.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="free_format_text">
+						<xs:annotation>
+							<xs:documentation>Used as a zone of communication 
+								between the client and the 
+								bank.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="issuing_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the issuing bank 
+								information</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="charges"/>
+					<xs:element minOccurs="0" ref="attachments"/>
+					<xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field"/>
+					<xs:element minOccurs="0" ref="cross_references"/>
+					<xs:element minOccurs="0" ref="payments"/>
+					<!-- initial draw-down rrid tag for historical loan -->
+					<xs:element minOccurs="0" ref="drawdown_rrid">
+						<xs:annotation>
+							<xs:documentation>Drawdown RRID</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- loan re-pricing rrid tag for historical loan -->
+					<xs:element minOccurs="0" ref="loan_repricing_trans_rid">
+						<xs:annotation>
+							<xs:documentation>Loan Repricing RRID</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ln_status" type="xs:string" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Loan Status</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="all_in_rate" type="rate">
+						<xs:annotation>
+							<xs:documentation>All in rate</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="facility_effective_date" type="Date" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Facility Effective date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="facility_expiry_date" type="Date" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Facility expiry date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="facility_maturity_date" type="Date" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Facility maturity date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ln_bg_term" type="xs:string" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Loan BG term</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_product_code">
+						<xs:annotation>
+							<xs:documentation>sub product code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="fxRate" type="rate">
+						<xs:annotation>
+							<xs:documentation>FX Rate</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ln_access_type" type="xs:string" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Loan access type</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="isSwingline" type="is_swingline">
+						<xs:annotation>
+							<xs:documentation>is_swingline</xs:documentation>
+						</xs:annotation>					
+					</xs:element>
+					<xs:element minOccurs="0" name="sublimit_name" type="xs:string" nillable="true">
+						<xs:annotation>
+							<xs:documentation>sublimit_name</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

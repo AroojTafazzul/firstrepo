@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ListDef xml for beneficiary details Look Up -->
+<listdef ordered="y" default_order="beneficiary_id" page="5">
+
+    <column name="beneficiary_id" hidden="y" />
+	<column name="company_id" hidden="y" />
+	<column name="abbv_name" hidden="y" />
+	<column name="access_opened" hidden="y" />
+	<column name="address_line_1" hidden="y" />
+	<column name="address_line_2" hidden="y" />
+	<column name="beneficiary_company_abbv_name" hidden="y" />
+	<column name="brch_code" hidden="y" />
+	<column name="contact_name" hidden="y" />
+	<column name="country" hidden="y" />
+	<column name="dom" hidden="y" />
+	<column name="email" hidden="y" />
+	<column name="entity" hidden="y" />
+	<column name="fax" hidden="y" />
+	<column name="name" hidden="y" />
+	<column name="notification_enabled" hidden="y" />
+	<column name="phone" hidden="y" />
+	<column name="reference" hidden="y" />
+	<column name="telex" hidden="y" />
+	<column name="web_address" hidden="y" />
+	<column name="prtry_id_type" hidden="y" />
+	<column name="fscm_enabled" hidden="y" />
+	<column name="credit_note_enabled" hidden="y" />
+	<column name="buyer_role" hidden="y" />
+	<column name="seller_role" hidden="y" />
+	<column name="autoacceptance_day" hidden="y" />
+	
+	<column name="ObjectDataString@country_sub_div" hidden="y" />
+	<column name="ObjectDataString@post_code" hidden="y" />
+	<column name="ObjectDataString@street_name" hidden="y" />
+	<column name="ObjectDataString@town_name" hidden="y" />
+	<column name="ObjectDataString@bei" hidden="y" />
+	
+	<parameter name="name" input="y" />
+	<parameter name="entity" input="y" />
+	<parameter name="abbv_name" input="y" />
+	<parameter name="beneficiary_id" input="y" />
+	
+	<!-- candidates -->
+	<candidate name="StaticBeneficiary">
+	<filter>
+		<criteria>
+			<column name="entity" />
+			<operator type="like" />
+			<value type="parameter">
+				entity
+			</value>
+		</criteria>
+		<criteria>
+			<column name="name" />
+			<operator type="like" />
+			<value type="parameter">
+				name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="abbv_name" />
+			<operator type="like" />
+			<value type="parameter">
+				abbv_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="beneficiary_id" />
+			<operator type="like" />
+			<value type="parameter">
+				beneficiary_id
+			</value>
+		</criteria>
+	</filter>
+</candidate>
+</listdef>

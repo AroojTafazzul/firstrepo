@@ -1,0 +1,74 @@
+<!-- XML File which is used to Maintain Parameters in GTP_PARAM_DATA and GTP_LARGE_PARAM_KEY(DATA)  -->
+<maintainParameters  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="maintainParameters.xsd">
+  
+  <!-- Holiday Maintenance -->
+  <maintainParameter name="P109" parmid ="P109" mode="Multiple" readonly="false" label="XSL_PARA_FINANCIAL_HOLIDAYS" permission="sy_parameter_maintain_holidays" >
+	  <company column="COMPANY_ID" type="COMPANY_TYPE" code="KEY_WILDCARD"  label="XSL_PARA_COL_COMPANY_ID" mandatory="true" hidden="true" defaultvalue="KEY_WILDCARD" />
+      <key column="KEY_1" type="BANKABBREVNAME" label="XSL_BANK_ABBV_NAME" hidden="true" mandatory="true" defaultvalue="KEY_WILDCARD"/>
+      <key column="KEY_4" type="COUNTRY" label="XSL_COUNTRY" hidden="true" defaultvalue="KEY_WILDCARD"/>     
+      <!-- Holiday Maintenance is only for FT and BK at present. For all add additionalInfo as "*" or FT,LC,TD etc-->
+      <key column="KEY_2" type="CODE" code="N001" label="PRODUCT" additionalInfo="FT,BK,TD" mandatory="true" size="s-medium"/>
+      <key column="KEY_3" type="CODE" code="N047" label="XSL_PARA_COL_PRODUCT_TYPE" mandatory="true" fieldSize="s-medium"/>
+	  <key column="KEY_8" type="CODE" code="N082"  label="XSL_PARA_COL_HOLIDAYS1" mandatory="false" fieldSize="small"/> <!--Holidays per week (for instance, thejava int value of Sunday)-->
+	  <key column="KEY_9" type="CODE" code="N082"   label="XSL_PARA_COL_HOLIDAYS2" mandatory="false" fieldSize="small"/>
+	  <key column="KEY_5" type="CURRENCY" label="XSL_CURRENCY" mandatory="true"/>
+	  <data column="DATA_1" type="DATE" label="XSL_PARA_COL_CLOSINGDAYS" mandatory="true"/>
+	  <!-- <data column="DATA_2" type="USER_ID" label="XSL_PARA_COL_USER_ID" hidden="true"/> -->
+	  <!-- DATA_3 is dummy only required for UI. Value never saved -->
+	 <data column="DATA_3" type="USER_NAME" label="XSL_PARA_COL_USER_NAME" />
+  </maintainParameter>
+  
+  <!-- CutOff Time Maintenance -->
+  <maintainParameter name="P110" parmid="P110" mode="Single" readonly="false" label="XSL_PARA_FINANCIAL_CUTOFF_TIME" permission="sy_parameter_maintain_cutoff" >
+	  <company column="COMPANY_ID" type="COMPANY_TYPE" code="KEY_WILDCARD"  label="XSL_PARA_COL_COMPANY_ID" mandatory="true" hidden="true" defaultvalue="KEY_WILDCARD" />
+      <key column="KEY_1" type="BANKABBREVNAME" label="XSL_BANK_ABBV_NAME" hidden="true" mandatory="true"/>
+      <key column="KEY_6" type="COUNTRY" label="XSL_COUNTRY" hidden="true" mandatory="true" defaultvalue="KEY_WILDCARD"/>
+      <!-- CutOff Maintenance is only for FT and BK at present. For all add additionalInfo as "*" or FT,LC,TD etc-->
+	  <key column="KEY_2" type="CODE" code="N001" label="PRODUCT" additionalInfo="FT,BK,TD" mandatory="true"/>
+      <key column="KEY_3" type="CODE" code="N047" label="XSL_PARA_COL_PRODUCT_TYPE" mandatory="true"/>
+      <key column="KEY_4" type="SUBSCRIPTION_CODE" label="XSL_PARA_COL_SUBSCRIPTION_CODE" defaultvalue="KEY_WILDCARD" permission="access_subscription_package_mc"/>
+        <!-- India domestic   -->
+      <key column="KEY_9" type="CODE" code="N503" label="XSL_PARA_COL_CLEARING_SYSTEM" mandatory="true" />
+       <key column="KEY_8" type="CURRENCY" label="XSL_CURRENCY" mandatory="true"/>
+      <key column="KEY_5" type="AMOUNT" label="XSL_PARA_COL_AMOUNT" mandatory="true"/> 
+      
+      
+     
+     <data column="DATA_1" type="HOUR" label="XSL_PARA_COL_HOUR" mandatory="true" length="2" fieldSize="x-small" appendClass="inlineBlock"/>
+	  <data column="DATA_2" type="MINUTE" label="XSL_PARA_COL_MINUTE" mandatory="true" length="2" fieldSize="x-small" appendClass="inlineBlock labelCutOff"/>
+	  <data column="DATA_4" type="number" label="XSL_PARA_COL_OFFSET" mandatory="true" length="3" fieldSize="x-small" appendClass="inlineBlock labelCutOff"/>
+  </maintainParameter>
+  
+   <!-- Portal Down Time Maintenance -->
+  <maintainParameter name="P108" parmid="P108" mode="Single" readonly="false" label="XSL_PARA_PORTAL_DOWNTIME" permission="sy_downtime_parameter" >
+ 	  <company column="COMPANY_ID" type="COMPANY_TYPE" code="KEY_WILDCARD"  label="XSL_PARA_COL_COMPANY_ID" mandatory="true" hidden="true" defaultvalue="KEY_WILDCARD" />
+ 	   <key column="KEY_1" type="BANKABBREVNAME" label="XSL_BANK_ABBV_NAME" hidden="true" mandatory="true"/>
+       <key column="KEY_2" type="COUNTRY" label="XSL_PARA_COL_DOWNTIME_LABLE" hidden="false"  defaultvalue="Accessibility Hours" mandatory="true"/>
+         <data column="DATA_1" type="HOUR" label="XSL_PARA_COL_DOWNTIME_START_HOUR" mandatory="true" length="2" fieldSize="x-small" appendClass="inlineBlock" defaultvalue="00"/>
+	 	<data column="DATA_5" onlyInForm="true" type="MINUTE" label="XSL_PARA_COL_MINUTE" mandatory="true" length="2" fieldSize="x-small" hidden="false" appendClass="inlineBlock labelCutOff"  defaultvalue="00"/>
+	 	 <data column="DATA_2" type="HOUR" label="XSL_PARA_COL_DOWNTIME_END_HOUR" mandatory="true" length="2" fieldSize="x-small" appendClass="inlineBlock labelCutOffDowntime"  defaultvalue="23"/>
+	 	 <data column="DATA_6" onlyInForm="true" type="MINUTE" label="XSL_PARA_COL_MINUTE" mandatory="true" length="2" fieldSize="x-small" hidden="false" appendClass="inlineBlock labelCutOff"  defaultvalue="59"/>
+	    <data column="DATA_3" type="CODE" code="N082"  label="XSL_PARA_COL_HOLIDAYS1" mandatory="false" fieldSize="small"/> <!--Holidays per week (for instance, thejava int value of Sunday)-->
+	   	<data column="DATA_4" type="CODE" code="N082"   label="XSL_PARA_COL_HOLIDAYS2" mandatory="false" fieldSize="small"/>	 	     
+	   	<data column="DATA_7" type="CODE" code="N087"   label="XSL_PARA_COL_HOLIDAYS2" mandatory="false" fieldSize="small"/>
+  </maintainParameter>
+  
+   <maintainParameter name="P261" parmid ="P261" mode="Single" readonly="false" label="XSL_PARA_RM_GROUP" permission="sy_rmGroup_parameter" >
+	  <company column="COMPANY_ID" type="COMPANY_TYPE" code="KEY_WILDCARD"  label="XSL_PARA_COL_COMPANY_ID" mandatory="true" hidden="true" defaultvalue="KEY_WILDCARD" />
+      <key column="KEY_1" type="BANKABBREVNAME" label="XSL_BANK_ABBV_NAME" hidden="true" mandatory="true" defaultvalue="KEY_WILDCARD"/>
+ 	  <key column="KEY_2"  type="RM_GROUP_ID"  label="XSL_PARA_RM_GROUP_ID"  mandatory="true" length="35"/> 
+ 	  <data column="DATA_2" type="RM_USER_NAME" label="XSL_PARA_RM_GROUP_NAME"  length="65"  mandatory="true" />
+	  <data column="DATA_1" type="RM_EMAIL" label="XSL_PARA_RM_GROUP_EMAIL"  length="65" />
+  </maintainParameter>
+  
+  <maintainParameter name="P778" parmid ="P778" mode="Multiple" readonly="false" label="XSL_TRANSACTIONDETAILS_PRODUCT_TYPE_PAYMENT" permission="sy_rmGroup_parameter" >
+	  <company column="COMPANY_ID" type="COMPANY_TYPE" code="KEY_WILDCARD"  label="XSL_PARA_COL_COMPANY_ID" mandatory="true" hidden="true" defaultvalue="KEY_WILDCARD" />
+      <key column="KEY_1" type="BANKABBREVNAME" label="XSL_BANK_ABBV_NAME" hidden="true" mandatory="true" defaultvalue="KEY_WILDCARD"/>
+      <key column="KEY_2" type="CODE" code="N001" label="PRODUCT" mandatory="true" size="s-medium"/>
+      <key column="KEY_3" type="CODE" code="N047" label="XSL_PARA_COL_PRODUCT_TYPE" mandatory="true" fieldSize="s-medium"/>
+ 	  <key column="KEY_4"  type="BORROWER_REFERENCE"  label="BORROWER_REF"  mandatory="true" length="35"/> 
+ 	  <key column="KEY_5"  type="DEAL_ID"  label="XSL_FACILITYDETAILS_DEAL"  mandatory="true" length="35"/> 
+ 	  <data column="DATA_1" type="TRANSACTION_AMT" label="XSL_REPORT_COL_tnx_amt"  length="65"  mandatory="true" />
+  </maintainParameter>
+
+</maintainParameters>

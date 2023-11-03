@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" help="LIST_HELP_MAINTAIN" default_order="ref_id" crossPageSelection="y" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc" identifier="ref_id">
+	
+	<batch type="delete">
+		<parameter name="SCREEN" value="LS_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_TRANSACTION_DELETE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_EXISTING"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+	</batch>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="30%" loca_key="ENTITY"/>
+	<column name="beneficiary_name" align="left" width="30%" loca_key="BENEFICIARY_NAME"/>
+	<column name="bo_ref_id" align="left" width="20%" loca_key="BO_REFERENCEID"/>
+	<column name="ls_type" align="left" width="20%" loca_key="LICENSE_TYPE"/>
+	<column name="cur_code" align="center" width="3em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="liab_amt" align="right" width="10em" loca_key="OS_AMOUNT"/>
+	
+	<column name="prod_stat_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="bo_ref_id"
+		loca_key="BO_REFERENCEID"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="ls_type"
+		type="LicenseTypes"
+		size=""
+		max_length=""
+		loca_key="LICENSE_TYPE"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		type="Currency"
+		loca_key="CURCODE"/>
+
+	<!-- candidates -->	
+	<candidate name="license_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ls_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ls_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

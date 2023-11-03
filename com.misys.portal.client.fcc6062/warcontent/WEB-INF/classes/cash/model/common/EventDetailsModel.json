@@ -1,0 +1,934 @@
+{
+	"screen": "eventIquiryModel",
+	"eventDetails": {
+		"releaseDate": {
+			"name": "releaseDate",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [],
+					"subTnxTypeCode": [],
+					"tnxStatCode": [
+						"04"
+					]
+				}
+			]
+		},
+		"companyName": {
+			"name": "companyName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13",
+						"15"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13",
+						"15"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"applicantEntity": {
+			"name": "applicantEntity",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13",
+						"15"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13",
+						"15"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"productCode": {
+			"name": "productCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": false,
+			"translate": true,
+			"translateValue": "",
+			"applicableScreens": [
+				{
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13",
+						"15"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13",
+						"15"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"customerReleaseDate": {
+			"name": "customerReleaseDate",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": false,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"13"
+					],
+					"tnxStatCode": [
+						"02",
+						"03"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"13"
+					],
+					"tnxStatCode": [
+						"02",
+						"03"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"subProdCode": {
+			"name": "subProdCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"translate": true,
+			"translateValue": "N047_",
+			"clubbedHeaderText": "subProdCode",
+			"clubbedList": [
+				"subProdCode",
+				"otherSubProductText"
+			],
+			"dynamicCriteria": {
+				"dependControl": "subProdCode",
+				"dependSection": "eventDetails",
+				"requiredValues": ["CQBKR","COCQS"],
+				"presentSection": "eventDetails"
+			},
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13",
+						"15"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"otherSubProductText": {
+			"name": "otherSubProductText",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"otherSubProductStyle"
+			],
+			"maxlength": 32,
+			"clubbed": true,
+			"dynamicCriteria": {
+				"dependControl": "subProdCode",
+				"dependSection": "eventDetails",
+				"requiredValues": ["CQBKR"],
+				"presentSection": "eventDetails"
+			}
+		},
+		"transactionType": {
+			"name": "transactionType",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"translate": true,
+			"translateValue": "N002_",
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			],
+			"clubbedHeaderText": "transactionType",
+			"clubbedList": [
+				"transactionType",
+				"subTransactionType"
+			]
+		},
+		"subTransactionType": {
+			"name": "subTransactionType",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"translate": true,
+			"translateValue": "LIST_N003_",
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			],
+			"clubbed": true,
+			"dynamicCriteria": {
+				"dependControl": "transactionType",
+				"dependSection": "eventDetails",
+				"notRequiredValue": "01",
+				"presentSection": "eventDetails"
+			}
+		},
+		"channelsId": {
+			"name": "channelsId",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"bankReferenceView": {
+			"name": "bankReferenceView",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"issuingBankName": {
+			"name": "issuingBankName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"applicationDate": {
+			"name": "applicationDate",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [],
+					"subTnxTypeCode": [],
+					"tnxStatCode": [
+						"04"
+					]
+				}
+			]
+		},
+		"tdCurrency": {
+			"name": "tdCurrency",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"13",
+						"03"
+					],
+					"subTnxTypeCode": []
+				}
+			],
+			"clubbedHeaderText": "tdheader",
+			"clubbedList": [
+				"tdCurrency",
+				"tdAmount"
+			]
+		},
+		"tdAmount": {
+			"name": "tdAmount",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"13",
+						"03"
+					],
+					"subTnxTypeCode": []
+				}
+			],
+			"clubbed": true
+		},
+		"returnComments": {
+			"name": "returnComments",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"id": "eventDetailsComponent"
+	},
+	"bankMessageEvents": {
+		"applicableSections": [
+			{
+				"isMaster": false,
+				"screen": "eventEnquiry",
+				"productCode": "TD",
+				"tnxStatCode": [
+					"04"
+				],
+				"subTnxTypeCode": [],
+				"parent": true
+			},
+			{
+				"isMaster": false,
+				"screen": "eventEnquiry",
+				"productCode": "SE",
+				"tnxStatCode": [
+					"04"
+				],
+				"subTnxTypeCode": [],
+				"parent": true
+			}
+		],
+		"boReleaseDate": {
+			"name": "boReleaseDate",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"reportingStatus": {
+			"name": "reportingStatus",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"translate": true,
+			"translateValue": "N005_",
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"bankReferenceView": {
+			"name": "bankReferenceView",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			],
+			"dynamicCriteria": {
+				"dependSection": "eventDetails",
+				"parentCondition": true,
+				"presentSection": "eventDetails"
+			}
+		},
+		"returnComments": {
+			"name": "returnComments",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"rendered": true,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"bankComments": {
+			"name": "bankComments",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16500,
+			"rendered": true,
+			"fullWidthView": true,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"01",
+						"03",
+						"15",
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"id": "bankMessageComponent"
+	},
+	"bankAttachments": {
+		"applicableSections": [
+			{
+				"screen": "eventEnquiry",
+				"productCode": "TD",
+				"tnxTypeCode": [],
+				"tnxStatCode": [
+					"04"
+				],
+				"parent": true
+			},
+			{
+				"screen": "eventEnquiry",
+				"productCode": "SE",
+				"tnxTypeCode": [],
+				"tnxStatCode": [
+					"04"
+				],
+				"parent": true
+			}
+		],
+		"bankAttachmentTable": {
+			"name": "bankAttachmentTable",
+			"columns": [],
+			"label": "hideControl",
+			"showLabel": false,
+			"type": "input-table",
+			"rendered": true,
+			"data": [],
+			"styleClass": [
+				"fileUploadTable"
+			],
+			"layoutClass": "p-col-12"
+		},
+		"id": "bankAttachmentDetailsComponent"
+	},
+	"feesAndCharges": {
+		"applicableSections": [
+			{
+				"screen": "eventEnquiry",
+				"productCode": "TD",
+				"tnxTypeCode": [],
+				"tnxStatCode": [
+					"04"
+				],
+				"parent": true
+			},
+			{
+				"screen": "eventEnquiry",
+				"productCode": "SE",
+				"tnxTypeCode": [],
+				"tnxStatCode": [
+					"04"
+				],
+				"parent": true
+			}
+		],
+		"feesAndCharges": {
+			"name": "feesAndCharges",
+			"columns": [],
+			"label": "hideControl",
+			"defaultValue": "specialPayment",
+			"isResponseArray": true,
+			"type": "fees-and-charges",
+			"rendered": true,
+			"data": [],
+			"layoutClass": "p-col-12"
+		},
+		"id": "additionalInfoTableComponent"
+	},  
+	"amountDetailsEvents": {
+		"applicableSections": [
+			{
+				"screen": "eventEnquiry",
+				"productCode": "TD",
+				"tnxTypeCode": [],
+				"subTnxTypeCode": [
+					"19",
+					"12"
+				]
+			}
+		],
+		"transferAmt": {
+			"name": "transferAmt",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"clubbedHeaderText": "transferAmt",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"feildType": "amount",
+			"applicableScreens": [
+				{
+					"isMaster": true,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [],
+					"subTnxTypeCode": [
+						"12"
+					]
+				}
+			],
+			"clubbedList": [
+				"originalLcCur",
+				"transferAmt"
+			]
+		},
+		"id": "amountDetailsComponent"
+	},
+	"releaseInstructionEvents": {
+		"dynamicCriteria": {
+			"dependControl": "fullRelease",
+			"dependSection": "releaseInstructionEvents",
+			"requiredValues": ["Y",	"N"],
+			"presentSection": "releaseInstructionEvents"
+		},
+		"releaseRequestDate": {
+			"name": "releaseRequestDate",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true
+		},
+	
+		"fullRelease": {
+			"name": "fullRelease",
+			"type": "input-switch",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": [
+				"appl-detail-header"
+			]
+		},
+		"narrativeInfo": {
+			"name": "narrativeInfo",
+			"type": "narrative-textarea",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"fullWidthView": true
+		},
+		"id": "releaseInstructionsComponent"
+	},
+	"bankInstructionsHeader": {
+		"applicableSections": [
+			{
+				"screen": "eventEnquiry",
+				"productCode": "SE",
+				"tnxTypeCode": [
+					"13"
+				],
+				"subTnxTypeCode": []
+			}
+		],		
+		"customerInstructions": {
+			"name": "customerInstructions",
+			"type": "narrative-textarea",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": true,
+			"fullWidthView": true,
+			"applicableScreens": [
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "TD",
+					"tnxTypeCode": [
+						"13"
+					],
+					"subTnxTypeCode": []
+				},
+				{
+					"isMaster": false,
+					"screen": "eventEnquiry",
+					"productCode": "SE",
+					"tnxTypeCode": [
+						"13"
+					],
+					"subTnxTypeCode": []
+				}
+			]
+		},
+		"id": "instToBankComponent"
+	}
+}

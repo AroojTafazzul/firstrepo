@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for a GTP company. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="company">
+	    <xs:complexType>
+	        <xs:sequence>
+				<xs:element minOccurs="0" ref="maker_id">
+					<xs:annotation>
+						<xs:documentation>Maker Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="checker_id">
+					<xs:annotation>
+						<xs:documentation>Checker Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_id">
+					<xs:annotation>
+						<xs:documentation>Transaction Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="maker_dttm">
+					<xs:annotation>
+						<xs:documentation>Maker datetime.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="checker_dttm">
+					<xs:annotation>
+						<xs:documentation>Checker datetime.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_type_code">
+					<xs:annotation>
+						<xs:documentation>Transaction type code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_stat_code">
+					<xs:annotation>
+						<xs:documentation>Transaction status code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="return_comments">
+					<xs:annotation>
+						<xs:documentation>Return comments.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="company_id">
+					<xs:annotation>
+						<xs:documentation>Company Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="abbv_name">
+					<xs:annotation>
+						<xs:documentation>Abbreviated name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="actv_flag">
+					<xs:annotation>
+						<xs:documentation>Active flag.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="address_line_1">
+					<xs:annotation>
+						<xs:documentation>First line of address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="address_line_2">
+					<xs:annotation>
+						<xs:documentation>Second line of address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="attachment_max_upload_size">
+					<xs:annotation>
+						<xs:documentation>Max size for attachment upload(in MB).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="authorize_own_transaction">
+					<xs:annotation>
+						<xs:documentation>Authorize own transaction flag (Y/N).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="auto_fwd_date">
+					<xs:annotation>
+						<xs:documentation>Auto forward date flag (Y/N).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="base_cur_code">
+					<xs:annotation>
+						<xs:documentation>Company base currency code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bei">
+					<xs:annotation>
+						<xs:documentation>BEI code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bulk_authorize_limit">
+					<xs:annotation>
+						<xs:documentation>Bulk authorize limit flag (Y/N).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bulk_draft_on_error">
+					<xs:annotation>
+						<xs:documentation>Bulk draft error option.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="charge_account">
+					<xs:annotation>
+						<xs:documentation>Charging account.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="charge_account_address_line_1">
+					<xs:annotation>
+						<xs:documentation>Charging account address line 1.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="charge_account_address_line_2">
+					<xs:annotation>
+						<xs:documentation>Charging account address line 2.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="charge_account_address_line_3">
+					<xs:annotation>
+						<xs:documentation>Charging account address line 3.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="charge_account_address_line_4">
+					<xs:annotation>
+						<xs:documentation>Charging account address line 4.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="check_duplicate_cust_ref">
+					<xs:annotation>
+						<xs:documentation>Check duplicate customer reference flag(Y/N).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="check_duplicate_file">
+					<xs:annotation>
+						<xs:documentation>Check duplicate upload file flag(Y/N).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="check_file_hash_value">
+					<xs:annotation>
+						<xs:documentation>Check file hash value flag(Y/N).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="company_group">
+					<xs:annotation>
+						<xs:documentation>Group the company belongs to.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_name">
+					<xs:annotation>
+						<xs:documentation>Contact name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="country">
+					<xs:annotation>
+						<xs:documentation>Country.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="country_legalid">
+					<xs:annotation>
+						<xs:documentation>Country legal id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="country_name">
+					<xs:annotation>
+						<xs:documentation>Country name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="country_sub_div">
+					<xs:annotation>
+						<xs:documentation>Country sub-division.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="county">
+					<xs:annotation>
+						<xs:documentation>County.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="crm_email">
+					<xs:annotation>
+						<xs:documentation>CRM Email Address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dom">
+					<xs:annotation>
+						<xs:documentation>Domicile.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dual_control">
+					<xs:annotation>
+						<xs:documentation>Dual control.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dashboard_screen_type">
+					<xs:annotation>
+						<xs:documentation>Dashboard Screen type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="email">
+					<xs:annotation>
+						<xs:documentation>Email address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="fax">
+					<xs:annotation>
+						<xs:documentation>Fax number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="file_encryption_method">
+					<xs:annotation>
+						<xs:documentation>File encryption method.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="iso_code">
+					<xs:annotation>
+						<xs:documentation>Bank iso code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="language">
+					<xs:annotation>
+						<xs:documentation>Company default language.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="legal_id_no">
+					<xs:annotation>
+						<xs:documentation>Legal id number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="legal_id_type">
+					<xs:annotation>
+						<xs:documentation>Legal id type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="merge_demerge_allowed">
+					<xs:annotation>
+						<xs:documentation>Merge demerge allowed for bulk flag(Y/N).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="name">
+					<xs:annotation>
+						<xs:documentation>Name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="owner_id">
+					<xs:annotation>
+						<xs:documentation>Owner company Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="password_expiry">
+					<xs:annotation>
+						<xs:documentation>Number of days after which the password expires.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="phone">
+					<xs:annotation>
+						<xs:documentation>Phone number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="post_code">
+					<xs:annotation>
+						<xs:documentation>Post code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="reference">
+					<xs:annotation>
+						<xs:documentation>Reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="reject_file_on_error">
+					<xs:annotation>
+						<xs:documentation>Reject bulk file on error.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="retention_period">
+					<xs:annotation>
+						<xs:documentation>Retention period in months.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="street_name">
+					<xs:annotation>
+						<xs:documentation>Street name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="telex">
+					<xs:annotation>
+						<xs:documentation>Telex number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="town_name">
+					<xs:annotation>
+						<xs:documentation>Town name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="type">
+					<xs:annotation>
+						<xs:documentation>Type of the company.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="web_address">
+					<xs:annotation>
+						<xs:documentation>Web address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="treasury_branch_reference">
+					<xs:annotation>
+						<xs:documentation>Treasury branch reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="liquidity_frequency">
+					<xs:annotation>
+						<xs:documentation>Liquidity Frequency.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="liquidity_balance_type">
+					<xs:annotation>
+						<xs:documentation>Liquidity Balance Type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="liquidity_ccy_cur_code">
+					<xs:annotation>
+						<xs:documentation>Liquidity Currency.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="created">
+					<xs:annotation>
+						<xs:documentation>Company creation date and time.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="psml_template">
+					<xs:annotation>
+						<xs:documentation>Name of the PSML template used for the homepage of users of the company.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="internal_channel">
+					<xs:annotation>
+						<xs:documentation>Channel ID of the Internal News Channel.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="owner_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Owner abbreviated name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field"/>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+</xs:schema>

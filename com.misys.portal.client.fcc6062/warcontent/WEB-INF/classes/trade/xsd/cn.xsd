@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sch="http://www.ascc.net/xml/schematron" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for CN. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/baseline_common.xsd"/>
+	<xs:element name="cn_tnx_record">
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element minOccurs="0" ref="appl_date">
+						<xs:annotation>
+							<xs:documentation>Application 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="brch_code">
+						<xs:annotation>
+							<xs:documentation>Branch code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ref_id">
+						<xs:annotation>
+							<xs:documentation>Credit Note reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="template_id">
+						<xs:annotation>
+							<xs:documentation>Template id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Back office attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_tnx_id">
+						<xs:annotation>
+							<xs:documentation>Back office transaction id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="cust_ref_id">
+						<xs:annotation>
+							<xs:documentation>Customer attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_id">
+						<xs:annotation>
+							<xs:documentation>Transaction id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="company_id">
+						<xs:annotation>
+							<xs:documentation>Id of the company that initiated 
+								the credit note.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- minOccurs=0 because the company can possibly be not be provided when bank initiated transaction -->
+					<xs:element minOccurs="0" ref="company_name">
+						<xs:annotation>
+							<xs:documentation>Name of the company that 
+								initiated the credit note.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>In order to identify the type of 
+								transaction applied to one file during a 
+								particular event of its life (and hence 
+								attached to a transaction id), we introduce the 
+								notion of transaction type 
+								code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>In some cases, an additional code 
+								is required to further define the type of the 
+								transaction.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" ref="prod_stat_code">
+						<xs:annotation>
+							<xs:documentation>The product status code is in 
+								charge of indicating which is the functional 
+								status currently born by the transaction file. 
+								Thanks to this code, we can know if the 
+								transaction initiation has been approved by the 
+								bank and into which state the record has been 
+								updated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>During the course of a 
+								transaction input by the customer, control and 
+								finally submission to the bank for processing, 
+								and subsequently input and eventually control 
+								and release of the reporting by the bank 
+								officer, the transaction record is going 
+								through several stages</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Sub Transaction Status Code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" ref="product_code">
+						<xs:annotation>
+							<xs:documentation>Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="sub_product_code" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Sub Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" ref="inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Inputter user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Input date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office inputter 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office input 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_val_date">
+						<xs:annotation>
+							<xs:documentation>Transaction value 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="1" ref="iss_date">
+						<xs:annotation>
+							<xs:documentation>Issue date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="exp_date">
+						<xs:annotation>
+							<xs:documentation>Expiry date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_amt">
+						<xs:annotation>
+							<xs:documentation>Transaction 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Buyer abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_name">
+						<xs:annotation>
+							<xs:documentation>Buyer 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_bei">
+						<xs:annotation>
+							<xs:documentation>Buyer bei.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_bank_bic">
+						<xs:annotation>
+							<xs:documentation>Buyer bank bic.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_street_name">
+						<xs:annotation>
+							<xs:documentation>Buyer 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_post_code">
+						<xs:annotation>
+							<xs:documentation>Buyer 
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_town_name">
+						<xs:annotation>
+							<xs:documentation>Buyer
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Buyer country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_country">
+						<xs:annotation>
+							<xs:documentation>Buyer country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="buyer_reference">
+						<xs:annotation>
+							<xs:documentation>Buyer reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="seller_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Seller abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_name">
+						<xs:annotation>
+							<xs:documentation>Seller 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_bei">
+						<xs:annotation>
+							<xs:documentation>Seller bei.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_bank_bic">
+						<xs:annotation>
+							<xs:documentation>Seller bank bic.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_street_name">
+						<xs:annotation>
+							<xs:documentation>Seller 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_post_code">
+						<xs:annotation>
+							<xs:documentation>Seller 
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_town_name">
+						<xs:annotation>
+							<xs:documentation>Seller
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Seller country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_country">
+						<xs:annotation>
+							<xs:documentation>Seller country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="seller_reference">
+						<xs:annotation>
+							<xs:documentation>Seller reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="entity">
+						<xs:annotation>
+							<xs:documentation>Entity</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cn_cur_code">
+						<xs:annotation>
+							<xs:documentation>Credit note currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cn_amt">
+						<xs:annotation>
+							<xs:documentation>Credit note 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fscm_program_code">
+						<xs:annotation>
+							<xs:documentation>FSCM program code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+
+					<xs:element minOccurs="0" ref="cn_reference">
+						<xs:annotation>
+							<xs:documentation>Credit Note Reference</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="issuing_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the issuing bank 
+								information</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+											
+											
+					<xs:element minOccurs="0" ref="bo_comment">
+						<xs:annotation>
+							<xs:documentation>Back office 
+								comment.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="free_format_text">
+						<xs:annotation>
+							<xs:documentation>Used for communication 
+								between the client and the 
+								counterparty.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="invoice-items"/>
+					<xs:element minOccurs="0" ref="attachments"/>				
+					<!--    
+					<xs:element minOccurs="0" maxOccurs="unbounded" 
+						ref="additional_field"/> -->
+					<xs:sequence minOccurs="0">
+					  <xs:element maxOccurs="unbounded" name="additional_field">
+						<xs:complexType mixed="true">
+							<xs:sequence>
+								<xs:element ref="cn_tnx_record" minOccurs="0"/>
+							</xs:sequence>
+							<xs:attribute name="name" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+									    <xs:enumeration value="releaser_first_name"/>
+										<xs:enumeration value="releaser_phone"/>
+										<xs:enumeration value="releaser_last_name"/>
+										<xs:enumeration value="releaser_email"/>
+										<xs:enumeration value="original_details"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="type" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+									    <xs:enumeration value="string"/>
+									    <xs:enumeration value="string"/>
+									    <xs:enumeration value="string"/>
+									    <xs:enumeration value="string"/>									     
+										<xs:enumeration value="xml_text"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="scope" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="transaction"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					  </xs:element>					 
+					</xs:sequence>					
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

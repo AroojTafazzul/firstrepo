@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="50" default_order="ref_id"
+	default_order_type="d">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="DT_SCREEN" />
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW" />
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT" />
+			<parameter name="REFERENCE_ID" column="ref_id" />
+			<parameter name="TRANSACTION_ID" column="tnx_id" />
+		</url>
+	</column>
+
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="doc_track_id" width="15%" align="center" loca_key="DOCUMENT_ID" />
+	<column name="full name" computation="sum" align="left" width="20%"
+		loca_key="USER_NAME">
+		<column name="Inputter@first_name"/>	
+				<column name="Inputter@last_name"/>
+	</column>
+	<column name="inp_dttm" align="center" width="6em" loca_key="APPL_DATE"/>
+	
+	
+	<column name="tnx_stat_code" hidden="y" />
+	<column name="tnx_id" hidden="y" />
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+
+
+	<!-- Parameters -->
+	<parameter 
+		name="ref_id" 
+		size="20" 
+		max_length="20" 
+		loca_key="REFERENCEID"
+		input="y" 
+		default="" />
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter 
+		name="doc_track_id" 
+		default="" 
+		input="y"
+		max_length="20" 
+		size="20" 
+		loca_key="DOCUMENT_ID" />
+	<parameter
+		name="user_name"
+		loca_key="USER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+
+	<!-- Candidates -->
+
+	<!-- Pending files -->
+	<candidate name="secure_email">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="equal" />
+				<value type="code">
+					N004_INCOMPLETE
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="equal" />
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<!-- In-progress files -->
+	<candidate name="secure_email">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="equal" />
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code" />
+				<operator type="equal" />
+				<value type="code">
+					N005_INPROGRESS
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<!-- Common filters -->
+	<filter>
+		<criteria>
+			<column name="sub_product_code" />
+			<operator type="equal" />
+			<value type="code">
+				N047_DT
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="ref_id" />
+			<operator type="like" />
+			<value type="parameter">
+				ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="entity"/>
+			<operator type="like"/>
+			<value type="parameter">
+				entity
+			</value>
+		</criteria>
+		<criteria>
+			<column name="doc_track_id" />
+			<operator type="like" />
+			<value type="parameter">
+				doc_track_id
+			</value>
+		</criteria>
+	</filter>
+	<filter or="y">
+		<criteria>
+			<column name="full_name" computation="sum">
+				<column name="Inputter@first_name"/>	
+				<column name="Inputter@last_name"/>
+			</column>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+	</filter>	
+</listdef>

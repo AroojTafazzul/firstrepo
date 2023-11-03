@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef ordered="y" default_order="beneficiaryId" 
+	default_order_type="d" page="10" hideSearch="true" source="GenericInputSource" category="fcm"
+	parentNodePath="allTabsList/data" customInterfaceService="beneficiaryListing" customComponentName="getTopBeneficiary" filterParam="favourite">
+	
+	<column name="beneficiaryId" align="left" width="12%"  loca_key="beneficiaryCode"/>
+	<column name="beneficiaryName" align="left" width="12%"  loca_key="BeneficiaryName"/>
+	<column name="bankAccount@account@id@other@id" align="left" width="12%"  loca_key="ACCOUNT_NO" />
+	<column name="totalCountofInstruments" align="left" width="12%" loca_key="NO_OF_INSTRUMENTS"/>
+	<column name="ccy" align="left" width="10%" loca_key="CURCODE"/>
+	<column name="totalAmount" align="right" width="12%" loca_key="amount"/>
+	<column name="bankAccount@associationId" align="left" wdith="12%" hidden="y"/>
+	<column name="beneficiaryId" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="isFavoriteAccount" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="bene_flag" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="action" align="right" width="10%" loca_key="ACTIONS" showInThreeDotsOnly="y">
+	<url fcmAction="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_FAVOURITE_BENEFICIARY">
+		<parameter name="ASSOCIATION_ID" column="bankAccount@associationId"/>
+    </url>
+   </column> 
+	<!-- parameters -->
+	<parameter name="top" hidden="true"/>
+	<parameter
+		name="beneficiaryName"
+		size="20"
+		max_length="35"
+		loca_key="BeneficiaryName"
+		input="y"
+		default=""
+		multiple="y"
+		type="BeneficiaryName"/>
+	<parameter
+		name="accountNumber"
+		size="20"
+		max_length="35"
+		loca_key="ACCOUNT_NO"
+		input="y"
+		multiple="y"
+		default=""
+		type="AccountNumber"/>
+	<parameter
+		name="ccy"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		type="Currency"/>
+<!-- candidates -->
+	<candidate name="fcmbeneficiary">
+		<filter>
+			<criteria>
+				<column name="accountNumber" />
+				<operator type="in" />
+				<value type="parameter">
+					account_number
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ccy"/>
+				<operator type="in"/>
+				<value type="parameter">
+					currency
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

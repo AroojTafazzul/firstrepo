@@ -1,0 +1,41 @@
+<listdef page='25'>
+	<name>Average Response Time</name>
+	<description>Average Response Time</description>
+	<multiProduct>Y</multiProduct>
+	<product_code>LC,SI,SR,BG,EC,SG,IC,EL,IR,BR,TF</product_code>
+	<column name='ref_id' hidden='y'/>
+	<column name='product_code' hidden='y'/>
+	<column name='tnx_type_code' hidden='y'/>
+	<column name='tnx_stat_code' hidden='y'/>
+	<column name='product_code' hidden='y'/>
+	<column name='bo_release_dttm' hidden='y'/>
+	<column name='release_dttm' hidden='y'/>
+	<column name='response' computation='subtract' abbreviation='N' hidden='y'>
+		<column name='bo_release_dttm'></column>
+		<column name='release_dttm'></column>
+	</column>
+	<candidate name='LCTnx'/>
+	<candidate name='SITnx'/>
+	<candidate name='SRTnx'/>
+	<candidate name='BGTnx'/>
+	<candidate name='ECTnx'/>
+	<candidate name='SGTnx'/>
+	<candidate name='ICTnx'/>
+	<candidate name='ELTnx'/>
+	<candidate name='IRTnx'/>
+	<candidate name='BRTnx'/>
+	<candidate name='TFTnx'/>
+	<group graph='bar'>
+		<column name='product_code'/>
+		<aggregate type='average'>
+			<column name="response"/>
+			<description locale='en'>Response Time (Days):</description>
+			<description locale='fr'>Temps de Réponse (Jours):</description>
+		</aggregate>
+	</group>
+	<filter>
+		<criteria><column name='tnx_stat_code' type='ValuesSet'></column><operator type='equal'></operator><value type='string'>04</value></criteria>
+		<criteria><column name='tnx_type_code' type='ValuesSet'></column><operator type='equal'></operator><value type='string'>01</value></criteria>
+	</filter>
+	<executable_flag>Y</executable_flag>
+</listdef>

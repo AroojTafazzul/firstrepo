@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<portlets user="default">
+	<controller
+		name="com.misys.portal.core.portal.controllers.CardPortletController">
+		<parameter name="parameter" value="pane" />
+	</controller>
+	<portlets user="default">
+		<controller
+			name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+			<parameter name="sizes" value="205,*" />
+			<parameter name="mode" value="row" />
+		</controller>
+		<layout position="0" size="NORMAL" />
+		<portlets user="default">
+			<controller
+				name="com.misys.portal.core.portal.controllers.RowColumnPortletController" />
+			<layout position="1" size="NORMAL" />
+			<entry parent="MenuBuilder" type="ref">
+				<parameter name="menu" value="true" />
+				<layout position="0" size="NORMAL" />
+			</entry>
+			<entry parent="BookmarkPortlet" type="ref">
+				<parameter name="menu" value="true" />
+				<layout position="1" size="NORMAL" />
+			</entry>
+		</portlets>
+		<portlets user="default">
+			<controller
+				name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+				<parameter name="mode" value="column" />
+				<parameter name="sizes" value="33%,33%,33%" />
+			</controller>
+			<layout position="2" size="NORMAL" />
+			<entry parent="AccountStatementSearchPortlet" type="ref">
+				<control name="com.misys.portal.core.portal.controls.ClearPortletControl" />
+				<layout position="0" size="NORMAL" />
+			</entry>			
+			<entry parent="AccountStatementDetailsPortlet" type="ref">
+				<layout position="1" size="NORMAL" />
+			</entry>		
+			<entry parent="AccountStatementExternalMovementsPortlet" type="ref">
+				<layout position="2" size="NORMAL" />
+			</entry>
+			<entry parent="AccountStatementListPortlet" type="ref">
+				<layout position="3" size="NORMAL" />
+			</entry>
+			<!-- This portlet is only needed when the current day statement comes from a different source 
+			<entry parent="AccountStatementCurrentDayListPortlet" type="ref">
+				<layout position="3" size="NORMAL" />
+			</entry>
+			-->				
+			<entry type="ref" parent="ABInternalFootnote">
+				<control name="com.misys.portal.core.portal.controls.ClearPortletControl" />
+				<layout position="4" size="NORMAL" />
+			</entry>
+			<entry type="ref" parent="ABExternalFootnote">
+				<control name="com.misys.portal.core.portal.controls.ClearPortletControl" />
+				<layout position="4" size="NORMAL" />
+			</entry>
+				<entry parent="AccountStatementBackPortlet" type="ref">
+				<control name="com.misys.portal.core.portal.controls.ClearPortletControl"/>
+				<layout position="5" size="NORMAL" />
+			</entry>
+			<entry parent="AccountStatementExportPortlet" type="ref">
+				<layout position="3" size="NORMAL" />
+			</entry>	
+		</portlets>
+	</portlets>
+</portlets>

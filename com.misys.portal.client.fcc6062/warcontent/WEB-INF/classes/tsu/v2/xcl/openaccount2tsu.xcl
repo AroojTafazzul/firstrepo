@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xcl name="openaccount2tsu">
+	<target>
+	
+		<!-- ********************************************** -->
+		<!-- Build a Map do retrieve stylesheet(s) to apply -->
+		<!-- ********************************************** -->
+
+		<setVariable name="pomapping"><map/></setVariable>
+		<setVariable name="somapping"><map/></setVariable>
+		<setVariable name="inmapping"><map/></setVariable>
+		
+		<!-- Codes/XSL -->
+		<!-- PO Map. Keys : tnx_type_code + prod_stat_code + submission type -->
+		<!-- Registered -->
+		<!-- TODO: Product status codes have changed in v4 -->
+		<!-- <put>
+			<name><const>2070LODG</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<put>
+			<name><const>2070FPTR</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>-->
+		<put>
+			<name><const>2030LODG</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<put>
+			<name><const>2030FPTR</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<!-- Initiation with BPO -->
+		<put>
+			<name><const>2230LODG</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<put>
+			<name><const>2230FPTR</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<!-- Initiation with BPO Light LC -->
+		<put>
+			<name><const>2239LODG</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<put>
+			<name><const>2239FPTR</const></name>
+			<value><array><const>PO-InitialBaselineSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<!-- Amendment -->
+		<put>
+			<name><const>0308LODG</const></name>
+			<value><array><const>PO-BaselineAmendmentRequest.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<!-- TODO: Product status codes have changed in v4 -->
+		<!--<put>
+			<name><const>0371FPTR</const></name>
+			<value><array><const>PO-BaselineAmendmentRequest.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>-->
+		<put>
+			<name><const>0331FPTR</const></name>
+			<value><array><const>PO-BaselineAmendmentRequest.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		<!-- Mismatch Acceptance -->
+		<put>
+			<name><const>3608FPTR</const></name>
+			<value><array><const>PO-MisMatchAcceptance.xsl</const></array></value>
+			<mapValue><getVariable name="pomapping"/></mapValue>
+		</put>
+		
+		<!-- SO Map. Keys : tnx_type_code + prod_stat_code + submission type -->
+		<!-- Resubmission accepted/modified-->
+		<put>
+			<name><const>2155FPTR</const></name>
+			<value><array><const>SO-BaselineReSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="somapping"/></mapValue>
+		</put>
+		<!-- Resubmission rejected-->
+		<put>
+			<name><const>2101FPTR</const></name>
+			<value><array><const>SO-StatusChangeRequestClose.xsl</const></array></value>
+			<mapValue><getVariable name="somapping"/></mapValue>
+		</put>
+		
+		<!-- IN Map. Keys : tnx_type_code + prod_stat_code + submission type -->
+		<put>
+			<name><const>1845LODG</const></name>
+			<value><array><const>IN-DataSetSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="inmapping"/></mapValue>
+		</put>
+		<put>
+			<name><const>1845FPTR</const></name>
+			<value><array><const>IN-DataSetSubmission.xsl</const></array></value>
+			<mapValue><getVariable name="inmapping"/></mapValue>
+		</put>
+	
+		<!-- Extract xml namespace to drive transformations -->
+		<setVariable name="tnx_record"><xpath path="name(/*)"/></setVariable>
+
+		<!-- Process input -->
+		<string>
+		<call><name><getVariable name="tnx_record"/></name></call>
+		</string>
+	</target>
+
+	<!-- po_tnx_record -->
+	<rule name="po_tnx_record">
+		<call name="applyXSLs">
+			<get>
+				<name><xpath path="/po_tnx_record/tnx_type_code"/><xpath path="/po_tnx_record/prod_stat_code"/><xpath path="/po_tnx_record/submission_type"/></name>
+				<value><getVariable name="pomapping"/></value>
+			</get>
+		</call>
+	</rule>
+	
+	<rule name="so_tnx_record">
+		<call name="applyXSLs">
+			<get>
+				<name><xpath path="/so_tnx_record/tnx_type_code"/><xpath path="/so_tnx_record/prod_stat_code"/><xpath path="/so_tnx_record/submission_type"/></name>
+				<value><getVariable name="somapping"/></value>
+			</get>
+		</call>
+	</rule>
+
+	<rule name="in_tnx_record">
+		<call name="applyXSLs">
+			<get>
+				<name><xpath path="/in_tnx_record/tnx_type_code"/><xpath path="/in_tnx_record/prod_stat_code"/><xpath path="/in_tnx_record/submission_type"/></name>
+				<value><getVariable name="inmapping"/></value>
+			</get>
+		</call>
+	</rule>
+
+	<!-- Apply an XSLT stylesheet -->
+	<rule name="applyXSLs">
+		<test>
+			<predicate><equals><const>0</const><length><sourceValue/></length></equals></predicate>
+			<else>
+				<call name="setXSL"><sourceValue/></call>
+				<dump/>
+			</else>
+		</test>
+	</rule>
+	
+	<!-- Set xsl property in the interfaces environment-->
+	<rule name="setXSL">
+		<java><const>environment.setEntry("xslname", "/config/swift/v2/OpenAccount/</const><sourceValue/><const>")</const></java>
+	</rule>
+</xcl>

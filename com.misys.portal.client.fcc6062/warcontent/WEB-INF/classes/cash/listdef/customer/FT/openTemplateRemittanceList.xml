@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="template_id" default_order_type="d" page="50">
+
+	<column name="template_id" align="left" width="40%" loca_key="REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="RE_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_REMITTANCE_CORP"/>
+			<parameter name="MODE_CODE" binding_code="OPTION_TEMPLATE"/>			
+			<parameter name="TEMPLATE_ID" column="template_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="30%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="template_description" align="left" width="40%" loca_key="DESCRIPTION"/>
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="RE_SCREEN"/>
+			<parameter name="TEMPLATE_ID" column="template_id"/>
+			<parameter name="MODE" value="REMITTANCE_CORP"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_TEMPLATE_REMITTANCE"/>
+		</url>
+	</column>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="template_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity">
+    </parameter>
+     <parameter
+		name="applicant_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="template_description"
+		loca_key="DESCRIPTION"
+		size="35"
+		max_length="200"
+		input="y"/>
+	<!-- candidates -->	
+	<!-- only MT101, MT103 files -->
+		<filter or="y">
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_MT101
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_MT103
+				</value>
+			</criteria>
+		</filter>
+		<!-- Filter to not show transactions under bulk template -->
+		<filter>
+				<criteria>
+					<column name="bulk_template_id"/>
+					<operator type="isNull"/>
+				</criteria>
+		</filter>
+	<candidate name="template_fund_transfer">
+		<filter>
+			<criteria>
+				<column name="template_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					template_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="template_description"/>
+				<operator type="like"/>
+				<value type="parameter">
+					template_description
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

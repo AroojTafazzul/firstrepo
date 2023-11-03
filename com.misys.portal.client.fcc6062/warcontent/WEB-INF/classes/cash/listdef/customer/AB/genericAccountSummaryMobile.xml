@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="account_type"
+	default_order_type="d" hideSearch="true" permission="ab_current_account_summary_access">
+
+	<!-- If order of columns is changed, change corresponding viewerjson for 
+		this listdef -->
+	<column name="account_type" align="center" loca_key="AB_ACCOUNT_TYPE" />
+	<column name="cur_code" align="center" width="5%" loca_key="CURCODE"
+		hidden="y" />
+	<column name="RunningStatement@LedgerBalance@amt" align="right"
+		width="20%" loca_key="LEDGER_BALANCE" hidden="y" />
+	<column name="RunningStatement@AvailableBalance@amt" align="right"
+		width="20%" loca_key="OPENING_BALANCE" hidden="y" />
+	<column name="RunningStatement@LedgerBalance@convertedAmt"
+		paramCur="account_ccy" align="right" width="20%" loca_key="TOTOL_BALANCE_LEDGER" />
+	<column name="RunningStatement@AvailableBalance@convertedAmt"
+		paramCur="account_ccy" align="right" width="20%" loca_key="TOTOL_BALANCE_AVAILABLE" />
+
+	<!-- <column name="RunningStatement@AvailableBalance@value_date" hidden="y"/> -->
+	<column name="account_no" hidden="y" />
+	<column name="account_id" hidden="y" />
+	<column name="owner_type" hidden="y" />
+	<column name="UserAccount@EntityAccount@entity@abbv_name"
+		hidden="y" />
+	<column name="bank_id" hidden="y" />
+	<column name="branch_no" hidden="y" />
+	<!-- <column name="UserAccount@EntityAccount@nick_name" hidden="y"/> -->
+
+	<!-- parameters -->
+	<parameter name="entity" hidden="true" />
+	<parameter name="account_no" hidden="true" />
+	<parameter name="account_id" hidden="true" />
+	<!-- This currency field is not a search criteria, but a parameter currency 
+		for the equivalent amount -->
+	<parameter name="account_ccy" hidden="true" />
+	<parameter name="owner_type" hidden="true" />
+	<parameter name="account_type" hidden="true" />
+
+	<!-- Candidates -->
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name" />
+				<operator type="equal" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_id" />
+				<operator type="equal" />
+				<value type="parameter">
+					100
+				</value>
+			</criteria>
+			<criteria>
+				<column name="owner_type" />
+				<operator type="equal" />
+				<value type="parameter">
+					owner_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_type" />
+				<operator type="equal" />
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+					View STMT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+					Y
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<group align="left">
+		<column name="account_type" />
+		<aggregate type='sum'
+			name='RunningStatement@LedgerBalance@convertedAmt'>
+			<column name='RunningStatement@LedgerBalance@convertedAmt' />
+		</aggregate>
+		<aggregate type='sum'
+			name='RunningStatement@AvailableBalance@convertedAmt'>
+			<column name='RunningStatement@AvailableBalance@convertedAmt' />
+		</aggregate>
+
+	</group>
+</listdef>

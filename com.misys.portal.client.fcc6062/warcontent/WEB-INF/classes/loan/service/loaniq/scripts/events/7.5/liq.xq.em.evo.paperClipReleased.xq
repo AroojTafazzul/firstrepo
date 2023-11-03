@@ -1,0 +1,68 @@
+declare function liq.xq.em.evo.paperClipReleased($drawdown){
+<ln_tnx_record
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://www.misys.com/mtp/interfaces/xsd/ln.xsd">
+  <bo_ref_id>{$drawdown/eventOwner/alias}</bo_ref_id>
+  <bo_tnx_id>{$drawdown/eventOwner/id}</bo_tnx_id>
+  <bo_deal_id>{$drawdown/eventOwner/dealId}</bo_deal_id>
+  <bo_facility_id>{$drawdown/eventOwner/facilityId}</bo_facility_id>
+  <borrower_reference>{LIQ.BO.GetBOByRID("Customer", $drawdown/eventOwner/borrowerId)/externalId}</borrower_reference>
+  <ln_maturity_date>{LIQ.XQ.FORMAT_DATE("%d/%m/%Y", $drawdown/eventOwner/maturityDate)}</ln_maturity_date>
+  <match_funding>{LIQ.XQ.IFTRUE($drawdown/eventOwner/getIsMatchFunded,'Y','N')}</match_funding>
+  <rem_inst_description>{$drawdown/eventOwner/cashflowsClerk/borrowerAgentCashflow/remittanceInstruction/description}</rem_inst_description>
+  <rem_inst_location_code>{$drawdown/eventOwner/cashflowsClerk/borrowerAgentCashflow/getLocation/locationCode}</rem_inst_location_code>
+ <rem_inst_servicing_group_alias>{$drawdown/eventOwner/cashflowsClerk/borrowerAgentCashflow/servicingGroupAlias}</rem_inst_servicing_group_alias>
+  <product_code>LN</product_code>
+  <rate>{$drawdown/eventOwner/outstanding/rates/baseRate}</rate>
+  <status>{LIQ.XQ.IFTRUE($evo/outstanding/isActive,"ACTIVE","INACTIVE")}</status>
+  <tnx_type_code>13</tnx_type_code>
+  <sub_tnx_type_code>16</sub_tnx_type_code>
+  <prod_stat_code>23</prod_stat_code>
+  <tnx_stat_code>04</tnx_stat_code>
+   <tnx_amt>{$evo/eventOwner/actualAmountAbs}</tnx_amt>
+  <tnx_cur_code>{$evo/eventOwner/currency}</tnx_cur_code>
+  {LIQ.XQ.UTIL.SET("accessCode","NULL")}
+  {for $misCode in $evo/eventOwner/facility/misCodes[LIQ.XQS.EQUAL(@type,"PORTL")] return
+		{LIQ.XQ.UTIL.SET("accessCode",LIQ.BO.GetCodeTableEntry($misCode/valueType, "MIS Code", "description"))}
+  }
+  <ln_access_type>{$accessCode}</ln_access_type>  
+  <isSwingline>{LIQ.XQ.IFTRUE($evo/eventOwner/isSwingline,"Y", "N")}</isSwingline>
+  <sublimit_name>{LIQ.XQ.IFTRUE(LIQ.XQS.ISNOTNULL($evo/eventOwner/getSublimit), $evo/eventOwner/getSublimit/getName, "")}</sublimit_name>
+  {LIQ.XQ.UTIL.SET("rid",$drawdown/eventOwner/id)}
+	{for $tran in LIQ.BO.GetBOByRID("PaperClipTransaction", $rid)
+	  return
+	  <effective_date>{$tran/effectiveDate}</effective_date>
+	  <amount>{$tran/amount}</amount>
+	  <ln_cur_code>{$tran/currency}</ln_cur_code>
+   <transactionDescription>{$tran/transactionDescription}</transactionDescription>
+   <transactions> 
+		{for $o in $tran/sortedTransactions[LIQ.BO.ContainsCode(@type,"PPYMT")] return 
+		 <principal_payment>
+			 <status>{$o/status}</status>
+			 <pricing_option>{$o/pricingOption}</pricing_option>
+			 <type>Principal</type>
+			 <ln_amt>{$o/paperClipApplicableAmount}</ln_amt>
+			 <ln_cur_code>{$o/currency}</ln_cur_code>
+			 <repricing_date>{$o/repricingDate}</repricing_date>
+			 <bo_deal_name>{$o/dealName}</bo_deal_name>
+			 <bo_facility_name>{$o/facilityName}</bo_facility_name>
+			 <repricing_frequency>{$o/repricingFrequency}</repricing_frequency>
+		 </principal_payment>
+		} 
+     {for $o in $tran/sortedTransactions[LIQ.BO.ContainsCode(@type,"OPMT")] return 
+		 <interest_payment>
+			 <status>{$o/status}</status>
+			 <pricing_option>{$o/pricingOption}</pricing_option>
+			 <type>Interest</type>
+			 <ln_amt>{$o/paperClipApplicableAmount}</ln_amt>
+			 <ln_cur_code>{$o/currency}</ln_cur_code>
+			 <repricing_date>{$o/repricingDate}</repricing_date>
+			 <bo_deal_name>{$o/dealName}</bo_deal_name>
+			 <bo_facility_name>{$o/facilityName}</bo_facility_name>
+			 <repricing_frequency>{$o/repricingFrequency}</repricing_frequency>
+		 </interest_payment>
+		} 
+   </transactions>
+	}
+</ln_tnx_record>
+};

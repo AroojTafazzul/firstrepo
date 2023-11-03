@@ -1,0 +1,340 @@
+{
+	"screen": "LoanFeePaymentScreen",
+	"isAccordionView": "true",
+	"blfpGeneralDetails": {
+		"dealName": {
+			"name": "dealName",
+			"type": "input-dropdown",
+			"options": {},
+			"rendered": true,
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper",
+			"styleClass": [
+				""
+			],
+			"required": true
+		},
+		"facilitiesList": {
+			"name": "facilitiesList",
+			"type": "text",
+			"rendered": false,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero facilityChip",
+			"styleClass": [
+				"subheader-title"
+			],
+		  	"previewScreen": false
+		},
+	    "facilityOptions": {
+	      "name": "facilityOptions",
+		  "type": "select-button",
+		  "rendered": true,
+		  "options": {},
+		  "defaultValue": "",
+		  "styleClass": "request toggle-chip",
+		  "previewScreen": true,
+		  "layoutClass": "p-grid p-col-12 p-md-12 p-lg-12 p-sm-12 widthForFacilityChip"
+	    },
+	    "facilityID": {
+			"name": "facilityID",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+	    "facilityDetails": {
+	    	"name": "facilityDetails",
+			"type": "mat-card",
+			"layoutClass": "p-md-12 p-lg-12 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"clubbedHeaderText": "facilityDetails",
+			"fields" : [
+				"fcnNumber",
+				"effectiveDate",
+				"expiryDate",
+				"maturityDate",
+				"sanctionLimit",
+				"availableAmtLimit"
+			],
+	       "rendered": false,
+		   "previewScreen": false
+	    },
+		"lendingRefID": {
+			"name": "lendingRefID",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"canEditFeeAmt": {
+			"name": "canEditFeeAmt",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"issuingBankAbbvName": {
+			"name": "issuingBankAbbvName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"issuingBankName": {
+			"name": "issuingBankName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+	    "feeDetails": {
+			"prefix": "feeDetails",
+			"sectionType": "loanEntityModel",
+			"hideFields": [
+				"fullAddress"
+			],
+			"requiredFields": [
+				"reference"
+			],
+			"fieldsNotApplicable": [
+				"address4",
+				"country",
+				"name",
+				"address1",
+				"address2",
+				"address3",
+				"fullAddress"
+			],
+			"rendered": false
+		},
+		"borrowerNameView": {
+			"name": "borrowerNameView",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false
+		},
+		"feeTnxList": {
+			"name": "feeTnxList",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"feeListReq": {
+			"name": "feeListReq",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"childSubProductCode": {
+			"name": "childSubProductCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"childProductCode": {
+			"name": "childProductCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"fcn": {
+			"name": "fcn",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"subTnxTypeCode": {
+			"name": "subTnxTypeCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"bkType": {
+			"name": "bkType",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"id": "BlfpGeneralDetailsComponent",
+		"helpId": "GD"
+	},
+	"blfpFeeComponent": {
+		"warningMsgFP": {
+			"name": "warningMsgFP",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero indicativeFXRateNoteStyle",
+			"rendered": false,
+			"previewScreen": false
+		},
+		"feeListRead": {
+			"name": "feeListRead",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"loanEffectiveDate": {
+			"name": "loanEffectiveDate",
+			"type": "input-date",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"dateStyle"
+			],
+			"rendered": true,
+			"required": true,
+			"fullWidthView": true
+		},
+		"bulkEffectiveDate": {
+			"name": "bulkEffectiveDate",
+			"type": "input-date",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"dateStyle"
+			],
+			"hidden": true,
+			"previewScreen": false
+		},
+		"warningMsgNoFee": {
+			"name": "warningMsgNoFee",
+			"type": "view-mode",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero indicativeFXRateNoteStyle",
+			"rendered": false,
+			"previewScreen": false,
+			"showLabel": true,
+			"fieldIcon" : ""
+		},
+		"bulkFeeTypesDesc": {
+			"name": "bulkFeeTypesDesc",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"tnxAmt": {
+			"name": "tnxAmt",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"bkTotalAmt": {
+			"name": "bkTotalAmt",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"bkHighestAmt": {
+			"name": "bkHighestAmt",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"bkCurCode": {
+			"name": "bkCurCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"tnxCurCode": {
+			"name": "tnxCurCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"hidden": true
+		},
+		"feeCycleTable": {
+			"name": "feeCycleTable",
+			"type": "expansion-panel-edit-table",
+			"layoutClass": "p-col-12",
+			"styleClass": "candyStriped",
+			"options": [],
+			"datakey": "start_date",
+			"previewScreen": true,
+			"previewFieldType": "input-table",
+			"previewTableStyle": "previewTableStyle",
+			"showLabelView": true,
+			"retrieveOldData": true,
+			"noPreviewActions": true,
+			"pdfFieldType": "table",
+			"pdfTableSize": 7,
+			"rendered": true,
+			"emptyMessaage": true
+		},
+		"id": "BlfpFeePaymentComponent",
+		"helpId": "FP"
+	},
+	"blfpFileUploadDetails": {
+		"fileMaxLimits": {
+			"name": "fileMaxLimits",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": [
+				"fileMaxLimits"
+			],
+			"previewScreen": false
+		},
+		"fileExtnText": {
+			"name": "fileExtnText",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": [
+				"fileMaxLimits"
+			],
+			"previewScreen": false
+		},
+		"fileDragDrop": {
+			"name": "fileUploadDragDrop",
+			"type": "fileUpload-dragdrop",
+			"layoutClass": "p-col-12",
+			"styleClass": [
+				"DragDropArea"
+			],
+			"previewScreen": false
+		},
+		"browseButton": {
+			"name": "browseButton",
+			"type": "rounded-button",
+			"styleClass": [
+				"secondaryButton"
+			],
+			"layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+			"btndisable": true,
+			"previewScreen": false
+		},
+		"fileUploadTable": {
+			"name": "fileUploadTable",
+			"columns": [],
+			"label": "hideControl",
+			"defaultValue": "specialPayment",
+			"type": "input-table",
+			"rendered": true,
+			"data": [],
+			"styleClass": [
+				"fileUploadTable"
+			],
+			"layoutClass": "p-col-12",
+			"previewScreen": true
+		},
+		"attachments": {
+			"name": "attachments",
+			"rendered": false,
+			"type": "json-obj",
+			"previewScreen": false
+		},
+		"space1": {
+			"noofspacers": "2",
+			"prefix": "one",
+			"sectionType": "spacerModel",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+		},
+		"space2": {
+			"noofspacers": "1",
+			"prefix": "two",
+			"sectionType": "spacerModel",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+		},
+		"id": "BlfpFileUploadDetailsComponent",
+		"helpId": "AT"
+	}
+}

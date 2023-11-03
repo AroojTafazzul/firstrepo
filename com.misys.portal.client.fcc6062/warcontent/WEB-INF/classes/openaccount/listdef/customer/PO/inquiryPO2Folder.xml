@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" help="LIST_HELP_REGISTER" default_order="ref_id" default_order_type="d" page="200" js_binding="misys.binding.trade.create_po_folder" identifier="ref_id">
+
+	<batch type="save">
+		<parameter name="SCREEN" value="PO_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_SAVE"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_PO_FOLDER"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+		<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<icon loca_key="ACTION_USER_SAVE" image="/content/images/pic_form_save.gif" permission="fo_save"/>
+		<javascript url="misys.grid.saveOpenAccount()"/>
+	</batch>
+	
+	<batch type="submit">
+		<parameter name="SCREEN" value="PO_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_PO_FOLDER"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+		<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<icon loca_key="ACTION_USER_SUBMIT" image="/content/images/pic_form_send.gif" permission="fo_submit"/>
+		<javascript url="misys.grid.submitOpenAccount()"/>
+	</batch>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="30%" loca_key="ENTITY"/>
+	<column name="cust_ref_id" align="left" width="30%" loca_key="PO_NUMBER"/>
+	<column name="seller_name" align="left" width="40%" loca_key="SELLER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="iss_date" align="center" width="6em" loca_key="ISS_DATE"/>
+ 	
+ 	<column name="product_code" hidden="y"/>
+ 	
+	<!-- parameters -->
+	<parameter
+		list="y"		
+		name="amount"
+		size="20"
+		loca_key="AMOUNT"
+		batch="y"
+		input="n"
+		default=""
+		/>
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<!-- <parameter
+		name="entity"
+		size="20"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y">
+      <javascript url="misys.showEntityDialog('entity', null, 'PO', 'LISTPATTERN')"/>
+    </parameter>-->
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="PO_NUMBER"
+		input="y"
+		default=""/>
+	<parameter
+		name="seller_name"
+		loca_key="SELLER_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+
+<!-- 	<parameter -->
+<!-- 		name="export_list" -->
+<!-- 		file_name="initiateFolder" -->
+<!-- 		type="export"		 -->
+<!-- 		default="HTMLGroups"> -->
+<!-- 	</parameter> -->
+
+	<!-- candidates -->	
+	<candidate name="purchase_order_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+	
+	<filter>
+		<!-- Not registered -->
+		<criteria>
+			<column name="MixDualCrossReference@ref_id"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>	
+  
+	<!-- <group>
+		<column name="entity"/>
+		<column name="cur_code"/>
+	</group>-->
+
+</listdef>

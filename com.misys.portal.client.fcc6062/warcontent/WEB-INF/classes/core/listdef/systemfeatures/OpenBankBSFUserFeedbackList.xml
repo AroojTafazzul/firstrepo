@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="feedback_time" default_order_type="d" huge="n" forceDisplaySearch="y" page="50" js_binding="misys.binding.bank.user_feedback">
+	
+	<!-- columns -->
+	<column name="feedback_time" align="center" width="10%" loca_key="FEEDBACK_TIME"/>
+	<column name="rating" align="center" width="10%" loca_key="FEEDBACK_RATING"/>
+	<column name="feedback" align="left" width="10%" loca_key="FEEDBACK_COMMENTS"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="rating"
+		loca_key="FEEDBACK_RATING"
+		size="15"
+		max_length="1"
+		input="y"
+		default="*"/>
+	<parameter
+		name="feedback_time"
+		type="range"
+		input="y"
+		range_from_label="FEEDBACK_TIME_FROM"
+		range_to_label="FEEDBACK_TIME_TO" 
+		default="blank" />
+	<parameter
+		name="export_list"
+		file_name="userFeedback"
+		type="export"/>
+
+	<!-- candidates -->	
+	<candidate name="user_feedback">
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="rating"/>
+			<operator type="like"/>
+			<value type="parameter">
+				rating
+			</value>
+		</criteria>
+		<criteria>
+			<column name="feedback_time"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				feedback_time@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="feedback_time"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				feedback_time@to
+			</value>
+		</criteria>
+	</filter>
+</listdef>

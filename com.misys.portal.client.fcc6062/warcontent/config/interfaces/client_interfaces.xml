@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Misys Trade Portal Interfaces Schema Copyright (c) 2000-2014 Misys (http://www.misys.com) 
+	All Rights Reserved. -->
+<interfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.misys.com/portal/interfaces/xsd/interfaces.xsd">
+<!-- Placeholder file for clients to define their own interfaces -->
+
+<!-- <bundle name="SubmitBKInitiation">   
+</bundle> -->
+<interface name="xmlretry" description="Output Transaction as pain XML to a JMS Queue" onerror="logger" >
+ 
+             <component name="interfacemessagereader">
+ 
+                    <component name="jmssender">
+ 
+                           <!-- GPP MQ Server properties -->
+ 
+                           <properties>
+ 
+                                 <property name="initialContextFactory">${module.payment.initialContextFactory}</property>
+ 
+                                 <property name="providerURL">${module.payment.providerURL}</property>
+ 
+                                 <property name="factory">${module.payment.factory}</property>
+ 
+                                 <property name="queue">${module.payment.out.queue}</property>
+ 
+                                 <property name="invoker">${module.payment.invoker}</property>
+ 
+                                 <property name="retry">${module.payment.retry}</property>
+ 
+                           </properties>
+ 
+                           <component name="filewriter">
+ 
+                                 <properties>
+ 
+                                        <property name="directory.override">true</property>
+ 
+                                        <property name="directory.isDynamic">false</property>
+ 
+                        <property name="directory.name">${xml_output_directory_payment}</property>
+ 
+                                 </properties>
+ 
+                           </component>
+ 
+                    </component>
+ 
+                    <component name="interfacecleaner"/>
+ 
+             </component>
+ 
+       </interface>
+	
+</interfaces>

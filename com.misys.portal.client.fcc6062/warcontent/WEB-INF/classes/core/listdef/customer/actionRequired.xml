@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="20" show="5">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_ACTION_REQUIRED"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="25%" loca_key="ENTITY"/>
+	<!-- column name="bo_ref_id" align="left" width="25%" loca_key="BO_REFERENCEID"/-->
+	<column name="cur_code" align="center" width="5%" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="25%" loca_key="AMOUNT"/>
+	<column name="action_req_code" align="left" width="25%" loca_key="TYPE"/>
+	<column name="maturity_date" align="center" width="20%" loca_key="MATURITYDATEGENERALINQUIRY"/>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="parameter1"
+		type="AvailableProducts"
+		size=""
+		max_length=""
+		loca_key="PRODUCTCODE"
+		input="y"
+		default=""/>	
+
+	<!-- candidates -->	
+	<candidate name="parameter1">
+	<filter>
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N043_ACTION_REQUIRED
+			</value>
+		</criteria>
+		<criteria>
+			<column name="product_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N001_LC
+			</value>
+		</criteria>
+		<criteria>
+			<column name="product_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N001_SI
+			</value>
+		</criteria>		
+		<criteria>
+			<column name="product_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N001_FX
+			</value>
+		</criteria>
+		
+	</filter>
+	</candidate>
+	
+	
+	
+	<candidate name="letter_of_credit">
+	<filter>
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+		
+		<!-- LC have a discrepant status that we dont want to show -->
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N042_DISCREPANCY_RESPONSE
+			</value>
+		</criteria>		
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N043_ACTION_REQUIRED
+			</value>
+		</criteria>
+	</filter>
+	</candidate>
+	
+	<candidate name="standby_issued">
+	<filter>
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+		
+		<!-- LC have a discrepant status that we dont want to show -->
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N042_DISCREPANCY_RESPONSE
+			</value>
+		</criteria>		
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N043_ACTION_REQUIRED
+			</value>
+		</criteria>
+	</filter>
+	</candidate>	
+	<candidate name="foreign_exchange">
+		<filter>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="superior"/>
+				<value type="parameter">
+					zero
+				</value>
+			</criteria>
+			<criteria>
+				<column name="maturity_date"/>
+				<operator type="supOrEqual"/>
+				<value type="date">current</value>
+			</criteria>
+			<criteria>
+				<column name="FXToFundTransfer@bo_ref_id"/>
+				<operator type="isNull"/>
+			</criteria>
+			<criteria>
+				<column name="bo_tnx_id" />
+	            <operator type="isNotNull" />
+		    </criteria>
+		    <criteria>
+				<column name="action_req_code" />
+	            <operator type="isNotNull" />
+		    </criteria>
+			<criteria>
+				<column name="CrossReference@type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N043_ACTION_REQUIRED
+				</value>
+			</criteria>
+			<criteria>
+					<column name="prod_stat_code"/>
+					<operator type="different"/>
+					<value type="code">
+						N005_PURGED
+					</value>
+			</criteria>			
+		</filter>
+		<filter or="y">
+			<criteria>
+				<column name="action_req_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N042_STANDING_INSTRUCTIONS
+				</value>
+			</criteria>
+			<criteria>
+				<column name="action_req_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N042_FX_CUSTOMER_INSTRUCTIONS_ONLY
+				</value>
+			</criteria>
+			<criteria>
+				<column name="action_req_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N042_FX_BANK_INSTRUCTIONS_ONLY
+				</value>
+			</criteria>
+		</filter>
+		<filter or="y">
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="isNull"/>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N003_FX_EXTEND
+				</value>
+			</criteria>	
+		</filter>
+		<filter or="y">
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="isNull"/>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N003_UPTAKE
+				</value>
+			</criteria>		
+		</filter>
+	</candidate>
+	
+</listdef>

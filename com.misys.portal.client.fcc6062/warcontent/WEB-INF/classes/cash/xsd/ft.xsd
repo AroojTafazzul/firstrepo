@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  xmlns:sch="http://www.ascc.net/xml/schematron" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for FT. XML validation 
+			Copyright (c) 2000-2012 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/error.xsd">
+		<xs:annotation>
+			<xs:documentation>This also includes common.xsd</xs:documentation>
+		</xs:annotation>
+	</xs:include>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/todolist.xsd"/>
+	<xs:element name="ft_tnx_record">
+		<xs:annotation>
+			<xs:documentation>Fund Transfer Business Rules</xs:documentation>
+			<xs:appinfo>	
+
+				<!-- FT - Check transaction type code -->
+				<sch:pattern name="FT - Check the transaction type code">
+					<sch:rule context="/ft_tnx_record">
+						<sch:assert test="tnx_type_code = '01' or tnx_type_code = '13' or tnx_type_code = '14' or tnx_type_code = '15' or tnx_type_code = '54'">
+							The transaction type code <value-of select="tnx_type_code"/> is not authorised.
+							Should be 01 (new) or 13 (inquiry) or 14 (cancel) or 15(reporting) or 54(inBulk).
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+
+				<!-- ***************** -->
+				<!-- FT Business Rules -->
+				<!-- ***************** -->
+				<!-- FT New mandatory fields -->
+				 
+				<sch:pattern name="FT New - Mandatory fields">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="tnx_type_code = '01' and
+									((not(company_name) or company_name = '')
+									or (not(product_code) or product_code = '')
+									or (not(appl_date) or appl_date = '')
+									or (not(applicant_name) or applicant_name = '')
+									or (not(applicant_act_no) or applicant_act_no = '')
+									or (not(applicant_act_name) or applicant_act_name = '')
+									or (not(applicant_act_description) or applicant_act_description = '')
+									or (not(applicant_act_cur_code) or applicant_act_cur_code = '')
+									or (not(applicant_reference) or applicant_reference = '')
+									or (not(ft_cur_code) or ft_cur_code = '')
+									or (not(ft_amt) or ft_amt = '')
+									or (not(issuing_bank/abbv_name) or issuing_bank/abbv_name = '')
+								)">
+							Some mandatory elements are missing.
+							The elements company_name, product_code,
+							iss_date, appl_date, applicant_name, applicant_act_name, applicant_act_no, applicant_act_description, applicant_act_cur_code, applicant_address_line_1
+							applicant_reference, ft_cur_code, ft_amt, issuing_bank/abbv_name , counterparties/counterparty/counterparty_name, counterparties/counterparty/counterparty_act_no,
+							counterparties/counterparty/counterparty_cur_code are mandatory when the transaction type code = '01' (new) 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+		
+				<!-- FT New - unauthorized fields -->entity
+				<!--<sch:pattern name="FT New - Not authorised fields">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="tnx_type_code = '01' and
+									(bo_ref_id 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or bo_comment)">
+							An unauthorized element is defined. The elements bo_ref_id, bo_inp_user_id, bo_inp_dttm, bo_ctl_user_id, bo_ctl_dttm, 
+							bo_release_user_id, bo_release_dttm, bo_comment are forbidden with transaction
+							type code = '01' (new)
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+			 	-->
+			 	
+			 	<!-- FT New - Constraints -->
+				<!--<sch:pattern name="FT New - Check that the issue date must be equal or greater than the application date">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="tnx_type_code = '01' and
+								(number(concat(concat(substring(appl_date,7,4), substring(appl_date,4,2)), substring(appl_date,1,2))) &lt;
+								number(concat(concat(substring(iss_date,7,4), substring(iss_date,4,2)), substring(iss_date,1,2))))">
+							The issue date must be equal or greater than the application date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				-->
+				
+				<!-- FT IBG mandatory fields -->				 
+				<!--<sch:pattern name="FT IBG - Mandatory fields">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="sub_product_code = 'IBG' and
+									((not(counterparties/counterparty/cpty_bank_name) or counterparties/counterparty/cpty_bank_name = '')
+									or (not(counterparties/counterparty/cpty_bank_code) or counterparties/counterparty/cpty_bank_code = '')
+									or (not(counterparties/counterparty/cpty_branch_name) or counterparties/counterparty/cpty_branch_name = '')
+									or (not(counterparties/counterparty/cpty_branch_code) or counterparties/counterparty/cpty_branch_code = '')
+									)">									
+							Some mandatory elements are missing for IBG
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				--><!-- FT MEPS mandatory fields -->				 
+				<!--<sch:pattern name="FT MEPS - Mandatory fields">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="sub_product_code = 'MEPS' and
+									((not(counterparties/counterparty/counterparty_address_line_1) or counterparties/counterparty/counterparty_address_line_1 = '')
+									or (not(counterparties/counterparty/counterparty_dom) or counterparties/counterparty/counterparty_dom = '')
+									or (not(counterparties/counterparty/cpty_bank_swift_bic_code) or counterparties/counterparty/cpty_bank_swift_bic_code= '')
+									or (not(counterparties/counterparty/cpty_bank_name) or counterparties/counterparty/cpty_bank_name = '')
+									or (not(counterparties/counterparty/cpty_bank_address_line_1) or counterparties/counterparty/cpty_bank_address_line_1 = '')
+									or (not(counterparties/counterparty/cpty_bank_dom) or counterparties/counterparty/cpty_bank_dom = '')
+									)">									
+							Some mandatory elements are missing for MEPS
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				 --><!-- FT IAFT, IBG, MEPS common mandatory fields -->				 
+				<!--<sch:pattern name="FT IAFT, IBG, MEPS - Common Mandatory fields">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="(sub_product_code = 'IAFT' or sub_product_code = 'IBG' or sub_product_code = 'MEPS') and
+									((not(counterparties/counterparty/counterparty_type) or counterparties/counterparty/counterparty_type = ''))">									
+							Some mandatory elements are missing for IAFT, IBG, MEPS
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>				
+			
+				 --><!-- FT MT101 & MT103 common mandatory fields -->				 
+				<!--<sch:pattern name="FT MT101, MT103, FI103, FI202 - Common Mandatory fields">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="(sub_product_code = 'MT101' or sub_product_code = 'MT103' or sub_product_code = 'FI103' or sub_product_code = 'FI202') and
+									( (not(counterparties/counterparty/counterparty_type) or counterparties/counterparty/counterparty_type = '')
+									or (not(counterparties/counterparty/cpty_bank_name) or counterparties/counterparty/cpty_bank_name = '')
+									or (not(counterparties/counterparty/cpty_bank_address_line_1) or counterparties/counterparty/cpty_bank_address_line_1 = '')
+									or (not(counterparties/counterparty/cpty_bank_country) or counterparties/counterparty/cpty_bank_country = ''))">									
+							Some mandatory elements are missing for Remittance
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+			
+				--><!-- FT MT101 mandatory field - Request date -->			 
+				<!--<sch:pattern name="FT MT101 - Request date">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="sub_product_code = 'MT101' and
+									(additional_field[@name = 'request_date'] = '')">									
+							Request Date missing for MT101
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				--><!-- FT MT101 - Check Charge option -->
+				<!--<sch:pattern name="FT MT101 - Check Charge option">
+					<sch:rule context="/ft_tnx_record/sub_product_code[. = 'MT101']">
+						<sch:assert test="(../additional_field[@name = 'charge_option'] = 'SHA' or ../additional_field[@name = 'charge_option'] =  'OUR' or ../additional_field[@name = 'charge_option'] =  'BEN')">
+							The charge option <value-of select="../additional_field[@name = 'charge_option']"/> is invalid.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+				
+				--><!-- FT MT103 - Check Charge option -->
+				<!--<sch:pattern name="FT MT103 - Check Charge option">
+					<sch:rule context="/ft_tnx_record/sub_product_code[. = 'MT103']">
+						<sch:assert test="(../additional_field[@name = 'charge_option'] =  'SHA' or ../additional_field[@name = 'charge_option'] =  'OUR' or ../additional_field[@name = 'charge_option'] = 'BEN')">
+							The charge option <value-of select="../additional_field[@name = 'charge_option']"/> is invalid.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+
+				 --><!-- FT FI103 mandatory fields -->		 
+				<!--<sch:pattern name="FT FI103 - Mandatory fields">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="sub_product_code = 'FI103' and
+									((additional_field[@name = 'ordering_customer_name'] = '')
+									or (additional_field[@name = 'ordering_customer_account'] = '')
+									or (additional_field[@name = 'ordering_customer_address_line_1'] = '')
+									or (additional_field[@name = 'ordering_customer_bank_name'] = '')
+									or (additional_field[@name = 'ordering_customer_bank_address_line_1'] = '')
+									or (additional_field[@name = 'ordering_customer_bank_country'] = ''))
+									">									
+							Some mandatory elements are missing for FI103
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				--><!-- FT FI202 mandatory field - Related Reference --> 	 
+				<!--<sch:pattern name="FT FI202 - Related Reference">
+					<sch:rule context="/ft_tnx_record">
+						<sch:report test="sub_product_code = 'FI202' and
+									additional_field[@name = 'related_reference'] = ''">									
+							Related Reference missing for FI202
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>							
+			--></xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element minOccurs="0" ref="brch_code">
+						<xs:annotation>
+							<xs:documentation>Branch code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ref_id">
+						<xs:annotation>
+							<xs:documentation>Reference id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_id">
+						<xs:annotation>
+							<xs:documentation>Transaction id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Back office attributed reference id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_tnx_id">
+						<xs:annotation>
+							<xs:documentation>Back office transaction id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bulk_ref_id">
+						<xs:annotation>
+							<xs:documentation>Bulk Reference id. If this transaction
+							belongs to a bulk, this is the Reference Id of the bulk.
+							If this transaction is being received nested inside a bulk,
+							this might be omitted and the transaction will be assigned
+							the bulk reference id automatically.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bulk_tnx_id">
+						<xs:annotation>
+							<xs:documentation>Bulk Transaction id. If this transaction
+							belongs to a bulk, this is the Transaction Id of the bulk.
+							If this transaction is being received nested inside a bulk,
+							this might be omitted and the transaction will be assigned
+							the bulk transaction id automatically.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cust_ref_id">
+						<xs:annotation>
+							<xs:documentation>Customer attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="company_id">
+						<xs:annotation>
+							<xs:documentation>Id of the company that initiated 
+								the FT.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- minOccurs=0 because the company can possibly be not be provided when bank initiated transaction -->
+					<xs:element minOccurs="0" ref="company_name">
+						<xs:annotation>
+							<xs:documentation>Name of the company that 
+								initiated the FT.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="adv_send_mode"/>
+					<xs:element minOccurs="0" ref="tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>Transaction type 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>Transaction sub type 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="prod_stat_code">
+						<xs:annotation>
+							<xs:documentation>Product status 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Transaction status 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Sub Transaction Status Code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="product_code">
+						<xs:annotation>
+							<xs:documentation>Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="sub_product_code" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Sub Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Inputter user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Input date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Controller user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Control date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_user_id">
+						<xs:annotation>
+							<xs:documentation>Releaser user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_dttm">
+						<xs:annotation>
+							<xs:documentation>Release date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office inputter 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office input 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office controller 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office control 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office release user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office release 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_val_date">
+						<xs:annotation>
+							<xs:documentation>Transaction value 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="appl_date">
+						<xs:annotation>
+							<xs:documentation>Fund transfer application 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="iss_date">
+						<xs:annotation>
+							<xs:documentation>This is the execution date of the 
+								transfer as requested by the 
+								customer.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ft_cur_code">
+						<xs:annotation>
+							<xs:documentation>The currency of the 
+								debit</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ft_amt">
+						<xs:annotation>
+							<xs:documentation>The amount 
+								debited</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ft_type">
+						<xs:annotation>
+							<xs:documentation>The type of the fund transfer, 
+								currently whether Internal or 
+								Outgoing.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_amt">
+						<xs:annotation>
+							<xs:documentation>Transaction 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fwd_contract_no">
+						<xs:annotation>
+							<xs:documentation>The number of the forward 
+								contract which the applicants wants to be used 
+								for the exchange or arbitrage 
+								involved.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_act_name">
+						<xs:annotation>
+							<xs:documentation>The account name debited for 
+								the fund transfer.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_act_cur_code">
+						<xs:annotation>
+							<xs:documentation>The account cur code debited for 
+								the fund transfer.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="applicant_act_no">
+						<xs:annotation>
+							<xs:documentation>The account number debited for 
+								the fund transfer.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_act_description">
+						<xs:annotation>
+							<xs:documentation>The account description debited for 
+								the fund transfer.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_abbv_name">
+						<xs:annotation>
+							<xs:documentation>The abbreviated name of the 
+								applicant also known as the ordering 
+								customer.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_name">
+						<xs:annotation>
+							<xs:documentation>Applicant name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_address_line_1">
+						<xs:annotation>
+							<xs:documentation>Applicant first address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_address_line_2">
+						<xs:annotation>
+							<xs:documentation>Applicant second address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_dom">
+						<xs:annotation>
+							<xs:documentation>Applicant 
+								domicile.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_country">
+						<xs:annotation>
+							<xs:documentation>Applicant 
+								country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_reference">
+						<xs:annotation>
+							<xs:documentation>Applicant 
+								reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="entity">
+						<xs:annotation>
+							<xs:documentation>Entity</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="open_chrg_brn_by_code">
+						<xs:annotation>
+							<xs:documentation>Bank charges are for the 
+								applicant or the beneficiary.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fee_act_no">
+						<xs:annotation>
+							<xs:documentation>The account which the applicant 
+								wants the bank to use for the 
+								charges.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="transfer_purpose">
+						<xs:annotation>
+							<xs:documentation>Transfer Purpose Field.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="issuing_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the issuing bank 
+								information</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="account_with_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the account with 
+								bank information</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="pay_through_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the pay through 
+								bank information</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" 
+						ref="narrative_additional_instructions">
+						<xs:annotation>
+							<xs:documentation>A narrative for additional 
+								instructions.</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="bo_comment">
+						<xs:annotation>
+							<xs:documentation>Back office 
+								comment.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="free_format_text">
+						<xs:annotation>
+							<xs:documentation>Used as a zone of communication 
+								between the client and the 
+								bank</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="linked_licenses">
+						<xs:annotation>
+							<xs:documentation>Linked Licenses for 
+								Fund Transfer 
+								</xs:documentation>
+						</xs:annotation>
+					</xs:element>							
+					<xs:element minOccurs="0" ref="counterparties">
+						<xs:annotation>
+							<xs:documentation>Beneficiaries of the 
+								Fund Transfer</xs:documentation>
+						</xs:annotation>
+					</xs:element>		
+					<xs:element minOccurs="0" ref="todo_lists">
+					 	<xs:annotation>
+					 	 	 <xs:documentation>ToDo and Task Lists details</xs:documentation>
+					 	</xs:annotation>
+					</xs:element>		
+					<xs:element minOccurs="0" ref="charges"/>			
+					<xs:element minOccurs="0" ref="attachments"/>
+					<xs:element minOccurs="0" ref="cross_references"/>
+					<xs:element minOccurs="0" maxOccurs="unbounded" 
+						ref="additional_field"/>
+					<xs:element minOccurs="0" ref="errors">
+					<xs:annotation>
+						<xs:documentation>List of possible errors in this transaction.
+						For uploaded transactions only. To be used for transaction level 
+						errors only.</xs:documentation>
+					</xs:annotation>
+					</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    
+</xs:schema>

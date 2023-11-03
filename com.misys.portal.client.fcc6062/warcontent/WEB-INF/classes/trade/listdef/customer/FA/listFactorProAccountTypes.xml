@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="account_type" default_order_type="d" page="50">
+	
+	<!-- columns -->
+	<column name="client_code" align="center" width="4em" loca_key="FA_CLIENT_CODE"/>
+	<column name="account_type" hidden="y"/>
+	<column name="account_type_des" align="center" width="8em" loca_key="FA_ACCOUNT_TYPE">
+		<url>
+			<parameter name="ACCOUNT_TYPE" column="account_type"/>
+			<parameter name="CLIENT_CODE" column="client_code"/>
+			<parameter name="SCREEN" value="FA_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_SCRATCH"/>
+		</url>
+	</column>
+	<column name="adv_currency" align="center" width="20%" loca_key="FA_ADV_CURRENCY"/>
+	<column name="entity" hidden="y"/>
+	<column name="main_bank_abbv_name" hidden="y"/>
+	<column name="main_bank_name" hidden="y"/>
+	
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="client_code"
+		size="12"
+		max_length="10"
+		loca_key="FA_CLIENT_CODE"
+		input="y"/>
+	<parameter
+		name="account_type"
+		loca_key="FA_ACCOUNT_TYPE"
+		size="10"
+		max_length="10"
+		input="y"/>
+	<parameter
+		name="adv_currency"
+		loca_key="FA_ADV_CURRENCY"
+		size="3"
+		max_length="3"
+		input="y"/>
+
+	<!-- candidates -->	
+	<candidate name="FAClientAccountInfo">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="client_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					client_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="adv_currency"/>
+				<operator type="like"/>
+				<value type="parameter">
+					adv_currency
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

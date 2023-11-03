@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef ordered="y"  default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+<column name="action" width="3em">
+		<url action="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	<!-- columns -->
+	
+    <column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+    <column name="tnx_id" align="center" width="10em" loca_key="TNX_ID"/>
+	<column name="message_type" align="left" width="40%" loca_key="MESSAGE_TYPE"/>
+	<column name="tid" align="center" width="25%" loca_key="TID"/>
+	<column name="seller_name" align="left" width="25%" loca_key="SELLER_NAME"/>
+	<column name="buyer_name" align="left" width="25%" loca_key="BUYER_NAME"/>
+	<column name="creation_date" align="center" width="20%" loca_key="CREATIONDTTM"/>
+	<column name="prod_stat_code" align="center" width="15%" loca_key="STATUS"/>
+	<column name="baseline_stat_code" align="center" width="15%" loca_key="TMA_STATUS"/> 
+	<column name="NarrativeTMA@ref_id" align="center" width="20%" loca_key="ISS_DATE" hidden="y"/>
+ 	<column name="NarrativeTMA@tnx_id" align="center" width="20%" loca_key="ISS_DATE" hidden="y"/>
+ 	
+ 	<column name="download" width="8%" loca_key="COLUMN_ACTIONS">
+		<url downloadAction="y" >
+			<parameter name="REF_ID" column="NarrativeTMA@ref_id"/>
+			<parameter name="TNX_ID" column="NarrativeTMA@tnx_id"/>
+			<parameter name="TYPE_CODE" business_code="N009_NARRATIVE_DATA"/>
+			<parameter name="ERROR_CODE" business_code="N305_DUP"/>
+			<parameter name="OPERATION_CODE" binding_code="DOWNLOAD"/>
+		</url>
+	</column>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="prod_stat_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	
+	<!-- <column name="download" width="8%" loca_key="COLUMN_ACTIONS">
+		<url downloadAction="y" >
+			<parameter name="SCREEN" value="TMA_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="OUTPUT_ID" column="OutputContent@output_id"/>
+			<parameter name="OPERATION_CODE" binding_code="DOWNLOAD"/>
+		</url>
+	</column> -->
+	<!-- parameters -->
+	<!-- size and max_length not updated -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="tid"
+		size="20"
+		max_length="35"
+		loca_key="TID"
+		input="y"
+		default=""/>
+	<parameter
+		name="seller_name"
+		loca_key="SELLER_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="buyer_name"
+		loca_key="BUYER_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="creation_date"
+		type="range"
+		input="y"
+		max_length="10"
+		range_from_label="CREATION_DATE_FROM"
+		range_to_label="CREATION_DATE_TO"
+		default="blank"/>
+	<parameter
+	    name="message_type"
+	    loca_key="MESSAGE_TYPE"
+	    type="TMAMessageType"
+	    input="y"
+	    multiple_values="001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023,024,025,026,027,028,029,030,031,032,033,034,035,036,037,038,040,041,042,044,045,046,047,048,049,050,051,052"/>
+	<parameter
+		name="prod_stat_code"
+		type="AvaliableProductStatus"
+		loca_key="STATUS"
+		input="y"
+		multiple_values="98,43,75,55,77,A6,A0,A8,32,03,01,02"/>
+	<parameter
+	    name="baseline_stat_code"
+	    loca_key="TMA_STATUS"
+	    type="AvailableTMAStatus"
+	    input="y"
+	    multiple_values="ACTV,AMRQ,CLRQ,CLSD,COMP,DARQ,ESTD,PMTC,PNDG,PROP,RARQ,SCRQ,SERQ,FPTR,FAIL"/>
+		
+	<!-- candidates -->	
+	 <candidate name="tsu_message">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="message_type"/>
+					<operator type="like"/>
+					<value type="parameter">
+						message_type
+					</value>
+				</criteria>
+				<criteria>
+					<column name="tid"/>
+					<operator type="like"/>
+					<value type="parameter">
+						tid
+					</value>
+				</criteria>
+				<criteria>
+					<column name="seller_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						seller_name
+					</value>
+				</criteria>
+				<criteria>
+					<column name="buyer_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						buyer_name
+					</value>
+				</criteria>
+				<criteria>
+				<column name="creation_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					creation_date@from
+				</value>
+			   </criteria>
+			   <criteria>
+				<column name="creation_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					creation_date@to
+				</value>
+			   </criteria>
+			   <criteria>
+					<column name="prod_stat_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						prod_stat_code
+					</value>
+			</criteria>
+				<criteria>
+					<column name="baseline_stat_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						baseline_stat_code
+					</value>
+			</criteria>
+		</filter>
+	</candidate> 
+    <filter>
+		<criteria>
+			<column name="error_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N305_DUP
+			</value>
+		</criteria>
+	</filter>
+</listdef>

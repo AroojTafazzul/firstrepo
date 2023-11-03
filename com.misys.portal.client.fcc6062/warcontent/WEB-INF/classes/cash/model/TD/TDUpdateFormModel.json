@@ -1,0 +1,757 @@
+{
+	"screen": "TermDepositScreen",
+	"isAccordionView": "true",
+	"tdCstdUpdateGeneralDetails": {
+		"bankDetail": {
+			"name": "bankDetail",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"rendered": true,
+			"persistance": false,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"option": "EXISTING",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"multipleApplicableScreens": true
+				}
+			],
+			"dynamicCriteria": {       
+	            "dependControl": "bankDetail",   
+	            "dependSection": "tdCstdUpdateGeneralDetails",   
+	            "presentSection": "tdCstdUpdateGeneralDetails",
+	            "hideIfEmpty": true,
+	            "mode": "view"	               
+	        }
+		},
+		"issuingBankName": {
+			"name": "issuingBankName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"rendered": false,
+			"persistance": false,
+			"hidden": true,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				}
+			]
+		},
+		"entityName": {
+			"name": "entityName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": false,
+			"persistance": false,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": false,
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": false,
+					"multipleApplicableScreens": true
+				}
+			]
+		},
+		"entityNameTD": {
+			"name": "entityNameTD",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": false,
+			"persistance": false,
+			"hidden": true,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "03",
+					"mode": "draft",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"multipleApplicableScreens": true
+				}
+			]
+		},
+		"maturityDate": {
+			"name": "maturityDate",
+			"type": "input-date",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": false,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "03",
+					"mode": "draft",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"multipleApplicableScreens": true
+				}
+			]
+		},
+		"maturityDateAcct": {
+			"name": "maturityDateAcct",
+			"type": "input-date",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"rendered": false,
+			"persistance": true,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"multipleApplicableScreens": true
+				}
+			],
+			"dynamicCriteria": {       
+	            "dependControl": "maturityDateAcct",   
+	            "dependSection": "tdCstdUpdateGeneralDetails",   
+	            "presentSection": "tdCstdUpdateGeneralDetails",
+	            "hideIfEmpty": true,
+	            "mode": "view"	               
+	        }
+			
+		},
+		"maturityAmount": {
+			"name": "maturityAmount",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"rendered": true,
+			"persistance": false
+		},
+		"maturityAmountDisplay": {
+			"name": "maturityAmountDisplay",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"rendered": true,
+			"persistance": false,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"multipleApplicableScreens": true
+				}
+			]
+		},
+		"tnxTypeCode": {
+	      "name": "tnxTypeCode",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "maxlength": 16,
+	      "rendered": false
+	    },	
+		"currencyTDUP": {
+			"name": "currencyTDUP",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": false,
+			"hidden": true,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": false,
+					"hidden": true,
+					"operation": "LIST_INQUIRY"
+				}
+			],
+			"clubbed": true
+		},
+		"maturityAmountUp": {
+			"name": "maturityAmountUp",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 29,
+			"rendered": false,
+			"hidden": true,
+			"clubbedHeaderText": "maturityAmountUp",
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"hidden": true,
+					"rendered": false,
+					"operation": "LIST_INQUIRY"
+				}
+			],
+			"clubbedList": [
+				"currencyTDUP",
+				"maturityAmountUp"
+			]
+		},
+		"availableAmount": {
+			"name": "availableAmount",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": true
+		},
+		"availableAmountDraft": {
+			"name": "availableAmountDraft",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": false
+		},
+		"currency": {
+			"name": "currency",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": true
+		},
+		"amount": {
+			"name": "tdUpamount",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": true
+		},
+		"tnxCurrency": {
+			"name": "tnxCurrency",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": true
+		},
+		"tnxAmt": {
+			"name": "tnxAmt",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": true
+		},
+		"applicantAccID": {
+			"name": "applicantAccID",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"hidden": true,
+			"persistance": true
+		},
+		"availableAmountDisplay": {
+			"name": "availableAmountDisplay",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"rendered": false,
+			"persistance": false,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true
+				}
+			]
+		},
+		"debitAccName": {
+			"name": "debitAccName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"rendered": false,
+			"persistance": false,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"option": "EXISTING",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"multipleApplicableScreens": true
+				}
+			],
+			"dynamicCriteria": {       
+	            "dependControl": "debitAccName",   
+	            "dependSection": "tdCstdUpdateGeneralDetails",   
+	            "presentSection": "tdCstdUpdateGeneralDetails",
+	            "hideIfEmpty": true,
+	            "mode": "view"	               
+	        }
+		},
+		"debitAccountName": {
+			"name": "debitAccountName",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 16,
+			"rendered": false,
+			"persistance": false,
+			"hidden": true,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"rendered": true,
+					"operation": "LIST_INQUIRY",
+					"multipleApplicableScreens": true
+				}
+			]
+		},
+		"debitAccNumber": {
+	      "name": "debitAccNumber",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	      "styleClass": "newLCAmtStyle",
+	      "hidden": true,
+	      "previewScreen": false
+	    },
+		"paymentInstructionsHeader":{
+		 "name":"paymentInstructionsHeader",
+         "type":"text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero",
+         "styleClass":[
+            "maturityinstruction"
+         ],
+         "groupChildren":[
+            "paymentInstructions",
+            "creditAccount"
+         ]
+      },
+      "paymentInstructions":{
+         "name":"paymentInstructions",
+         "type":"input-dropdown",
+         "grouphead": "paymentInstructionsHeader",
+         "options":{    
+         },
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+         "styleClass":[
+            "paymentInstruction"
+         ]      
+      },
+      "creditAccount":{
+         "name":"creditAccount",
+         "type":"input-dropdown",
+         "grouphead": "paymentInstructionsHeader",
+         "rendered":true,
+		 "previewValueAttr": "label",
+         "required": true,
+         "options":{ 
+         },
+         "layoutClass":"p-md-6 p-lg-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+         "styleClass":[
+            "creditAccount"
+         ],
+         "applicableScreens": [
+	     	{
+		      "tnxTypeCode": "03",
+		      "mode": "edit",
+			  "rendered": true
+		    }
+		 ]
+      },
+      "debitAccountId": {
+			"name": "debitAccountId",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": "newLCAmtStyle",
+		     "hidden": true,
+			"previewScreen": false
+		},
+      "creditAccountId": {
+	      "name": "creditAccountId",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	      "styleClass": "newLCAmtStyle",
+	      "hidden": true,
+	      "previewScreen": false
+   	 },
+      "space2": {
+	      "noofspacers": "1",
+	      "prefix": "one",
+	      "sectionType": "spacerModel",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero"
+	    },
+		"transactionDetails":{
+	         "name":"transactionDetails",
+	         "type":"text",
+	         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero",
+	         "styleClass":[
+	            "transactionDetails"
+	         ],
+	         "groupChildren": [
+				"creditAccountWd",
+				"partialWithdrawal",
+				"currencyTD",
+				"withdrawalAmount"
+		      ]
+	      },
+		"creditAccountWd": {
+			"name": "creditAccountWd",
+			"type": "input-dropdown",
+			"rendered": false,
+			"required": false,
+			"options": {},
+			"layoutClass": "p-md-6 p-lg-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"grouphead": "transactionDetails",
+			"styleClass": [
+				"creditAccount"
+			],
+			"applicableScreens": [
+			    {
+			      "tnxTypeCode": "13",
+			      "mode": "edit",
+				  "rendered": true,
+				  "required": true
+			    }
+			]
+		},
+		"space1": {
+			"noofspacers": "1",
+			"prefix": "two",
+			"sectionType": "spacerModel",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero",
+			"applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "rendered": false
+	        }
+	      ]
+		},
+		"partialWithdrawal": {
+			"name": "partialWithdrawal",
+			"type": "input-switch",
+			"defaultValue": "Y",
+			"grouphead": "transactionDetails",
+			"rendered": true,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"previewScreen": true,
+			"styleClass": [
+				"appl-detail-header"
+			],
+			"dynamicCriteria": {
+	            "renderCheck": false,
+	            "presentSection": "tdCstdUpdateGeneralDetails",
+	            "dependControl": "tnxTypeCode",
+	            "dependSection": "tdCstdUpdateGeneralDetails",
+	            "requiredValue": "13"
+           }
+		},
+		"currencyTD": {
+			"name": "currencyTD",
+			"type": "input-dropdown-filter",
+			"options": {},
+			"layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 widthForCur",
+			"grouphead": "transactionDetails",
+			"styleClass": [
+				"no-margin-multiselect"
+			],
+			"rendered":false,
+			"required": false,
+			"persistance": true,
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"showLabel": false,
+					"layout": "p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+					"fieldValueType": "view-mode",
+					"showViewModeLabel": false,
+					"hidden": true,
+					"multipleApplicableScreens": true,
+					"rendered":false
+				},
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"showLabel": false,
+					"layout": "p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+					"fieldValueType": "view-mode",
+					"showViewModeLabel": false,
+					"multipleApplicableScreens": true,
+					"valueStyleClass": "currencyTD",
+					"rendered":true
+				}
+			],
+			"feildType": "amount",
+			"clubbed": true
+		},
+		"withdrawalAmount": {
+			"name": "withdrawalAmount",
+			"type": "fcc-currency",
+			"layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur",
+			"grouphead": "transactionDetails",
+			"persistance": true,
+			"styleClass": [
+				"amt"
+			],
+			"rendered": false,
+			"required": false,
+			"readonly": true,
+			"maxlength": 15,
+			"clubbedHeaderText": "withdrawalAmount",
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "13",
+					"mode": "edit",
+					"showLabel": false,
+					"rendered": true
+				}
+			],
+		    "clubbedList": [
+		        "currencyTD",
+		        "withdrawalAmount"
+		      ]
+		},
+		"remarkOptional": {
+			"name": "remarkOptional",
+			"type": "narrative-textarea",
+			"rendered": true,
+      		"rows": 1,
+      		"cols": 40,
+      		"fieldSize": 50,
+      		"maxRowCount": 6,
+      		"rowCount": 0,
+      		"swift": false,
+      		"enteredCharCount": 0,
+      		"allowedCharCount": 228,
+      		"maxlength": 228,
+      		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      		"styleClass": [
+        		"indented-text-area-field-35"
+      		],
+      		"phraseEnabled": true
+		},
+		"note": {
+			"name": "note",
+			"type": "text",
+			"previewScreen": false,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"noteStyle"
+			]
+		},
+		"noteMsg": {
+			"name": "noteMsg",
+			"type": "text",
+			"rendered": false,
+			"previewScreen": false,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"noteWithdrawalMessageStyle"
+			],
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "03",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"labelStyleClass": "noteWithdrawalMessageStyle",
+					"layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+				}
+			]
+		},
+		"noteWithdrawalMsg": {
+			"itemId": "noteWithdrawalMsg",
+			"name": "noteWithdrawalMsg",
+			"type": "text",
+			"previewScreen": false,
+			"rendered": false,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"noteWithdrawalMessageStyle"
+			],
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"fieldValueType": "view-mode",
+					"showLabel": false,
+					"rendered": true,
+					"labelStyleClass": "noteWithdrawalMessageStyle",
+					"layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+				}
+			]
+		},
+		"id": "TdCstdUpdateGeneralDetailsComponent",
+		"helpId": "GD"
+	}
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef selection_mode="single" ordered="y" huge="n" help="LIST_HELP_INQUIRY" default_order="bal_grp_order" default_order_type="a" page="50" >
+	
+	<onSelectionChangedScript>"dojo.publish('BalancingSubGroup', [{group_id : \"" + row.getColumnValue("group_id") + "\" }]);" + "dojo.publish('AccountSubGroup', [{}])"</onSelectionChangedScript>
+	<onSelectionClearedScript>dojo.publish('BalancingSubGroup', [{}]);dojo.publish('AccountSubGroup', [{}]);</onSelectionClearedScript>
+
+	<column name="group_code" align="center" width="15%" loca_key="CODE"/>
+	<column name="description" align="center" width="20%" loca_key="DESCRIPTION"/>
+	<column name="frequency" align="center" width="10%" loca_key="FREQUENCY">
+		<script>
+			if(value.equals("1"))
+			{
+				value = "Daily";
+			}
+			if(value.equals("2"))
+			{
+				value = "WEEKLY";
+			}
+			if(value.equals("3"))
+			{
+			    value = "Monthly";
+			}
+			if(value.equals("4"))
+			{
+			    value = "Quarterly";
+			}
+			value;
+		</script>
+	</column>
+	<column name="balance_type" align="center" width="15%" loca_key="BALANCE_TYPE">
+	<script>
+			if(value.equals("1"))
+			{
+				value = "Accounting Date";
+			}
+			if(value.equals("2"))
+			{
+				value = "Value Date";
+			}			
+			value;
+	</script>
+	</column>
+	<column name="currency" align="center" width="5%" loca_key="CURRENCY"/>
+	<column name="minimum" align="right" width="10%" loca_key="MINIMUM"/>
+	<column name="rounding" align="right" width="10%" loca_key="ROUNDING"/> 
+	<column name="bal_grp_order" align="right" width="10%" loca_key="BAL_GRP_ORDER"/>
+	<column name="structure_id" hidden="y" />
+	<column name="group_id" hidden="y" />
+	
+	<parameter name="structure_id" type="hidden"/>
+
+	<!-- candidates -->	
+	<candidate name="BalancingGroup">
+		<filter>
+			<criteria>
+				<column name="structure_id"/>
+				<operator type="like"/>
+				<value type="parameter">featureid</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>
+
+
+

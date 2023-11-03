@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" forceDisplaySearch='y' default_order="name" help="LIST_HELP_FACILITY" page="100" source="loanux_facilitiesInquiry" data_key="id">
+
+	<column name="dealName" align="left" width="15%" loca_key="DEAL" columnFilterType="input-multiselect"/>
+	<column name="name" align="left" width="15%" loca_key="FACILITY" columnFilterType="input-multiselect"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="currency" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="available" align="right" width="12%" loca_key="AVAILABLE" columnFilterType="input-multiselect"/>
+	<column name="utilised_amt" align="right" width="12%" loca_key="UTILIZED" columnFilterType="input-multiselect"/>
+	<column name="total_amt" align="right" width="17%" loca_key="totalLimit" columnFilterType="input-multiselect"/>
+	<column name="action" align="right" width="14%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE_CODE" binding_code="MODE_INITIATE"/>
+			<parameter name="facilityid" column="name"/>
+			<parameter name="borrowerIds" column="customerReference"/>
+			<parameter name="dealName" column="dealName"/>
+			<parameter name="facilityName" column="name"/>
+			<parameter name="status" column="status"/>
+			<parameter name="ACTION_FILTER_DD" value="DD"/>
+		</url>
+	</column>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="totalCommitment_amt" hidden="y"/>
+	<column name="status" hidden="y"/>
+	<column name="id" hidden="y"/>
+	<column name="borrowerid" hidden="y"/>
+	<column name="dealId" hidden="y"/>
+	<column name="customerReference" hidden="y"/>
+	<column name="drawdownAllowed" hidden="y"/>
+	<column name="swinglineAllowed" hidden="y"/>
+	
+	<parameter name="bo_deal_name" size="35" max_length="40" loca_key="DEAL" input="y" multiple="y" default="" type="bo_deal_name"/>
+	<parameter name="cur_code" input="y" size="3" max_length="3" multiple="y"  loca_key="CURCODE" type="Currency"/>
+	<parameter name="entity" size="35"	max_length="35"	loca_key="ENTITY" input="y"	default="" multiple="y"	type="Entity"/>
+	<parameter name="export_list" file_name="facilityListingInactive" type="export"/>
+	<!-- candidates -->
+	<candidate name="facility">
+		<filter>
+			<criteria>
+				<column name="dealName"/>
+				<operator type="in"/>
+				<value type="parameter">bo_deal_name</value>
+			</criteria>
+			<criteria>
+				<column name="currency"/>
+				<operator type="in"/>
+				<value type="parameter">cur_code</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">entity</value>
+			</criteria>
+			<criteria>
+				<column name="status"/>
+				<operator type="equal"/>
+				<value type="string">
+					Inactive
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

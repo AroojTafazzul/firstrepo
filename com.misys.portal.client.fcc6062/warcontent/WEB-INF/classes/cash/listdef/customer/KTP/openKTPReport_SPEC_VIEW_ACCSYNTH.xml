@@ -1,0 +1,90 @@
+<listdef page='25' source='com.misys.portal.report.ktp.KTPInputSource' huge="y" js_binding="misys.binding.cash.ktp.messagecenter.ktp_accounts_synthesis">
+	<name>SPEC_VIEW_ACCSYNTH</name>
+	<description>Synthèse des comptes</description>
+	<multiProduct>N</multiProduct>
+	<report_type>01</report_type>
+	<product_code>SPEC_VIEW_ACCSYNTH</product_code>
+	<equivalentCurrency />
+	<use_absolute_width>N</use_absolute_width>
+	<order_list_by_default>N</order_list_by_default>
+	<column name='BANQUE' align="left" width="22%"  abbreviation='N'>	
+		<description locale='en'>Bank</description>
+		<description locale='fr'>Banque</description> 
+		<script>
+			var accountNo = row.getColumnValue("COMPTE").toString();
+			value = com.misys.portal.ktp.utils.Tools.retrieveBankNameFromAccountNo(rundata, accountNo);
+			return value;
+		</script>
+	</column>
+	<column name='ENTITE' align="left" width="23%"  abbreviation='N'>	
+		<description locale='en'>Entity</description>
+		<description locale='fr'>Entité</description> 
+		<script>
+			var accountNo = row.getColumnValue("COMPTE").toString();
+			value = com.misys.portal.ktp.utils.Tools.retrieveEntityNameFromAccountNo(rundata, accountNo);
+			return value;
+		</script>
+	</column>
+	<column name='COMPTE' align="left" width="23%"  abbreviation='N'>	
+		<description locale='en'>Account</description>
+		<description locale='fr'>Compte</description>
+	</column>	
+	<column name='DESCRIPTION' align="left" width="31%"  abbreviation='N'>	
+		<description locale='en'>Description</description>
+		<description locale='fr'>Description</description>
+	</column>
+ 	<column name='SOLDE' align="right" width="10em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Oustanding</description>
+		<description locale='fr'>Solde</description>
+	</column>
+	<column name="DEVISE" align="center" width="5em" abbreviation='N'>
+		<description locale='en'>Currency</description>
+		<description locale='fr'>Devise</description>
+	</column> 
+	<column name='CTRVL_SOLDE' align="right" width="10em" abbreviation='N' paramCur='CTRVL_DEVISE'>
+		<description locale='en'>Countervaluated Oustanding</description>
+		<description locale='fr'>Solde contre valeur</description>
+	</column>
+	<column name="CTRVL_DEVISE" align="center" width="5em" abbreviation='N'>
+		<description locale='en'>Equivalent Currency</description>
+		<description locale='fr'>Devise</description>
+	</column>
+	<column name='DATE_OPERATION' align="center" width="8em" abbreviation='N'>
+        <description locale='en'>Balance at</description>
+        <description locale='fr'>Solde au</description>
+    </column> 
+	<parameter input='y' name='REGROUP_CRITERIA' mandatory='false' hidden='false' type='com.misys.portal.report.ktp.KTPConstrainedParameter'>
+		<description locale='en'>Aggregation Criteria</description>
+		<description locale='fr'>Critere de regroupement</description>
+	</parameter>
+	<parameter input='y' name='TYPE_DATE' mandatory='false' hidden='false' type='com.misys.portal.report.ktp.KTPConstrainedParameter'>
+		<description locale='en'>Balancing</description>
+		<description locale='fr'>Type de solde</description>
+	</parameter>
+	<parameter input='n' name='CTRVL_DEVISE' hidden='false' size="3" readonly='true' default='EUR'>
+		<description locale='en'>Equivalent Currency</description>
+		<description locale='fr'>Devise Contrevaleur</description>
+	</parameter>
+	
+	<parameter name='export_list' file='SPEC_VIEW_ACCSYNTH' type='export' file_name='SPEC_VIEW_ACCSYNTH' />
+	<candidate name='SPEC_VIEW_ACCSYNTH'>
+		<filter>
+			<criteria>
+				<column name='REGROUP_CRITERIA'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>REGROUP_CRITERIA</value>
+			</criteria>
+			<criteria>
+				<column name='TYPE_DATE'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>TYPE_DATE</value>
+			</criteria>
+			<criteria>
+				<column name='CTRVL_DEVISE'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>CTRVL_DEVISE</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<executable_flag>Y</executable_flag>
+</listdef>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50">
+
+	<!-- columns -->
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="SCREEN" column="product_code"/>
+		</url>
+	</column>
+
+	<column name="ref_id" align="center" width="11em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="drawer_name" align="left" width="20%" loca_key="ENTITY_NAME_DRAWER"/>
+	<column name="full_type" computation="sum" align="center" width="20%" loca_key="TYPE">
+		<column name="tnx_type_code"/>
+		<column name="sub_tnx_type_code"/>
+	</column> 
+	<column name="status" align="left" width="20%" loca_key="STATUS" sort="n">
+		<script>
+			if (value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+				
+				if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015","05")+")";
+				}
+				else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")"; 
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="drawee_name" align="left" width="40%" loca_key="DRAWEE_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="drawer_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_DRAWER"
+		input="y"
+		default=""
+		config_maxLength=""
+		/>
+	<parameter
+		name="drawee_name"
+		loca_key="DRAWEE_NAME"
+		size="20"
+		max_length="35"
+		input="y"
+		config_maxLength=""/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="currency"/>
+
+	<parameter
+		name="export_list"
+		file_name="pendingEC"
+		type="export"/>
+
+	<!-- candidates -->	
+	<candidate name="export_collection">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="entity"/>
+					<operator type="like"/>
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+				<criteria>
+					<column name="drawer_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						drawer_name
+					</value>
+				</criteria>
+				<criteria>
+					<column name="cur_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						cur_code
+					</value>
+				</criteria>
+				<criteria>
+					<column name="drawee_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						drawee_name
+					</value>
+				</criteria>
+			</filter>
+	</candidate>
+	
+	<filter or="y">
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_NEW
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_AMEND
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_INQUIRE
+			</value>
+		</criteria>
+	</filter>
+	
+   <filter or="y">
+    <criteria>
+      <column name="tnx_stat_code"/>
+      <operator type="different"/>
+      <value type="code">
+        N004_ACKNOWLEDGED
+      </value>
+    </criteria>
+    <criteria>
+      <column name="prod_stat_code"/>
+      <operator type="equal"/>
+      <value type="code">
+        N005_INPROGRESS
+      </value>
+    </criteria>
+  </filter>
+  <filter or="y">
+   <criteria>
+      <column name="sub_tnx_stat_code"/>
+      <operator type="different"/>
+      <value type="code">
+        N015_TNX_NACK
+      </value>
+    </criteria>
+    <criteria>
+	<column name="sub_tnx_stat_code"/>
+	<operator type="isNull"/>
+	</criteria>
+  </filter>
+</listdef>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ListDef xml for phrases Look Up -->
+<listdef ordered="y" default_order="entity" distinct="n" page="50">
+
+	
+	<column name="entity" align="left" width="15%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="abbv_name" align="left" width="15%" loca_key="ABBVNAME"/>
+	<column name="phrase_type" align="left" width="15%" loca_key="PHRASE_TYPE">
+		<script>
+			if (!value.equals(""))
+			{
+				var phraseTypeCode = row.getColumnValue("phrase_type")+"";
+				value = com.misys.portal.common.localization.Localization.getDecode(language,"C047",phraseTypeCode);
+			}
+			value;
+		</script>
+	</column>
+	<column name="product_code" align="left" width="15%" loca_key="PRODUCT_CODE" columnFilterType="input-multiselect">
+		<script>
+			value = row.getColumnValue("product_code"); 
+		</script>
+	</column>
+	<column name="category" align="left" width="15%" loca_key="CATEGORY" columnFilterType="input-multiselect">
+		<script>
+			if (!value.equals(""))
+			{
+				var categoryCode = row.getColumnValue("category");
+				var productCode = row.getColumnValue("product_code");
+				var company_id = rundata.getUser().getCompanyId()+"";
+				value = com.misys.portal.common.localization.Localization.getCodeData(language,company_id,""+productCode+"","C048",""+categoryCode+"");
+			}
+			value;
+		</script>
+	</column>
+	<column name="description" align="left" width="15%" loca_key="DESCRIPTION" columnFilterType="input-multiselect"/>
+	<column name="phrase_id" hidden="y"/>
+	<column name="text" hidden="y">
+	<script>
+		var text = row.getColumnValue("category")+"";
+		value = com.misys.portal.common.tools.SecurityUtils.encodeHTML(text);
+	</script>
+
+		<!-- JavaScript Pass back -->
+			<js-pass-back keyName="column">
+				<array-element index="0" column="text"/>
+				<array-element index="1" column="phrase_type"/>
+				<array-element index="2" column="phrase_id"/>
+			</js-pass-back>
+	</column>
+
+<!-- parameters -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		multiple="y"
+		default=""
+		type="Entity"/>
+	<parameter
+		name="abbv_name"
+		loca_key="ABBVNAME"
+		input="y"
+		multiple="y"
+		default=""/>
+	<parameter
+		name="product_code"
+		loca_key="PRODUCT_CODE"
+		input="y"
+		multiple="y"
+		type="AvailableMasterProducts"
+		default="*"/>
+	<parameter
+		name="description"
+		loca_key="DESCRIPTION"
+		input="y"
+		multiple="y"
+		default=""/>
+	<parameter
+		name="category"
+		loca_key="CATEGORY"
+		input="y"
+		type="Category"
+		multiple="y"
+		default=""/>
+
+	<!-- candidates -->
+	<candidate name="StaticPhrase">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="abbv_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					abbv_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="phrase_type"/>
+				<operator type="in"/>
+				<value type="parameter">
+					phrase_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="category"/>
+				<operator type="in"/>
+				<value type="parameter">
+					category
+				</value>
+			</criteria>
+			<criteria>
+				<column name="description"/>
+				<operator type="in"/>
+				<value type="parameter">
+					description
+				</value>
+			</criteria>	
+		</filter>
+	</candidate>
+</listdef>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" page="50" default_order="Company@abbv_name" default_order_type="a" distinct="n" js_binding="misys.binding.common.listdef_mc">
+
+		
+		<column name="Company@abbv_name" width="50%" loca_key="ABBVNAME">
+		<url>
+			<parameter name="SCREEN" value="BSF_SCREEN"/>
+			<parameter name="COMPANY" column="customer_id"/>
+			<parameter name="OPTION_CODE" value="FSCM_PROGRAM_MAINTENANCE_BG"/>
+		</url>
+	</column>
+	<column name="Company@name" width="50%" loca_key="NAME"/>
+	
+	<column name="customer_id" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="abbv_name"
+		loca_key="ABBVNAME"
+		size="16"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="name"
+		loca_key="NAME"
+		size="16"
+		max_length="35"
+		input="y"/>
+
+	<!-- candidates -->	
+	<candidate name="customer_bank">
+		<filter>
+			<criteria>
+				<column name="Company@company_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					customer_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="Company@abbv_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					abbv_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="Company@name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					name
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+		<filter or="y">
+			<criteria>
+				<column name="Company@type"/>
+				<operator type="equal"/>
+					<value type="string">
+						03
+					</value>
+			</criteria>
+			<criteria>
+				<column name="Company@type"/>
+				<operator type="equal"/>
+					<value type="string">
+						06
+					</value>
+			</criteria>
+	</filter>	
+	
+</listdef>

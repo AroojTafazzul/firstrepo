@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="doc_id" page="50"
+    default_order_type="d" source="SBLCTemplate">
+
+ 
+
+    <column name="companyid" loca_key="COMPANY_ID" hidden="y"  />
+    <column name="featureid" loca_key="FEATURE_ID" columnFilterType="input-multiselect" />
+    <column name="standby_issued_id" align="center" width="11em"
+        loca_key="STANDBY_ISSUED_ID" hidden="y">
+        <!-- <url> <parameter name="SCREEN" value="SI_SCREEN"/> <parameter name="TRANSACTION_TYPE_CODE" 
+            business_code="N002_NEW"/> <parameter name="COMPANY_ID" column="companyid"/> 
+            <parameter name="FEATURE_ID" column="featureid"/> <parameter name="OPTION_CODE" 
+            binding_code="OPTION_SCRATCH"/> </url> -->
+        <js-pass-back keyName="column">
+            <array-element index="0" column="companyid" />
+            <array-element index="1" column="featureid" />
+            <array-element index="2" column="doc_id" />
+        </js-pass-back>
+    </column>
+    <column name="entity_name_applicant"
+        loca_key="entity_name_applicant" columnFilterType="input-multiselect" />
+    <column name="bank" loca_key="BANK" hidden="y" />
+    <column name="entity" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+    <column name="description" loca_key="DESCRIPTION" columnFilterType="input-multiselect"/>
+    <column name="standby_issued_type"
+        loca_key="STANDBY_ISSUED_TYPE" columnFilterType="input-multiselect"/>
+    <column name="doc_id" loca_key="DOC_ID" hidden="y" />
+
+ 
+
+    <!-- parameters -->
+
+ 
+
+    <parameter name="entity" size="35" max_length="35"
+        loca_key="ENTITY" input="y" multiple="y" default="" type="Entity" />
+
+ 
+
+
+    <!-- candidates -->
+    <candidate name="SBLCTemplate">
+        <filter>
+            <criteria>
+                <column name="entityabr" />
+                <operator type="in" />
+                <value type="parameter">
+                    entity
+                </value>
+            </criteria>
+        </filter>
+    </candidate>
+</listdef>

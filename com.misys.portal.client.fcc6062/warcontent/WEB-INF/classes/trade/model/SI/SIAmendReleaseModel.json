@@ -1,0 +1,722 @@
+{
+   "screen":"StandbyIssuedScreen",
+   "isAccordionView": "true",
+   "siAmendReleaseGeneralDetails":{
+       "customerReferenceView": {
+	      "name": "customerReferenceView",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "maxlength": 16,
+	      "rendered": false,
+	      "persistance": false,
+	      "applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "mode": "view",
+	          "fieldValueType": "view-mode",
+	          "showLabel": false,
+	          "rendered": true
+	        }
+	      ]
+	    },
+      "bankReferenceView": {
+	      "name": "bankReferenceView",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "maxlength": 16,
+	      "rendered": false,
+	      "persistance": false,
+	      "applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "mode": "view",
+	          "fieldValueType": "view-mode",
+	          "showLabel": false,
+	          "rendered": true
+	        }
+	      ]
+	    },      
+     "issuedDate": {
+	      "name": "issuedDate",
+	      "type": "input-date",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "maxlength": 29,
+	      "rendered": false,
+	      "persistance": false,
+	      "applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "mode": "view",
+	          "fieldValueType": "view-mode",
+	          "rendered": true
+	        }
+	      ]
+	    },
+     "expiryDate": {
+	      "name": "expiryDate",
+	      "type": "input-date",
+	      "required": true,
+	      "layoutClass": "p-col-12 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	       "maxlength": 29,	     
+	      "persistance": false,
+	      "applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "mode": "view",
+	          "fieldValueType": "view-mode",
+	          "rendered": true
+	        }
+	      ]
+	    },
+      "placeOfExpiry": {
+	      "name": "placeOfExpiry",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "maxlength": 29,
+	      "required": true,
+	      "applicableScreens": [
+	        {
+	         "tnxTypeCode": "03",
+	          "mode": "view",
+	          "fieldValueType": "view-mode",
+	          "rendered": true
+	        }
+	      ]
+	    },
+	    "expiryType": {
+	      "name": "expiryType",
+	      "source": "codeData",
+	      "codeID" : "C085",
+	      "options": [ ],
+	      "defautValue": "01",
+	      "type": "input-radio",
+	      "styleClass": [
+	        "radiocontainer p-grid"
+	      ],
+	      "showLabel": true,
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+	      "applicableScreens": [
+	        {
+	         "tnxTypeCode": "03",
+	          "mode": "view",
+	          "fieldValueType": "view-mode-select",
+	          "rendered": true
+	        }
+	      ]
+	    },	   
+	   "beneName": {
+	      "name": "beneName",
+	      "type": "text",
+	      "required": true,
+	      "layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+	      "styleClass": [
+	        "margin-all-side"
+	      ],
+	      "applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "mode": "view",
+	          "fieldValueType": "view-mode",
+	          "layout": "p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin",
+	          "rendered": true
+	        }
+	      ]
+	   },
+	  "spaceReqDate": {
+        "noofspacers": "1",
+        "prefix": "two",
+        "sectionType": "spacerModel",
+        "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+      },  
+      "releaseInstructionsHeader": {
+	      "name": "releaseInstructionsHeader",
+	      "type": "text",
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+	      "styleClass": [
+	        "subheader-title"
+	      ],
+	      "groupChildren": [
+	      "releaseRequestDate"    
+	      ]
+	  },
+      "releaseRequestDate": {
+	      "name": "releaseRequestDate",
+	      "type": "input-date",
+	      "required": true,
+	      "grouphead": "releaseInstructionsHeader",
+	      "layoutClass": "p-col-12 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "mode": "edit",
+	          "showLabel": true
+	        }
+	      ]
+      }, 
+     "space2": {
+        "noofspacers": "1",
+        "prefix": "two",
+        "sectionType": "spacerModel",
+        "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 padding_zero"
+      },  
+      "amountDetailsHeader": {
+	      "name": "amountDetailsHeader",
+	      "type": "text",
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+	      "styleClass": [
+	        "subheader-title"
+	      ],
+	      "groupChildren": [
+	      "originalLCAmount",
+	      "availableAmountSI",
+	      "fullRelease",
+	      "currency",
+	      "releaseAmount"    
+	      ]
+	  },	   
+      "originalLCAmount": {
+	      "name": "originalLCAmount",
+	      "type": "view-mode",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "showLabel": true,
+	      "rendered": true,
+	      "required": false,
+	      "readonly": true,
+	      "grouphead": "amountDetailsHeader"	      
+	    },	
+	  "availableAmountSI": {
+	      "name": "availableAmountSI",
+	      "type": "view-mode",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],	     
+	      "grouphead": "amountDetailsHeader",      
+	      "rendered": true,
+	      "showLabel": true,
+	      "required": false,
+	      "readonly": true
+	  },
+      "lcAmount": {
+	      "name": "lcAmount",
+      	   "type": "input-text",
+	      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur",
+	      "styleClass": [
+	        "amt"
+	      ],
+	      "previewScreen": false,
+	      "hidden":true
+	      
+	  },
+	   "lcAvailAmt": {
+	      "name": "lcAvailAmt",
+           "type": "input-text",
+	      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur",
+	      "styleClass": [
+	        "amt"
+	      ],
+	      "previewScreen": false,
+	      "hidden":true
+	      
+	  },
+    "fullRelease": {
+      "name": "fullRelease",
+      "type": "input-switch",
+      "defaultValue": "Y",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "grouphead": "amountDetailsHeader",      
+      "styleClass": [
+        "appl-detail-header"
+      ]
+    },
+    "releaseAmountHeader": {
+		"name": "releaseAmountHeader",
+		"type": "text",
+		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+		"rendered": true,
+		"previewScreen": false
+	},
+    "currency": {
+      "name": "currency",
+      "type":"input-text",
+      "options": {},
+      "layout":"p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+      "styleClass": [
+        "ccy"
+      ],
+      "clubbed": true,
+      "required": true,
+      "rendered": true,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false,
+          "layout":"p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+          "fieldValueType": "view-mode",
+          "showViewModeLabel": false
+        }
+      ],
+      "grouphead": "amountDetailsHeader"	      
+    },    
+    "releaseAmount": {
+      "name": "releaseAmount",
+      "type": "input-text",
+      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur",
+      "styleClass": [
+        "amt"
+      ],
+      "clubbed": true,
+      "previewScreen": true,
+      "clubbedHeaderText": "releaseAmount",
+      "clubbedList": [
+        "currency",
+        "releaseAmount"
+      ],      
+      "rendered": true,
+      "required": true,
+      "readonly": true,
+	  "grouphead": "amountDetailsHeader",            
+      "maxlength": 19
+    },
+    "utilizedAmount": {
+      "name": "utilizedAmount",
+      "type": "input-text",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 Amt",
+      "styleClass": [
+        "amt"
+      ],
+	  "previewScreen": false,
+      "hidden": true      
+    },   	  
+	   "narrative": {
+	      "name": "narrative",
+	      "type": "text",
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+	      "styleClass": [
+	        "subheader-title"
+	      ],
+	      "groupChildren": [
+	      "narrativeInfo"   
+	      ]
+	  },
+	  
+    "narrativeInfo": {
+	      "name": "narrativeInfo",
+	      "type": "narrative-textarea",
+	      "rendered": false,
+	      "fieldSize": 50,
+	      "swift": false,
+	      "rows": 5,
+	      "cols": 50,
+	      "maxRowCount": 35,
+	      "enteredCharCount": 0,
+	      "rowCount": 0,
+	      "allowedCharCount": 1785,
+	      "maxlength": 1785,
+      	  "grouphead": "narrative",            	      
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+	      "styleClass": "amendNarrativeStyle",
+	      "required": false,
+	      "applicableScreens": [
+	        {
+	          "tnxTypeCode": "03",
+	          "mode": "edit",
+	          "rendered": true
+	        }
+	      ]
+	    },
+	   "space": {
+	      "noofspacers": "3",
+	      "prefix": "one",
+	      "sectionType": "spacerModel",
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+	    },
+       "space1": {
+	      "noofspacers": "1",
+	      "prefix": "two",
+	      "sectionType": "spacerModel",
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+	    },
+	    "subTnxTypeCode":{
+         "name":"subTnxTypeCode",
+         "type":"input-text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":"subTnxTypeCode",
+         "hidden":true
+        },
+        "tnxAmt": {
+	      "name": "tnxAmt",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	      "styleClass": "newLCAmtStyle",
+	      "hidden": true,
+	      "previewScreen": false
+	    },
+	    "tnxCurrency": {
+	      "name": "tnxCurrency",
+	      "type": "input-text",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	      "styleClass": "newLCAmtStyle",
+	      "hidden": true,
+	      "previewScreen": false
+	    },	   
+      "id":"SiAmendReleaseGeneralDetailsComponent",
+      "helpId": "GD"     
+     }, 
+    "siInstructionToBank": {
+    "bankInstruction": {
+      "name": "bankInstruction",
+      "type": "text",
+      "styleClass": "subheader-title",
+      "rendered": false
+    },
+    "principalAct": {
+      "name": "principalAct",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 leftwrapper",
+      "styleClass": "principalAct",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "style": "ammendPrincipalAct"
+        }
+      ]
+    },
+    "space7": {
+      "noofspacers": "1",
+      "prefix": "seven",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12"
+    },
+    "feeAct": {
+      "name": "feeAct",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 rightwrapper",
+      "styleClass": "feeAct",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "style": "ammendFeeAct"
+        }
+      ]
+    },
+    "otherInst": {
+      "name": "otherInst",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "rows": 5,
+      "cols": 65,
+      "fieldSize": 50,
+      "maxRowCount": 485,
+      "rowCount": 0,
+      "swift": false,
+      "enteredCharCount": 0,
+      "allowedCharCount": 31525,
+      "maxlength": 31525,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "otherInst"
+      ],
+      "directive": true,
+      "phraseEnabled": false
+    },
+    "deliveryMode": {
+      "name": "deliveryMode",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "hideControl": true,
+      "previewScreen": false,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ]
+    },
+    "deliveryModeType": {
+      "name": "deliveryModeType",
+      "source": "codeData",
+      "options": [],
+      "codeID" : "C083",
+      "defautValue": "01",
+      "type": "input-radio",
+      "styleClass": [
+        "radiocontainer p-grid"
+      ],
+      "showLabel": true,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true
+        }
+      ]
+    },
+    "deliverModeInstText": {
+      "name": "deliverModeInstText",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "",
+      "hidden": true,
+      "previewScreen": false
+    },   
+    "issuingBankName": {
+      "name": "issuingBankName",
+      "type": "input-text",
+      "hidden": true,
+      "previewScreen": false
+    },  
+    "deliverModeInstCourier": {
+      "name": "deliverModeInstCourier",
+      "type": "narrative-textarea",
+      "swift": false,
+      "fieldSize": 35,
+      "maxRowCount": 1,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "rows": 1,
+      "cols": 35,
+      "allowedCharCount": 35,
+      "maxlength": 35,
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "indented-text-area-field-35"
+      ],
+      "rendered": false,
+      "required": false,
+      "dynamicCriteria": {
+        "dependControl": "deliveryModeType",
+        "dependSection": "siInstructionToBank",
+        "requiredValue": "02",
+        "presentSection": "siInstructionToBank"
+      }
+    },
+    "deliverModeOtherInst": {
+      "name": "deliverModeOtherInst",
+      "type": "narrative-textarea",
+      "swift": false,
+      "fieldSize": 35,
+      "maxRowCount": 4,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "rows": 1,
+      "cols": 35,
+      "allowedCharCount": 35,
+      "maxlength": 35,
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "otherInst"
+      ],
+      "rendered": false,
+      "required": false,
+      "dynamicCriteria": {
+        "dependControl": "deliveryModeType",
+        "dependSection": "siInstructionToBank",
+        "requiredValue": "99",
+        "presentSection": "siInstructionToBank"
+      }
+    },
+    "deliveryTo": {
+      "name": "deliveryTo",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "hideControl": true,
+      "previewScreen": false,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ]
+    },
+    "deliveryToType": {
+      "name": "deliveryToType",
+      "source": "codeData",
+      "options": [],
+      "codeID" : "C084",
+      "defautValue": "01",
+      "type": "input-radio",
+      "styleClass": [
+        "radiocontainer p-grid"
+      ],
+      "showLabel": true,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true
+        }
+      ]
+    },
+    "deliveryToOtherInst": {
+      "name": "deliveryToOtherInst",
+      "type": "narrative-textarea",
+      "rendered": false,
+      "readonly" : false,
+      "required": true,
+      "rows": 6,
+      "cols": 35,
+      "fieldSize": 50,
+      "maxRowCount": 6,
+      "rowCount": 0,
+      "swift": false,
+      "enteredCharCount": 0,
+      "allowedCharCount": 210,
+      "maxlength": 210,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "otherInst"
+      ],
+      "directive": true,
+      "phraseEnabled": false,
+      "dynamicCriteria": {
+        "dependControl": "deliveryToType",
+        "swiftVersion": 2021,
+        "dependSection": "siInstructionToBank",
+        "requiredValues": ["02", "04",  "05"],
+        "presentSection": "siInstructionToBank"
+      }
+    },
+    "applicantMessageEntity": {
+      "name": "applicantMessageEntity",
+      "type": "input-text",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "SiInstructionsToBankDetailsComponent",
+    "helpId": "IB" 
+  },
+  "siFileUploadDetails": {
+  	"applicableSections": [{
+      "tnxTypeCode": "01"
+    }, {
+      "tnxTypeCode": "03"
+    }],
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "btndisable": true,
+      "previewScreen": false
+    },
+    "fileUploadTable": {
+      "name": "fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12"
+    },
+    "attachments" : {
+        "name": "attachments",
+        "rendered": false,
+        "type": "json-obj",
+        "previewScreen": false
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "siFileUploadDetailsComponent",
+    "helpId": "AT"
+  }
+}

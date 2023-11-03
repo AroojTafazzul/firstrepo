@@ -1,0 +1,19 @@
+<listdef page='25'>
+	<name>Outstanding per Ccy.</name>
+	<description>Outstanding per Ccy.</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='amt' hidden='y'/>
+	<column name='cur_code' hidden='y'/>
+	<column name='liab_amt' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<candidate name='IC'/>
+	<group graph='pie'>
+		<column name='cur_code'/>
+		<aggregate type='sum' cur='EUR'>
+			<column name='liab_amt'/>
+			<description locale='en'>Total (EUR)</description>
+			<description locale='fr'>Total (EUR)</description>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

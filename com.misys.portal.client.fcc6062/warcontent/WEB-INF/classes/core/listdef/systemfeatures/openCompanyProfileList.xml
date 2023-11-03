@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"  default_order="abbv_name" default_order_type="a" page="50"
+	js_binding="misys.binding.common.listdef_mc">
+	
+	<column name="abbv_name" align="center" width="20%" loca_key="ABBVNAME" />
+	<column name="name" align="center" width="20%" loca_key="NAME" />
+	<column name="type" align="center" width="20%" loca_key="TYPE" />
+	<column name="actv_flag" align="center" width="20%" loca_key="STATUS" />
+	<column name="OwnerCompany@abbv_name" align="center" width="20%" loca_key="OWNER_COMPANY" />
+	<!-- <column name="StaticBeneficiary@abbv_name" align="center" width="20%" loca_key="OWNER_COMPANY" /> -->
+	<!-- <column name="CustomerReference@reference" align="center" width="20%" loca_key="OWNER_COMPANY" /> -->
+	<!-- <column name="CompanyRolePermission@rolename" align="center" width="20%" loca_key="COMPANY_ROLE" /> -->
+	<!-- <column name="ObjectDataString@institution_code" align="center" width="20%" loca_key="OWNER_COMPANY" /> -->
+	
+	<!-- parameters -->
+	<parameter
+		name="abbv_name"
+		max_length="35"
+		size = "35"
+		loca_key="ABBVNAME"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="name"
+		size = "35"
+		max_length="35"
+		loca_key="NAME"
+		input="y"
+		default=""/>
+	<parameter
+		name="type"
+		input="y"
+		size = "2"
+		max_length="2"
+		loca_key="TYPE"/>
+	<parameter
+		name="actv_flag"
+		input="y"
+		size = "1"
+		max_length="1"
+		loca_key="STATUS"/>
+	<parameter
+		name="owner_abbv_name"
+		input="y"
+		size = "35"
+		max_length="35"
+		loca_key="OWNER_COMPANY"/>
+	<!-- candidates -->	
+	
+	
+	<!-- candidate -->
+	<candidate name="companyProfile">
+		<filter>
+			<criteria>
+				<column name="abbv_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					abbv_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="type"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="actv_flag"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					actv_flag
+				</value>
+			</criteria>
+			<criteria>
+				<column name="OwnerCompany@abbv_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					owner_abbv_name
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<filter>
+		<criteria>
+			<column name="abbv_name" />
+			<operator type="isNotNull" />
+		</criteria>
+	</filter>
+
+</listdef>

@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Term Deposit: Cash;PERM=TD_access;" id="Cash_UX"
+         role="TOPIC">
+  <title><application>Term Deposit</application></title>
+
+  <para role="TEXT">This function allows you to initiate the Term Deposit (TD)
+  transaction and provide maturity/interest payment and withdrawal
+  instructions. The bank and customer can also make inquiry on the TD
+  transaction which has been created in the Fusion Corporate Channels.</para>
+
+  <section condition="TITLE=Term Deposit Landing Page;PERM=TD_access;ACCESS=TD_CSTD_GENERAL"
+           role="TOPIC">
+    <title>Term Deposit Landing Page</title>
+
+    <para>The Term Deposit Landing page displays a list of TD transactions
+    made by the user, that in various stages of their life cycle. The requests
+    are displayed in multiple tabs based on the current status of request. The
+    Landing page view is customizable based on your requirement.<note>
+        <para>You can customise the list of columns displayed through
+        SDK.</para>
+      </note></para>
+
+    <para>The following image illustrates the Term Deposit Landing
+    page:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/TD_landing.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none" role="bold">Open Term
+          Deposit</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Use this option to initiate a new Term Deposit
+            and submit it to the bank.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para role="TEXT">The Term Deposit listing page segregates transactions
+    based on their current status like draft, pending approval from client or
+    bank, future dated, completed, rejected from bank and purged.The following
+    ribbon items enable you to perform various actions on individual
+    transaction or in bulk, based on the tab you are on. Individual tabs and
+    related functionality are described below: <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/TD_listing.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject><note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Tab</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Draft</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the term deposit
+              transactions that are in draft state and also the transactions
+              that checker has returned for improvement.<note>
+                  <para><guimenuitem moreinfo="none">Draft</guimenuitem> tab
+                  is available only to maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis role="bold">Pending
+              Approval</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all existing TD
+              requests that are awaiting client approval from a second user
+              within the corporate.<note>
+                  <para><itemizedlist>
+                      <listitem>
+                        <para>The <emphasis role="bold">Authorise</emphasis>
+                        action item is available only for a checker
+                        user.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>A user with batch submission permission can
+                        select multiple transactions to <emphasis
+                        role="bold">Approve</emphasis> or <emphasis
+                        role="bold">Return</emphasis> though the checkbox
+                        provided for every transactions listed in this
+                        tab.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>It is mandatory to provide the comments to
+                        return a transaction.</para>
+                      </listitem>
+                    </itemizedlist></para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis role="bold">Pending at
+              Bank</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all existing Term
+              Deposit requests that are awaiting bank approval.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis role="bold">Future
+              Dated</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the Term Deposit
+              transactions that are to be initiated on a future
+              date.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Live</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the completed
+              Term Deposit transactions.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Completed</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the completed
+              Term Deposit transactions.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Rejected</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the rejected
+              Term Deposit transactions by the bank. The status given to such
+              records is "Not Processed".</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Purged</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the Term Deposit
+              transactions that have been marked as Purged by the Issuing
+              Bank's Trade Services team.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">The <guiicon>Advance Filter</guiicon> presents you with
+    various filter options like <emphasis role="bold">Entity</emphasis>,
+    <emphasis role="bold">Channel Reference</emphasis>, <emphasis
+    role="bold">Bank Reference</emphasis> and <emphasis role="bold">Value
+    Date</emphasis>. Enter the relevant search criterion and apply the filter
+    to list all the relevant Term Deposit requests. You can also select the
+    time frame for which data needs to be fetched. You can also save filter
+    preference by clicking on <guiicon>Save as New View</guiicon> and enter
+    the name of new view, you may also select "<emphasis role="bold">Make
+    Preference as Default</emphasis>" to set the default preference to newly
+    created view.</para>
+
+    <para role="TEXT">You can perform the following actions on the listed
+    cheque requests:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of loan transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of loan transactions displayed on the dashboard.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed loan
+          transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Customize</emphasis>: You can customize
+          the order in which the cheque book request information is displayed.
+          You can achieve following customizations through this
+          feature:<itemizedlist>
+              <listitem>
+                <para>Select the columns that you wish to display, unselect
+                the column names to hide the columns.</para>
+              </listitem>
+
+              <listitem>
+                <para>Click on lock icon to freeze the position of the column.
+                The freezed columns are placed on the left of screen. You can
+                freeze a maximum of three columns.</para>
+              </listitem>
+
+              <listitem>
+                <para>You can drag and drop a column name to rearrange the
+                table columns. Hover over multiple dots icon against each
+                column name to, a hand icon appears, which suggests that the
+                column is ready to be dragged and dropped.</para>
+              </listitem>
+            </itemizedlist><note>
+              <para>This feature is available for all the tables of
+              <productname id="ent_appli" role="bold">Fusion Corporate
+              Channels</productname>.</para>
+            </note></para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      loan transactions. The actions are available in relevant tabs based on
+      the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction).</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel role="bold">User
+              Audit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/audit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the audit trail of transaction.
+              This option shows all the users associated with the transaction
+              since its initiation.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Authorise</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/authorise.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to authorise the selected transaction.
+              You can either approve or return the transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Approve</emphasis>
+                      or <emphasis role="bold">Return</emphasis> a transaction
+                      is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note> </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=SE_access;ACCESS=SE_CQBKR_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking the
+      details button against any given transaction:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Displays the Term Deposit details. The
+              information is spread over two tabs which are described
+              below:<itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Transaction
+                    Details</emphasis>: Displays the details of the cheque
+                    book request transaction that is opened from the listing
+                    page. The tab opens details in read-only mode.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Events</emphasis>: Displays
+                    the history of events that transaction has gone through.
+                    The transactions are either acknowledged by the bank or a
+                    reporting event is initiated by bank that requires an
+                    action to be performed by a corporate user.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Customer Attachments'
+                    added as part of this transaction.</para>
+                  </listitem>
+                </itemizedlist></para><para>You can perform following actions
+              on the opened transactions:<itemizedlist>
+                  <listitem>
+                    <para><guimenu>Term Deposit Landing</guimenu>: Click on
+                    this icon to navigate back to Term Deposit Landing
+                    page.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><guimenu>Journey</guimenu>: You can view the history
+                    of events that the transaction has gone through.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Term Deposit;PERM=TD_access" role="Topic">
+    <title>Open Term Deposit</title>
+
+    <para>Click on this <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/TD_initiation.png" width="25mm"/>
+        </imageobject>
+      </inlinemediaobject> icon to initiate a Term Deposit.</para>
+
+    <section condition="TITLE=General Details;PERM=TD_access;ACCESS=TD_CSTD_GD_UX"
+             role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">The General Details form for Term Deposit initiation
+      comprises of the following fields:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Entity</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Entity name
+              making the application. This field is only present if your
+              company has entities defined and you are attached to one or more
+              entities. If you are attached to more than one, click on the
+              dropdown box to select one. If you are attached to only one, the
+              field is preset to that entity and cannot be
+              changed.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Value Date</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the value date Term
+              Deposit Initiation is to be submitted.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Deposit Type</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the type of deposit
+              being made.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Custom Tenor</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Slide the icon if you wish
+              to enter custom tenor period for the Term Deposit. You can enter
+              the period in years/months/days or directly enter the number of
+              days.</para><para role="TEXT">The entire list of Tenor will
+              depend on 'Tenor Period' parameter set by the
+              bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">View Interest Rate</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Click on the View Interest
+              Rate retrieved from the back office for the specified tenor, CCY
+              and amount indicated in the input screen.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Currency</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Term Deposit
+              currency. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Amount</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Amount for which
+              Term Deposit is to be initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Maturity Instructions</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the Maturity
+              Instructions to the bank for paying the matured amount and/or
+              Interest. Available options are: <programlisting>Auto Renewal of Principal and Interest
+Auto Renewal of Principal and Credit Interest to Account
+Credit Principal and Interest to Account</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Debit Account</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the account from
+              which the Term Deposit amount is to be withdrawn.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Credit Account</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the account the
+              matured deposit and/or Interest should be paid into. Click the
+              dropdown to display a list of available accounts. You can use
+              debit account as credit account also by clicking the checkbox
+              "<emphasis>Use same account as debit account</emphasis>".
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Transaction Remarks</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter any additional
+              transaction remarks that are applicable.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=TD_access;ACCESS=TD_CSTD_PV_UX"
+             role="Topic">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application form and also allows you
+      to either Save or Submit the application.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=Term Deposit;PERM=TD_access" role="Topic">
+    <title>Term Deposit Update/Withdraw</title>
+
+    <para>To update or withdraw Term Deposit, navigate to <guilabel>Account
+    Services</guilabel> &gt; <guilabel>Account Summary</guilabel> and click on
+    the update <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/update_icon.png" width="5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon or withdraw <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/withdraw_icon.png" width="5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon against the transaction to initiate an update
+    or withdrawal.</para>
+
+    <section condition="TITLE=General Details;PERM=TD_access;ACCESS=TD_CSTD_UWGD_UX"
+             role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">The General Details form for Term Deposit update or
+      withdrawal comprises of the following fields:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Bank</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the bank holding
+              the requested account.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Maturity Date</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Date on which the deposit
+              is set to mature.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Maturity Amount</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Amount, at the time of
+              maturity.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Debit Account</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">The account from which the
+              Term Deposit amount is withdrawn.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Payment Instructions</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">From the dropdown list,
+              enter the instructions to the bank for paying the matured amount
+              and/or Interest. Available options are:<programlisting>Auto Renewal of Principal and Interest
+Auto Renewal of Principal and Credit Interest to Account
+Credit Principal and Interest to Account</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Credit Account</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the account to which
+              the matured deposit and/or Interest should be paid into. Click
+              the dropdown button to display a list of available
+              accounts.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Do you want to withdraw
+              partially?</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Slide the button, if you
+              wish to execute partial withdrawal of Term Deposit. Enter the
+              amount that wish to withdraw.<note>
+                  <para>This field is available only for Term Deposit
+                  Withdrawal screen.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Transaction Remarks</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter any additional
+              transaction remarks that are applicable.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=TD_access;ACCESS=TD_CSTD_PV_UX"
+             role="Topic">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application form and also allows you
+      to either Save or Submit the application.</para>
+    </section>
+  </section>
+</section>

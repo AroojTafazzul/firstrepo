@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="20" default_order="sublimit_name" default_order_type="d" source="loaniq_facilitiesSublimits">
+
+	<column name="sublimit_name" align="left" loca_key="LN_FACILITY_LIMIT_TYPE" />
+	<column name="currency" align="left" loca_key="ccy"	/>
+	<column name="global_amount" align="right" loca_key="LN_FACILITY_LIMIT_AMOUNT" >
+		<script>
+			var global_amount = row.getColumnValue("global_amount");
+			var currency = row.getColumnValue("currency");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+global_amount+"",""+currency+"",""+language+"");
+			value;
+		</script>
+	</column>
+	
+</listdef>

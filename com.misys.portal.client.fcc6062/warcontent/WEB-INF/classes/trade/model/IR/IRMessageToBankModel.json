@@ -1,0 +1,270 @@
+{
+  "screen": "InwardRemittanceScreen",
+  "isAccordionView": "true",
+  "irGeneralDetails": {
+    "channelsId": {
+      "name": "channelsId",
+      "type": "text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "referenceIDStyle"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "13",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "layout": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper viewModeMargin"
+        }
+      ]
+    },
+    "bankReference": {
+      "name": "bankReference",
+      "type": "text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+      "styleClass": [
+        "bankReference"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "13",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "layout": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper viewModeMargin"
+        }
+      ]
+    },
+    "remittanceDate": {
+      "name": "remittanceDate",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "required": true,
+      "type": "text",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "13",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "layout": "p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+        }
+      ]
+    },
+    "remittanceType": {
+      "name": "remittanceType",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "options": [],
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+      "styleClass": [
+        "margin-all-side"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "13",
+          "mode": "view",
+          "fieldValueType": "view-mode-select",
+          "layout": "p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+        }
+      ]
+    },
+    "remitterName": {
+      "name": "remitterName",
+      "type": "text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-all-side"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "13",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "layout": "p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+        }
+      ]
+    },
+    "customerInstructionPreview": {
+      "name": "customerInstructions",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "customerInstruction"
+      ],
+      "hidden": true,
+      "groupChildren": [
+        "customerInstructionText"
+      ],
+      "rendered": false
+    },
+    "settlementAmount": {
+      "name": "settlementAmount",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "settlementAmount"
+      ],
+      "rendered": false,
+      "previewScreen": false,
+      "groupChildren": [
+        "currency",
+        "amount"
+      ]
+    },
+    "currency": {
+      "name": "currency",
+      "type": "input-text",
+      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur",
+      "styleClass": [
+        "ccy"
+      ],
+      "grouphead": "settlementAmount",
+      "clubbedHeaderText": "settlementAmount",
+      "clubbedList": [
+        "currency",
+        "amount"
+      ],
+      "clubbed": true,
+      "rendered": false,
+      "readonly": true
+    },
+    "amount": {
+      "name": "amount",
+      "type": "input-text",
+      "grouphead": "settlementAmount",
+      "clubbed": true,
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 Amt",
+      "styleClass": [
+        "Amt"
+      ],
+      "rendered": false,
+      "readonly": true
+    },
+    "customerInstructions": {
+      "name": "customerInstruction",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "previewScreen": false,
+      "styleClass": [
+        "customerInstruction"
+      ]
+    },
+    "customerInstructionText": {
+      "name": "customerInstructionText",
+      "grouphead": "customerInstructions",
+      "required": true,
+      "type": "narrative-textarea",
+      "fieldSize": 50,
+      "swift": false,
+      "rows": 5,
+      "cols": 65,
+      "maxRowCount": 12,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "allowedCharCount": 780,
+      "maxlength": 780,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "phraseEnabled": true,
+      "styleClass": "messageStyle",
+      "phraseEnabled": true
+    },
+    "subTnxTypeCode": {
+      "name": "subTnxTypeCode",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "subTnxTypeCode",
+      "hidden": true,
+      "rendered": false
+    },
+    "actionRequired": {
+      "name": "actionRequired",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "actionRequired",
+      "hidden": true,
+      "previewScreen": false,
+      "rendered": false
+    },
+    "id": "irGeneralDetailsComponent",
+    "helpId": "GD"
+  },
+  "irFileUploadDetails": {
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "btndisable": true,
+      "previewScreen": false
+    },
+    "fileUploadTable": {
+      "name": "fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12"
+    },
+    "attachments" : {
+        "name": "attachments",
+        "rendered": false,
+        "type": "json-obj",
+        "previewScreen": false
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "irFileUploadDetailsComponent",
+    "helpId": "AT"
+  }
+}

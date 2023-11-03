@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="100" js_binding="misys.binding.common.listdef_mc" help="LIST_HELP_SET_REFERENCE">
+	
+	<!-- columns -->
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="LN_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_UPDATE_CUSTOMER_REF"/>
+		</url>
+	</column>
+	<column name="bo_deal_name" align="left" width="15%" loca_key="DEAL"/>
+	<column name="bo_facility_name" align="left" width="20%" loca_key="FACILITY"/>
+	<column name="bo_ref_id" align="left;white-space:pre" width="15%" loca_key="OUTSTANDING_ALIAS"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="appl_date" align="center" width="6em" loca_key="APPL_DATE"/>
+	<column name="prod_stat_code" align="center" width="10%" loca_key="STATUS"/>
+	
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"/>
+	<parameter
+		name="bo_deal_name"
+		size="35"
+		max_length="40"
+		loca_key="DEAL"
+		input="y"
+		default=""/>
+	<parameter
+		name="bo_facility_name"
+		size="35"
+		max_length="35"
+		loca_key="FACILITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="OUTSTANDING_ALIAS"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="currency"/>
+	
+	<!-- Download File button option -->			
+	<parameter
+		name="export_list"
+		file_name="updateLNCustomerReferenceRecords"
+		type="export"/>
+
+	<!-- candidates -->	
+	<candidate name="loan_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_deal_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_deal_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_facility_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_facility_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="isNull"/>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

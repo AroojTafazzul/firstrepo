@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="bank" scope="system_features">
+	<name>module_BSFAccountsManagement</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<methodParam>accountid</methodParam>
+	<methodParam>companyid</methodParam>
+	<staticParam>menuaction</staticParam>
+	
+	
+	<!-- Opening the list of user for external account -->
+	<!-- <action>
+		<actionCode>OpenCustomerListExternalBSF</actionCode>
+		<class>AccountsManagementBankListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_am_beneficiary_access</permission>
+		<operation>-</operation>
+		<accountid>-</accountid>
+		<companyid>-</companyid>
+		<option>BENEFICIARY_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListExternalBSF</menuaction>
+	</action>
+	Open list of beneficiary accounts
+	<action>
+		<actionCode>OpenListBeneficiaryAccountBSF</actionCode>
+		<class>AccountsManagementListPortlet</class>
+		<method>maintainCustomerAccounts</method>
+		<permission>tradeadmin_am_beneficiary_access</permission>
+		<operation>DISPLAY_ACCOUNT_LIST</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>BENEFICIARY_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListExternalBSF</menuaction>
+	</action>
+	to add an beneficiary account
+	<action>
+		<actionCode>OpenBeneficiaryAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>createAccounts</method>
+		<permission>tradeadmin_am_beneficiary_access</permission>
+		<operation>ADD_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>BENEFICIARY_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListExternalBSF</menuaction>
+	</action>
+	to modify an beneficiary account from the list
+	<action>
+		<actionCode>ModifyBeneficiaryAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_beneficiary_access</permission>
+		<operation>MODIFY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>BENEFICIARY_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListExternalBSF</menuaction>
+	</action>
+	to delete an beneficiary account from the list
+	<action>
+		<actionCode>DeleteBeneficiaryAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>deleteAccount</method>
+		<permission>tradeadmin_am_beneficiary_access</permission>
+		<operation>DELETE_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>BENEFICIARY_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListExternalBSF</menuaction>
+	</action>
+	to view an beneficiary account from the list
+	<action>
+		<actionCode>ViewBeneficiaryAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_beneficiary_access</permission>
+		<operation>DISPLAY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>BENEFICIARY_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListExternalBSF</menuaction>
+	</action>
+	to save a new beneficiary account
+	<action>
+		<actionCode>SaveBeneficiaryAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>saveAccount</method>
+		<permission>tradeadmin_am_beneficiary_access</permission>
+		<operation>SAVE_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>BENEFICIARY_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListExternalBSF</menuaction>
+	</action>
+	
+	
+	<!-- Opening the list of user for swift account -->
+	<!-- <action>
+		<actionCode>OpenCustomerListSwiftBSF</actionCode>
+		<class>AccountsManagementBankListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_am_swift_access</permission>
+		<operation>-</operation>
+		<accountid>-</accountid>
+		<companyid>-</companyid>
+		<option>SWIFT_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListSwiftBSF</menuaction>
+	</action>
+	Open list of swift beneficiaries account
+	<action>
+		<actionCode>OpenListSwiftBeneficiariesBSF</actionCode>
+		<class>AccountsManagementListPortlet</class>
+		<method>maintainCustomerAccounts</method>
+		<permission>tradeadmin_am_swift_access</permission>
+		<operation>DISPLAY_ACCOUNT_LIST</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>SWIFT_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListSwiftBSF</menuaction>
+	</action>
+	to add a swift account
+	<action>
+		<actionCode>OpenSwiftAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>createAccounts</method>
+		<permission>tradeadmin_am_swift_access</permission>
+		<operation>ADD_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>SWIFT_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListSwiftBSF</menuaction>
+	</action>
+	to modify an swift account from the list
+	<action>
+		<actionCode>ModifySwiftAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_swift_access</permission>
+		<operation>MODIFY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>SWIFT_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListSwiftBSF</menuaction>
+	</action>
+	to delete an swift account from the list
+	<action>
+		<actionCode>DeleteSwiftAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>deleteAccount</method>
+		<permission>tradeadmin_am_swift_access</permission>
+		<operation>DELETE_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>SWIFT_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListSwiftBSF</menuaction>
+	</action>
+	to view an swift account from the list
+	<action>
+		<actionCode>ViewSwiftAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_swift_access</permission>
+		<operation>DISPLAY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>SWIFT_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListSwiftBSF</menuaction>
+	</action>
+	to save a new swift account
+	<action>
+		<actionCode>SaveSwiftAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>saveAccount</method>
+		<permission>tradeadmin_am_swift_access</permission>
+		<operation>SAVE_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>SWIFT_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListSwiftBSF</menuaction>
+	</action>
+	
+	
+	Open list of bill payees
+	<action>
+		<actionCode>OpenListBillAccountBSF</actionCode>
+		<class>AccountsManagementListPortlet</class>
+		<method>maintainAccounts</method>
+		<permission>tradeadmin_am_bill_access</permission>
+		<operation>-</operation>
+		<accountid>-</accountid>
+		<companyid>-</companyid>
+		<option>BILL_PAYEE_MAINTENANCE</option>
+		<menuaction>OpenListBillAccountBSF</menuaction>
+	</action>
+	to add a bill account
+	<action>
+		<actionCode>OpenBillPayeeBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>createAccounts</method>
+		<permission>tradeadmin_am_bill_access</permission>
+		<operation>ADD_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>-</companyid>
+		<option>BILL_PAYEE_MAINTENANCE</option>
+		<menuaction>OpenListBillAccountBSF</menuaction>
+	</action>
+	to modify an bill account from the list
+	<action>
+		<actionCode>ModifyBillPayeeBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_bill_access</permission>
+		<operation>MODIFY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>BILL_PAYEE_MAINTENANCE</option>
+		<menuaction>OpenListBillAccountBSF</menuaction>
+	</action>
+	to delete an bill account from the list
+	<action>
+		<actionCode>DeleteBillPayeeBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>deleteAccount</method>
+		<permission>tradeadmin_am_bill_access</permission>
+		<operation>DELETE_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>BILL_PAYEE_MAINTENANCE</option>
+		<menuaction>OpenListBillAccountBSF</menuaction>
+	</action>
+	to view an bill account from the list
+	<action>
+		<actionCode>ViewBillPayeeBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_bill_access</permission>
+		<operation>DISPLAY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>BILL_PAYEE_MAINTENANCE</option>
+		<menuaction>OpenListBillAccountBSF</menuaction>
+	</action>
+	to save a new bill account
+	<action>
+		<actionCode>SaveBillPayeeBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>saveAccount</method>
+		<permission>tradeadmin_am_bill_access</permission>
+		<operation>SAVE_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>BILL_PAYEE_MAINTENANCE</option>
+		<menuaction>OpenListBillAccountBSF</menuaction>
+	</action>
+	
+	
+	
+	Opening the list of user for other accounts
+	<action>
+		<actionCode>OpenCustomerListOtherBSF</actionCode>
+		<class>AccountsManagementBankListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>-</operation>
+		<accountid>-</accountid>
+		<companyid>-</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	Open list of other accounts
+	<action>
+		<actionCode>OpenListOtherAccountBSF</actionCode>
+		<class>AccountsManagementListPortlet</class>
+		<method>maintainCustomerAccounts</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>DISPLAY_ACCOUNT_LIST</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	to add an other account
+	<action>
+		<actionCode>OpenOtherAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>createAccounts</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>ADD_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	to modify an other account from the list
+	<action>
+		<actionCode>ModifyOtherAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>MODIFY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	to delete an other account from the list
+	<action>
+		<actionCode>DeleteOtherAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>deleteAccount</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>DELETE_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	to view an other account from the list
+	<action>
+		<actionCode>ViewOtherAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>openAccounts</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>DISPLAY_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	to save a new other account
+	<action>
+		<actionCode>SaveOtherAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>saveAccount</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>SAVE_ACCOUNT</operation>
+		<accountid>-</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	to upload a MT940 file for the account
+	<action>
+		<actionCode>UploadOtherAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>UploadMT940Data</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>UPLOAD_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action>
+	to save MT940 information
+	<action>
+		<actionCode>SaveUploadOtherAccountBSF</actionCode>
+		<class>AccountsManagementPortlet</class>
+		<method>SaveMT940Data</method>
+		<permission>tradeadmin_am_other_account</permission>
+		<operation>SAVE_UPLOAD_ACCOUNT</operation>
+		<accountid>%</accountid>
+		<companyid>%</companyid>
+		<option>OTHER_ACCOUNT_MAINTENANCE</option>
+		<menuaction>OpenCustomerListOtherBSF</menuaction>
+	</action> -->
+</module>

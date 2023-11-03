@@ -1,0 +1,19 @@
+<ng-container [formGroup]="form">
+  <div class="p-col-12 {{ control.params.parentStyleClass }}">
+    <div
+      *ngIf="control.params.rendered"
+      dir="{{ dir }}"
+      class="{{ control.params.styleClass }}"
+    >
+      <span
+        class="material-icons"
+        tabindex="0"
+        (click)="onEventRaised($event, control.key)"
+        (keyup)="onEventRaised($event, control.key)"
+        attr.title="{{control.params.iconName | translate}}"
+      >
+        {{ control.params.iconName }}
+      </span>
+    </div>
+  </div>
+</ng-container>

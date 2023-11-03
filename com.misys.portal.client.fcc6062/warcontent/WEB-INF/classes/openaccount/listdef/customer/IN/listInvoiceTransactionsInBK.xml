@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="a" page="50" huge="y" distinct="n">
+
+	 <column name="ref_id" align="center" width="10%" />
+	 <column name="entity" align="center" width="10%" />
+	 <column name="fscm_prog@program_name" align="center" width="10%" />
+	 <column name="buyer_name" align="center" width="13%" />
+	 <column name="seller_name" align="center" width="13%"/>
+	 <column name="total_net_cur_code" align="center" width="13%"/>
+	 <column name="total_net_amt" align="center" width="13%"/>
+	 <column name="liab_total_net_amt" align="center" width="13%"/>
+	 <column name="iss_date" align="center" width="13%"/>
+	 <column name="due_date" align="center" width="13%"/>
+	 <column name="status" align="center" width="13%">
+		<script>
+		if(value.equals(""))
+		{
+			var prodStatCode = row.getColumnValue("prod_stat_code");
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N005",prodStatCode.toString());
+		}
+		value;
+		</script>
+	</column>
+
+	<column name="prod_stat_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter name="search_ref_id"/>
+	<parameter name="entity" />
+	<parameter name="buyer_name" />
+	<parameter name="total_cur_code" type="Currency"/>
+	<parameter name="amount_from_cur" type="Currency"/>
+	<parameter name="amount_to_cur" type="Currency"/>
+	<parameter name="amount_from" type="Amount"/>
+	<parameter name="amount_to" type="Amount" />
+	<parameter name="invoice_date_from" />
+	<parameter name="invoice_date_to" />
+	<parameter name="invoice_due_date_from" />
+	<parameter name="invoice_due_date_to" />
+	<parameter name="appl_date"/>
+
+	<candidate name="invoice_master">
+		<filter>
+			<criteria>
+				<column name="fscm_prog@program_id"/>
+				<operator type="equal"/>
+				<value type="parameter">program_id</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">search_ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">entity</value>
+			</criteria>
+			<criteria>
+				<column name="buyer_name"/>
+				<operator type="like"/>
+				<value type="parameter">buyer_name</value>
+			</criteria>
+			<criteria>
+				<column name="total_net_cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">total_cur_code</value>
+			</criteria>
+			<criteria>
+				<column name="total_net_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					amount_from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="total_net_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					amount_to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="iss_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						invoice_date_from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="iss_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						invoice_date_to
+					</value>
+			</criteria>
+			<criteria>
+				<column name="due_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						invoice_due_date_from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="due_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						invoice_due_date_to
+					</value>
+			</criteria>			
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">N005_ELIGIBLE</value>
+		</criteria>
+		<criteria>
+			<column name="eligibility_flag"/>
+			<operator type="equal"/>
+			<value type="code">N085_ELIGIBLE</value>
+		</criteria>
+		<criteria>
+			<column name="due_date"/>
+				<operator type="superior"/>
+				<value type="parameter">
+					appl_date
+				</value>
+		</criteria>
+	</filter>
+	<filter or="y">
+		<criteria>
+			<column name="finance_requested_flag"/>
+			<operator type="isNull"/>
+		</criteria>
+		<criteria>
+			<column name="finance_requested_flag"/>
+			<operator type="equal"/>
+			<value type="code">N034_NO</value>
+		</criteria>
+	</filter>	
+</listdef>

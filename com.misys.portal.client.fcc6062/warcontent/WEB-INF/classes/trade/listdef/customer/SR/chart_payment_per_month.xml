@@ -1,0 +1,68 @@
+<listdef page='25'>
+	<reportId>RP00000822</reportId>
+	<name>Payments</name>
+	<description>Payments</description>
+	<multiProduct>N</multiProduct>
+	<product_code>LCTnx</product_code>
+	<column name='tnx_id' hidden='y'></column>
+	<column name='maturity_date' hidden='y'></column>
+	<column name='tnx_amt' hidden='y'></column>
+	<parameter input='y' name='Maturity' size='' max_length=''
+		mandatory='false'>
+		<description locale='en'>Maturity</description>
+		<default type='04'></default>
+	</parameter>
+	<candidate name='SRTnx'>
+		<filter>
+			<criteria>
+				<column name='maturity_date'></column>
+				<operator type='supOrEqual'></operator>
+				<value type='parameter'>Maturity</value>
+			</criteria>
+			<criteria>
+				<column name='prod_stat_code'></column>
+				<operator type='equal'></operator>
+				<value type="code">
+					N005_ACCEPTED
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name='maturity_date'></column>
+				<operator type='supOrEqual'></operator>
+				<value type='parameter'>Maturity</value>
+			</criteria>
+			<criteria>
+				<column name='prod_stat_code'></column>
+				<operator type='equal'></operator>
+				<value type="code">
+					N005_PART_SIGHT_PAID
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name='maturity_date'></column>
+				<operator type='supOrEqual'></operator>
+				<value type='parameter'>Maturity</value>
+			</criteria>
+			<criteria>
+				<column name='prod_stat_code'></column>
+				<operator type='equal'></operator>
+				<value type="code">
+					N005_FULL_SIGHT_PAID
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<group graph='bar'>
+		<column name='maturity_date' hierarchy='month'></column>
+		<aggregate type='sum' cur='EUR'>
+			<column name='tnx_amt'></column>
+			<description locale='en'>Payment (EUR)</description>
+			<description locale='fr'>Paiement (EUR)</description>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

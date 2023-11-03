@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ListDef xml for trade Accounts details Look Up -->
+<listdef ordered="y" default_order="account_no" page="5">
+	<column name="account_id" hidden="y" />
+	<column name="account_no" hidden="y" />
+	<column name="name" hidden="y" />
+	<column name="owner_type" hidden="y" />
+	<column name="description" hidden="y" />
+	<column name="address_line_1" hidden="y" />
+	<column name="address_line_2" hidden="y" />
+	<column name="dom" hidden="y" />
+	<column name="format" hidden="y" />
+	<column name="EntityAccount@Entity@abbv_name" hidden="y" />
+	<column name="cur_code" hidden="y" />
+	<column name="CustomerAccount@account_id" hidden="y" />
+	<column name="CustomerAccount@Company@company_id" hidden="y" />
+	<column name="EntityAccount@account_id" hidden="y" />
+	<column name="EntityAccount@Entity@entity_id" hidden="y" />
+
+	<!-- parameters -->
+	<parameter name="entity" input="y" />
+	<parameter name="account_no" input="y" />
+	<parameter name="description" input="y" />
+
+	<!-- candidates -->
+	<candidate name="staticAccountTrade">
+		<filter>
+			<criteria>
+				<column name="owner_type" />
+				<operator type="equal" />
+				<value type="code">
+					N081_STATIC_ACCOUNT
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

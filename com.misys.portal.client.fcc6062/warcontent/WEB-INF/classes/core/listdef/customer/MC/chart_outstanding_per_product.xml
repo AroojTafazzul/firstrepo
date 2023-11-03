@@ -1,0 +1,34 @@
+<listdef page='25'>
+	<name>Outstanding per Product</name>
+	<description>Outstanding_per_Product</description>
+	<multiProduct>Y</multiProduct>
+	<product_code>LC,SI,SR,BG,EC,SG,IC,EL,IR,BR</product_code>
+	<column name='ref_id' hidden='y'/>
+	<column name='product_code' hidden='y'/>
+	<column name='liab_amt' hidden='y'/>
+	<column name='liab_cur_code' hidden='y'/>
+	<candidate name='LC'/>
+	<candidate name='SI'/>
+	<candidate name='SR'/>
+	<candidate name='BG'/>
+	<candidate name='EC'/>
+	<candidate name='SG'/>
+	<candidate name='IC'/>
+	<candidate name='EL'/>
+	<candidate name='IR'/>
+	<candidate name='BR'/>
+	<group graph='bar'>
+		<column name='product_code'/>
+		<aggregate type='sum' cur='EUR'>
+			<column name='liab_amt'/>
+			<description locale='en'>Total (EUR)</description>
+			<description locale='fr'>Total (EUR)</description>
+		</aggregate>
+		<!-- aggregate type='count'>
+			<column name='ref_id'/>
+			<description locale='en'>Number of Files</description>
+			<description locale='fr'>Nombre de Dossiers</description>
+		</aggregate-->
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

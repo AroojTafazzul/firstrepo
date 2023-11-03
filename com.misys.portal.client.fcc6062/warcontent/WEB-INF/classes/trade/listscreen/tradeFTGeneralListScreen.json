@@ -1,0 +1,87 @@
+{
+	"productcode": "N001_FT",
+	"buttons": [
+	    {
+			"buttonName": "templateButton",
+			"permission": "trade_ft_save",
+			"buttonClass": "secondaryButton",
+			"routerLink": "productListing?productCode=FT&option=TEMPLATE"
+		},
+		{
+			"buttonName": "initiateFTButton",
+			"permission": "trade_ft_save",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=FT&tnxTypeCode=01&mode=INITIATE"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "approved",
+			"listdefName": "/trade/listdef/customer/FT/customerApprovedTradeFTList",
+			"permission": "trade_ft_access",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "draft",
+			"listdefName": "/trade/listdef/customer/FT/customerDraftTradeFTList",
+			"permission": "trade_ft_save",
+			"index": 1,
+			"selected": ""
+		},
+		{
+			"tabName": "uaPendingApproval",
+			"listdefName": "/trade/listdef/customer/FT/customerPendingClientTradeFTList",
+			"permission": "trade_ft_access",
+			"index": 2,
+			"selected": "true",
+			"severalSubmit": "trade_ft_approve",
+			"commentsRequired": "true",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "uaPendingBankApproval",
+			"listdefName": "/trade/listdef/customer/FT/customerPendingBankTradeFTList",
+			"permission": "trade_ft_access",
+			"index": 3,
+			"selected": ""
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/trade/listdef/customer/FT/customerRejectedTradeFTList",
+			"permission": "trade_ft_access",
+			"index": 4,
+			"selected": ""
+		},
+		{
+			"tabName": "closed",
+			"listdefName": "/trade/listdef/customer/FT/customerOthersTradeFTList",
+			"permission": "trade_ft_access",
+			"index": 5,
+			"selected": "",
+			"severalSubmit": "trade_ft_purged_maintain",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "delete",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "delete"
+		      	}
+			]
+		}
+	]
+}

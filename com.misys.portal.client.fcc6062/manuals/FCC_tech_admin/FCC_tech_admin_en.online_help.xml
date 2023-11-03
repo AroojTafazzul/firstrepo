@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Online Help</title>
+
+  <section>
+    <title>Overview</title>
+
+    <para>This chapter aims to describe the mechanism of the <application
+    moreinfo="none">Online Help</application> in <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>. The section below is a
+    general introduction to the processing rules and the second section a list
+    of the standard conventions.</para>
+  </section>
+
+  <section>
+    <title>Storage and Maintenance</title>
+
+    <para>The Online Help is stored and maintained in dedicated tables of the
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>. This provides flexible
+    online maintenance features to the functional administrator.</para>
+
+    <!--<para>In order to facilitate the user understanding, the navigation,
+    maintenance screens and actions available have been made similar to the
+    ones offered in the <xi:include href="../entities_en.xml"
+    xpointer="ent_Customer_RM" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    (CRM) module, as described in the <emphasis role="strong">User
+    Manual</emphasis> or <emphasis role="strong">Technical
+    References</emphasis> manuals.</para> -->
+
+    <section>
+      <title>Underlying Structures</title>
+
+      <para><inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="images/tech_admin-fig.underlying.gif"
+                       width="120mm"/>
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para>The User Online Help project provides the help content for all
+      user features. The <database moreinfo="none">project_id</database> is
+      fixed to <literal>1</literal>. No permission is required to edit
+      it.</para>
+
+      <para>A Middle Office Online Help <database
+      moreinfo="none">project_id</database> is also reserved and fixed to
+      <literal>2</literal>.</para>
+
+      <para>Additional help project could be added, for instance for external
+      applications that may be integrated within the portal.</para>
+    </section>
+
+    <section>
+      <title>Access Conventions</title>
+
+      <para><emphasis role="strong">Localized version access
+      key</emphasis></para>
+
+      <para>Within a given help project, the various language versions are
+      stored in different sections in <database>gtp_help_section</database>. A
+      logical <database moreinfo="none">ACCESS_KEY</database> is defined for
+      each section, so that the correct language version can be directly
+      accessed depending on the user language. The ISO language code
+      convention is used as the <database
+      moreinfo="none">ACCESS_KEY</database> for a given version.</para>
+
+      <informaltable>
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.4*"/>
+
+          <colspec colname="c2" colwidth="3.1*"/>
+
+          <colspec colname="c3" colwidth="4.4*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>access_key in
+              gtp_help_section</para></entry>
+
+              <entry valign="top"><para>Language</para></entry>
+
+              <entry valign="top"><para>Title</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para>en</para></entry>
+
+              <entry valign="top"><para>English</para></entry>
+
+              <entry valign="top"><para>User Guide</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>fr</para></entry>
+
+              <entry valign="top"><para>French</para></entry>
+
+              <entry valign="top"><para>Guide Utilisateur</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>de</para></entry>
+
+              <entry valign="top"><para>German</para></entry>
+
+              <entry valign="top"><para/></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>...</para></entry>
+
+              <entry valign="top"><para>...</para></entry>
+
+              <entry valign="top"><para/></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para><emphasis role="strong">Topic access key</emphasis></para>
+
+      <para>For each language within help project, a help topic is set-up for
+      each module or main section in the help (ex: <xi:include
+      href="../entities_en.xml" xpointer="ent_Import_LC"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> module), thus defining a
+      subdivision.</para>
+
+      <para>A logical <database moreinfo="none">ACCESS_KEY</database> is also
+      defined for each topic, and used to directly access the correct topic
+      from within a feature, thus offering a powerful contextual help can be
+      provided from the various modules and features. You'll find below the
+      <database moreinfo="none">ACCESS_KEY</database>s defined for each
+      module.</para>
+
+      <para>For each topic a permission can also be specified, so that the
+      users will only get access to the help topics corresponding to the
+      features they are granted access to.</para>
+
+      <para>Note that the <database moreinfo="none">ACCESS_KEY</database> and
+      the permission required to access the topics are available in the topics
+      maintenance screen.</para>
+
+      <informaltable>
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.4*"/>
+
+          <colspec colname="c2" colwidth="7.5*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>access_key in
+              gtp_help_topic</para></entry>
+
+              <entry valign="top"><para>Topic Name</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para>GENERAL</para></entry>
+
+              <entry valign="top"><para>General</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LC_01</para></entry>
+
+              <entry valign="top"><para>Import Letter of Credit -
+              Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LC_03</para></entry>
+
+              <entry valign="top"><para>Import Letter of Credit -
+              Amendment</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LC_02</para></entry>
+
+              <entry valign="top"><para>Import Letter of Credit - Free Format
+              Message</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LC_04</para></entry>
+
+              <entry valign="top"><para>Import Letter of Credit - Discrepant
+              Response</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LC_17</para></entry>
+
+              <entry valign="top"><para>Import Letter of Credit - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>EL_02</para></entry>
+
+              <entry valign="top"><para>Export Letter Of Credit - Free
+              Format</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>EL_17</para></entry>
+
+              <entry valign="top"><para>Export Letter Of Credit - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SG_01</para></entry>
+
+              <entry valign="top"><para>Shipping Guarantee -
+              Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SG_02</para></entry>
+
+              <entry valign="top"><para>Shipping Guarantee -
+              Update</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SG_17</para></entry>
+
+              <entry valign="top"><para>Shipping Guarantee - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>TF_01</para></entry>
+
+              <entry valign="top"><para>Financing Request -
+              Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>TF_02</para></entry>
+
+              <entry valign="top"><para>Financing Request -
+              Update</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>TF_17</para></entry>
+
+              <entry valign="top"><para>Financing Request - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>BG_01</para></entry>
+
+              <entry valign="top"><para>Banker Guarantee -
+              Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>BG_03</para></entry>
+
+              <entry valign="top"><para>Banker Guarantee -
+              Amendment</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>BG_02</para></entry>
+
+              <entry valign="top"><para>Banker Guarantee - Free Format
+              Message</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>BG_17</para></entry>
+
+              <entry valign="top"><para>Banker Guarantee - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>EC_01</para></entry>
+
+              <entry valign="top"><para>Export Collection -
+              Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>EC_02</para></entry>
+
+              <entry valign="top"><para>Export Collection -
+              Update</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>EC_17</para></entry>
+
+              <entry valign="top"><para>Export Collection - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>IC_02</para></entry>
+
+              <entry valign="top"><para>Import Collection - Free Format
+              Message</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>IC_17</para></entry>
+
+              <entry valign="top"><para>Import Collection - Inquiry and
+              maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>IR_02</para></entry>
+
+              <entry valign="top"><para>Inward Remittance - Free Format
+              Message</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>IR_17</para></entry>
+
+              <entry valign="top"><para>Inward Remittance - Inquiry and
+              maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SI_01</para></entry>
+
+              <entry valign="top"><para>Standby Letter Of Credit Issued -
+              Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SI_03</para></entry>
+
+              <entry valign="top"><para>Standby Letter Of Credit Issued -
+              Amendment</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SI_02</para></entry>
+
+              <entry valign="top"><para>Standby Letter Of Credit Issued - Free
+              Format Message</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SI_17</para></entry>
+
+              <entry valign="top"><para>Standby Letter Of Credit Issued -
+              Inquiry and Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SR_02</para></entry>
+
+              <entry valign="top"><para>Standby Letter Of Credit Received -
+              Free Format Message</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SR_17</para></entry>
+
+              <entry valign="top"><para>Standby Letter Of Credit Received -
+              Inquiry and Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>FT_01</para></entry>
+
+              <entry valign="top"><para>Fund Transfer -
+              Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>FT_17</para></entry>
+
+              <entry valign="top"><para>Fund Transfer - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LC_01</para></entry>
+
+              <entry valign="top"><para>License - Initiation</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LS_03</para></entry>
+
+              <entry valign="top"><para>License - Amendment</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LS_02</para></entry>
+
+              <entry valign="top"><para>License - Free Format
+              Message</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>LS_17</para></entry>
+
+              <entry valign="top"><para>License - Inquiry and
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SY_JURIS</para></entry>
+
+              <entry valign="top"><para><xi:include href="../entities_en.xml"
+              xpointer="ent_System_F"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> -
+              Jurisdiction</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SY_USER</para></entry>
+
+              <entry valign="top"><para><xi:include href="../entities_en.xml"
+              xpointer="ent_System_F"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> - User
+              Maintenance</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SY_DATA</para></entry>
+
+              <entry valign="top"><para><xi:include href="../entities_en.xml"
+              xpointer="ent_System_F"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> - Static
+              Data</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SY_AUDIT</para></entry>
+
+              <entry valign="top"><para>Audit</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>SY_ALERT</para></entry>
+
+              <entry valign="top"><para>Alerts Maintenance</para></entry>
+            </row>
+
+            <!--<row>
+              <entry valign="top"><para>OTH_CRM</para></entry>
+
+              <entry valign="top"><para>Customer Relationship
+              Management</para></entry>
+            </row> -->
+
+            <row>
+              <entry valign="top"><para>OTH_CAL</para></entry>
+
+              <entry valign="top"><para>Calendar</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para>MC</para></entry>
+
+              <entry valign="top"><para>Trade Message Center</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para><emphasis role="strong">Items</emphasis></para>
+
+      <para>A topic is itself subdivided in sub-sections called Items. For
+      each item an <database>ACCESS_KEY</database> could also be defined,
+      although this level of contextual help invocation is not required
+      today.</para>
+    </section>
+  </section>
+</chapter>

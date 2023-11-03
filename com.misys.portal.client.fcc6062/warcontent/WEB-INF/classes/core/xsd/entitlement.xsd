@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for an exchange rate. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="userCategories">
+	    <xs:complexType>
+	        <xs:sequence>
+	            <xs:element minOccurs="0" maxOccurs="unbounded" name="category" type="categoryType"/>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+	<xs:complexType name="categoryType">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="company_id">
+				<xs:annotation>
+					<xs:documentation>Company Id.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="company_id">
+				<xs:annotation>
+					<xs:documentation>Company Id.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="entitlement_id">
+				<xs:annotation>
+					<xs:documentation>Entitlement Id.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="entitlement_code">
+				<xs:annotation>
+					<xs:documentation>Entitlement Code.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="entitlement_description">
+				<xs:annotation>
+					<xs:documentation>Entitlement Description.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" forceDisplaySearch='y' help="LIST_HELP_DRAWDOWN" page="100" source="loaniq_facilities">
+
+	<!-- column name="../name" align="left" width="20%" loca_key="DEAL"/ -->
+	<column name="name" align="left" width="30%" loca_key="FACILITY">
+		<url>
+			<parameter name="TRANSACTION_TYPE_CODE" value="01"/>
+			<parameter name="OPERATION_CODE" value="NEW_DRAWDOWN"/>
+			<parameter name="BORROWER_ID" column="borrowerid"/>
+			<parameter name="FACILITY_ID" column="id"/>
+			<parameter name="SCREEN" value="LN_SCREEN"/>			
+		</url>
+		<script displayCondition="y">
+			var status = row.getColumnValue("status");
+			if("Active".equals(""+status+""))
+			{
+				value = true;
+			}
+			else
+			{
+			    value = false;
+			}
+			
+			value;
+		</script>
+	</column>
+	<column name="fcn" align="left" width="6em" loca_key="FCN"/>
+	<column name="../../name" align="left" width="20%" loca_key="BORROWER_NAME"/>
+	<column name="currency" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="total" align="right" width="9em" loca_key="FACILITY_TOTAL"/>
+	<column name="available" align="right" width="9em" loca_key="FACILITY_AVAILABLE"/>
+	<column name="expiryDate" align="center" width="6em" loca_key="EXP_DATE"/>
+	<column name="maturityDate" align="center" width="6em" loca_key="MATURITY"/>
+	<column name="status" align="center" width="6em" loca_key="STATUS" sort="n"/>
+
+	<!-- facility ID -->
+	<column name="id" hidden="y"/>
+
+	<!-- borrower ID -->
+	<column name="../../id" hidden="y"/>
+	<column name="borrowerid" hidden="y"/>
+
+	<!-- deal name -->
+	<column name="../name" hidden="y"/>
+	
+	
+	<parameter
+		name="borrowerid"
+		size="20"
+		max_length="20"
+		loca_key="BORROWER_REF"
+		input="y"
+		type="AvailableCustomerReference"
+		productCode="LN"
+		default=""/>
+		
+	<!-- candidates -->	
+	<candidate name="facility" >
+		<filter>
+			<criteria>
+				<column name="../../id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					borrowerid
+				</value>
+			</criteria>
+	    </filter>
+	</candidate>
+
+	<group>
+		<column name="../name"/>
+	</group>
+
+
+</listdef>

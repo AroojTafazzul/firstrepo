@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Trouble Shooting</title>
+
+  <section>
+    <title>Basic Trouble Shooting</title>
+
+    <para>This section provides the <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    application installation basic trouble shooting information. Below are the
+    various scenarios experienced in the past and resolved.</para>
+
+    <section>
+      <title>First Time Login Screen Building Issue</title>
+
+      <para><literal>Problem : </literal>After <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> application installed
+      successfully and launched the application, login screen not properly
+      building. Below is the sample snapshot which demonstrates how the screen
+      looks like in this scenario</para>
+
+      <para><inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="images/tech_admin-fig.loginscreenissue.gif"
+                       width="120mm"/>
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para><literal>Trouble Shooting Approaches : </literal> <orderedlist>
+          <listitem>
+             Verify Java Script execution mode in portal.properties . 
+
+            <programlisting>dojo.mode = DEBUG_ALL/DEBUG</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             dojo.mode key value should be PROD in production environment. 
+
+            <note>Only in the development environments or for enabling
+            debugging it should be DEBUG/DEBUG_ALL.</note>
+
+             
+          </listitem>
+
+          <listitem>
+             Correct the dojo.mode key value to PROD then restart the server. Again try to login then screen should looks as expected. 
+          </listitem>
+        </orderedlist></para>
+    </section>
+
+    <section>
+      <title>Database Related Exception Issue</title>
+
+      <para><literal>Problem :
+      </literal>com.misys.portal.common.tracer.GTPException: Audit.generateId
+      (java.lang.Exception: java.sql.SQLException: ORA-00942: table or view
+      does not exist java.sql.SQLException: ORA-00942: table or view does not
+      exist</para>
+
+      <para><literal>Trouble Shooting Approaches: </literal> <orderedlist>
+          <listitem>
+             Verify the 
+
+            <filename moreinfo="none">torque.properties</filename>
+
+             and set torque.database.default.adapter key values are as per database. 
+          </listitem>
+
+          <listitem>
+             Verify torque.dsfactory.default.connection -&gt; drive, url, user and password are key values set as per database. 
+          </listitem>
+
+          <listitem>
+             Verify torque.dsfactory.default.pool.validationQuery key value set to database appropriate. 
+          </listitem>
+
+          <listitem>
+             Verify 
+
+            <filename moreinfo="none">portal.properties</filename>
+
+             for 
+
+            <varname>services.GTPPoolBrokerService.adaptor</varname>
+
+             and 
+
+            <varname>services.GTPPoolBrokerService.adaptor.class</varname>
+
+             key values set as per database. 
+          </listitem>
+        </orderedlist></para>
+    </section>
+
+    <section>
+      <title>Password Encoding Related Issue</title>
+
+      <para><literal>Problem : </literal>System doesn't allow to login even
+      with correct password.</para>
+
+      <para><literal>Trouble Shooting Approaches : </literal> <para>In case
+      Unix/Linux environment you need to enable
+      default.pwd.string.charset=UTF-8 property. In Windows, by default its
+      UTF-8 <para>
+          <programlisting>
+		#This property if enabled, would identify the file encoding used during password generation.Default charset is UTF-8.
+		#If disabled, password generation would be as per the default fileset.encoding supported by the environment
+		#default.pwd.string.charset=UTF-8
+		</programlisting>
+        </para> </para></para>
+    </section>
+
+    <section>
+      <title>Online Help Related Issue</title>
+
+      <para><literal>Problem : </literal>Online Help is not working. An error
+      message gets displayed on load of the Online Help popup window</para>
+
+      <para><literal>Trouble Shooting Approaches : </literal> <para>Online
+      Help Content needs to be inserted in Database. Finastra provides
+      target.zip file under Online_help in deliverable. Extract from zip file
+      and update the DB connection properties in "common.properties" with
+      relevant values and execute the batch script "insert_mtp_help.bat" in
+      it. This will insert the Online Help content in Database</para></para>
+    </section>
+
+    <section>
+      <title>Static Data Related Issue</title>
+
+      <itemizedlist>
+        <listitem>
+          <para><literal>Problem : </literal>Rate updated in Back office is
+          not reflecting in <xi:include href="../entities_en.xml"
+          xpointer="ent_appli"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+
+          <para><literal>Trouble Shooting Approaches : </literal> <para>Ensure
+          below properties are enabled as follows, <programlisting>daemon.entry=raterefresherdaemon
+daemon.raterefresherdaemon.classname=com.misys.portal.core.daemon.impl.RateRefresherDaemon
+daemon.raterefresherdaemon.interval=10&lt;/varname&gt;&lt;varname&gt;daemon.raterefresherdaemon.onstartup=true</programlisting></para></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Log Files Related Issue</title>
+
+      <itemizedlist>
+        <listitem>
+          <para><literal>Problem : </literal>Log files are not generated for
+          Turbine/Torque/Scheduler/Audit under appdata/logs folder.</para>
+
+          <para><literal>Trouble Shooting Approaches : </literal> <para>Check
+          the following log file paths configured in <filename
+          moreinfo="none">appdata\config\log4j.properties</filename> file for
+          properties <varname>log4j.appender.turbine.file</varname>,
+          <varname>log4j.appender.torque.file</varname>,
+          <varname>log4j.appender.scheduler.file</varname>,
+          <varname>log4j.appender.gtpaudit.file.</varname></para></para>
+        </listitem>
+
+        <listitem>
+          <para><literal>Problem : </literal>Log files are not generated for
+          Turbine/Torque/Scheduler/Audit on Websphere server.</para>
+
+          <para><literal>Trouble Shooting Approaches : </literal> <para>change
+          the setup related to class loader policy as specified below.
+          <programlisting>Applications -&gt; Application Types -&gt; Websphere enterprise applications -&gt; Under Select Application -&gt; Under Manage Modules section -&gt;
+select Module -&gt; Select the Class loader order dropdown value as - Classes loaded with local class loader first (Parent last) -&gt; Click Apply and then ok.
+
+Applications -&gt; Application Types -&gt; Websphere enterprise applications -&gt; Select Application -&gt; Under Detail Properties section-&gt; 
+Click on - Class loading and update detection -&gt; Under Class loader order radio button group -&gt; 
+Select Classes loaded with local class loader first (parent last) radio button -&gt; Click Apply and then Ok button and then restart the Application.</programlisting>
+          </para></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Application Server and Database Related Issue</title>
+
+      <itemizedlist>
+        <listitem>
+          <para><literal>Problem : </literal> Messages are not getting
+          triggered/consumed for IBM MQ</para>
+
+          <para><literal>Trouble Shooting Approaches : </literal> <para>For
+          the IBM Websphere, remove the JMS1.1.jar from the
+          mp.ear--&amp;gt;mp.war--&amp;gt;WEB-INF/lib folder before deploying
+          the mp.ear to the websphere in case if any connection to the IBM MQ
+          is to be supported.</para></para>
+        </listitem>
+
+        <listitem>
+          <para><literal>Problem : </literal> Screen breakages are reported
+          after running DDL statements in DB2</para>
+
+          <para><literal>Trouble Shooting Approaches : </literal> <para>After
+          running the DDL scripts for the effected tables re-org statements
+          are to be run and the application is to be restarted. This should be
+          done based on the reorgchk status. Example statement will be, REORG
+          TABLE  GTP_AUDIT_ITEM</para></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+</chapter>

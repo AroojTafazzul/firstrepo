@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="20" default_order="inp_dttm" default_order_type="d" data_key="tnx_id">
+
+	<column name="tnx_type_code" hidden="y" showCode="y"/>
+	<column name="sub_tnx_type_code" hidden="y" showCode="y"/>
+	<column name="transaction_type" align="left" width="13%" loca_key="LOAN_TRANSACTION_TYPE" columnFilterType="input-multiselect">
+		<script>
+			var tnxTypeCode = row.getColumnValue("tnx_type_code");
+			var subTnxTypeCode = row.getColumnValue("sub_tnx_type_code");
+			
+			if(!("".equals(""+tnxTypeCode+"")))
+			{
+				if("03".equals(""+tnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LISTDEF_PRODUCT_TYPE_INCREASE");
+				}
+				else if("13".equals(""+tnxTypeCode+"") &amp;&amp; "16".equals(""+subTnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LISTDEF_PRODUCT_TYPE_PAYMENT");
+				}
+				else if("01".equals(""+tnxTypeCode+"") &amp;&amp; "97".equals(""+subTnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LOAN_REPRICING_ANGULAR");
+				}
+				else if("01".equals(""+tnxTypeCode+"") &amp;&amp; "B1".equals(""+subTnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "SWINGLINE_ANGULAR_LABEL");
+				}
+				else 
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LOAN_DRAWDOWN"); 
+				}				
+			}
+			value;
+		</script>
+	</column>
+	
+	<column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE"/>
+	<column name="pricing_option" align="left" width="13%" loca_key="PRICING_OPTION" columnFilterType="input-multiselect"/>
+	<column name="entity" align="left" width="13%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="tnx_amt" align="right" width="13%" loca_key="AMOUNT" columnFilterType="input-multiselect"/>
+		
+	<column name="action" align="right" width="14%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_CONTROLLED"/>
+			<parameter name="bo_facility_id" column="bo_facility_id"/>
+			<parameter name="borrower_reference" column="borrower_reference"/>
+			<parameter name="ACTION_FILTER" value="LN_VEAR"/>
+		</url>
+	</column>	
+	<column name="ObjectDataString@bulk_facility_name" hidden="y"/>
+	<column name="inp_dttm" align="center" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y"/>
+	<column name="sub_product_code" hidden="y" showCode="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="borrower_reference" hidden="y"/>
+	<column name="bo_facility_id" hidden="y"/>
+	<column name="bo_deal_name" hidden="y"/>
+	<column name="bo_facility_name" hidden="y"/>
+	
+	<!-- Parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	<parameter
+	    name="tnx_type_code_dropdown"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    type="AvailableLoanTransactionType"
+	    input="y"
+	    multiple="y"
+	    multiple_values="01:40,01:97,03:B2,13:16,01:B1"
+	    />
+	 <parameter
+	    name="tnx_type_code_parameter"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    size="35"
+		max_length="40"
+		multiple = "y"
+		hidden="true"
+	     />
+	<parameter
+	    name="sub_tnx_type_code_parameter"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    size="35"
+		max_length="40"
+		multiple = "y"
+		hidden="true"
+	    />
+	 <parameter
+	    name="sub_product_code_parameter"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    size="35"
+		max_length="40"
+		hidden="true"
+	    /> 	
+    <parameter
+		name="bo_deal_name"
+		size="35"
+		max_length="40"
+		loca_key="DEAL"
+		input="y"
+		multiple="y"
+		default=""
+		type="bo_deal_name"
+		hidden="true"/>
+	<parameter
+		name="bo_facility_name"
+		size="35"
+		max_length="35"
+		loca_key="FACILITY"
+		input="y"
+		multiple="y"
+		default=""
+		type="bo_facility_name"
+		hidden="true"/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		multiple="y"
+		loca_key="CURCODE"
+		type="Currency"/>
+	  <parameter
+		name="pricing_option"
+		size="35"
+		max_length="35"
+		loca_key="PRICING_OPTION"
+		input="y"
+		multiple="y"
+		default=""/>
+	<parameter
+		name="export_list"
+		file_name="pendingBankLNList"
+		type="export">
+	</parameter>
+	
+	<!-- Candidates -->
+	
+	<!-- pending files -->
+	<candidate name="loan">
+		<filter>
+			<criteria>
+				<column name="pricing_option"/>
+				<operator type="in"/>
+				<value type="parameter">
+					pricing_option
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="in"/>
+					<value type="parameter">
+						tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="in"/>
+					<value type="parameter">
+						sub_tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="bo_facility_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					bo_facility_name
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<!-- pending files -->
+	<candidate name="bulk_loan">
+		<filter>
+			<criteria>
+				<column name="child_product_code"/>
+				<operator type="equal"/>
+					<value type="code">
+						N001_LN
+					</value>		
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="in"/>
+					<value type="parameter">
+						tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="in"/>
+					<value type="parameter">
+						sub_tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="different"/>
+					<value type="parameter">
+						sub_product_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@bulk_facility_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					bo_facility_name
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	
+	<!-- Common filters -->
+	<filter>
+		<criteria>
+			<column name="bo_deal_name"/>
+			<operator type="in"/>
+			<value type="parameter">
+				bo_deal_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_CONTROLLED
+			</value>
+		</criteria>
+		<criteria>
+			<column name="ref_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+				ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="entity"/>
+			<operator type="in"/>
+			<value type="parameter">
+				entity
+			</value>
+		</criteria>
+		<criteria>
+			<column name="cur_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				cur_code
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@to
+			</value>
+		</criteria>
+	</filter>
+	
+	<filter and="y">
+		<criteria>
+			   <column name="bulk_ref_id"/>
+			   <operator type="isNull"/>
+			</criteria>
+	</filter>
+	
+	<filter or="y">
+		<businesscriteria type="isNew"/>
+		<businesscriteria type="isInquire"/>
+		<businesscriteria type="isAmendement"/>
+	</filter>
+</listdef>

@@ -1,0 +1,19 @@
+<listdef page='25'>
+	<name>Outstanding per Entity</name>
+	<description>Outstanding per Entity</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='product_code' hidden='y'/>
+	<column name='ft_amt' hidden='y'/>
+	<column name='ft_cur_code' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<candidate name='FT'/>
+	<group graph='bar'>
+		<column name='entity'/>
+		<aggregate type='sum' cur='EUR'>
+			<column name='ft_amt'/>
+			<description locale='en'>Total (EUR)</description>
+			<description locale='fr'>Total (EUR)</description>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

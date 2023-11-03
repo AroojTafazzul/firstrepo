@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50">
+
+	<!-- columns -->
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" script="row.getColumnValue(&quot;ref_id&quot;).toString().substring(0, 2)"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="PRODUCT_CODE" script="row.getColumnValue(&quot;ref_id&quot;).toString().substring(0, 2)"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="bo_ref_id" align="left" width="15%" loca_key="BO_REFERENCEID"/>
+	<column name="ls_number" align="left" width="15%" loca_key="LICENSE_NUMBER"/>
+	<column name="LicenseMaster@cur_code" align="center" width="3em" loca_key="LICENSE_CUR_CODE"/>
+	<column name="ls_allocated_amt" align="right" width="10em" loca_key="LICENSE_ALLOCATED_AMT"/>
+	<column name="ls_ref_id" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter name="referenceid" input="n"/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REFERENCEID"
+		input="y"/>
+	<parameter
+		name="export_list"
+		file_name="linkedProducts"
+		type="export"
+		batch="y"/>
+
+	<!-- candidates -->	
+	<candidate name="productlicenselink_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ls_ref_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					referenceid
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

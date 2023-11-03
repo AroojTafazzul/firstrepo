@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" forceDisplaySearch='y'
+	help="LIST_HELP_FACILITY" page="100" js_binding="misys.binding.loan.ln_facility_inquiry" source="loaniq_facilitiesInquiry">
+
+
+	
+	<column name="name" align="left" width="10%" loca_key="FACILITY" sort="n"/>
+	<column name="fcn" align="left" width="6em" loca_key="FCN" sort="n"/>
+	<column name="../../name" align="left" width="15%" loca_key="BORROWER_NAME" sort="n"/>
+	<column name="currency" align="center" width="2em" loca_key="CURCODE" sort="n"/>
+	<column name="totalCommitment_amt" align="right" width="7em" loca_key="COMMITMENT" sort="n"/>
+	
+	
+	<!-- url for outstandings -->
+	<column name="outstandings_amt" width="10em" align="right" loca_key="OUTSTANDINGS" sort="n">
+		<url popup="y">			 
+			<parameter name="LN_FACILITY_ID" column="name" />
+			<parameter name="OPTION_CODE" value="LN_LIST_INQUIRY" />
+			<parameter name="LN_DEAL_NAME" column="../name" />
+			<parameter name="BORROWER_ID" column="../../id" />
+			<parameter name="LINK_TITLE" value="OUTSTANDINGS" />
+			<parameter name="ALING_POP_UP_VALUE" value="right" />
+			
+		</url>
+	</column>
+	
+	
+	<column name="availableToDraw_amt" align="right" width="9em"
+		loca_key="AVAILABLE_TODRAW" sort="n" />
+		
+		<column name="fee"  width="10em" align="right" loca_key="FACILITY_FEE" sort="n">
+		<url popup="y">			 
+			<parameter name="FACILITY_ID" column="id" />
+			<parameter name="OPTION_CODE" value="FEE_DETAILS" />
+			<parameter name="SUBLIMIT_CHECK" column="fees" />
+			<parameter name="BORROWER_ID" column="../../id" />
+	
+		</url>
+	</column>
+	<!-- url for sub limits -->
+
+	<column name="sublimits" align="center" width="6em" loca_key="SUB_LIMIT" sort="n">
+		<url popup="y">
+			<parameter name="FACILITY_ID" column="id" />
+			<parameter name="LN_FACILITY_ID" column="name" />
+			<parameter name="DEAL_NAME" column="../name" />
+			<parameter name="BORROWER_ID" column="../../id" />
+			<parameter name="CURRENCY" column="currency" />
+			<parameter name="TOTAL_COMMITMENT" column="totalCommitment_amt" />
+			<parameter name="OPTION_CODE" value="SUBLIMITS_DETAILS" />
+			<parameter name="SUBLIMIT_CHECK" column="sublimit" />
+			<parameter name="LINK_TITLE" value="SUB_LIMIT" />
+
+		</url>
+	</column>
+
+	<column name="status" align="center" width="6em" loca_key="STATUS" sort="n"/>
+
+
+	<!-- facility ID -->
+	<column name="id" hidden="y" />
+
+	<!-- borrower ID -->
+	<column name="../../id" hidden="y" />
+	<!-- <column name="borrowerid" hidden="y"/> -->
+
+	<!-- deal name -->
+	<column name="../name" hidden="y" />
+	<!-- sublimit flag-->
+	<column name="sublimit" hidden="y"/> 
+	<!-- fees flag-->
+	<column name="fees" hidden="y"/> 
+
+	<!-- parameter -->
+
+	<parameter name="deal" input="y" size="35" max_length="40"
+		loca_key="DEAL" />
+
+	<parameter name="name" input="y" size="35" max_length="35"
+		loca_key="FACILITY" />
+	<parameter name="borrowerid" size="20" max_length="20"
+		loca_key="BORROWER_REF" input="y" type="AvailableCustomerReference"
+		productCode="LN" default="" />
+
+	<parameter name="currency" input="y" size="3" max_length="3"
+		loca_key="CURCODE" type="currency" />
+
+	<parameter name="status" loca_key="STATUS" type="AvailableFacilityStatus"
+		input="y" multiple_values="A,E,T,C" />
+
+	<parameter
+		name="escape"
+		input="y" 
+		size="10" 
+		max_length="10" 
+		type="escape"/>	
+
+
+	<!-- candidates -->
+
+
+	<candidate name="facility">
+		<filter>
+
+			<criteria>
+				<column name="../name" />
+				<operator type="like" />
+				<value type="parameter">
+					deal
+				</value>
+			</criteria>
+			<criteria>
+				<column name="name" />
+				<operator type="like" />
+				<value type="parameter">
+					name
+				</value>
+			</criteria>
+
+			<criteria>
+				<column name="../../id" />
+				<operator type="like" />
+				<value type="parameter">
+					borrowerid
+				</value>
+			</criteria>
+
+			<criteria>
+				<column name="currency" />
+				<operator type="like" />
+				<value type="parameter">
+					currency
+				</value>
+			</criteria>
+			<criteria>
+				<column name="status" />
+				<operator type="like" />
+				<value type="parameter">
+					status
+				</value>
+			</criteria>
+
+		</filter>
+	</candidate>
+
+	<group>
+		<column name="../name" />
+	</group>
+
+
+</listdef>

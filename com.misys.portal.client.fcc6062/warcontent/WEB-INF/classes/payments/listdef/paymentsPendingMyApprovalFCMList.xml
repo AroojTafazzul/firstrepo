@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef page="10" hideSearch="true" source="GenericInputSource" category="fcm"
+	parentNodePath="allTabsList/data" customInterfaceService="paymentsListing" customComponentName="getAllTab" filterParam ="PENDINGMYAPPROVAL" 
+	ordered="y" default_order="methodOfPayment" default_order_type="d">
+<!-- PENDINGAPPROVAL,PENDINGSEND -->
+	<batch type="submit">
+		<parameter name="SCREEN" value="PAYMENTS_LIST_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="VERSION" column="version"/>
+	</batch>
+	
+	<column name="initiationDate" align="left" width="12%" loca_key="initiationDate" columnFilterType="input-multiselect"/>
+	
+	<column alias="debtorIdentification"  isClubbedField="y" clubbedFieldsList="debtorIdentification,debtorName"
+      align="left" width="12%" loca_key="client_id/name" separator="ENTER" columnFilterType="input-multiselect"/>
+
+	<column name="debtorIdentification" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<column name="debtorName" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<column name="paymentReferenceNumber" align="left" width="15%" loca_key="paymentBatchReferenceId" isColumnSortDisabled="y" columnFilterType="input-multiselect"/>
+	
+	<column name="methodOfPayment" align="left" width="10%" loca_key="package" isColumnSortDisabled="y" columnFilterType="input-multiselect"/>
+	
+	<column alias="controlSum"  isClubbedField="y" clubbedFieldsList="controlSum,controlTotal" isColumnSortDisabled="y"
+      align="right" width="10%" loca_key="totalAmt" separator="ENTER" columnFilterType="input-multiselect"/>
+      
+	<column name="controlSum" align="left" width="12%" loca_key="totalAmt" hidden="y" />
+	
+	<column name="debtorAccount@currency" align="left" width="12%" loca_key="CUR_CODE" hidden="y"/>
+	
+	<column name="batchStatus" align="left" width="14%" loca_key="Status"  isColumnSortDisabled="y" columnFilterType="input-multiselect"/>
+	
+	<column name="isBatchPayment" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<column name="controlTotal" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<column name="action" align="right" width="8%" loca_key="ACTIONS">
+	   <url fcmAction="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_ON_PAYMENTS_STATUS">
+	    	   	<parameter name="PAYMENTS_STATUS" column="batchStatus"/>
+	   </url>
+	</column>
+	
+	<parameter name="methodOfPayment" size="35" max_length="35"
+	loca_key="package" input="y" default="" multiple="y" type="Beneficiary" />
+
+	<parameter name="controlSum" input="y" loca_key="totalAmt" />
+	
+	<parameter name="debtorIdentification" size="35" max_length="35"
+	loca_key="clientCode" input="y" default="" type="EntityFilter" />
+	
+	<parameter name="batchStatus" size="35" max_length="35"
+	loca_key="Status" input="y" default="" type="Beneficiary" />
+
+	<parameter
+		name="initiationDate"
+		type="range"
+		loca_key="DATE"
+		input="y"
+		default="blank"/>
+		
+	<candidate name="fcmpayments">
+		<filter>
+			<criteria>
+				<column name="methodOfPayment" />
+				<operator type="like" />
+				<value type="parameter">
+					methodOfPayment
+				</value>
+			</criteria>
+			<criteria>
+				<column name="controlSum" />
+				<operator type="like" />
+				<value type="parameter">
+					controlSum
+				</value>
+			</criteria>
+			<criteria>
+				<column name="debtorIdentification" />
+				<operator type="like" />
+				<value type="parameter">
+					debtorIdentification
+				</value>
+			</criteria>
+			<criteria>
+				<column name="batchStatus" />
+				<operator type="like" />
+				<value type="parameter">
+					batchStatus
+				</value>
+			</criteria>
+			<criteria>
+				<column name="initiationDate"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					initiationDate@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="initiationDate"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					initiationDate@to
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

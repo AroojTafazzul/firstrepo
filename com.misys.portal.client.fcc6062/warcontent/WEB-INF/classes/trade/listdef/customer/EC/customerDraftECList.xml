@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="20" data_key="tnx_id">
+
+	<column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="EC_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" />
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BANK_REFERENCE"/>
+	<!-- Add a new column for display of teh clubbed field : This will only handle clubbed cases, for single values we will still have to create a translation on client side and use it in the html -->
+	<column alias="event" align="left" width="12%" loca_key="event" columnFilterType="input-multiselect" isColumnSortDisabled="y" isClubbedField="y" clubbedFieldsList="tnx_type_code, sub_tnx_type_code"/>
+	<column name="tnx_type_code" showCode="y" isColumnSortDisabled="y" isCodeField="y" codeId="N002" hidden="y"/> 
+	<column name="sub_tnx_type_code" showCode="y" isColumnSortDisabled="y" hidden="y" isCodeField="y" codeId="N003"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="drawer_name" align="left" width="12%" loca_key="DRAWER_NAME" columnFilterType="input-multiselect" hidden="y"/>
+	<column name="drawee_name" align="left" width="12%" loca_key="ENTITY_NAME_DRAWEE" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="tnx_amt" align="right" width="14%" loca_key="AMOUNT" />
+	<column name="tenor_type" align="left" width="11%" loca_key="DRAFTAGAINST" columnFilterType="input-multiselect" showCode="y"
+	isCodeField="y" codeId="C095"/>
+	<column name="ec_type_code" align="left" width="11%" loca_key="EC_TYPE" columnFilterType="input-multiselect" hidden="y"/>
+	<column name="inp_dttm" align="center" width="10%" loca_key="LAST_MODIFY_DATE" hidden="y"/>
+	<column name="sub_tnx_stat_code" align="left" width="11%" loca_key="SUB_TNX_STAT_CODE" columnFilterType="input-multiselect" showCode="y" isColumnSortDisabled="y">
+		<script>
+		if (value.equals("")){
+			var tnxStatCode = row.getColumnValue("tnx_stat_code");
+			var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+			
+			if ("01".equals(""+tnxStatCode+"")) {
+				if ("".equals(""+subTnxStatCode+"") || "01".equals(""+subTnxStatCode+"")){
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N015","01");
+				} 
+				else if("18".equals(""+subTnxStatCode+"")) {
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N015",subTnxStatCode);
+				}
+			} 
+		}
+		else {
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N015",value);
+		}
+		value;
+		</script>
+	</column>
+	<column name="action" align="right" width="15%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_INCOMPLETE"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+		</url>
+	</column>
+	
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="action_req_code" hidden="y" showCode="y"/>
+	<column name="tnx_stat_code" hidden="y"  showCode="y"/>
+	
+
+	<!-- Parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="ref_id"
+		size="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		loca_key="BO_REF"
+		input="y"
+		default=""
+		/>
+	<!-- Add a new parameter for display of the clubbed params : Define the individual fields to be clubbed first and then the clubbed param. -->
+	<parameter
+		name="tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="TRANSACTION_TYPE_CODE"
+		input="y"
+		multiple="y"
+		default=""
+		hidden="true"
+		isCodeField="y"
+		codeId="N002"/>
+	<parameter
+		name="sub_tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="SUB_TRANSACTION_TYPE_CODE"
+		input="y"
+		multiple="y"
+		default=""
+		isCodeField="y"
+		codeId="N003"
+		hidden="true"/>
+	<parameter
+		name="event"
+		size="12"
+		max_length="20"
+		loca_key="event"
+		input="y"
+		multiple="y"
+		default=""
+		isClubbed="y"
+		type="TnxTypeSubTnxType"
+		clubbedFieldsList="tnx_type_code,sub_tnx_type_code"/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="Entity"/>
+		<parameter
+		name="drawer_name"
+		loca_key="DRAWER_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		hidden="true"
+		config_maxLength=""
+		/>
+	<parameter
+		name="drawee_name"
+		loca_key="ENTITY_NAME_DRAWEE"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		multiple="y"
+		type="Drawee"
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		type="Currency"/>
+		<parameter
+		name="tenor_type"
+		size="12"
+		max_length="20"
+		loca_key="DRAFTAGAINST"
+		input="y"
+		default=""
+		multiple="y"
+		isCodeField="y" 
+		codeId="C095">
+	</parameter>
+	<parameter
+		name="ec_type_code"
+		size="12"
+		max_length="20"
+		loca_key="EC_TYPE"
+		input="y"
+		default=""
+		multiple="y"
+		hidden="true"
+		type="AvailableECType">
+	</parameter>
+	<parameter
+		name="inp_dttm"
+		type="range"
+		loca_key="LAST_MODIFY_DATE"
+		input="y"
+		hidden="true"
+		default="blank"/>
+	<parameter
+		name="export_list"
+		file_name="draftEC"
+		type="export"/>
+	<parameter
+	name="sub_tnx_stat_code"
+    size="12"
+    max_length="20"
+    loca_key="SUB_TNX_STAT_CODE"
+    input="y"
+    default=""
+    multiple="y"
+    type="AvailableTradeSubTnxStatus">
+	</parameter>
+	
+	
+	
+	
+	<!-- pending files -->
+	<candidate name="export_collection">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_INCOMPLETE
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<!-- Common filters -->
+	<filter>
+		<criteria>
+			<column name="ref_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+				ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bo_ref_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+				bo_ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="entity"/>
+			<operator type="in"/>
+			<value type="parameter">
+				entity
+			</value>
+		</criteria>
+		<criteria>
+			<column name="drawer_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					drawer_name
+				</value>
+			</criteria>
+		<criteria>
+			<column name="drawee_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					drawee_name
+				</value>
+		</criteria>
+		<criteria>
+			<column name="cur_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				cur_code
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				tnx_type_code
+			</value>
+		</criteria>
+		<criteria>
+			<column name="sub_tnx_type_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				sub_tnx_type_code
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@to
+			</value>
+		</criteria>
+		
+		<criteria>
+			<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+		
+		<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+		<criteria>	
+			<column name="tenor_type"/>
+			<operator type="in"/>
+			<value type="parameter">
+				tenor_type
+			</value>
+		</criteria>
+		<criteria>
+				<column name="ec_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					ec_type_code
+				</value>
+			</criteria>
+		<criteria>
+			<column name="sub_tnx_stat_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				sub_tnx_stat_code
+			</value>
+		</criteria>	
+	</filter>
+	
+	<!-- <filter or="y">
+		<criteria>
+			<column name="full_name" computation="sum">
+				<column name="Inputter@first_name"/>	
+				<column name="Inputter@last_name"/>
+			</column>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+	</filter> -->
+	
+</listdef>

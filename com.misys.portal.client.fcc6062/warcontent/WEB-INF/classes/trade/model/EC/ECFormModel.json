@@ -1,0 +1,2350 @@
+{
+  "screen": "ExportCollectionScreen",
+  "isAccordionView": "true",
+  "ecGeneralDetails": {
+  "bankReferenceView": {
+      "name": "bankReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "rendered": false,
+      "persistance": false,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "showLabel": false,
+          "rendered": true
+        }
+      ]
+    },
+    "issDate": {
+      "name": "issDate",
+      "type": "input-date",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": false,
+      "persistance": false,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "rendered": false
+        }
+      ]
+    },   
+    "collectionType": {
+      "name": "collectionType",
+      "type": "text",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "collectionTypeOptions": {
+      "name": "collectionTypeOptions",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "01",
+          "02",
+          "03"
+        ]
+      },
+      "defaultValue": "01",
+      "type": "select-button",
+      "styleClass": "request toggle-chip",
+      "layoutClass": "p-grid p-col-12 p-md-12 p-lg-12 p-sm-12",
+       "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode-select",
+          "showLabel": false,
+          "rendered": true
+        }
+      ]
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "subProductCode": {
+		"name": "subProductCode",
+		"type": "input-text",
+		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+		"styleClass": "subProductCode",
+		"hidden": true
+	},
+	"tnxId": {
+		"name": "tnxId",
+		"type": "input-text",
+		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+		"styleClass": "subProductCode",
+		"hidden": true
+	},
+	"tnxTypeCode": {
+      "name": "tnxTypeCode",
+      "type": "input-text",
+      "rendered": false
+    },
+    "templateName": {
+      "name": "templateName",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "margin-side",
+      "maxlength": 20,
+      "rendered": false,
+      "required": false
+    },
+    "templateDescription": {
+      "name": "templateDescription",
+      "type": "narrative-textarea",
+      "swift": false,
+      "fieldSize": 65,
+      "maxRowCount": 4,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "rows": 1,
+      "cols": 65,
+      "allowedCharCount": 200,
+      "maxlength": 200,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "indented-text-area-field-65"
+      ],
+      "rendered": false
+    },
+    "createFrom": {
+      "name": "createFrom",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "createFromOptions": {
+      "name": "createFromOptions",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "template",
+          "copyfrom"
+        ]
+      },
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ],
+      "type": "select-button",
+      "styleClass": "createform toggle-chip",
+      "layoutClass": "p-grid p-col-12 p-md-12 p-lg-12 p-sm-12",
+       "previewScreen":false
+    },
+    "referenceSelected": {
+      "name": "referenceSelected",
+      "type": "text",
+      "layoutClass": "p-grid p-col-3 p-md-5 p-lg-3 p-sm-5",
+      "styleClass": [
+        "referenceSelectedStyle"
+      ],
+      "rendered": false,
+      "previewScreen": false,
+      "clubbedHeaderText": "referenceSelected",
+      "clubbedList": [
+        "fetchedRefValue"
+      ]
+    },
+    "parentReference": {
+      "name": "parentReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "rendered": false
+    },
+    "fetchedRefValue": {
+      "name": "fetchedRefValue",
+      "type": "input-text",
+      "layoutClass": "p-grid p-col-4 p-md-5 p-lg-4 p-sm-5",
+      "styleClass": [
+        "fetchedRefValueStyle"
+      ],
+      "maxlength": 16,
+      "rendered": false,
+      "clubbed": true
+    },
+    "removeLabel": {
+      "itemId": "removeLabel",
+      "name": "removeLabel",
+      "type": "text",
+      "layoutClass": "p-grid p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "removeLabelStyle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "templateSelection": {
+      "name": "templateSelection",
+      "type": "text",
+      "layoutClass": "p-grid p-col-3 p-md-6 p-lg-3 p-sm-6",
+      "styleClass": [
+        "templateSelectionStyle"
+      ],
+      "rendered": false,
+      "previewScreen": false,
+      "clubbedHeaderText": "templateSelection",
+      "clubbedList": [
+        "fetchedTemplate"
+      ]
+    },
+    "fetchedTemplate": {
+      "name": "fetchedTemplate",
+      "type": "input-text",
+      "layoutClass": "p-grid p-col-4 p-md-6 p-lg-4 p-sm-6",
+      "styleClass": [
+        "templateSelectionValueStyle"
+      ],
+      "maxlength": 20,
+      "rendered": false,
+      "clubbed": true
+    },
+    "removeLabelTemplate": {
+      "itemId": "removeLabelTemplate",
+      "name": "removeLabelTemplate",
+      "type": "text",
+      "layoutClass": "p-grid p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "removeLabelTemplateStyle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "modeofTransmission": {
+      "name": "modeofTransmission",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "docsSendMode": {
+      "name": "docsSendMode",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "",
+          "03"
+        ],
+        "icon": "fa fa-check-circle fa-2x",
+        "matIcon": "check_circle"
+      },
+      "defaultValue": "",
+      "type": "select-button",
+      "styleClass": [
+        "transmission"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",         
+          "fieldValueType": "view-mode-select",
+          "showLabel": false,
+          "rendered": true
+        }
+      ],
+      "layoutClass": "p-grid p-col-12 p-md-12 p-lg-12 p-sm-12",
+      "dynamicCriteria": {
+		"dependControl": "docsSendMode",
+		"dependSection": "ecGeneralDetails",
+		"hideIfEmpty": true,
+		"presentSection": "ecGeneralDetails"
+	  }
+    },
+    "references": {
+      "name": "references",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "rendered": false,
+          "mode": "view",
+          "fieldValueType": "view-mode"
+        }
+      ]
+    },
+    "ecCustomerReference": {
+      "name": "ecCustomerReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "persistance": false,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "rendered": true,
+          "mode": "view",
+          "fieldValueType": "view-mode"
+        }
+      ]
+    },
+    "ecDraweeReference": {
+      "name": "ecDraweeReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "rendered": false,
+          "mode": "view",
+          "fieldValueType": "view-mode"
+        }
+      ]
+    },
+    "amendNarrative": {
+      "name": "amendNarrativeText",
+      "type": "text",
+      "rendered": false,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": true
+        }
+      ]
+    },
+    "amendNarrativeText": {
+      "name": "amendmentNarrative",
+      "type": "narrative-textarea",
+      "rendered": false,
+      "fieldSize": 50,
+      "swift": false,
+      "rows": 5,
+      "cols": 50,
+      "maxRowCount": 312,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "allowedCharCount": 15554,
+      "maxlength": 15554,
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+      "styleClass": "amendNarrativeStyle",
+      "required": false,
+      "amendSpecificField":true,
+      "phraseEnabled": true,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": true
+        }
+      ],
+       "dynamicCriteria": {
+        "dependControl": "subTnxTypeCode",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValues": ["01", "02", "03"],
+        "presentSection": "ecGeneralDetails"
+      }
+    },
+    "childRef": {
+      "name": "childRef",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "childRefTable"
+      ],
+      "layoutClass": "p-col-12",
+      "showLabelView": false,
+      "showLabel": false
+    },
+    "space1": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "ecGeneralDetailsComponent",
+    "helpId": "GD"
+  },
+  "drawerDraweeDetails": {
+    "drawer": {
+      "prefix": "drawer",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "fullAddress"
+      ],
+      "requiredFields": [
+        "entity",
+        "name",
+        "address1"
+      ],
+      "fieldsNotApplicable": [
+        "country"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "showLabel": false
+        },
+        {
+          "option": "TEMPLATE",
+          "requiredFields": []
+        }
+      ]
+    },
+    "drawee": {
+      "prefix": "drawee",
+      "sectionType": "beneficiaryModel",
+      "hideFields": [      
+        "fullAddress"
+      ],
+      "requiredFields": [
+        "entity",
+        "address1",
+        "country"
+      ],
+      "fieldsNotApplicable": [      
+        "name"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "requiredFields": [
+        		"entity",
+        		"address1",
+        		"country"
+      		]
+        },
+        {
+          "option": "TEMPLATE",
+          "requiredFields": []
+        }
+      ]
+    },
+     "draweeSaveToggle": {
+		"name": "draweeSaveToggle",
+		"type": "input-switch",
+		"defaultValue": "N",
+		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+		"styleClass": [
+			"appl-detail-header"
+		],
+		"rendered": false,
+		"previewScreen": false,
+		"applicableScreens": [
+			{
+				"tnxTypeCode": "03",
+				"mode": "edit",
+				"showLabel": true
+			}
+		]
+	},
+	"draweeAbbvName": {
+          "name": "draweeAbbvName",
+          "type": "input-text",
+          "maxlength": 35,
+          "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+          "styleClass": [
+            "margin-all-side"
+          ],
+         "rendered": false,
+         "applicableScreens": [
+			{
+				"tnxTypeCode": "03",
+				"mode": "edit",
+				"rendered": false
+			},
+			{
+				"option": "TEMPLATE",
+				"requiredFields": []
+			}
+		]
+     },   
+    "space": {
+      "noofspacers": "3",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space1": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "drawerDraweeComponent",
+    "helpId": "DD"
+  },
+  "ecbankDetails": {
+    "tabbedPanel": {
+      "name": "bankDetailsTab",
+      "type": "tabbedPanel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "tabComponentList": [
+        "remittingBank",
+        "presentingBank",
+        "collectingBank"
+      ],
+      "tabs": [
+        {
+          "remittingBank": {
+            "bankNameHeader": {
+              "name": "bankNameHeader",
+              "type": "text",
+              "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+              "styleClass": [
+                "subheader-title"
+              ],
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "edit",
+                  "rendered": false
+                }
+              ],
+              "previewScreen": false
+            },
+            "bankNameList": {
+              "name": "bankNameList",
+              "type": "input-dropdown",
+              "options": [],
+              "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+              "styleClass": [
+                "issueBankName"
+              ],
+              "required": true,
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "view",
+                  "fieldValueType": "view-mode",
+                  "style": "bankViewOptions",
+                  "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+                  "showLabel": false
+                },
+                {
+                  "option": "TEMPLATE",
+                  "required": false
+                }
+              ],
+              "groupHeaderText": "remittingBank",
+              "groupChildren": [
+                "bankNameList",
+                "issuerReferenceList"
+              ]
+            },
+              "bankNameAmmend": {
+              "name": "bankNameAmmend",
+              "type": "input-text",
+              "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+              "styleClass": [
+                "issueBankName"
+              ],
+              "hidden":true,
+              "required": false,
+              "rendered": false
+            },
+            "issuerReferenceHeader": {
+              "name": "issuerReferenceHeader",
+              "type": "text",
+              "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+              "styleClass": [
+                "subheader-title"
+              ],
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "edit",
+                  "rendered": false
+                }
+              ],
+              "previewScreen": false
+            },
+            "issuerReferenceList": {
+              "name": "issuerReferenceList",
+              "options": [],
+              "type": "input-dropdown",
+              "styleClass": [
+                "issuerRef",
+                "margin-all-side"
+              ],
+              "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+              "required": true,
+              "grouphead": "bankNameList",
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "view",
+                  "fieldValueType": "view-mode",
+                  "style": "bankViewOptions",
+                  "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+                  "showLabel": false
+                },
+                {
+                  "option": "TEMPLATE",
+                  "required": false
+                }
+              ]
+            },
+            "ecbankInstructionsHeader": {
+              "name": "ecbankInstructionsHeader",
+              "type": "text",
+              "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+              "styleClass": [
+                "subheader-title"
+              ],
+              "groupChildren": [
+                "principalAct",
+                "feeAct",
+                "forwardContract",
+                "otherInst"
+              ]
+            },
+            "principalAct": {
+              "name": "principalAct",
+              "type": "input-dropdown",
+              "options": [],
+              "defaultValue": "",
+              "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+              "styleClass": "principalAct",
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "edit",
+                  "style": "ammendPrincipalAct"
+                }
+              ],
+              "grouphead": "ecbankInstructionsHeader",
+              "groupHeaderForLabel": "ecbankInstructionsHeader",
+              "groupLevel": "2"
+            },
+            "space9": {
+              "noofspacers": "1",
+              "prefix": "nine",
+              "sectionType": "spacerModel",
+              "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12"
+            },
+            "feeAct": {
+              "name": "feeAct",
+              "type": "input-dropdown",
+              "options": [],
+              "defaultValue": "",
+              "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 rightwrapper",
+              "styleClass": "feeAct",
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "edit",
+                  "style": "ammendFeeAct"
+                }
+              ],
+              "grouphead": "ecbankInstructionsHeader",
+              "groupHeaderForLabel": "ecbankInstructionsHeader"
+            },
+            "forwardContract": {
+              "name": "forwardContract",
+              "type": "input-text",
+              "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+              "styleClass": [
+                "forwardContract"
+              ],
+              "rendered": true,
+              "maxlength": 35,
+			  "grouphead": "ecbankInstructionsHeader",
+			  "groupHeaderForLabel": "ecbankInstructionsHeader",
+			   "dynamicCriteria": {
+		        "dependControl": "tnxTypeCode",
+		        "dependSection": "ecGeneralDetails",
+		        "requiredValues": ["01","03"],
+		        "presentSection": "ecbankDetails"
+		      }
+            },
+            "otherInst": {
+              "name": "otherInst",
+              "type": "narrative-textarea",
+              "rendered": true,
+              "rows": 5,
+              "cols": 65,
+              "fieldSize": 50,
+              "maxRowCount": 27,
+              "rowCount": 0,
+              "swift": false,
+              "enteredCharCount": 0,
+              "allowedCharCount": 845,
+              "maxlength": 845,
+              "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero otherInstructions",
+              "styleClass": [
+                "otherInst"
+              ],
+              "directive": true,
+              "grouphead": "ecbankInstructionsHeader",
+              "groupHeaderForLabel": "ecbankInstructionsHeader",
+	          "fullWidthView": true,
+              "phraseEnabled": true,
+               "dynamicCriteria": {
+		        "dependControl": "tnxTypeCode",
+		        "dependSection": "ecGeneralDetails",
+		        "requiredValues": ["01","03"],
+		        "presentSection": "ecbankDetails"
+		      }
+            }
+          },
+          "rendered": true,
+          "controlName": "remittingBank"
+        },
+        {
+          "presentingBank": {
+          	"presentingSwiftCode": {
+              "name": "presentingSwiftCode",
+              "type": "input-text",
+              "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+              "styleClass": [
+                "margin-all-side"
+              ],
+              "required": false,
+              "rendered": true,
+              "grouphead": "presentingBankHeader",
+              "isBankSection": true
+            },
+            "presentingBankIcons": {
+              "name": "presentingBankIcons",
+              "type": "icon",
+              "iconName": "search",
+              "rendered": true,
+              "layoutClass": "layoutIcon",
+              "styleClass": "iconStyle",
+              "parentStyleClass": "parentIconStyle",
+              "previewScreen": false
+            },
+            "presentingBank": {
+              "prefix": "presentingBank",
+              "sectionType": "addressLineModel",
+              "hideFields": [
+                "header",
+                "entity",
+                "fullAddress",
+                "country"
+              ],
+              "rendered": true,
+              "isBankSection": true,
+              "subSectionGroup": [
+                "presentingSwiftCode",
+                "prefix"
+              ]
+            },
+            "bankFullAddress": {
+              "name": "bankFullAddress",
+              "type": "input-text",
+              "layoutClass": "p_col_12",
+              "styleClass": [
+                ""
+              ],
+              "rendered": false
+            }
+          },
+          "rendered": true,
+          "controlName": "presentingBank"
+        },
+        {
+          "collectingBank": {
+          	"collectingSwiftCode": {
+              "name": "collectingSwiftCode",
+              "type": "input-text",
+              "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+              "styleClass": [
+                "margin-all-side"
+              ],
+              "required": false,
+              "rendered": true,
+              "grouphead": "collectingBankHeader",
+              "isBankSection": true
+            },
+            "collectingBankIcons": {
+              "name": "collectingBankIcons",
+              "type": "icon",
+              "iconName": "search",
+              "rendered": true,
+              "layoutClass": "layoutIcon",
+              "styleClass": "iconStyle",
+              "parentStyleClass": "parentIconStyle",
+              "previewScreen": false
+            },
+            "collectingBank": {
+              "prefix": "collectingBank",
+              "sectionType": "addressLineModel",
+              "hideFields": [
+                "header",
+                "entity",
+                "fullAddress",
+                "country"
+              ],
+              "rendered": true,
+              "isBankSection": true,
+              "subSectionGroup": [
+                "collectingSwiftCode",
+                "prefix"
+              ]
+            },
+            "bankFullAddress": {
+              "name": "bankFullAddress",
+              "type": "input-text",
+              "layoutClass": "p_col_12",
+              "styleClass": [
+                ""
+              ],
+              "rendered": false
+            }
+          },
+          "rendered": true,
+          "controlName": "collectingBank"
+        }
+      ]
+    },
+    "id": "ecBankDetailsComponent",
+    "helpId": "BD"
+    
+  },
+  "ecpaymentAmountDetails": {
+    "amountheader": {
+      "name": "amountheader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "orgECAmt": {
+      "name": "orgECAmt",
+      "type": "view-mode",
+      "layoutClass": "p-col-12 orgLCAmtStyle",
+      "rendered": false,
+      "showLabel": true,
+       "dynamicCriteria": {
+        "dependControl": "subTnxTypeCode",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValues": ["01","02"],
+        "presentSection": "ecpaymentAmountDetails"
+      } 
+    },    
+    "subTnxTypeCode":{
+         "name":"subTnxTypeCode",
+         "type":"input-text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":"subTnxTypeCode",
+         "hidden":true
+      },
+   "ecAmountheader": {
+      "name": "echeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-lg-12 p-md-12 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "echeader"
+      ],
+      "groupChildren": [
+        "currency",
+        "amount"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false
+        }
+      ],
+      "hideGrpHeaderInView": true
+    },
+    "chargeCurrency": {
+      "name": "currency",
+      "type": "input-dropdown-filter",
+      "options": {},
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 chargeAmt",
+      "styleClass": [
+        "no-margin-multiselect"
+      ],
+      "grouphead": "echeader",
+      "required": true,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false,
+          "layout": "p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+          "fieldValueType": "view-mode",
+          "showViewModeLabel": false
+        },
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "clubbedHeaderText": "echeader",
+      "clubbedList": [
+        "currency",
+        "amount"
+      ],
+      "previewValueAttr": "shortName",
+        "dynamicCriteria": {
+        "dependControl": "tnxTypeCode",
+        "dependSection": "ecGeneralDetails",
+        "notRequiredValue": "03",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },
+    "chargeAmount": {
+      "name": "amount",
+      "type": "fcc-currency",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 leftwrapper amountforamtchr",
+      "styleClass": [
+        "amt"
+      ],
+      "grouphead": "echeader",
+      "required": true,
+      "maxlength": 15,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "rendered": false,
+          "required": false
+        },
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "clubbed": true,
+        "previewValueAttr": "shortName",
+        "dynamicCriteria": {
+        "dependControl": "tnxTypeCode",
+        "dependSection": "ecGeneralDetails",
+        "notRequiredValue": "03",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },    
+     "increaseAmount": {
+      "name": "increaseAmount",
+      "type": "fcc-currency",
+      "amendSpecificField":true,
+      "maxlength": 15,
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 incDecAmt",
+      "styleClass": [
+        "amt"
+      ],
+      "rendered": false,
+      "previewDisplayedValue": true, 
+        "dynamicCriteria": {
+        "dependControl": "subTnxTypeCode",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValue": "01",
+        "presentSection": "ecpaymentAmountDetails"
+      },
+      "applicableScreens": [
+       {
+          "tnxTypeCode": "03",
+          "rendered": true
+       }
+       ]      
+    },
+     "decrAmountCurrency": {
+      "name": "decrAmountCurrency",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",      
+      "previewScreen": false,
+      "rendered":false,
+      "applicableScreens": [
+       {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false,
+          "layout": "p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+          "fieldValueType": "view-mode",
+          "showViewModeLabel": false
+       }
+       ]
+    },
+    "decreaseAmount": {
+      "name": "decreaseAmount",
+      "type": "fcc-currency",
+      "amendSpecificField":true,
+      "maxlength": 15,
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 incDecAmt",
+      "styleClass": [
+        "amt"
+      ], 
+      "rendered": false, 
+      "previewDisplayedValue": true, 
+      "dynamicCriteria": {
+        "dependControl": "subTnxTypeCode",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValue": "02",
+        "presentSection": "ecpaymentAmountDetails"
+      },  
+      "applicableScreens": [
+       {
+          "tnxTypeCode": "03",
+          "rendered": true
+       }
+       ]     
+    },
+     "newECAmtCurrency": {
+      "name": "newECAmtCurrency",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",      
+      "previewScreen": false,
+      "rendered":false,
+      "applicableScreens": [
+       {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false,
+          "layout": "p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+          "fieldValueType": "view-mode",
+          "showViewModeLabel": false
+       }
+       ]
+    },
+    "newECAmt": {
+      "name": "newECAmt",
+      "type": "fcc-currency",
+      "maxlength": 15,
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 incDecAmt",
+      "styleClass": [
+        "amt"
+      ],
+      "rendered": false,
+        "previewDisplayedValue": true, 
+        "dynamicCriteria": {
+        "dependControl": "subTnxTypeCode",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValues": ["01","02"],
+        "presentSection": "ecpaymentAmountDetails"
+      },     
+      "applicableScreens": [
+       {
+          "tnxTypeCode": "03",
+          "rendered": true
+       }
+       ]    
+    },     
+     "transactionAmount": {
+      "name": "transactionAmount",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "ecAvailableAmt": {
+      "name": "ecAvailableAmt",
+      "type": "input-text",
+      "hidden": true,
+      "previewScreen": false,
+      "feildType": "amount",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "clubbedHeaderText": "ecAvailableAmt",
+      "clubbedList": [
+        "currency",
+        "ecAvailableAmt"
+      ],
+      "dynamicCriteria": {       
+            "dependControl": "ecAvailableAmt",   
+            "dependSection": "ecpaymentAmountDetails",   
+            "hideIfEmpty": true,
+            "presentSection": "ecpaymentAmountDetails"   
+        },
+        "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": true,
+          "layout": "p-col-6 p-lg-6 p-md-6 p-sm-12 currencyView",
+          "fieldValueType": "view-mode",
+          "showViewModeLabel": false
+        }]
+    },
+    "outstandingAmount": {
+      "name": "outstandingAmount",
+      "type": "input-text",
+      "feildType": "amount",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "clubbedHeaderText": "outstandingAmount",
+      "clubbedList": [
+        "currency",
+        "outstandingAmount"
+      ],
+      "dynamicCriteria": {       
+            "dependControl": "outstandingAmount",   
+            "dependSection": "ecpaymentAmountDetails",   
+            "hideIfEmpty": true,
+            "presentSection": "ecpaymentAmountDetails"   
+        },
+        "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": true,
+          "layout": "p-col-6 p-lg-6 p-md-6 p-sm-12 currencyView",
+          "fieldValueType": "view-mode",
+          "showViewModeLabel": false
+        }]
+        
+    },
+    "ecTermCodeHeader": {
+      "name": "ecTermCodeHeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false
+        }
+      ],
+      "groupChildren": [
+        "ecTermCode",
+        "otherECTenorDesc"
+      ],
+      "hideGrpHeaderInView": true
+    },
+    "ecTermCode": {
+      "name": "ecTermCode",
+      "grouphead": "ecTermCodeHeader",
+      "source": "codeData",
+      "options": [
+        {
+          "value": "01",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "02",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+        },
+        {
+          "value": "04",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "03",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+        }
+      ],
+      "defautValue": "01",
+      "type": "input-radio-check",
+      "styleClass": [
+        "radiocontainer p-grid"
+      ],
+       "clubbed": true,
+        "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 amendLabelStyle"
+        }
+      ],
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "dynamicCriteria": {
+        "dependControl": "ecTermCode",
+        "dependSection": "ecpaymentAmountDetails",
+        "notRequiredValue": "03",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },
+    "otherECTenorDesc": {
+      "name": "otherECTenorDesc",
+      "grouphead": "ecTermCodeHeader",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "",
+      "maxlength": 35,
+      "rendered": false,
+      "clubbedHeaderText": "ecTermCode",
+      "clubbedList": [
+      	"ecTermCode",
+        "otherECTenorDesc"
+      ],
+      "dynamicCriteria": {
+        "dependControl": "ecTermCode",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValue": "03",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },
+    "ecDraftAgnstHeader": {
+      "name": "ecDraftAgnstHeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+        ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "ecTenorType": {
+      "name": "ecTenorType",
+      "source": "codeData",
+      "options": [
+        {
+          "value": "01",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "02",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "03",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        }
+      ],
+      "defautValue": "01",
+      "type": "input-radio-check",
+      "styleClass": [
+        "issuance_radio p-grid"
+      ],
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "required": true,
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        },
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 amendLabelStyle"
+        }
+      ]
+    },
+    "tenorPeriod": {
+      "name": "tenorPeriod",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+     "previewScreen": false
+    },
+    "ecPaymentDraftOptions": {
+      "name": "ecPaymentDraftOptions",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "01",
+          "02"
+        ],
+        "icon": "fa fa-check-circle fa-2x",
+        "matIcon": "check_circle"
+      },
+      "defaultValue": "01",
+      "type": "select-button",
+      "styleClass": "transmission-2",
+      "layoutClass": "p-grid p-col-7",
+      "amendDefaultReset": true
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "ecMaturityDate": {
+      "name": "ecMaturityDate",
+      "type": "input-date",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12",
+      "styleClass": [
+        "dateStyle"
+      ],
+      "required": false,
+      "rendered": false,
+	  "dynamicCriteria": {
+        "dependControl": "ecPaymentDraftOptions",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValue": "01",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },
+    "inputValNum": {
+      "name": "inputValNum",
+      "type": "input-text",
+      "layoutClass": "p-col-3",
+      "styleClass": [
+        "inputValNum"
+      ],
+      "rendered": false,
+      "required": false,
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "maxlength": 3,
+      "clubbedHeaderText": "ecMaturityDate",
+      "clubbedList": [
+        "inputValNum",
+        "inputDays",
+        "inputFrom",
+        "inputSelect",
+        "inputSelectOther"
+      ],
+	  "dynamicCriteria": {
+        "dependControl": "ecPaymentDraftOptions",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValue": "02",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },
+    "space3": {
+      "noofspacers": "1",
+      "prefix": "three",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12"
+    },
+    "inputDays": {
+      "name": "inputDays",
+      "source": "codeData",
+      "type": "input-dropdown",
+      "options": {
+        "value": [
+          "D",
+          "W",
+          "M",
+          "Y"
+        ]
+      },
+      "defaultValue": "",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12",
+      "styleClass": "inputDays",
+      "required": false,
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "rendered": false,
+      "clubbed": true
+    },
+    "space4": {
+      "noofspacers": "1",
+      "prefix": "four",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "inputFrom": {
+      "name": "inputFrom",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "F",
+          "A"
+        ]
+      },
+      "defaultValue": "",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12",
+      "styleClass": "inputFrom",
+      "required": false,
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "rendered": false,
+      "clubbed": true
+    },
+    "space5": {
+      "noofspacers": "1",
+      "prefix": "five",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12"
+    },
+    "inputSelect": {
+      "name": "inputSelect",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "A",
+          "G",
+          "E",
+          "L",
+          "I",
+          "P",
+          "S",
+          "O"
+        ]
+      },
+      "defaultValue": "",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12",
+      "styleClass": "inputSelect",
+      "required": false,
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "rendered": false,
+      "clubbed": true,
+      "dynamicCriteria": {
+        "dependControl": "inputSelect",
+        "dependSection": "ecpaymentAmountDetails",
+        "notRequiredValue": "O",
+        "presentSection": "ecpaymentAmountDetails"
+      },
+      "previewScreen": false  
+    },
+    "space6": {
+      "noofspacers": "1",
+      "prefix": "six",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12"
+    },
+    "inputSelectOther": {
+      "name": "inputSelectOther",
+      "type": "input-text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12",
+      "styleClass": [
+        "inputSelectOther"
+      ],
+      "rendered": false,
+      "maxlength": 222,
+      "clubbed": true,
+	  "dynamicCriteria": {
+        "dependControl": "inputSelect",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValue": "O",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },
+    "space8": {
+      "noofspacers": "1",
+      "prefix": "eight",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "ecBaseDate": {
+      "name": "ecBaseDate",
+      "type": "input-backdate",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12",
+      "styleClass": [
+        "dateStyle"
+      ],
+      "required": false,
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "rendered": false,
+      "dynamicCriteria": {
+        "dependControl": "ecPaymentDraftOptions",
+        "dependSection": "ecpaymentAmountDetails",
+        "requiredValue": "02",
+        "presentSection": "ecpaymentAmountDetails"
+      }
+    },
+    "space7": {
+      "noofspacers": "2",
+      "prefix": "seven",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "ecDocMethodHeader": {
+      "name": "ecDocMethodHeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "groupChildren": [
+        "billOfXchGeneration",
+        "coverLetterAtachment"
+      ],
+      "previewScreen": false      
+    },
+    "coverLetterAtachment": {
+      "name": "coverLetterAtachment",
+      "defaultValue": "N",
+      "type": "checkbox",
+      "grouphead": "ecDocMethodHeader",
+      "layoutClass": "p-col-6 padding_zero revolving_flag_style",
+      "styleClass": "margin-all-side radio-label",
+      "rendered": true
+    },
+    "billOfXchGeneration": {
+      "name": "billOfXchGeneration",
+      "defaultValue": "N",
+      "type": "checkbox",
+       "grouphead": "ecDocMethodHeader",
+      "layoutClass": "p-col-6 padding_zero revolving_flag_style",
+      "styleClass": "margin-all-side radio-label",
+      "rendered": false
+    },
+    "id": "ecpaymentAmountDetailsComponent",
+    "helpId": "PA"
+    
+  },
+  "ecShipmentDetails": {
+    "ecBolNumber": {
+      "name": "ecBolNumber",
+      "type": "input-text",
+      "maxlength": "20",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "ecBolNumber"
+      ],
+      "required": true,
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ]
+    },
+    "ecShippingBy": {
+      "name": "ecShippingBy",
+      "type": "input-text",
+      "maxlength": "65",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "ecShippingBy"
+      ]
+    },
+    "shipmentDetails": {
+      "prefix": "ecShipment",
+      "sectionType": "shipmentModel",
+      "fieldsNotApplicable": [
+        "oneSpace01",
+        "shipmentPeriodText",
+        "lastShipmentDate",
+        "placeOfLoading",
+        "placeOfDischarge"
+      ]
+    },
+    "incoTermsRules": {
+      "name": "incoTermsRules",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "purchaseTermsValue"
+    },
+    "incoTerms": {
+      "name": "incoTerms",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "purchaseTermsValue",
+      "translate": true,
+      "translateValue": "purchaseTermsValue_"
+    },
+    "namedPlace": {
+      "name": "namedPlace",
+      "type": "input-text",
+      "maxlength": "60",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "namedPlace"
+      ],
+      "amendClub": true
+    },
+    "ecdescOfGoods": {
+      "name": "ecdescOfGoods",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+       "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "ecdescOfGoodsText": {
+      "name": "ecdescOfGoodsText",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "fieldSize": 65,
+      "swift": false,
+      "rows": 1,
+      "cols": 65,
+      "maxRowCount": 100,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "allowedCharCount": 780,
+      "maxlength": 780,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "indented-text-area-field-65"
+      ],
+      "required": true,
+      "applicableScreens": [
+        {
+         "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false,
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "directive": false,
+      "phraseEnabled": true
+    },
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "three",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space4": {
+      "noofspacers": "1",
+      "prefix": "four",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "shipmentdetailsComponent",
+    "helpId": "SD"
+    
+  },
+  "ecLicenseDetails": {
+  	"applicableSections": [{
+      "tnxTypeCode": "01",
+	  "option": "TEMPLATE",
+	  "showTemplate": false,
+	  "productCode": "EC"
+     }, {
+		"productCode": "EC",
+		"isMaster": true
+     },
+     {
+      "tnxTypeCode": "03",
+      "productCode": "EC"
+	}],
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "linkLicenseButton": {
+      "itemId": "linkLicense",
+      "name": "linkLicense",
+      "type": "rounded-button",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "browseButton"
+      ],
+      "previewScreen": false
+    },
+    "linkedLicenses": {
+      "name": "linkedLicenses",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "linkedLicenses",
+      "hidden": true
+    },
+    "license": {
+      "name": "license",
+      "type": "edit-table",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "subControlsDetails": [
+        {
+          "REF_ID": {
+            "name": "REF_ID",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "BO_REF_ID": {
+            "name": "BO_REF_ID",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "BO_REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "LS_NUMBER": {
+            "name": "LS_NUMBER",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "LS_NUMBER",
+            "renderd": false
+          }
+        },
+        {
+          "currency": {
+            "name": "currency",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "currency",
+            "renderd": false
+          }
+        },
+        {
+          "amount": {
+            "name": "amount",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "amount",
+            "renderd": false
+          }
+        }
+      ],
+      "data": [],
+      "columns": [],
+      "options": [],
+      "previewScreen": true,
+      "OverDrawStatus": false,
+      "tnsAmountStatus": false,
+      "message1": "",
+      "message2": "",
+      "rendered": false
+    },
+    "licenseUploadError": {
+      "name": "licenseUploadError",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": "licenseUploadError",
+      "rendered": false
+    },
+    "id": "EcLicenseDetailsComponent",
+    "helpId": "LD"
+    
+  },
+  "ecCollectionInstructionsDetails": {
+    "advPaymtBy": {
+      "name": "advPaymtBy",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "codeID" : "C063",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "purchaseTermsValue",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "style": "ammendPrincipalAct"
+        }
+      ]
+    },
+    "advAcptDueDate": {
+      "name": "advAcptDueDate",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "codeID" : "C063",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "purchaseTermsValue",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "style": "ammendPrincipalAct"
+        }
+      ]
+    },
+    "openCharges": {
+      "name": "openCharges",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "ecOpenOptions": {
+      "name": "ecOpenOptions",
+      "source": "codeData",
+      "options": [
+        {
+          "value": "04",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "03",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+        }
+      ],
+      "defautValue": "04",
+      "type": "input-radio",
+      "styleClass": [
+        "corresponding_radio p-grid"
+      ],
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 amendLabelStyle"
+        }
+      ]
+    },
+    "outStdcurCharges": {
+      "name": "outStdcurCharges",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "ecOutStdCurOptions": {
+      "name": "ecOutStdCurOptions",
+      "source": "codeData",
+      "options": [
+        {
+          "value": "04",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "03",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+        }
+      ],
+      "defautValue": "03",
+      "type": "input-radio",
+      "styleClass": [
+        "corresponding_radio p-grid"
+      ],
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 amendLabelStyle"
+        }
+      ]
+    },
+    "waiveCharges": {
+      "name": "waiveCharges",
+      "defaultValue": "N",
+      "type": "checkbox",
+      "layoutClass": "p-col-6 padding_zero",
+      "parentClass": "collectionCheckboxStyle",
+      "styleClass": "margin-all-side radio-label"
+    },
+    "noPaymtProtest": {
+      "name": "noPaymtProtest",
+      "defaultValue": "N",
+      "type": "checkbox",
+      "layoutClass": "p-col-6 padding_zero",
+      "parentClass": "collectionCheckboxStyle",
+      "styleClass": "margin-all-side radio-label"
+    },
+    "nonAcptProtest": {
+      "name": "nonAcptProtest",
+      "defaultValue": "N",
+      "type": "checkbox",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "parentClass": "collectionCheckboxStyle",
+      "styleClass": "margin-all-side radio-label"
+    },
+    "advRefusalBy": {
+      "name": "advRefusalBy",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "codeID" : "C063",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "advRefusalByStyle",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "style": "ammendPrincipalAct"
+        }
+      ]
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "acptByArrvlGoods": {
+      "name": "acptByArrvlGoods",
+      "defaultValue": "N",
+      "type": "checkbox",
+      "layoutClass": "p-col-6 padding_zero revolving_flag_style",
+      "parentClass": "collectionCheckboxStyle",
+      "styleClass": "margin-all-side radio-label"
+    },
+    "insureGoods": {
+      "name": "insureGoods",
+      "defaultValue": "N",
+      "type": "checkbox",
+      "layoutClass": "p-col-6 padding_zero revolving_flag_style",
+      "parentClass": "collectionCheckboxStyle",
+      "styleClass": "margin-all-side radio-label"
+    },
+    "ecNeedReferToHeader": {
+      "name": "ecNeedReferToHeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "subheader-title ecNeedReferToHeaderStyle",
+      "previewScreen": false
+    },
+    "ecNeedReferTo": {
+      "name": "ecNeedReferTo",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "fieldSize": 65,
+      "swift": false,
+      "rows": 1,
+      "cols": 34,
+      "maxRowCount": 100,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "allowedCharCount": 136,
+      "maxlength": 136,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "indented-text-area-field-65"
+      ],
+      "required": false,
+      "directive": true,
+      "phraseEnabled": true,
+      "groupHeaderForLabel": "ecNeedReferToHeader"
+    },
+    "ecNeedReferToOptions": {
+      "name": "ecNeedReferToOptions",
+      "source": "codeData",
+      "options": [
+        {
+          "value": "Y",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "N",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+        }
+      ],
+      "defautValue": "Y",
+      "type": "input-radio",
+      "styleClass": [
+        "corresponding_radio p-grid"
+      ],
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "showLabel": true,
+          "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 amendLabelStyle"
+        }
+      ]
+    },
+    "otherInstructionsHeader": {
+      "name": "otherInstructionsHeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "subheader-title otherInstructionsHeaderStyle",
+      "previewScreen": false
+      
+    },
+    "ecOtherInst": {
+      "name": "ecOtherInst",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "fieldSize": 65,
+      "swift": false,
+      "rows": 1,
+      "cols": 65,
+      "maxRowCount": 100,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "allowedCharCount": 450,
+      "maxlength": 450,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "indented-text-area-field-65"
+      ],
+      "required": false,
+      "directive": true,
+      "phraseEnabled": true,
+      "groupHeaderForLabel": "otherInstructionsHeader"
+    },
+    "id": "ecCollectionInstructionsComponent",
+    "helpId": "CI"
+  },
+  "ecDocumentDetails": {
+  	"applicableSections": [{
+      "tnxTypeCode": "01",
+      "productCode": "EC"
+      },
+      {
+      "tnxTypeCode": "03",
+      "productCode": "EC"
+     }],
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "previewScreen": false
+    },
+    "attachNotAllowed": {
+      "name": "attachNotAllowed",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "licenseUploadError",
+      "previewScreen": false,
+      "rendered":false
+    },
+    "fileUploadTable": {
+      "name": "fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12",
+      "previewScreen": true,
+      "showLabelView" : true
+    },
+    "attachments": {
+      "name": "attachments",
+      "rendered": false,
+      "type": "json-obj",
+      "previewScreen": false
+    },
+    "docInstBank": {
+      "name": "docInstBank",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false,
+      "required": true
+    },
+    "addDocumentsBtn": {
+      "name": "addDocumentsBtn",
+      "type": "rounded-button",
+      "styleClass": [
+        "primaryButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "previewScreen": false
+    },
+    "addDocTextNote": {
+      "name": "addDocTextNote",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "rendered":true,
+      "previewScreen": false
+    },
+     "addDocTextError": {
+      "name": "addDocTextError",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "docError"
+      ],
+      "rendered":true,
+      "previewScreen": false
+    },
+    "documents": {
+      "name": "documents",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "documents",
+      "hidden": true
+    },
+    "documentTableDetails": {
+      "name": "documentTableDetails",
+      "type": "edit-table",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "documentTableDetails"
+      ],
+      "subControlsDetails": [
+        {
+          "documentType": {
+            "name": "documentType",
+            "type": "dropdown",
+            "editStatus": true,
+            "styleClass": "documentType",
+            "renderd": false,
+            "required": true,
+            "defaultValue": "09",
+			"disabled": false
+          }
+        },
+        {
+          "documentName": {
+            "name": "documentName",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "documentName",
+            "renderd": false,
+			"disabled": true,
+			"required": false,
+			"maxlength": 35
+          }
+        },
+        {
+          "documentNumber": {
+            "name": "documentNumber",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "documentNumber",
+            "renderd": false,
+            "required": false,
+            "maxlength": 20,
+			"disabled": false
+          }
+        },
+        {
+          "documentDate": {
+            "name": "documentDate",
+            "type": "date",
+            "editStatus": true,
+            "styleClass": "documentDate",
+            "renderd": false,
+            "required": false,
+			"disabled": false
+          }
+        },
+        {
+          "numOfOriginals": {
+            "name": "numOfOriginals",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "numOfOriginals",
+            "renderd": false,
+            "required": false,
+            "maxlength": 2,
+			"disabled": false
+          }
+        },
+        {
+          "numOfPhotocopies": {
+            "name": "numOfPhotocopies",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "numOfPhotocopies",
+            "renderd": false,
+            "required": false,
+            "maxlength": 2,
+			"disabled": false
+          }
+        },
+        {
+          "total": {
+            "name": "total",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "total",
+            "renderd": false,
+            "required": false,
+            "maxlength": 2,
+			"disabled": false
+          }
+        },
+       {
+          "linkTo": {
+            "name": "linkTo",
+            "type": "dropdown",
+            "editStatus": true,
+            "styleClass": "documentType",
+            "renderd": false,
+            "required": false,
+			"disabled": false,
+			"options": []
+          }
+        }
+      ],
+      "data": [],
+      "columns": [],
+      "options": [],
+      "previewScreen": true,
+      "enableMaxDate": true,
+      "showLabelView" : true,
+      "OverDrawStatus": false,
+      "tnsAmountStatus": false,
+      "message1": "",
+      "message2": "",
+      "rendered": false
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "ecDocumentDetailsComponent",
+     "helpId": "DOC"
+  }
+}

@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=Services: Facility Maintenance;PERM=sy_bank_facility_access"
+           id="FAM" role="TOPIC">
+  <title>Facility Maintenance</title>
+
+  <section role="ITEM">
+    <title>Overview</title>
+
+    <para role="TEXT">As an administrator at a bank, you can add a credit
+    facility that banks give their customers and allocate limits across the
+    customer's various branches. At this moment, this feature is applicable
+    only for Banker Guarantee.</para>
+ </section>
+    <section role="ITEM">
+      <title>Facility Maintenance - Navigation</title>
+
+      <para role="TEXT">To navigate to the <emphasis role="bold">Facility
+      Maintenance</emphasis> function, from the toolbar, select
+      <emphasis>System Features</emphasis> from the home page, then select
+      <emphasis>Facility Maintenance</emphasis> from the left navigation
+      menu.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Facility Maintenance - Customer Facility List</title>
+
+      <para role="TEXT">This option is used by the Bank Administrator and the
+      Bank Group Administrator to Maintain Facility details for customers.
+      When you select this option, you are presented with a list of all the
+      existing customers at your bank or bank group. You can search the list
+      by entering search criteria in the <guilabel moreinfo="none">Abbreviated
+      Name</guilabel>, <guilabel>Bank</guilabel>, <guilabel>Facility
+      Reference</guilabel>, <guilabel>Ccy</guilabel>.,
+      <guilabel>Facility</guilabel> and <guilabel>Review Date</guilabel>
+      fields at the top of the page. Click the <guilabel>Download
+      File</guilabel> button to download the list in CSV and Spreadsheet (MS
+      Excel) format.</para>
+
+      <para role="TEXT">The list of existing customers has the following
+      columns:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name that uniquely
+              identifies the customer. This is part of the login data that a
+              customer user must give to log into <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para>Name of the customer.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can access further details for a customer by
+      clicking on the required row. You are displayed the <guilabel>Customer
+      Facility List</guilabel> with the details shown in the table
+      below.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Facility
+              Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para>The reference details for the
+              facility. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Facility
+              Description</guilabel> </para></entry>
+
+              <entry valign="top"><para>The description for the
+              facility.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Bank</guilabel> </para></entry>
+
+              <entry valign="top">The Group Bank or Bank selected to maintain
+              this facility.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Facility
+              Review Date</guilabel> </para></entry>
+
+              <entry valign="top">The future date to review the extension of
+              the facility to the customer. If not extended by this date, the
+              facility is withdrawn automatically.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Ccy</guilabel> </para></entry>
+
+              <entry valign="top">The base currency for the facility.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Facility
+              Amount</guilabel> </para></entry>
+
+              <entry valign="top">The amount allocated to the
+              facility.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Available
+              Amount</guilabel> </para></entry>
+
+              <entry valign="top">The balance amount available after
+              utilisation by the customer.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Utilized
+              Amount</guilabel> </para></entry>
+
+              <entry valign="top">The amount utilised out of the total
+              allocated by the bank to the facility.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Pending
+              Bank Amount</guilabel> </para></entry>
+
+              <entry valign="top">The amount that is awaiting approval by the
+              bank. <note>
+                  <para>This information is available if the configuration has
+                  been set by the application administrator to wait for
+                  approval by the bank. However, if the administrator has set
+                  it for direct submission by the customer, this field is not
+                  applicable.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Utilization(Pct)</guilabel> </para></entry>
+
+              <entry valign="top">The percentage utilised out of the total
+              amount allocated.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Linked
+              Entities</guilabel> </para></entry>
+
+              <entry valign="top">Entities linked to the facility.</entry>
+            </row>
+
+            <row>
+              <entry
+              valign="top"><para><guilabel>Status</guilabel></para></entry>
+
+              <entry valign="top"><para>This indicates the status of the
+              facility, whether, it is active or inactive. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel>Maker User
+              </guilabel></para></entry>
+
+              <entry valign="top"><para>Displays the user ID of the maker of
+              the transaction.</para><note>
+                  <para>This column is only available if maker-checker
+                  functionality is enabled.</para>
+                </note></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can modify a facility by clicking the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, view it in
+      non-editable mode by clicking the <guibutton>View</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                       width="4.5mm" />
+          </imageobject>
+        </inlinemediaobject> icon, or delete it by clicking the <guibutton
+      moreinfo="none">Delete</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon. Click the <guibutton moreinfo="none">Add a
+      new Facility</guibutton> button at the bottom of the list to add a
+      facility. <guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add a new Facility </guibutton>display the same form,
+      but in the case of <guibutton moreinfo="none">Edit</guibutton>, the
+      <guilabel>Bank Name</guilabel> and <guilabel>Customer
+      Reference</guilabel> fields are not editable.</para>
+
+      <para role="TEXT">Cancel a transaction by clicking on the
+      <guibutton>Cancel</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_makerchecker_cancel.gif" />
+          </imageobject>
+        </inlinemediaobject> icon or approve by clicking the
+      <guibutton>Action</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_makerchecker_action.gif" />
+          </imageobject>
+        </inlinemediaobject> icon. These icons are available if maker-checker
+      is enabled for your profile.</para>
+
+      <para role="TEXT">The Facility Definition form is as follows:</para>
+
+      <section role="ITEM">
+        <title>Facility Definition Form - Facility Details</title>
+
+        <para role="TEXT">The Facility Details section of the form is as
+        follows:</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*" />
+
+              <colspec colname="c2" colwidth="1.0*" />
+
+              <colspec colname="c3" colwidth="6.0*" />
+
+              <thead>
+                <row>
+                  <entry valign="top"><para>Field</para></entry>
+
+                  <entry valign="top"><para>Type</para></entry>
+
+                  <entry valign="top"><para>Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel>Facility
+                  Details</guilabel></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Company
+                  Abbreviation</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Abbreviated name of the
+                  company.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Bank
+                  Name</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Name of the bank or group
+                  bank.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Facility Reference</guilabel>
+                  </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Enter a reference for the
+                  facility. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Customer Reference</guilabel>
+                  </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the customer reference
+                  applicable for this facility. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Facility Description</guilabel>
+                  </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Enter a description for the
+                  facility. </para><para></para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Facility Amount</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Amount allocated to the facility
+                  by the bank. Click the magnifying glass icon to select from
+                  a list of valid currencies. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Facility Review Date</guilabel>
+                  </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the future date to review
+                  the extension of the facility to the customer. If not
+                  extended by this date, the facility is withdrawn
+                  automatically.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Facility Pricing Details</guilabel>
+                  </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Enter details for the facility
+                  pricing. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Status</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select from the dropdown list:
+                  <literal>Inactive</literal> or <literal>Active</literal>.
+                  This is useful to activate or disable the facility.
+                  </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Entity Selection For
+                  Facility</guilabel></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel moreinfo="none">Upper
+                  Section</guilabel></para></entry>
+
+                  <entry valign="top"><para></para></entry>
+
+                  <entry valign="top"><para>List of remaining entities that
+                  can be added to the facility. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel moreinfo="none">Lower
+                  Section</guilabel></para></entry>
+
+                  <entry valign="top"><para></para></entry>
+
+                  <entry valign="top"><para>List of entities added to the
+                  facility. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel
+                  moreinfo="none">Add</guilabel></para></entry>
+
+                  <entry valign="top"><para><inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject></para></entry>
+
+                  <entry valign="top"><para>Add and map the entities to the
+                  facility by selecting from the list of available entities
+                  (<guilabel>Upper Section</guilabel>). To select multiple
+                  items on a Windows-based PC, hold down <emphasis
+                  role="bold">Ctrl</emphasis> while selecting them.
+                  </para><para>The selected entities are moved to the list of
+                  entities mapped to the facility (<guilabel>Lower
+                  Section</guilabel>).</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel
+                  moreinfo="none">Remove</guilabel></para></entry>
+
+                  <entry valign="top"><para><inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject></para></entry>
+
+                  <entry valign="top"><para>Remove the entities mapped to the
+                  facility from the list (<guilabel>Lower
+                  Section</guilabel>).</para><para>The selected entities are
+                  moved back to the list of available entities
+                  (<guilabel>Upper Section</guilabel>).</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>List of Limit
+                  Definition</guilabel></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry><guilabel moreinfo="none">Add Limit
+                  Definition</guilabel></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click this button to add a limit
+                  for the facility. </para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+
+        <para role="TEXT">You can modify an existing limit by clicking the
+        <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                         width="4mm" />
+            </imageobject>
+          </inlinemediaobject> icon in the right-hand column, or delete it by
+        clicking the <guibutton moreinfo="none">Delete</guibutton>
+        <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                         width="4mm" />
+            </imageobject>
+          </inlinemediaobject> icon. Click the <guibutton moreinfo="none">Add
+        Limit Definition</guibutton> button at the bottom of the list to add a
+        limit.</para>
+
+        <para role="TEXT">Cancel a transaction by clicking on the
+        <guibutton>Cancel</guibutton> <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_makerchecker_cancel.gif" />
+            </imageobject>
+          </inlinemediaobject> icon or approve by clicking the Action
+        <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_makerchecker_action.gif" />
+            </imageobject>
+          </inlinemediaobject> icon. These icons are available if
+        maker-checker is enabled for your profile.</para>
+      </section>
+
+      <section role="ITEM">
+        <title>Facility Definition Form - Limit Definition</title>
+
+        <para role="TEXT">This section defines the limit details.</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*" />
+
+              <colspec colname="c2" colwidth="1.0*" />
+
+              <colspec colname="c3" colwidth="6.0*" />
+
+              <thead>
+                <row>
+                  <entry valign="top"><para>Field</para></entry>
+
+                  <entry valign="top"><para>Type</para></entry>
+
+                  <entry valign="top"><para>Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel>Limit
+                  Definition</guilabel></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Product</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the product from the
+                  dropdown menu. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Sub
+                  Product</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the sub product from the
+                  dropdown menu.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Type of
+                  BG/SI</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the type of BG from the
+                  dropdown menu.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">BG/SI
+                  Template</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the required template from
+                  the dropdown menu.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Counterparty</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the relevant counterparty.
+                  Click the magnifying glass icon to select from a
+                  list.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Country</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the relevant country. Click
+                  the magnifying glass icon to select from a
+                  list.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Status</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select from the dropdown list:
+                  <literal>Inactive</literal> or <literal>Active</literal>.
+                  This is useful to activate or disable the limit.
+                  </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Limit
+                  Reference</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Enter the unique reference id for
+                  the limit. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Limit
+                  Amount</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Limit amount allocated to the
+                  facility by the bank. Click the magnifying glass icon to
+                  select from a list of valid currencies. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Limit
+                  Review Date</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the future date to review
+                  the extension of the limit to the facility. If not extended
+                  by this date, the limit is withdrawn
+                  automatically.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">Limit
+                  Pricing Details</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">Enter the required message details or
+                  click the <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/icon_phrases.gif" />
+                      </imageobject>
+                    </inlinemediaobject> button to the right of this field to
+                  select predefined phrases to insert into this field.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Entity Selection For
+                  Limit</guilabel></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel moreinfo="none">Upper
+                  Section</guilabel></para></entry>
+
+                  <entry valign="top"><para></para></entry>
+
+                  <entry valign="top"><para>List of remaining entities that
+                  can be added to the limit. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel moreinfo="none">Lower
+                  Section</guilabel></para></entry>
+
+                  <entry valign="top"><para></para></entry>
+
+                  <entry valign="top"><para>List of entities added to the
+                  limit. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel
+                  moreinfo="none">Add</guilabel></para></entry>
+
+                  <entry valign="top"><para><inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject></para></entry>
+
+                  <entry valign="top"><para>Add and map the entities to the
+                  limit by selecting from the list of available entities
+                  (<guilabel>Upper Section</guilabel>). To select multiple
+                  items on a Windows-based PC, hold down <emphasis
+                  role="bold">Ctrl</emphasis> while selecting
+                  them.</para><para>The selected entities are moved to the
+                  list of entities mapped to the limit (<guilabel>Lower
+                  Section</guilabel>).</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para><guilabel
+                  moreinfo="none">Remove</guilabel></para></entry>
+
+                  <entry valign="top"><para><inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject></para></entry>
+
+                  <entry valign="top"><para>Remove the entities mapped to the
+                  limit from the list (<guilabel>Lower
+                  Section</guilabel>).</para><para>The selected entities are
+                  moved back to the list of available entities
+                  (<guilabel>Upper Section</guilabel>).</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top"></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guibutton
+                  moreinfo="none">Ok</guibutton> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click to add the limit to the
+                  list.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guibutton
+                  moreinfo="none">Cancel</guibutton> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click to abort the creation or
+                  modification of the limit and close the
+                  popup.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Facility Definition Form - Action Buttons</title>
+
+        <para role="TEXT">The operations that can be performed from this form
+        are listed below. They appear at the bottom of the page. For each of
+        them, a popup window will appear to confirm the choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry nameend="c2" namest="c1"
+                valign="top"><para>Operation</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Save</guiicon> </para></entry>
+
+                <entry valign="top">Save the facility definition. <note
+                    role="TEXT">
+                    <para>Remember to click <emphasis
+                    role="bold">Save</emphasis> when the changes have been
+                    made. Navigating away from the page will lose the changes,
+                    even if the <emphasis role="bold">OK</emphasis> on the
+                    sub-form(s) where the changes were made, has been clicked,
+                    and they are shown on the list within the form.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Cancel</guiicon> </para></entry>
+
+                <entry valign="top"><para>Leave the current page and return to
+                the System Features menu.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Help</guiicon> </para></entry>
+
+                <entry valign="top"><para>Open a popup window displaying the
+                online help pages.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+ 
+</chapter>

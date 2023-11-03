@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef  ordered="y" huge="N" forceDisplaySearch='y'
+	default_order="interest_cycle" default_order_type="d"
+	help="LIST_HELP_INQUIRY" page="100" source="loaniq_rollover_inquiry">
+	<column name="interest_cycle" align="left" width="6em" loca_key="LN_INTEREST_CYCLE_NO" />
+	<column name="start_date" align="center" width="5em" loca_key="LN_START_DATE" columnFilterType="input-multiselect" >
+		<script>
+			var start_date = row.getColumnValue("start_date");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+start_date+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="end_date" align="center" width="6em" loca_key="LN_END_DATE"  columnFilterType="input-multiselect" >
+		<script>
+			var end_date = row.getColumnValue("end_date");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+end_date+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="adjusted_due_date" align="center" width="6em" loca_key="LN_DUE_DATE"  columnFilterType="input-multiselect" >
+		<script>
+			var adjusted_due_date = row.getColumnValue("adjusted_due_date");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+adjusted_due_date+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="projected_cycleDue_amt" align="right" width="7em" loca_key="LN_PRJ_CYC_DUE"  columnFilterType="input-multiselect" >
+	</column>
+	<column name="accrued_toDate_amt" align="right" width="6em" loca_key="LN_ACCURED_TO_DATE"  columnFilterType="input-multiselect" >
+	</column>
+	<column name="paid_toDate_amt" align="right" width="6em" loca_key="LN_PAID_TO_DATE"  columnFilterType="input-multiselect" >
+	</column>	
+	<column name="billed_interest_amt" align="right" width="7em" loca_key="LN_BILLED_INTEREST"  columnFilterType="input-multiselect" >
+	</column>
+	<column name="loan_ccy" hidden="y"/>	
+	
+		<!-- candidates -->	
+	<candidate name="loanInterestDetails" >
+	</candidate>
+	
+</listdef>
+

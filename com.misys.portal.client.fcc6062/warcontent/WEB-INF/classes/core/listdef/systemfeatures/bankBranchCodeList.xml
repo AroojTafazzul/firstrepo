@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bank_code" default_order_type="d" page="20" >
+<column name="bank_code" align="left" width="15%" loca_key="BANK_CODE" columnFilterType="input-multiselect">
+	  <js-pass-back keyName="column">
+            <array-element index="0" column="bank_code"/>
+            <array-element index="1" column="branch"/>
+            <array-element index="2" column="name"/>
+            <array-element index="3" column="bank_name"/>
+        </js-pass-back>
+    </column>
+    
+	<column name="branch" align="left" width="15%" loca_key="BRANCH_CODE"/>
+	<column name="name" align="left" width="15%" loca_key="BRANCH_NAME"/>
+	<column name="bankName" align="left" width="15%" loca_key="BANK_NAME">
+	<script>
+			value = row.getColumnValue("bank_name");
+			value;
+		</script>
+	</column>
+	
+	<!-- Hidden Fields -->
+	<column name="bank_name" hidden="y"/>
+	
+	<column name="type" hidden="y"/>
+	<column name="internal" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="bank_code"
+		loca_key="BANK_CODE"
+		input="y"
+		default=""/>
+	<parameter
+		name="branch"
+		loca_key="BRANCH_CODE"
+		input="y"
+		default=""/>
+	<parameter
+		name="name"
+		loca_key="BRANCH_NAME"
+		input="y"
+		default=""/>
+	<parameter
+		name="bank_name"
+		loca_key="BANK_NAME"
+		input="y"
+		default=""/>		
+	
+	<!-- candidates -->
+	<candidate name="bankData">
+	<filter>
+		<criteria>
+			<column name="bank_code"/>
+			<operator type="like"/>
+			<value type="parameter">
+				bank_code
+			</value>
+		</criteria>	
+		<criteria>
+			<column name="branch"/>
+			<operator type="like"/>
+			<value type="parameter">
+				branch
+			</value>
+		</criteria>
+		<criteria>
+			<column name="name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bank_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				bank_name
+			</value>
+		</criteria>	
+	</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="type"/>
+			<operator type="like"/>
+			<value type="string">
+				02
+			</value>
+		</criteria>	
+		<criteria>
+			<column name="internal"/>
+			<operator type="equal"/>
+			<value type="string">
+				Y
+			</value>
+		</criteria>		
+	</filter>
+</listdef>

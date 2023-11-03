@@ -1,0 +1,43 @@
+<compass-core-config xmlns="http://www.compass-project.org/schema/core-config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.compass-project.org/schema/core-config
+           http://www.compass-project.org/schema/compass-core-config-2.2.xsd">
+
+
+<compass name="default">
+  <connection>
+      <jdbc managed="true" disableSchemaOperations="true" dialect="org.apache.lucene.store.jdbc.dialect.OracleDialect">
+        <dataSourceProvider>
+        	<external/>
+            <!--<dbcp url="jdbc:oracle:thin:@neomads2:1521:mtp" 
+                  username="nxbpft301" password="password"
+                  driverClass="oracle.jdbc.driver.OracleDriver"
+                  maxActive="10" maxWait="5" maxIdle="2" initialSize="3" minIdle="4"
+                  poolPreparedStatements="true" />-->
+        </dataSourceProvider>
+      </jdbc>
+  </connection>
+    <transaction commitBeforeCompletion="true"/>
+    <converters>
+    	 <converter name="html-converter" type="com.misys.portal.index.common.HTMLConverter"></converter>
+    </converters>
+    <searchEngine>
+        <analyzer name="en-analyzer" type="Standard" />
+		<analyzer name="fr-analyzer" type="French" />  
+		<analyzer name="default" type="Standard" /> 
+		<optimizer schedule="false"/>      
+    </searchEngine>
+      
+	<mappings>
+		<resource location="/core/compass/portal_online_help.cpm.xml"/>
+	</mappings>
+ 	<settings>
+     <setting name="compass.engine.connection.subContext" value="GTP" />     
+     <setting name="compass.engine.store.jdbc.disableSchemaOperations" value="true" />
+     <setting name="compass.engine.optimizer.schedule" value="false" /> 
+     <setting name="compass.engine.indexManagerScheduleInterval" value="0"/>
+   	</settings>
+  </compass>
+
+</compass-core-config>
+

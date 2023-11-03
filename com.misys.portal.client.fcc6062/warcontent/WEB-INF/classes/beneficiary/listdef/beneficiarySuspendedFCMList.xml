@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef ordered="y" default_order="beneficiaryId"
+	default_order_type="d" page="10" hideSearch="true" source="GenericInputSource" catagory="fcm"
+	parentNodePath="allTabsList/data" customInterfaceService="beneficiaryListing" customComponentName="getAllTab" 
+	filterParam ="SUSPENDED" data_key="id">
+
+	<column name="bankAccount@initiationDate" align="left" width="12%" loca_key="initiationDate" columnFilterType="input-multiselect"/>
+	<column alias="client@clientId"  isClubbedField="y" clubbedFieldsList="client@clientId,client@shortName"
+      align="left" width="12%" loca_key="client_id/name" isColumnSortDisabled="y" separator="ENTER" sortBy="client@clientId" columnFilterType="input-multiselect"/>
+	<column alias="beneficiaryId"  isClubbedField="y" clubbedFieldsList="beneficiaryId,beneficiaryName"
+      align="left" width="20%" loca_key="bene_id/name" separator="ENTER" sortBy="beneficiaryId" columnFilterType="input-multiselect"/>
+	
+	<column name="client@legalEntity" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="client@clientId" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="client@shortName" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<column name="beneficiaryId" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="beneficiaryName" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="beneficiaryType" align="left" width="12%" loca_key="" hidden="y"/>
+	<!-- <column name="leiCode" align="left" width="12%" loca_key=""/> -->
+	<column name="bankAccount@associationId" align="left" width="12%" loca_key="bankAccount"  hidden="y"/>
+	<column name="bankAccount@benificiaryBank@otherId" align="left" width="12%" loca_key="ifscCode" isColumnSortDisabled="y" columnFilterType="input-multiselect"/>
+	<column name="bankAccount@account@id@other@id" align="left" width="15%" loca_key="bankAccount" isColumnSortDisabled="y" columnFilterType="input-multiselect"/>
+	<column name="bankAccount@isDefaultAccount" align="left" width="12%" loca_key="defaultAccount" isColumnSortDisabled="y" isCodeField="y" codeId="defaultAccount" columnFilterType="input-multiselect"/>
+	<column name="beneficiaryStatus" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="bankAccount@beneficiaryStatus" showColorCodeColumn="bankAccount@beneficiaryStatus" align="left" width="12%" loca_key="beneficiaryStatus" isColumnSortDisabled="y" columnFilterType="input-multiselect"/>
+	<column name="action" align="right" width="12%" loca_key="ACTIONS">
+    <url fcmAction="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_ON_BENE_STATUS">
+    	   	<parameter name="BENEFICIARY_STATUS" column="bankAccount@beneficiaryStatus"/>
+    </url>
+	</column>
+	
+	
+	
+	<column name="makerRemarks" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="checkerRemarks" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<parameter name="bankAccount@account@id@other@id" size="35"
+	max_length="35" loca_key="ACCOUNT_ID" input="y" default=""
+	multiple="y" type="Beneficiary" />
+	<parameter name="beneficiaryId"  input="y" loca_key="BENEFICIARY_ID" type="Beneficiary" multiple="y" />
+	<parameter name="client@clientId"  input="y" loca_key="CLIENT_ID" type="Beneficiary" multiple="y" />
+	
+	<parameter
+		name="bankAccount@initiationDate"
+		type="range"
+		loca_key="DATE"
+		input="y"
+		default="blank"/>
+		
+		
+	<candidate name="fcmbeneficiary">
+		<filter>
+			<criteria>
+				<column name="bankAccount@account@id@other@id" />
+				<operator type="like" />
+				<value type="parameter">
+					bankAccount@account@id@other@id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiaryId" />
+				<operator type="like" />
+				<value type="parameter">
+					beneficiaryId
+				</value>
+			</criteria>
+			<criteria>
+				<column name="client@clientId" />
+				<operator type="like" />
+				<value type="parameter">
+					client@clientId
+				</value>
+			</criteria>
+			<criteria>
+			<column name="bankAccount@initiationDate"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				bankAccount@initiationDate@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bankAccount@initiationDate"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				bankAccount@initiationDate@to
+			</value>
+		</criteria>
+			
+		</filter>
+	</candidate>	
+		
+</listdef>

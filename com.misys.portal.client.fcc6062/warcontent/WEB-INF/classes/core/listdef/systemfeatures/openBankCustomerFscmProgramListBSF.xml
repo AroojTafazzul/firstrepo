@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" page="50" default_order="program_code" default_order_type="d" distinct="n" js_binding="misys.binding.common.listdef_mc">
+	
+	<column name="program_code" width="50%" loca_key="PROGRAM_CODE">
+	<url>
+		<parameter name="SCREEN" value="BSF_SCREEN"/>
+		<parameter name="OPTION_CODE" value="FSCM_PROGRAM_VIEW"/>
+		<parameter name="PROGRAM_CODE" column="program_id"/>
+		<parameter name="COMPANY" column="company_id"/>
+	</url>
+	</column>
+	<column name="program_name" align="left" width="30%" loca_key="PROGRAM_NAME"/>
+	<column name="company_id" hidden = 'Y'/>
+	<column name="program_id" width="30%" loca_key="PROGRAM_ID"/>
+	<column name="program_type" width="30%" loca_key="PROGRAM_TYPE"/>
+	<column name="program_sub_type" width="30%" loca_key="PROGRAM_SUB_TYPE"/>
+	<column name="status" width="30%" loca_key="STATUS">
+	<script>
+		var status = row.getColumnValue("status");
+		value = com.misys.portal.common.localization.Localization.getDecode(language,"N020",""+status+"");
+		value;
+	</script> 
+	</column>
+
+	<!-- parameters -->
+	<parameter
+		name="program_code"
+		loca_key="PROGRAM_CODE"
+		size="16"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="program_name"
+		loca_key="PROGRAM_NAME"
+		size="16"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="status"
+		type="AvailableUserStatusFlag"
+		size="1"
+		max_length=""
+		loca_key="STATUS"
+		input="y"
+		default=""
+		multiple_values="A,I"/>
+	<!-- Define as hidden parameter, to use the "company" parameter value, passed from the company list.  -->	
+	<parameter
+		name="company"
+		input="n"/>
+
+	<!-- candidates -->	
+	<candidate name="fscm_prog">
+		<filter>
+			<criteria>
+				<column name="program_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					program_code
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="program_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					program_name
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="status"/>
+				<operator type="like"/>
+				<value type="parameter">
+					status
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<filter>
+		<criteria>
+			<column name="status"/>
+			<operator type="different"/>
+			<value type="code">
+				N020_DELETED
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="company_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+					company
+			</value>
+		</criteria>
+	</filter>
+</listdef>

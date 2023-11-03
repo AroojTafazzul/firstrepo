@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Tables</title>
+
+  <para role="TEXT">In this chapter we give tables referred to from the field descriptions
+  in some chapters.</para>
+
+  <section role="ITEM">
+    <title>Table 1 - Day Count Convention</title>
+
+    <informaltable frame="all">
+      <tgroup cols="3">
+        <colspec colname="column-1" colwidth="2005*" />
+
+        <colspec colname="column-2" colwidth="6678*" />
+
+        <colspec colname="column-3" colwidth="2133*" />
+
+        <tbody>
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+            role="bold">Code</emphasis></para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+            role="bold">Description</emphasis></para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+            role="bold">Equivalent Day Count Fraction in ISDA 2006
+            Definitions</emphasis></para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">30/360</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Number of days in the interest
+            period on the basis of a year of 360 days with 12 30-day months,
+            divided by 360. For instance, if the interest period is from 5/18
+            to 8/18, the number of days in the interest period is
+            3x30=90.</para><para role="TEXT"><emphasis role="bold">Note:</emphasis> If the
+            end of the interest period is the 31st of a month, but the
+            beginning is a day other than the 30th or 31st of the month, then
+            the last month will not be considered to be shortened to a 30-day
+            month. Where the period length is one month and three days, the
+            one month is assumed to have 30 days (irrespective of whether it
+            has more), plus the three days resulting in a period of 33
+            days.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Sect
+            4.16(f)</para><para role="TEXT">30/360</para><para role="TEXT">360/360</para><para role="TEXT">Bond
+            Basis</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">30/360E</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Number of days calculated on
+            the basis of 12 thirty-day months over 360 days. The 31st day of a
+            month is skipped.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Sect
+            4.16(g)</para><para role="TEXT">30E/360</para><para role="TEXT">Eurobond
+            Basis</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">30/365</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Number of days in an interest
+            period is calculated based on a 365-day year with 12 30-day
+            months. This is similar to the <emphasis
+            role="bold">30/360</emphasis> basis except the annual day count is
+            365 instead of 360.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">30/ACT</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">30/Actual. Number of days in an
+            interest period is calculated based on the actual number of days
+            in a year with 12 30-day months. If the interest period straddles
+            a leap year, the portion in a non-leap year is based on a 365-day
+            year and the portion in the leap year is based on a 366-day year.
+            This is similar to the <emphasis role="bold">Actual</emphasis>
+            basis except each month has 30 days.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">A360</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days in the
+            interest period divided by 360.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Sect.
+            4.16(e)</para><para role="TEXT">Actual/360</para><para role="TEXT">Act/360</para><para role="TEXT">A/360</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">A364</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days in the
+            interest period annualized over a 364-day year</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">A365 Fixed</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days in the
+            interest period divided by 365.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Sect.
+            4.16(d)</para><para role="TEXT">Actual/365 (Fixed)</para><para role="TEXT">Act/365
+            (Fixed)</para><para role="TEXT">A/365
+            (Fixed)</para><para role="TEXT">A/365F</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">A365/EXC29</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days between
+            the start and end of the period—excluding February 29—over 365
+            days.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">A365RR</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Act/365RR. This basis uses the
+            same day count fraction as the A365F basis for a given period with
+            denomination quantity and Act/365RR specific rounding applied
+            during cash flow calculation.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">ACTR</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual Russian. Actual number
+            of days in the interest period is divided by actual number of days
+            in a year. This is similar to the <emphasis
+            role="bold">Actual</emphasis> basis that supports ISDA standard.
+            The difference between <emphasis role="bold">ACTR</emphasis> and
+            <emphasis role="bold">Actual</emphasis> is <emphasis
+            role="bold">ACTR</emphasis> excludes the first day of the interest
+            period and includes the last day while <emphasis
+            role="bold">Actual</emphasis> behaves the
+            opposite.</para><para role="TEXT">The interest amount calculated is similar
+            for both bases, except when the interest period straddles a leap
+            year. In this case, the number of days in each portion impacts the
+            calculation because the non-leap portion is annualized over 365
+            days while the leap year portion is annualized over 366. The
+            number of days for the <emphasis role="bold">ACTR</emphasis> basis
+            in the first portion of the interest period is one day less than
+            the <emphasis role="bold">Actual</emphasis> basis while the second
+            portion has one day more.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days in the
+            interest period, divided by actual number of days in a year. If
+            the interest period straddles a leap year, the portion of the
+            interest in non-leap-years is divided by 365 and the portion in
+            the leap year by 366.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Sect.
+            4.16(b)</para><para role="TEXT">Actual/Actual</para><para role="TEXT">Actual/Actual
+            (ISDA)</para><para role="TEXT">Act/Act</para><para role="TEXT">Act/Act
+            (ISDA)</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual Feb29</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">A variant on the <emphasis
+            role="bold">Actual</emphasis> method, where 366 is only used if
+            February 29 actually falls within the interest
+            period.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">ACTVA</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual/182-183. Number of days
+            in an interest period is calculated based on a 365-day year where
+            the first and every odd period has 182 days while every even
+            period has 183 days.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Business 252</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of business days
+            between start and end of the period over 252 days.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Calc Beg 366</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days between
+            the start and end of the period, divided by 365, if the period
+            does not start in a leap year. If the period does start in a leap
+            year, the number of days is divided by 366.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Calc End 366</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days between
+            the start and end of the period, divided by 365, if the period
+            does not end in a leap year. If it does end in a leap year, the
+            number of days is divided by 366.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Coupon</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">The interest rate refers to the
+            annual amount (i.e., rate is divided by the number of payments
+            within a year) and the day count is the actual number of days in
+            the interest period divided by the number of days in a year for
+            the payment period. For example, a 1,000,000 swap on Coupon basis
+            was reset to 8%. Interest is paid semi-annually. Cash flow from
+            30/08/2007 to 28/02/2008 will be calculated as
+            follows:</para><para role="TEXT">1,000,000 x .08/ 2 x
+            182/184=39,565.22</para><para role="TEXT">where:</para><para role="TEXT">.08 is the reset
+            rate</para><para role="TEXT">2 is the number of interest payments within a
+            year</para><para role="TEXT">182 is the actual number of days from 30/08/2007
+            to 28/02/2008</para><para role="TEXT">184 is the number of days for the half
+            year period</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">D360</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Discounted, based on actual
+            number of days in the interest period divided by 360. For a
+            principal of <emphasis role="bold">P</emphasis>, a discount rate
+            of <emphasis role="bold">R</emphasis>, and a period of <emphasis
+            role="bold">d</emphasis> days, the interest calculation
+            is:</para><para role="TEXT"><emphasis role="bold">P * (d/360) * R * (1-
+            R/100)</emphasis>.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">D360 Price</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days between
+            the start and end of the period over 360 days.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">D365</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Discounted, based on actual
+            number of days in the interest period divided by 365. For a
+            principal of <emphasis role="bold">P</emphasis>, a discount rate
+            of <emphasis role="bold">R</emphasis>, and a period of <emphasis
+            role="bold">d</emphasis> days, the interest calculation
+            is:</para><para role="TEXT"><emphasis role="bold">P * (d/365) * R * (1-
+            R/100)</emphasis>.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">D365 Price</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Actual number of days between
+            the start and end of the period over 365 days.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Daily Price</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">The notional is expressed in
+            units per day, used for commodities. This is a modified version of
+            the <emphasis role="bold">Price</emphasis> method. When this
+            option is used, the price for the day is multiplied by the
+            notional every day of the period then the daily amounts are
+            netted.</para><para role="TEXT">For example, an oil swap would usually pay on
+            a daily basis as follows: if the period is 3 days long, the
+            notional is 1,000 bbl and the prices are 20 on the first day, 21
+            on the second and 22 on the third day. Then, the payment at the
+            end of the three days will be:</para><para role="TEXT"><emphasis
+            role="bold">20*1,000 + 21*1,000 +
+            22*1,000=63,000</emphasis>.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">DRV 360/360</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">This calculation implements the
+            German DRV basis. It differs from the <emphasis
+            role="bold">Eurobond</emphasis> basis above in just one respect:
+            if the termination date of the final period is the last day of
+            February, then February is considered to be 30 days
+            long.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Eurobond</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">The calculation for this basis
+            is similar to that for <emphasis role="bold">30/360E</emphasis>,
+            with one notable difference. For the Eurobond basis, all months
+            are considered to be 30 days long, irrespective of their actual
+            calendar length. However, if the termination date of the final
+            period is the last day of February, the actual number of days in
+            the month (28 or 29) is used instead for this
+            period.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Sect.
+            4.16(h)</para><para role="TEXT">30E/360 (ISDA)</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">JGB</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Similar to the <emphasis
+            role="bold">Coupon</emphasis> method. However, the first and last
+            coupon may NOT be equal because of stub periods. All coupons (full
+            and partial) are rounded down to 7 decimal places.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Performance</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Used for equity swaps, the
+            payment is calculated as change in price times the notional. For
+            example, if the notional of the leg is 10,000 shares (units) of
+            IBM, it resets monthly. If the share price at the beginning of the
+            period was 135 and the ending price is 140, the payment is
+            calculated as:</para><para role="TEXT"><emphasis role="bold">(140-135) *
+            10,000 = $50,000</emphasis>.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">Price</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Payment is calculated as price
+            * notional.</para><para role="TEXT"><emphasis role="bold">Note:</emphasis> For
+            resets in advance, the price represents the start of the period;
+            for resets in arrears, it represents the end of the
+            period.</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> </para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section role="ITEM">
+    <title>Table 2 - Floating Leg</title>
+
+    <informaltable frame="all">
+      <tgroup cols="2">
+        <colspec colname="column-1" colwidth="2357*" />
+
+        <colspec colname="column-2" colwidth="6499*" />
+
+        <tbody>
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Option</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Implications</emphasis> </para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT">None</para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Not set</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Not
+            Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">The forward rates applied
+            during the stub period will be generated by adding the <emphasis
+            role="bold">Term</emphasis> specified on the trade window to the
+            start date of the forward application period to derive the end
+            date. Please note that this selection may produce gaps or overlaps
+            in the forward application periods.</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">The forward rates applied
+            during the stub period will be generated from date to date (e.g.,
+            from the start date of the stub application period to the end date
+            of the application period, calculating the exact number of
+            days)</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Simple
+            Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Stub payment will be computed
+            based on the effective rate between the start and payment
+            days.</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Frequency Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">The rate is decompounded based
+            on the payment frequency. Currently, only decompounding from the
+            daily compounded annual rate (Brazil market convention) is
+            supported.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section role="ITEM">
+    <title>Table 3 - Fixed Leg</title>
+
+    <informaltable frame="all">
+      <tgroup cols="2">
+        <colspec colname="column-1" colwidth="1979*" />
+
+        <colspec colname="column-2" colwidth="8116*" />
+
+        <tbody>
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">None</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Not set</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Not
+            Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">If the stub rate is defined, it
+            is simply used as defined.</para><para role="TEXT">If the stub rate is not
+            defined, the asset rate is used regardless of the asset
+            decompounding setting</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Rates are decompounded
+            according to the following formula:</para><figure>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata depth="57.75pt"
+                               fileref="../images/pic_decompound.gif"
+                               width="137.25pt" />
+                  </imageobject>
+                </mediaobject>
+              </figure><para role="TEXT">where:</para><para role="TEXT">Rd : decompounded
+            rate</para><para role="TEXT">Rf : fixed asset rate</para><para role="TEXT">D : number of
+            interest days in the rate coverage period</para><para role="TEXT">B : asset
+            day count basis</para><para role="TEXT">n : number of payment periods in year
+            (pay frequency)</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Simple
+            Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">If the stub rate is defined,
+            decompounding is based on the stub rate and on the number of days
+            in the stub period.</para><para role="TEXT">If the stub rate is not defined,
+            decompounding is based on the asset rate and on the number of days
+            in the stub period.</para><para role="TEXT">The fixed (compounded) rate is
+            converted to a simple rate for each payment period. The number of
+            interest days in the payment periods is calculated according to
+            the asset day count basis. The asset stubs are separate payment
+            periods.</para><para role="TEXT">Rates are decompounded according to the
+            following formula:</para><figure>
+                <info />
+
+                <mediaobject>
+                  <imageobject>
+                    <imagedata depth="57.75pt"
+                               fileref="../images/pic_decompound.gif"
+                               width="137.25pt" />
+                  </imageobject>
+                </mediaobject>
+              </figure><para role="TEXT">where:</para><para role="TEXT">Rd : decompounded
+            rate</para><para role="TEXT">Rf : fixed asset rate</para><para role="TEXT">D : number of
+            interest days in the rate coverage period</para><para role="TEXT">B : asset
+            day count basis</para><para role="TEXT">n : number of payment periods in year
+            (pay frequency)</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Frequency Decompounding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">The rate is decompounded based
+            on the payment frequency. Currently, only decompounding from the
+            daily compounded annual rate (Brazil market convention) is
+            supported.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section role="ITEM">
+    <title>Table 4 - Business Roll Day Convention</title>
+
+    <informaltable frame="all">
+      <tgroup cols="2">
+        <colspec colname="column-1" colwidth="1979*" />
+
+        <colspec colname="column-2" colwidth="8116*" />
+
+        <tbody>
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Name</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><emphasis
+            role="bold">Description</emphasis></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><emphasis
+            role="bold">Following</emphasis></entry>
+
+            <entry colsep="1" rowsep="1">Adjusts the schedule to the next
+            business day. For example, if 1/10 is a Sunday; roll forward to
+            1/11 which is a Monday.</entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Preceding</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1">Adjusts the schedule to the preceding
+            business day. For example, if 1/10 is a Sunday; roll backward to
+            1/8 which is a Friday.</entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Modified
+            Following</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1">Adjusts the schedule to the next
+            business day unless that date falls in the following month, in
+            which case adjust to the preceding business day. For example, if
+            1/10 is a Sunday; roll forward to 1/11 which is a Monday; unless
+            1/31 is a Sunday, then roll back to 1/29, which is a
+            Friday.</entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Modified
+            Previous</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Adjusts the schedule to the
+            preceding business day unless that day falls in the prior month,
+            in which case adjust to the next business day. For example, if
+            1/10 is a Saturday; roll back to 1/9 which is a Friday; unless 2/1
+            is a Saturday then roll forward to 2/3 which is a
+            Monday.</para></entry>
+          </row>
+
+          <row>
+            <entry><emphasis role="bold">Eurodollar
+            Convention</emphasis></entry>
+
+            <entry>Is identical to the <emphasis role="bold">Modified
+            </emphasis><emphasis role="bold">Following</emphasis> method
+            except that it sets the roll date to be the new day. For example,
+            if a schedule is set to roll quarterly on the 15th of every month,
+            the schedule will go from the 15th of one month to the 15th of the
+            subsequent month. If the 15th of the subsequent month is a
+            non-business day, that date will be rolled forward (Modified
+            Following) to the 16th. The schedule will then continue going to
+            the 16th of the subsequent month, and so on. Eventually, the
+            anniversary will march forward to the end of the month, at which
+            point it will keep an anniversary of 31 (end of month.)</entry>
+          </row>
+
+          <row>
+            <entry><emphasis role="bold">South African</emphasis></entry>
+
+            <entry>Supports South African Bonds that use the SAJSE price/yield
+            method. For schedule generation, 2/28 is recognized as the end of
+            the month even during leap year, 2/29. For accrual calculations,
+            leap year, 2/29 is recognized.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section role="ITEM">
+    <title>Table 5 - Premium Types</title>
+
+    <informaltable frame="all">
+      <tgroup cols="2">
+        <colspec colname="column-1" colwidth="1979*" />
+
+        <colspec colname="column-2" colwidth="8116*" />
+
+        <tbody>
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">Name</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><emphasis
+            role="bold">Description</emphasis></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><emphasis
+            role="bold">%Main</emphasis></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Select this option to view the
+            <emphasis role="bold">Premium settle %</emphasis>of the <emphasis
+            role="bold">Notional Amount </emphasis>in the Main Currency. For
+            example, where the <emphasis role="bold">Currency pair</emphasis>
+            is USD/JPY, the <emphasis role="bold">Premium settle %</emphasis>
+            appears as USD currency. The premium cash calculation is: Premium
+            Cash = Notional in Main Currency * Premium %.</para><para role="TEXT">If you
+            change the <emphasis role="bold">Premium Ccy</emphasis> field from
+            the Main Currency (USD) to the Money Currency (JPY), the quotation
+            mode automatically defaults to <emphasis
+            role="bold">%Money</emphasis>.</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+            role="bold">%Money</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Select this option to view the
+            <emphasis role="bold">Premium settle %</emphasis> of the <emphasis
+            role="bold">Notional Amount </emphasis>in the Money Currency. For
+            example, where the <emphasis role="bold">Currency pair</emphasis>
+            is USD/JPY, the <emphasis role="bold">Premium settle %</emphasis>
+            appears as JPY currency. The premium cash calculation is: Premium
+            Cash = Notional in Money Currency * Premium %.</para><para role="TEXT">If you
+            change the <emphasis role="bold">Premium Amount</emphasis>
+            currency field from the Money Currency (JPY) to the Main Currency
+            (USD), the quotation mode automatically defaults to <emphasis
+            role="bold">%</emphasis><emphasis
+            role="bold">Main</emphasis>.</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Main /
+            %Money</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Select this option to view the
+            <emphasis role="bold">Premium settle %</emphasis>of the <emphasis
+            role="bold">Notional Amount </emphasis>in the Main currency. Here
+            the <emphasis role="bold">Premium settle %</emphasis> appears as
+            USD currency. The premium cash calculation is: Premium Cash =
+            Notional in Money Currency * Premium %.</para><para role="TEXT">If you change
+            the <emphasis role="bold">Premium Ccy</emphasis> field from the
+            Main Currency (USD) to the Money Currency (JPY), the quotation
+            mode automatically defaults to <emphasis
+            role="bold">Money/%</emphasis><emphasis
+            role="bold">Main</emphasis>.</para></entry>
+          </row>
+
+          <row>
+            <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis role="bold">Money /
+            %Main</emphasis> </para></entry>
+
+            <entry colsep="1" rowsep="1"><para role="TEXT">Select this option to view the
+            <emphasis role="bold">Premium settle %</emphasis>of the <emphasis
+            role="bold">Notional Amount </emphasis>in the Money Currency. Here
+            the <emphasis role="bold">Premium settle %</emphasis> appears as
+            JPY currency. The premium cash calculation is: Premium Cash =
+            Notional in Main Currency * Premium %</para><para role="TEXT">If you change
+            the <emphasis role="bold">Premium Ccy</emphasis> field from the
+            Money Currency (JPY) to the Main Currency (USD), the quotation
+            mode automatically defaults to <emphasis
+            role="bold">Main/%Money</emphasis>.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+</chapter>

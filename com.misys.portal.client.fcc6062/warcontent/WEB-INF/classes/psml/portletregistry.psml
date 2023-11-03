@@ -1,0 +1,2191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2000-2013 Misys (http://www.misys.com),
+   All Rights Reserved. 
+-->
+<registry>
+	<portlets>
+    <!-- BEGIN - ABSTRACT PORTLETS-->
+		<entry type="abstract" name="ListdefPortlet">
+			<classname>com.misys.portal.common.portlets.ListdefPortlet</classname>
+		</entry>
+		<entry type="abstract" name="SyndicatedNews">
+			<classname>com.misys.portal.core.portal.portlets.SyndicatedNewsPortlet</classname>
+			<parameter name="default_dtd" value="/content/xml/rss-0.91.dtd"/>
+		</entry>
+		<entry type="abstract" name="FileServer">
+			<classname>com.misys.portal.core.portal.portlets.FileServerPortlet</classname>
+		</entry>
+		<entry type="abstract" name="LocalFileServer">
+			<classname>com.misys.portal.core.portal.portlets.LocalFileServerPortlet</classname>
+		</entry>
+		<entry type="abstract" name="PortalResourceServerPortlet">
+			<classname>com.misys.portal.core.portal.portlets.PortalResourceServerPortlet</classname>
+		</entry>
+		<entry type="abstract" name="MyFileServer">
+			<classname>com.misys.portal.core.portal.portlets.MyFileServerPortlet</classname>
+		</entry>
+		<entry type="abstract" name="XSLPortlet">
+			<classname>com.misys.portal.core.portal.portlets.XSLPortlet</classname>
+		</entry>
+		<entry type="abstract" name="PortalResourceXSLPortlet">
+			<classname>com.misys.portal.core.portal.portlets.PortalResourceXSLPortlet</classname>
+		</entry>
+		<entry type="abstract" name="XSLPortletRSS" parent="SyndicatedNews">
+			<classname>com.misys.portal.core.portal.portlets.XSLPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/rss2.xsl"/>
+		</entry>
+		<entry type="abstract" name="Cocoon">
+			<classname>com.misys.portal.core.portal.portlets.CocoonPortlet</classname>
+		</entry>
+		<entry type="abstract" name="JetspeedContent">
+			<classname>com.misys.portal.core.portal.portlets.JetspeedContent</classname>
+			<!--classname>com.misys.portal.core.portal.portlets.JetspeedContentDB</classname-->
+		</entry>
+		<entry type="abstract" name="RSS" parent="SyndicatedNews">
+			<parameter name="stylesheet" value="/core/xsl/rss2.xsl"/>
+			<parameter name="item_displayed" value="10"/>
+		</entry>
+		<entry type="abstract" name="ChartReportPortlet">
+			<classname>com.misys.portal.common.portlets.ChartReportPortlet</classname>
+		</entry>
+		<entry type="abstract" name="EntityChartReportPortlet">
+			<classname>com.misys.portal.common.portlets.EntityChartReportPortlet</classname>
+		</entry>		
+		<entry type="abstract" name="StandardReportPortlet">
+			<classname>com.misys.portal.common.portlets.FileReportPortlet</classname>
+			<parameter name="viewer" value="screen"/>
+		</entry>
+		<entry type="abstract" name="FileReportPortlet">
+			<classname>com.misys.portal.common.portlets.FileReportPortlet</classname>
+			<parameter name="viewer" value="SimpleTable"/>
+		</entry>
+		<entry type="abstract" name="DBReportPortlet">
+			<classname>com.misys.portal.common.portlets.DBReportPortlet</classname>
+			<parameter name="viewer" value="SimpleTable"/>
+		</entry>
+		<entry type="abstract" name="AggregatorPortlet">
+			<classname>com.misys.portal.common.portlets.ColumnAggregatorPortlet</classname>
+		</entry>
+		<!-- END - ABSTRACT PORTLETS-->
+		<!-- BEGIN - HOME PAGE-->
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_en">
+			<parameter name="resource" value="/core/text/trade_tools_en.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+			<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_us">
+			<parameter name="resource" value="/core/text/trade_tools_us.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_ar">
+			<parameter name="resource" value="/core/text/trade_tools_ar.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_fr">
+			<parameter name="resource" value="/core/text/trade_tools_fr.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_de">
+			<parameter name="resource" value="/core/text/trade_tools_de.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_th">
+			<parameter name="resource" value="/core/text/trade_tools_th.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_zh">
+			<parameter name="resource" value="/core/text/trade_tools_zh.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="UserTools_br">
+			<parameter name="resource" value="/core/text/trade_tools_br.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="TradeApplications">
+			<parameter name="path" value="/core/text/trade_apps.html"/>
+			<parameter name="title_key" value="PORTLET_DEFAULT_MENU_TITLE"/>
+			<parameter name="encoding_language" value="UTF-8"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="Welcome">
+			<parameter name="path" value="/core/text/trade_welcome_en.html"/>
+			<metainfo>
+				<title>Welcome</title>
+				<description>Welcome</description>
+			</metainfo>
+		</entry>
+				
+		<entry type="ref" parent="PortalResourceServerPortlet" name="TradeApplicationsDefault">
+			<parameter name="path" value="/core/text/trade_apps_default_en.html"/>
+			<parameter name="title_key" value="PORTLET_DEFAULT_MENU_TITLE"/>
+		</entry>
+		<entry type="instance" name="OutstandingPortlet">
+			<classname>com.misys.portal.product.common.portlets.OutstandingPortlet</classname>
+			<parameter name="title_key" value="PORTLET_CUSTOMER_OUTSTANDING_TITLE"/>
+			<parameter name="permission" value="liab_amt_portlet"/>
+			<parameter name="display_no_transaction" value="true"/>
+		</entry>
+		<entry type="instance" name="InternalNewsPortlet">
+			<classname>com.misys.portal.core.portal.portlets.InternalNewsPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/history_attachment_view.xsl"/>
+			<parameter name="title_key" value="PORTLET_INTERNAL_NEWS_TITLE_KEY"/>
+			<parameter name="permission" value="internal_news_portlet_access"/>
+		</entry>
+		<entry type="instance" name="RatePortlet">
+			<classname>com.misys.portal.common.currency.portlet.RatePortlet</classname>
+			<parameter name="title_key" value="PORTLET_RATE_TITLE"/>
+			<parameter name="description_key" value="PORTLET_RATE_DESCRIPTION"/>
+			<parameter name="currencies" value="USD,EUR,GBP,IDR,MYR,CNY"/>
+			<parameter name="dec_number" value="3"/>
+			<!-- The parameter 'display_user_currency' or 'display_company_currency' should be enabled for mid-rate. -->
+			<parameter name="display_user_currency" value="true"/>
+			<parameter name="display_company_currency" value="false"/>
+			<parameter name="permission" value="xch_rate_portlet"/>
+			<parameter name="display_currency_name" value="false"/>
+			<parameter name="rate_type" value="direct"/>
+			<parameter name="display_mid_rate" value="true"/>
+			<parameter name="display_buy_rate" value="false"/>
+			<parameter name="display_sell_rate" value="false"/>
+		</entry>
+		<entry type="ref" parent="FileReportPortlet" name="DiscrepancyPortlet">
+			<parameter name="title_key" value="PORTLET_DISCREPANCY_TITLE"/>
+			<parameter name="list_def" value="core/listdef/customer/discrepancy.xml"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		<!-- entry type="ref" parent="FileReportPortlet" name="OutstandingChartPortlet">
+			<parameter name="title_key" value="I NEED A TITLE"/>
+			<parameter name="list_def" value="core/listdef/customer/outstanding.xml"/>
+			<parameter name="permission" value="no_permission"/>
+			<parameter name="chart_width" value="300"/>
+			<parameter name="chart_height" value="300"/>
+		</entry-->
+		<entry type="instance" name="OutstandingChartPortlet">
+			<classname>com.misys.portal.product.common.portlets.OutstandingChartPortlet</classname>
+			<parameter name="title_key" value="PORTLET_HISTORY_OUTSTANDING"/>
+			<parameter name="permission" value="outstanding_chart_portlet_access"/>
+			<parameter name="chart_width" value="300"/>
+			<parameter name="chart_height" value="300"/>
+		</entry>
+		<entry type="ref" parent="FileReportPortlet" name="ActionRequiredPortlet">
+			<parameter name="title_key" value="PORTLET_ACTION_REQUIRED_TITLE"/>
+			<parameter name="list_def" value="core/listdef/customer/actionRequired.xml"/>
+			<parameter name="permission" value="no_permission"/>
+			<parameter name="url_screen" value="MessageCenterScreen"/>
+			<parameter name="url_param_number" value="3"/>
+			<parameter name="url_icon" value="/content/images/table-go.png"/>
+			<parameter name="url_param_0_name" value="tnxtype"/>
+			<parameter name="url_param_0_value" value="13"/>
+			<parameter name="url_param_1_name" value="operation"/>
+			<parameter name="url_param_1_value" value="EXISTING"/>
+			<parameter name="url_param_2_name" value="option"/>
+			<parameter name="url_param_2_value" value="ACTION_REQUIRED"/>
+		</entry>
+		<entry type="instance" name="TradeApplicationsPortlet">
+			<classname>com.misys.portal.common.portlets.TradeApplicationsMenuPortlet</classname>
+			<parameter name="title_key" value="PORTLET_TRADE_APPLICATIONS_TITLE"/>
+			<parameter name="menu_id" value="home_customer_default"/>
+		</entry>
+		<entry type="instance" name="BookmarkPortlet">
+			<classname>com.misys.portal.common.portlets.BookmarkPortlet</classname>
+			<parameter name="title_key" value="PORTLET_BOOKMARK_TITLE"/>
+			<!-- Disabled : Because now Bookmarks is in the Top MenuBar-->
+			<parameter name="permission" value="sy_bookmark_disabled"/>
+		</entry>
+		<entry type="instance" name="DemoPortlet">
+			<classname>com.misys.portal.common.portlets.home.DemoPortlet</classname>
+			<parameter name="title_key" value="PORTLET_CALCULATOR_TITLE"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		<entry type="ref" name="DemoNewsPortlet" parent="JetspeedContent">
+			<parameter name="provider-name" value="demoboss"/>
+			<parameter name="title_key" value="PORTLET_NEWS_TITLE"/>
+		</entry>
+		<entry type="instance" name="CarouselPortlet">
+			<classname>com.misys.portal.common.portlets.home.CarouselPortlet</classname>
+			<parameter name="title_key" value="PORTLET_CAROUSEL_TITLE"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		<entry type="instance" name="AccountBalancePortlet">
+			<classname>com.misys.portal.common.portlets.home.AccountBalancePortlet</classname>
+			<parameter name="title_key" value="PORTLET_ACCOUNT_BALANCE_TITLE"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		<entry type="instance" name="LoanCalculatorPortlet">
+			<classname>com.misys.portal.common.portlets.home.LoanCalculatorPortlet</classname>
+			<parameter name="title_key" value="PORTLET_LOAN_CALCULATOR_TITLE"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		<entry type="instance" name="QuickTransferPortlet">
+			<classname>com.misys.portal.common.portlets.home.QuickTransferPortlet</classname>
+			<parameter name="title_key" value="PORTLET_QUICK_TRANSFER_TITLE"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		<entry type="instance" name="StocksPortlet">
+			<classname>com.misys.portal.common.portlets.home.StocksPortlet</classname>
+			<parameter name="title_key" value="PORTLET_STOCKS_TITLE"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		<entry type="instance" name="AWBTrackingPortlet">
+			<classname>com.misys.portal.common.portlets.AWBTrackingPortlet</classname>
+			<parameter name="title_key" value="PORTLET_AWB_TRACKING"/>
+			<parameter name="permission" value="sy_awb_tracking"/>
+		</entry>
+		<entry type="instance" name="PendingDiscrepanciesPortlet">
+			<classname>com.misys.portal.common.portlets.PendingDiscrepanciesPortlet</classname>
+			<parameter name="title_key" value="PORTLET_DISCREPANTS"/>
+			<parameter name="permission" value="trade_access_discrepancy_list"/>
+			<parameter name="max_records" value="5" type="int"/>
+		</entry>
+    <!-- END HOME PAGE-->
+    <!-- BEGIN - MENU-->
+    <entry type="instance" name="MenuBuilder">
+			<classname>com.misys.portal.common.portlets.MenuBuilder</classname>
+		</entry>
+    <!-- END - MENU-->
+    <entry type="instance" name="UploadPortlet">
+			<classname>com.misys.portal.common.portlets.UploadPortlet</classname>
+	</entry>
+    <entry type="instance" name="StaticDocumentUploadPortlet">
+			<classname>com.misys.portal.common.portlets.StaticDocumentUploadPortlet</classname>
+	</entry>
+	<entry type="instance" name="UploadLogoPortlet">
+			<classname>com.misys.portal.common.portlets.UploadLogoPortlet</classname>
+	</entry>
+    <!-- BEGIN - POPUP-->
+    <entry type="instance" name="GTPPopupPortlet">
+			<classname>com.misys.portal.common.popup.portlets</classname>
+      <parameter name="control" value="com.misys.portal.core.portal.controls.ClearPortletControl"/>
+		</entry>
+		<entry type="instance" name="ReportingPopupPortlet">
+			<classname>com.misys.portal.common.popup.portlets.ReportingPopupPortlet</classname>
+		</entry>
+    <entry type="instance" name="StaticDataListPortlet">
+			<classname>com.misys.portal.common.popup.portlets.StaticDataListPortlet</classname>
+      <parameter name="page_size" value="20"/>
+		</entry>
+    <entry type="instance" name="EntityListPortlet">
+			<classname>com.misys.portal.openaccount.popup.portlets.EntityListPortlet</classname>
+      <parameter name="page_size" value="20"/>
+		</entry>
+		<entry type="instance" name="PreviewReportPortlet">
+			<classname>com.misys.portal.report.portlets.PreviewReportPortlet</classname>
+		</entry>
+	<!-- Online Help -->
+	<entry type="instance" name="OnlineHelpPortlet">
+		<classname>com.misys.portal.common.popup.portlets.OnlineHelpPortlet</classname>
+	</entry>		
+	<!-- End Online Help-->
+		<!-- END - POPUP-->
+    <!-- BEGIN - REPORT-->
+		<entry type="instance" name="ReportDesignerPortlet">
+			<classname>com.misys.portal.report.portlets.ReportDesignerPortlet</classname>
+		</entry>
+    <!-- END - REPORT-->
+    <!-- BEGIN - AUDIT-->
+    <entry type="instance" name="AuditPortlet">
+			<classname>com.misys.portal.admin.audit.portlets.AuditPortlet</classname>
+		</entry>
+    <!-- END - AUDIT-->
+    <!-- BEGIN CUSTOMER PRODUCTS VIEW-->
+    <entry type="instance" name="GTPRootPortlet">
+			<classname>com.misys.portal.common.portlets.GTPRootPortlet</classname>
+      		<parameter name="control" value="com.misys.portal.core.portal.controls.GTPTitlePortletControl"/>
+		</entry>
+		<entry type="instance" name="ReportDesignerListPortlet">
+			<classname>com.misys.portal.report.portlets.ReportDesignerListPortlet</classname>
+		</entry>
+		<entry type="instance" name="LetterOfCreditListPortlet">
+			<classname>com.misys.portal.product.lc.portlets.LetterOfCreditListPortlet</classname>
+		</entry>
+		<entry type="instance" name="LetterOfCreditPortlet">
+			<classname>com.misys.portal.product.lc.portlets.LetterOfCreditPortlet</classname>
+		</entry>
+		<entry type="instance" name="LiquidityListPortlet">
+			<classname>com.misys.portal.cash.product.lq.portlets.LiquidityListPortlet</classname>
+		</entry>
+		<entry type="instance" name="LiquidityPortletMC">
+			<classname>com.misys.portal.cash.product.lq.portlets.LiquidityPortletMC</classname>
+		</entry>
+		<entry type="instance" name="LicenseListPortlet">
+			<classname>com.misys.portal.product.ls.portlets.LicenseListPortlet</classname>
+		</entry>
+		<entry type="instance" name="LicensePortlet">
+			<classname>com.misys.portal.product.ls.portlets.LicensePortlet</classname>
+		</entry>
+		<entry type="instance" name="SecureEmailListPortlet">
+			<classname>com.misys.portal.product.se.portlets.SecureEmailListPortlet</classname>
+
+		</entry>
+		<entry type="instance" name="GenericFileDownloadPortlet">
+			<classname>com.misys.portal.messagecenter.portlets.GenericFileDownloadPortlet</classname>
+		</entry>
+		<entry type="instance" name="SecureEmailPortlet">
+			<classname>com.misys.portal.product.se.portlets.SecureEmailPortlet</classname>
+		</entry>
+		<entry type="instance" name="ShippingGuaranteeListPortlet">
+			<classname>com.misys.portal.product.sg.portlets.ShippingGuaranteeListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ShippingGuaranteePortlet">
+			<classname>com.misys.portal.product.sg.portlets.ShippingGuaranteePortlet</classname>
+		</entry>
+		<entry type="instance" name="FinancingRequestListPortlet">
+			<classname>com.misys.portal.product.tf.portlets.FinancingRequestListPortlet</classname>
+		</entry>
+		<entry type="instance" name="FinancingRequestPortlet">
+			<classname>com.misys.portal.product.tf.portlets.FinancingRequestPortlet</classname>
+		</entry>
+		<entry type="instance" name="CustomerSystemFeaturesListPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.CustomerSystemFeaturesListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CustomerSystemFeaturesPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.CustomerSystemFeaturesPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountsManagementListPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.AccountsManagementListPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountsManagementBankListPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.AccountsManagementBankListPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountsManagementPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.AccountsManagementPortlet</classname>
+		</entry>
+		<entry type="instance" name="MessageCenterListPortlet">
+			<classname>com.misys.portal.messagecenter.portlets.MessageCenterListPortlet</classname>
+			<!--
+			<parameter name="OpenSubmitMCList" value="core/listdef/customer/MC/submitRecords.xml"/>
+			<parameter name="SubmitMultipleMC" value="core/listdef/customer/MC/submitRecords.xml"/>
+			-->
+		</entry>
+		<entry type="instance" name="BatchAuthorisationPortlet">
+			<classname>com.misys.portal.messagecenter.portlets.BatchAuthorisationPortlet</classname>
+		</entry>
+		<entry type="instance" name="MessageCenterPortlet">
+			<classname>com.misys.portal.messagecenter.portlets.MessageCenterPortlet</classname>
+		</entry>
+		<entry type="instance" name="AuditListPortlet">
+			<classname>com.misys.portal.admin.audit.portlets.AuditListPortlet</classname>
+		</entry>
+		<entry type="instance" name="AuditPortlet">
+			<classname>com.misys.portal.admin.audit.portlets.AuditPortlet</classname>
+		</entry>
+		<entry type="instance" name="BankerGuaranteeListPortlet">
+			<classname>com.misys.portal.product.bg.portlets.BankerGuaranteeListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BankerGuaranteePortlet">
+			<classname>com.misys.portal.product.bg.portlets.BankerGuaranteePortlet</classname>
+		</entry>
+		<entry type="instance" name="IssuedUndertakingListPortlet">
+			<classname>com.misys.portal.product.iu.portlets.IssuedUndertakingListPortlet</classname>
+		</entry>
+		<entry type="instance" name="IssuedUndertakingPortlet">
+			<classname>com.misys.portal.product.iu.portlets.IssuedUndertakingPortlet</classname>
+		</entry>
+		<entry type="instance" name="ReceivedUndertakingListPortlet">
+			<classname>com.misys.portal.product.ru.portlets.ReceivedUndertakingListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ReceivedUndertakingPortlet">
+			<classname>com.misys.portal.product.ru.portlets.ReceivedUndertakingPortlet</classname>
+		</entry>
+		<entry type="instance" name="BulkListPortlet">
+			<classname>com.misys.portal.product.bk.portlets.BulkListPortlet</classname>
+			<parameter name="ListBKPendingTransactions" value="core/listdef/customer/BK/listBKPendingTransactions.xml"/>
+			<parameter name="InquiryBKTransactions" value="core/listdef/customer/BK/inquiryBKTransactions.xml"/>
+		</entry>
+		<entry type="instance" name="BulkPortlet">
+			<classname>com.misys.portal.product.bk.portlets.BulkPortlet</classname>
+		</entry>
+		<entry type="instance" name="BulkTransactionPortlet">
+			<classname>com.misys.portal.product.bk.portlets.BulkTransactionPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExportCollectionListPortlet">
+			<classname>com.misys.portal.product.ec.portlets.ExportCollectionListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExportCollectionPortlet">
+			<classname>com.misys.portal.product.ec.portlets.ExportCollectionPortlet</classname>
+		</entry>
+		<entry type="instance" name="ImportCollectionListPortlet">
+			<classname>com.misys.portal.product.ic.portlets.ImportCollectionListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ImportCollectionPortlet">
+			<classname>com.misys.portal.product.ic.portlets.ImportCollectionPortlet</classname>
+		</entry>
+		<entry type="instance" name="ReceivedLetterOfIndemnityListPortlet">
+			<classname>com.misys.portal.product.ri.portlets.ReceivedLetterOfIndemnityListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ReceivedLetterOfIndemnityPortlet">
+			<classname>com.misys.portal.product.ri.portlets.ReceivedLetterOfIndemnityPortlet</classname>
+		</entry>
+		<entry type="instance" name="InwardRemittanceListPortlet">
+			<classname>com.misys.portal.product.ir.portlets.InwardRemittanceListPortlet</classname>
+		</entry>
+		<entry type="instance" name="InwardRemittancePortlet">
+			<classname>com.misys.portal.product.ir.portlets.InwardRemittancePortlet</classname>
+		</entry>
+		<entry type="instance" name="StandbyIssuedListPortlet">
+			<classname>com.misys.portal.product.si.portlets.StandbyIssuedListPortlet</classname>
+		</entry>
+		<entry type="instance" name="StandbyIssuedPortlet">
+			<classname>com.misys.portal.product.si.portlets.StandbyIssuedPortlet</classname>
+		</entry>
+		<entry type="instance" name="StandbyReceivedListPortlet">
+			<classname>com.misys.portal.product.sr.portlets.StandbyReceivedListPortlet</classname>
+		</entry>
+		<entry type="instance" name="StandbyReceivedPortlet">
+			<classname>com.misys.portal.product.sr.portlets.StandbyReceivedPortlet</classname>
+		</entry>
+		<entry type="instance" name="GuaranteeReceivedListPortlet">
+			<classname>com.misys.portal.product.br.portlets.GuaranteeReceivedListPortlet</classname>
+		</entry>
+		<entry type="instance" name="GuaranteeReceivedPortlet">
+			<classname>com.misys.portal.product.br.portlets.GuaranteeReceivedPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExportLetterOfCreditListPortlet">
+			<classname>com.misys.portal.product.el.portlets.ExportLetterOfCreditListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExportLetterOfCreditPortlet">
+			<classname>com.misys.portal.product.el.portlets.ExportLetterOfCreditPortlet</classname>
+		</entry>
+		<entry type="instance" name="FundTransferListPortlet">
+			<classname>com.misys.portal.cash.product.ft.portlets.FundTransferListPortlet</classname>
+		</entry>
+		<entry type="instance" name="FundTransferPortlet">
+			<classname>com.misys.portal.cash.product.ft.portlets.FundTransferPortlet</classname>
+		</entry>
+		<entry type="instance" name="TradeFundTransferListPortlet">
+			<classname>com.misys.portal.trade.product.ft.portlets.FundTransferListPortlet</classname>
+		</entry>
+		<entry type="instance" name="TradeFundTransferPortlet">
+			<classname>com.misys.portal.trade.product.ft.portlets.FundTransferPortlet</classname>
+		</entry>
+		<entry type="instance" name="LetterOfIndemnityListPortlet">
+			<classname>com.misys.portal.product.li.portlets.LetterOfIndemnityListPortlet</classname>
+		</entry>
+		<entry type="instance" name="LetterOfIndemnityPortlet">
+			<classname>com.misys.portal.product.li.portlets.LetterOfIndemnityPortlet</classname>
+		</entry>
+    	<!-- Purchase order -->
+		<entry type="instance" name="PurchaseOrderListPortlet">
+			<classname>com.misys.portal.openaccount.product.po.portlets.PurchaseOrderListPortlet</classname>
+		</entry>
+		<entry type="instance" name="PurchaseOrderPortlet">
+			<classname>com.misys.portal.openaccount.product.po.portlets.PurchaseOrderPortlet</classname>
+		</entry>
+		<!-- Invoice Payable -->
+		<entry type="instance" name="InvoicePayableListPortlet">
+			<classname>com.misys.portal.openaccount.product.ip.portlets.InvoicePayableListPortlet</classname>
+				 <parameter name="InitIPFolderForEarlyPayment" value="openaccount/listdef/customer/IP/inquiryIP2FolderEarlyPayment.xml"/> 
+		</entry>
+		<entry type="instance" name="InvoicePayablePortlet">
+			<classname>com.misys.portal.openaccount.product.ip.portlets.InvoicePayablePortlet</classname>
+		</entry>
+		<entry type="instance" name="BaselineUploadTemplatePortlet">
+			<classname>com.misys.portal.openaccount.product.baseline.portlet.BaselineUploadTemplatePortlet</classname>
+		</entry>
+		<entry type="instance" name="SellOrderListPortlet">
+			<classname>com.misys.portal.openaccount.product.so.portlets.SellOrderListPortlet</classname>
+		</entry>
+		<entry type="instance" name="SellOrderPortlet">
+			<classname>com.misys.portal.openaccount.product.so.portlets.SellOrderPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerBeneficiaryUploadPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerBeneficiaryUploadPortlet</classname>
+		</entry>
+    	<!-- Invoice -->
+		<entry type="instance" name="InvoiceListPortlet">
+			<classname>com.misys.portal.openaccount.product.in.portlets.InvoiceListPortlet</classname>
+			<parameter name="inquiryIN2FolderDealerFinance" value="openaccount/listdef/customer/IN/inquiryIN2FolderDealerFinance.xml"/>
+			<parameter name="inquiryIN2FolderInvoiceFinance" value="openaccount/listdef/customer/IN/inquiryIN2FolderInvoiceFinance.xml"/>
+		</entry>
+		<entry type="instance" name="InvoicePortlet">
+			<classname>com.misys.portal.openaccount.product.in.portlets.InvoicePortlet</classname>
+		</entry>
+    	<!-- Document Management -->
+		<entry type="instance" name="DocumentManagementListPortlet">
+			<classname>com.misys.portal.product.dm.portlets.DocumentManagementListPortlet</classname>
+		</entry>
+		<entry type="instance" name="DocumentManagementPortlet">
+			<classname>com.misys.portal.product.dm.portlets.DocumentManagementPortlet</classname>
+		</entry>
+		<entry type="instance" name="TMAListPortlet">
+			<classname>com.misys.portal.openaccount.middleoffice.tsu.portlets.TMAListPortlet</classname>
+		</entry>
+		<!--<entry type="instance" name="FundTransferPortlet">
+			<classname>com.misys.portal.oppenaccount.middleoffice.tsu.portlets.TMAPortlet</classname>
+		</entry>  -->
+		<!-- Loan -->
+		<entry type="instance" name="LoanListPortlet">
+			<classname>com.misys.portal.product.ln.portlets.LoanListPortlet</classname>
+		</entry>
+		<entry type="instance" name="LoanRepaymentDetailsPortlet">
+			<classname>com.misys.portal.product.ln.portlets.LoanRepaymentDetailsPortlet</classname>
+		</entry>
+		<entry type="instance" name="LoanPortlet">
+			<classname>com.misys.portal.product.ln.portlets.LoanPortlet</classname>
+		</entry>
+		<entry type="instance" name="LoanFundTransferPortlet">
+			<classname>com.misys.portal.loan.product.ft.portlets.FundTransferPortlet</classname>
+		</entry>
+		<entry type="instance" name="LoanInterestDetailsPopupPortlet">
+			<classname>com.misys.portal.product.ln.portlets.LoanInterestDetailsPopupPortlet</classname>
+		</entry>
+		<!-- Import Open Account -->
+		<entry type="instance" name="ImportOpenAccountListPortlet">
+			<classname>com.misys.portal.openaccount.product.io.portlets.ImportOpenAccountListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ImportOpenAccountPortlet">
+			<classname>com.misys.portal.openaccount.product.io.portlets.ImportOpenAccountPortlet</classname>
+		</entry>
+		<entry type="instance" name="TMACenterListPortlet">
+			<classname>com.misys.portal.tsu.v2.TMACenterListPortlet</classname>
+		</entry>
+		
+		<!-- Export Open Account -->
+		<entry type="instance" name="ExportOpenAccountPortlet">
+			<classname>com.misys.portal.openaccount.product.ea.portlets.ExportOpenAccountPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExportOpenAccountListPortlet">
+			<classname>com.misys.portal.openaccount.product.ea.portlets.ExportOpenAccountListPortlet</classname>
+		</entry>
+		
+		<!-- Account Balances and Statements-->
+		<entry type="instance" name="HomeAccountSummaryListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.HomeAccountSummaryListPortlet</classname>
+				<parameter name="permission" value="ab_account_summary_access"/>
+				<parameter name="page_size" value="5"/>
+				<parameter name="title_key" value="PORTLET_HOME_ACCOUNT_SUMMARY"/>
+		</entry>
+		<entry type="instance" name="AccountSummaryCurrentListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.GenericAccountSummaryListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_ACCOUNT_SUMMARY"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountSummary"/>
+		</entry>
+		<entry type="instance" name="AccountSummaryExternalListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.GenericAccountSummaryListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_EXTERNAL_ACCOUNT_SUMMARY"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountSummary"/>
+		</entry>
+		<entry type="instance" name="AccountSummarySearchPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountSummarySearchPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountSummaryExportPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountSummaryExportPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountStatementExportPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountStatementExportPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountSummarySavingsListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.GenericAccountSummaryListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_ACCOUNT_SAVINGS_SUMMARY"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountSummary"/>
+		</entry>
+		<entry type="instance" name="AccountSummaryLoanListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.GenericAccountSummaryListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_ACCOUNT_LOAN_SUMMARY"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountSummary"/>
+		</entry>
+		<entry type="instance" name="AccountSummaryTreasuryListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.GenericAccountSummaryListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_ACCOUNT_TREASURY_SUMMARY"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountSummary"/>
+		</entry>
+		<entry type="instance" name="AccountSummaryFixedTermListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.GenericAccountSummaryListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_ACCOUNT_TERM_DEPOSIT_SUMMARY"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountSummary"/>
+		</entry>
+		<entry type="instance" name="AllAccountsSummaryListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AllAccountsSummaryListPortlet</classname>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountSummary"/>
+		</entry>
+		<entry type="instance" name="AccountStatementSearchPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountStatementSearchPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountStatementBackPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountStatementBackPortlet</classname>
+		</entry>
+		<entry type="instance" name="AccountStatementDetailsPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountStatementDetailsPortlet</classname>
+				<parameter name="title_key" value="PORTLET_ACCOUNT_DETAILS_SUMMARY"/>
+		</entry>
+		<entry type="instance" name="AccountStatementExternalMovementsPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountStatementExternalMovementsPortlet</classname>
+				<parameter name="title_key" value="PORTLET_EXTERNAL_ACCOUNT_STATEMENT_MOVEMENTS"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountStatement"/>
+		</entry>
+		<entry type="instance" name="AccountStatementListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountStatementListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_ACCOUNT_STATEMENT"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountStatement"/>
+		</entry>
+		<entry type="instance" name="AccountStatementCurrentDayListPortlet">
+				<classname>com.misys.portal.product.ab.portlets.AccountStatementCurrentDayListPortlet</classname>
+				<parameter name="title_key" value="PORTLET_CURRENT_DAY_ACCOUNT_STATEMENT"/>
+				<parameter name="listdef_name" value="accountStatementCurrentDay"/>
+				<parameter name="viewer" value="com.misys.portal.report.viewer.ViewerDojoAccountStatement"/>
+		</entry>
+		<entry type="ref" name="AccountListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_ACCOUNTS"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="accounts.xml"/>
+		</entry>
+		<entry type="ref" name="AccountBalanceListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_BALANCES"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="accountBalances.xml"/>
+		</entry>
+		<!-- END Account Balances and Statements-->
+		
+		<entry type="abstract" name="LocalizedPortalResourceServerPortlet">
+   			<classname>com.misys.portal.core.portal.portlets.LocalizedPortalResourceServerPortlet</classname>
+  		</entry>
+  		
+  		<entry type="abstract" name="InternalAccountStatementDisclaimerPortlet">
+				<classname>com.misys.portal.product.ab.portlets.InternalAccountStatementDisclaimerPortlet</classname>
+		</entry>
+		
+		<entry type="abstract" name="ExternalAccountStatementDisclaimerPortlet">
+				<classname>com.misys.portal.product.ab.portlets.ExternalAccountStatementDisclaimerPortlet</classname>
+		</entry>
+		
+		<entry type="ref" parent="InternalAccountStatementDisclaimerPortlet" name="ABInternalFootnote">
+			<parameter name="path" value="/core/text/internal_account_statement_footnote.html"/>
+		</entry>
+		<entry type="ref" parent="InternalAccountStatementDisclaimerPortlet" name="ABFootnote">
+			<parameter name="path" value="/core/text/account_summary_footnote.html"/>
+		</entry>
+		
+		<entry type="ref" parent="ExternalAccountStatementDisclaimerPortlet" name="ABExternalFootnote">
+			<parameter name="path" value="/core/text/external_account_statement_footnote.html"/>
+		</entry>
+
+		<!-- Treasury -->
+		<entry type="instance" name="ForeignExchangeListPortlet">
+			<classname>com.misys.portal.treasury.product.fx.portlets.ForeignExchangeListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ForeignExchangePortlet">
+			<classname>com.misys.portal.treasury.product.fx.portlets.ForeignExchangePortlet</classname>
+		</entry>
+		<entry type="instance" name="TermDepositListPortlet">
+			<classname>com.misys.portal.cash.product.td.portlets.TermDepositListPortlet</classname>
+			<parameter name="OpenDraftPlacementTDInitiationList" value="cash/listdef/customer/TD/openDraftPlacementTDInitiationList.xml"/>
+			<parameter name="OpenUnsignedPlacementTDInitiationList" value="cash/listdef/customer/TD/openUnsignedPlacementTDInitiationList.xml"/>
+			<parameter name="UpdateTDFromExistingList" value="cash/listdef/customer/TD/updateTDFromExistingList.xml"/>
+			<parameter name="OpenDraftUpdateTDList" value="cash/listdef/customer/TD/openDraftUpdateTDList.xml"/>
+			<parameter name="OpenUnsignedUpdateTDList" value="cash/listdef/customer/TD/openUnsignedUpdateTDList.xml"/>
+			<parameter name="WithdrawalTDFromExistingList" value="cash/listdef/customer/TD/withdrawalTDFromExistingList.xml"/>
+			<parameter name="OpenDraftWithdrawalTDList" value="cash/listdef/customer/TD/openDraftWithdrawalTDList.xml"/>
+			<parameter name="OpenUnsignedWithdrawalTDList" value="cash/listdef/customer/TD/openUnsignedWithdrawalTDList.xml"/>
+			<parameter name="DeleteTDPurged" value="cash/listdef/customer/TD/deleteTDPurged.xml"/>
+			<parameter name="DeleteTDRejected" value="cash/listdef/customer/TD/deleteTDRejected.xml"/>
+			<parameter name="DeleteTDUnsigned" value="cash/listdef/customer/TD/deleteTDUnsigned.xml"/>
+			<parameter name="HistoryTD" value="cash/listdef/customer/TD/historyTD.xml"/>
+			<parameter name="InquiryTDTransactions" value="cash/listdef/customer/TD/inquiryTDTransactions.xml"/>
+			<parameter name="ListTDPendingTransactions" value="cash/listdef/customer/TD/listTDPendingTransactions.xml"/>
+			<parameter name="MaintainTDPurgedList" value="cash/listdef/customer/TD/maintainTDPurgedList.xml"/>
+			<parameter name="MaintainTDRejectedList" value="cash/listdef/customer/TD/maintainTDRejectedList.xml"/>
+			<parameter name="MaintainTDUnsignedList" value="cash/listdef/customer/TD/maintainTDUnsignedList.xml"/>
+			<parameter name="OpenTDCancelPostDatedList" value="cash/listdef/customer/TD/OpenTDCancelPostDatedList.xml"/>
+			<!--<parameter name="OpenUpdateEntityTD" value="cash/listdef/customer/TD/openUpdateEntityTD.xml"/>-->
+		</entry>
+		<entry type="instance" name="TermDepositPortlet">
+			<classname>com.misys.portal.cash.product.td.portlets.TermDepositPortlet</classname>
+			<!-- Opics Plus--> 
+			<!-- classname>com.misys.portal.opics.cash.product.td.portlets.TermDepositPortlet</classname>-->
+		</entry>
+		<entry type="instance" name="FeesAndBillingPortlet">
+			<!-- Fees and Billing--> 
+			<classname>com.misys.portal.cash.product.fb.portlets.FeesAndBillingPortlet</classname>
+		</entry>
+		<entry type="instance" name="FeesAndBillingListPortlet">
+			<classname>com.misys.portal.cash.product.fb.portlets.FeesAndBillingListPortlet</classname>
+			<parameter name="OpenFeeEnquiryList" value="cash/listdef/customer/FB/openFeeEnquiryList.xml"/>
+			<parameter name="OpenBankInvoiceList" value="cash/listdef/customer/FB/openBankInvoiceList.xml"/>
+			<parameter name="OpenUnsignedBankInvoiceList" value="cash/listdef/customer/FB/openUnsignedBankInvoiceList.xml"/>
+			<parameter name="OpenDraftBankInvoiceInitiationList" value="cash/listdef/customer/FB/openDraftBankInvoiceInitiationList.xml"/>
+			<parameter name="PayBankInvoice" value="cash/listdef/customer/FB/openPayBankInvoiceList.xml"/>
+		</entry>
+		<entry type="instance" name="CashManagementListPortlet">
+			<classname>com.misys.portal.cash.product.cmeq.portlets.CashManagementListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CashManagementPortlet">
+			<classname>com.misys.portal.cash.product.cmeq.portlets.CashManagementPortlet</classname>
+			<!-- Opics Plus--> 
+			<!-- <classname>com.misys.portal.opics.cash.product.td.portlets.CashManagementPortlet</classname> -->
+		</entry>
+		<entry type="instance" name="AlertsListPortlet">
+			<classname>com.misys.portal.common.portlets.AlertsListPortlet</classname>
+			<parameter name="title_key" value="PORTLET_ALERTS"/>
+			<parameter name="max_alert" value="10"/>
+		</entry>
+		<entry type="instance" name="CashAccountStatementListPortlet">
+			<classname>com.misys.portal.product.ab.portlets.CashAccountStatementListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CashAccountLinesListPortlet">
+			<classname>com.misys.portal.product.ab.portlets.CashAccountLinesListPortlet</classname>
+		</entry>
+
+		<entry type="ref" name="CMEQFXDealsPositionPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_FX_DEALS"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/CMEQ/"/>
+			<parameter name="listdef_name" value="openCMEQFXDealsPosition.xml"/>
+		</entry>
+		<entry type="ref" name="CMEQFXDealsByDayPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_FX_DEALS_BY_DAY"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/CMEQ/"/>
+			<parameter name="listdef_name" value="openCMEQFXDealsByDay.xml"/>
+		</entry>
+		<entry type="ref" name="CMEQFXDealsActivityPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_FX_DEALS_ACTIVITY"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/CMEQ/"/>
+			<parameter name="listdef_name" value="openCMEQFXDealsActivity.xml"/>
+		</entry>
+		<entry type="ref" name="OpicsAccountListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_ACCOUNTS"/>
+			<parameter name="listdef_folder" value="opics/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="accounts.xml"/>
+		</entry>
+
+		<entry type="ref" name="OpicsAccountListPortletPlusBalance" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_ACCOUNTS"/>
+			<parameter name="listdef_folder" value="opics/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="accountsPlusBalance.xml"/>
+		</entry>
+		<entry type="ref" name="OpicsAccountBalanceTotalPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_ACCOUNTS"/>
+			<parameter name="listdef_folder" value="opics/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="accountsBalanceTotal.xml"/>
+		</entry>
+		<!--
+		<entry type="instance" name="AccountBalanceTotalPortlet">
+			<classname>com.misys.portal.product.ab.portlets.AccountBalanceTotalPortlet</classname>
+		</entry>
+		-->
+		<entry type="ref" name="OpicsAccountBalanceListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_BALANCES"/>
+			<parameter name="listdef_folder" value="opics/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="accountBalances.xml"/>
+		</entry>
+		<entry type="ref" name="OpicsAccountStatementListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_STATEMENTS"/>
+			<parameter name="listdef_folder" value="opics/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="accountStatementLines.xml"/>
+		</entry>		
+		<!-- END - CUSTOMER PRODUCTS VIEW-->
+		
+		<!-- BEGIN - BANK VIEW-->
+		<entry type="ref" parent="PortalResourceServerPortlet" name="WelcomeAdmin_en">
+			<parameter name="path" value="/core/text/trade_welcome_admin_en.html"/>
+			<parameter name="permission" value="welcome_admin_portlet_access"/>
+			<metainfo>
+				<title>Welcome Administrator</title>
+				<description>Welcome Administrator</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="WelcomeAdmin_us">
+			<parameter name="path" value="/core/text/trade_welcome_admin_us.html"/>
+			<parameter name="permission" value="welcome_admin_portlet_access"/>
+			<metainfo>
+				<title>Welcome Administrator</title>
+				<description>Welcome Administrator</description>
+			</metainfo>
+		</entry>
+		<!-- 
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="WelcomeAdmin_en">
+			<parameter name="resource" value="/core/text/trade_welcome_admin_en.html"/>
+			<metainfo>
+				<title>Welcome Administrator</title>
+				<description>Welcome Administrator</description>
+			</metainfo>
+			<parameter name="stylesheet" value="/core/xsl/common/static_html.xsl"/>
+		</entry>
+		-->
+		<entry type="ref" parent="PortalResourceServerPortlet" name="WelcomeAdmin_fr">
+			<parameter name="path" value="/core/text/trade_welcome_admin_fr.html"/>
+			<parameter name="permission" value="welcome_admin_portlet_access"/>
+			<metainfo>
+				<title>Bienvenue Administrateur</title>
+				<description>Bienvenue Administrateur</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="WelcomeAdmin_de">
+			<parameter name="path" value="/core/text/trade_welcome_adminde.html"/>
+			<parameter name="permission" value="welcome_admin_portlet_access"/>
+			<metainfo>
+				<title>Willkommen Verwalter</title>
+				<description>Willkommen Verwalter</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="WelcomeAdmin_br">
+			<parameter name="path" value="/core/text/trade_welcome_admin_br.html"/>
+			<parameter name="permission" value="welcome_admin_portlet_access"/>
+			<metainfo>
+				<title>Bem-vindo Administrador</title>
+				<description>Bem-vindo Administrador</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="WelcomeAdmin_zh">
+	        <parameter name="path" value="/core/text/trade_welcome_admin_zh.html"/>
+            <parameter name="permission" value="welcome_admin_portlet_access"/>
+            <parameter name="encoding" value="UTF-8"/>
+            <metainfo>
+                <title>Bem-vindo Administrador</title>
+                <description>Bem-vindo Administrador</description>
+             </metainfo>
+     	</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="WelcomeAdmin_ar">
+			<parameter name="path" value="/core/text/trade_welcome_admin_ar.html"/>
+			<parameter name="permission" value="welcome_admin_portlet_access"/>
+			<parameter name="encoding" value="UTF-8"/>
+			<metainfo>
+				<title>نرحب المسؤول</title>
+				<description>نرحب المسؤول</description>
+			</metainfo>
+		</entry>
+		
+		<entry type="ref" parent="PortalResourceServerPortlet" name="TradeApplicationsAdmin">
+			<parameter name="path" value="/core/text/trade_apps_admin.html"/>
+			<metainfo>
+				<title>Administrator's Modules</title>
+				<description>Administrator's Modules</description>
+			</metainfo>
+		</entry>
+		<entry type="instance" name="TradeApplicationsAdminPortlet">
+			<classname>com.misys.portal.common.portlets.TradeApplicationsMenuPortlet</classname>
+			<parameter name="title_key" value="PORTLET_TRADE_ADMINISTRATOR_TITLE"/>
+			<parameter name="menu_id" value="home_bank_default"/>
+		</entry>
+		<entry type="instance" name="HelpdeskCRMPortlet">
+			<classname>com.misys.portal.common.portlets.HelpdeskCRMPortlet</classname>
+			<parameter name="title_key" value="USER_TOOLS_TITLE"/>
+		</entry>
+		<entry type="ref" parent="FileReportPortlet" name="TradeRecentApps">
+			<parameter name="title_key" value="PORTLET_TRADE_RECENT_APPLICATIONS_TITLE"/>
+			<parameter name="list_def" value="core/listdef/bank/homeRecentApps.xml"/>
+			<parameter name="permission" value="tradeadmin_access"/>
+			<parameter name="url_screen" value="TradeAdminScreen"/>
+			<parameter name="url_param_number" value="2"/>
+			<parameter name="url_icon" value="/content/images/table-go.png"/>
+			<parameter name="url_param_0_name" value="option"/>
+			<parameter name="url_param_0_value" value="SCRATCH"/>
+			<parameter name="url_param_1_name" value="operation"/>
+			<parameter name="url_param_1_value" value="LIST_PENDING"/>
+		</entry>
+		<entry type="instance" name="TradeRecentRequests">
+			<parameter name="title_key" value="PORTLET_TRADE_RECENT_REQUESTS_TITLE"/>
+			<classname>com.misys.portal.middleoffice.TradeRecentRequests</classname>
+			<parameter name="permission" value="tradeadmin_access"/>
+		</entry>
+		<entry type="instance" name="TradeAdminListPortlet">
+			<classname>com.misys.portal.middleoffice.portlets.TradeAdminListPortlet</classname>
+		</entry>
+		<entry type="instance" name="NewsListPortlet">
+			<classname>com.misys.portal.news.portlets.NewsListPortlet</classname>
+		</entry>
+		<entry type="instance" name="NewsPortlet">
+			<classname>com.misys.portal.news.portlets.NewsPortlet</classname>
+		</entry>
+		<entry type="instance" name="TradeAdminPortlet">
+			<classname>com.misys.portal.middleoffice.portlets.TradeAdminPortlet</classname>
+		</entry>
+		<entry type="instance" name="BankSystemFeaturesListPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BankSystemFeaturesListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BankSystemFeaturesPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BankSystemFeaturesPortlet</classname>
+		</entry>
+		<entry type="instance" name="GenericParameterMaintenancePortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.GenericParameterMaintenancePortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFSubscriptionPackagePortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFSubscriptionPackagePortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFSubscriptionPackageListPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFSubscriptionPackageListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFRateListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFRateListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFRateMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFRateMCPortlet</classname>
+		</entry>		
+		<!-- END - BANK VIEW-->
+		<!-- BEGIN - DASHBOARD VIEW-->
+		<entry type="instance" name="ProductOverview">
+			<classname>com.misys.portal.product.common.portlets.XSLTMasterProductPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/history_master_view_rep.xsl"/>
+			<parameter name="title_key" value="PORTLET_HISTORY_MASTER_VIEW"/>
+		</entry>
+		<entry type="ref" parent="FileReportPortlet" name="PendingTnxOverview">
+			<parameter name="title_key" value="PORTLET_HISTORY_PENDING_TNX_VIEW"/>
+			<parameter name="list_def" value="/core/listdef/customer/pending.xml"/>
+			<parameter name="permission" value="no_permission"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="ref" parent="FileReportPortlet" name="SEPendingTnxOverview">
+			<parameter name="title_key" value="PORTLET_HISTORY_PENDING_TNX_VIEW"/>
+			<parameter name="list_def" value="/core/listdef/customer/pendingSE.xml"/>
+			<parameter name="permission" value="no_permission"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="instance" name="RepaymentDetailsOverview">
+			<classname>com.misys.portal.product.ln.portlets.LoanRepaymentDetailsPortlet</classname>
+			<parameter name="stylesheet" value="/loan/xsl/loan_repayment_details_ln.xsl"/>
+			<parameter name="title_key" value="PORTLET_REPAYMENT_DETAILS_VIEW"/>
+			<parameter name="permission" value="ln_view_repayment"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="ref" parent="FileReportPortlet" name="FBFundTransferOverview">
+			<parameter name="title_key" value="PORTLET_HISTORY_FB_FUND_TRANSFER_TNX_VIEW"/>
+			<parameter name="list_def" value="/core/listdef/customer/fbFundTransfers.xml"/>
+			<parameter name="permission" value="fb_invb_access"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="ref" parent="FileReportPortlet" name="SEPendingTnxOverview">
+			<parameter name="title_key" value="PORTLET_HISTORY_PENDING_TNX_VIEW"/>
+			<parameter name="list_def" value="/core/listdef/customer/pendingSE.xml"/>
+			<parameter name="permission" value="no_permission"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		
+		
+		<entry type="instance" name="LoanActivitiesOverview">
+			<classname>com.misys.portal.product.ln.portlets.LoanActivitiesHistoryPortlet</classname>
+			<parameter name="title_key" value="PORTLET_ACTIVITY_HISTORY_TNX_VIEW"/>
+			<parameter name="permission" value="no_permission"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="instance" name="TasksOverview">
+			<classname>com.misys.portal.product.common.portlets.TaskProductPortlet</classname>
+			<parameter name="title_key" value="PORTLET_HISTORY_MASTER_TASK_VIEW"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="instance" name="ChargesOverview">
+			<classname>com.misys.portal.product.common.portlets.XSLTMasterProductPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/history_master_charge_rep.xsl"/>
+			<parameter name="title_key" value="PORTLET_HISTORY_MASTER_CHARGE_VIEW"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="instance" name="LinkedRefOverview">
+			<classname>com.misys.portal.product.common.portlets.XSLTMasterProductPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/history_master_linked_ref_rep.xsl"/>
+			<parameter name="title_key" value="PORTLET_HISTORY_LINKED_REFERENCE_VIEW"/>
+		</entry>
+		<entry type="instance" name="AttachmentUploadOverview">
+			<classname>com.misys.portal.product.common.portlets.AttachmentPortlet</classname>					
+			<parameter name="stylesheet" value="/core/xsl/history_attachment_view.xsl"/>
+			<parameter name="title_key" value="PORTLET_UPLOAD_TNX_ATTACHMENT_TITLE_KEY"/>
+		</entry>		
+		<entry type="instance" name="AttachmentOverview">
+			<classname>com.misys.portal.product.common.portlets.AttachmentPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/history_attachment_view.xsl"/>
+			<parameter name="title_key" value="PORTLET_TNX_ATTACHMENT_TITLE_KEY"/>
+			<parameter name="collapsable" value="Y"/>
+		</entry>
+		<entry type="instance" name="AutoGeneratedDocumentOverview">
+			<classname>com.misys.portal.product.common.portlets.AutoGeneratedDocumentPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/common/display_auto_gen_attachment.xsl"/>
+			<parameter name="title_key" value="XSL_HEADER_AUTO_GENERATED_FILES"/>
+		</entry>
+		<entry type="instance" name="CollaborationPortlet">
+			<!-- <classname>com.misys.portal.product.common.portlets.CollaborationPortlet</classname>--><!-- does not exit -->
+			<parameter name="stylesheet" value="/core/xsl/common/display_collaboration.xsl"/>
+			<parameter name="title_key" value="XSL_COLLABORATION_TASKS"/>
+		</entry>
+		<entry type="instance" name="ProductHistoryActions">
+			<!-- parameter name="control" value="com.misys.portal.core.portal.controls.ClearPortletControl"/-->
+			<classname>com.misys.portal.product.common.portlets.ProductHistoryActions</classname>
+			<parameter name="title_key" value="PORTLET_HISTORY_ACTION"/>
+		</entry>
+		
+		<!-- END - DASHBOARD VIEW-->
+		<!-- BEGIN - TRADE CALENDAR-->
+		<entry type="abstract" name="AbstractEventsPortlet">
+			<classname>com.misys.portal.calendar.portlets.TradeEventsPortlet</classname>
+		</entry>
+		<entry type="ref" parent="AbstractEventsPortlet" name="AllEventsPortlet">
+			<parameter name="max_event" value="99" type="int"/>
+			<parameter name="max_pending" value="5" type="int"/>
+			<parameter name="max_notification" value="5" type="int"/>
+			<parameter name="title_key" value="PORTLET_TRADE_EVENTS_TITLE"/>
+		</entry>
+		<entry type="ref" parent="AbstractEventsPortlet" name="EventsPortlet">
+			<parameter name="max_event" value="99" type="int"/>
+			<parameter name="max_pending" value="0" type="int"/>
+			<parameter name="max_notification" value="0" type="int"/>
+			<parameter name="title_key" value="PORTLET_TRADE_EVENTS_TITLE"/>
+			<parameter name="permission" value="event_access"/>
+		</entry>
+		<entry type="ref" parent="AbstractEventsPortlet" name="TradeEventsPortlet">
+			<parameter name="max_event" value="0" type="int"/>
+			<parameter name="max_pending" value="5" type="int"/>
+			<parameter name="max_notification" value="5" type="int"/>
+			<parameter name="title_key" value="PORTLET_TRADE_EVENTS_TITLE"/>
+		</entry>
+		<entry type="ref" parent="AbstractEventsPortlet" name="TradeEventsGridPortlet">
+			<parameter name="permission" value="mc_access"/>
+			<parameter name="max_event" value="0" type="int"/>
+			<parameter name="max_pending" value="5" type="int"/>
+			<parameter name="max_notification" value="5" type="int"/>
+			<parameter name="pending_display_mode" value="grid" />
+			<parameter name="notification_display_mode" value="grid" />
+			<parameter name="title_key" value="PORTLET_TRADE_EVENTS_TITLE"/>
+		</entry>
+		<entry type="instance" name="TradeCalendarPortlet">
+			<classname>com.misys.portal.calendar.portlets.TradeCalendarPortlet</classname>
+			<parameter name="title_key" value="PORTLET_TRADE_CALENDAR_TITLE"/>
+			<parameter name="permission" value="event_access"/>
+		</entry>
+		<entry type="instance" name="FullEventsPortlet">
+			<classname>com.misys.portal.calendar.portlets.FullEventsPortlet</classname>
+		</entry>
+		<entry type="instance" name="FullEventsListPortlet">
+			<classname>com.misys.portal.calendar.portlets.FullEventsListPortlet</classname>
+		</entry>
+		<!-- END - TRADE CALENDAR-->
+		<!-- BEGIN - NEWS AND ANALYSIS-->
+		<entry type="instance" name="EmptyContent">
+			<classname>com.misys.portal.news.portlets.EmptyPortlet</classname>
+		</entry>
+		<entry type="instance" name="EmptyFeed">
+			<classname>com.misys.portal.news.portlets.EmptyPortlet</classname>
+		</entry>
+		<entry type="ref" name="BankNEOMAFrenchContent" parent="JetspeedContent">
+			<parameter name="provider-name" value="bankneomafrench"/>
+			<parameter name="title_key" value="BANK_CONTENT"/>
+		</entry>
+		<entry type="ref" name="BankNEOMAGermanContent" parent="JetspeedContent">
+			<parameter name="provider-name" value="bankneomagerman"/>
+			<parameter name="title_key" value="BANK_CONTENT"/>
+		</entry>
+		<entry type="ref" name="BankNEOMAThaiContent" parent="JetspeedContent">
+			<parameter name="provider-name" value="bankneomathai"/>
+			<parameter name="title_key" value="BANK_CONTENT"/>
+		</entry>
+		<entry type="ref" name="BankNEOMAChineseContent" parent="JetspeedContent">
+			<parameter name="provider-name" value="bankneomachinese"/>
+			<parameter name="title_key" value="BANK_CONTENT"/>
+		</entry>
+		<entry type="ref" name="DefaultContent" parent="JetspeedContent">
+			<parameter name="provider-name" value="default"/>
+			<parameter name="title_key" value="DEFAULT_NEWS_CONTENT"/>
+			<parameter name="permission" value="global_news_portlet_access"/>
+		</entry>
+		<entry type="ref" name="TradeNews" parent="XSLPortletRSS">
+			<url>/content/xml/moreover_trade_page_en.xml</url>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="title_key" value="TRADE_NEWS"/>
+		</entry>
+		<entry type="ref" name="TradeNewsTH" parent="XSLPortletRSS">
+			<url>/content/xml/moreover_trade_page_th.xml</url>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="title_key" value="TRADE_NEWS"/>
+			<metainfo>
+				<description>XSL News</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" name="TradeNewsZH" parent="XSLPortletRSS">
+			<url>/content/xml/moreover_trade_page_zh.xml</url>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="title_key" value="TRADE_NEWS"/>
+			<metainfo>
+				<description>XSL News</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" name="SmallBusinessNews" parent="XSLPortletRSS">
+			<url>/content/xml/moreover_smallbusiness_page_en.xml</url>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="title_key" value="SMALL_BUSINESS_NEWS"/>
+			<metainfo>
+				<description>XSL News</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" name="TextileNews" parent="XSLPortletRSS">
+			<url>/content/xml/moreover_textile_page_en.xml</url>
+			<parameter name="encoding" value="UTF-8"/>
+			<parameter name="title_key" value="TEXTILE_NEWS"/>
+			<metainfo>
+				<description>XSL News</description>
+			</metainfo>
+		</entry>
+		<entry type="ref" name="Banking News" parent="RSS">
+			<url>http://p.moreover.com/cgi-local/page?o=rss&amp;c=Banking%20news</url>
+			<parameter name="title_key" value="BANKING_NEWS"/>
+		</entry>
+		<entry type="ref" name="Southeast Asia news" parent="RSS">
+			<url>http://p.moreover.com/cgi-local/page?o=rss&amp;c=Southeast%20Asia%20news</url>
+			<parameter name="title_key" value="SOUTHEAST_ASIA_NEWS"/>
+		</entry>
+		<entry type="ref" name="Plastics Industry news" parent="RSS">
+			<url>http://p.moreover.com/cgi-local/page?c=Plastics%20industry%20news&amp;o=rss</url>
+			<parameter name="title_key" value="PLASTIC_INDUSTRY_NEWS"/>
+		</entry>
+		
+		<!-- END - NEWS AND ANALYSIS-->
+
+    <!-- Document Management -->
+    <entry type="instance" name="DocumentManagementListPortlet">
+			<classname>com.misys.portal.product.dm.portlets.DocumentManagementListPortlet</classname>
+		</entry>
+		<entry type="instance" name="DocumentManagementPortlet">
+			<classname>com.misys.portal.product.dm.portlets.DocumentManagementPortlet</classname>
+		</entry>
+    
+		<!-- BEGIN - COLLABORATION SUITE -->
+		<entry type="instance" name="CustomerOngoingTasksList">
+			<classname>com.misys.portal.collaboration.customer.portlets.OngoingTasksListPortlet</classname>
+			<parameter name="max_records" value="5" type="int"/>
+			<parameter name="permission" value="collaboration_ongoing_tasks_list"/>
+			<parameter name="title_key" value="PORTLET_CUSTOMER_ONGOING_TASK_TITLE"/>
+			<parameter name="url_screen" value="MessageCenterScreen"/>
+			<parameter name="url_param_number" value="1"/>
+			<parameter name="url_icon" value="/content/images/table-go.png"/>
+			<parameter name="url_param_0_name" value="operation"/>
+			<parameter name="url_param_0_value" value="TASKS_MONITORING"/>
+		</entry>
+		<entry type="instance" name="CustomerTasksMonitoringListPortlet">
+			<classname>com.misys.portal.collaboration.customer.portlets.TasksMonitoringListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BankOngoingTasksList">
+			<classname>com.misys.portal.collaboration.bank.portlets.OngoingTasksListPortlet</classname>
+			<parameter name="max_records" value="5" type="int"/>
+			<parameter name="permission" value="collaboration_ongoing_tasks_list"/>
+			<parameter name="title_key" value="PORTLET_BANK_ONGOING_TASK_TITLE"/>
+			<parameter name="url_screen" value="TradeAdminScreen"/>
+			<parameter name="url_param_number" value="1"/>
+			<parameter name="url_icon" value="/content/images/table-go.png"/>
+			<parameter name="url_param_0_name" value="operation"/>
+			<parameter name="url_param_0_value" value="TASKS_MONITORING"/>
+		</entry>
+		<entry type="instance" name="BankTasksMonitoringListPortlet">
+			<classname>com.misys.portal.collaboration.bank.portlets.TasksMonitoringListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BankTasksMonitoringPortlet">
+			<classname>com.misys.portal.collaboration.bank.portlets.TasksMonitoringPortlet</classname>
+		</entry>
+		<entry type="instance" name="CounterpartyOngoingTasksList">
+			<classname>com.misys.portal.collaboration.counterparty.portlets.OngoingTasksListPortlet</classname>
+			<parameter name="max_records" value="5" type="int"/>
+			<parameter name="permission" value="collaboration_ongoing_tasks_list"/>
+		</entry>
+		<entry type="instance" name="CounterpartyTasksMonitoringListPortlet">
+			<classname>com.misys.portal.collaboration.counterparty.portlets.TasksMonitoringListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CounterpartyTasksMonitoringPortlet">
+			<classname>com.misys.portal.collaboration.counterparty.portlets.TasksMonitoringPortlet</classname>
+		</entry>
+		<entry type="instance" name="CounterpartyTradeApplicationsPortlet">
+			<classname>com.misys.portal.common.portlets.TradeApplicationsMenuPortlet</classname>
+			<parameter name="menu_id" value="home_counterparty_default"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="CounterpartyUserTools_en">
+			<parameter name="path" value="/collaboration/text/counterparty_trade_tools_en.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+		</entry>
+				<entry type="ref" parent="PortalResourceServerPortlet" name="CounterpartyUserTools_us">
+			<parameter name="path" value="/collaboration/text/counterparty_trade_tools_us.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+		</entry>
+				<entry type="ref" parent="PortalResourceServerPortlet" name="CounterpartyUserTools_ar">
+			<parameter name="path" value="/collaboration/text/counterparty_trade_tools_ar.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="CounterpartyUserTools_fr">
+			<parameter name="path" value="/collaboration/textcounterparty_trade_tools_fr.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+		</entry>
+		<entry type="ref" parent="PortalResourceServerPortlet" name="CounterpartyUserTools_de">
+			<parameter name="path" value="/collaboration/text/counterparty_trade_tools_de.html"/>
+			<parameter name="title_key" value="PORTLET_USER_TOOLS_TITLE"/>
+			<parameter name="encoding" value="UTF-8"/>
+		</entry>
+		<entry type="instance" name="CollaborationListPortlet">
+			<classname>com.misys.portal.collaboration.portlets.CollaborationListPortlet</classname>
+		</entry>
+		<!-- END - COLLABORATION SUITE -->
+		<!-- TSU -->
+		<entry type="instance" name="TMACenterPortlet_V1">
+			<classname>com.misys.portal.tsu.TMACenterPortlet</classname>
+		</entry>
+		<entry type="instance" name="TMACenterPortlet">
+			<classname>com.misys.portal.tsu.v2.TMACenterPortlet</classname>
+		</entry>
+		<entry type="instance" name="TMAMessageReportingPopupPortlet_V1">
+			<classname>com.misys.portal.tsu.popup.portlets.TMAMessageReportingPopupPortlet</classname>
+		</entry>
+		<entry type="instance" name="TMAMessageReportingPopupPortlet">
+			<classname>com.misys.portal.tsu.v2.popup.portlets.TMAMessageReportingPopupPortlet</classname>
+		</entry>
+		<!-- End TSU -->
+		
+		<!-- Dashboards -->
+		<!-- Home -->
+		<entry type="ref" parent="ChartReportPortlet" name="OutstandingPerProductChartPortlet">
+			<parameter name="list_def" value="core/listdef/customer/chart_outstanding_per_product.xml"/>
+			<parameter name="title_key" value="PORTLET_HOME_OUTSTANDING_PER_PRODUCT_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+			<parameter name="permission" value="outstanding_chart_portlet_access"/>
+		</entry>
+		<!-- LC -->
+		<entry type="ref" parent="ChartReportPortlet" name="LCOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/LC/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="LCOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/LC/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="LCPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/LC/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- BG -->
+		<entry type="ref" parent="ChartReportPortlet" name="BGOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/BG/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="BGOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/BG/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- FA -->
+		<entry type="ref" parent="ChartReportPortlet" name="FAOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/FA/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="FAOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/FA/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="FAPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/FA/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- EL -->
+		<entry type="ref" parent="ChartReportPortlet" name="ELOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/EL/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="ELOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/EL/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="ELPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/EL/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- SG -->
+		<entry type="ref" parent="ChartReportPortlet" name="SGOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SG/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="SGOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SG/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- TF -->
+		<entry type="ref" parent="ChartReportPortlet" name="TFOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/TF/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="TFOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/TF/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- BR -->
+		<entry type="ref" parent="ChartReportPortlet" name="BROutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/BR/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="BROutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/BR/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- EC -->
+		<entry type="ref" parent="ChartReportPortlet" name="ECOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/EC/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="ECOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/EC/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="ECPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/EC/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- SE -->
+		<entry type="ref" parent="ChartReportPortlet" name="SECountTnxPerTypeChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SE/chart_outstanding_per_se_type.xml"/>
+			<parameter name="title_key" value="jhgkqjgs"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- IC -->
+		<entry type="ref" parent="ChartReportPortlet" name="ICOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/IC/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="ICOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/IC/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="ICPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/IC/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- IR -->
+		<entry type="ref" parent="ChartReportPortlet" name="IROutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/IR/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="IROutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/IR/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- SR -->
+		<entry type="ref" parent="ChartReportPortlet" name="SROutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SR/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="SROutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SR/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="SRPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SR/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- SI -->
+		<entry type="ref" parent="ChartReportPortlet" name="SIOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SI/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="SIOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SI/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="SIPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/SI/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		
+		<!-- PO -->
+		<entry type="ref" parent="ChartReportPortlet" name="POOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/PO/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="POOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/PO/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="POPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/PO/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- SO -->
+		<entry type="ref" parent="ChartReportPortlet" name="SOOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/SO/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="SOOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/SO/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- IN -->
+		<entry type="ref" parent="ChartReportPortlet" name="INOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/IN/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="INOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/IN/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="INPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/SO/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- Message Center -->
+		<entry type="ref" parent="ChartReportPortlet" name="MCOutstandingPerProductChartPortlet">
+			<parameter name="list_def" value="core/listdef/customer/MC/chart_outstanding_per_product.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_PRODUCT_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- LI -->
+		<entry type="ref" parent="ChartReportPortlet" name="LIOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/LI/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="LIOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/LI/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- LN -->
+		<entry type="ref" parent="ChartReportPortlet" name="LNOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/LN/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="LNOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/LN/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="FacilitiesAvailablePortlet">
+			<parameter name="list_def" value="loan/listdef/customer/LN/facilitiesAvailableChart.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_AVAILABLE_PER_FACILITY"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="instance" name="LNRepricingDatesPortlet">
+			<classname>com.misys.portal.product.ln.portlets.LoanRepricingDatesPortlet</classname>
+			<parameter name="title_key" value="PORTLET_MODULE_LOAN_REPRICING_DATES_TITLE"/>
+		</entry>
+		
+		<!-- Cash -->
+		<!-- FX -->
+		<entry type="ref" parent="ChartReportPortlet" name="FXPerCurrencyChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/FX/chart_fx_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_FX_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="FXPerValueDateChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/FX/chart_fx_by_type.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_FX_PER_TYPE_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		
+		<!-- TD -->
+		<entry type="ref" parent="ChartReportPortlet" name="TDDepositPerCurrencyChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/TD/chart_deposit_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_DEPOSIT_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="TDDepositVSInterestChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/TD/chart_deposit_depo_interest.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_DEPOSIT_VS_INTEREST_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		
+		<!-- LA -->
+		<entry type="ref" parent="ChartReportPortlet" name="LAPerCurrencyChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/LA/chart_loan_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_LA_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="LAPerMaturityDateChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/LA/chart_loan_by_maturity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_LA_PER_MATURITY_DATE_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		
+		<!-- FT -->
+		<entry type="ref" parent="ChartReportPortlet" name="FTOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/FT/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="FTOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="trade/listdef/customer/FT/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<!-- Remittance -->
+		<entry type="ref" parent="ChartReportPortlet" name="RemittanceOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/FT/remittance/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="RemittanceOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/FT/remittance/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="RemittancePaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="cash/listdef/customer/FT/remittance/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		
+		<!-- Import Open Account -->
+		<entry type="ref" parent="ChartReportPortlet" name="IOOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/IO/chart_outstanding_per_currency.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_CURRENCY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="EntityChartReportPortlet" name="IOOutstandingPerEntityChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/IO/chart_outstanding_per_entity.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_ENTITY_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="IOPaymentPerMonthChartPortlet">
+			<parameter name="list_def" value="openaccount/listdef/customer/IO/chart_payment_per_month.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_PAYMENT_PER_MONTH_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		
+		<!-- Middle Office -->
+		<entry type="ref" parent="ChartReportPortlet" name="MOOutstandingPerCurrencyChartPortlet">
+			<parameter name="list_def" value="core/listdef/bank/MO/chart_outstanding_per_product.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_PRODUCT_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		<entry type="ref" parent="ChartReportPortlet" name="MOResponseAverageTimeChartPortlet">
+			<parameter name="list_def" value="core/listdef/bank/MO/chart_average_time_response.xml"/>
+			<parameter name="title_key" value="PORTLET_MODULE_OUTSTANDING_PER_PRODUCT_TITLE"/>
+			<parameter name="show_chart_desc" value="true"/>
+		</entry>
+		
+		<!-- Loan -->
+		<entry type="ref" parent="FileReportPortlet" name="OngoingPaymentPortlet">
+			<parameter name="title_key" value="PORTLET_PAYMENT_TITLE"/>
+			<parameter name="list_def" value="core/listdef/customer/ongoingpayment.xml"/>
+			<parameter name="permission" value="no_permission"/>
+		</entry>
+		
+		<!-- Product Builder -->
+		<entry type="instance" name="ProductPortlet">
+			<classname>com.misys.portal.product.common.portlets.ProductPortlet</classname>
+		</entry>
+
+		<!-- Summit -->
+		<entry type="instance" name="SwapListPortlet">
+			<classname>com.misys.portal.summit.product.sw.portlets.SwapListPortlet</classname>
+		</entry>
+		<entry type="instance" name="SwapPortlet">
+			<classname>com.misys.portal.summit.product.sw.portlets.SwapPortlet</classname>
+		</entry>
+		<entry type="instance" name="CreditDefaultSwapListPortlet">
+			<classname>com.misys.portal.summit.product.cs.portlets.CreditDefaultSwapListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CreditDefaultSwapPortlet">
+			<classname>com.misys.portal.summit.product.cs.portlets.CreditDefaultSwapPortlet</classname>
+		</entry>	
+		<entry type="instance" name="IndexCreditDefaultSwapListPortlet">
+			<classname>com.misys.portal.summit.product.cx.portlets.IndexCreditDefaultSwapListPortlet</classname>
+		</entry>
+		<entry type="instance" name="IndexCreditDefaultSwapPortlet">
+			<classname>com.misys.portal.summit.product.cx.portlets.IndexCreditDefaultSwapPortlet</classname>
+		</entry>	
+		<entry type="instance" name="EquityOptionListPortlet">
+			<classname>com.misys.portal.summit.product.eo.portlets.EquityOptionListPortlet</classname>
+		</entry>
+		<entry type="instance" name="EquityOptionPortlet">
+			<classname>com.misys.portal.summit.product.eo.portlets.EquityOptionPortlet</classname>
+		</entry>
+		<entry type="instance" name="EquitySwapPortlet">
+			<classname>com.misys.portal.summit.product.es.portlets.EquitySwapPortlet</classname>
+		</entry>
+		<entry type="instance" name="EquitySwapListPortlet">
+			<classname>com.misys.portal.summit.product.es.portlets.EquitySwapListPortlet</classname>
+		</entry>	
+		<entry type="instance" name="TotalReturnSwapListPortlet">
+			<classname>com.misys.portal.summit.product.ts.portlets.TotalReturnSwapListPortlet</classname>
+		</entry>
+		<entry type="instance" name="TotalReturnSwapPortlet">
+			<classname>com.misys.portal.summit.product.ts.portlets.TotalReturnSwapPortlet</classname>
+		</entry>		
+		<entry type="instance" name="SwaptionListPortlet">
+			<classname>com.misys.portal.summit.product.st.portlets.SwaptionListPortlet</classname>
+		</entry>
+		<entry type="instance" name="SwaptionPortlet">
+			<classname>com.misys.portal.summit.product.st.portlets.SwaptionPortlet</classname>
+		</entry>	
+		<entry type="instance" name="IndexTrancheCreditDefaultSwapListPortlet">
+			<classname>com.misys.portal.summit.product.ct.portlets.IndexTrancheCreditDefaultSwapListPortlet</classname>
+		</entry>
+		<entry type="instance" name="FXOptionsPortlet">
+			<classname>com.misys.portal.summit.product.fp.portlets.FXOptionsPortlet</classname>
+		</entry>	
+		<entry type="instance" name="FXOptionsListPortlet">
+			<classname>com.misys.portal.summit.product.fp.portlets.FXOptionsListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ForwardRateAgreementPortlet">
+			<classname>com.misys.portal.summit.product.fr.portlets.ForwardRateAgreementPortlet</classname>
+		</entry>	
+		<entry type="instance" name="ForwardRateAgreementListPortlet">
+			<classname>com.misys.portal.summit.product.fr.portlets.ForwardRateAgreementListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ListedOptionPortlet">
+			<classname>com.misys.portal.summit.product.lo.portlets.ListedOptionPortlet</classname>
+		</entry>	
+		<entry type="instance" name="ListedOptionListPortlet">
+			<classname>com.misys.portal.summit.product.lo.portlets.ListedOptionListPortlet</classname>
+		</entry>
+		<entry type="instance" name="FuturePortlet">
+			<classname>com.misys.portal.summit.product.fu.portlets.FuturePortlet</classname>
+		</entry>	
+		<entry type="instance" name="FutureListPortlet">
+			<classname>com.misys.portal.summit.product.fu.portlets.FutureListPortlet</classname>
+		</entry>	
+		<entry type="instance" name="IndexTrancheCreditDefaultSwapPortlet">
+			<classname>com.misys.portal.summit.product.ct.portlets.IndexTrancheCreditDefaultSwapPortlet</classname>
+		</entry>						
+		<entry type="instance" name="CapFloorListPortlet">
+			<classname>com.misys.portal.summit.product.cf.portlets.CapFloorListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CapFloorPortlet">
+			<classname>com.misys.portal.summit.product.cf.portlets.CapFloorPortlet</classname>
+		</entry>	
+		<entry type="instance" name="CashFlowListPortlet">
+			<classname>com.misys.portal.summit.portlets.CashFlowListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>
+		<entry type="instance" name="CapFloorCashFlowListPortlet">
+			<classname>com.misys.portal.summit.portlets.CapFloorCashFlowListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>
+		<entry type="instance" name="CDSCashFlowListPortlet">
+			<classname>com.misys.portal.summit.portlets.summit.CDSCashFlowListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>		
+		<entry type="instance" name="TRSCashFlowListPortlet">
+			<classname>com.misys.portal.summit.portlets.summit.TRSCashFlowListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>		
+		<entry type="instance" name="AssetScheduleListPortlet">
+			<classname>com.misys.portal.summit.portlets.AssetScheduleListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>
+		<entry type="instance" name="CapFloorAssetScheduleListPortlet">
+			<classname>com.misys.portal.summit.portlets.CapFloorAssetScheduleListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>
+		<entry type="instance" name="CDSAssetScheduleListPortlet">
+			<classname>com.misys.portal.summit.portlets.summit.CDSAssetScheduleListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>			
+		<entry type="instance" name="TRSAssetScheduleFundingListPortlet">
+			<classname>com.misys.portal.summit.portlets.summit.TRSAssetScheduleFundingListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>
+		<entry type="instance" name="TRSAssetScheduleReturnListPortlet">
+			<classname>com.misys.portal.summit.portlets.summit.TRSAssetScheduleReturnListPortlet</classname>
+			<parameter name="page_size" value="20"/>
+		</entry>			
+		<entry type="instance" name="SecuritiesListPortlet">
+			<classname>com.misys.portal.summit.portlets.SecuritiesListPortlet</classname>
+		</entry>		
+		<entry type="instance" name="SummitReportingPopupPortlet">
+			<classname>com.misys.portal.summit.portlets.SummitReportingPopupPortlet</classname>
+		</entry>
+		<entry type="ref" parent="AbstractEventsPortlet" name="SummitAllEventsPortlet">
+			<parameter name="max_event" value="99" type="int"/>
+			<parameter name="max_pending" value="5" type="int"/>
+			<parameter name="max_notification" value="0" type="int"/>
+			<parameter name="title_key" value="PORTLET_TRADE_EVENTS_TITLE"/>
+		</entry>
+		<entry type="instance" name="FactoringPortlet">
+			<classname>com.misys.portal.product.fa.portlets.FactoringPortlet</classname>
+		</entry>
+		<entry type="instance" name="FactoringListPortlet">
+			<classname>com.misys.portal.product.fa.portlets.FactoringListPortlet</classname>
+			<!-- 
+			<parameter name="openUnsignedFAInitiationList" value="trade/listdef/customer/FA/openUnsignedFAInitiationList.xml"/>
+			<parameter name="openDraftFAInitiationList" value="trade/listdef/customer/FA/openDraftFAInitiationList.xml"/>
+			<parameter name="MaintainFAUnsignedList" value="trade/listdef/customer/FA/maintainFAUnsignedList.xml"/>	
+			<parameter name="ListFAPendingTransactions" value="trade/listdef/customer/FA/listFAPendingTransactions.xml"/>		
+			<parameter name="ListClientAvailabilityInfo" value="trade/listdef/customer/FA/listClientAvailabilityInfo.xml"/>
+			<parameter name="ListClientTransactionsDetails" value="trade/listdef/customer/FA/listClientTransactionsDetails.xml"/>
+			<parameter name="ListDebtorPaymentDetails" value="trade/listdef/customer/FA/listDebtorPaymentDetails.xml"/>
+			<parameter name="ListFactorProAccountTypes" value="trade/listdef/customer/FA/listFactorProAccountTypes.xml"/>
+			<parameter name="ListInvoiceInquiryDetails" value="trade/listdef/customer/FA/listInvoiceInquiryDetails.xml"/>
+			<parameter name="ListOverdueAnalysisDetails" value="trade/listdef/customer/FA/listOverdueAnalysisDetails.xml"/>
+			<parameter name="openUnsignedFAInitiationList" value="trade/listdef/customer/FA/openUnsignedFAInitiationList.xml"/>
+			<parameter name="openDraftFAInitiationList" value="trade/listdef/customer/FA/openDraftFAInitiationList.xml"/>
+			<parameter name="MaintainFAUnsignedList" value="trade/listdef/customer/FA/maintainFAUnsignedList.xml"/>	
+			<parameter name="ListFAPendingTransactions" value="trade/listdef/customer/FA/listFAPendingTransactions.xml"/>
+			-->
+		</entry>
+		
+        <!-- Maker Checker Portlets for roles -->
+		<entry type="instance" name="BSFRoleListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFRoleListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFRoleMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFRoleMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFRoleListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFRoleListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFRoleMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFRoleMCPortlet</classname>
+		</entry>
+		
+        <!-- Maker Checker Portlets for customer accounts -->
+		<entry type="instance" name="BSFCustomerAccountListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerAccountListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerAccountMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerAccountMCPortlet</classname>
+		</entry>
+		
+		<!-- Maker Checker Portlets for customer counterparty association -->
+		<entry type="instance" name="BSFCounterPartyMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCounterPartyMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCounterPartyListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCounterPartyListMCPortlet</classname>
+		</entry>
+		
+        <!-- Maker Checker Portlets for customer users -->
+		<entry type="instance" name="BSFCustomerUserListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerUserMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerUserListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerUserMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserMCPortlet</classname>
+		</entry>
+		
+        <!-- Maker Checker Portlets for authorisation matrix -->
+		<entry type="instance" name="BSFAuthorisationMatrixListPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFAuthorisationMatrixListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFAuthorisationMatrixPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFAuthorisationMatrixPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFAuthorisationMatrixListPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFAuthorisationMatrixListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFAuthorisationMatrixPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFAuthorisationMatrixPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankMatrixAuthorisationListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankMatrixAuthorisationListMCPortlet</classname>
+		</entry>
+		<!-- Maker Checker Portlets for Bank side - Customer Entities -->
+		<entry type="instance" name="BSFCustomerEntitiesListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerEntitiesListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerEntityMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerEntityMCPortlet</classname>
+		</entry>
+		<!-- Maker Checker Portlets for Customer side - Customer Entities -->
+		<entry type="instance" name="CSFCustomerEntitiesListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerEntitiesListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerEntityMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerEntityMCPortlet</classname>
+		</entry>
+		
+        
+		<!-- Maker Checker Portlets for bank users -->
+		<entry type="instance" name="BSFBankUserListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankUserListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankUserMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankUserMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankMCPortlet</classname>
+		</entry>
+		<!-- Maker Checker Portlets for customer accounts -->
+		<entry type="instance" name="BSFCustomerUserAccountsListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserAccountsListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerUserAccountsMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserAccountsMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="FavouritesProductsListPortlet">
+		    <classname>com.misys.portal.common.portlets.FavouritesProductsListPortlet</classname>
+		    <parameter name="title_key" value="PORTLET_MY_FAVOURITE_LIST"/>
+		    <parameter name="permission" value="favourite_app_access"/>
+    	</entry>
+		<!-- Maker Checker Portlets for customer Beneficiary Master Portlets-->
+		<entry type="instance" name="BSFCustomerBeneficiaryMasterListPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerBeneficiaryMasterListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerBeneficiaryMasterPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerBeneficiaryMasterPortlet</classname>
+		</entry>
+				<entry type="instance" name="CSFCustomerBeneficiaryMasterListPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerBeneficiaryMasterListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerBeneficiaryMasterPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerBeneficiaryMasterPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFExternalAccountListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFExternalAccountListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFExternalAccountMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFExternalAccountMCPortlet</classname>
+		</entry>
+		 <entry type="instance" name="CSFCustomerUserAccountsListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserAccountsListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerUserAccountsMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserAccountsMCPortlet</classname>
+		</entry>
+        <entry type="instance" name="CSFCustomerCounterpartyUploadListPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.CSFCustomerCounterpartyUploadListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerCounterpartyUploadPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.CSFCustomerCounterpartyUploadPortlet</classname>
+		</entry>
+		<!-- Maker Checker Portlets for customer/bank users authentication -->
+		<entry type="instance" name="CSFCustomerUserAuthenticationListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserAuthenticationListMCPortlet</classname>			
+		</entry>
+		<entry type="instance" name="CSFCustomerUserAuthenticationMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserAuthenticationMCPortlet</classname>			
+		</entry>
+		<entry type="instance" name="BSFCustomerUserAuthenticationListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserAuthenticationListMCPortlet</classname>			
+		</entry>
+		<entry type="instance" name="BSFBankUserAuthenticationListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankUserAuthenticationListMCPortlet</classname>			
+		</entry>
+		<entry type="instance" name="BSFCustomerUserAuthenticationMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserAuthenticationMCPortlet</classname>			
+		</entry>
+		<entry type="instance" name="BSFBankUserAuthenticationMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankUserAuthenticationMCPortlet</classname>			
+		</entry>
+		<!-- Maker Checker Portlets Customer Payee -->
+		<entry type="instance" name="CSFCustomerPayeeListPortlet">
+			 <classname>com.misys.portal.systemfeatures.customer.portlets.CSFCustomerPayeeListPortlet</classname> 
+		</entry>
+		<entry type="instance" name="CSFCustomerPayeePortlet">
+		    <classname>com.misys.portal.systemfeatures.customer.portlets.CSFCustomerPayeePortlet</classname> 
+		</entry>
+		<entry type="instance" name="BSFMasterPayeeListPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFMasterPayeeListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFMasterPayeePortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFMasterPayeePortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBeneficiaryAdvicesListPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFBeneficiaryAdvicesListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBeneficiaryAdvicesPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFBeneficiaryAdvicesPortlet</classname>
+		</entry>
+		<entry type="instance" name="PendingCounterpartiesActivationPortlet">
+			<classname>com.misys.portal.common.portlets.PendingCounterpartiesActivationPortlet</classname>
+			<parameter name="title_key" value="TABLE_SUMMARY_PENDING_COUNTERPARTY_ACTIVATION_LIST"/>
+			<parameter name="permission" value="sy_bank_fscm_counterparty_activation"/>
+		</entry>
+		<entry type="ref" name="BankDefaultContent" parent="JetspeedContent">
+			<parameter name="provider-name" value="default"/>
+			<parameter name="title_key" value="DEFAULT_NEWS_CONTENT"/>
+			<parameter name="permission" value="bank_global_news_portlet_access"/>
+		</entry>
+		<entry type="instance" name="BankInternalNewsPortlet">
+			<classname>com.misys.portal.core.portal.portlets.InternalNewsPortlet</classname>
+			<parameter name="stylesheet" value="/core/xsl/history_attachment_view.xsl"/>
+			<parameter name="title_key" value="PORTLET_INTERNAL_NEWS_TITLE_KEY"/>
+			<parameter name="permission" value="bank_internal_news_portlet_access"/>
+		</entry>
+		<entry type="instance" name="BulkUploadErrorReportingPopupPortlet">
+				<!-- <classname>com.misys.portal.common.popup.portlets.BulkUploadErrorReportingPopupPortlet</classname> -->
+				<classname>com.misys.portal.common.popup.portlets.BulkUploadFileDetailsReportingPopupPortlet</classname>
+		</entry>
+		<entry type="instance" name="MCMasterViewPopupPortlet">
+			<classname>com.misys.portal.common.popup.portlets.MCMasterViewPopupPortlet</classname>
+		</entry>
+        <entry type="instance" name="CSFAccountsNickNamePortlet">
+            <classname>com.misys.portal.systemfeatures.customer.portlets.CSFAccountsNickNamePortlet</classname>
+        </entry>
+			<entry type="instance" name="CSFCustomerBeneficiaryUploadListPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerBeneficiaryUploadListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerBeneficiaryUploadPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerBeneficiaryUploadPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerBeneficiaryUploadListPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerBeneficiaryUploadListPortlet</classname>
+		</entry>
+		<entry type="instance" name="TDAccountStatementPDFDownload">
+			<classname>com.misys.portal.common.popup.portlets.TDAccountStatementPDFDownload</classname>
+		</entry>
+		<entry type="ref" parent="PortalResourceXSLPortlet" name="TradeTutorials">
+			<parameter name="resource" value="/trade/tradetutorials.xml"/>
+			<parameter name="stylesheet" value="/trade/xsl/tradetutorials.xsl"/>
+		</entry>
+		
+		<!-- Account details: List of Internal Accounts -->
+        <entry type="instance" name="AccountDetailsPortlet">
+         	<classname>com.misys.portal.product.ab.portlets.AccountDetailsPortlet</classname>
+        </entry>
+        
+        <entry type="instance" name="CreditNotePortlet">
+			<classname>com.misys.portal.openaccount.product.cn.portlets.CreditNotePortlet</classname>
+		</entry>
+		<entry type="instance" name="CreditNoteListPortlet">
+			<classname>com.misys.portal.openaccount.product.cn.portlets.CreditNoteListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CreditNoteCRPortlet">
+			<classname>com.misys.portal.openaccount.product.cr.portlets.CreditNoteCRPortlet</classname>
+		</entry>
+		<entry type="instance" name="CreditNoteCRListPortlet">
+			<classname>com.misys.portal.openaccount.product.cr.portlets.CreditNoteCRListPortlet</classname>
+		</entry>
+		<entry type="instance" name="CreditNoteUploadTemplatePortlet">
+			<classname>com.misys.portal.openaccount.product.cn.portlets.CreditNoteUploadTemplatePortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFExternalAccountListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFExternalAccountListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFExternalAccountMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFExternalAccountMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExternalAccountStatementUploadListPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.ExternalAccountStatementUploadListPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExternalAccountStatementUploadPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.ExternalAccountStatementUploadPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFFacilityListPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFFacilityListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFTrustRelationPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFTrustRelationPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFTrustRelationUserPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFTrustRelationUserPortlet</classname>
+		</entry>								
+		<entry type="ref" name="ProjectedBalanceAccountsListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_PROJECTED_BALANCE_ACCOUNTS"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="openProjectedBalanceAccounts.xml"/>
+		</entry>		
+		<entry type="ref" name="ProjectedBalanceSummaryListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_PROJECTED_BALANCE_SUMMARY"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="openProjectedBalanceSummary.xml"/>
+		</entry>
+		<entry type="ref" name="ProjectedBalanceActivityListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_PROJECTED_BALANCE_ACTIVITY"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/AB/"/>
+			<parameter name="listdef_name" value="openProjectedBalanceActivity.xml"/>
+		</entry>
+		<entry type="instance" name="TreasuryFundTransferListPortlet">
+			<classname>com.misys.portal.treasury.product.ft.portlets.FundTransferListPortlet</classname>
+		</entry>
+		<entry type="instance" name="TreasuryFundTransferPortlet">
+			<classname>com.misys.portal.treasury.product.ft.portlets.FundTransferPortlet</classname>
+		</entry>
+		<entry type="instance" name="TreasuryTermDepositListPortlet">
+			<classname>com.misys.portal.treasury.product.td.portlets.TermDepositListPortlet</classname>
+		</entry>
+		<entry type="instance" name="TreasuryTermDepositPortlet">
+			<classname>com.misys.portal.treasury.product.td.portlets.TermDepositPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFEntityMigrationTnxListPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.CSFEntityMigrationTnxListPortlet</classname>
+		</entry>
+		<entry type="instance" name="RegionalAccountViewPortlet">
+			<classname>com.misys.portal.product.ab.portlets.RegionalAccountViewPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankProfileListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankProfileListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankProfileMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankProfileMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankPermissionListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankPermissionListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFBankPermissionMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFBankPermissionMCPortlet</classname>
+		</entry>
+		<entry type="ref" name="BalanceGroupListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_BALANCING_GROUP"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/LIQUIDITY/"/>
+			<parameter name="listdef_name" value="openBalancingGroup.xml"/>
+		</entry>		
+		<entry type="ref" name="BalanceSubGroupListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_BALANCING_SUB_GROUP"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/LIQUIDITY/"/>
+			<parameter name="listdef_name" value="openSubBalancingGroup.xml"/>
+		</entry>		
+		<entry type="ref" name="BalanceSubGroupAccountListPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_BALANCING_SUB_GROUP_ACCOUNT"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/LIQUIDITY/"/>
+			<parameter name="listdef_name" value="openAccountSubGroup.xml"/>
+		</entry>
+		<entry type="instance" name="CSFFscmProgListPortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.CSFFscmProgListPortlet</classname>
+			<parameter name="OpenFscmProgDetailsList" value="core/listdef/customer/OpenFscmProgDetailsList.xml"/>
+		</entry>
+		<entry type="instance" name="BSFFscmProgramListPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFFscmProgramListPortlet</classname>
+		</entry>
+		<entry type="instance" name="LoanInterestDetailsPopupPortlet">
+			<classname>com.misys.portal.product.ln.portlets.LoanInterestDetailsPopupPortlet</classname>
+		</entry>
+		<entry type="instance" name="BulkFinancePortlet">
+			<classname>com.misys.portal.openaccount.product.in.portlets.BulkFinancePortlet</classname>
+		</entry>
+		<entry type="instance" name="InvoiceBulkFinanceListPortlet">
+			<classname>com.misys.portal.openaccount.product.in.portlets.InvoiceBulkFinanceListPortlet</classname>
+		</entry>
+		<entry type="instance" name="InvoicePayableBulkFinanceListPortlet">
+			<classname>com.misys.portal.openaccount.product.ip.portlets.InvoicePayableBulkFinanceListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BulkRepaymentPortlet">
+			<classname>com.misys.portal.openaccount.product.in.portlets.BulkRepaymentPortlet</classname>
+		</entry>
+		<entry type="instance" name="InvoicePayableBulkRepaymentListPortlet">
+			<classname>com.misys.portal.openaccount.product.ip.portlets.InvoicePayableBulkRepaymentListPortlet</classname>
+		</entry>
+		<entry type="instance" name="InvoiceBulkRepaymentListPortlet">
+			<classname>com.misys.portal.openaccount.product.in.portlets.InvoiceBulkRepaymentListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFFinsharePortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFFinsharePortlet</classname>
+		</entry>
+		<entry type="instance" name="FinsharePortlet">
+			<classname>com.misys.portal.systemfeatures.customer.portlets.FinsharePortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFFCMPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFFCMPortlet</classname>
+		</entry>		
+		<entry type="instance" name="DashboardPortlet">
+			<classname>com.misys.portal.common.portlets.home.DashboardPortlet</classname>
+			<parameter name="control" value="com.misys.portal.core.portal.controls.DashboardGTPTitlePortletControl"/>
+		</entry>
+		<entry type="instance" name="SweepAgreementPortlet">
+			<classname>com.misys.portal.liquidity.portlets.SweepAgreementPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExecuteTransferPortlet">
+			<classname>com.finastra.portal.liquidity.portlets.ExecuteTransferPortlet</classname>
+		</entry>
+		<entry type="instance" name="ExecuteTransferMCPortlet">
+			<classname>com.finastra.portal.liquidity.makerchecker.portlets.ExecuteTransferMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFMigrateTransactionPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.BSFMigrateTransactionPortlet</classname>
+		</entry>
+		<entry type="instance" name="MigrateTransactionSummarySearchPortlet">
+			<classname>com.misys.portal.systemfeatures.bank.portlets.MigrateTransactionSummarySearchPortlet</classname>
+		</entry>
+		
+		<!--              -->
+		<!-- Cash Pooling -->
+		<!--              -->
+		<entry type="instance" name="BankLiquidityListPortlet">
+			<classname>com.misys.portal.cash.product.lq.portlets.BankLiquidityListPortlet</classname>
+		</entry>
+		<entry type="instance" name="BankLiquidityPortletMC">
+			<classname>com.misys.portal.cash.product.lq.portlets.BankLiquidityPortletMC</classname>
+		</entry>
+		
+		<!--          -->
+		<!-- Cash KTP -->
+		<!--          -->
+		<entry type="instance" name="ListdefWithPermissionPortlet">
+			<classname>com.misys.portal.ktp.common.portlets.ListdefKTPWithPermissionPortlet</classname>
+		</entry>
+		<entry type="instance" name="GenericPortlet">
+			<classname>com.misys.portal.ktp.common.portlets.GenericPortlet</classname>
+		</entry>
+		<entry type="abstract" name="GenericProductListPortlet">
+			<classname>com.misys.portal.ktp.common.portlets.GenericProductListPortlet</classname>
+		</entry>
+		<entry type="ref" name="AccountBalanceKTPPortlet" parent="ListdefPortlet">
+			<parameter name="title_key" value="PORTLET_ACCOUNT_BALANCE_TITLE"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/KTP/"/>
+			<parameter name="listdef_name" value="openKTPReport_SPEC_VIEW_ACCBAL.xml"/>
+		</entry>
+		<entry type="ref" name="KTPHomeAccountSummaryListPortlet" parent="ListdefWithPermissionPortlet">
+			<parameter name="title_key" value="PORTLET_BALANCING_SUB_GROUP_ACCOUNT"/>
+			<parameter name="listdef_folder" value="cash/listdef/customer/KTP/"/>
+			<parameter name="listdef_name" value="KTPHomeAccountBalance.xml"/>
+			<parameter name="permission" value="ktp_home_page_account_portlet"/>
+		</entry>
+		<entry type="ref" name="KTPCashManagementListPortlet" parent="GenericProductListPortlet">
+			<parameter name="folder" value="cash/listdef/customer/KTP/"/>
+		</entry>
+		<entry type="ref" name="KTPReportsListPortlet" parent="GenericProductListPortlet">
+			<parameter name="folder" value="cash/listdef/bank/KTP/"/>
+		</entry>
+		<!-- Get PowerBI Report for Bank -->
+		<entry type="instance" name="InsightsPortlet">
+        	<classname>com.misys.portal.insights.portlets.InsightsPortlet</classname>
+        </entry>
+        <!-- iframe popup portlet for entitlement -->
+        <entry type="instance" name="IframePopupPortlet">
+			<classname>com.misys.portal.common.popup.portlets.IframePopupPortlet</classname>
+		</entry>
+		<!-- Maker Checker Portlets for customer/bank users entitlements -->
+		<entry type="instance" name="CSFCustomerUserEntitlementsListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserEntitlementsListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="CSFCustomerUserEntitlementsMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.customer.portlets.CSFCustomerUserEntitlementsMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerUserEntitlementsListMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserEntitlementsListMCPortlet</classname>
+		</entry>
+		<entry type="instance" name="BSFCustomerUserEntitlementsMCPortlet">
+			<classname>com.misys.portal.systemfeatures.makerchecker.bank.portlets.BSFCustomerUserEntitlementsMCPortlet</classname>
+		</entry>
+
+	</portlets>
+</registry>

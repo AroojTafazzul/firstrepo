@@ -1,0 +1,169 @@
+{
+	"productcode": "PAYMENTS_LIST",
+	"enableMultipeDownloadFormat": true,
+	"showPopup": false,
+	"actionPopup" : true,
+	"buttons": [
+		{
+			"buttonName": "createNewPayment",
+			"permission": "fcm_save_payments_instrument",
+			"buttonClass": "primaryButton",
+			"routerLink": "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "allTabsPayments",
+			"listdefName": "/payments/listdef/paymentsAllList",
+			"permission": "fcm_access_payments",
+			"index": 0,
+			"selected": "true",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM"
+		},
+		{
+			"tabName": "modificationRequiredPayments",
+			"listdefName":  "/payments/listdef/paymentsModificationRequiredFCMList",
+			"permission": "fcm_access_payments",
+			"index": 1,
+			"selected": "",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM"
+		},
+		{
+			"tabName": "pendingMyVerificationPayments",
+			"listdefName": "/payments/listdef/paymentsPendingMyVerificationFCMList",
+			"permission":"fcm_verify_payments_instrument",
+			"index": 2,
+			"selected": "",
+			"commentsRequired": "true",
+			"severalSubmit": "fcm_verify_payments_instrument",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM",
+			"buttonList": [
+		      	{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "verify",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "verify"
+		      	}
+			]
+		},
+		{
+			"tabName": "pendingMyApprovalPayments",
+			"listdefName": "/payments/listdef/paymentsPendingMyApprovalFCMList",
+			"permission": "fcm_approve_payments_instrument",
+			"index": 2,
+			"selected": "",
+			"commentsRequired": "true",
+			"severalSubmit": "fcm_approve_payments_instrument",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "uaPendingApprovalPayments",
+			"listdefName": "/payments/listdef/paymentsPendingApprovalFCMList",
+			"permission": "fcm_access_payments",
+			"index": 2,
+			"selected": "",
+			"commentsRequired": "true",
+			"severalSubmit": "fcm_access_payments",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM",
+			"buttonList": [
+		      	{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      		{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "pendingSendPayments",
+			"listdefName": "/payments/listdef/paymentsPendingSendFCMList",
+			"permission":"fcm_send_payments_instrument",
+			"index": 2,
+			"selected": "",
+			"commentsRequired": "true",
+			"severalSubmit": "fcm_send_payments_instrument",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM",
+			"buttonList": [
+		      	{
+			        "name": "scrap",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "SCRAP"
+		      	},
+		      	{
+			        "name": "send",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "SEND"
+		      	}
+			]
+		},
+		{
+			"tabName": "pendingAtBankPayments",
+			"listdefName": "/payments/listdef/paymentsPendingAtBankCMList",
+			"permission": "fcm_access_payments",
+			"index": 3,
+			"selected": "",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM"
+		},
+		{
+			"tabName": "rejectedPayments",
+			"listdefName":  "/payments/listdef/paymentsRejectedFCMList",
+			"permission": "fcm_access_payments",
+			"index": 4,
+			"selected": "",
+			"noRecordsMsg" : "paymentsNoRecordsMsg",
+			"noRecordsLinkMsg" : "paymentsNoRecorsdMsgLink",
+			"noRecordsIcon" : "warning",
+			"noRecordsLink" : "commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM"
+		}
+		
+	]
+}

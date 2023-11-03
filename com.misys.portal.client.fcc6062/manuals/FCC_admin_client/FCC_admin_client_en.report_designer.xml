@@ -1,0 +1,2928 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=Services: Report Designer;PERM=sy_cust_report_save;ACCESS=SY_RD_C"
+         role="TOPIC">
+  <title>Report Designer</title>
+
+  <section condition="TITLE=Administration: Report Designer; PERM=sy_cust_report_execute;ACCESS=SY_RD_C"
+           id="RD" role="TOPIC">
+    <title>Overview</title>
+
+    <para role="TEXT">As an administrator at a client company, you use the
+    Report Designer module to design reports, which can then be run by all
+    users in your company. These reports cover the products available in
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude" /> such as letters of credit,
+    guarantees, and so on. The form for designing a report has a checkbox
+    labelled <emphasis role="bold">Publish Report</emphasis>. As long as you
+    do not tick this, the report is not made available to your users even if
+    you save it. The report is said to be not executable.</para>
+
+    <note>
+      <itemizedlist>
+        <listitem>
+          <para>When you have finished designing the report and want to
+          release it so users can execute it, you should then tick this
+          checkbox.</para>
+        </listitem>
+
+        <listitem>
+          <para>At present, this feature is supported only for Trade and Cash.
+          It is not applicable for Loan and Treasury.</para>
+        </listitem>
+      </itemizedlist>
+    </note>
+  </section>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">In this chapter, we use the word "report" to mean a
+    report design, rather than an actual generated report. Thus for example
+    "updating a report" means updating the specification of the report, rather
+    than generating a new report with the latest figures.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Report Designer - Navigation</title>
+
+    <para role="TEXT">To navigate to the Report Designer function, from the
+    toolbar, select <emphasis>Administration</emphasis> &gt; <emphasis>Report
+    Designer</emphasis>.</para>
+
+    <para role="TEXT">Alternatively, depending on the Administration function
+    already selected, there may be a link to the Report Designer function in
+    the left hand side navigation menu.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Report Designer Options</title>
+
+    <para role="TEXT">After selecting <emphasis>Administration</emphasis> &gt;
+    <emphasis>Report Designer</emphasis> from the toolbar, a number of options
+    are provided for Report Designer in the left side navigation menu. They
+    are as follows:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guisubmenu>Create</guisubmenu></term>
+
+        <listitem>
+          <para role="TEXT">Create a report from a blank form.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guisubmenu>From Existing</guisubmenu></term>
+
+        <listitem>
+          <para role="TEXT">Create a report from an existing report.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guisubmenu>From Template</guisubmenu></term>
+
+        <listitem>
+          <para role="TEXT">Create a report from a template supplied to your
+          company by your bank.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guisubmenu>Maintenance</guisubmenu></term>
+
+        <listitem>
+          <para role="TEXT">Update an existing report.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guisubmenu>Parameters</guisubmenu></term>
+
+        <listitem>
+          <para role="TEXT">Alter report parameters</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guisubmenu>Schedule</guisubmenu></term>
+
+        <listitem>
+          <para role="TEXT">Define report schedules</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section role="ITEM">
+    <title>Report Designer - Create</title>
+
+    <para role="TEXT">This option allows an Administrator to create a report
+    from a blank form.</para>
+
+    <para role="TEXT">When you select this option, you are presented with the
+    blank form. The form is as follows. After entering the details, click
+    <emphasis role="bold">Save</emphasis> at the bottom of the form.</para>
+
+    <section role="ITEM">
+      <title>Create form - General Details</title>
+
+      <para role="TEXT">In this section, you give high level information about
+      the report.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Report Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the report. Your
+              users will identify it by this name.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Report Description</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of the
+              report.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Publish Report</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick here so that when you
+              save the report it will be made available for all users in your
+              company to execute. Leave it unticked until you are satisfied
+              with your design of the report.</para><para role="TEXT">Default
+              value is not ticked. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Nb of Lines per Page </guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Maximum number of lines
+              per page. Defaults to 25.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Create form - Products</title>
+
+      <para role="TEXT">In this section, you list the product types to be
+      covered by the report.</para>
+
+      <para role="TEXT">There are two types of reports:</para>
+
+      <itemizedlist role="TEXT">
+        <listitem>
+          <para role="TEXT">A single-product report is a report on a single
+          product (for example, LC).</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">A multi-product report is a report on several
+          products (for example, LC + EL)</para>
+        </listitem>
+      </itemizedlist>
+
+      <para role="TEXT">If you define a single-product report, you can include
+      in it all the fields of the selected product. If you define a
+      multi-product report, you can include only fields common to all
+      products.</para>
+
+      <para role="TEXT">You specify the product(s) to include from a dropdown
+      list on the <emphasis role="bold">Product</emphasis> field in the form.
+      For a single-product report, or the first product of a multi-product
+      report, the dropdown list includes all products available to your
+      company.</para>
+
+      <para role="TEXT"><xi:include href="../entities_en.xml"
+      xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude" />
+      distinguishes between transactions (the individual messages that pass
+      between client and bank), masters (the master file describing the
+      product, in its latest state), and templates (the templates from which
+      you can create some types of product). A report can only cover one of
+      these three types.</para>
+
+      <para role="TEXT">For example, say a client initiates a Letter of Credit
+      for 1000 GBP. That creates a transaction. When the bank approves it, a
+      master is created. If the bank subsequently sends a message changing the
+      amount to 500 GBP, a new transaction is created and the master is
+      updated. The master always reflects the latest state of a file.</para>
+
+      <para role="TEXT">Whichever type you select for your first product -
+      master, transaction, or template - the dropdown list for subsequent
+      products you add offers you only that type. For example, if you select
+      Letter of Credit Transaction as the first product, then for subsequent
+      products you can select among Export Letter of Credit Transaction,
+      Export Collection Transaction, etc.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Multi-product Report</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">This checkbox indicates if
+              the report is multi-product or single-product. Defaults to not
+              checked.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para role="TEXT">The rest of this section
+              is a list of products that the report is to cover. If none has
+              been selected yet, there is simply the text <emphasis
+              role="bold">No product selected</emphasis> instead. Click
+              <emphasis role="bold">Add Product</emphasis> to open a sub-form
+              to add one. You cannot add more than one if <emphasis
+              role="bold">Multi-product Report</emphasis> is not ticked. The
+              sub-form is as follows:</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">A product to include in
+              the report. Select from the dropdown list. See the explanation
+              above regarding the content of this list..</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ok</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the product
+              to the list of products.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to close the form
+              and not add its contents to the list.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can change a product by clicking the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it by
+      clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+
+      <para role="TEXT">Once you have specified the product or products to be
+      included, further sections are displayed where you can define the
+      displayed columns, parameters, filters, overall aggregation and
+      grouping.</para>
+
+      <para role="TEXT">If these details are already defined and the current
+      product is changed, these details are removed. If no product is
+      selected, these sections disappear.</para>
+
+      <para role="TEXT">Click the <emphasis role="bold">Add Column</emphasis>
+      button to add new columns to the report.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Create form - Displayed columns</title>
+
+      <para role="TEXT">This section, defines new columns to be displayed in
+      the report.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Use absolute column width</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick here to have the
+              widths of the columns expressed with absolute
+              values.</para><para role="TEXT">When this item is not ticked,
+              the widths of the columns are relative. In the displayed column,
+              a character <literal moreinfo="none">% </literal>appears after
+              the width field. When you save the report, a check is done to
+              ensure that the total of the widths is equal to
+              100%.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para role="TEXT">The rest of this section
+              is a list of columns that the report is to include. If none has
+              been selected yet, there is simply the text <emphasis
+              role="bold">No displayed columns</emphasis> instead. Click
+              <emphasis role="bold">Add Column</emphasis> to open a sub-form
+              to add one. The sub-form is as follows:</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Column</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">A column to be included in
+              the report.Select from the dropdown list. The list of available
+              columns depends on the selected product.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">English Label </guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Column heading to be used
+              when the user executing the report is English-speaking. If left
+              blank, the column name is used.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other languages (plus sign)</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_add.gif" role="PIC_ADD"
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_remove.gif"
+                               role="PIC_REMOVE" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Click the plus sign to
+              display fields where you can specify column headings for the
+              other languages available. These are optional. Click the minus
+              sign to hide these fields again.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Alignment</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Alignment of the column.
+              Select from the dropdown list: <literal>middle</literal>,
+              <literal>left</literal>, <literal>right</literal>. If you don't
+              select an alignment, the column is centered.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Width</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Width of the column. If no
+              width is given, the column is sized
+              automatically.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Equiv. Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Only present when the
+              column is an amount.) Currency to use to express the amount.
+              Click the magnifying glass icon to select the currency
+              code.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Use Abbreviation</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick here if the column
+              should display the abbreviated name of the field.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Computed field</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick here if the column to
+              be displayed is the result of an arithmetic operation between
+              specified columns and another column, specified below. Default
+              value is not checked.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Identifier</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name for the computed
+              field. Other sections of the report refer to the computed field
+              using this name. </para><para role="TEXT">If you update an
+              identifier that is used in other sections of the report, these
+              sections are removed.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Operation</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Only present when the
+              <guilabel moreinfo="none">Computed field</guilabel> checkbox is
+              ticked.)</para><para role="TEXT">The operation involved in the
+              computation. The list of available operations depends on the
+              type of the above selected column. For
+              example:</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>addition </type>is allowed for
+                    string columns,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>subtraction</type> is allowed for
+                    date columns,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>addition</type>,
+                    <type>subtraction</type> and <type>division</type> is
+                    allowed for amount columns,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>addition</type>,
+                    <type>subtraction</type>, <type>multiplication</type> and
+                    <type>division</type> is allowed for number
+                    columns.</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Operand Field</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Only present when the
+              <guilabel moreinfo="none">Computed field</guilabel> checkbox is
+              checked.)</para><para role="TEXT">Second column involved in the
+              computation. Select from the dropdown list. The list contains
+              only columns of same type as the one selected in the first
+              place.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ok</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the column to
+              the list of displayed columns.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon adding
+              the column and close the form.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Order Report by
+              Default</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick to show if the report
+              is to be ordered by default upon its execution. Default value is
+              not checked.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Order Column</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Only present when
+              <emphasis role="bold">Order Report by Default</emphasis> is
+              ticked.) Column on which the report will be ordered by default.
+              Select from the dropdown list, which includes the columns
+              displayed in the report.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Order type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Type of the order by
+              default. Select from the dropdown list:
+              <literal>Ascending</literal>, <literal>Descending</literal>.
+              Defaults to <literal>Ascending</literal>.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can change a column's description by clicking the
+      <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it from
+      the report by clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon. You can reorder the columns by using the
+      <guiicon>Move Up</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_moveup.gif" width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon to move a column up in the order of
+      appearance in the report and similarly use the <guiicon>Move
+      Down</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_movedown.gif" width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon to move a column down.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Create form - Parameters</title>
+
+      <note role="TEXT">
+        <para role="TEXT">This should not be confused with the <emphasis
+        role="bold">Parameters</emphasis> function from the Report Designer
+        menu.</para>
+      </note>
+
+      <para role="TEXT">In this section, you list the parameters that are to
+      be used in the report.</para>
+
+      <para role="TEXT">A parameter is the way to ask the user to enter a
+      value to be used in executing the report. For example, you can design a
+      report of existing letters of credit, define a parameter <parameter
+      moreinfo="none">Expiry Date</parameter> and include a filter using this
+      parameter - for instance, letters of credit with an expiry date earlier
+      than this parameter. Upon executing the report, the user would be asked
+      to enter an expiry date. The resulting list would display all letters of
+      credit with an expiry date earlier than the one entered.</para>
+
+      <para role="TEXT">Click the <emphasis role="bold">Add
+      Parameter</emphasis> button to add a new Parameter to the report. The
+      following fields are displayed in a sub form;</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para role="TEXT">This section is a list of
+              parameters that the report is to have. If none has been defined
+              yet, there is simply the text <emphasis role="bold">No
+              Parameter</emphasis> instead. Click <emphasis role="bold">Add
+              Parameter</emphasis> to open a sub-form to add one. The sub-form
+              is as follows:</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Parameter Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the
+              parameter.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">English Label</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Label to be used when the
+              user executing the report is English-speaking. Mandatory. This
+              label will appear in front of the input field displayed for this
+              parameter when the report is executed.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other languages (plus sign)</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_add.gif" role="PIC_ADD"
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_remove.gif"
+                               role="PIC_REMOVE" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Click the plus sign to
+              display fields where you can specify labels for the other
+              languages available. These are optional. Click the minus sign to
+              hide these fields again.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Mandatory</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick to that this
+              parameter is mandatory when executing the report. Default value
+              is not checked.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ok</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the parameter
+              to the list of parameters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon adding
+              the parameter and close the form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can change a parameter's description by clicking
+      the <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it from
+      the report by clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Create form - Filters</title>
+
+      <para role="TEXT">In this section, you list the filters that are to be
+      used in the report.</para>
+
+      <para role="TEXT">A filter is a way of selecting a subset of products. A
+      filter is made of one or more criteria. Each criterion describes a
+      constraint.</para>
+
+      <para role="TEXT">When the report is executed, the items included in the
+      report are the ones that meet the constraints described by at least one
+      of the filters. An item meets the constraints of a filter, when it meets
+      the constraints of each criterion within this filter.</para>
+
+      <para role="TEXT">This section is a list of filters that the report is
+      to have. If none has been defined yet, there is simply the text
+      <emphasis role="bold">No filter</emphasis> instead. Click <emphasis
+      role="bold">Add Filter</emphasis> to open a sub-form to add one.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para role="TEXT">Each sub-form is itself a
+              list of criteria that constitute the filter. If none gave been
+              defined yet, there is simply the text <emphasis role="bold">No
+              Criteria</emphasis>. Click<emphasis role="bold"> Add
+              Criteria</emphasis> to open a sub-sub-form to add
+              one.</para><para role="TEXT">The sub-sub-form is as
+              follows:</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Column</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The column on which to
+              apply the criterion. Select from the dropdown list. </para><para
+              role="TEXT"> <emphasis role="strong">Limitation</emphasis>
+              <emphasis role="strong"> </emphasis>: the fields <guilabel
+              moreinfo="none">Description of Goods</guilabel>, <guilabel
+              moreinfo="none">Documents Required</guilabel>, <guilabel
+              moreinfo="none">Additional Instructions</guilabel>, <guilabel
+              moreinfo="none">Charges Details</guilabel>, <guilabel
+              moreinfo="none">Additional Amount</guilabel>, <guilabel
+              moreinfo="none">Payment Instructions</guilabel>, <guilabel
+              moreinfo="none">Period of Presentation</guilabel>, <guilabel
+              moreinfo="none">Shipment Period</guilabel>, <guilabel
+              moreinfo="none">Sender to Receiver</guilabel> and <guilabel
+              moreinfo="none">Full Details</guilabel> are not
+              accessible.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Operator</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The criterion's operator.
+              Select from the dropdown list. The list of available operators
+              depends on the above selected column type. Some examples
+              are:</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>Different</type>,
+                    <type>Equal</type>, <type>Like</type> operators are
+                    available for string columns,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Different</type>,
+                    <type>Equal</type>, <type>Inferior</type>, <type>Inferior
+                    or Equal</type>, <type>Superior</type>, <type>Superior or
+                    Equal</type> operators are available for date
+                    columns,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Different</type>,
+                    <type>Equal</type>, <type>Inferior</type>, <type>Inferior
+                    or Equal</type>, <type>Superior</type>, <type>Superior or
+                    Equal</type> operators are available for amount
+                    columns,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Different</type>,
+                    <type>Equal</type>, <type>Inferior</type>, <type>Inferior
+                    or Equal</type>, <type>Superior</type>, <type>Superior or
+                    Equal</type> operators are available for number
+                    columns.</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Operand Type</guilabel> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top">Options buttons to select whether the
+              operand is a parameter or a value.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Parameter</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The operand is a
+              parameter.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Parameter</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The list of parameters as
+              defined in the Parameters section.</para><para role="TEXT">Only
+              present when the operand type selected is
+              <type>Parameter</type>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Default Value</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The value as a
+              string.</para><para role="TEXT">Only present when the operand
+              type selected is <type>Value</type> and the selected column is
+              of type string.This field may Have a dropdown menu.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Value</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The operand is a value.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Value</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The value as a string.
+              Only present when the operand type selected is
+              <type>Value</type> and the selected column is of type
+              <emphasis>string</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Currency code and amount.
+              Maximum length of amount is 15 characters. Click the magnifying
+              glass icon to select the currency code.</para><para
+              role="TEXT">Only present when the operand type selected is
+              <type>Value</type> and the selected column is of type
+              <emphasis>amount</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The value as a
+              date.</para><para role="TEXT">Only present when the operand type
+              selected is <type>Value</type> and the selected column is of
+              type <emphasis>date</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Pre-defined Value</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The operand is a
+              pre-defined value. (Only available for date
+              fields)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Report execution date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">The current date Plus (+) or Minus (-) a
+              specified number of days.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">First day of the current month + </guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">The First day of the current month, Plus (+)
+              or Minus (-) a specified number of days.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Last day of the current month + </guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">The Last day of the current month, Plus (+)
+              or Minus (-) a specified number of days.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Today</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">Todays date</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Tomorrow</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">Tomorrows date</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Yesterday</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">Yesterdays date</entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ok</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the criterion
+              to the list of criteria.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon adding
+              the criterion and close the form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can change a filter's description by clicking the
+      <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it from
+      the report by clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Create form - Overall aggregation</title>
+
+      <para role="TEXT">In this section, you list the aggregates that are to
+      be included in the report.</para>
+
+      <para role="TEXT">It is possible to compute aggregates on a column of
+      the report, for example a sum over a column.</para>
+
+      <para role="TEXT">These overall aggregates are based on the whole
+      report, unlike the aggregates you define in Grouping (see below), which
+      can be based on parts of the report.</para>
+
+      <para role="TEXT">Possible aggregates are:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Aggregate</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT">Count</para></entry>
+
+              <entry valign="top"><para role="TEXT">Displays the number of
+              items in the report's list.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT">Average</para></entry>
+
+              <entry valign="top"><para role="TEXT">Displays the average value
+              of the selected column.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT">Maximum</para></entry>
+
+              <entry valign="top"><para role="TEXT">Displays the maximum value
+              of the selected column.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT">Minimum</para></entry>
+
+              <entry valign="top"><para role="TEXT">Display the minimum value
+              of the selected column.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT">Sum</para></entry>
+
+              <entry valign="top"><para role="TEXT">Displays the sum of values
+              of the selected column.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Click the <emphasis role="bold">Add
+      Aggregates</emphasis> button to add a new Aggregate to the report. The
+      following fields are accessible in the Overall Aggregates
+      section:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para role="TEXT">This section is a list of
+              aggregates that the report is to include. If none has been
+              defined yet, there is simply the text <emphasis role="bold">No
+              Aggregate</emphasis> instead. Click <emphasis role="bold">Add
+              Aggregate</emphasis> to open a sub-form to add one. The sub-form
+              is as follows:</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Column</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The column to be
+              aggregated.</para><para role="TEXT"> <emphasis
+              role="strong">Limitation</emphasis> : it is not possible to
+              aggregate computed columns.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Aggregate</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The aggregate operator.
+              The list of available aggregate operators depends on the above
+              selected column type:</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>Count</type> aggregate operator is
+                    available for a string column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    a date column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Sum</type>, <type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    an amount column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Sum</type>, <type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    a number column.</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">English Label</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Label to be used when the
+              user executing the report is English-speaking. If left blank,
+              the column name is used, followed by the aggregate type.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other languages (plus sign)</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_add.gif" role="PIC_ADD"
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_remove.gif"
+                               role="PIC_REMOVE" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Click the plus sign to
+              display fields where you can specify labels for the other
+              languages available. These are optional. Click the minus sign to
+              hide these fields again.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Equiv. Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Currency to use to express
+              the aggregated amount. Click the magnifying glass icon to select
+              the currency code. (Only present when the above selected column
+              is an amount.) </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Self Determination of Equivalent
+              Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick this box to allow the
+              system to determine the currency. (Only present when the above
+              selected column is an amount.) </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ok</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the aggregate
+              to the list of aggregates.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon adding
+              the aggregate and close the form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can change an aggregates description by clicking
+      the <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it from
+      the report by clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Create form - Grouping</title>
+
+      <para role="TEXT">In this section, you specify how lines in the report
+      are to be ordered and grouped, and can define aggregates over groups you
+      have defined.</para>
+
+      <para role="TEXT">Grouping on a column orders the lines in the report so
+      that all lines where that column has the same value are grouped
+      together. You can define an aggregate for each group in the same manner
+      as for overall aggregates (see above).</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Use Grouping</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick this box if you want
+              to use a grouping in your report.</para></entry>
+            </row>
+
+            <row>
+              <entry><guilabel> Don't Display Individual
+              Records</guilabel></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry>Tick this box if you want to show just aggregates in your
+              report.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Grouping Column</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Column on which grouping
+              will be applied.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para role="TEXT">The rest of this section
+              is a list of aggregates that the report is to include. If none
+              has been defined yet, there is simply the text <emphasis
+              role="bold">No Aggregate</emphasis> instead. Click <emphasis
+              role="bold">Add Aggregate</emphasis> to open a sub-form to add
+              one. The sub-form is as follows:</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Column</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The column to be
+              aggregated.</para><para role="TEXT"> <emphasis
+              role="strong">Limitation</emphasis> <emphasis role="strong">
+              :</emphasis> it is not possible to aggregate computed
+              columns.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Aggregate</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The aggregate operator.
+              The list of available aggregate operators depends on the above
+              selected column type:</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>Count</type> aggregate operator is
+                    available for a string column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    a date column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Sum</type>, <type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    an amount column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Sum</type>, <type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    a number column.</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">English Label</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Label to be used when the
+              user executing the report is English-speaking. If left blank,
+              the column name is used, followed by the aggregate type.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other languages (plus sign)</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_add.gif" role="PIC_ADD"
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/pic_remove.gif"
+                               role="PIC_REMOVE" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Click the plus sign to
+              display fields where you can specify labels for the other
+              languages available. These are optional. Click the minus sign to
+              hide these fields again.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Equiv. Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Only present when the
+              above selected column is an amount.) Currency to use to express
+              the aggregated amount. Click the magnifying glass icon to select
+              the currency code.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Self Determination of Equivalent
+              Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick this box to allow the
+              system to determine the currency. (Only present when the above
+              selected column is an amount.) </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ok</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the aggregate
+              to the list of aggregates.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon adding
+              the aggregate and close the form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can change an aggregates description by clicking
+      the <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it from
+      the report by clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Create form - Chart</title>
+
+      <para role="TEXT">In this section, you specify whether the report is to
+      include a chart, and what kind of chart.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Create a chart for this report</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Tick this box if you want
+              to include a chart in your report. The fields described below
+              appear when you tick this box.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Render As</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Type of chart. Select from
+              the dropdown list: <literal>Pie</literal>,
+              <literal>Bar</literal>, <literal>Line</literal>, etc.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Axis X</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Column to be used as the
+              X-axis or other baseline (depending on the type of chart).
+              Select from the dropdown list.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Axis X Scale</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the scale or the X
+              Axis from the dropdown list. (depending on the type of
+              chart)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Add Axis Y</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to display a popup
+              form where you can specify the column to be used as the Y axis.
+              The form is describe below.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Column</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Column whose variation
+              against the X-axis or other baseline (depending on the type of
+              chart) is to be shown by the chart. Select from the dropdown
+              list.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Aggregate</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The aggregate operator.
+              The list of available aggregate operators depends on the type of
+              column selected as the Y axis, as follows:</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>Count</type> aggregate operator is
+                    available for a string column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    a date column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Sum</type>, <type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    an amount column,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Sum</type>, <type>Count</type>,
+                    <type>Average</type>, <type>Maximum</type>,
+                    <type>Minimum</type> aggregate operators are available for
+                    a number column.</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">English Label</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Label to be used for Axix
+              Y, when the user executing the report is English-speaking. If
+              left blank, the column name is used, followed by the aggregate
+              type. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+
+              <entry valign="top"></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ok</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the column
+              chosen for the Y-axis to the list of such
+              columns.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon adding
+              the column and close the form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can change a Y axis's description by clicking the
+      <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it from
+      the chart by clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Create Form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the bottom of the page. For each of
+      them, a pop up window will appear to confirm the choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1" valign="top"><para
+              role="TEXT">Operation</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top">Save the new Profile</entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Leave the current page and
+              return to the Administration menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Open a popup window
+              displaying the online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Report Designer - From Existing</title>
+
+    <para role="TEXT">Create a report from an existing report. The details of
+    the existing report are copied to the new one, except the report name,
+    description and executable status. This is set to non-executable.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of existing reports. You can search the list by entering search
+    criteria in the <guilabel moreinfo="none">Report Name</guilabel> field at
+    the top of the page.</para>
+
+    <para role="TEXT">The columns show the <guilabel moreinfo="none">Report
+    Name</guilabel> and <guilabel moreinfo="none">Report
+    Description</guilabel> of each report.</para>
+
+    <para role="TEXT">Click in the <guilabel moreinfo="none">Report
+    Name</guilabel> column to open a new report form, populated with the
+    details from the selected existing report. The description of each field
+    in the report can be found in the section on <emphasis role="bold">Report
+    Designer - Create Form</emphasis></para>
+  </section>
+
+  <section role="ITEM">
+    <title>Report Designer - From Template</title>
+
+    <para role="TEXT">Create a report from a template supplied to your company
+    by your bank.</para>
+
+    <para role="TEXT">The template name is used as the report's name. If this
+    name is already used by an existing report, the report name is suffixed
+    with the string <literal>[i]</literal> where <varname>i</varname> is an
+    incremental index that distinguishes the new report name.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of report templates that your company has. You can search the list by
+    entering search criteria in the <guilabel moreinfo="none">Report
+    Name</guilabel> field at the top of the page.</para>
+
+    <para role="TEXT">The columns show the <guilabel moreinfo="none">Report
+    Name</guilabel> and the <guilabel moreinfo="none">Report
+    Description</guilabel> of each template.</para>
+
+    <para role="TEXT">The user selects the required templates through the
+    dedicated check-boxes, and then press the <guibutton
+    moreinfo="none">Submit</guibutton> button. The description of each field
+    in the report can be found in the section on <emphasis role="bold">Report
+    Designer - Create Form</emphasis></para>
+  </section>
+
+  <section role="ITEM">
+    <title>Report Designer - Maintenance</title>
+
+    <para role="TEXT">Update an existing report.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of existing reports. You can search the list by entering search
+    criteria in the <guilabel moreinfo="none">Report Name</guilabel> field at
+    the top of the page.</para>
+
+    <para role="TEXT">The columns show the <guilabel moreinfo="none">Report
+    Name</guilabel>, <guilabel moreinfo="none">Report Description</guilabel>
+    and <emphasis role="bold">Executable</emphasis> flag of each
+    report.</para>
+
+    <para role="TEXT">You can modify a report by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, delete it by
+    clicking the <guibutton moreinfo="none">Delete</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon, or preview it by clicking the
+    <guiicon>Preview</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_preview.gif" role="ICON_GENERATE"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon. Previewing it executes it, using your own
+    permissions and your own company's data.</para>
+  </section>
+
+  <section condition="TITLE=Report Designer - Parameters;ACCESS=SY_PRA_C"
+           role="TOPIC">
+    <title>Report Designer - Parameters</title>
+
+    <para role="TEXT">As an administrator at a client company, you use the
+    Report PDF Parameters module to set up parameters such as logo, header and
+    footer texts for PDF documents generated from custom reports.</para>
+
+    <note role="TEXT">
+      <para role="TEXT">This should not be confused with the <emphasis
+      role="bold">Parameters</emphasis> section of the Create form -
+      Parameters section described in this chapter.</para>
+    </note>
+
+    <para role="TEXT">When you click this function, you are presented with a
+    blank form.</para>
+
+    <section role="ITEM">
+      <title>Parameters Form</title>
+
+      <para role="TEXT">The form is as follows. After entering the details,
+      click <emphasis role="bold">Save</emphasis> at the bottom of the
+      form.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set a new Logo</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click the <emphasis
+              role="bold">Browse</emphasis> button to enter the name of an
+              image file to attach to reports.</para><para role="TEXT">The
+              logo should be a .GIF or .JPG image. The recommended size is
+              50x150 pixels.</para><para role="TEXT">We recommend you generate
+              a test report in PDF format to check the logo is rendered
+              correctly, and adjust and reload the logo size.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Logo text</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Text to appear next to the
+              logo at the top of the page, on the left hand side. Three lines
+              of 35 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Footer text</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Text to appear in the
+              centre of the footer. Up to 65 characters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Parameters Form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the bottom of the page. For each of
+      them, a popup window will appear to confirm the choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1" valign="top"><para
+              role="TEXT">Operation</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top">Save the parameter details.</entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Leave the current page and
+              return to the Administration menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Open a popup window
+              displaying the online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Report Designer - Schedule;ACCESS=SY_SHD_C"
+           role="TOPIC">
+    <title>Report Designer - Schedule</title>
+
+    <para role="TEXT">As an administrator at a client company, you use the
+    Schedule Report module to schedule reports to be executed automatically at
+    a given frequency, with the results sent to a specified recipient via
+    email. There is no need for any user to actually be connected to
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude" /> while a scheduled report is
+    running. The report is executed as if it was being run by a user with
+    access to the company's full jurisdiction (that is, with access to all
+    available permissions given to the company and all its entities). You can
+    select the format (<type>CSV</type>, <type>Spreadsheet</type> or
+    <type>PDF</type>) of the results sent as an email attachment and the
+    language in which the report is generated.</para>
+
+    <para role="TEXT">You cannot customise the actual time of day when a
+    scheduled report is executed. This is configured in the technical
+    properties of the MP application and defined by the Bank technical
+    administrator.</para>
+
+    <para role="TEXT">When you click this function, you are presented with a
+    list of all the existing scheduled reports. You can search the list by
+    entering search criteria in the <guilabel moreinfo="none">Report
+    Name</guilabel> and/or <guilabel moreinfo="none">Frequency</guilabel>
+    fields at the top of the page.</para>
+
+    <para role="TEXT">The list of scheduled reports has the following
+    columns:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Report Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Report Name</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Frequency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Batch Frequency
+              (<type>Daily</type>, <type>Weekly</type> or
+              <type>Monthly</type>). Depending on the frequency, additional
+              information is provided:</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>Weekly</type>: the abbreviated
+                    name for the chosen day of the week.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Monthly</type>: the day of the
+                    month (as a number).</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Output Format</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Chosen Output format
+              :</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>CSV</type>: Comma Separated
+                    Value.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Spreadsheet</type>: format
+                    compatible with <productname class="trade">Microsoft
+                    Excel</productname>.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>PDF</type>: <productname
+                    class="trade">Adobe Acrobat</productname> format.</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Next Batch</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">For information, the date
+              of the next report execution is indicated.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or delete it by
+    clicking the <guibutton moreinfo="none">Delete</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add a new report
+    schedule</guibutton> button at the bottom of the list to add an report to
+    the schedule.</para>
+
+    <section role="ITEM">
+      <title>Schedule Report Form</title>
+
+      <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add</guibutton> display the same form, but in the case
+      of <guibutton moreinfo="none">Add</guibutton> it is blank and in the
+      case of <guibutton moreinfo="none">Edit</guibutton> it is preset with
+      the existing details of the schedule for the report. After entering the
+      details, click <emphasis role="bold">Save</emphasis> at the bottom of
+      the form.</para>
+
+      <para role="TEXT">The form is as follows:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Report Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Selection of the
+                report</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Frequency</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_radio.gif"
+                                 role="CHAR_RADIO" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Three choices are
+                available:</para><itemizedlist>
+                    <listitem>
+                      <para role="TEXT"><type>Daily</type></para>
+                    </listitem>
+
+                    <listitem>
+                      <para role="TEXT"><type>Weekly</type>: the user has to
+                      choose the day of the week.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para role="TEXT"><type>Montly</type>: the user has to
+                      select the day of the month</para>
+                    </listitem>
+                  </itemizedlist></entry>
+              </row>
+
+              <row>
+                <entry><guilabel>Output Format</guilabel></entry>
+
+                <entry><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry><para role="TEXT">The format of the attachment
+                containing the results of the report and which is going to be
+                included in the email sent upon the scheduled date is defined
+                here:</para><itemizedlist>
+                    <listitem>
+                      <para role="TEXT"><type>CSV</type> for a Comma Separated
+                      Value file,</para>
+                    </listitem>
+
+                    <listitem>
+                      <para role="TEXT"><type>Spreadsheet</type> for a format
+                      compatible with <productname class="trade">Microsoft
+                      Excel</productname>,</para>
+                    </listitem>
+
+                    <listitem>
+                      <para role="TEXT"><type>PDF</type> <productname
+                      class="trade">for the Adobe Acrobat</productname>
+                      format.</para>
+                    </listitem>
+                  </itemizedlist></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Language / Locale</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select box with all
+                available languages. This choice will determine in which
+                language the report will be executed and therefore the
+                language of the results. It is also used to set the language
+                of the actual email message.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Email Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The email address of the
+                recipient (40 characters maximum). </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Schedule Report Form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the bottom of the page. For each of
+      them, a popup window will appear to confirm the choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1" valign="top"><para
+              role="TEXT">Operation</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top">Save the new Schedule.</entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Leave the current page and
+              return to the Administration menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Open a popup window
+              displaying the online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+</chapter>

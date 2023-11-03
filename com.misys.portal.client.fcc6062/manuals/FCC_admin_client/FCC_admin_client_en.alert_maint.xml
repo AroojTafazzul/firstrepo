@@ -1,0 +1,1246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=Services: Alert Maintenance;PERM=sy_alert_save;ACCESS=SY_ALERT"
+         role="TOPIC">
+  <title>Alerts Maintenance</title>
+
+  <section role="ITEM">
+    <title>Overview</title>
+
+    <para role="TEXT"><xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> can send
+    email's to specified users to alert them when your company receives
+    notifications from the bank; for instance when the bank has accepted your
+    company's Import Letter of Credit request, or has advised your company as
+    an exporter about a new Export Letter of Credit. Alerts can also be sent
+    at chosen milestones, for instance Expiry date or Last Shipment
+    date.</para>
+
+    <para role="TEXT">As an administrator at a client company, you use the
+    <application moreinfo="none">Alerts</application> module to specify, for a
+    given product and transaction type or milestone date, the users who are to
+    receive alerts. You can specify that an alert be sent to the user who
+    played a specific part in handling the transaction: input, control or
+    release. In this case the email address and the language to use (English
+    or French) are taken from the user's data in the system. Alternatively,
+    you can enter an email address and select the language explicitly. You
+    cannot enter wording for the email. Standard wording is used.</para>
+
+    <para role="TEXT">The set of actions for which alerts can be sent is
+    configured by the bank in a system configuration file.</para>
+
+    <note role="TEXT">
+      <para role="TEXT">Additional custom types of alerts (for example, SMS
+      messages) may also be available and configured in this module.</para>
+    </note>
+  </section>
+
+  <section role="ITEM">
+    <title>Alerts Maintenance - Navigation</title>
+
+    <para role="TEXT">To navigate to the Alerts Maintenance function, from the
+    toolbar, select <emphasis>Administration</emphasis> &gt; <emphasis>Alerts
+    Maintenance</emphasis>.</para>
+
+    <para role="TEXT">Alternatively, depending on the Administration function
+    already selected, there may be a link to the Alerts Maintenance function
+    in the left hand side navigation menu.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Alerts Maintenance Options</title>
+
+    <para role="TEXT">After selecting <emphasis>Administration</emphasis> &gt;
+    <emphasis>Alerts Maintenance</emphasis> from the toolbar, a number of
+    options are provided for Alerts Maintenance in the left side navigation
+    menu. They are as follows:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Submission</guimenuitem>:</term>
+
+        <listitem>
+          <para role="TEXT">Define alerts to be sent when notifications are
+          received from the bank.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Calendar</guimenuitem>:</term>
+
+        <listitem>
+          <para role="TEXT">Define alerts to be sent when specific milestone
+          dates are reached, passed, or approaching.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section role="ITEM">
+    <title>Alerts Maintenance - Submission</title>
+
+    <para role="TEXT">Define alerts to be sent when notifications are received
+    from the bank. When this option is selected, your company details are
+    displayed at the top of the page along with a list of existing Alerts
+    defined for that company.</para>
+
+    <para role="TEXT">The list of existing Alerts has the following columns:
+    (Masking character "*" may be used to define all options) <informaltable
+        role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry><guilabel moreinfo="none"> Entity</guilabel></entry>
+
+              <entry><para role="TEXT">Entity within your company that this
+              bank counterparty is available to. </para><note>
+                  <para role="TEXT">This field is present if your company has
+                  entities.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Products for which the
+              alert is to be sent. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Sub product</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Sub Product for the
+              selected product.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Transaction types for
+              which the alert is to be sent. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Status of the product
+              transaction when an alert is to be sent.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">currency and amount
+              greater than or less than conditions that will trigger an
+              alert.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Email Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The person that should
+              receive the alert. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or delete it by
+    clicking the <guibutton moreinfo="none">Delete</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add Alert
+    </guibutton>button at the bottom of the list to add a new alert. The
+    change alert and new alert screens are the same except the fields in the
+    change alert screen are per-populated.</para>
+
+    <section role="Item">
+      <title>Add Alert Form</title>
+
+      <para role="TEXT">When you edit an existing alert, or add a new one, you
+      are presented with the following sub form. After entering the details,
+      click <emphasis role="bold">Save</emphasis> at the bottom of the
+      form.</para>
+
+      <note role="TEXT">
+        <para role="TEXT">Be careful not to forget to click <emphasis
+        role="bold">Save</emphasis> when you have made your changes. If you
+        simply navigate away from the page, your changes will be lost, even
+        though you have clicked <emphasis role="bold">OK</emphasis> on the
+        sub-form(s) where you made the changes and they are shown on the list
+        within the form..</para>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Products for which the
+              alert is to be sent. Select from the dropdown list. Select
+              wildcard to mean all products.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Sub Product</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Sub Products of the
+              selected Product, for which the alert is to be sent. Select from
+              the dropdown list. Select wildcard to mean all Sub products.
+              </para><note>
+                  <para role="TEXT">This dropdown is displayed only for
+                  applicable products)</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Transaction types for
+              which the alert is to be sent. Select from the dropdown list.:
+              <literal>New</literal>, <literal>Amend</literal>,
+              <literal>Message</literal>, <literal>Reporting</literal>. Select
+              wildcard to mean all types.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The current status of the
+              product for which the alert is to be sent. Select from the
+              dropdown list (for example, Rejected, Pending New, and so on).
+              Select wildcard to mean all statuses.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Entity for which the alert
+              is to be sent. Click the magnifying glass icon to select.
+              Mandatory field if present. Select wildcard to mean all
+              entities.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <emphasis
+              role="bold"><guilabel>Amount</guilabel></emphasis>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select : <literal>Less
+              Than</literal>, or <literal>Greater Than</literal>, and the
+              currency and amount to determine the conditions under which an
+              alert should be sent. Select asterisk if you want to send an
+              alert regardless of the amount</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Recipient</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the recipient to
+              receive the alert. Options are:<programlisting
+              format="linespecific"><guilabel moreinfo="none">Input User</guilabel>
+<guilabel moreinfo="none">Control User</guilabel>
+<guilabel moreinfo="none">Release User</guilabel>
+<guilabel moreinfo="none">Custom Recipient</guilabel> - (When selected Language/Locale and Email address are made available)
+<guilabel moreinfo="none">Contact Person</guilabel> - (When selected Contact Person and Email field are made available)
+</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Language/Locale</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the recipients
+              Language/Locale from the dropdown list. Only available if Custom
+              Recipient is selected as Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Email Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the recipients Email
+              address. Only available if Custom Recipient is selected as
+              Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Contact Person </guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Contact Person's Name.
+              Only available if Contact Person is selected as
+              Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Contact Email </guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Email address of the
+              Contact Person. Only available if Contact Person is selected as
+              Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Ok</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the new alert
+              to the list.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon creating
+              the alert, and close the sub-form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">In the list of existing alerts within the above form,
+      you can modify an alert by clicking the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it by
+      clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Add Alert Form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the bottom of the page. For each of
+      them, a popup window will appear to confirm the choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1" valign="top"><para
+              role="TEXT">Operation</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top">Save the new alert definition. <note
+                  role="TEXT">
+                  <para role="TEXT">Remember to click <emphasis
+                  role="bold">Save</emphasis> when the changes have been made.
+                  Navigating away from the page will lose the changes, even if
+                  the <emphasis role="bold">OK</emphasis> on the sub-form(s)
+                  where the changes were made, has been clicked, and they are
+                  shown on the list within the form.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Leave the current page and
+              return to the Administration menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Open a popup window
+              displaying the online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Alerts Maintenance - Calendar</title>
+
+    <para role="TEXT">Define alerts to be sent when specific milestone dates
+    are reached, passed, or approaching. When this option is selected, your
+    company details are displayed at the top of the page along with a list of
+    existing Calendar Alerts defined for that company.</para>
+
+    <para role="TEXT">The list of existing Alerts has the following columns:
+    (Masking character "*" may be used to define all options) <informaltable
+        role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry><guilabel moreinfo="none"> Entity</guilabel></entry>
+
+              <entry>Entity within your company that this bank counterparty is
+              available to. (Field is present if your company has
+              entities.)</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Products for which the
+              alert is to be sent. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The description of the
+              alert date relative to the transaction. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">E-Mail Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Email address or
+              person that should receive the alert. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or delete it by
+    clicking the <guibutton moreinfo="none">Delete</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add Alert
+    </guibutton>button at the bottom of the list to add a new alert. The
+    change alert and new alert screens are the same except the fields in the
+    change alert screen are per-populated.</para>
+
+    <section role="ITEM">
+      <title>Calendar Form</title>
+
+      <para role="TEXT">When this option is selected, your company details are
+      displayed at the top of the page along with a list of existing Calendar
+      alerts defined for that company you are presented with the following
+      form. After entering the details, click <emphasis
+      role="bold">Save</emphasis> at the bottom of the form.</para>
+
+      <para role="TEXT">When you edit an existing alert, or add a new one, you
+      are presented with the following sub form. After entering the details,
+      click <emphasis role="bold">Save</emphasis> at the bottom of the
+      form.</para>
+
+      <note role="TEXT">
+        <para role="TEXT">Be careful not to forget to click <emphasis
+        role="bold">Save</emphasis> when you have made your changes. If you
+        simply navigate away from the page, your changes will be lost, even
+        though you have clicked <emphasis role="bold">OK</emphasis> on the
+        sub-form(s) where you made the changes and they are shown on the list
+        within the form.</para>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Products for which the
+              alert is to be sent. Select from the dropdown list. Select
+              wildcard to mean all products.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Milestone date, relative
+              to which the alert is to be sent. Select from the dropdown list.
+              The dates available depend on the <emphasis
+              role="bold">Product</emphasis> selected.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Entity for which the alert
+              is to be sent. Click the magnifying glass icon to select.
+              Mandatory field if present. Select wildcard to mean all
+              entities.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Offset (nb.days)</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Number of days before or
+              after <emphasis role="bold">Date</emphasis>, that the alert is
+              to be sent. Blank to have it sent on the date itself. Mandatory
+              if you have selected <emphasis role="bold">Before</emphasis> or
+              <emphasis role="bold">After</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Before/After</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Pair of option buttons for
+              you to show whether the value in <emphasis
+              role="bold">Offset</emphasis> is days before or after the date
+              in <emphasis role="bold">Date</emphasis>. Mandatory if you have
+              entered a value in <emphasis
+              role="bold">Offset</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Recipient</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the recipient to
+              receive the alert. Options are:<programlisting
+              format="linespecific"><guilabel moreinfo="none">Input User</guilabel>
+<guilabel moreinfo="none">Control User</guilabel>
+<guilabel moreinfo="none">Release User</guilabel>
+<guilabel moreinfo="none">Custom Recipient</guilabel> - (When selected Language/Locale and Email address are made available)
+</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Language/Locale</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the recipients
+              Language/Locale from the dropdown list. Only available if Custom
+              Recipient is selected as Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Email Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the recipients Email
+              address. Only available if Custom Recipient is selected as
+              Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Ok</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to add the new alert
+              to the list.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to abandon creating
+              the alert, and close the sub-form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">In the list of existing alerts within the above form,
+      you can modify an alert by clicking the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it by
+      clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Calendar Form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the bottom of the page. For each of
+      them, a popup window will appear to confirm the choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1" valign="top"><para
+              role="TEXT">Operation</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top">Save the new alert definition. <note
+                  role="TEXT">
+                  <para role="TEXT">Remember to click <emphasis
+                  role="bold">Save</emphasis> when the changes have been made.
+                  Navigating away from the page will lose the changes, even if
+                  the <emphasis role="bold">OK</emphasis> on the sub-form(s)
+                  where the changes were made, has been clicked, and they are
+                  shown on the list within the form.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Leave the current page and
+              return to the Administration menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Open a popup window
+              displaying the online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Alerts Maintenance - Balance</title>
+
+    <para role="TEXT">This option allows the bank administrator to display and
+    define alerts to be sent, when balance reaches specific threshold amount.
+    Bank details are displayed at the top of the page along with a list of
+    existing balance alerts defined for that company.</para>
+
+    <section role="ITEM">
+      <title>Balance Form</title>
+
+      <para role="TEXT">When you select this option, you are presented with
+      the following form. After entering the details, click <emphasis
+      role="bold">Save</emphasis> at the bottom of the form.</para>
+
+      <note role="TEXT">
+        <para>Click <emphasis role="bold">Save</emphasis> when you have made
+        your changes. If you simply navigate away from the page, your changes
+        will be lost, even though you have clicked <emphasis
+        role="bold">OK</emphasis> on the sub-form(s) where you made the
+        changes and they are shown on the list within the form.</para>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Bank's abbreviated name that is part
+              of the user identification in <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of the bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Address of the bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Contact
+              Name</guilabel></para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Name of the contact person from the
+              company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guimenu
+              moreinfo="none">Entity</guimenu> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>The entity for which balance alert is
+              to be being configured. This field is only present if the client
+              company has entities defined.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Account
+              number</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The account number for which the
+              balance alert is to be configured.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Amount
+              Threshold</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Enter the threshold amount. This field
+              defines the threshold for the account balance alert notification
+              to be triggered. Use the magnifying glass icon to select the
+              currency.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Correspondence Language </guilabel>
+              </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The language of correspondence, this
+              field decides the language in which the alerts will be
+              sent.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Email
+              Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Email address to send the alert to.
+              Select from the dropdown list: <literal>English</literal> or
+              <literal>French</literal>. If you selected anything other than
+              blank for <emphasis role="bold">Recipient</emphasis>, you cannot
+              set this (it remains blank).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guibutton
+              moreinfo="none">Online</guibutton> </para></entry>
+
+              <entry valign="top"/>
+
+              <entry valign="top"><para>This alert is displayed on the home
+              page if configured.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guibutton
+              moreinfo="none">Entity</guibutton> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The entity for which balance alert is
+              to be being configured. This field is only present if the client
+              company has entities defined.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guibutton moreinfo="none">Account
+              number</guibutton></para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>The account number for which the
+              balance alert is to be configured.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guibutton moreinfo="none">Amount
+              Threshold</guibutton></para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Enter the threshold amount. This field
+              defines the threshold for the account balance alert notification
+              to be triggered. Use the magnifying glass icon to select the
+              currency.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">In the list of existing alerts within the above form,
+      you can modify an alert by clicking the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it by
+      clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+
+      <section role="ITEM">
+        <title>Calendar Form - Action Buttons</title>
+
+        <para role="TEXT">The operations that can be performed from this form
+        are listed below. They appear at the bottom of the page. For each of
+        them, a popup window will appear to confirm the choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry nameend="c2" namest="c1"
+                valign="top"><para>Operation</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Save</guiicon> </para></entry>
+
+                <entry valign="top">Save the new alert definition. <note
+                    role="TEXT">
+                    <para>Remember to click <emphasis
+                    role="bold">Save</emphasis> when the changes have been
+                    made. Navigating away from the page will lose the changes,
+                    even if the <emphasis role="bold">OK</emphasis> on the
+                    sub-form(s) where the changes were made, has been clicked,
+                    and they are shown on the list within the form.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Cancel</guiicon> </para></entry>
+
+                <entry valign="top"><para>Leave the current page and return to
+                the System Features menu.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Help</guiicon> </para></entry>
+
+                <entry valign="top"><para>Open a popup window displaying the
+                online help pages.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+  </section>
+</chapter>

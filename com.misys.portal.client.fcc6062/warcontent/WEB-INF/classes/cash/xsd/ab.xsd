@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for an exchange rate. XML validation 
+			Copyright (c) 2000-2010 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="accounts">
+	    <xs:complexType>
+	        <xs:sequence>
+	            <xs:element minOccurs="1" maxOccurs="unbounded" name="account" type="accountType"/>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+	<xs:element name="accountStatements">
+	    <xs:complexType>
+	        <xs:sequence>
+	            <xs:element minOccurs="1" maxOccurs="unbounded" name="account" type="accountStatementType"/>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+	<xs:complexType name="accountStatementType">
+	  <xs:sequence> 
+	   <xs:element name="account_no" type="ThirtyFiveCharacters" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account number. Mandatory, the maximum length allowed is 35 characters.</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element ref="cur_code" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account Currency Code. Mandatory, the maximum length allowed is 3 characters.
+					Should be a valid 3 char currency code like USD, GBP, INR etc.
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="bo_cust_number" type="ThirtyFiveCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+			<xs:annotation>
+				<xs:documentation>Backoffice Customer number.
+						Mandatory, the maximum length allowed is 35 characters. 
+						Should contain a valid backoffice customer reference which is already registered in portal.
+				</xs:documentation>
+			</xs:annotation>	   
+	   </xs:element>
+	   <xs:element name="statements">
+	       <xs:complexType>
+	           <xs:sequence>
+	               <xs:element minOccurs="1" maxOccurs="unbounded" name="statement" type="statementType">
+						<xs:annotation>
+							<xs:documentation>Statement. Mandatory as the child element balance is mandatory.</xs:documentation>
+						</xs:annotation>	   
+	               </xs:element>
+	           </xs:sequence>
+	       </xs:complexType>
+	   </xs:element>	   
+	  </xs:sequence>
+	</xs:complexType>
+		
+	<xs:complexType name="accountType">
+	  <xs:sequence> 
+	   <xs:element name="account_no" type="ThirtyFiveCharacters" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account number. Mandatory, the maximum length allowed is 35 characters.</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="description" type="TwoHundredFiftyFiveCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account description. Mandatory, used in FBCC UI and the maximum length allowed is 255 characters.</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="account_type" type="TwoCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account type. Mandatory, the maximum length allowed is 2 characters.
+					01 - Current Account
+					02 - Deposit Account
+					03 - Savings Account
+					04 - Loan Account
+					05 - Term Deposit Account
+					06 - Credit Card Account
+					07 - Call and Notice
+					08 - Safe Keeping Account
+					09 - Flow Account
+					10 - Credit Account
+					11 - Credit Flow Account
+					12 - Settlement Account
+					99 - Other
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="format" type="TwoCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account format. Mandatory, the maximum length allowed is 2 characters.
+					01 - BBAN
+					02 - IBAN
+					03 - UPIC
+					04 - DMST
+					99 - Other
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="owner_type" type="TwoCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account Owner Type. Mandatory, the maximum length allowed is 2 characters.
+					01 - Customer
+					02 - Beneficiary
+					03 - Swift
+					04 - Bill
+					05 - Other Bank
+					99 - Other
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element ref="name" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account name. Optional, the maximum length allowed is 255 characters.</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element ref="country" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Country name. Optional, the maximum length allowed is 2 characters.
+					Should be a valid 2 char country code like US, GB, IN etc.
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>  
+	   <xs:element name="bank_abbv_name" type="ThirtyFiveCharacters" nillable="true" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Bank abbreviated name. Optional, the maximum length allowed is 35 characters.
+					Used to identify the bank in multibank-allow-duplicates scenario, along with the bo_cust_number.
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="bank_name" type="ThirtyFiveCharacters" nillable="true" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Bank name. Optional, the maximum length allowed is 35 characters.
+					Used to identify the bank in multibank-allow-duplicates scenario, along with the bo_cust_number.
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element ref="cur_code" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account Currency Code. Mandatory, the maximum length allowed is 3 characters.
+					Should be a valid 3 char currency code like USD, GBP, INR etc.
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="overdraft_limit" type="amount" nillable="true" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Account Overdraft Limit. Optional.					
+					Format: Comma separated +ve amount value, Number(18,3).
+					eg. 1,234.00
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element ref="actv_flag" minOccurs="1" maxOccurs="1">
+			<xs:annotation>
+				<xs:documentation>Active Flag. Defines whether Account is active or inactive.
+						Mandatory, one char field. Possible values can be Y or N.
+				</xs:documentation>
+			</xs:annotation>	   
+	   </xs:element>
+	   <xs:element name="bo_cust_number" type="ThirtyFiveCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+			<xs:annotation>
+				<xs:documentation>Backoffice Customer number.
+						Mandatory, the maximum length allowed is 35 characters. 
+						Should contain a valid backoffice customer reference which is already registered in portal.
+				</xs:documentation>
+			</xs:annotation>	   
+	   </xs:element>
+	   <xs:element name="bo_type" type="ThirtyFiveCharacters" nillable="true" minOccurs="0" maxOccurs="1">
+			<xs:annotation>
+				<xs:documentation>Backoffice account type.
+						Optional, the maximum length allowed is 35 characters. 
+						eg.
+							CA - Current Account
+							SA - Savings Account
+							FD - Fixed Deposit
+							LA - Loan Account
+							TD - Term Deposit
+				</xs:documentation>
+			</xs:annotation>	   
+	   </xs:element>
+	   <xs:element name="acct_name" type="NintyNineCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Account name.
+						Mandatory, the maximum length allowed is 99 characters. 
+				</xs:documentation>
+			</xs:annotation>	   
+	   </xs:element>
+	   <xs:element name="bank_account_type" type="ThirtyFiveCharacters" minOccurs="1" maxOccurs="1">
+			<xs:annotation>
+				<xs:documentation>Bank account type.
+						Mandatory, the maximum length allowed is 35 characters.
+						eg.
+							CA - Current Account
+							SA - Savings Account
+							FD - Fixed Deposit
+							LA - Loan Account
+							TD - Term Deposit					 
+				</xs:documentation>
+			</xs:annotation>	   
+	   </xs:element>	   
+	   <xs:element name="interest_rate" type="rate" nillable="true" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Interest rate for an account. Optional.
+					Format: 0.00, Number(18,7).
+					eg. 8.75
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="interest_rate_maturity" type="rate" nillable="true" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Interest that will have been accrued on Maturity of the fixed deposit account. Optional.
+					Format: 0.00, Number(18,7).
+					eg. 8.75
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="interest_rate_credit" type="rate" nillable="true" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Interest rate credit. Mandatory for Deposit Accounts, for others optional.
+					Format: 0.00, Number(18,7).
+					eg. 8.75
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="interest_rate_debit" type="rate" nillable="true" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Interest rate debit. Mandatory for Loan Accounts, for others optional.
+					Format: 0.00, Number(18,7).
+					eg. 8.75
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="principal_amount" type="PstvNegAmount" nillable="true" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Principal Amount. Optional.
+					Format: Comma separated amount value, Number(18,3).
+					eg. 1,234.00
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="maturity_amount" type="PstvNegAmount" nillable="true" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Maturity Amount. Optional.
+					Format: Comma separated amount value, Number(18,3).
+					eg. 1,234.00
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="start_date" type="Date" nillable="true" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Start Date. Optional.
+					Format: dd/MM/yyy.
+					eg. 20/04/2016
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="end_date" type="Date" nillable="true" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>End Date. Optional.
+					Format: dd/MM/yyy.
+					eg. 19/04/2016
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="created_date" type="DateTime" nillable="true" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Account Created Date. Optional.
+					Format: dd/MM/yyy HH:mm:ss.
+					eg. 20/04/2016 00:00:00
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="modified_date" type="DateTime" nillable="true" minOccurs="0">
+	   		<xs:annotation>
+				<xs:documentation>Account Modified Date. Optional.
+					Format: dd/MM/yyy HH:mm:ss.
+					eg. 20/04/2016 00:00:00
+				</xs:documentation>
+			</xs:annotation>
+	   </xs:element>
+	   <xs:element name="alternative_acct_no" type="ThirtyFiveCharacters" minOccurs="0" maxOccurs="1">
+	   		<xs:annotation>
+				<xs:documentation>Alternative Account number. Optional, the maximum length allowed is 35 characters.</xs:documentation>
+			</xs:annotation>
+	   </xs:element>	      	   
+	   <xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field"/>
+	   <xs:element name="statements">
+	       <xs:complexType>
+	           <xs:sequence>
+	               <xs:element minOccurs="1" maxOccurs="unbounded" name="statement" type="statementType">
+						<xs:annotation>
+							<xs:documentation>Statement. Mandatory as the child element balance is mandatory.</xs:documentation>
+						</xs:annotation>	   
+	               </xs:element>
+	           </xs:sequence>
+	       </xs:complexType>
+	   </xs:element>
+	  </xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="statementType">
+		<xs:sequence>	
+			<xs:element name="type" type="TwoCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Statement type. Mandatory, the maximum length allowed is 2 characters.
+							01 - Intra-Day Statement
+							02 - Running Statement
+							03 - Archive Statement
+					</xs:documentation>
+				</xs:annotation>	   
+			</xs:element>
+			<xs:element name="idx" type="positiveInteger" nillable="true" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Statement Number. Mandatory.
+						Format: +ve integer
+					</xs:documentation>
+				</xs:annotation>	   
+			</xs:element>
+			<xs:element name="seq_idx" type="positiveInteger" nillable="true" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Statement Sequence Number. Mandatory.
+						Format: +ve integer
+					</xs:documentation>
+				</xs:annotation>	   
+			</xs:element>
+			<xs:element name="remove_from_date" type="Date" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Remove From Date. Mandatory in movement synchronisation, otherwise Optional.
+					
+						Defines from which date the movement lines to be removed.
+						This has to be used while synchronising movements in order to avoid duplicate movement lines.
+					
+						Format: dd/MM/yyyy
+					</xs:documentation>
+				</xs:annotation>	   
+			</xs:element>
+			<xs:element name="balances">
+				<xs:complexType>
+					<xs:sequence>
+	            		<xs:element minOccurs="2" maxOccurs="unbounded" name="balance" type="balanceType">
+							<xs:annotation>
+								<xs:documentation>Balance. Mandatory.
+									A minimum of 2 Balance elements are expected. 
+								
+									One, with type 03, defines the closing balance details.
+									Other, with type 05, defines the ledger balance details.								
+								</xs:documentation>
+							</xs:annotation>	   
+	            		</xs:element>
+	        		</xs:sequence>
+	        	</xs:complexType>
+	        </xs:element>
+			<xs:element name="lines">
+				<xs:complexType>
+					<xs:sequence>
+	            		<xs:element minOccurs="0" maxOccurs="unbounded" name="line" type="statementLineType"/>
+	        		</xs:sequence>
+	        	</xs:complexType>
+	        </xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="statementLineType">
+		<xs:sequence>
+			<xs:element name="line_id" type="positiveInteger" minOccurs="0" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Statement Line Id. It's Optional. When line_id is passed it should be unique within single account statement.
+						Format: .{0}|[0-9]+
+						eg. 1234
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="post_date" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Post Date. Mandatory.
+						Format: dd/MM/yyy HH:mm:ss
+						eg. 20/04/2016 00:00:00
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value_date" type="DateTime" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Value Date. Mandatory.
+						Format: dd/MM/yyy HH:mm:ss
+						eg. 20/04/2016 00:00:00
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cur_code" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Currency Code. Mandatory, the maximum length allowed is 3 characters.
+						Should be a valid 3 char currency code like USD, GBP, INR etc.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="withdrawal" nillable="true" type="amount" minOccurs="1" maxOccurs="1">
+			   		<xs:annotation>
+						<xs:documentation>Withdrawal Amount. Optional.
+							Format: Comma separated +ve amount value, Number(18,3).
+							eg. 1,234.00
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="deposit" nillable="true" type="amount" minOccurs="1" maxOccurs="1">
+			   		<xs:annotation>
+						<xs:documentation>Deposit Amount. Optional.
+							Format: Comma separated +ve amount value, Number(18,3).
+							eg. 1,234.00
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="cust_ref_id" type="SixtyCharacters" minOccurs="0" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Movement Reference. Optional, the maximum length allowed is 60 characters.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bo_ref_id" type="SixtyCharacters" minOccurs="0">
+		   		<xs:annotation>
+					<xs:documentation>Backoffice Reference. Optional, the maximum length allowed is 60 characters.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bo_tnx_id" type="SixtyCharacters" minOccurs="0">
+		   		<xs:annotation>
+					<xs:documentation>Backoffice transaction id. Optional, the maximum length allowed is 60 characters.</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+			<xs:element name="description" type="FiveHundredCharacters" nillable="true" minOccurs="0">
+		   		<xs:annotation>
+					<xs:documentation>Movement Description. Optional, the maximum length allowed is 500 characters.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="runbal_booked" type="amount" nillable="true" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Running balance Booked. Mandatory.
+						Format: Comma separated +ve amount value, Number(18,3).
+						eg. 1,234.00
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="runbal_cleared" type="amount" nillable="true" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Running balance cleared. Mandatory.
+						Format: Comma separated +ve amount value, Number(18,3).
+						eg. 1,234.00
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cheque_number" type="TwentyCharacters" nillable="true" minOccurs="0">
+		   		<xs:annotation>
+					<xs:documentation>Cheque number. Optional, the maximum length allowed is 20 characters.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tnx_type" type="ThreeCharacters" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Transaction type. Optional, the maximum length allowed is 3 characters.
+							900 - Deposit
+							910 - Withdrawal
+					</xs:documentation>
+				</xs:annotation>	   
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>		
+	<xs:complexType name="balanceType">
+		<xs:sequence>	
+			<xs:element name="type" type="TwoCharacters" nillable="true" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Balance type. Mandatory, the maximum length allowed is 2 characters.
+							01 - Opening Balance
+							02 - Closing Balance
+							03 - Closing Available
+							04 - Forward Available
+							05 - Ledger Available
+					</xs:documentation>
+				</xs:annotation>	   
+			</xs:element>
+			<xs:element name="value_date" type="DateTime" nillable="true" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Value Date. Mandatory.
+						Format: dd/MM/yyy HH:mm:ss
+						eg. 20/04/2016 00:00:00
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="cur_code" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Currency Code. Mandatory, the maximum length allowed is 3 characters.
+						Should be a valid 3 char currency code like USD, GBP, INR etc.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="amt" type="PstvNegAmount" minOccurs="1" maxOccurs="1">
+		   		<xs:annotation>
+					<xs:documentation>Balance Amount. Mandatory.
+						Format: Comma separated amount value, Number(18,3).
+						eg. 1,234.00
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+		</xs:sequence>
+	</xs:complexType>	
+</xs:schema>

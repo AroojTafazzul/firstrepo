@@ -1,0 +1,30 @@
+<ng-container [formGroup]="form">
+  <div>
+    <em
+      title="{{ control.params.title }}"
+      (click)="onEventRaised($event, control.params.itemId)"
+      *ngIf="control.params.fontawesome"
+      class="fa {{ control.params.fontawesome }}"
+    ></em>
+    <em
+      title="{{ control.params.title }}"
+      (click)="onEventRaised($event, control.params.itemId)"
+      *ngIf="control.params.pimengicon"
+      class="pi {{ control.params.pimengicon }}"
+    ></em>
+    <a class=" {{ control.params.styleClass }}">
+      <img
+        src="data:image/jpg;base64,{{ control.params.label }}"
+        alt="{{ 'textualDescriptionOfInternalNewsImage' | translate }}"
+      />
+    </a>
+    <div
+      *ngIf="control.params.downloadicon"
+      class="{{ control.params.layoutClass }}"
+      (click)="onEventRaised($event, control.params.itemId)"
+    >
+      <em class="fa fa-download" aria-hidden="true"></em>
+      <span>{{ control.params.label }}</span>
+    </div>
+  </div>
+</ng-container>

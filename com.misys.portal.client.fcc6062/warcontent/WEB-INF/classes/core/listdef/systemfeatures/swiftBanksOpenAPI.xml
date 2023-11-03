@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ListDef xml for SwiftBanks Look Up
+		Page size is less than 10 for a dialog so specify the dimensions exactly
+ -->
+<listdef ordered="y" default_order="bic" default_order_type="a" page="5" dialog_type="swift_bic">
+	
+	<column name="bank_name" align="left" width="40%" loca_key="SWIFT_BANK_NAME"/>
+	<column name="city" align="left" width="30%" loca_key="SWIFT_BANK_CITY"/>
+	<column name="country" align="center" width="10%" loca_key="SWIFT_BANK_COUNTRY"/>
+	<column name="bic" align="center" width="10%" loca_key="SWIFT_ISO_CODE"/>
+	<column name="address" align="left" width="40%" loca_key="SWIFT_BANK_ADDRESS"/>
+	<column name="bank_code" align="left" width="30%" loca_key="SWIFT_BANK_CODE"/>
+	<column name="branch" align="center" width="10%" loca_key="SWIFT_BANK_BRANCHCODE"/>
+	<column name="postCode" align="center" width="10%" loca_key="SWIFT_POST_CODE"/>
+	
+	
+	<!-- parameters -->
+	<parameter name="bic" size="10"	max_length="11" loca_key="SWIFT_BIC" input="y" default=""/>
+	<parameter name="bankName" size="20" max_length="35" loca_key="SWIFT_BANK_NAME" input="y" default=""/>
+	<parameter name="country" size="3"	max_length="2" loca_key="SWIFT_BANK_COUNTRY" input="y" default="" type="Country"/>
+	
+	
+	<!-- candidates -->
+	<candidate name="bankData">
+		<filter>
+			<criteria>
+				<column name="bic"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bic
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bank_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bankName
+				</value>
+			</criteria>
+			<criteria>
+				<column name="country"/>
+				<operator type="like"/>
+				<value type="parameter">
+					country
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="type"/>
+			<operator type="equal"/>
+			<value type="string">
+				01
+			</value>
+		</criteria>
+	</filter>
+</listdef>

@@ -1,0 +1,57 @@
+{
+	"common": [
+
+		{
+			"actionName": "VIEWSTATEMENT",
+			"permissions": ["ab_account_statement_access"],
+			"permissionSuffix": [],
+			"url": "/screen/AccountBalanceScreen?operation=LIST_STATEMENTS",
+			"urlScreenType": "DOJO",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "/content/FCCUI/assets/icons/view.svg"
+		},
+		{
+			"actionName": "VIEWDETAILS",
+			"permissions": ["ab_account_details_access"],
+			"permissionSuffix": [],
+			"url": "/screen/AccountBalanceScreen?operation=LIST_FEATURES&option=ENTITY_ACCOUNTS_LIST",
+			"urlScreenType": "DOJO",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "/content/FCCUI/assets/icons/Details.svg"
+		},
+		{
+			"actionName": "VIEW_SUMMARY_DETAILS",
+			"permissions": ["no_permission"],
+			"permissionSuffix": [],
+			"url": "/tabPanelListing?ProductCode=&widgetCode=SUMMARY_SCREEN",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "/content/FCCUI/assets/icons/Details.svg"
+		},
+		{
+			"actionName": "LIQUIDATETERMDEPOSIT",
+			"permissions": ["td_withdrawal_save"],
+			"permissionSuffix": [],
+			"url": "/screen/TermDepositScreen",
+			"urlQueryParams": {
+				"tnxtype": "13",
+				"accountid": {
+					"readFromTransaction": true,
+					"field": "ACCOUNT_NO"
+				},
+				"entity_abbv_name": {
+					"readFromTransaction": true,
+					"field": "ENTITY"
+				},
+				"option": "EXISTING_OPEN"
+			},
+			"urlScreenType": "DOJO",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "/content/FCCUI/assets/icons/Details.svg"
+		}
+	]
+}

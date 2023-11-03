@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="50" default_order="ref_id" help="LIST_HELP_REPRICING" huge="y"
+    default_order_type="d" js_binding="misys.binding.loan.ln_repricing_list" forceDisplaySearch='y'>
+    <column name="ref_id" align="center" width="10em" loca_key="REFERENCEID" a11ySelectionContext="y"/>
+     <parameter
+        name="ref_id"
+        size="20"
+        max_length="20"
+        loca_key="CHANNEL_REFERENCE"
+        input="y"
+        default=""/>
+    <parameter
+        name="ref_id"
+        size="35" 
+        max_length="40"
+        loca_key="REFERENCEID" 
+        input="y" 
+        default="" />
+       
+    <!-- candidates -->
+    <candidate name="loan_master">
+     <filter>
+     <criteria>
+            <column name="ref_id"/>
+            <operator type="like"/>
+            <value type="parameter">
+                ref_id
+            </value>
+        </criteria>
+        
+		</filter>
+    </candidate>
+    <filter>
+        <businesscriteria type="hasNoPendingAmendmentTransactions"></businesscriteria>
+        <businesscriteria type="hasNoPendingInquireTransactions"></businesscriteria>
+    </filter>
+</listdef>

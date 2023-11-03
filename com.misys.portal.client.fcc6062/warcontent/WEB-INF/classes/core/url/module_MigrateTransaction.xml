@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="bank" scope="system_features">
+	<name>module_MigrateTransaction</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<bindingParam>mode</bindingParam>
+	<methodParam>featureid</methodParam>
+	<methodParam>company</methodParam>
+	<methodParam>tnxid</methodParam>
+	<methodParam>entity</methodParam>
+	<staticParam>menuaction</staticParam>
+	
+	<action>
+		<actionCode>openListMigrationCustomerBSFMT</actionCode>
+		<class>BSFMigrateTransactionPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>migration_tool_control</permission>
+		<operation>-</operation>
+		<featureid>-</featureid>
+		<bank>-</bank>
+		<company>-</company>
+		<option>CUSTOMER_USER_PROFILE_MAINTENANCE_MT</option>
+		<menuaction>openListMigrationCustomerBSFMT</menuaction>
+	</action>
+	<action>
+		<actionCode>openListMigrationCustomerListBSFMT</actionCode>
+		<class>BSFMigrateTransactionPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>migration_tool_control</permission>
+		<operation>-</operation>
+		<featureid>-</featureid>
+		<company>%</company>
+		<option>CUSTOMER_USER_PROFILE_MAINTENANCE_MT</option>
+		<menuaction>openListMigrationCustomerListBSFMT</menuaction>
+	</action>
+</module>

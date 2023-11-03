@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Cheque Services;PERM=SE_access;" id="Cash_UX"
+         role="TOPIC">
+  <title><application>Cheque Services</application></title>
+
+  <para role="TEXT">This function allows you to inquire on cheques issued
+  against accounts they have authority to use. You can also request for new
+  cheque books through "<emphasis role="bold">Request Cheque Book</emphasis>"
+  option.</para>
+
+  <section condition="TITLE=Cheque Services Landing Page;PERM=SE_access;ACCESS=SE_CQBKR_LP_UX"
+           role="TOPIC">
+    <title>Cheque Services Landing Page</title>
+
+    <para>The Cheques Landing page displays a list of cheque book requests
+    made by the user that in various stages of their life cycle. The requests
+    are displayed in multiple tabs based on the current status of request. The
+    Landing page view is customizable based on your requirement.<note>
+        <para>You can customise the list of columns displayed through
+        SDK.</para>
+      </note></para>
+
+    <para>The following image illustrates the cheque services landing
+    page:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/cheque_landing.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none" role="bold">View Cheque
+          Status</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Use this option to view the status of cheque
+            issued by the entity for the selected account number.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none" role="bold">Stop
+          Cheque</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Use this option to stop the cheque
+            request.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none" role="bold">Request Cheque
+          Book</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Use this option to initiate a new request for
+            Cheque Book. Enter the details like account for which cheque book
+            is required, number of cheque books and delivery mode to submit
+            the request.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para role="TEXT">The cheque listing page segregates Cheque Book requests
+    based on their current status like draft, awaiting response from client or
+    bank, completed and rejected from bank.The following ribbon items enable
+    you to perform various actions on individual transaction or in bulk, based
+    on the tab you are on. Individual tabs and related functionality are
+    described below: <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/chequeribbon_landing.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject><note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Tab</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Draft</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the cheques that
+              are in draft state and also the transactions that checker has
+              returned for improvement.<note>
+                  <para><guimenuitem moreinfo="none">Draft</guimenuitem> tab
+                  is available only to maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis role="bold">Pending
+              Approval</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all existing cheque
+              book requests that are awaiting client approval from a second
+              user within the corporate.<note>
+                  <para><itemizedlist>
+                      <listitem>
+                        <para>The <emphasis role="bold">Approve</emphasis> and
+                        <emphasis role="bold">Return</emphasis> action items
+                        are available only for a checker user.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>A user with batch submission permission can
+                        select multiple requests to 'Approve' or 'Return'
+                        though the checkbox provided for every request listed
+                        in this tab.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>It is mandatory to provide the comments to
+                        return a transaction.</para>
+                      </listitem>
+                    </itemizedlist></para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis role="bold">Pending at
+              Bank</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all existing cheque
+              requests that are awaiting bank approval.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Completed</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the completed
+              cheque book requests.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><emphasis
+              role="bold">Rejected</emphasis></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the rejected
+              cheque book requests by the bank. The status given to such
+              records is "Not Processed".</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">The <guiicon>Advance Filter</guiicon> presents you with
+    various filter options like <emphasis role="bold">Entity</emphasis>,
+    <emphasis role="bold">Account Number</emphasis>. Enter the relevant search
+    criterion and apply the filter to list all the relevant cheque requests.
+    You can also select the time frame for which data needs to be fetched. You
+    can also save filter preference by clicking on <guiicon>Save as New
+    View</guiicon> and enter the name of new view, you may also select
+    "<emphasis role="bold">Make Preference as Default</emphasis>" to set the
+    default preference to newly created view.</para>
+
+    <para role="TEXT">You can perform the following actions on the listed
+    cheque requests:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of transactions displayed on the dashboard.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed
+          transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Customize</emphasis>: You can customize
+          the order in which the cheque book request information is displayed.
+          You can achieve following customizations through this
+          feature:<itemizedlist>
+              <listitem>
+                <para>Select the columns that you wish to display, unselect
+                the column names to hide the columns.</para>
+              </listitem>
+
+              <listitem>
+                <para>Click on lock icon to freeze the position of the column.
+                The freezed columns are placed on the left of screen. You can
+                freeze a maximum of three columns.</para>
+              </listitem>
+
+              <listitem>
+                <para>You can drag and drop a column name to rearrange the
+                table columns. Hover over multiple dots icon against each
+                column name to, a hand icon appears, which suggests that the
+                column is ready to be dragged and dropped.</para>
+              </listitem>
+            </itemizedlist><note>
+              <para>This feature is available for all the tables of
+              <productname id="ent_appli">Fusion Corporate
+              Channels</productname>.</para>
+            </note></para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      listed transactions. The actions are available in relevant tabs based on
+      the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction).</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel role="bold">User
+              Audit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/audit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the audit trail of transaction.
+              This option shows all the users associated with the transaction
+              since its initiation.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Authorise</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/authorise.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to authorise the selected transaction.
+              You can either approve or return the transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Approve</emphasis>
+                      or <emphasis role="bold">Return</emphasis> a transaction
+                      is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note> </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=SE_access;ACCESS=SE_CQBKR_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking the
+      details button against any given transaction:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Displays the cheque book request
+              details. The information is spread over two tabs which are
+              described below:<itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Transaction
+                    Details</emphasis>: Displays the details of the cheque
+                    book request transaction that is opened from the listing
+                    page. The tab opens details in read-only mode.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Customer Attachments'
+                    added as part of this transaction.</para>
+                  </listitem>
+                </itemizedlist></para><para>You can perform following actions
+              on the opened transactions:<itemizedlist>
+                  <listitem>
+                    <para><guimenu>Cheque Book Landing</guimenu>: Click on
+                    this icon to navigate back to Cheque Book Landing
+                    page.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><guimenu>Journey</guimenu>: You can view the history
+                    of events that the transaction has gone through.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=View Cheque Status;PERM=SE_access;ACCESS=SE_CQBKR_STATUS_UX"
+           role="Topic">
+    <title>View Cheque Status</title>
+
+    <para>Click on this <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/cheque_status_icon.png" width="25mm"/>
+        </imageobject>
+      </inlinemediaobject> icon to view the cheque status for selected entity
+    and Account number.<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Entity</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the entity for
+              which you wish to view the cheque status.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Account Number</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the account for
+              which the cheque status is requested.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Cheque Number(s)</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">You can view cheque status
+              for one or more cheques. Choose an option from the following to
+              display relevant cheque status.<programlisting>Single - Enter the cheque number in the text box.
+Multiple - Enter multiple cheque numbers separated by a comma (,).
+Range - Enter the starting to ending cheque number for which you wish to view the status.</programlisting></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+  </section>
+
+  <section condition="TITLE=Stop Cheque;PERM=SE_access" role="Topic">
+    <title>Stop Cheque</title>
+
+    <para>Click on this icon <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/stop_cheque.png" width="25mm"/>
+        </imageobject>
+      </inlinemediaobject> to stop cheque request.</para>
+
+    <section condition="TITLE=General Details;PERM=SE_access;ACCESS=SE_COCQS_GD_UX"
+             role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">The General Details form for cheque request
+      termination comprises of the following fields:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Entity</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Entity name that
+              raised the Cheque request. Select from the dropdown options of
+              valid Entities.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Account Number</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the account number
+              that Cheque is to be drawn from. Click on the dropdown box to
+              select from the list of valid accounts.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Cheque Series</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the cheque series
+              from the following options:<programlisting>Multiple
+Range
+Single</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Cheque Number(s)</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the cheque
+              number(s). If you select 'Multiple' as cheque series then you
+              must enter more than one cheque number.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Cheque Number (From -
+              To)</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select Cheque number From
+              and To range,</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Reason for Stop Cheque</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the reason for
+              stopping the cheque from the dropdown. Available options
+              are:<programlisting>Data has to be corrected
+Incorrect information on cheque</programlisting></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=SE_access;ACCESS=SE_COCQS_PV_UX"
+             role="Topic">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application form and also allows you
+      to either Save or Submit the application.</para>
+    </section>
+  </section>
+
+  <section role="Topic">
+    <title>Request Cheque Book</title>
+
+    <para>Click on this icon <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/request_cheque.png" width="25mm"/>
+        </imageobject>
+      </inlinemediaobject> to initiate a cheque book request.</para>
+
+    <section condition="TITLE=General Details;PERM=SE_access;ACCESS=SE_CQBKR_GD_UX"
+             role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">The General Details form for initiation comprises of
+      the following fields:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Account Number</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the account for
+              which the cheque book is being requested.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Number of Cheque Books</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the number of cheque
+              books required.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Delivery Mode</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the delivery mode of
+              cheque books. Following delivery mode options are
+              available:<programlisting>Courier
+Registered Post
+Collect from Branch
+</programlisting></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=SE_access;ACCESS=SE_CQBKR_PV_UX"
+             role="Topic">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application form and also allows you
+      to either Save or Submit the application.</para>
+    </section>
+  </section>
+</section>

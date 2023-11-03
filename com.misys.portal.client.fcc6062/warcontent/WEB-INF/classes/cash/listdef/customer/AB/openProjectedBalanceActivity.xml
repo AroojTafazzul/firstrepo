@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" help="LIST_HELP_INQUIRY" default_order="valueDate"  default_order_type="d" page="25" 
+		 viewer="SimpleTable" subscribe_topic="ProjectedBalanceSummary" source="opics">
+
+	<!-- columns for display -->	 
+	<column name="dealNo" align="center" width="8em" loca_key="BO_REFERENCEID"/>
+	<column name="description" align="left" width="30%" loca_key="DESCRIPTION"/>
+	<column name="valueDate" align="center" width="6em" loca_key="EFFECTIVE_DATE"/>
+	<column name="dealDate" align="center" showTime="y" width="6em" loca_key="POST_DATE"/>
+	<!--column name="amount" align="center" width="10em" loca_key="AMOUNT"/-->
+	<column name="credit" align="right" width="10em" loca_key="DEPOSIT"/>
+	<column name="debit" align="right" width="10em" loca_key="WITHDRAWAL"/>
+
+<!--
+Required -> <Action>Summary</Action>  
+Required -> <AccountNumber>CNBUSD</AccountNumber>
+Required -> <Branch>01</Branch>
+Required -> <StartDate>2012-03-14T00:00:00<</StartDate>
+Required -> <EndDate>0001-01-01T00:00:00</EndDate>
+Required -> <SearchDate>0001-01-01T00:00:00</SearchDate>
+Required -> <OpenBalance>0</OpenBalance>
+Required -> <LastRecId>0</LastRecId>
+Required -> <IsIncludeBackValue>false</IsIncludeBackValue>
+-->	 
+	<!-- parameters -->
+	<parameter
+		name="account_id"
+		input="n"/>
+	<parameter
+		name="customer_ref"
+		input="n"/>		
+	<parameter
+		name="account_no"
+		input="n"/>		
+	<parameter
+		name="date"
+		input="n"/>
+	<parameter	
+		name="lastRecId"
+		input="n"/>	
+	<parameter
+		name="branch_no"
+		input="n"/>
+	<parameter
+		name="opicslist"
+		type="hidden"
+		default="PROJECTEDBALANCEACTIVITY"/>
+
+	
+	<!-- candidates -->	
+	<candidate name="account_activity">
+		<filter>
+			<criteria>
+				<column name="account_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="customer_ref"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer_ref
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>		
+			<criteria>
+				<column name="date"/>
+				<operator type="like"/>
+				<value type="parameter">
+					date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="lastRecId"/>
+				<operator type="like"/>
+				<value type="parameter">
+					lastRecId
+				</value>
+			</criteria>
+			<criteria>
+				<column name="opicslist"/>
+				<operator type="like"/>
+				<value type="parameter">
+					opicslist
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

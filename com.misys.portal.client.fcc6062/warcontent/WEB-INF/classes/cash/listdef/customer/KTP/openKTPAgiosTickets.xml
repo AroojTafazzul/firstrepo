@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef huge="y" ordered="y" default_order="bo_release_dttm" default_order_type="d">
+
+	<column name="bo_release_dttm" align="center" width="6em" loca_key="RELEASE_DTTM" sort = "y" order="descending"/>
+	<column name="entity" align="left" width="35%" loca_key="COLUMN_KTP_INTEREST_SCALE_CENTRALIZED_ENTITY"/>
+	<column name="Attachment@file_name" align="left" width="65%" loca_key="FILENAME">
+		<url>
+			<parameter name="SCREEN" value="DOWNLOAD_SCREEN"/>
+			<parameter name="REF_ID" column="ref_id"/>
+			<parameter name="TNX_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="ATTACHMENTID" column="Attachment@attachment_id"/>
+			<parameter name="OUTPUT_TYPE" value="inline"/>
+		</url>
+	</column>
+	<column name="Attachment@mime_type" align="left" width="5em" loca_key="KTP_FILE_TYPE"/>
+	<column name="se_type" align="center" width="6em" loca_key="DEPTH"/>
+ 	<column name="download" width="7em" loca_key="COLUMN_KTP_BANK_REPORT_DOWNLOAD" sort= "n">
+		<url downloadAction="y">
+			<parameter name="REF_ID" column="ref_id"/>
+			<parameter name="TNX_ID" column="tnx_id"/>
+			<parameter name="SCREEN" value="DOWNLOAD_SCREEN"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="ATTACHMENTID" column="Attachment@attachment_id"/>
+		</url>
+	</column> 
+	<column name="ref_id" hidden="y"/>
+   	<column name="tnx_id" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="Attachment@attachment_id" hidden="y"/>
+	
+	<!--  parameters -->
+	<parameter name="entity" size="20" loca_key="SEARCH_CENTRALIZED_ENTITY" input="y" type="Entity" default=""/>
+	<parameter
+		name="se_type"
+		type="SEAdvicesType"
+		loca_key="DEPTH"
+		input="y"
+		multiple_values="M,Q,S,A"/>
+	<parameter
+		name="bo_release_dttm"
+		type="range"
+		input="y"
+		range_from_label="CREATION_DATE_FROM"
+		range_to_label="CREATION_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="filename"
+		size="20"
+		max_length="20"
+		loca_key="FILENAME"
+		input="y"
+		default=""/>
+
+	<!-- candidates -->	
+	<candidate name="secure_email">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="se_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					se_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_release_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					bo_release_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_release_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					bo_release_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="Attachment@file_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					filename
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_K13
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">entity</value>
+			</criteria>
+		</filter>	
+	</candidate>
+	
+</listdef>

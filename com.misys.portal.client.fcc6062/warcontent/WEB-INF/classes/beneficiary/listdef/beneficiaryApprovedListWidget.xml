@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="tnx_account@maker_dttm" default_order_type="d" page="5" >
+
+	<column name="tnx_account@entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect" />
+	<column name="tnx_account@product_type" align="left" width="12%"  loca_key="beneficiaryProductType" columnFilterType="input-multiselect" />
+	<column name="tnx_account@beneficiary_id" align="left" width="14%" loca_key="beneficiaryId" columnFilterType="input-multiselect" />
+	<column name= "tnx_account@counterparty_name" align="left" width="12%" loca_key="beneficiaryCounterpartyName" columnFilterType="input-multiselect" />	
+	<column name="tnx_account@account_no" align="left" width="12%" loca_key="account_no" columnFilterType="input-multiselect" />
+	<column name="tnx_account@cur_code" align="left" width="12%" loca_key="thresholdCurrency" columnFilterType="input-multiselect" />
+	<column name="tnx_account@threshold_amt" align="right" width="13%" loca_key="thresholdAmt" columnFilterType="input-multiselect" />
+	<column name="tnx_account@user@login_id" align="left" width="12%" loca_key="beneficiaryMakerUser"/>
+	<column name="action" align="center" width="10%"  loca_key="ACTIONS">
+    <url action="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_BENEFICIAY_APPROVAL">
+	   	<parameter name="ACCOUNT_NO" column="tnx_account@account_no"/>
+		<parameter name="ENTITY" column="tnx_account@entity"/>
+		<parameter name="TYPE" value="DASHBOARD_WIDGET"/>
+    </url>
+	</column>
+	
+	<column name="tnx_account@maker_dttm" hidden="y"/>
+	<!-- Parameters -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+		
+	<parameter
+		name="account_no"
+		size="35"
+		max_length="35"
+		loca_key="account_no"
+		input="y"
+		default=""
+		multiple="y"
+		hidden="true"
+		type="AccountNo"/>
+		
+	<parameter
+		name="beneficiary_id"
+		size="35"
+		max_length="35"
+		loca_key="beneficiaryId"
+		input="y"
+		default=""
+		multiple="y"
+		type="BeneficiaryId"/>
+				
+	<parameter
+		name="product_type"
+		size="35"
+		max_length="35"
+		loca_key="beneficiaryProductType"
+		input="y"
+		default=""
+		multiple="y"
+		type="product_type"/>		
+	
+		
+	<!-- pending files -->
+	<candidate name="StaticBeneficiary">
+		<filter>
+			<criteria>
+				<column name="tnx_account@active_flag"/>
+				<operator type="equal"/>
+				<value type="code">
+					N034_YES
+				</value>
+			</criteria>		
+			<criteria>
+				<column name="tnx_account@pre_approved"/>
+				<operator type="equal"/>
+				<value type="code">
+					N034_YES
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_account@entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_account@account_no"/>
+				<operator type="in"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_account@beneficiary_id"/>
+				<operator type="in"/>
+				<value type="parameter">
+					beneficiary_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_account@product_type"/>
+				<operator type="in"/>
+				<value type="parameter">
+					product_type
+				</value>
+			</criteria>
+		</filter>		
+	</candidate>	
+	
+</listdef>

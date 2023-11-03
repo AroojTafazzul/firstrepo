@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=System Features - Static Data;PERM=sy_data_access;ACCESS=SY_DATA"
+         role="TOPIC">
+  <title>Data Maintenance Module</title>
+
+  <para>This module differs from the most of the modules described in this
+  book, in that it is targeted to a slightly different type of bank
+  administrator. It is not on the <xi:include href="../entities_en.xml"
+  xpointer="ent_System_F" xmlns:xi="http://www.w3.org/2001/XInclude"/> menu
+  but the <xi:include href="../entities_en.xml" xpointer="ent_Middle_Office"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> menu. It is made available to
+  more users than are the modules that deal with jurisdiction and the
+  maintenance of customers, banks and users.</para>
+
+  <para role="TEXT">As an administrator at a bank, you use the
+  <application>Data Maintenance</application> module to maintain various lists
+  of data useful to your bank - details of counterparties, frequently used
+  phrases, and so on.</para>
+
+  <para role="TEXT">These are the lists that are invoked through popup windows
+  in the transactional modules (see the <emphasis role="strong">User Manual -
+  Bank</emphasis>), generally by clicking a magnifying glass icon. For
+  example, in the <xi:include href="../entities_en.xml"
+  xpointer="ent_Export_LC" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  module, the applicant is selected from such a list.</para>
+
+  <section role="ITEM">
+    <title>Functions</title>
+
+    <para>The Data Maintenance functions are part of the <xi:include
+    href="../entities_en.xml" xpointer="ent_Middle_Office"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> menu. They are as
+    follows:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guisubmenu>Counterparties</guisubmenu></term>
+
+        <listitem>
+          <para>Maintain the list of available customer counterparties, that
+          is, companies that your bank can deal with. They can be
+          beneficiaries of Letters of Credit, Banker's Guarantees and Fund
+          Transfers, applicants of Export Letters of Credit (importers),
+          transportation companies for Shipping Guarantees, or drawees for
+          Export Documentary Collections.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guisubmenu>Banks</guisubmenu></term>
+
+        <listitem>
+          <para>Maintain the list of available bank counterparties, that is,
+          banks that your bank can deal with. They can be, for example, the
+          optional Advising Bank for a Letter of Credit, the Issuing Bank for
+          an Export Letter of Credit notification, or the Presenting Bank for
+          an Export Collection.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guisubmenu>Phrases</guisubmenu></term>
+
+        <listitem>
+          <para>Maintain the list of frequently used phrases. These are chunks
+          of predefined texts that a user can include in the narrative fields
+          that appear on many forms.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Counterparties</title>
+
+    <para>Maintain the list of available customer counterparties.</para>
+
+    <para>When you select this option, you are presented with a list of all
+    the existing customer counterparties. You can search the list by entering
+    search criteria in the <guilabel moreinfo="none">Entity</guilabel> (if
+    present), <guilabel moreinfo="none">Abbreviated Name</guilabel> and
+    <guilabel moreinfo="none">Name</guilabel> fields at the top of the
+    page.</para>
+
+    <para>The list of existing customer counterparties has the following
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name of the counterparty,
+            uniquely identifying it within your company. This is used as a
+            reference key of the record and is generally not displayed in
+            transactions.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the counterparty (most often a
+            company name) as it appears when used in a transaction
+            record.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon, or delete it by clicking the <guibutton
+    moreinfo="none">Delete</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para>Click the <guibutton moreinfo="none">Add </guibutton>button at the
+    bottom of the list to add a counterparty.</para>
+
+    <section role="ITEM">
+      <title>Counterparties Form</title>
+
+      <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add</guibutton> display the same form, but in the case
+      of <guibutton moreinfo="none">Add</guibutton> it is blank and in the
+      case of <guibutton moreinfo="none">Edit</guibutton> it is preset with
+      the existing details of the counterparty. After entering the details,
+      click <emphasis role="bold">Save</emphasis> at the bottom of the form.
+      The updated list becomes available to your users immediately.</para>
+
+      <para>The form is as follows:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name for the counterparty.
+              Maximum of 35 characters. It should be a unique string of
+              characters that is easy to remember and will be easily
+              recognised by all members of your company to mean the
+              counterparty in question. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of the counterparty as it will
+              appear on forms in <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. Maximum of 35
+              characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Postal
+              Address </guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">You can click on this tab to enter or view
+              postal address details.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Street
+              Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>You can enter or view the customer's
+              postal address.</para><note>
+                  <para>You can enter up to 5 lines of 35 characters
+                  each.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none"> Post
+              Code</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>You can enter or view the customer's
+              postal code. </para><note>
+                  <para>You can enter a maximum of 16 characters in this
+                  field.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">SWIFT
+              Address </guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">You can click on this tab to enter or view
+              the SWIFT address details.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> (line 1)</para></entry>
+
+              <entry valign="top"><para>You can enter or view the address of
+              the company. </para><note>
+                  <para>You can enter up to 3 lines of 35 characters
+                  each.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Other
+              Details</guilabel> </para></entry>
+
+              <entry valign="top"><para> </para></entry>
+
+              <entry valign="top"><para>This section provides additional
+              details. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Contact
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Name of the person who is
+              the usual contact within the counterparty. Maximum of 35
+              characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Contact
+              Number</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Phone number of the
+              contact. Maximum of 24 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Fax</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Fax number of the contact.
+              Maximum of 24 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Telex</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Telex number of the
+              contact. Maximum of 24 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">BEI</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Business Entity Identifier.
+              Maximum of 10 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">E-mail</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Email address of the
+              contact. Maximum of 255 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Web
+              Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Web address (URL) of the
+              contact. Maximum of 40 characters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section>
+    <title>Banks</title>
+
+    <para>Maintain the list of available bank counterparties.</para>
+
+    <para>When you select this option, you are presented with a list of all
+    the existing bank counterparties. You can search the list by entering
+    search criteria in the <guilabel moreinfo="none">Entity</guilabel> (if
+    present), <guilabel moreinfo="none">Abbreviated Name</guilabel> and
+    <guilabel moreinfo="none">Name</guilabel> fields at the top of the
+    page.</para>
+
+    <para>The list of existing bank counterparties has the following
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name of the bank
+            counterparty, uniquely identifying it within your company. This is
+            used as a reference key of the record and is generally not
+            displayed in transactions.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the bank counterparty (most
+            often a bank name) as it appears when used in a transaction
+            record.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon, or delete it by clicking the <guibutton
+    moreinfo="none">Delete</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para>Click the <guibutton moreinfo="none">Add</guibutton> button at the
+    bottom of the list to add a Bank.</para>
+
+    <section role="ITEM">
+      <title>Banks Form</title>
+
+      <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add</guibutton> display the same form, but in the case
+      of <guibutton moreinfo="none">Add</guibutton> it is blank and in the
+      case of <guibutton moreinfo="none">Edit</guibutton> it is preset with
+      the existing details of the bank counterparty. After entering the
+      details, click <emphasis role="bold">Save</emphasis> at the bottom of
+      the form. The updated list becomes available to your users
+      immediately.</para>
+
+      <para>The form is as follows:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name for the bank
+              counterparty. Maximum of 35 characters. It should be a unique
+              string of characters that is easy to remember and will be easily
+              recognised by all members of your company to mean the bank in
+              question. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of the bank counterparty as it
+              will appear on forms in <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. Maximum of 35
+              characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> (line 1)</para></entry>
+
+              <entry valign="top"><para>Address of the bank counterparty. Up
+              to 3 lines of 35 characters each. As for the
+              <guilabel>Name</guilabel>, these fields will appear on forms
+              where the party is used.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Contact
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>(Optional) Name of the person who is
+              the usual contact within the counterparty. Maximum of 35
+              characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Contact
+              Number</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>(Optional) Phone number of the
+              contact. Maximum of 24 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Fax</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>(Optional) Fax number of the contact.
+              Maximum of 24 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Telex</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>(Optional) Telex number of the
+              contact. Maximum of 24 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">BIC Code
+              (SWIFT)</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> (line 1)</para></entry>
+
+              <entry valign="top"><para>(Optional) SWIFT code of the bank
+              counterparty. Maximum of 11 characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">E-mail</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>(Optional) Email address of the
+              contact. Maximum of 255 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Web
+              Address</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>(Optional) Web address (URL) of the
+              contact. Maximum of 40 characters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section>
+    <title>Phrases</title>
+
+    <para>Maintain the list of your bank's frequently used phrases.</para>
+
+    <para>When you select this option, you are presented with the existing
+    list of frequently used phrases. You can search the list by entering
+    search criteria in the <guilabel moreinfo="none">Entity</guilabel> (if
+    present), <guilabel moreinfo="none">Abbreviated Name</guilabel> and
+    <guilabel moreinfo="none">Description</guilabel> fields at the top of the
+    page.</para>
+
+    <para>The list of frequently used phrases has the following
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="3">
+        <colspec colname="c1" colwidth="3.0*"/>
+
+        <colspec colname="c2" colwidth="1.0*"/>
+
+        <colspec colname="c3" colwidth="6.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Type</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_excla.gif"
+                             role="CHAR_EXCLA" width="2mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para>The identifier for the phrase. Maximum
+            of 35 characters.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Description</guilabel> </para></entry>
+
+            <entry valign="top"><para> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_excla.gif"
+                             role="CHAR_EXCLA" width="2mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para>Description of the phrase. Maximum of
+            100 characters. Together with the abbreviated name, this will be
+            shown in the Phrases popup window that users see.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon, or delete it by clicking the <guibutton
+    moreinfo="none">Delete</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add</guibutton>
+    button at the bottom of the list to add an account.</para>
+
+    <section role="ITEM">
+      <title>Phrases Form</title>
+
+      <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add</guibutton> display the same form, but in the case
+      of <guibutton moreinfo="none">Add</guibutton> it is blank and in the
+      case of <guibutton moreinfo="none">Edit</guibutton> it is preset with
+      the existing details of the bank counterparty. After entering the
+      details, click <emphasis role="bold">Save</emphasis> at the bottom of
+      the form. The updated list becomes available to your users
+      immediately.</para>
+
+      <para>The form is as follows:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The identifier for the phrase. Maximum
+              of 35 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Description</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Description of the phrase. Maximum of
+              100 characters. Together with the abbreviated name, this will be
+              shown in the Phrases popup window that users see.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Content</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Text of the phrase. Up to 30 lines of
+              65 characters. The Phrases popup window shows only the first 150
+              characters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+</chapter>

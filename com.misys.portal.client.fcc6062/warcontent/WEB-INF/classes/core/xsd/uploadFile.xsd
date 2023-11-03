@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Portal Interfaces Schema Copyright (c) 2000-2011 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for an Upload File. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="bk.xsd"/>
+	<xs:element name="upload_file_record">
+	    <xs:complexType>
+			<xs:sequence>
+				<xs:element name="file_id" type="positiveInteger">
+					<xs:annotation>
+						<xs:documentation>The unique file id within the portal.</xs:documentation>
+					</xs:annotation>
+				</xs:element>				
+	            <xs:element name="file_name" minOccurs="0" type="TwoHundredFiftyFiveCharacters" nillable="true">
+					<xs:annotation>
+						<xs:documentation>The original file name. The implementation might force 
+						this to be unique at the system, company or entity level, but the portal might
+						accept files with the same name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>				
+				<xs:element name="attachment_id" type="positiveInteger">
+					<xs:annotation>
+						<xs:documentation>This is the id of the actual file contents in gtp_attachment_tnx.</xs:documentation>
+					</xs:annotation>
+				</xs:element>				
+				<xs:element ref="inp_dttm">
+					<xs:annotation>
+						<xs:documentation>The date/time of the file upload.</xs:documentation>
+					</xs:annotation>
+				</xs:element>	
+				<xs:element ref="user_id">
+					<xs:annotation>
+						<xs:documentation>The user who uploaded the file.</xs:documentation>
+					</xs:annotation>					
+				</xs:element>
+				<xs:element ref="company_id">
+					<xs:annotation>
+						<xs:documentation>Company of the user who uploaded the file.</xs:documentation>
+					</xs:annotation>					
+				</xs:element>
+				<xs:element ref="entity">
+					<xs:annotation>
+						<xs:documentation>Entity associated with the file.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="file_size" type="positiveInteger" nillable="true">
+					<xs:annotation>
+						<xs:documentation>The original file size.</xs:documentation>
+					</xs:annotation>					
+				</xs:element>
+				<xs:element ref="md5_sum">
+					<xs:annotation>
+						<xs:documentation>The calculated MD5 hash of the original file.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="encryption_method" type="FiftyCharacters">
+					<xs:annotation>
+						<xs:documentation>The encryption method used to encrypt the file, if available (none if not encrypted).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="compression_method" type="FiftyCharacters">
+					<xs:annotation>
+						<xs:documentation>The compression method used in the file (none if not compressed).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="status" type="positiveInteger" nillable="true">
+					<xs:annotation>
+						<xs:documentation>The current status of the file (TBD).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="description">
+					<xs:annotation>
+						<xs:documentation>A user provided description for the file.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="reference">
+					<xs:annotation>
+						<xs:documentation>A user provided reference for the file.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="act_no">
+					<xs:annotation>
+						<xs:documentation>An account number associated with the file. If provided, 
+						this can be used to override the account provided in a file, or can be used with 
+						files that do not provided an account number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+    			<xs:element name="bank_code" type="FiveCharacters" nillable="true">
+					<xs:annotation>
+						<xs:documentation>A bank code associated with the file. If provided, 
+						this can be used to override the  bank code provided in a file, or can be used with 
+						files that do not provided a bank code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="branch_code" type="FiveCharacters" nillable="true">
+					<xs:annotation>
+						<xs:documentation>A branch code associated with the file. If provided, 
+						this can be used to override the branch code provided in a file, or can be used with 
+						files that do not provided a branch code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="value_date">
+					<xs:annotation>
+						<xs:documentation>The desired value date for the transactions in the file.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="file_type" type="TwentyCharacters" nillable="true">
+					<xs:annotation>
+						<xs:documentation>The file type (List of values TBD).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="product_code">
+					<xs:annotation>
+						<xs:documentation>The product code for the transactions in the file (product group in Client).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sub_product_code">
+					<xs:annotation>
+						<xs:documentation>The sub product code for the transactions in the file (product type in Client).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="additional_field" minOccurs="0" maxOccurs="unbounded" type="AdditionalFieldType">
+					<xs:annotation>
+						<xs:documentation>List of additional fields for this file.
+						It will be also used to provide additional configuration to external 
+						systems regarding information on how to process the file.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="errors">
+					<xs:annotation>
+						<xs:documentation>List of possible errors in this file.
+						Reserved for errors at the file level.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bulk_set">
+					<xs:annotation>
+						<xs:documentation>Bulks generated from the processing of this file.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="bulk_set">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="bk_tnx_record" />
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+
+</xs:schema>
+

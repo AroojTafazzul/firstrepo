@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><portlets user="default">
+	<controller name="com.misys.portal.core.portal.controllers.CardPortletController">
+		<parameter name="parameter" value="pane"></parameter>
+	</controller>
+	<portlets>
+		<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+			<!--parameter name="sizes" value="230,*,230"></parameter-->
+			<parameter name="mode" value="row"></parameter>
+			<parameter name="csstag" value="ROWCOLUMNHOME"></parameter>
+		</controller>
+		<layout position="0"></layout>
+		<metainfo>
+			<title>Home Page</title>
+		</metainfo>
+		<portlets>
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+			<layout position="1"/>
+			<entry type="ref" parent="UserTools_zh">
+				<parameter name="menu" value="true"/>
+				<layout position="0"></layout>
+			</entry>
+			<entry type="ref" parent="TradeApplicationsPortlet">
+				<parameter name="menu" value="true"/>
+				<layout position="1"/>
+			</entry>
+		</portlets>
+		<portlets>
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+			<layout position="2"/>
+			<entry parent="CustomerOngoingTasksList" type="ref">
+				<layout position="0" size="NORMAL" />
+			</entry>
+			<entry type="ref" parent="EmptyContent">
+				<layout position="1"></layout>
+			</entry>
+			<entry type="ref" parent="EmptyFeed">
+				<layout position="2"/>
+			</entry>
+			<entry parent="HomeAccountSummaryListPortlet" type="ref">
+				<layout position="0" size="NORMAL" />
+			</entry>
+		</portlets>
+		<portlets>
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+			<layout position="3"/>
+			<entry type="ref" parent="TradeCalendarPortlet">
+				<layout position="0"/>
+				<parameter name="menu" value="true"/>
+			</entry>
+			<entry type="ref" parent="AllEventsPortlet">
+				<layout position="1"/>
+				<parameter name="menu" value="true"/>
+			</entry>
+      		<entry type="ref" parent="OutstandingPortlet">
+				<layout position="2"/>
+			</entry>
+      		<entry type="ref" parent="RatePortlet">
+				<layout position="3"/>
+				<parameter name="menu" value="true"/>
+			</entry>
+		</portlets>
+	</portlets>
+</portlets>

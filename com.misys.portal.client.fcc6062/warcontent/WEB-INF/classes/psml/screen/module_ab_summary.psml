@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<portlets user="default">
+	<controller
+		name="com.misys.portal.core.portal.controllers.CardPortletController">
+		<parameter name="parameter" value="pane" />
+	</controller>
+	<portlets user="default">
+		<controller
+			name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+			<parameter name="sizes" value="205,*" />
+			<parameter name="mode" value="row" />
+		</controller>
+		<layout position="0" size="NORMAL" />
+		<portlets user="default">
+			<controller
+				name="com.misys.portal.core.portal.controllers.RowColumnPortletController" />
+			<layout position="1" size="NORMAL" />
+			<entry parent="MenuBuilder" type="ref">
+				<parameter name="menu" value="true" />
+				<layout position="0" size="NORMAL" />
+			</entry>
+			<entry parent="BookmarkPortlet" type="ref">
+				<parameter name="menu" value="true" />
+				<layout position="1" size="NORMAL" />
+			</entry>
+		</portlets>
+		<portlets user="default">
+			<controller
+				name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+				<parameter name="mode" value="column" />
+				<parameter name="sizes" value="33%,33%,33%" />
+			</controller>
+			<layout position="2" size="NORMAL" />
+			
+			<!-- Search criteria for summary that applies to all listdefs in portlets below. 
+			This portlet must always be at the 1st position compared to other portlets in this file-->
+			
+			<!-- TODO Improve this. This is not really flexible, as we need new portlets (and viewers, and
+			ajax actions) to extend the result with new account types, that in most cases will come from the
+			a single input source anyway. Ideally should extend the listdef framework to cater for its needs. -->
+			<entry parent="AccountSummarySearchPortlet" type="ref">
+				<control name="com.misys.portal.core.portal.controls.ClearPortletControl" />
+				<layout position="0" size="NORMAL" />
+			</entry>
+			<!-- Summary of current accounts -->
+			<entry parent="AccountSummaryCurrentListPortlet" type="ref">
+				<layout position="1" size="NORMAL" />
+				<parameter name="description" value="accountSummaryCurrent"/>
+				<parameter name="account_type" value="01"/>
+			<!--<parameter name="listDefSource" value="accountSummary"/> -->
+				<parameter name="owner_type" value="01"/>
+				<parameter name="permission" value="ab_current_account_summary_access"/>
+			</entry>
+			<!-- Summary of savings accounts -->
+			<entry parent="AccountSummarySavingsListPortlet" type="ref">
+				<layout position="2" size="NORMAL" />
+				<parameter name="description" value="accountSummarySavings"/>
+				<parameter name="listDefSource" value="accountSummarySavings"/> 
+				<parameter name="account_type" value="02,03"/>
+				<parameter name="owner_type" value="01"/>
+				<parameter name="permission" value="ab_current_account_summary_access"/>
+			</entry>
+			<!-- Summary of fixed term deposit accounts -->
+			<entry parent="AccountSummaryFixedTermListPortlet" type="ref">
+				<layout position="3" size="NORMAL" />
+				<parameter name="description" value="accountSummaryFixedTerm"/>
+				<parameter name="listDefSource" value="accountSummaryFixedTerm"/>
+				<parameter name="account_type" value="05"/>
+				<parameter name="owner_type" value="01"/>
+				<parameter name="permission" value="ab_current_account_summary_access"/>
+			</entry>			 
+			<!-- Summary of loan accounts -->
+			<entry parent="AccountSummaryLoanListPortlet" type="ref">
+				<layout position="4" size="NORMAL" />
+				<parameter name="description" value="accountSummaryLoan"/>
+				<parameter name="listDefSource" value="accountSummaryLoan"/>
+				<parameter name="account_type" value="04"/>
+				<parameter name="owner_type" value="01"/>
+				<parameter name="permission" value="ab_current_account_summary_access"/>
+			</entry>
+			<!-- Summary of external accounts -->
+			<entry parent="AccountSummaryExternalListPortlet" type="ref">
+				<layout position="5" size="NORMAL" />
+				<parameter name="description" value="accountSummaryExternal"/> 
+			<!--<parameter name="listDefSource" value="accountSummaryExternal"/>  -->
+				<parameter name="owner_type" value="05"/>
+				<parameter name="permission" value="ab_external_account_summary_access"/>
+			</entry>
+			 <!-- Summary for New Type of Account: Credit Card accounts -->
+             <entry parent="AllAccountsSummaryListPortlet" type="ref">
+	             <parameter name="permission" value="ab_credit_account_summary_access"/>
+	             <parameter name="list_def" value="cash/listdef/customer/AB/accountSummaryCreditCard.xml"/>
+	             <parameter name="account_type" value="06"/>
+	             <parameter name="title_key" value="PORTLET_ACCOUNT_CREDIT_CARD_SUMMARY"/>
+	             <layout position="6" size="NORMAL"/>
+	         </entry>
+			<!-- Summary of Treasury accounts -->
+			<entry parent="AccountSummaryTreasuryListPortlet" type="ref">
+				<layout position="6" size="NORMAL" />
+				<parameter name="description" value="accountSummaryTreasury"/>
+			<!--<parameter name="listDefSource" value="accountSummaryTreasury"/> -->
+				<parameter name="account_type" value="07"/>
+				<parameter name="owner_type" value="10"/>
+				<parameter name="permission" value="fx_account_summary_access"/>
+			</entry>
+			<entry type="ref" parent="ABFootnote">
+				<control name="com.misys.portal.core.portal.controls.ClearPortletControl" />
+				<layout position="7" size="NORMAL" />
+			</entry>
+			<!-- Export options of pdf/csv/xls etc -->
+			<entry parent="AccountSummaryExportPortlet" type="ref">
+				<layout position="8" size="NORMAL" />
+			</entry>
+			<!-- Currency Table -->
+			<!--<entry parent="AccountSummaryCurrencyListPortlet" type="ref">
+				<layout position="6" size="NORMAL" />
+			</entry>-->
+		</portlets>
+	</portlets>
+</portlets>

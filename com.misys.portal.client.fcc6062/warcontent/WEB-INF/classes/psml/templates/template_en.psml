@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<portlets user="default">
+	<controller name="com.misys.portal.core.portal.controllers.CardPortletController">
+		<parameter name="parameter" value="pane" />
+	</controller>
+	<portlets user="default">
+		<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+			<parameter name="mode" value="row" />
+			<parameter name="sizes" value="*,210" />
+		</controller>
+		<layout position="0" size="NORMAL" />
+		<metainfo>
+			<title>Home Page</title>
+		</metainfo>
+		<portlets user="default">
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController" />
+			<layout position="2" size="NORMAL" />
+			<entry parent="CustomerOngoingTasksList" type="ref">
+				<layout position="0" size="NORMAL" />
+			</entry>
+			<entry parent="DefaultContent" type="ref">
+				<layout position="1" size="NORMAL" />
+			</entry>
+			<entry parent="InternalNewsPortlet" type="ref">
+				<layout position="2" size="NORMAL" />
+			</entry>
+			<portlets user="default">
+			   <controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+				    <parameter name="mode" value="row"/>
+				    <parameter name="sizes" value="50%,50%"/>
+			   </controller>
+			   <layout position="3" size="NORMAL"/>
+				 <entry parent="OutstandingPortlet" type="ref">
+					<layout position="1" size="NORMAL" />
+				</entry>
+			   	<entry parent="HomeAccountSummaryListPortlet" type="ref">
+					<layout position="2" size="NORMAL" />
+				</entry>
+			</portlets>
+			<entry parent="TradeEventsGridPortlet" type="ref">
+				<layout position="4" size="NORMAL" />
+			</entry>
+			<entry parent="PendingDiscrepanciesPortlet" type="ref">
+				<layout position="5" size="NORMAL" />
+			</entry>
+			<portlets user="default">
+				<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController" />
+				<layout position="6" size="NORMAL" />
+				<entry parent="OutstandingPerProductChartPortlet" type="ref">
+					<parameter name="menu" value="true" />
+					<layout position="0" size="NORMAL" />
+				</entry>
+			</portlets>
+		</portlets>
+		<portlets user="default">
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController" />
+			<layout position="3" size="NORMAL" />
+			<entry parent="TradeCalendarPortlet" type="ref">
+				<parameter name="menu" value="true" />
+				<layout position="0" size="NORMAL" />
+			</entry>
+			<entry parent="EventsPortlet" type="ref">
+				<parameter name="menu" value="true" />
+				<layout position="1" size="NORMAL" />
+			</entry>
+			<entry parent="AWBTrackingPortlet" type="ref">
+				<layout position="3" size="NORMAL" />
+			</entry>
+			<entry parent="RatePortlet" type="ref">
+				<layout position="4" size="NORMAL" />
+			</entry>
+		</portlets>
+	</portlets>
+</portlets>

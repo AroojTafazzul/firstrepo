@@ -1,0 +1,1795 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: Issued Letter of   Indemnity;PERM=li_access"
+         id="LI" role="TOPIC">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_Issued_LOI"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+  <para role="TEXT">This <xi:include href="../entities_en.xml"
+  xpointer="ent_Issued_LOI" xmlns:xi="http://www.w3.org/2001/XInclude"/> (or
+  simply Letter of Indemnity) module enables you, on behalf of your company
+  (the applicant), to initiate Letter of Indemnity (LOI or LI) requests,
+  submit them to your chosen Issuing Bank, and subsequently amend, follow up
+  and maintain them.</para>
+
+  <section role="ITEM">
+    <title>Letters of Indemnity</title>
+
+    <para role="TEXT">The Letter of Indemnity is often used in Energy &amp;
+    Commodities (particularly Oil) trade transactions to allow the consignee
+    to take delivery of goods without presenting the Bill of Lading (B/L) ,
+    which may have been delayed.</para>
+
+    <para role="TEXT">In the Oil business, goods often change hands during the
+    course of the shipment in such a way that the B/L has not yet been passed
+    to the previous intermediary in the chain. To retrieve the goods, the next
+    consignee must therefore produce such a letter to the current shipper
+    (company undertaking the transport of the goods). The format of the LOI
+    should be mutually acceptable to both parties and should include title of
+    the cargo, indemnity against non-production of documents such as the B/L,
+    right to deliver bills, legal cost, governing law, and an obligation to
+    put the receiver of the indemnity to funds.</para>
+
+    <para role="TEXT">From a <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> point of
+    view, the Letter of Indemnity is very similar to the Shipping Guarantee.
+    The main differences are that the latter is more specifically used for
+    global trade rather for Energy &amp; Commodities and the Shipping Company
+    usually submits the form to be countersigned by the bank. In some cases,
+    the LOI can also be issued by the seller towards the buyer.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Flow of a LOI</title>
+
+    <para role="TEXT">The life cycle of a Letter of Indemnity generally starts
+    with a request from a customer of the bank asking for its issuance. There
+    is no structured standardized communications from client to bank, and bank
+    to client on a LOI, but such communications may happen and are supported
+    in <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, by the <guimenuitem>Message
+    to Bank LI</guimenuitem> feature at the client and the Bank Reporting
+    feature at the bank.</para>
+
+    <para role="TEXT">The LOI generally ends with the submission to the bank
+    of some details or documents implying the cancellation of the Letter of
+    Indemnity (for example,. the presentation of the Bill of Lading). This
+    cancellation may happen automatically once required documents are
+    presented under the Letter of Credit (LC) for which the bank acts as the
+    Issuing Bank.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>LOI in <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+    <para role="TEXT"><xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    implements the applicant side of the customer – bank relationship. The
+    <xi:include href="../entities_en.xml" xpointer="ent_Issued_LOI"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> module offers the functions
+    required for the submission of a new LOI request (compatible with both
+    cases highlighted above: LOI for the shipper or LOI for the buyer) and the
+    capability for both the applicant and the bank to further engage in free
+    format communications about the request.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Functions</title>
+
+    <para role="TEXT">The menu for this module has the following groups of
+    functions.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">LI Initiation</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Enter the desired terms of a new Letter of
+          Indemnity and submit them to the Issuing Bank of your choice.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Message To
+        Bank</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Search for existing FTs based on specific search
+          criteria.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Pending LI</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">View all existing LI Initiations that are not yet
+          complete or have not been submitted.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">LI Inquiry</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Search for existing LIs based on specific search
+          criteria.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">LI Maintenance</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Maintain Unsigned, Purged and Rejected LIs.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section condition="TITLE=LI Initiation;PERM=li_access;ACCESS=LI_01"
+           role="TOPIC">
+    <title>LI Initiation</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">LI
+    Initiation</emphasis> part of the menu and the forms it uses.</para>
+
+    <section role="ITEM">
+      <title>LI Initiation Functions</title>
+
+      <para role="TEXT">This part of the menu contains several functions,
+      providing different ways to request an Issued Letter of
+      Indemnity.</para>
+
+      <section role="ITEM">
+        <title>From Scratch</title>
+
+        <para role="TEXT">As described in the initiation form.</para>
+      </section>
+
+      <section id="ILC_copy_from_lc" role="ITEM">
+        <title>From Existing LC</title>
+
+        <para role="TEXT">Create a Letter of Indemnity initiation from an
+        existing Import Letter of Credit or Issued Standby Letter of Credit.
+        This is typically where your company is the buyer and you are
+        requesting an LI in favour of the shipper.</para>
+
+        <para role="TEXT">This function displays a list of your company's
+        existing Import Letters of Credit and Issued Standby Letters of
+        Credit. "Existing" means those that have been approved by the bank.
+        The two types can be distinguished by the product code that the system
+        ID starts with - LC for an Import Letter of Credit, and SI for an
+        Issued Standby Letter of Credit.</para>
+
+        <para role="TEXT">Click in the <guibutton>System ID</guibutton> column
+        to display an input form. It is similar to the one for
+        <guimenuitem>From Scratch</guimenuitem>, but initialised with the data
+        from the existing Letter of Credit, and with some extra fields.</para>
+      </section>
+
+      <section id="ILC_copy_from_el" role="ITEM">
+        <title>From Existing EL</title>
+
+        <para role="TEXT">Create a Letter of Indemnity initiation from an
+        existing Export Letter of Credit or Received Standby Letter of Credit.
+        This is typically where your company is the seller and you are
+        requesting an LOI in favour of the buyer.</para>
+
+        <para role="TEXT">This function displays a list of your company's
+        existing Export Letters of Credit and Received Standby Letters of
+        Credit. "Existing" means those that have been approved by the bank.
+        The two types can be distinguished by the product code that the system
+        ID starts with - EL for an Export Letter of Credit, and SR for a
+        Received Standby Letter of Credit.</para>
+
+        <para role="TEXT">Click in the <guibutton>System ID</guibutton> column
+        to display an input form. It is similar to the one for
+        <guimenuitem>From Scratch</guimenuitem>, but initialised with the data
+        from the existing Letter of Credit, and with some extra fields.</para>
+      </section>
+
+      <section role="ITEM">
+        <title>Edit Transactions</title>
+
+        <para role="TEXT">Review, complete and submit records that a user has
+        already created and saved, but not submitted.</para>
+
+        <para role="TEXT">When this option is selected from the side
+        navigation menu of the <emphasis>Trade services</emphasis> &gt;
+        <emphasis>Issued Letter of Indemnity</emphasis> page, it allows a LI
+        request that a user has already started and saved, to be completed.
+        Click the <emphasis role="bold">Search Options</emphasis> link to
+        display the fields that can be used to filter the list. Only complete
+        the fields that are required for the filter.</para>
+
+        <para role="TEXT">Click on the <emphasis role="bold">System
+        ID</emphasis> column of the required entry to open it for further
+        editing.</para>
+      </section>
+
+      <section role="ITEM">
+        <title>Retrieve Unsigned</title>
+
+        <para role="TEXT">Review and submit records that a user has, but have
+        not been submitted due to lack of authority.</para>
+
+        <para role="TEXT">When selected, this option will present a list of LI
+        requests that have been prepared and saved by users in the bank, but
+        have not been successfully submitted to the clients because the user
+        had insufficient privileges. Records that were simply saved with no
+        attempt to submit them are not included. Click the <emphasis
+        role="bold">Search Options</emphasis> link to display the fields that
+        can be used to filter the list. Only complete the fields that are
+        required for the filter.</para>
+
+        <para role="TEXT">Click on the <emphasis role="bold">System
+        ID</emphasis> column of the required entry to open it in a
+        non-editable mode, in order to review the data and perform the
+        submission. When clicked, the <emphasis role="bold">Users</emphasis>
+        icon will display the user that created the transaction, and any users
+        that have edited, authorised or verified it.</para>
+
+        <para role="TEXT">If there is sufficient authorisation in the users
+        profile, multiple records can be submitted in a single operation
+        directly from the list. Each record in the list has a check box which
+        when selected is ticked. A button at the end of the page submits all
+        the selected records.</para>
+
+        <para role="TEXT">The result of the action is then returned, with a
+        list of records that have now been successfully sent to the clients,
+        together with a list of records that have again failed validation. The
+        updated list of unsigned records is then also displayed.</para>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>LI Initiation Form</title>
+
+      <para role="TEXT">The form displayed by the LI functions for creating a
+      Letter of Indemnity initiation is as follows. Where a field is present
+      in some functions but not others, the table indicates this.</para>
+
+      <section role="ITEM">
+        <title>General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this Letter
+                of Indemnity.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel>Parent
+                Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">(<inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject>)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Not present for
+                <guimenuitem>From Scratch</guimenuitem>. System ID of the
+                Letter of Credit (LC, SI, EL or SR) that this Letter of
+                Indemnity was created from.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Name, for use within
+                your company, for the LI you are creating. Maximum 34
+                characters. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Application Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date when the creation
+                of the LI request was started within <xi:include
+                href="../entities_en.xml" xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. Default is your
+                current business date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">LC Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Not present for
+                <guimenuitem>From Scratch</guimenuitem>. Reference assigned by
+                the Issuing Bank's back office to the selected Letter of
+                Credit when the bank acknowledged the original initiation of
+                the Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel>Deal
+                Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Optional) Reference
+                number of the related deal.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Applicant </guimenu><emphasis
+                role="bold"><guimenu
+                moreinfo="none">Details</guimenu></emphasis></para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                applicant., and optionally the entity (within the applicant
+                company) making the application. The individual fields are
+                described below. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel
+                role="bold">Entity</guilabel></entry>
+
+                <entry valign="top"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry valign="top">Entity making the application. This field
+                is only present if your company has entities defined and you
+                are attached to one or more entities. If you are attached to
+                more than one, click the magnifying glass icon to select one.
+                If you are attached to only one, the field is preset to that
+                entity and cannot be changed.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the applicant.
+                Maximum of 35 characters. Defaults to the name of your
+                company. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                applicant. Maximum of 3 lines of 35 characters each. Defaults
+                to the address of your company. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Multi-purpose string to
+                be used as a reference for the data in this section. Maximum
+                of 34 characters.</para> <note>
+                    <para role="TEXT">This field is only present if the bank
+                    doesn't wish to define and use specific references per
+                    bank. If it does, an <guilabel moreinfo="none">Issuer's
+                    Reference</guilabel> field is present instead, in the
+                    <guilabel moreinfo="none">Issuing Bank</guilabel>
+                    section).</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Beneficiary Details</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                beneficiary, and its role in the deal. The individual fields
+                are described below. You can click the magnifying glass icon
+                to set the <guilabel>Name</guilabel> and
+                <guilabel>Address</guilabel> fields from a beneficiaries list
+                that your company maintains.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel>Type</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Role that the beneficiary plays in the deal. Select
+                from the dropdown list: <literal>Transportation
+                Company</literal>, <literal>Buyer</literal>, or
+                <literal>Other</literal>. If you select
+                <literal>Other</literal>, the field immediately below becomes
+                enabled - enter a description of the role.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the beneficiary.
+                Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                beneficiary. Maximum of 3 lines of 35 characters
+                each.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Multi-purpose string to
+                be used as a reference for the beneficiary. Maximum of 34
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guisubmenu
+                moreinfo="none">Issuing Bank Name</guisubmenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Bank that the
+                application for a Letter of Indemnity is to be sent to. The
+                individual fields are described below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the bank. Select
+                from the dropdown list of banks that your company has a
+                relationship with.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issuer's Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The reference (multi
+                purpose string that for instance may identify the liability
+                line) under which the transaction should be recorded. The
+                dropdown list shows the references that are defined for the
+                above selected Issuing Bank.</para> <note>
+                    <para role="TEXT">The references shown are defined and
+                    maintained by the bank. If the bank doesn't wish to define
+                    and use references per Bank, a non bank-specific <guilabel
+                    moreinfo="none">Reference</guilabel> field appears in the
+                    <guilabel moreinfo="none">Applicant Details</guilabel>
+                    section instead.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Amount Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Guarantee Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency code (three
+                alphabetic characters) and amount (maximum 15 characters
+                including delimiters) of the Letter of Indemnity. Click the
+                magnifying glass icon to set the currency code.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Letter of Indemnity Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Countersignature</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Shows whether a
+                countersignature is required. Select from the dropdown list:
+                <literal>Yes</literal> or
+                <literal>No</literal>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Shipping Details</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Free-format text to
+                describe the mode of shipment, or the name of the company or
+                vessel responsible for the shipment. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">BL / AWB Number</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Reference number of the
+                Bill of Lading, Air Way Bill, or any such document against
+                which the guarantee is issued. Up to 20
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">BL / AWB Number</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Date of the Bill of
+                Lading, Air Way Bill, or any such document against which the
+                guarantee is issued. Up to 20 characters.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Description of Goods</title>
+
+        <para role="TEXT">You can click the button at the top right of the
+        field to select predefined phrases to insert.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description of Goods</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Description of the goods
+                and/or services covered by the Letter of Indemnity. Up to 300
+                lines of 65 characters each. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Instructions for the Bank</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Principal Account</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Number of the account
+                that you want the Issuing Bank to use as to debit any
+                principal amount in the life of the
+                transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Fee Account</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Number of the account
+                that you want the Issuing Bank to use to debit any charges and
+                commissions related to the transaction. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Other Information</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Any additional
+                information that would not fit in any of the narratives above.
+                Maximum 100 lines of 65 characters each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload Details</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Optionally, a list of
+                files from your local hard disk giving additional details
+                pertaining to this Letter Of Indemnity request. Click
+                <guibutton>Add a file</guibutton> to add a
+                file.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+  </section>
+
+  <section condition="TITLE=LI Message to Bank;PERM=li_access;ACCESS=LI_02"
+           id="LI_message" role="TOPIC">
+    <title>Message to Bank</title>
+
+    <para role="TEXT">This section describes the <guimenuitem>Message to
+    Bank</guimenuitem> part of the menu and the forms it uses.</para>
+
+    <section id="LI_message_to_bank_options" role="ITEM">
+      <title>Message to Bank Functions</title>
+
+      <para role="TEXT">This part of the menu contains several functions,
+      providing different ways to send a free-format message to the Issuing
+      Bank.</para>
+
+      <para role="TEXT">A typical use is to reply to a notification of
+      discrepancies on documents presented to the Issuing Bank, or to the
+      acceptance of a draft.</para>
+
+      <para role="TEXT"><variablelist>
+          <varlistentry role="TEXT">
+            <term><guimenuitem moreinfo="none">From Existing
+            LI</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">This option displays a list of existing LIs
+              issued to your company.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry role="TEXT">
+            <term><guimenuitem moreinfo="none">Action
+            Required</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Respond to any action required from your side
+              on the LIs.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+
+      <para role="TEXT"><variablelist>
+          <varlistentry role="TEXT">
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit LI records that
+              you or another user have already created and saved, but not
+              submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry role="TEXT">
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit LI records that you or
+              another user have created, but have not been submitted due to
+              lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>From Existing LI - Message to Bank Form</title>
+
+      <para role="TEXT">This option displays a list of existing LIs that your
+      company (the main beneficiary) has received notification of from the
+      Advising Bank.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity/Applicant Name</emphasis>, <guilabel>Beneficiary
+      Name</guilabel>, <guilabel moreinfo="none">Bank Reference</guilabel>,
+      <guilabel>Our Reference</guilabel>, <guilabel>Ccy</guilabel> or
+      <guilabel moreinfo="none">Related Reference</guilabel> fields.</para>
+
+      <para role="TEXT">The list is not displayed until you have entered
+      search criteria and clicked <emphasis role="bold">Search</emphasis>. To
+      display all records, enter an asterisk in any of the criteria
+      fields.</para>
+
+      <para role="TEXT">The columns returned in the list of Fund Transfer
+      records are the following:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System ID</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity/Applicant Name</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT">Entity and applicant
+                associated with LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Beneficiary Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of LI record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The status of the LI.
+                (Incomplete, Draft, Etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Our Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The reference provided
+                by the customer to the transaction. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Ccy</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the LI.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Outstanding Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The outstanding payment
+                amount of the LI. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date of issue of the
+                LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Related Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The reference of any
+                related transactions associated with the LI. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+
+      <para role="TEXT">The input form for creating a free-format message is
+      as follows:</para>
+
+      <section role="ITEM">
+        <title>General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Full Transaction Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button at the
+                right-hand side of the General Details title line.) Open a
+                popup window to show the full details of the current
+                LI..</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                that was generated by the system for this LI when it was
+                created.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the customer for
+                the LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this LI when the bank
+                acknowledged the original initiation of the letter of
+                indemnity. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Issue date of the
+                LI.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Free Format Message</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Free Format Message</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank.</para><para role="TEXT">Up to 100 lines of 65
+                characters each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">File Upload Details</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text field and Browse
+                button, which you can optionally use to attach a file from
+                your local hard disk to give additional details pertaining to
+                this message.</para><note>
+                    <para role="TEXT">The maximum size allowed for each file
+                    attachment is defined in a properties file.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>Action Required</title>
+
+      <para role="TEXT">This option displays any pending action required to
+      complete the forms.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Edit Transactions</title>
+
+      <para role="TEXT">Review, complete and submit Message to Bank records
+      that you or another user have already created and saved, but not
+      submitted.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Retrieve Unsigned</title>
+
+      <para role="TEXT">Review and submit Message to Bank records that you or
+      another user have created, but have not been submitted due to lack of
+      authority.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=Cash Services: Pending LI" id="Pending_LI"
+           role="TOPIC">
+    <title>Pending LI</title>
+
+    <para role="TEXT">This function will display a list of all LI records that
+    have not been approved by the bank and the ones that are in draft
+    state.</para>
+
+    <section role="ITEM">
+      <title>Pending LI - Navigation</title>
+
+      <para role="TEXT">To navigate to the <emphasis role="bold">Pending
+      LI</emphasis> function, from the tool bar, select <emphasis>Trade
+      Services</emphasis> &gt; <emphasis>Issued Letter of
+      Indemnity</emphasis>. Then select <emphasis>Pending LIs</emphasis> from
+      the left side navigation menu.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Pending LI Transactions</title>
+
+      <para role="TEXT">To use the <emphasis role="bold">Pending LI</emphasis>
+      function, after selecting <emphasis>Trade Services</emphasis> &gt;
+      <emphasis>Issued Letter of Indemnity</emphasis> from the toolbar, click
+      on <emphasis>Pending LI</emphasis> on the left side navigation menu.
+      These Issued Letter of Indemnity transactions can be edited or submitted
+      as required by any user with the appropriate authorities.</para>
+
+      <para role="TEXT">Click the <emphasis role="bold">Search
+      Options</emphasis> link to display the fields that can be used to filter
+      the list. These are <emphasis role="bold">System ID, Entity/Applicant
+      Name, Our Ref, Beneficiary Name, Ccy </emphasis>or <guilabel
+      moreinfo="none">Related Reference</guilabel> fields. To display all
+      records, enter an asterisk in any of the criteria fields.</para>
+
+      <para role="TEXT">The columns returned in the list of Issued Letter of
+      Indemnity records are described in the following table:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System ID</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity/Applicant Name</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT">Entity and applicant
+                associated with the LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of LI record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Status</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The status of the LI
+                (Incomplete, Draft, Etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Beneficiary Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The beneficiary
+                associated with this LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Ccy</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the
+                LI.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Application Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date of application
+                of the LI. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Related Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The related reference of
+                another transaction associated with the LI. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Users</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Associated users
+                (approvers, submitters and so on).</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Each record is shown with one or more of the following
+      action icons to the left of the entry, depending on its status:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Symbol</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_popup.gif"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to open a popup
+              window displaying the current master details of the record.
+              (Submitted entries may only be viewed)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_file.gif"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">View an editable record,
+              in Control Mode (view only).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_edit.gif"
+                               role="ICON_EDIT" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Click to edit the current
+              master details of the record.(Only Draft and Incomplete
+              (unauthorised) entries can be edited)</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>LI Inquiry</title>
+
+    <para role="TEXT">This function will display a list of all LI records in
+    the system. These can be edited or submitted as required by any user with
+    the appropriate authorities.</para>
+
+    <important>
+      <para>Any further amendment to the LI, regardless of Approved or
+      Rejected from the BO/MO, can be tracked though LI Inquiry option.</para>
+    </important>
+
+    <para role="TEXT">Click the <emphasis role="bold">Search
+    Options</emphasis> link to display the fields that can be used to filter
+    the list. These are <emphasis role="bold">System ID, Entity/Applicant
+    Name, Bank Ref, Our Ref, Beneficiary Name, Ccy </emphasis>or <guilabel
+    moreinfo="none">Related Reference</guilabel> fields. To display all
+    records, enter an asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">The columns returned in the list are in the following
+    table:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity/Applicant Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Entity and applicant
+              associated with the LI.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Ref </guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Reference assigned by the
+              bank's back office to this LI. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Our Ref</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The reference provided by
+              the customer to the transaction. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The beneficiary associated
+              with this LI.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ccy</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Currency of the
+              LI.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              Li.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Outstanding Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The outstanding payment
+              amount of the LI. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Issue Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the LI.
+              (Incomplete, Draft, Etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the LI
+              (Incomplete, Draft, Etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Related Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The reference of any
+              related transactions associated with the LI. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">Click on the view <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif"/>
+        </imageobject>
+      </inlinemediaobject> and history <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_file.gif"/>
+        </imageobject>
+      </inlinemediaobject> icons on the left of each entry to view their
+    details. Only submitted entries can be viewed.</para>
+  </section>
+
+  <section condition="TITLE=LI Maintenance;PERM=li_access;ACCESS=LI_17"
+           role="TOPIC">
+    <title>LI Maintenance</title>
+
+    <para role="TEXT">This function is user to maintain LI records that were
+    created, but are no longer required in the system.</para>
+
+    <section role="ITEM">
+      <title>LI Maintenance - Set Entity</title>
+
+      <para role="TEXT">List all LIs and associate an Entity. Click the
+      <emphasis role="bold">Search Options</emphasis> link to display the
+      fields that can be used to filter the list. Only complete the fields
+      that are required for the filter.</para>
+
+      <para role="TEXT">Click <guimenu>Set Entity</guimenu> and then select
+      <guilabel>System ID</guilabel>. You can now set an entity for the LI by
+      clicking the search icon <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_glass.gif"/>
+          </imageobject>
+        </inlinemediaobject> from the Entity field. Click the
+      <guibutton>Submit</guibutton> button to complete the changes.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LI Maintenance - Set Reference</title>
+
+      <para role="TEXT">Assign a customer reference to a LI record that
+      currently has none.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of records that have no reference assigned. Click in the <emphasis
+      role="bold">System Id</emphasis> column to open a form where you can
+      assign a reference to the record.</para>
+
+      <note>
+        <para role="TEXT">This action is not validated against the
+        Jurisdiction matrix. All transactions of the current files are
+        updated.</para>
+      </note>
+    </section>
+
+    <section role="ITEM">
+      <title>LI Maintenance - Action Required</title>
+
+      <para role="TEXT">List all LIs which require an action by customers.
+      Click the <emphasis role="bold">Search Options</emphasis> link to
+      display the fields that can be used to filter the list. Only complete
+      the fields that are required for the filter.</para>
+
+      <para role="TEXT">Click <guilabel>System ID </guilabel>to open and
+      create a free format LI message for the action required.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LI Maintenance - Unsigned LIs</title>
+
+      <para role="TEXT">List and optionally delete unsigned (unauthorised) LI
+      transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of records that are unsigned (unauthorised). You cannot initiate
+      further amendments or messages on such a transaction, and can only use
+      its data for inquiry purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LI Maintenance - Purged LIs</title>
+
+      <para role="TEXT">List and optionally delete LI transactions that have
+      been marked as <type>Purged</type> by the Issuing Bank's Trade Services
+      team. You cannot initiate further amendments or messages on such a
+      transaction, and can only use its data for inquiry purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LI Maintenance - Rejected LIs</title>
+
+      <para role="TEXT">List and optionally delete Rejected
+      transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of LI records that were submitted, but rejected by the bank and
+      have a status of "Not Processed". You cannot initiate further amendments
+      or messages on such a transaction, and can only use its data for inquiry
+      purposes. Click the <emphasis role="bold">Search Options</emphasis> link
+      to display the fields that can be used to filter the list. Only complete
+      the fields that are required for the filter.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+  </section>
+</section>

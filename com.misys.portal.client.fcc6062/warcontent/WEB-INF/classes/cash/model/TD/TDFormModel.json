@@ -1,0 +1,440 @@
+{
+  "screen": "TermDepositScreen",
+    "isAccordionView": "true",
+  "tdCstdGeneralDetails": {
+    "entity": {
+			"name": "Entity",
+			"type": "input-dropdown-filter",
+			"options": {				
+			},
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"previewValueAttr": "shortName"
+	},
+	"valueDate": {
+		"name": "valueDate",
+		"type": "input-date",
+		"layoutClass": "p-col-12 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+		"styleClass": [
+		"margin-side"
+		],
+		"required": true,
+		"maxlength": 10,
+		"applicableScreens": [
+		{
+			"option": "TEMPLATE",
+			"required": false
+		}
+	   ]
+	},
+	"depositType": {
+		"name": "depositType",
+		"type": "input-dropdown",
+		"required": true,
+		"options": {
+		},
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "margin-side",
+      "previewValueAttr": "label",
+      "translate": true,
+      "translateValue": "depositType_"
+	},
+	"maturitydate": {
+		"name": "maturitydate",
+		"type": "input-date",
+		"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+		"styleClass": [
+			"margin-side"
+		],
+		"maxlength": 16,
+		"hidden": true,
+		"persistance": true
+	},
+	"customTenor": {
+            "name": "customTenor",
+			"type": "input-switch",
+			"defaultValue": "N",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": [
+				"appl-detail-header"
+			],
+			"applicableScreens": [
+				{
+					"tnxTypeCode": "13",
+					"mode": "view",
+					"showLabel": false,
+					"layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 amendLabelStyle"
+				},
+				{
+			          "tnxTypeCode": "01",
+			          "rendered": true,
+			          "mode": "view",
+			          "fieldValueType": "view-mode"
+            }
+			],
+			"rendered": true, 
+			"dynamicCriteria": {
+            "renderCheck": false,
+            "presentSection": "tdCstdGeneralDetails",
+            "tnxTypeCode": "01",
+            "dependControl": "customTenor",
+            "dependSection": "tdCstdGeneralDetails",
+            "requiredValue": "Y"
+           },
+           "previewScreen": false
+	},
+	"tenorPeriod": {
+		"name": "tenorPeriod",
+		"type": "input-dropdown",
+		"options": {
+			
+		},
+		"hyperlinkData" : {
+      		"showLink" : true,
+      		"name" : "viewInterestRate",
+      		"source": "property",
+      		"link": "",
+      		"codeID" : "C101",
+      		"position" : "bottom",
+      		"propertyName" : "fixed.deposit.interest.link",
+      		"target" : "window"
+      	},
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero tenorPrd",
+      "styleClass": "appl-detail-header",
+      "previewValueAttr": "number",
+	  "rendered": true,
+	  "dynamicCriteria": {
+        "dependControl": "tenorPeriod",
+        "dependSection": "tdCstdGeneralDetails",
+        "hideIfEmpty": true,
+        "presentSection": "tdCstdGeneralDetails"
+      }
+	},
+	"tenorYears": {
+		"name": "tenorYears",
+		"type": "input-counter",
+		"hyperlinkData" : {
+      		"showLink" : true,
+      		"name" : "viewInterestRate",
+      		"source": "external",
+      		"link" : "https://www.finastra.com/",
+      		"codeID" : "C101",
+      		"position" : "bottom",
+      		"propertyName" : "",
+      		"target" : "window"
+      	},
+		"options": {
+			
+		},
+	  "layoutClass": "p-col-2 p-md-4 p-lg-4 p-sm-4 p-xl-2 padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "previewValueAttr": "number",
+	  "rendered": false,
+	  "previewScreen": false
+	},
+	"tenorMonths": {
+		"name": "tenorMonths",
+		"type": "input-counter",
+		"options": {
+			
+		},
+	  "layoutClass": "p-col-2 p-md-4 p-lg-4 p-sm-4 p-xl-2 padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "previewValueAttr": "number",
+	  "rendered": false,
+	  "previewScreen": false
+	},
+	"tenorDays": {
+		"name": "tenorDays",
+		"type": "input-counter",
+		"options": {
+			
+		},
+	  "layoutClass": "p-col-2 p-md-4 p-lg-4 p-sm-4 p-xl-2 padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "previewValueAttr": "number",
+	  "rendered": false,
+	  "previewScreen": false
+	},
+	"tenor": {
+	  "name": "customTenorValue",
+	  "type": "input-text",
+	  "layoutClass": "p-col-2 p-md-4 p-lg-4 p-sm-4 p-xl-2 padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "rendered": true,
+	  "previewScreen": false,
+	  "pdfDisplayValueHidden": true,
+	  "dynamicCriteria": {
+        "dependControl": "customTenorValue",
+        "dependSection": "tdCstdGeneralDetails",
+        "hideIfEmpty": true,
+        "presentSection": "tdCstdGeneralDetails"
+      }
+	},
+    "valueDateTermNumber": {
+      "name": "valueDateTermNumber",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+	"valueDateTermCode": {
+      "name": "valueDateTermCode",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+	"numOfDays": {
+      "name": "numOfDays",
+      "type": "input-text",
+      "rendered": false,
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": false,
+      "previewScreen": true,
+       "dynamicCriteria": {
+        "dependControl": "numOfDays",
+        "dependSection": "tdCstdGeneralDetails",
+        "hideIfEmpty": true,
+        "presentSection": "tdCstdGeneralDetails"
+      },
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ]
+    },
+    "depositDetails": {
+      "name": "depositDetails",
+      "type": "text",
+      "layoutClass": "p-col-12 p-lg-12 p-md-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "depositDetails"
+      ],
+      "groupChildren": [
+        "currency",
+        "amount",
+		"placementAccount",
+		"maturityInstructions",
+		"debitAccount",
+		"creditAccount"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false
+        }
+      ],
+      "hideGrpHeaderInView": true
+    },
+    "chargeCurrency": {
+      "name": "currency",
+      "type": "input-dropdown-filter",
+      "options": {},
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 widthForCur chargeAmt",
+      "styleClass": [
+        "no-margin-multiselect"
+      ],
+      "grouphead": "depositDetails",
+      "required": true,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "showLabel": false,
+          "layout": "p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+          "fieldValueType": "view-mode",
+          "showViewModeLabel": false
+        },
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "clubbedHeaderText": "depositDetails",
+      "clubbedList": [
+        "currency",
+        "amount"
+      ],
+      "previewValueAttr": "shortName"
+    },
+    "chargeAmount": {
+      "name": "amount",
+      "type": "fcc-currency",
+      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur amountforamtchr",
+      "styleClass": [
+        "amt"
+      ],
+      "grouphead": "depositDetails",
+      "required": true,
+      "maxlength": 15,
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "rendered": false,
+          "required": false
+        },
+        {
+          "option": "TEMPLATE",
+          "required": false
+        }
+      ],
+      "clubbed": true,
+      "feildType": "amount"
+    },
+	"placementAccount": {
+		"name": "placementAccount",
+		"type": "input-dropdown",
+		"rendered": false,
+		"options": {
+		},
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "margin-side",
+      "previewValueAttr": "number",
+	  "grouphead": "depositDetails"
+	},
+	"maturityInstructions": {
+		"name": "maturityInstructions",
+		"type": "input-dropdown",
+		"options": {
+			
+		},
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "margin-side",
+      "previewValueAttr": "number",
+	  "grouphead": "depositDetails"
+	},
+	"debitAccountCurCode": {
+      "name": "debitAccountCurCode",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "debitAccountNumber": {
+      "name": "debitAccountNumber",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+     "debitAccountName": {
+      "name": "debitAccountName",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "debitAccountId": {
+	"name": "debitAccountId",
+	"type": "input-text",
+	"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	"styleClass": "newLCAmtStyle",
+     "hidden": true,
+	"previewScreen": false
+	},
+	"debitAccount": {
+		"name": "debitAccount",
+		"type": "input-dropdown",
+		"options": {
+		},
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "margin-side",
+      "previewValueAttr": "label",
+	  "grouphead": "depositDetails"
+	},
+	 "creditAccountId": {
+      "name": "creditAccountId",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+	"creditAccount": {
+        "name": "creditAccount",
+        "type": "input-dropdown",
+        "options": {
+           
+        },
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero checkboxMargin",
+      "styleClass": "margin-side",
+      "previewValueAttr": "label",
+      "grouphead": "depositDetails"
+    },
+    "creditAccountName": {
+      "name": "creditAccountName",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": "newLCAmtStyle",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "space": {
+      "noofspacers": "1",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero"
+    },
+    "checkboxAttr": {
+      "name": "checkboxAttr",
+      "grouphead": "depositDetails",
+      "defaultValue": "N",
+      "type": "checkbox",
+      "layoutClass": "p-col-6 padding_zero",
+      "styleClass": "margin-all-side radio-label",
+      "clubbed": false,
+      "pdfDisplayCheckbox": true,
+      "translate": true,
+      "translateValue": "checkboxAttr_",
+      "dynamicCriteria": {
+            "hideCheckbox": true,
+            "presentSection": "tdCstdGeneralDetails",
+            "dependControl": "checkboxAttr",
+            "dependSection": "tdCstdGeneralDetails"
+        }
+    },
+	"transactionRemarks": {
+      "name": "transactionRemarks",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "rows": 5,
+      "cols": 38,
+      "fieldSize": 50,
+      "maxRowCount": 6,
+      "rowCount": 0,
+      "swift": false,
+      "enteredCharCount": 0,
+      "allowedCharCount": 228,
+      "maxlength": 228,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "indented-text-area-field-35"
+      ],
+      "phraseEnabled": true
+    },
+    "id": "TdCstdGeneralDetailsComponent",
+    "helpId": "GD"
+  }
+}

@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+
+  <section condition="TITLE=Trade Middle Office: Existing Records;PERM=tradeadmin_product_access;ACCESS=ER_01" id="ER" role="TOPIC">
+    <title>Existing Records</title>
+
+    <para role="TEXT">For various reasons throughout the life of an
+    International Trade transaction, the bank handling the transaction (as the
+    Issuing Bank of an <glossterm>LC</glossterm>, <glossterm>SI</glossterm>,
+    <glossterm>LI</glossterm>, <glossterm>RI</glossterm>,
+    <glossterm>SG</glossterm>, <glossterm>TF</glossterm> or
+    <glossterm>FT</glossterm> transaction, the Recipient or Issuing Bank for a
+    <glossterm>BG</glossterm>, the Advising Bank for an
+    <glossterm>EL</glossterm>, <glossterm>SR</glossterm>, the Remitting Bank
+    for an <glossterm>EC</glossterm> or <glossterm>IR</glossterm> or the
+    Presenting Bank for an <glossterm>IC</glossterm>) may need to send various
+    transactional messages to its customers.<indexterm>
+        <primary>Existing Records</primary>
+      </indexterm></para>
+
+    <para role="TEXT">A typical use of this feature is for the bank to notify
+    an exporter about an amendment to a Export Letter of Credit notified
+    previously in his favour, or for example to forward an advice of
+    discrepancies to the applicant of an Import Letter of Credit.</para>
+
+    <para role="TEXT">More generally, the bank can use the generation of
+    reporting from an existing record each time it needs to send a message to
+    the customer and when this event is not a reply to something initiated by
+    the client (in which case it would be accessed through the
+    <application>Pending Records</application> module).</para>
+
+    <section role="ITEM">
+      <title>Existing Records - Navigation</title>
+
+      <para role="TEXT">After selecting the <emphasis role="bold">Trade Middle
+      Office</emphasis> option from the Administrator's list on the home page,
+      the <emphasis role="bold">Existing Records</emphasis> function can be
+      selected from the left side navigation menu.<indexterm>
+          <primary>Existing Records</primary>
+
+          <secondary>Navigation</secondary>
+        </indexterm><indexterm>
+          <primary>Navigation</primary>
+
+          <secondary>Existing Records</secondary>
+        </indexterm><graphic fileref="./images/BUG_MidOff_existing_nav.jpg"
+      width="160mm"/></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Existing Records Options</title>
+
+      <para role="TEXT">When the <emphasis role="bold">Existing
+      Records</emphasis> function is selected from the side navigation menu of
+      the Trade Administration module, a number of options are listed.</para>
+
+      <para role="TEXT"><inlinegraphic align="center" contentwidth="50mm"
+      fileref="./images/BUG_MidOff_existing_options.jpg"
+      width="100mm"/></para>
+
+      <para role="TEXT">The available options are:<indexterm>
+          <primary>Existing Records</primary>
+
+          <secondary>Options</secondary>
+        </indexterm><indexterm>
+          <primary>Options</primary>
+
+          <secondary>Existing Records</secondary>
+        </indexterm><variablelist role="TEXT">
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">List of
+            Records</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Display (and create messages relating to) a list of
+              records that have been submitted to the bank and
+              acknowledged.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit Existing Records messages that
+              you or another user have already created from an existing record
+              and saved.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit an Existing Records messages that you or
+              another user have created but has not been submitted due to lack
+              of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section condition="TITLE=Existing Records: List Of records; ACCESS=ER_01" role="ITEM" id="ER_List">
+      <title>Existing Records - List of Records</title>
+
+      <para role="TEXT">This function allows a Bank user to create reporting
+      messages (amendments, cancellations, settlements etc.) on existing
+      records, that have been processed by users at the bank.<indexterm>
+          <primary>Existing Records</primary>
+
+          <secondary>List</secondary>
+        </indexterm><indexterm>
+          <primary>List</primary>
+
+          <secondary>Existing Records</secondary>
+        </indexterm> When this option is selected, a list is displayed of
+      records that have been processed.</para>
+
+      <para role="TEXT"><graphic
+      fileref="./images/BUG_MidOff_existing_list.jpg" width="160mm"/>Click
+      the <emphasis role="bold">Search Options</emphasis> link to display the
+      fields that can be used to filter the list. These are the 
+	  <xi:include href="../entities_en.xml"
+      xpointer="System_ID"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>, <emphasis role="bold">Bank
+      Ref</emphasis>, <guilabel moreinfo="none">Company</guilabel> (that sent
+      the request), or <guilabel moreinfo="none">Product</guilabel> fields.
+      (The product can be any of those that enable a client to send a request
+      to the bank.) The list is not displayed until search criteria has been
+      entered and the <emphasis role="bold">Search</emphasis> button has been
+      clicked. To display all records, enter an asterisk in any of the
+      criteria fields.</para>
+
+      <para role="TEXT">The columns returned in the list of Existing Records
+      are the following:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT">  
+			  <xi:include href="../entities_en.xml"
+			  xpointer="System_ID"
+			  xmlns:xi="http://www.w3.org/2001/XInclude"/>
+			    </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number generated by
+              <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Bank
+              Ref</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Reference that was assigned by your
+              bank's back office to this transaction. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Company</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Abbreviated name of the company that
+              sent the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Current status of the transaction. The
+              possible values are the following:</para><itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><type>New</type> indicates the state of any product
+                    right after its successful initiation,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Amended</type> is typically the state of a
+                    Letter of Credit or a Banker's Guarantee after an
+                    amendment has been applied,</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><type>Updated</type> is the generic state generally
+                    given by the bank as a follow-up to a free format message
+                    transaction initiated by the customer.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">Other statuses are available on the bank side and
+                    can be used by the Trade Services team when generating a
+                    reporting message. The following chapters will provide
+                    further details on these custom product status codes.
+                    Hence the state born by a transaction record could also be
+                    <type>Accepted</type>, <type>Settled</type>,
+                    <type>Cancelled</type>, <type>Extended</type> or
+                    <type>Purged</type>.</para>
+                  </listitem>
+                </itemizedlist></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ccy</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Currency code of the
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Master amount of the transaction
+              record (not necessarily the same as the current outstanding
+              amount).</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Selecting an Existing Record by clicking the <emphasis
+      role="bold">
+	  <xi:include href="../entities_en.xml"
+      xpointer="System_ID"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/></emphasis>
+	  field of the required entry, will allow a
+      message relating to an existing transaction to be created and sent to
+      the client that raised the transaction. <graphic
+      fileref="./images/BUG_MidOff_existing_reporting.jpg"
+      width="160mm"/></para>
+
+      <para role="TEXT">The form used for this function has the following
+      sections.<indexterm>
+          <primary>Existing Records</primary>
+
+          <secondary>Reporting</secondary>
+        </indexterm><indexterm>
+          <primary>Reporting</primary>
+
+          <secondary>Existing Records</secondary>
+        </indexterm></para>
+
+      <section role="ITEM">
+        <title>Existing Record Reporting Form - Transaction Details</title>
+
+        <para role="TEXT">This section of the form summarises the key
+        information of the transaction. For all products, it contains the
+        following fields:<informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Full
+                  Transaction Details</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">(<inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/icon_details.jpg"
+                                   role="ICON_LOCK" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> Icon at the right-hand end of the
+                  <emphasis role="bold">General Details</emphasis> title
+                  line.) Open a pop up window to show the full details of the
+                  current transaction. The content of this pop up window is
+                  specific to each product.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Company
+                  Name</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Abbreviated name of the company
+                  that owns the transaction (whether as applicant,
+                  beneficiary, drawee or drawer).</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Product
+                  Code</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type of product that the
+                  transaction relates to, either Import or Export Letter of
+                  Credit, Shipping Guarantee, Financing Request, Issued or
+                  Received Standby LC, Banker's Guarantee, Export or Import
+                  Documentary Collection, Fund Transfer or Inward
+                  Remittance.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT">  
+				  <xi:include href="../entities_en.xml"
+				  xpointer="System_ID"
+				  xmlns:xi="http://www.w3.org/2001/XInclude"/> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Unique reference number generated
+                  by <xi:include href="../entities_en.xml"
+                  xpointer="ent_appli"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                  when it was initiated.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Transaction Id</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Unique reference number generated
+                  by <xi:include href="../entities_en.xml"
+                  xpointer="ent_appli"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/> for this event
+                  associated with this transaction. This field is only
+                  displayed if the transaction has been actioned previously by
+                  the Bank</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Bank
+                  Reference</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Reference assigned by your bank's
+                  back office to this transaction. Usually referred to as the
+                  back-office reference.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Transaction Type</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Aways shows
+                  <type>Reporting</type>. This type indicates a
+                  Bank-towards-Customer reporting message.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Existing Record Reporting Form - Reporting Message
+        Details</title>
+
+        <para role="TEXT">The second section provides input fields to enter
+        the details specific to the new event currently being
+        created:<informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="1.8*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="7.1*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">New
+                  Transaction Status</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Specify here the new status of the
+                  transaction record as it should be after the current event.
+                  This new status is the key information shown to the customer
+                  user when browsing the bank reporting or the history of the
+                  transaction. </para><para role="TEXT">Be careful to choose an
+                  appropriate code in view of the previous status - the system
+                  does not validate that the status is appropriate
+                  .</para><para role="TEXT">The drop down list shows the possible values,
+                  which in the standard version of <xi:include
+                  href="../entities_en.xml" xpointer="ent_appli"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/>. Some of these
+                  are as follows (with sample
+                  interpretations):</para><itemizedlist>
+                      <listitem>
+                        <para role="TEXT"><type>Updated</type>: a generic term to indicate
+                        that the record has been updated.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Amended</type> : this status should be
+                        used only for acknowledgement or notification of
+                        Import or Export Commercial or Standby Letters of
+                        Credit and Banker's Guarantee amendments.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Extended</type>: typically applicable to
+                        an extension of maturity date for a financing
+                        transaction.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Accepted</type>: this could be used to
+                        notify the customer of an acceptance of bill.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Settled</type>: to indicate any kind of
+                        principle settlement on any kind of product (for
+                        instance the full final settlement of <type>Trust
+                        Receipt</type>).</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT">Partially Settled: same as above but reserved
+                        for partial settlements.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Cancelled</type>: typically for the
+                        redemption and cancellation of a Shipping
+                        Guarantee.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Released</type>: this status should
+                        typically be associated with a Banker's Guarantee
+                        whose release has been pronounced.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Advise of Bill Arrival -
+                        Discrepant</type>: this status can be chosen by the
+                        bank on an Import <glossterm>LC</glossterm> when it
+                        notifies discrepancies detected on a set of documents
+                        presented.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Advise of Bill Arrival - Clean</type>:
+                        this status can be chosen by the bank on an Import
+                        <glossterm>LC</glossterm> when it notifies clean bills
+                        on a set of documents presented.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Sight Payment</type>: typically selected
+                        by the issuing bank of a Commercial or Standby
+                        <glossterm>LC</glossterm> when there is a presentation
+                        of documents with an underlying full sight payment,
+                        and if the presentation is clean or alternatively when
+                        the applicant has given his acceptance on
+                        discrepancies previously notified.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Partial Sight Payment</type>: same as
+                        above for a partial payment.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Purged</type>: this is a technical code
+                        which will have a real impact on the file since the
+                        user will not be able to further update this record.
+                        It should be applied by the bank when it has purged
+                        the transaction in its own back-office system.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT"><type>Rejected</type>: also a technical code
+                        that can be used by the bank user to notify any kind
+                        of rejected action not applied to the record's master
+                        details.</para>
+                      </listitem>
+                    </itemizedlist></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Subject
+                  </guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject></para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter the subject as a summary of
+                  the message to be sent</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Documents Amount</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject></para></entry>
+
+                  <entry valign="top"><para role="TEXT">(Only applicable for Commercial or
+                  Standby Letters of Credit, both on the Import/Issued and
+                  Export/Received sides, and Export Collections., whose status
+                  is <type>Discrepant</type>, <type>Accepted</type>,
+                  <type>Full Sight Payment</type>, <type>Partial Sight
+                  Payment</type>, <type>Full Settlement</type> or
+                  <type>Partial Settlement</type>)</para><para role="TEXT">Amount of the
+                  related presentation of documents or alternatively the
+                  payment itself. </para><para role="TEXT">The outstanding amount of the
+                  transaction is updated accordingly only when the selected
+                  status is <type>Accepted</type>, <type>Full Sight
+                  Payment</type> or <type>Partial Sight
+                  Payment</type>.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Maturity Date</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">(Only applicable for Commercial or
+                  Standby Letter of Credit, both on the Import/Issued and
+                  Export/Received sides, and Export Collections, whose status
+                  is <type>Discrepant</type>, <type>Accepted</type>,
+                  <type>Full Sight Payment</type>, <type>Partial Sight
+                  Payment</type>, <type>Full Settlement</type> or
+                  <type>Partial Settlement</type>. )</para><para role="TEXT">Maturity date
+                  of the payment related to the presentation in the case of
+                  the choices <type>Discrepant</type> and
+                  <type>Accepted</type>.</para><para role="TEXT">For the other choices, it
+                  means the actual date of payment /
+                  settlement.</para><para role="TEXT">This field must be a properly
+                  formatted date and is mandatory when selecting any one of
+                  those statuses except <type>Discrepant</type>, <type>Full
+                  Settlement</type> or <type>Partial Settlement</type> for
+                  which it is optional.</para><para role="TEXT">The system will also
+                  automatically insert this maturity date into the company's
+                  calendar when selecting a status equal to
+                  <type>Accepted</type>, <type>Full Sight Payment</type> or
+                  <type>Partial Sight Payment</type>.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Attach
+                  a Cover Letter</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_check.gif"
+                                   role="CHAR_CHECK" width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Tick here if a cover letter is
+                  required. This field is present only for Direct
+                  <glossterm>EC</glossterm>.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Comment</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Any explanation or details you
+                  need to give to indicate the characteristics of the
+                  completion of the reporting. Maximum of 500 lines of 75
+                  characters. For example, for an Accepted transaction, you
+                  could provide a generic message of acceptance followed by
+                  the list of charges and commissions collected under the
+                  transaction. For Cancelled, you could enter some text to
+                  explain the reason for the Cancellation.</para><para role="TEXT">Click
+                  the list <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/icon_list.jpg"
+                                   role="ICON_LOCK" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> icon to the right of the field, to
+                  select from a list of common phrases.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Existing Record Reporting Form - Add Charge</title>
+
+        <para role="TEXT">Clicking the <emphasis role="bold">Add
+        Charge</emphasis> button in this section of the form allows the client
+        to be charged for processing the transaction. The fields on the pop up
+        form are described below:<informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"><guilabel moreinfo="none">
+                  Charge</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type of charge. Select from the
+                  drop down list: <type>Issuance Fee</type>,
+                  <type>Commission</type>, or <type>Other</type>.
+                  </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Description</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description of the charge. Click
+                  the list <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/icon_list.jpg"
+                                   role="ICON_LOCK" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> icon to the right of the field, to
+                  select from a list of common phrases.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Amount</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Amount of the charge. Click the
+                  magnifying glass <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/icon_fieldopts.jpg"
+                                   role="ICON_LOCK" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> icon to the right of the field, to
+                  select the currency.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Status</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Status of the charge. Select from
+                  the drop down list: <type>Settled</type>,
+                  <type>Waived</type>, or
+                  <type>Deferred</type>.</para></entry>
+                </row>
+
+                <row>
+                  <entry><guilabel> Settlement Date</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry>Date by which the charge must be paid.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Existing Record Reporting Form - File Upload Details</title>
+
+        <para role="TEXT">Clicking the <emphasis role="bold">Add a
+        File</emphasis> button in this section of the form, allows files to be
+        uploaded an attached to this transaction (Max 5 files and 1 Mb each).
+        It contains the following fields:<informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"><guilabel moreinfo="none"> Add a
+                  File</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Optionally, a list of files from
+                  your local hard disk giving additional details pertaining to
+                  this notification. Click <guibutton>Add a file</guibutton>
+                  to display a pop up form to add a file.</para><note>
+                      <para role="TEXT">By default, the maximum size allowed for a file
+                      attachment is 5Mb. This can be altered by the bank
+                      system administrator.</para>
+                    </note></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"/>
+
+                  <entry valign="top"/>
+
+                  <entry valign="top"/>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"><guilabel moreinfo="none">
+                  Title</guilabel> </para></entry>
+
+                  <entry valign="top"><para/></entry>
+
+                  <entry valign="top"><para role="TEXT">Title for the uploaded file. Up to
+                  255 characters. This will appear on the client user's
+                  front-end as a link to download the file.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">File</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Text field and
+                  <guibutton>Browse</guibutton> button, which you use to
+                  attach the file from your local hard disk.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Existing Record Reporting Form - Action Buttons</title>
+
+        <para role="TEXT">The operations that can be performed from this form
+        are listed below. They appear at the top (and bottom) of each relevant
+        web page. For each of them, a pop up window will appear to confirm the
+        choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry nameend="c2" namest="c1"
+                valign="top"><para role="TEXT">Operation</para></entry>
+
+                <entry valign="top"><para role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="middle"><para role="TEXT"> <guiicon
+                moreinfo="none">Save</guiicon> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Save the transaction details
+                (including the status, possible back-office reference,
+                comment, and all the optional modifications of the transaction
+                details) as a draft. The message remains as a pending record
+                without being sent to the client. No validation of the
+                mandatory fields is performed at this stage.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para role="TEXT"> <guiicon
+                moreinfo="none">Submit</guiicon> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Send the message to the client. Do
+                this when all the requested (and mandatory) transaction
+                details have been entered and the resulting record is ready
+                for submission. </para><para role="TEXT">Depending submitting users
+                jurisdiction profile (in particular, the amount they are
+                authorised to validate without an additional signature), the
+                amendment is either sent to the client or remains in the bank
+                workspace as unsigned. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para role="TEXT"> <guiicon
+                moreinfo="none">Cancel</guiicon> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Leave the current page and return to
+                the <xi:include href="../entities_en.xml"
+                xpointer="ent_Trade_MO"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> main
+                menu.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para role="TEXT"> <guiicon
+                moreinfo="none">Help</guiicon> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Open a pop up window displaying the
+                online help pages.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Existing Record Reporting Form - Edit/Hide Transaction
+        Details</title>
+
+        <para role="TEXT">The remaining sections are displayed only when the
+        <guilabel moreinfo="none">Edit Transaction Details</guilabel> link at
+        the bottom of the web page is clicked. They have the overall heading
+        <guilabel>Reported Transaction Details</guilabel>. They contain fields
+        specific to the type of product. Use these to alter any of the
+        transaction details of the transaction.</para>
+
+        <para role="TEXT">Due to its impact on potentially the whole set of
+        data constituting a record, this feature should be handled carefully.
+        This feature is very useful (and even mandatory in some cases) if any
+        data has changed during the processing of the file by the back-office,
+        hence ensuring that the customer will electronically receive a fully
+        updated view of the transaction file.</para>
+
+        <para role="TEXT">The section <emphasis>Product-Specific
+        Forms</emphasis> later in this book describes this part of the form
+        for each product, and gives a brief introduction to each
+        product.</para>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>Existing Records - Edit Transactions</title>
+
+      <para role="TEXT">This option is used to complete an advice or
+      notification message that a user has already started and saved, but not
+      yet completed.<indexterm>
+          <primary>Retrieve</primary>
+
+          <secondary>Existing Records Draft</secondary>
+        </indexterm><indexterm>
+          <primary>Existing Records</primary>
+
+          <secondary>Edit Transactions</secondary>
+        </indexterm><indexterm>
+          <primary>Edit Transactions</primary>
+
+          <secondary>Existing Records</secondary>
+        </indexterm></para>
+
+      <para role="TEXT">When this option is selected, a list is displayed of
+      advice or notification messages that have been prepared and saved by
+      users in the bank, but not yet submitted to the clients because the
+      input user either did not try to submit or had insufficient
+      privileges.</para>
+
+      <para role="TEXT"><graphic
+      fileref="./images/BUG_MidOff_existing_edit.jpg" width="160mm"/>Click
+      the <emphasis role="bold">Search Options</emphasis> link to display the
+      fields that can be used to filter the list. Only complete the fields
+      that are required for the filter. The columns show the 
+	  <xi:include href="../entities_en.xml"
+      xpointer="System_ID"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>, <guilabel
+      moreinfo="none">Company</guilabel>, <guilabel
+      moreinfo="none">Ccy</guilabel>, <guilabel moreinfo="none">Amount, User
+      Name</guilabel> (of the person who originally created the message),
+      <guilabel moreinfo="none">Input Date</guilabel> and <emphasis
+      role="bold">Status</emphasis> of each message.</para>
+
+      <para role="TEXT">Click on the <emphasis role="bold">
+	  <xi:include href="../entities_en.xml"
+      xpointer="System_ID"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/></emphasis>
+      column of the required entry to open it for further editing.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Existing Records - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option is used by an authorised bank user, to
+      submit an advice or notification that a bank user has already started
+      but been unable to submit due to insufficient authority.<indexterm>
+          <primary>Existing Records</primary>
+
+          <secondary>Retrieve Unsigned</secondary>
+        </indexterm><indexterm>
+          <primary>Retrieve Unsigned</primary>
+
+          <secondary>Existing Records</secondary>
+        </indexterm><indexterm>
+          <primary>Retrieve</primary>
+
+          <secondary>Unsigned Existing Records</secondary>
+        </indexterm></para>
+
+      <para role="TEXT">When this option is selected, a list is displayed of
+      messages that have been prepared and saved by users in the bank, but
+      have not been successfully submitted to the clients because the user had
+      insufficient privileges. Records that were simply saved with no attempt
+      to submit them are not included.</para>
+
+      <para role="TEXT"><graphic
+      fileref="./images/BUG_MidOff_existing_unsigned.jpg"
+      width="160mm"/></para>
+
+      <para role="TEXT">Click the <emphasis role="bold">Search
+      Options</emphasis> link to display the fields that can be used to filter
+      the list. Only complete the fields that are required for the
+      filter.</para>
+
+      <para role="TEXT">Click on the <emphasis role="bold">
+	  <xi:include href="../entities_en.xml"
+      xpointer="System_ID"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/></emphasis>
+      column of the required entry to open it in a non-editable mode, in order
+      to review the data and perform the submission. If sufficient
+      authorisations are allocated in the profile of the authorising user,
+      multiple records can be submitted in a single operation directly from
+      the list. Each record in the list has a check box which must be ticked
+      to select it. A <emphasis role="bold">Submit</emphasis> button at the
+      end of the page, submits all the selected records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is re-displayed.</para>
+    </section>
+  </section>

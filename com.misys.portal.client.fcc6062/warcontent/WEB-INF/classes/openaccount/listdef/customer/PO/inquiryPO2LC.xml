@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" default_order="ref_id" default_order_type="d" page="200" huge="n" identifier="tnx_id" js_binding="misys.binding.openaccount.listdef_po_lcfrompo">
+		
+	<batch type="submit">
+		<parameter name="SCREEN" value="PO_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_SUBMIT"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<icon loca_key="ACTION_USER_SUBMIT" image="/content/images/pic_form_send.gif" permission="lc_from_po"/>
+		<javascript url="misys._config.fncInitRecords()"/>		 
+	</batch>
+	
+	<!-- columns -->
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<!-- <column name="cust_ref_id" align="left" width="30%" loca_key="PO_NUMBER"/> -->
+	<column name="entity" align="left" width="30%" loca_key="ENTITY"/>	
+	<column name="seller_name" align="left" width="40%" loca_key="SELLER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>	
+	<column name="iss_date" align="center" width="6em" loca_key="INP_DTTM"/>	
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="group_id" hidden="y"/>
+	<column name="prod_stat_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		list="y"		
+		name="amount"
+		size="20"
+		loca_key="AMOUNT"
+		batch="y"
+		input="n"
+		default=""
+		/>
+	<parameter
+		list="y"		
+		name="templateid"
+		size="20"
+		loca_key="TEMPLATE"
+		batch="y"
+		input="y"
+		default=""
+		readonly="y"
+		max_length="34">
+			<javascript>
+				<parameter name="function" value="fncTemplatePopup"/>
+				<parameter name="product_code" value="PO"/>
+				<parameter name="form_name" value="TopForm"/>
+				<parameter name="entity" column = "entity"/>
+			</javascript>
+	</parameter>	
+	<parameter name="ref_id" size="12" max_length="20" loca_key="REFERENCEID" input="y" default=""/>
+	<!-- <parameter name="cust_ref_id" size="20" max_length="35" loca_key="PO_NUMBER" input="y" default=""/>	 -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>	
+	<!-- <parameter name="entity" size="20" loca_key="ENTITY" input="y" default="" multiple="y">
+    </parameter>-->
+	<parameter name="seller_name" loca_key="SELLER_NAME" size="20" max_length="35" input="y"/>
+	<parameter name="cur_code" input="y" size="3" max_length="3" loca_key="CURCODE" type="currency"/>
+
+    
+<!-- 	<parameter
+		name="export_list"
+		file_name="inquiryPO"
+		type="export"
+		default="HTMLGroups"/> -->
+
+	<!-- candidates -->	
+	<candidate name="purchase_order_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+		</filter>			
+	</candidate>
+	
+	<!--filter or ='y'>
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N005_NEW
+			</value>
+		</criteria>
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N005_UNREGISTERED
+			</value>
+		</criteria>
+	</filter-->
+	
+	<!--filter>
+		<criteria>
+			<column name="MixDualCrossReference@ref_id"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter-->		
+
+	<filter>
+		<!-- Not registered -->
+		<criteria>
+			<column name="MixCrossReference@ref_id"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>	
+
+<!-- 	<group>
+		<column name="seller_name"/>
+	</group>	 -->
+</listdef>

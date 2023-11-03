@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: Letter of Indemnity;PERM=li_access;"
+         id="LI_UX" role="TOPIC">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_Issued_LOI"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+  <para role="TEXT">This Issued Letter of Indemnity (or simply Letter of
+  Indemnity) module enables you, on behalf of your company (the applicant), to
+  initiate Letter of Indemnity (LOI or LI) requests, submit them to your
+  chosen Issuing Bank, and subsequently amend, follow up and maintain
+  them.</para>
+
+  <para role="TEXT">The Letter of Indemnity is often used in Energy &amp;
+  Commodities (particularly Oil) trade transactions to allow the consignee to
+  take delivery of goods without presenting the Bill of Lading (B/L) , which
+  may have been delayed.</para>
+
+  <para>In the Oil business, goods often change hands during the course of the
+  shipment in such a way that the B/L has not yet been passed to the previous
+  intermediary in the chain. To retrieve the goods, the next consignee must
+  therefore produce such a letter to the current shipper (company undertaking
+  the transport of the goods). The format of the LOI should be mutually
+  acceptable to both parties and should include title of the cargo, indemnity
+  against non-production of documents such as the B/L, right to deliver bills,
+  legal cost, governing law, and an obligation to put the receiver of the
+  indemnity to funds.</para>
+
+  <para>From a Fusion Corporate Channels point of view, the Letter of
+  Indemnity is very similar to the Shipping Guarantee. The main differences
+  are that the latter is more specifically used for global trade rather for
+  Energy &amp; Commodities and the Shipping Company usually submits the form
+  to be countersigned by the bank. In some cases, the LOI can also be issued
+  by the seller towards the buyer.</para>
+
+  <para role="TEXT">The chapter for each individual module gives details and
+  differences specific to the module.</para>
+
+  <section role="ITEM">
+    <title>Flow of a LOI</title>
+
+    <para>The life cycle of a Letter of Indemnity generally starts with a
+    request from a customer of the bank asking for its issuance. There is no
+    structured standardized communications from client to bank, and bank to
+    client on a LOI, but such communications may happen and are supported in
+    Fusion Corporate Channels, by the Correspondence feature of feature at the
+    client and the Bank Reporting feature at the bank.</para>
+
+    <para>The LOI generally ends with the submission to the bank of some
+    details or documents implying the cancellation of the Letter of Indemnity
+    (for example,. the presentation of the Bill of Lading). This cancellation
+    may happen automatically once required documents are presented under the
+    Letter of Credit (LC) for which the bank acts as the Issuing Bank.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>LOI in <productname id="ent_appli">Fusion Corporate
+    Channels</productname></title>
+
+    <para>Fusion Corporate Channels implements the applicant side of the
+    customer – bank relationship. The Issued Letter of Indemnity module offers
+    the functions required for the submission of a new LOI request (compatible
+    with both cases highlighted above: LOI for the shipper or LOI for the
+    buyer) and the capability for both the applicant and the bank to further
+    engage in free format communications about the request.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">The guide uses the terms like "<emphasis
+    role="bold">LI</emphasis>", "<emphasis role="bold">Letter Of
+    Indemnity</emphasis>", "<emphasis role="bold">Issued Letter of
+    Indemnity</emphasis>" and "<emphasis role="bold">LOI</emphasis>"
+    interchangeably.</para>
+
+    <para role="TEXT">The terms "<emphasis role="bold">record</emphasis>" and
+    "<emphasis role="bold">transaction</emphasis>" both refer to entries in
+    the system relating to the function being discussed.</para>
+  </section>
+
+  <section condition="TITLE= Letter of Indemnity Landing Page;PERM=li_access;ACCESS=LI_LP_UX"
+           role="TOPIC">
+    <title><xi:include href="../entities_en.xml" xpointer="ent_Issued_LOI"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> Landing Page</title>
+
+    <para>The <xi:include href="../entities_en.xml" xpointer="ent_Issued_LOI"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> Landing page displays a list
+    of LIs based on the transaction status. The Landing page view is
+    customizable based on your requirement.<note>
+        <para>You can customise the list of columns displayed through
+        SDK.</para>
+      </note></para>
+
+    <para>The following image illustrates the <xi:include
+    href="../entities_en.xml" xpointer="ent_Issued_LOI"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> landing page:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/LILanding.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Request Letter of
+          Indemnity</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Use this option to initiate a new request for
+            Letter of Indemnity, enter the desired terms of a new LI and
+            submit them to the Issuing Bank of your choice.<note>
+                <para>The LI initiation feature is available only to maker
+                user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The LI dashboard segregates transactions based on their current
+    status like draft, awaiting authorization, awaiting response from client
+    or bank rejected or purged from bank.The following ribbon items enable you
+    to perform various actions on individual LIs or in bulk, based on the tab
+    you are on. Individual tabs and related functionality are described
+    below:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/LIRibbon.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject><note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Draft</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the LIs in draft state and also the
+            transactions that checker has returned for improvement.<note>
+                <para><guimenuitem moreinfo="none">Draft</guimenuitem> tab is
+                available only to maker user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Actions</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the <xi:include
+            href="../entities_en.xml" xpointer="ent_Issued_LOI"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions on which
+            the bank has requested action from client maker user.<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para><guimenuitem moreinfo="none">Actions</guimenuitem>
+                      tab is available only to maker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Action will be based on the transaction status.
+                      This will list down transactions that is awaiting action
+                      from corporate user.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending
+          Approval</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing <xi:include
+            href="../entities_en.xml" xpointer="ent_Issued_LOI"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that are
+            awaiting client approval from a second user within the
+            corporate.<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para>The <emphasis role="bold">Authorise</emphasis>
+                      action item is available only for a checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>A user with batch submission permission can select
+                      multiple transactions to <emphasis
+                      role="bold">Approve</emphasis> or <emphasis
+                      role="bold">Return</emphasis> though the checkbox
+                      provided for every transactions listed in this
+                      tab.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      a transaction.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending at Bank
+          </guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing <xi:include
+            href="../entities_en.xml" xpointer="ent_Issued_LOI"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/> that are awaiting
+            bank approval.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Live</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the approved <xi:include
+            href="../entities_en.xml" xpointer="ent_Issued_LOI"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/> records and the
+            expired <xi:include href="../entities_en.xml"
+            xpointer="ent_Issued_LOI"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/> records by the
+            bank.<note>
+                <para>The above mentioned actions are available only for maker
+                user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Rejected</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the rejected Letter of Indemnity
+            records by the bank. The status given to such LIs is "Not
+            Processed".</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Closed</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the <xi:include
+            href="../entities_en.xml" xpointer="ent_Issued_LOI"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that
+            have been marked as purged by the Issuing Bank's Trade Services
+            team. You cannot initiate further amendments or messages on such a
+            transaction, and can only use its data for inquiry
+            purposes.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The <guiicon>Advance Filter</guiicon> presents you with various
+    filter options like <emphasis role="bold">Event</emphasis>, <emphasis
+    role="bold">Entity</emphasis>, <emphasis role="bold">Beneficiary
+    Name</emphasis>, <emphasis role="bold">Currency</emphasis> and <emphasis
+    role="bold">Expiry Date</emphasis>. Enter the relevant search criterion
+    and apply the filter to list all the relevant LIs. You can also select the
+    time frame for which data needs to be fetched.</para>
+
+    <para>You can perform the following actions on the listed
+    LIs:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of LIs</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of LI transactions displayed on the dashboard. Click on the
+          Download icon to list the formats in which the files can be
+          downloaded. You can download Current Data or Full Data.<itemizedlist>
+              <listitem>
+                <para>Current Data: Downloads the transactions displayed on
+                screen.</para>
+              </listitem>
+
+              <listitem>
+                <para>Full Data: Downloads all the transactions available
+                under a particular status tab like Draft, Rejected and
+                more.</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed
+          LIs.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      <xi:include href="../entities_en.xml" xpointer="ent_Issued_LOI"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions. The actions
+      are available in relevant tabs based on the ribbon item you are
+      on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction)</para>
+          </listitem>
+
+          <listitem>
+            <para>If there are multiple actions available for a transaction, a
+            few actions may accessed by clicking on this icon
+            <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/dots_icon.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject>.</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+			
+			<row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clear</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/clear.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to clear the transaction from list. Only
+              amendment / message rejected event can be cleared from the list,
+              however this event will still be available in
+              enquiry.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delete</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to delete the Issuance Request rejected
+              events from the list and it is no longer available in Fusion
+              Corporate Channels.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Customer
+              Instructions</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cust_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Consent Response', 'Customer
+              Instructions' and attach supporting documents if any, to submit
+              the Customer Instructions to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clean Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel>Amendment
+              Response</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amendresp_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Amendment
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Disposal Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/disposal_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to provide the disposal instructions on a
+              discrepant LI. The available options are:<itemizedlist>
+                  <listitem>
+                    <para>Agree to pay against the document</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Hold the document</para>
+                  </listitem>
+                </itemizedlist></para><para>Fill all the mandatory fields in
+              the General Details section and attach supporting documents if
+              any, to submit the Disposal Instructions to bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Cancel Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cancel_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Cancel
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Authorise</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/authorise.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to authorise the selected transaction.
+              You can either approve or return the transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Approve</emphasis>
+                      or <emphasis role="bold">Return</emphasis> a transaction
+                      is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note> </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amend</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amend_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to amend the selected transaction.<note>
+                  <para>Option to <emphasis role="bold">Amend</emphasis> a
+                  transaction is available only to a maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Request for Settlement</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Correspondence</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/correspondence_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to initiate correspondence with bank for
+              the selected transaction..</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to assign the reference to the
+              transaction for which no customer reference is assigned, this
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to update/assign the entity of
+              transaction. This provision is available under Live Tab. This
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Audit Trail</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/audit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the audit trail of transaction.
+              This option shows all the users associated with the transaction
+              since its initiation.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=li_access;ACCESS=LI_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking any
+      of the following actions against any given transaction:<itemizedlist>
+          <listitem>
+            <para>Details</para>
+          </listitem>
+
+          <listitem>
+            <para>Return</para>
+          </listitem>
+
+          <listitem>
+            <para>Approve</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Displays the transaction details, all
+              the events of transaction, attachments and charges associated
+              with the transaction. The information is spread over three tabs
+              'Transaction Details', 'Events' and 'Additional Information'.
+              Individual tabs are described below:<itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Transaction
+                    Details</emphasis>: Displays the details of the
+                    transaction that is opened from the listing page. The tab
+                    lists the fields based on the action you click against the
+                    transaction.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Events</emphasis>: Displays
+                    the history of events that transaction has gone through.
+                    The transactions are either acknowledged by the bank or a
+                    reporting event is initiated by bank that requires an
+                    action to be performed by a corporate user. <note>
+                        <para>In case an action is pending on the corporate
+                        user, a <emphasis role="bold">Respond</emphasis>
+                        button is present against the stated event, that
+                        navigates user to screen to perform the respective
+                        action.</para>
+                      </note></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Attachments' added as
+                    part of this transaction and also displays 'Documents' and
+                    'Fees and Charges' details.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Request Letter of Indemnity;PERM=li_access;ACCESS=LI_RLC_UX"
+           role="TOPIC">
+    <title>Request Letter of Indemnity</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">Request
+    Letter of Indemnity</emphasis> form. The form contains several functions
+    and allows you to initiate various types of <emphasis role="bold">Request
+    Letter of Indemnity</emphasis> request.</para>
+
+    <para role="TEXT">You can view all the sections of LI Initiation form and
+    also navigate to any section from the left pane of <emphasis
+    role="bold">Request Letter of Indemnity</emphasis> form. The sections are
+    marked with a green tick <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/ILC_Generaldetails.gif" width="16mm"/>
+        </imageobject>
+      </inlinemediaobject> when all the mandatory fields of section are filled
+    with valid values.</para>
+
+    <note>
+      <para><itemizedlist>
+          <listitem>
+            <para>The <emphasis role="bold">Request Letter of
+            Indemnity</emphasis> feature is available only for a maker
+            user.</para>
+          </listitem>
+
+          <listitem>
+            <para><guimenu>Fusion Corporate Channels</guimenu> provides a
+            option to save the transaction each time user clicks on Next or
+            manually saves the transaction.</para>
+          </listitem>
+        </itemizedlist></para>
+    </note>
+
+    <section condition="TITLE=General Details;PERM=li_access;ACCESS=LI_GD_UX"
+             role="TOPIC">
+      <title>General Details</title>
+
+      <para>This section lists all the fields pertaining to general details
+      section of <emphasis role="bold">Request Letter of Indemnity</emphasis>
+      form.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel role="bold"> Create
+              From</guilabel></entry>
+
+              <entry valign="top"><para role="TEXT">Use this option to create
+              a Letter of Indemnity from an Existing LI, Existing LC or
+              Existing EL. Upon selection of this option a list of all the
+              templates/ existing LIs, LCs or ELs get displayed for user to
+              select from. <itemizedlist>
+                  <listitem>
+                    <para>Existing LI: Create a Letter of Indemnity initiation
+                    from an existing Letter of Indemnity. This is typically
+                    where your company is the buyer and you are requesting an
+                    LI in favour of the shipper.</para>
+
+                    <para>This function displays a list of your company's
+                    existing Letters of Indemnity. "Existing" means, those
+                    transactions that have been approved by the bank.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Existing LC: Create a Letter of Indemnity initiation
+                    from an existing Import Letter of Credit or Issued Standby
+                    Letter of Credit. This is typically where your company is
+                    the buyer and you are requesting an LI in favour of the
+                    shipper.</para>
+
+                    <para>This function displays a list of your company's
+                    existing Import Letters of Credit and Issued Standby
+                    Letters of Credit. "Existing" means, those transactions
+                    that have been approved by the bank. The two types can be
+                    distinguished by the product code that the system ID
+                    starts with - LC for an Import Letter of Credit, and SI
+                    for an Issued Standby Letter of Credit.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Existing EL: Create a Letter of Indemnity initiation
+                    from an existing Export Letter of Credit or Received
+                    Standby Letter of Credit. This is typically where your
+                    company is the seller and you are requesting an LOI in
+                    favour of the buyer.</para>
+
+                    <para>This function displays a list of your company's
+                    existing Export Letters of Credit and Received Standby
+                    Letters of Credit. "Existing" means, those transactions
+                    that have been approved by the bank. The two types can be
+                    distinguished by the product code that the system ID
+                    starts with - EL for an Export Letter of Credit, and SR
+                    for a Received Standby Letter of Credit.</para>
+                  </listitem>
+                </itemizedlist></para><para>Upon selection of an existing
+              Import/Export Letter of Credit or Letter of Indemnity- Advised
+              by clicking on Browse option. The selected transaction is
+              displayed in a "<guimenu>Parent Transaction
+              Information</guimenu>" window. You can click on this icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/parent_btb_win.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to display complete parent transaction,
+              from where you can also download the transaction in PDF format,
+              by clicking on the following icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/btb_parent_dwnld.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Date on or before which
+              the documents for the LI must be presented. It must be a valid
+              date after the application date.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the name for use
+              within your company, for the LI you are creating. The field
+              allows a maximum of 34 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter reference
+              information for the beneficiary, if required. The field allows a
+              maximum of 34 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Related Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter related reference
+              information for the LI transaction, if required. The field
+              allows a maximum of 34 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Counter Signature</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select whether a counter
+              signature is required. Select the value <literal>Yes</literal>
+              or <literal>No</literal> from the dropdown.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Carrier Name</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the name of carrier
+              or vessel responsible for the shipment. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Transport Document
+              Type</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the type of
+              document against which the guarantee is issued. Available
+              options are:<programlisting>Airway Bill
+Bill of Lading
+Sea way Bill
+Other</programlisting> </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Transport Document
+              Reference</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the reference number
+              of the Transport documentation type against which the guarantee
+              is issued. The field allows up to 20 characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Transport Document
+              Date</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the document issue
+              date.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Description of Goods</guilabel></para></entry>
+
+              <entry valign="top">Description of the goods and/or services
+              covered by the Letter of Indemnity. Up to 300 lines of 65
+              characters each.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Applicant and Beneficiary Details;PERM=li_access;ACCESS=LI_AB_UX"
+             role="TOPIC">
+      <title>Applicant and Beneficiary Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Applicant</guimenu></para></entry>
+
+              <entry valign="top"><para role="TEXT">Name and address of the
+              applicant and optionally the entity (within the applicant
+              company) raising the application.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel role="bold">
+              Entity</guilabel></entry>
+
+              <entry valign="top">Entity making the application. This field is
+              only present if your company has entities defined and you are
+              attached to one or more entities. If you are attached to more
+              than one, click on the drop down icon to select one. If you are
+              attached to only one, the field is preset to that entity and
+              cannot be changed.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the applicant.
+              This field allows a maximum of 35 characters. Defaults to the
+              name of your company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the applicant.
+              This field allows a maximum of 3 lines of 35 characters each.
+              Defaults to the address of your company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Beneficiary Details</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the Type, Name and
+              address of the beneficiary. Click on the 'Name' field drop down
+              to select the associated beneficiary.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Beneficiary Type</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the role of
+              beneficiary party from the available options:<programlisting>Transportation Company
+Buyer
+Other</programlisting><note>
+                  <para>Upon selecting 'Other' as Beneficiary Type, you must
+                  fill the 'Other Beneficiary Type' field.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the beneficiary.
+              Click on the drop down for the list of beneficiaries. This field
+              allows a maximum of 35 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the
+              beneficiary. This field allows a maximum of 3 lines of 35
+              characters each.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Issuing Bank and Amount;PERM=li_access;ACCESS=LI_IBA_UX"
+             role="TOPIC">
+      <title>Issuing Bank and Amount</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Issuing Bank</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">This section specifies the
+              bank to which you want to request your Letter of
+              Indemnity.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the bank. The
+              lookup shows a list of banks that your company has a
+              relationship with.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Issuer's Reference</guilabel></para></entry>
+
+              <entry valign="top"><para>The reference (multi purpose string
+              that for instance may identify the liability line) under which
+              the transaction should be recorded. The dropdown list shows the
+              references that are defined for the above selected Issuing
+              Bank.</para><note>
+                  <para>The references shown are defined and maintained by the
+                  bank. If the bank doesn't wish to define and use references
+                  per Bank, a non bank-specific Reference field appears in the
+                  Applicant Details section instead.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Currency</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Currency code (three
+              alphabetic characters), click the drop down to set the currency
+              code.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">LI Amount</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the amount of the
+              Letter of Indemnity. The field allows a maximum of 15 characters
+              including delimiters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Instructions to Bank;PERM=li_access;ACCESS=LI_IB_UX"
+             role="TOPIC">
+      <title>Instructions to Bank</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colwidth="249*"/>
+
+          <colspec colwidth="751*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Principal Account</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Account number that you
+              want the Issuing Bank to use to debit any principal amount in
+              the life of the transaction. Click the drop down to select the
+              account.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Fee Account</guilabel> </para></entry>
+
+              <entry valign="top">Account number that you want the Issuing
+              Bank to use to debit any charges and commissions related to the
+              transaction. Click the drop down to select the account.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Any additional information
+              that would not fit in any of the narratives above. Maximum 100
+              lines of 65 characters. Click on the " button to the right of
+              this field, to select predefined phrases to insert into this
+              field.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Attachment;PERM=li_access;ACCESS=LI_AT_UX"
+             role="TOPIC">
+      <title>Attachment</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">File Upload</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Upload supporting files
+              either by 'Drag and Drop' method or by 'Browsing' to the file
+              location. You can attach up to 5 the supporting documents of
+              size 1 Mega Byte each. The file types supported are
+              <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+              PDF, GIF, ZIP</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Browse</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Browse button and Drag and
+              Drop field, which you can optionally use to attach a file from
+              your local hard disk to give additional details pertaining to
+              this Letter of Indemnity.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=li_access;ACCESS=LI_PV_UX"
+             role="Topic">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application and also allows you to
+      either Save or Submit the application.</para>
+    </section>
+  </section>
+</section>

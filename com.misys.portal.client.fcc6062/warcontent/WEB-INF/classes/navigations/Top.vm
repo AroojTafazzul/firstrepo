@@ -1,0 +1,45 @@
+## Sample.
+#set ($LogoFile = $config.getConfiguration().getString("site.header.logo"))
+#set ($LoginScreen = $config.getConfiguration().getString("screen.login"))
+#set ($LogoutScreen = $config.getConfiguration().getString("action.logout"))
+#set ($language = $gtpapp.getLanguage())
+#set ($message = $l10n.getGTPString($language,"WELCOME_MESSAGE"))
+#set ($skiplink = $l10n.getGTPString($language,"SKIPTO_CONTENT"))
+#set ($skipmenulink = $l10n.getGTPString($language,"SKIPTO_MENU"))
+#set ($login = $l10n.getGTPString($language,"LOGIN"))
+#set ($logout = $l10n.getGTPString($language,"LOGOUT"))
+#set ($user = $l10n.getString($language,"USER"))
+#set ($home = $l10n.getString($language,"HOME"))
+#set ($contextPath = $gtpapp.getContextPath())
+#set ($servletPath = $gtpapp.getServletPath())
+#if ($data.User.hasLoggedIn())
+##
+## This is the top navigation bar displayed for a logged in user
+<div class="contentWrapper" style="min-height: calc(100vh - 7.4em);">
+<!-- BEGIN WELCOME BAR  -->
+<ul style="display:none">
+ <li><a href="#GTPRootPortlet" title="$skiplink">$skiplink</a></li>
+ <li><a href="#MenuBuilder" title="$skipmenulink">$skipmenulink</a></li>
+</ul>
+<div class="header">
+ <img src="$contextPath$LogoFile" alt="$message" title="$message" width="377" height="60">
+ <h1 class="login">
+  $message &#187; <a href='$link'>$home</a>
+  <br>
+  <a href='$link.setAction($LogoutScreen)'>$logout ($user: <i>$!data.User.FirstName/$!data.User.Company</i>)</a>
+ </h1>
+</div>
+#else
+##
+## This is the top naviation bar displayed for the anonymous user, i.e. they are not logged in
+##
+<!-- BEGIN WELCOME BAR  -->
+<div class="header">
+ <img src="$contextPath$LogoFile" alt="$message" title="$message" width="377" height="60">
+ <h1 class="login">
+  $message &#187; <a href='$link'>$home</a>
+  <br>
+  <a href='$link.setScreen($LoginScreen)'>$login</a>
+ </h1>
+</div>
+#end

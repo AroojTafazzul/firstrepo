@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listdef ordered="y" default_order="creation_date" default_order_type="d" page="20" >
+
+	<column name="bene_upload_id"  hidden="y"/>
+	<column name="description" align="left" width="10%" loca_key="TITLE"/>
+	<column name="creation_date" type="Date" align="left" width="12%" loca_key="UPLOAD_DATE" isformatDate="y"/>
+	<column name= "num_total" align="left" width="12%" loca_key="NO_OF_BENEFICIARY"/>
+	<column name="product_type" align="left" width="12%"  loca_key="beneficiaryProductType" showCode="y" isColumnSortDisabled="y" isCodeField="y" codeId="N047"/>
+	<column name="status" align="left" width="12%"  loca_key="status" showCode="y" isColumnSortDisabled="y" isCodeField="y" codeId="N801"/>
+	<column name="customer_abbv_name"  hidden="y"/>
+	<column name="company_id"  hidden="y"/>
+	<column name="action" align="center" width="10%" loca_key="ACTIONS">
+	<url action="y">
+	   	<parameter name="ACTION_FILTER" value="VEAR"/>
+	</url>
+	</column>
+	
+	<!-- Parameters -->
+	
+	<parameter name="company_id" hidden="false"/>
+		
+	
+		
+	<!-- pending files -->
+	<candidate name="beneficiaryFileUpload">
+			
+	</candidate>
+	<filter>
+				<criteria>
+				 <column name="company_id"/>
+				 <operator type="equal"/>
+				 <value type="parameter">
+					company_id
+				 </value>
+				</criteria>
+			</filter>
+
+	
+</listdef>

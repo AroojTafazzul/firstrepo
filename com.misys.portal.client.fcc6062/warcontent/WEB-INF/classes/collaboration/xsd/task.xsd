@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for a Collaboration task. XML validation 
+			Copyright (c) 2000-2004 NEOMAlogic (http://www.neomalogic.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:element name="todotask">
+	    <xs:complexType>
+	        <xs:sequence>
+				<xs:element ref="task_id">
+					<xs:annotation>
+						<xs:documentation>Task Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="description" type="TwoHundredCharacters">
+					<xs:annotation>
+						<xs:documentation>Task description.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="email_notification">
+					<xs:annotation>
+						<xs:documentation>Email notification.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="email" type="FourtyCharacters">
+					<xs:annotation>
+						<xs:documentation>Email.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_user_id">
+					<xs:annotation>
+						<xs:documentation>Issue user id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_user_login_id">
+					<xs:annotation>
+						<xs:documentation>Issuer login id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_user_first_name">
+					<xs:annotation>
+						<xs:documentation>Issuer login id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_user_last_name">
+					<xs:annotation>
+						<xs:documentation>Issuer login id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_company_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Issuer login id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_company_name">
+					<xs:annotation>
+						<xs:documentation>Issuer login id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_date">
+					<xs:annotation>
+						<xs:documentation>Issue date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_user_id">
+					<xs:annotation>
+						<xs:documentation>Assignee user id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_user_first_name">
+					<xs:annotation>
+						<xs:documentation>Destination User first name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_user_last_name">
+					<xs:annotation>
+						<xs:documentation>Destination User last name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_user_login_id">
+					<xs:annotation>
+						<xs:documentation>Assignee login id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_user_email_notif">
+					<xs:annotation>
+						<xs:documentation>Notifying Destination user Y/N.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_user_email">
+					<xs:annotation>
+						<xs:documentation>Destination User Email Address</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_user_email_sent">
+					<xs:annotation>
+						<xs:documentation>Acknowledgement to Destination User's Email</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_company_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Assignee company abbreviated name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_company_name">
+					<xs:annotation>
+						<xs:documentation>Assignee company name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_company_email_notif">
+					<xs:annotation>
+						<xs:documentation>Assignee company email notification.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_company_email">
+					<xs:annotation>
+						<xs:documentation>Assignee company email.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dest_company_email_sent">
+					<xs:annotation>
+						<xs:documentation>Email Sent to Destination Company Y/N</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="type" type="taskType">
+					<xs:annotation>
+						<xs:documentation>Task type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="assignee_type" type="assigneeType">
+					<xs:annotation>
+						<xs:documentation>Task assignee type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="performed">
+					<xs:annotation>
+						<xs:documentation>Task performance.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="frozen">
+					<xs:annotation>
+						<xs:documentation>Frozen Y/N</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="todo_list_id">
+					<xs:annotation>
+						<xs:documentation>Todo list id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+</xs:schema>

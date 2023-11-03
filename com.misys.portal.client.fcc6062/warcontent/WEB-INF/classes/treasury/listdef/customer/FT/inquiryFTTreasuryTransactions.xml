@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="50">
+
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="FT_TREASURY_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="15%" loca_key="ENTITY"/>
+	<column name="bo_ref_id" align="left" width="15%" loca_key="BO_REFERENCEID"/>
+	<column name="cust_ref_id" align="left" width="15%" loca_key="CUST_REFERENCEID"/>
+	
+	<!--The name of the beneficiary is stored in the database if there is one, otherwise, the number is stored
+		in an ObjectDataString or ObjectDataNumber respectively. -->
+	<column name="counterparty_name" align="center" width="25%" loca_key="BENEFICIARY_NAME">
+		<script>
+			if (value.equals(""))
+			{
+				value = row.getColumnValue("ObjectDataNumber@counterparty_nb") +" "+ com.misys.portal.common.localization.Localization.getGTPString(language, "BENEFICIARY_LABEL");
+			}
+			value;
+		</script>
+	</column>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="sub_product_code" align="center" width="15%" loca_key="PRODUCT_SUBTYPE"/>
+	<column name="iss_date" align="center" width="6em" loca_key="REQUEST_DATE"/>
+	<column name="prod_stat_code" align="center" width="5%" loca_key="STATUS" sort="n"/>
+	<column name="product_code" hidden="y"/>
+	<column name="ObjectDataNumber@counterparty_nb" hidden="y"/>
+	
+	<!--<batch type="zip">
+		<parameter name="SCREEN" value="CURRENT"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_ZIP"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		 In Zip Case the transaction id must be *  to get all the folder  
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	
+	--><!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="34"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="PRODUCT_SUBTYPE"
+	    type="AvaliableSubProductType"
+	    input="y"
+	    multiple_values="TRINT,TRTPT"/>		    
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="CUST_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+	<parameter
+		name="counterparty_name"
+		input="y"
+		size="20"
+		max_length="35"
+		loca_key="BENEFICIARY_NAME"/>
+	<parameter
+		name="export_list"
+		file_name="inquiryFT"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->	
+	<candidate name="fund_transfer_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PENDING
+				</value>
+			</criteria>
+			
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="equal"/>
+			<value type="parameter">
+				sub_product_code
+			</value>
+		</criteria>
+		
+		<criteria>
+				<column name="sub_product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N047_TREASURY_TRANSFER_INTERNAL
+					</value>	
+					<value type="code">
+						N047_TREASURY_PAYMENT_EXTERNAL
+					</value>		
+				</value>
+		</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

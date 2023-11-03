@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" page="50" default_order="ref_id" default_order_type="d">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url candidate="foreign_exchange_master">
+			<parameter name="SCREEN" value="FX_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_EXISTING"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+		</url>
+	</column>
+	<column name="bo_ref_id" align="center" width="8em" loca_key="BO_REFERENCEID"/>
+	<column name="entity" align="left" width="30%" loca_key="ENTITY"/>
+	<column name="cust_ref_id" align="left" width="15%" loca_key="CUST_REFERENCEID"/>
+	<column name="contract_type" align="center" width="6em" loca_key="CONTRACT_TYPE"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="fx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="counter_cur_code" align="center" width="4em" loca_key="CTR_CURCODE"/>
+	<column name="counter_amt" align="right" width="4em" loca_key="CTR_AMOUNT"/>
+	<column name="value_date" align="center" width="6em" loca_key="VALUEDATE"/>
+	<column name="sub_product_code" align="center" width="8em" loca_key="DEAL_TYPE"/>
+
+	
+	<!-- Parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="DEAL_TYPE"
+	    type="AvaliableSubProductType"
+	    input="y"
+	    multiple_values="SPOT,FWD,WFWD"/>		
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+	<parameter
+		name="counter_cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CTR_CURCODE"
+		type="currency"/>
+	
+	<!-- Candidates -->	
+	<!-- pending files -->
+	<candidate name="foreign_exchange_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						sub_product_code
+					</value>
+			</criteria>
+		</filter>
+	</candidate>
+		
+	<!-- Common filters -->
+	<!-- Common filters -->
+	<filter>
+		<criteria>
+			<column name="ref_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+				ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="entity"/>
+			<operator type="like"/>
+			<value type="parameter">
+				entity
+			</value>
+		</criteria>		
+		<criteria>
+			<column name="counter_cur_code"/>
+			<operator type="like"/>
+			<value type="parameter">
+				counter_cur_code
+			</value>
+		</criteria>
+		<criteria>
+			<column name="value_date"/>
+			<operator type="supOrEqual"/>
+			<value type="date">current</value>
+		</criteria>
+	</filter>
+	<!-- MPS-23163 & MPS-25384 filter condition using reference from foreign exchange tnx table -->	
+	<filter>
+		<criteria>
+			<column name="foreign_exchange@ref_id"/>
+			<operator type="like"/>
+			<value type="column">
+				ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="foreign_exchange@bo_tnx_id"/>
+			<operator type="isNotNull" />
+		</criteria>			
+		<criteria>
+			<column name="foreign_exchange@tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_NEW
+			</value>
+		</criteria>		
+	</filter>
+	<filter or="y">
+		<criteria>
+			<column name="foreign_exchange@action_req_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N042_STANDING_INSTRUCTIONS
+			</value>
+		</criteria>	
+		<!-- MPS-57324 -->
+		<!-- <criteria>
+			<column name="foreign_exchange@RECEIPT_COMPLETED_INDICATOR"/>
+			<operator type="isNull"/>
+		</criteria>	
+		<criteria>
+			<column name="foreign_exchange@RECEIPT_COMPLETED_INDICATOR"/>
+			<operator type="equal"/>
+			<value type="string">
+				N
+			</value>
+		</criteria>	 -->
+		<criteria>
+			<column name="foreign_exchange@tnx_stat_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N004_ACKNOWLEDGED
+			</value>
+		</criteria>	
+	</filter>	
+	<!--End of code fix MPS-23163 & MPS-25384 -->	
+</listdef>

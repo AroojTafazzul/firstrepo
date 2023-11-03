@@ -1,0 +1,455 @@
+<project name="Portal Documentation" default="allFCCmanual" basedir=".">
+	<!--The directory containing the FCC docbook manuals -->
+	<input message="Please enter the path of the source file (default is ./../../manuals)" addproperty="docpath" defaultvalue="./../../manuals"/>
+	<input message="Please enter the language of the manuals " addproperty="out.lang" defaultvalue="en"/>
+	<property name="manual.dir" location="${docpath}"/>	
+	<property name="lib.dir" location="./../lib/docbook"/>
+	<property name="fop.home" location="${lib.dir}/fop-2.6"/>
+	<property name="common.lib" location="../../warcontent/WEB-INF/lib"/>
+	<property name="docbookxsl.dir" location="${lib.dir}/docbookxsl-1.70.1" />
+	<property name="endorsed.dir" location="../lib/endorsed" />
+		<!--The output directory -->
+	<property name="output.dir" location="./output" />
+	<!--The output directory for pdf -->
+	<property name="pdf.dir" location="${output.dir}/pdf" />
+	<!--The directory containing the html generated manuals -->
+	<property name="html.dir" location="${output.dir}/html" />
+	<!--The directory containing the chunkhtml manuals -->
+	<property name="chunkhtml.dir" location="${output.dir}/chunkhtml" />
+	<!--output format-->
+	<property name="out.format" value="pdf" />
+	<!-- Double sided pdf, defaultly, the generated pdf is not double sided-->
+	<property name="double.sided" value="0" />
+	
+	<!-- ================================= 
+	  Edit this proporties if you want change the used stylesheet
+	    ================================= -->
+	<!--open office to docbook-->
+	<property name="openofficestylesheet" value="${docbookxsl.dir}/custom/ooffice2docbook.xsl" />
+	<!--docbook to FO (FCC Manual)-->
+	<property name="fostylesheet" value="${docbookxsl.dir}/custom/docbook.xsl" />
+	<!--docbook to HTML-->
+	<property name="htmlstylesheet" value="${docbookxsl.dir}/html/docbook.xsl" />
+	<!--docbook to chunkHTML-->
+	<property name="chunkhtmlstylesheet" value="${docbookxsl.dir}/html/chunk.xsl" />
+	
+	<path id="theClassPath">
+		<fileset dir="${fop.home}/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${common.lib}">
+			<include name="fop-2.6.jar"/>
+			<include name="xmlgraphics-commons-2.6.jar"/>
+			<include name="itext-2.1.7.jar"/>
+			<include name="slf4j-api-1.7.32.jar"/>
+			<include name="slf4j-log4j12-1.7.32.jar"/>
+			<include name="log4j-api-2.17.1.jar"/>
+			<include name="log4j-core-2.17.1.jar"/>
+			<include name="log4j-slf4j-impl-2.17.1.jar"/>
+			
+		</fileset>
+		<pathelement location="${docbookxsl.dir}/extensions/xalan27.jar" />
+		<pathelement path="${lib.dir}/docbook.jar" />
+		<pathelement path="config/localization" />
+		<pathelement location="catalog" />
+		<pathelement path="${lib.dir}/commons-cli-1.0.jar" />
+		<pathelement path="${lib.dir}/ojdbc6.jar" />
+	</path>
+	
+	<!-- ================================= 
+          target: includer 
+          Resolve Xinclude.             
+         ================================= -->
+	<target name="includer">
+		<echo message="Resolving xinclude for the manual ${manualname}_${out.lang}" />
+		<java classname="com.neomalogic.docbook.XIncluder" dir="${manual.dir}/${manualname}" fork="true" failonerror="true" output="${manual.dir}/${manualname}/resolved_${out.lang}.xml">
+			<arg value="${manual.dir}/${manualname}/${manualname}_${out.lang}.xml" />
+			<classpath>
+				<fileset dir="${endorsed.dir}">
+					<include name="*.jar"/>
+				</fileset>
+				<pathelement location="catalog"/>
+				<pathelement path="${lib.dir}/docbook.jar" />
+			</classpath>
+		</java>
+		<echo message="Success in resolving xinclude for the manual ${manualname}_${out.lang}" />
+	</target>
+	
+	<!-- ================================= 
+          target: insertHelpClient            
+         ================================= -->
+	<target name="insertHelpClient" description="--> Insert help into database">
+		<input message="Please specify if you want to index the onlinehelp, add -index for indexing [-index|]" addproperty="index" defaultvalue=""/>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_user_client" />
+		</antcall>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_admin_client" />
+		</antcall>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_user_bank" />
+		</antcall>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_admin_bank" />
+		</antcall>
+		<property name="helpfilename1" location="${manual.dir}/FCC_user_client/resolved_${out.lang}.xml" />
+		<property name="helpfilename2" location="${manual.dir}/FCC_admin_client/resolved_${out.lang}.xml" />
+		<property name="helpfilename3" location="${manual.dir}/FCC_user_bank/resolved_${out.lang}.xml" />
+		<property name="helpfilename4" location="${manual.dir}/FCC_admin_bank/resolved_${out.lang}.xml" />
+		
+		<java classname="com.neomalogic.onlinehelp.Generator" fork="true" failonerror="true">
+			<sysproperty key="log4j.configuration" value="log4j2.xml"/>
+			<sysproperty key="java.endorsed.dirs" value="${endorsed.dir}"/>
+			<arg value="${index}" />
+			<arg line="-operation inserthelp" />
+			<arg value="${helpfilename1}" />
+			<arg value="${helpfilename2}" />
+			<arg value="${helpfilename3}" />
+			<arg value="${helpfilename4}" />
+			<classpath refid="theClassPath" />
+			<classpath>
+				<pathelement path="${lib.dir}"/>
+				<pathelement path="${lib.dir}/docbook.jar"/>
+				<pathelement path="config/localization" />
+				<pathelement path="config/catalog" />
+				<pathelement path="config" />
+				<pathelement path="${lib.dir}/commons-cli-1.0.jar" />
+			</classpath>
+		</java>
+		
+		<delete file="${helpfilename1}" />
+		<delete file="${helpfilename2}" />
+		<delete file="${helpfilename3}" />
+		<delete file="${helpfilename4}" />
+		
+	</target>
+
+	<!-- ================================= 
+          target: generateHelpClient            
+         ================================= -->
+	<target name="generateHelpClient" description="--> Generate online help html">
+
+		<antcall target="includer">
+			<param name="manualname" value="FCC_user_client" />
+		</antcall>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_UX_help" />
+		</antcall>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_admin_client" />
+		</antcall>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_user_bank" />
+		</antcall>
+		<antcall target="includer">
+			<param name="manualname" value="FCC_admin_bank" />
+		</antcall>
+		
+		<property name="helpfilename1" location="${manual.dir}/FCC_user_client/resolved_${out.lang}.xml" />
+		<property name="helpfilename2" location="${manual.dir}/FCC_admin_client/resolved_${out.lang}.xml" />
+		<property name="helpfilename3" location="${manual.dir}/FCC_user_bank/resolved_${out.lang}.xml" />
+		<property name="helpfilename4" location="${manual.dir}/FCC_admin_bank/resolved_${out.lang}.xml" />
+		<property name="helpfilename5" location="${manual.dir}/FCC_UX_help/resolved_${out.lang}.xml" />
+		<mkdir dir="${output.dir}/online help" />
+		
+		<java classname="com.neomalogic.onlinehelp.Generator" fork="true" failonerror="true">
+			<sysproperty key="log4j.configuration" value="log4j2.xml"/>
+			<sysproperty key="java.endorsed.dirs" value="${endorsed.dir}"/>
+			<arg line="-operation generatehtml" />
+			<arg value="${helpfilename1}" />
+			<arg value="${helpfilename2}" />
+			<arg value="${helpfilename5}" />
+			<classpath refid="theClassPath" />
+			<classpath>
+				<pathelement path="${lib.dir}/docbook.jar"/>
+				<pathelement path="config/localization" />
+				<pathelement path="config/catalog" />
+				<pathelement path="${lib.dir}/commons-cli-1.0.jar" />
+			</classpath>
+		</java>
+
+		<java classname="com.neomalogic.onlinehelp.Generator" fork="true" failonerror="true">
+			<sysproperty key="log4j.configuration" value="log4j2.xml"/>
+			<sysproperty key="java.endorsed.dirs" value="${endorsed.dir}"/>
+			<arg line="-operation generatehtml" />
+			<arg value="${helpfilename3}" />
+			<arg value="${helpfilename4}" />
+			<classpath refid="theClassPath" />
+			<classpath>
+				<pathelement path="${lib.dir}/docbook.jar"/>
+				<pathelement path="config/localization" />
+				<pathelement path="config/catalog" />
+				<pathelement path="${lib.dir}/commons-cli-1.0.jar" />
+			</classpath>
+		</java>
+	</target>
+	
+	<!-- ================================= 
+          target: allFCCmanual              
+         ================================= -->
+	<target name="allFCCmanual" depends="FCC_admin_bank, FCC_admin_client, FCC_user_bank, FCC_user_client, FCC_UX_help" description="--> Create all FCC manuals" />
+
+	
+	<!-- ================================= 
+	          target: FCC_release_notes       
+         ================================= -->
+	<target name="FCC_release_notes"  description="--> Create the FCC_release_notes document">
+		<!-- Switch to the release notes stylesheet  -->
+		<antcall target="init">
+			<param name="manualname" value="FCC_release_notes" />
+			<param name="manualtitle" value="Finastra - Fusion Corporate Channel" />
+			<param name="manualsubject" value="FCC Release Notes - v6.0" />
+			<param name="fostylesheet" value="${docbookxsl.dir}/custom/releasenotes.xsl" />
+		</antcall>
+	</target>
+	
+	<!-- ================================= 
+          target: FCC_admin_bank           
+         ================================= -->
+	<target name="FCC_admin_bank"  description="--> Create the FCC_admin_bank manual">
+		<antcall target="init">
+			<param name="manualname" value="FCC_admin_bank" />
+			<param name="manualtitle" value="Finastra - Fusion Corporate Channel" />
+			<param name="manualsubject" value="Administrator Manual - Bank - v6.0" />
+		</antcall>
+	</target>
+
+	<!-- ================================= 
+          target: FCC_admin_client          
+         ================================= -->
+	<target name="FCC_admin_client"  description="--> Create the FCC_admin_client manual">
+		<antcall target="init">
+			<param name="manualname" value="FCC_admin_client" />
+			<param name="manualtitle" value="Finastra - Fusion Corporate Channel" />
+			<param name="manualsubject" value="Administrator Manual - Client - v6.0" />
+		</antcall>
+	</target>
+
+	<!-- ================================= 
+          target: FCC_user_bank       
+         ================================= -->
+	<target name="FCC_user_bank"  description="--> Create the FCC_user_bank manual">
+		<antcall target="init">
+			<param name="manualname" value="FCC_user_bank" />
+			<param name="manualtitle" value="Finastra - Fusion Corporate Channel" />
+			<param name="manualsubject" value="User Manual - Bank - v6.0" />
+		</antcall>
+	</target>
+	
+	<!-- ================================= 
+          target: FCC_user_client        
+         ================================= -->
+	<target name="FCC_user_client"  description="--> Create the FCC_user_client manual">
+		<antcall target="init">
+			<param name="manualname" value="FCC_user_client" />
+			<param name="manualtitle" value="Finastra - Fusion Corporate Channel" />
+			<param name="manualsubject" value="User Manual - Client - v6.0" />
+		</antcall>
+	</target>
+	
+	<!-- ================================= 
+      target: FCC New UX HelpFile <Only for internal Finastra User>    
+     ================================= -->
+<target name="FCC_UX_help"  description="--> Create the online help manual">
+	<antcall target="init">
+		<param name="manualname" value="FCC_UX_help" />
+		<param name="manualtitle" value="Online help file content for Modern FCC Dashboard" />
+		<param name="manualsubject" value="UX Help for V6.0"/>
+	</antcall>
+</target>
+
+
+	
+	<!-- ================================= 
+      target: init
+      Set up global properties of the build             
+     ================================= -->
+	<target name="init">
+		<!--fo document-->
+		<property name="foresult" location="${pdf.dir}/${manualname}/${manualname}_${out.lang}.fo" />
+	
+		<!--pdf doc-->
+		<property name="pdfresult" location="${pdf.dir}/${manualname}/${manualname}_${out.lang}.pdf" />
+	
+		<!--docbook manuals-->
+		<property name="docbookresult" location="${manual.dir}/${manualname}/${manualname}_${out.lang}.xml" />
+	
+		<!--html doc -->
+		<property name="htmlresult" location="${html.dir}/${manualname}/${manualname}_${out.lang}.html" />
+	
+		<!--chunkhtml doc -->
+		<property name="chunkhtmlresult" location="${chunkhtml.dir}/${manualname}" />
+	
+		<!-- Main class for Fop-->
+		<echo message="Using ${fop.main} to generate the pdf document."/>
+	
+		<antcall target="${out.format}" />
+	</target>
+	
+
+	<!-- ================================= 
+          target: pdf
+          Transforms FO manuals in  final PDF manuals 
+          
+         ================================= -->
+	<!-- New method to lauch FOP, works but problems with <font-base> property in fopnewconfig.xml -->
+	<target name="pdf_new" depends="fo" description="Generates a single AFP file from an XSLT stylesheet">
+		<fop format="application/pdf" 
+		        fofile="${foresult}"
+		        outfile="${pdfresult}"
+				basedir="${output.dir}/${out.format}/${manualname}"
+				userconfig="${docbookxsl.dir}/custom/fonts/fopnewconfig.xml" />
+	</target>
+
+	<target name="pdf" depends="fo">
+		<echo message="Transforming '${foresult}'" />
+		<java classname="org.apache.fop.cli.Main" fork="true" failonerror="true">
+			<arg value="-fo" />
+			<arg path="${foresult}" />
+			<arg value="-pdf" />
+			<arg path="${pdfresult}" />
+			<arg value="-c" />
+			<arg path="${docbookxsl.dir}/custom/fonts/fopnewconfig.xml" />
+			<jvmarg value="-Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog" />
+			<jvmarg value="-Xss2m" />
+			<jvmarg value="-Xmx1024m" />
+			<classpath refid="theClassPath" />
+		</java>
+		<echo message="Success! See '${pdfresult}' for the output." />
+		<delete file="${foresult}" />
+		<!-- Delete all images copied during the initlialization. See the init and copyimages targets -->
+		<delete dir="${pdf.dir}/${manualname}/images"/>
+		<delete dir="${pdf.dir}/images"/>
+
+		<echo message="Success deleting fo files ${foresult}." />
+		
+		<java classname="com.neomalogic.docbook.WaterMarker" failonerror="true" fork="true">
+				<sysproperty key="DEBUG" value="true" />
+				<arg value="${pdf.dir}/${manualname}/" />
+				<arg value="${manualname}_${out.lang}.pdf" />
+				<arg value="images/watermark.png" />
+
+				<classpath>
+					<pathelement location="${lib.dir}/docbook.jar" />
+				</classpath>
+			<classpath refid="theClassPath"></classpath>
+		</java>
+	</target>
+	
+	<target name="fo" depends="prepare, copyimages">
+		<echo message="Transforming '${docbookresult}' using '${fostylesheet}'" />
+		<java classname="org.apache.xalan.xslt.Process" failonerror="true" fork="true">
+			<jvmarg line="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+			<jvmarg line="-Djava.endorsed.dirs='${endorsed.dir}'"/>
+			<jvmarg value="-Xss2m" />
+			<arg line="-ENTITYRESOLVER org.apache.xml.resolver.tools.CatalogResolver" />
+			<arg line="-out '${foresult}'" />
+			<arg line="-in '${docbookresult}'" />
+			<arg line="-xsl '${fostylesheet}'" />
+			<arg line="-param targets.filename '${output.dir}/db/${manualname}.db'"/>
+			<arg line="-param collect.xref.targets yes" />
+			<arg line="-param current.docid ${manualname}" />
+			<arg line="-param use.extensions 1" />
+			<arg line="-param double.sided ${double.sided}" />
+			<classpath refid="theClassPath" />
+		</java>
+
+		<echo message="Success! See '${foresult}' for the output." />
+	</target>
+	
+	<!-- ================================= 
+          target: prepare 
+          Target to create the directories where are stored the generated documents             
+         ================================= -->
+	<target name="prepare" depends="sourcExist, clean">
+		<echo message="Creating destination directories..." />
+		<mkdir dir="${output.dir}/${out.format}" />
+		<mkdir dir="${output.dir}/${out.format}/${manualname}" />
+		<mkdir dir="${output.dir}/${out.format}/${manualname}/images" />
+		<echo message="Success in creating destination directories." />
+	</target>
+	
+	<!-- ================================= 
+          target: copyimages
+          copy the imgages in the output directory
+          that that is the location where the manual is
+          generated.   
+         =================================-->
+	<target name="copyimages">
+		<condition property="dirExist">
+			<available file="${manual.dir}/images" type="dir" />
+		</condition>
+		<antcall target="copycommonimages" />
+		<condition property="directoryExist">
+			<available file="${manual.dir}/${manualname}/images" type="dir" />
+		</condition>
+		<antcall target="copyspecificimages" />
+	</target>
+	
+	<!-- ================================= 
+	      target: sourcExist
+	      Check if the source file exists              
+	     ================================= -->
+	<target name="sourcExist">
+		<echo message="Checking if the ${manual.dir}/${manualname}/${manualname}_${out.lang}.xml file exists..." />
+		<condition property="docbookexist">
+			<available file="${manual.dir}/${manualname}/${manualname}_${out.lang}.xml" />
+		</condition>
+		<antcall target="fail" />
+	</target>
+	
+	<!-- ================================= 
+          target: clean
+          Delete the old manual that is going to be transformed            
+         ================================= -->
+	<target name="clean">
+		<echo message="Deleting ${output.dir}/${out.format}/${manualname}..." />
+		<delete dir="${out.format}/${manualname}" />
+		<delete file="${output.dir}/db/${manualname}.db"/>
+		<echo message="Success in deleting ${output.dir}/${out.format}/${manualname}." />
+	</target>
+	
+	<!-- ================================= 
+          target: fail              
+         ================================= -->
+	<target name="fail" unless="docbookexist">
+		<fail>Error, ${manual.dir}/${manualname}/${manualname}_${out.lang}.xml doesn't exist. Check if you are set up the manualname property correctly.
+        </fail>
+	</target>
+	
+	<!-- ================================= 
+          target: copycommonimages 
+          copy the images in a directory.
+         =================================-->
+	<target name="copycommonimages" if="dirExist">
+		<copy todir="${output.dir}/${out.format}/${manualname}/images">
+			<fileset dir="${manual.dir}/images">
+				<include name="**/*.gif" />
+				<include name="**/*.jpg" />
+				<include name="**/*.png" />
+			</fileset>
+		</copy>
+		<copy todir="${output.dir}/${out.format}/images">
+			<fileset dir="${manual.dir}/images">
+				<include name="**/*.gif" />
+				<include name="**/*.jpg" />
+				<include name="**/*.png" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<!-- ================================= 
+          target: copyspecificimages
+          Copy the specific images relative to the processing manual.           
+         ================================= -->
+	<target name="copyspecificimages" if="directoryExist">
+		<copy todir="${output.dir}/${out.format}/${manualname}/images">
+			<fileset dir="${manual.dir}/${manualname}/images">
+				<include name="**/*.gif" />
+				<include name="**/*.jpg" />
+				<include name="**/*.png" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>

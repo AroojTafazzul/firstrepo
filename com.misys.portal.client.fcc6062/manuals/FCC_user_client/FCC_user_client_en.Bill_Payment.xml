@@ -1,0 +1,1492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter id="Bill_Payment">
+  <title>Bill Payment</title>
+
+  <section condition="TITLE=Cash Services: Bill Payment;PERM=ft_bill_access"
+           id="BILLP" role="TOPIC">
+    <title><xi:include href="../entities_en.xml" xpointer="ent_Bill_Payment"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+    <para role="TEXT">The <emphasis role="bold">Bill Payment</emphasis>
+    function allows payment requests to be made to the bank for bills from
+    registered Payees.</para>
+
+    <section role="ITEM">
+      <title>Bill Payment - Navigation</title>
+
+      <para role="TEXT">To navigate to the <emphasis role="bold">Bill
+      Payment</emphasis> function, from the tool bar, select <emphasis>Cash
+      Services</emphasis> &gt; <emphasis>Bill Payment</emphasis>.</para>
+
+      <para role="TEXT">Alternatively, depending on the Cash Services function
+      already selected, there may be a link to the <emphasis role="bold">Bill
+      Payment</emphasis> function in the left hand side navigation
+      menu.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Bill Payment - Options</title>
+
+      <para role="TEXT">The Bill Payment function allows access to the Bill
+      Payment module provided by Cash Portal. In the left side navigation menu
+      of the <emphasis>Cash services</emphasis> &gt; <emphasis>Bill
+      Payment</emphasis> page, a number of options are provided for Bill
+      Payment.</para>
+
+      <para role="TEXT">The following options are available for Bill
+      Payment.</para>
+
+      <para role="TEXT"><variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">New
+            Payment</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a new Bill Payment request.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Biller
+            Service</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Select from a list of service payees to generate a new
+              Bill Payment request.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit Bill Payment records that a
+              user has already created and saved, but not submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit Bill Payment records that a user has,
+              but have not been submitted due to lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section condition="TITLE=Bill Payment: New Payment;PERM=ft_bill_access;ACCESS=BILLP_01"
+             id="CS_BP_new" role="TOPIC">
+      <title>Bill Payment - New Payment</title>
+
+      <para role="TEXT">When the New option is selected from the side
+      navigation menu of the <emphasis>Cash services</emphasis> &gt;
+      <emphasis>Bill Payment</emphasis> page, it allows for the payment
+      requests to be made for new bills that have been received from
+      registered payees. This option will display a list of all outstanding
+      bills that have been loaded into the system.</para>
+
+      <para role="TEXT">Click the <emphasis role="bold">Search
+      Options</emphasis> link to display the fields that can be used to filter
+      the list. These are <emphasis role="bold">Bank, Payee Name </emphasis>or
+      <guilabel moreinfo="none">Category</guilabel> fields. To display all
+      records, enter an asterisk in any of the criteria fields.</para>
+
+      <para role="TEXT">The columns returned in the list of system are the
+      following:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The name of the bank holding the
+                bill.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Payee
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The name of the account that raised
+                the bill.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Local
+                Payee Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The name of the account that raised
+                the bill, in the local language.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Category</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of bill.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Payee
+                Description</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">A description of the goods or
+                services provided by the Payee.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>To select a bill for payment, click on the bill entry
+      in the table of bills. When a bill is selected the system will request
+      details regarding the Entity and account that is to pay the bill.</para>
+
+      <para role="TEXT">The details required are:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel
+                moreinfo="none">Entity</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">The name of the Entity associated with the
+                bill when it was loaded into the system.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Debit
+                Account</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Enter the account number that payment is
+                to be made from. Click the magnifying glass icon to display
+                and select from a list of valid accounts.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Recurring
+                Payment</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Place a tick in this box if the
+                payment is to be a regularly occurring
+                transfer.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>When all fields have been completed, click the
+      <emphasis role="bold">Ok</emphasis> button to specify the other
+      remittance details.</para>
+
+      <para role="TEXT">The following sections describe the details
+      required.</para>
+
+      <section role="ITEM">
+        <title>New Payment form - General Details</title>
+
+        <para role="TEXT">The general details section describe the details
+        already entered.</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">
+                  Entity</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">The Entity the payment is to come from.
+                  Click the magnifying glass icon to display and select from a
+                  list of valid Entities.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> Debit
+                  Account</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">The account number that payment is to be
+                  made from. Click the magnifying glass icon to display and
+                  select from a list of valid accounts.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Product
+                  Type</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">The Product type. (Bill
+                  Payment)</para></entry>
+                </row>
+                
+ 				<row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The bank holding the
+                requested account.</para><note>
+                    <para role="TEXT">If you are linked to more than one bank, 
+                    the Bank dropdown is available. If you are linked to only one bank, 
+                    the field defaults to that bank and cannot be modified.</para>
+                  </note>
+                </entry>
+              </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">System
+                  ID</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Unique reference number generated
+                  by <xi:include href="../entities_en.xml"
+                  xpointer="ent_appli"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/> for this
+                  Payment request.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Application Date</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Todays Date</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>New Payment form - Recurring Payment Details</title>
+
+        <para role="TEXT">Enter the Recurring Payment details as follows. This
+        section is only displayed if <emphasis>Recurring Payment</emphasis> is
+        selected on the first <emphasis>New Remittance MT101</emphasis>
+        request screen</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">Start
+                  Date</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">Enter the date the first payment is to
+                  be made.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> Frequency
+                  Mode</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Select the frequency of the
+                  payment from the dropdown menu. Options are: <programlisting
+                  format="linespecific">Daily
+Weekly 
+Monthly
+Quarterly</programlisting></para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">No of
+                  Transfers</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter the number of
+                  payments/transfers that are to be made.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">End
+                  Date</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter the date the last payment is
+                  to be made.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+
+        <note>
+          <para role="TEXT">Either <guilabel>No of Transfers</guilabel> or <guilabel>End
+          Date</guilabel> will be displayed based on the configuration
+          selected by your administrator.</para>
+        </note>
+      </section>
+
+      <section role="ITEM">
+        <title>New Payment form - Transaction Details</title>
+
+        <para role="TEXT">Enter the Transaction details as follows.</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Payee</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">The name of the Payee from the
+                  Bill.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> (bill
+                  reference fields)</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">Bill reference fields may also be
+                  displayed or required. These fields are defined by the bank
+                  to provide the appropriate information to correctly
+                  reference the associated bill. Some fields may have been
+                  pre-populated when the bill was registered by the Client
+                  Administrator. Other fields may be optional or mandatory
+                  (indicated by a red "*") for input. Click the "?" icon to
+                  the right of the field for more information on what values
+                  are required.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> Payment
+                  Amount</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">The amount on the bill to be
+                  paid</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">Transfer
+                  Date</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter the date the bill is to be
+                  paid.</para><note>
+                      <para role="TEXT">This field is not available if you have selected
+                      recurring payments option.</para>
+                    </note></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">Customer
+                  Ref</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">Enter the customers reference number for
+                  the bill payment.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>New Payment form - Transaction Remarks</title>
+
+        <para role="TEXT">Enter the Beneficiary Advice details, if required,
+        as follows.</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Transaction Remarks</guilabel> (Reference is
+                  used within Business Internet Banking only)</para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter any extra relevant remarks
+                  for this payment. Click the button to the right of this
+                  field, to select predefined phrases to insert into this
+                  field.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>New Payment form - Action Buttons</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Name</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Save</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Click this button to save the current Bill
+                Payment request. The Remittance request will be saved with a
+                status of "Draft" and can be updated and finalised at a later
+                time.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Submit</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This option will submit the Bill Payment
+                request for submission to the bank. If further Authorisations
+                are required, it will be held back with a status of "Unsigned"
+                until submitted by an Authorizing user.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Cancel</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button cancel the
+                creation of the current Bill Payment request and to clear any
+                details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Help</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">This button displays an online help
+                facility that describes the fields associated with the Bill
+                Payment request.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+
+        <note>
+          <para role="TEXT">The Bank must still approve this request.</para>
+        </note>
+      </section>
+    </section>
+
+    <section condition="TITLE=Bill Payment: Biller Service;PERM=ft_bill_access;ACCESS=BILLP_02"
+             id="CS_BP_BServ" role="TOPIC">
+      <title>Bill Payment - Biller Service</title>
+
+      <para role="TEXT">When the Biller Service option is selected from the
+      side navigation menu of the <emphasis>Cash services</emphasis> &gt;
+      <emphasis>Bill Payment</emphasis> page, it allows for the payment
+      requests to be made for new bills from a list of preconfigured service
+      payees. The List of Service Payees selection screen is displayed with
+      the following options:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+             <row> 
+             <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank</guilabel> </para></entry>
+                    <entry valign="top"><para role="TEXT"> <inlinemediaobject> <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The bank holding the
+                requested account.</para><note>
+                    <para role="TEXT">If you are linked to more than one bank, 
+                    the Bank dropdown is available. If you are linked to 
+                    only one bank, this field doesn’t appear.</para>
+                  </note>
+                </entry>
+              </row>
+              
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> Payee
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select from a list of biller service
+                payees from the dropdown menu.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> Service
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select from the list of services
+                available for the selected payee from the dropdown menu.
+                </para><note>
+                    <para role="TEXT">Service is configured by your administrator.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">When you have selected the required options, click on
+      <guibutton>Ok</guibutton> to create a new bill service.</para>
+
+      <para role="TEXT">To create a new bill service, complete the following
+      required details:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel
+                moreinfo="none">Entity</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">The name of the Entity associated with the
+                bill when it was loaded into the system.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Debit
+                Account</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Enter the account number that payment is
+                to be made from. Click the magnifying glass icon to display
+                and select from a list of valid accounts.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel moreinfo="none">Recurring
+                Payment</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Place a tick in this box if the
+                payment is to be a regularly occurring
+                transfer.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>When the required fields have been completed, click
+      the <emphasis role="bold">Ok</emphasis> button to specify the other
+      remittance details.</para>
+
+      <para role="TEXT">The following sections describe the details
+      required.</para>
+
+      <section role="ITEM">
+        <title>Biller Service form - General Details</title>
+
+        <para role="TEXT">The general details section describe the details
+        already entered.</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">
+                  Entity</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">The Entity the payment is to come from.
+                  Click the magnifying glass icon to display and select from a
+                  list of valid Entities.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> Debit
+                  Account</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">The account number that payment is to be
+                  made from. Click the magnifying glass icon to display and
+                  select from a list of valid accounts.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Product
+                  Type</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">The Product type. (Bill
+                  Payment)</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Bank</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">The bank holding the requested
+                  account.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">System
+                  ID</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Unique reference number generated
+                  by <xi:include href="../entities_en.xml"
+                  xpointer="ent_appli"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/> for this
+                  Payment request.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Application Date</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Today's Date</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Biller Service form - Recurring Payment Details</title>
+
+        <para role="TEXT">Enter the Recurring Payment details as follows. This
+        section is only displayed if <emphasis>Recurring Payment</emphasis> is
+        selected on the first <emphasis>New Remittance MT101</emphasis>
+        request screen</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">Start
+                  Date</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">Enter the date the first payment is to
+                  be made.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> Frequency
+                  Mode</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Select the frequency of the
+                  payment from the dropdown menu. Options are: <programlisting
+                  format="linespecific">Daily
+Weekly 
+Monthly
+Quarterly</programlisting></para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">No of
+                  Transfers</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter the number of
+                  payments/transfers that are to be made.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">End
+                  Date</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter the date the last payment is
+                  to be made.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+
+        <note>
+          <para role="TEXT">Either <guilabel>No of Transfers</guilabel> or <guilabel>End
+          Date</guilabel> will be displayed based on the configuration
+          selected by your administrator.</para>
+        </note>
+      </section>
+
+      <section role="ITEM">
+        <title>Biller Service form - Transaction Details</title>
+
+        <para role="TEXT">Enter the Transaction details as follows.</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Payee</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">The name of the Payee from the
+                  Bill.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Service</guilabel> </para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   role="CHAR_INFO" width="4mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">The name of the service selected
+                  from the options available for the Payee. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> (bill
+                  reference fields)</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> / <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Bill reference fields may also be
+                  displayed or required. These fields are defined by the bank
+                  to provide the appropriate information to correctly
+                  reference the associated bill. Some fields may have been
+                  pre-populated when the bill was registered by the Client
+                  Administrator. Other fields may be optional or mandatory
+                  (indicated by a red "*") for input. Click the "?" icon to
+                  the right of the field for more information on what values
+                  are required.</para><note>
+                      <para role="TEXT">This can be a text field or a dropdown based on
+                      the settings selected by your administrator.</para>
+                    </note></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none"> Payment
+                  Amount</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">The amount on the bill to be
+                  paid</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">Transfer
+                  Date</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter the date the bill is to be
+                  paid.</para><note>
+                      <para role="TEXT">This field is not available if you have selected
+                      recurring payments option.</para>
+                    </note></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel moreinfo="none">Customer
+                  Ref</guilabel></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top">Enter the customers reference number for
+                  the bill payment.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Biller Service form - Transaction Remarks</title>
+
+        <para role="TEXT">Enter the Beneficiary Advice details, if required,
+        as follows.</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*"/>
+
+              <colspec colname="c2" colwidth="1.0*"/>
+
+              <colspec colname="c3" colwidth="6.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                  <entry valign="top"><para role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para role="TEXT"> <guilabel
+                  moreinfo="none">Transaction Remarks</guilabel> (Reference is
+                  used within Business Internet Banking only)</para></entry>
+
+                  <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm"/>
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm"/>
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para role="TEXT">Enter any extra relevant remarks
+                  for this payment. Click the button to the right of this
+                  field, to select predefined phrases to insert into this
+                  field.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Biller Service form - Action Buttons</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Name</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Save</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Click this button to save the current Bill
+                Payment request. The Remittance request will be saved with a
+                status of "Draft" and can be updated and finalised at a later
+                time.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Submit</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This option will submit the Bill Payment
+                request for submission to the bank. If further Authorisations
+                are required, it will be held back with a status of "Unsigned"
+                until submitted by an Authorizing user.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Cancel</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button cancel the
+                creation of the current Bill Payment request and to clear any
+                details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Help</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">This button displays an online help
+                facility that describes the fields associated with the Bill
+                Payment request.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+
+        <note>
+          <para role="TEXT">The Bank must still approve this request.</para>
+        </note>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>Bill Payment - Edit Transactions</title>
+
+      <para role="TEXT">When this option is selected from the side navigation
+      menu of the <emphasis>Cash services</emphasis> &gt; <emphasis>Bill
+      Payment</emphasis> page, it allows a Bill Payment request that a user
+      has already started and saved, to be completed. Click the <emphasis
+      role="bold">Search Options</emphasis> link to display the fields that
+      can be used to filter the list. Only complete the fields that are
+      required for the filter.</para>
+
+      <para role="TEXT">Click on the <emphasis role="bold">System
+      ID</emphasis> column of the required entry to open it for further
+      editing. When clicked, the <emphasis role="bold">Audit Trail</emphasis>
+      icon will display the user that created the transaction, and any users
+      that have edited, authorised or verified it.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Bill Payment - Retrieve Unsigned</title>
+
+      <para role="TEXT">When this option is selected from the side navigation
+      menu of the <emphasis>Cash services</emphasis> &gt; <emphasis>Bill
+      Payment</emphasis> page, it allows a Bill Payment requests that a user
+      has already started but been unable to submit, to be submitted by and
+      authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of Bill
+      Payment requests that have been prepared and saved by users in the bank,
+      but have not been successfully submitted to the clients because the user
+      had insufficient privileges. Records that were simply saved with no
+      attempt to submit them are not included. Click the <emphasis
+      role="bold">Search Options</emphasis> link to display the fields that
+      can be used to filter the list. Only complete the fields that are
+      required for the filter.</para>
+
+      <para role="TEXT">Click on the <emphasis role="bold">System
+      ID</emphasis> column of the required entry to open it in a non-editable
+      mode, in order to review the data and perform the submission. When
+      clicked, the <emphasis role="bold">Users</emphasis> icon will display
+      the user that created the transaction, and any users that have edited,
+      authorised or verified it.</para>
+
+      <para role="TEXT">If there is sufficient authorisation in the users
+      profile, multiple records can be submitted in a single operation
+      directly from the list. Each record in the list has a check box which
+      when selected is ticked. A button at the end of the page submits all the
+      selected records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is then also displayed.</para>
+    </section>
+  </section>
+</chapter>

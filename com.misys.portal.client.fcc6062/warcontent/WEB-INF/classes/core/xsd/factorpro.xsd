@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2011 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+
+	<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for FA XML validation
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	
+		  <xs:element name="client_act_infos" type="client_act_infosType"/>
+		  
+		  <xs:complexType name="client_act_infosType">
+		    <xs:sequence>
+		      <xs:element minOccurs="0" maxOccurs="unbounded" name="client_act_info" type="client_act_infoType" />
+		    </xs:sequence>
+		  </xs:complexType>
+		  
+		  <xs:complexType name="client_contract_infosType">
+		    <xs:sequence>
+		      <xs:element minOccurs="0" maxOccurs="unbounded" name="client_contract_info" type="client_contract_infoType" />
+		    </xs:sequence>
+		  </xs:complexType>
+		  
+		  <xs:complexType name="client_act_infoType">
+	    	<xs:sequence>
+	    	  <xs:element  name="brch_code" type="FiveCharacters" nillable="true"/>
+		      <xs:element  name="company_id" type="positiveInteger" nillable="true"/>
+		      <xs:element  name="entity" type="ThirtyFiveCharacters" nillable="true"/>
+		      <xs:element  name="company_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>		      
+	          <xs:element  name="client_code" type="FifteenCharacters" nillable="true"/>
+	          <xs:element  name="client_short_name" type="SeventyFiveCharacters" nillable="true"/>
+	          <xs:element  name="client_cif" type="NineteenCharacters"/>
+	          <xs:element  name="cif_type" type="ThreeCharacters" nillable="true"/>	                     
+		      <xs:element  name="short_name" type="TwoHundresAndTenCharacters" nillable="true" />
+		      <xs:element  name="full_name" type="TwoHundresAndTenCharacters" nillable="true" />		      		      		      	      		
+	          <xs:element  name="account_type" type="SeventyFiveCharacters"/>
+	          <xs:element  name="account_type_des" type="FiftyCharacters" nillable="true"/>
+	          <xs:element  name="adv_currency" type="ThreeCharacters" nillable="true"/>
+			  <xs:element  name="adv_currency_name" type="TwentyFiveCharacters" nillable="true"/>
+			  <xs:element  name="processing_date" type="Date" nillable="true"/>			  
+	          <xs:element name="client_contract_infos" type="client_contract_infosType" nillable="true"/>
+	          <xs:element  name="client_transactions" type="client_transactionsType" nillable="true"/>
+		      <xs:element  name="client_availability_info" type="client_availability_infoType" nillable="true"/>
+	    	</xs:sequence>
+  		  </xs:complexType>
+  
+		  <xs:complexType name="client_debtor_paymentsType">
+		    <xs:sequence>
+		      <xs:element minOccurs="0" maxOccurs="unbounded" name="client_debtor_payment">
+			    <xs:complexType>
+				    <xs:sequence>
+		              <xs:element  name="doc_ref" type="ThirteenCharacters" nillable="true"/>
+		              <xs:element  name="payment_date" type="Date" nillable="true"/>
+		              <xs:element  name="document_amt" type="amount" nillable="true"/>
+					  <xs:element  name="mtd_amt" type="amount" nillable="true"/>
+				      <xs:element  name="total_invoice_amt" type="amount" nillable="true"/>
+				      <xs:element  name="remark" type="FiftyCharacters" nillable="true"/>
+				    </xs:sequence>
+				 </xs:complexType>
+		      </xs:element>
+		    </xs:sequence>
+		  </xs:complexType>
+
+	  <xs:complexType name="client_transactionsType">
+	  <xs:sequence>
+	      <xs:element minOccurs="0" maxOccurs="unbounded" name="client_transaction">
+		    <xs:complexType>
+			    <xs:sequence>
+	               <xs:element  name="adv_currency" type="ThreeCharacters" nillable="true"/>
+			      <xs:element  name="adv_currency_name" type="TwentyFiveCharacters" nillable="true"/>
+	              <xs:element  name="capt_fiu_sign" type="OneCharacter"  nillable="true"/>
+	              <xs:element  name="capt_fiu" type="amount" nillable="true"/>
+	              <xs:element  name="capt_cca_sign" type="OneCharacter" nillable="true"/>
+			      <xs:element  name="capt_cca" type="amount" nillable="true"/>
+	              <xs:element  name="opening_fiu_sign" type="OneCharacter" nillable="true"/>
+			      <xs:element  name="opening_fiu" type="amount" nillable="true"/>
+			      <xs:element  name="opening_cca_sign" type="OneCharacter" nillable="true"/>
+			      <xs:element  name="opening_cca" type="amount" nillable="true"/>
+	              <xs:element  name="closing_fiu_sign" type="OneCharacter" nillable="true"/>
+			      <xs:element  name="closing_fiu" type="amount" nillable="true"/>
+			      <xs:element  name="closing_cca_sign" type="OneCharacter" nillable="true"/>
+			      <xs:element  name="closing_cca" type="amount" nillable="true"/>
+	              <xs:element  name="value_date" type="Date" nillable="true"/>
+	              <xs:element  name="tnx_type" type="ThreeCharacters" nillable="true"/>
+	              <xs:element  name="tnx_ref" type="ThreeCharacters" nillable="true"/>
+			      <xs:element  name="tnx_fiu_adv_sign" type="OneCharacter" nillable="true"/>
+			      <xs:element  name="tnx_fiu_adv" type="amount" nillable="true"/>
+			      <xs:element  name="tnx_cca_adv_sign" type="OneCharacter" nillable="true"/>
+			      <xs:element  name="tnx_cca_adv" type="amount" nillable="true"/>
+	              <xs:element  name="description1" type="SixteenCharacters" nillable="true"/>
+			      <xs:element  name="description2" type="SixteenCharacters" nillable="true"/>
+			  </xs:sequence>
+			 </xs:complexType>
+	      </xs:element>
+	    </xs:sequence>
+	  </xs:complexType>
+	  
+	 <xs:complexType name="client_contract_infoType">
+	    <xs:sequence>
+	             <xs:element  name="cont_code" type="FifteenCharacters" nillable="true"/>
+			     <xs:element  name="factor_code" type="EightCharacters" nillable="true"/>
+			      <xs:element  name="factor_short_name" type="SeventyFiveCharacters" nillable="true"/>
+			      <xs:element  name="customer_code" type="FifteenCharacters" nillable="true"/>
+			      <xs:element  name="customer_short_name" type="SeventyFiveCharacters" nillable="true"/>
+			      <xs:element  name="currency_code" type="ThreeCharacters" nillable="true"/>
+			      <xs:element  name="currency_name" type="TwentyFiveCharacters" nillable="true"/>
+	              <xs:element name="client_debtor_payments" type="client_debtor_paymentsType" nillable="true"/>
+	              <xs:element name="client_invoice_enquirys" type="client_invoice_enquirysType" nillable="true"/>
+	              <xs:element name="client_overdue_analysiss" type="client_overdue_analysissType" nillable="true"/>
+	              <xs:element  name="client_expo_enquiry" type="client_expo_enquiryType" nillable="true"/>
+	    </xs:sequence>
+	  </xs:complexType>
+	  
+	  <xs:complexType name="client_overdue_analysissType">
+	 	<xs:sequence>
+	     	 <xs:element minOccurs="0" maxOccurs="unbounded" name="client_overdue_analysis">
+	  <xs:complexType >
+	    	<xs:sequence>
+		      <xs:element  name="cont_code" type="FifteenCharacters" nillable="true"/>
+		      <xs:element  name="aged_from" type="TwentyCharacters" nillable="true"/>
+		      <xs:element  name="view_in" type="TwentyCharacters" nillable="true"/>
+		      <xs:element  name="aged_until_date" type="EightCharacters" nillable="true"/>
+		      <xs:element  name="current_bal" type="amount" nillable="true"/>
+		      <xs:element  name="overdue_bal" type="amount" nillable="true"/>
+		      <xs:element  name="guarantee_amt" type="amount" nillable="true"/>
+		      <xs:element  name="credit_note_receipt" type="SixteenCharacters" nillable="true"/>
+		      <xs:element  name="total_bal" type="amount" nillable="true"/>
+		      <xs:element  name="period1" type="SixteenCharacters" nillable="true"/>
+		      <xs:element  name="period2" type="SixteenCharacters" nillable="true"/>
+		      <xs:element  name="period3" type="SixteenCharacters" nillable="true"/>
+		      <xs:element  name="period4" type="SixteenCharacters" nillable="true"/>
+		      <xs:element  name="period5" type="SixteenCharacters" nillable="true"/>
+			  </xs:sequence>
+			 </xs:complexType>
+	      </xs:element>
+	    </xs:sequence>
+	  </xs:complexType>
+	  
+	  <xs:complexType name="client_availability_infoType">
+	    	<xs:sequence>
+		      <xs:element  name="max_adv_limit" type="amount" nillable="true"/>
+		      <xs:element  name="approved_debts_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="approved_debts" type="amount" nillable="true"/>
+		      <xs:element  name="unapproved_debts_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="unapproved_debts" type="amount" nillable="true"/>
+		      <xs:element  name="os_bal_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="os_bal" type="amount" nillable="true"/>
+		      <xs:element  name="dispute_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="dispute" type="amount" nillable="true"/>
+		      <xs:element  name="ineligible_invoice_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="ineligible_invoice" type="amount" nillable="true"/>
+		      <xs:element  name="reserve_ratio" type="SixteenCharacters" nillable="true"/>
+		      <xs:element  name="reserve_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="reserve" type="amount" nillable="true"/>
+		      <xs:element  name="avail_before_fiu_bal_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="avail_before_fiu_bal" type="amount" nillable="true"/>
+		      <xs:element  name="fiu_bal_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="fiu_bal" type="amount" nillable="true"/>
+		      <xs:element  name="addl_reserves_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="addl_reserves" type="amount" nillable="true"/>
+		      <xs:element  name="prev_requested_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="prev_requested" type="amount" nillable="true"/>
+		      <xs:element  name="amt_before_on_acc_payment_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="amt_before_on_acc_payment" type="amount" nillable="true"/>
+		      <xs:element  name="over_payment_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="over_payment" type="amount" nillable="true"/>
+		      <xs:element  name="on_acc_payment_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="on_acc_payment" type="amount" nillable="true"/>
+		      <xs:element  name="amt_avail_for_adv_payment_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="amt_avail_for_adv_payment" type="amount" nillable="true"/>
+		      <xs:element  name="total_adv_plus_request_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_adv_plus_request" type="amount" nillable="true"/>
+		      <xs:element  name="client_mal" type="amount" nillable="true"/>
+		      <xs:element  name="over_client_mal_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="over_client_mal" type="amount" nillable="true"/>
+		      <xs:element  name="over_credit_limit_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="over_credit_limit" type="amount" nillable="true"/>
+		      <xs:element  name="customer_actual_omal_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="customer_actual_omal" type="amount" nillable="true"/>
+		      <xs:element  name="customer_theoretical_omal_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="customer_theoretical_omal" type="amount" nillable="true"/>
+		      <xs:element  name="eligible_initial_debt_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="eligible_initial_debt" type="amount" nillable="true"/>
+		      <xs:element  name="chq_pending_clearance_amt" type="amount" nillable="true"/>
+	    	</xs:sequence>
+	  </xs:complexType>
+	  
+	  <xs:complexType name="client_expo_enquiryType">
+	    <xs:sequence>
+		      <xs:element  name="market_name" type="TwentyFiveCharacters" nillable="true"/>
+	          <xs:element  name="os_bal_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="os_bal" type="amount" nillable="true"/>
+		      <xs:element  name="credit_limit" type="amount" nillable="true"/>
+	          <xs:element  name="max_adv_limit" type="amount" nillable="true"/>
+	          <xs:element  name="dispute_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="dispute" type="amount" nillable="true"/>
+	          <xs:element  name="approved_debts_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="approved_debts" type="amount" nillable="true"/>
+	          <xs:element  name="unapproved_debts_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="unapproved_debts" type="amount" nillable="true"/>
+	          <xs:element  name="ineligible_invoice_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="ineligible_invoice" type="amount" nillable="true"/>
+		      <xs:element  name="unfunded_invoice_amt_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="unfunded_invoice_amt" type="amount" nillable="true"/>
+		      <xs:element  name="total_credit_limit" type="amount" nillable="true"/>
+		      <xs:element  name="total_max_adv_limit" type="amount" nillable="true"/>
+		      <xs:element  name="total_os_balance_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_os_balance" type="amount" nillable="true"/>
+		      <xs:element  name="total_dispute_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_dispute" type="amount" nillable="true"/>
+		      <xs:element  name="total_appr_debts_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_appr_debts" type="amount" nillable="true"/>
+		      <xs:element  name="total_unappr_debts_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_unappr_debts" type="amount" nillable="true"/>
+		      <xs:element  name="total_ineligible_invc_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_ineligible_invc" type="amount" nillable="true"/>
+		      <xs:element  name="total_unfunded_invc_amt_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_unfunded_invc_amt" type="amount" nillable="true"/>
+	    </xs:sequence>
+	  </xs:complexType>
+	  
+	  <xs:complexType name="client_invoice_enquirysType">
+	 <xs:sequence>
+	      <xs:element minOccurs="0" maxOccurs="unbounded" name="client_invoice_enquiry">
+	  <xs:complexType >
+	    	<xs:sequence>
+		      <xs:element  name="doc_ref" type="ThirteenCharacters" nillable="true"/>
+		      <xs:element  name="doc_type" type="ThreeCharacters" nillable="true"/>
+		      <xs:element  name="invoice_amt" type="amount" nillable="true"/>
+		      <xs:element  name="total_amt_paid" type="amount" nillable="true"/>
+		      <xs:element  name="outstanding_amt" type="amount" nillable="true"/>
+		      <xs:element  name="document_date" type="Date" nillable="true"/>
+		      <xs:element  name="due_date" type="Date" nillable="true"/>
+		      <xs:element  name="remarks" type="FiftyCharacters" nillable="true"/>
+		      <xs:element  name="batch_code" type="FifteenCharacters" nillable="true"/>
+		      <xs:element  name="overdue_days" type="positiveInteger" nillable="true"/>
+		      <xs:element  name="total_os_amt_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="total_os_amt" type="amount" nillable="true"/>
+	          <xs:element  name="unfunded_invoice_amt_sign" type="OneCharacter" nillable="true"/>
+		      <xs:element  name="unfunded_invoice_amt" type="amount" nillable="true"/>
+	   	 </xs:sequence>
+	  </xs:complexType>	  
+    </xs:element>
+    </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="FifteenCharacters">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SeventyFiveCharacters">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="75"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TwentyFiveCharacters">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="25"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NineteenCharacters">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="19"/>
+        </xs:restriction>
+    </xs:simpleType>
+   <xs:simpleType name="TwoHundresAndTenCharacters">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="210"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EightCharacters">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+      <xs:simpleType name="ThirteenCharacters">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="13"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

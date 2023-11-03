@@ -1,0 +1,59 @@
+<listdef page='25'>
+	<name>Outstanding per Product</name>
+	<description>Outstanding_per_Product</description>
+	<multiProduct>Y</multiProduct>
+	<product_code>LC,SI,SR,BG,EC,SG,IC,EL,IR,BR,TF,PO,IN,SO,LN,FA,LI,LS,EA,TD,FX</product_code>
+	<column name='ref_id' hidden='y'/>
+	<column name='product_code' hidden='y'/>
+	<column name='liab_amt' hidden='y'/>
+	<column name='liab_cur_code' hidden='y'/>
+	<column name="MainBank@role_code" hidden='y'/>
+	<candidate name='LC'/>
+	<candidate name='SI'/>
+	<candidate name='SR'/>
+	<candidate name='BG'/>
+	<candidate name='EC'/>
+	<candidate name='SG'/>
+	<candidate name='IC'/>
+	<candidate name='EL'/>
+	<candidate name='IR'/>
+	<candidate name='BR'/>
+	<candidate name='TF'/>
+	<candidate name='LN'/>
+	<candidate name='PO'/>
+	<candidate name='SO'/>
+	<candidate name='IN'/>
+	<candidate name='FA'/>
+	<candidate name='LI'/>
+	<candidate name='LS'/>
+	<candidate name='EA'/>	
+	<candidate name='TD'/>
+	<candidate name='FX'/>	
+	<filter>
+	 <criteria>
+				<column name="cur_code"/>
+				<operator type="isNotNull"/>
+	  </criteria>
+      <criteria>
+    		<column name="prod_stat_code"/>
+    		<operator type="different"/>
+    		<value type="code">
+    			N005_PURGED
+    		</value>																				
+		</criteria>
+    </filter>
+	<group graph='bar'>
+		<column name='product_code'/>
+		<aggregate type='sumchart'>
+			<column name='liab_amt'/>
+			<description locale='en'>Total (EUR)</description>
+			<description locale='fr'>Total (EUR)</description>
+		</aggregate>
+		<!-- aggregate type='count'>
+			<column name='ref_id'/>
+			<description locale='en'>Number of Files</description>
+			<description locale='fr'>Nombre de Dossiers</description>
+		</aggregate-->
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

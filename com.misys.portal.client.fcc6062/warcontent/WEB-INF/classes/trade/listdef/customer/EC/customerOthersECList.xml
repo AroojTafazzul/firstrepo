@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="20" data_key="ref_id">
+	<batch type="delete">
+		<parameter name="SCREEN" value="EC_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_TRANSACTION_DELETE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_EXISTING"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+	</batch>
+	<column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="IC_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" />
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF"/>
+	<column name="prod_stat_code" align="left" width="14%" loca_key="PRODUCT_STAT_CODE" columnFilterType="input-multiselect" showCode="y" isColumnSortDisabled="y"
+	 isCodeField="y" codeId="N005"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="drawer_name" align="left" width="14%" loca_key="DRAWER_NAME" columnFilterType="input-multiselect"  hidden="y"/>
+	<column name="drawee_name" align="left" width="14%" loca_key="ENTITY_NAME_DRAWEE" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amt" align="right" width="14%" loca_key="AMOUNT" >
+	<script>
+			value = row.getColumnValue("amt");
+			if("".equals(""+value+""))
+			{
+				value = row.getColumnValue("ec_amt");
+			}
+			value;
+		</script>
+		</column>
+	<column name="tenor_type" align="left" width="11%" loca_key="DRAFTAGAINST" columnFilterType="input-multiselect" showCode="y"
+	isCodeField="y" codeId="C095"/>
+	<column name="ec_type_code" align="left" width="11%" loca_key="EC_TYPE" columnFilterType="input-multiselect"  hidden="y" />
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="PRODUCT_STAT_CODE" column="prod_stat_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+			<parameter name="ACTION_FILTER_AMC" value="AMC"/>
+		</url>
+	</column>
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y"/>
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<column name="inp_dttm" align="center" hidden="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"  showCode="y"/>
+	<column name="tnx_type_code" align="left" width="10%" loca_key="TRANSACTION_TYPE_CODE" columnFilterType="input-multiselect" showCode="y" isColumnSortDisabled="y" hidden="y"/>
+	
+
+	<!-- parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	
+	<parameter
+		name="ref_id"
+		size="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""
+		/>
+		<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		loca_key="BO_REF"
+		input="y"
+		default=""
+		/>
+		<parameter
+		name="prod_stat_code"
+		size="12"
+		max_length="20"
+		loca_key="PRODUCT_STAT_CODE"
+		input="y"
+		default=""
+		multiple="y"
+		isCodeField="y" 
+		codeId="N005">
+	</parameter>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+		<parameter
+		name="drawer_name"
+		loca_key="DRAWER_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		hidden= "true"
+		/>
+		<parameter
+		name="drawee_name"
+		loca_key="ENTITY_NAME_DRAWEE"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		multiple="y"
+		type="Drawee"
+		/>
+		<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		default=""
+		type="Currency"/>
+	<parameter
+		name="tenor_type"
+		size="12"
+		max_length="20"
+		loca_key="DRAFTAGAINST"
+		input="y"
+		default=""
+		multiple="y"
+		isCodeField="y" 
+		codeId="C095">
+	</parameter>
+	<parameter
+		name="ec_type_code"
+		size="12"
+		max_length="20"
+		loca_key="EC_TYPE"
+		input="y"
+		default=""
+		multiple="y"
+		hidden="true"
+		type="AvailableECType">
+	</parameter>
+	
+	<parameter
+		name="export_list"
+		file_name="otherECList"
+		type="export">
+	</parameter>
+	
+		<!-- candidates -->	
+	<candidate name="export_collection_master">
+		<filter>
+				<criteria>
+			<column name="ref_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+				ref_id
+			</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+			<column name="drawee_name"/>
+			<operator type="in"/>
+			<value type="parameter">
+				drawee_name
+			</value>
+		</criteria>
+			<criteria>
+				<column name="tenor_type"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tenor_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ec_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					ec_type_code
+				</value>
+			</criteria>
+			 <criteria>
+			<column name="tnx_val_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@to
+			</value>
+		</criteria>
+		
+			<criteria>
+					<column name="drawer_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						drawer_name
+					</value>
+				</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						cust_ref_id
+					</value>
+				</criteria>
+	
+			
+				<criteria>
+				<column name="tenor_type"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tenor_type
+				</value>
+			</criteria>
+		
+		</filter>
+	</candidate>
+	
+		<filter or="y">
+			<criteria>
+				<column name="prod_stat_code" />
+				<operator type="in" />
+				<value type="vector">
+					<value type="code">
+						N005_PURGED
+					</value>
+				</value>
+			</criteria>
+		</filter>
+</listdef>

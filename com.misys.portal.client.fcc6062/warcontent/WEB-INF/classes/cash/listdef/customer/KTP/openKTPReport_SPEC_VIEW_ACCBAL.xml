@@ -1,0 +1,55 @@
+<listdef page='10' source='com.misys.portal.report.ktp.KTPInputSource'>		
+	<name>SPEC_VIEW_ACCBAL</name>	
+	<multiProduct>N</multiProduct>	
+	<report_type>01</report_type>	
+	<product_code>SPEC_VIEW_ACCBAL</product_code>	
+	<equivalentCurrency />	
+	<use_absolute_width>N</use_absolute_width>	
+	<order_list_by_default>N</order_list_by_default>	
+	<column name='BANQUE' align="left" width="25%"  abbreviation='N'>	
+		<description locale='en'>Bank</description>
+		<description locale='fr'>Banque</description> 
+	</column>
+	<column name='ENTITE' align="left" width="25%"  abbreviation='N'>	
+		<description locale='en'>Entity</description>
+		<description locale='fr'>Entité</description> 
+	</column>
+	<column name='COMPTE' align="left" width="50%"  abbreviation='N'>	
+		<description locale='en'>Account</description>
+		<description locale='fr'>Compte</description>
+		<url>
+			<parameter name="SCREEN" value="MC_SCREEN"/>
+			<!--<parameter name="OPERATION" value="KTP_REPORT_2"/>
+			 
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="BANQUE"/>
+			<parameter name="TRANSACTION_ID" column="COMPTE"/>
+			 -->
+		</url>
+	</column>	
+	<column name='SOLDE' align="right" width="10em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Outstanding</description>
+		<description locale='fr'>Solde</description>
+	</column>
+	<column name="DEVISE" align="center" width="4em" abbreviation='N'>
+		<description locale='en'>Currency</description>
+		<description locale='fr'>Devise</description>
+	</column> 
+	<parameter input="y" name="TYPE_DATE" mandatory="false" hidden="false" type="com.misys.portal.report.ktp.KTPConstrainedParameter">
+		<description locale='en'>Outstanding Type</description>
+		<description locale='fr'>Type de Solde</description>
+	</parameter>
+
+	<candidate name="SPEC_VIEW_ACCBAL">
+		<filter>
+			<criteria>
+				<column name='TYPE_DATE'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>TYPE_DATE</value>
+			</criteria>
+		</filter>
+	</candidate>	
+	<executable_flag>Y</executable_flag>	
+		
+</listdef>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<!--
+		Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+		(http://www.misys.com) All Rights Reserved.
+	-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="interfaces" type="interfaces" />
+
+	<xs:complexType name="interfaces">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:element name="interfaces" maxOccurs="unbounded"
+					minOccurs="0" type="interfaces">
+				</xs:element>
+				<xs:element name="properties" type="properties"
+					maxOccurs="1" minOccurs="0">
+				</xs:element>
+				<xs:element name="interface" maxOccurs="unbounded"
+					minOccurs="0" type="interface">
+				</xs:element>
+				<xs:element name="bundle" type="bundle" maxOccurs="unbounded"
+					minOccurs="0">
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="interface">
+		<xs:choice maxOccurs="unbounded" minOccurs="0">
+			<xs:element name="component" type="interfaceComponent"></xs:element>
+			<xs:element name="transaction" type="transaction"></xs:element>
+		</xs:choice>
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="description" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="onerror" type="xs:string" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="bundle">
+		<xs:sequence>
+			<xs:element name="interface" maxOccurs="unbounded"
+				minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="failsafe" type="xs:boolean" use="optional"></xs:attribute>
+							<xs:attribute name="asynchronous" type="xs:boolean" use="optional"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="description" type="xs:string" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="interfaceComponent">
+		<xs:sequence minOccurs="0">
+			<xs:element name="properties" type="properties" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:choice>
+					<xs:element name="component" type="interfaceComponent"></xs:element>
+					<xs:element name="transaction" type="transaction"></xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="failsafe" type="xs:boolean" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="transactionalInterfaceComponent">
+		<xs:sequence minOccurs="0">
+			<xs:element name="properties" type="properties" maxOccurs="1"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="component" type="transactionalInterfaceComponent" minOccurs="0" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="failsafe" type="xs:boolean" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="transaction">
+		<xs:sequence>
+			<xs:element name="component" type="transactionalInterfaceComponent"
+				maxOccurs="unbounded" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="components" type="components"/>
+	
+	<xs:complexType name="components">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:element name="components" type="components"/>
+				<xs:element name="component" type="component"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="component">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" maxOccurs="1"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="classname" type="xs:string" maxOccurs="1"
+				minOccurs="1">
+			</xs:element>
+			<xs:element name="properties" type="properties" minOccurs="0"></xs:element>
+			<xs:element name="prerequisites" type="properties"
+				minOccurs="0"></xs:element>
+			<xs:element name="published" type="properties" minOccurs="0"></xs:element>
+			<xs:element name="consumer" type="event" maxOccurs="1"
+				minOccurs="0"/>
+			<xs:element name="producer" type="event" maxOccurs="1"
+				minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="properties">
+		<xs:sequence>
+			<xs:element name="property" maxOccurs="unbounded"
+				minOccurs="1">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="description" type="xs:string" 
+								use="optional">
+							</xs:attribute>
+							<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+							<xs:attribute name="type" type="xs:string" use="optional"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="event">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" type="xs:string"
+					use="required">
+				</xs:attribute>
+				<xs:attribute name="object" type="xs:string" use="optional">
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+</xs:schema>

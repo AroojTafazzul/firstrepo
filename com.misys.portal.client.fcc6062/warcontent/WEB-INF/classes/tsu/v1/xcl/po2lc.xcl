@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xcl name="po2lc">
+	<target>
+		
+		<!-- Global variables -->
+		<!-- Array that stores the POs data that are a list of LTs data. -->
+		<setVariable name="POsData"><array/></setVariable>
+		
+		<setVariable name="lcAmount">
+			<java>
+				<const>new java.math.BigDecimal(0)</const>
+			</java>
+		</setVariable>
+		
+		<setVariable name="lcCurCode"></setVariable>
+				
+		<!-- Variables that represent the number
+		of lines that is used to display the description
+		of goods prodiced from one LT. -->
+		<setVariable name="oneLine"><const>1</const></setVariable>
+		<setVariable name="twoLine"><const>2</const></setVariable>
+		<setVariable name="fourLine"><const>4</const></setVariable>
+		
+		<!-- Init the max description of goods line length from the PO -->
+		<setVariable name="theDescOfGoodsLineLength"><const>0</const></setVariable>
+		
+		<!-- Max description of goods line length -->
+		<setVariable name="maxDescOfGoodsLineLength"><const>65</const></setVariable>
+		
+		<!-- Default language -->
+		<setVariable name="language">
+			<java>
+				<const>com.misys.portal.common.resources.DefaultResourceProvider.LANGUAGE</const>
+			</java>
+		</setVariable>
+		
+		<!-- Labels -->
+		<setVariable name="PONumberLabel">			
+			<java>
+				<const>com.misys.portal.common.localization.Localization.getString(language, "PO_NUMBER")</const>
+			</java>
+		</setVariable>	
+		<setVariable name="POLTNumberLabel">			
+			<java>
+				<const>com.misys.portal.common.localization.Localization.getString(language, "PO_LINE_ITEM_NUMBER")</const>
+			</java>
+		</setVariable>
+		<setVariable name="POLTProductNameLabel">			
+			<java>
+				<const>com.misys.portal.common.localization.Localization.getString(language, "PO_LINE_ITEM_PRODUCT_NAME")</const>
+			</java>
+		</setVariable>
+		<setVariable name="POLTProductQuantityLabel">			
+			<java>
+				<const>com.misys.portal.common.localization.Localization.getString(language, "PO_LINE_ITEM_PRODUCT_QUANTITY")</const>
+			</java>
+		</setVariable>
+		<setVariable name="POLTProductUnitPriceLabel">			
+			<java>
+				<const>com.misys.portal.common.localization.Localization.getString(language, "PO_LINE_ITEM_PRODUCT_UNIT_PRICE")</const>
+			</java>
+		</setVariable>
+		<setVariable name="POLTProductTotalAmountLabel">			
+			<java>
+				<const>com.misys.portal.common.localization.Localization.getString(language, "PO_LINE_ITEM_PRODUCT_TOTAL_AMOUNT")</const>
+			</java>
+		</setVariable>
+		
+		<!-- Set the number of fields displayed -->
+		<setVariable name="nbSpace"><const>5</const></setVariable>
+		
+		<!-- Field separator -->
+		<setVariable name="separator"><const> </const></setVariable>
+
+		
+		<!-- Labels length.
+		They are used to initialize the minimum size that each field must take in the description of goods. -->
+		<setVariable name="maxPONumberLength"><length><getVariable name="PONumberLabel"/></length></setVariable>
+		<setVariable name="maxPOLTNumberLength"><length><getVariable name="POLTNumberLabel"/></length></setVariable>
+		<setVariable name="maxPOLTProductNameLength"><length><getVariable name="POLTProductNameLabel"/></length></setVariable>
+		<setVariable name="maxPOLTProductQuantityLength"><length><getVariable name="POLTProductQuantityLabel"/></length></setVariable>
+		<setVariable name="maxPOLTProductUnitPriceLength"><length><getVariable name="POLTProductUnitPriceLabel"/></length></setVariable>
+		<setVariable name="maxPOLTProductTotalAmountLength"><length><getVariable name="POLTProductTotalAmountLabel"/></length></setVariable>
+		
+		<!-- Process each PO of the list. -->
+		<setVariable name="POsData">
+			<getVariable name="POsData"/>
+			<call name="createDataModelFromPO">
+				<java><const>return listOfPOs.toArray()</const></java>
+			</call>
+		</setVariable>
+		
+		<!-- Set the description of goods format. -->
+		<setVariable name="format">
+			<call name="computeFormat"/>
+		</setVariable> 
+		
+		<!-- Here, all the data are stored. We create the description
+		of goods. -->
+		<call name="createDescOfGoods"/>	
+		<!-- <getVariable name="POsData"/> -->
+
+	</target>
+	
+	
+	<!-- Rule invoked to create the description of goods for all the POs. -->
+	<!-- @return String The description of goods done from all the data. -->
+	<rule name="createDescOfGoods">
+		<!-- Headers -->
+		<call name="createHeaders"/>
+		<!-- Rule -->
+		<call name="createHR"/>	
+		
+		<!-- Process each PO -->
+		<string>
+			<call name="processPOs"><getVariable name="POsData"/></call>
+		</string>
+		
+		<!-- Rule -->
+		<call name="createHR"/>
+		
+		<!-- Footer -->
+		<call name="createFooter"/>
+	</rule> 
+	
+	<!-- Rule invoked to create the description of goods of a PO -->
+	<!-- @param LTDatas An array containing the LTs from a PO. -->
+	<!-- @return String The description of goods done from the PO -->
+	<rule name="processPOs">
+		<!-- A list of LTs from a PO -->
+		<setVariable name="LTsData"><sourceValue/></setVariable>	
+		
+		<!-- Process each LT -->
+		<call name="processLineItems"><getVariable name="LTsData"/></call>		
+		
+	</rule>
+	
+	<!-- Rule invoked to create the description of goods of a LT -->
+	<!-- @param LTData An array containing the data of a LT. -->
+	<!-- @return String The description of goods done from the LTData -->
+	<rule name="processLineItems">
+		<!-- Data from a LT -->
+		<setVariable name="LTData"><sourceValue/></setVariable>
+		
+		<!-- output each field -->
+		<!-- PONumber -->
+		<pad side="right" pattern=" ">
+			<size>
+				<getVariable name="maxPONumberLength"/>
+			</size>
+			<value>
+				 <sourceValue position="0"><getVariable name="LTData"/></sourceValue>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		
+		<!-- Format. -->
+		<test>
+			<predicate><equals><getVariable name="format"/><getVariable name="fourLine"/></equals></predicate>
+			<then><newline/></then>
+		</test> 
+				
+		<!-- POLTNumber -->
+		<pad side="right" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTNumberLength"/>
+			</size>
+			<value>
+				 <sourceValue position="1"><getVariable name="LTData"/></sourceValue>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		
+		<!-- Format. -->
+		<test>
+			<predicate><equals><getVariable name="format"/><getVariable name="fourLine"/></equals></predicate>
+			<then><newline/></then>
+		</test>
+				
+		<!-- POLTProductName -->
+		<pad side="right" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductNameLength"/>
+			</size>
+			<value>
+				 <sourceValue position="2"><getVariable name="LTData"/></sourceValue>
+			</value>
+		</pad>
+		
+		<!-- Format. -->
+		<test>
+			<predicate>
+			<or>
+			<equals>
+			<getVariable name="format"/><getVariable name="twoLine"/>
+			</equals>
+			<equals>
+			<getVariable name="format"/><getVariable name="fourLine"/>
+			</equals>			
+			</or>
+			</predicate>
+			<then><newline/><const>     </const></then>
+		</test>
+		
+		<getVariable name="separator"/>
+		<!-- POLTProductQuantity -->
+		<pad side="left" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductQuantityLength"/>
+			</size>
+			<value>
+				 <sourceValue position="3"><getVariable name="LTData"/></sourceValue>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		<!-- POLTProductUnitPrice -->
+		<pad side="left" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductUnitPriceLength"/>
+			</size>
+			<value>
+				 <sourceValue position="4"><getVariable name="LTData"/></sourceValue>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		<!-- POLTProductTotalAmount -->
+		<pad side="left" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductTotalAmountLength"/>
+			</size>
+			<value>
+				 <sourceValue position="5"><getVariable name="LTData"/></sourceValue>
+			</value>
+		</pad>
+		<!-- New line -->
+		<newline/>
+		
+		
+	</rule>
+	
+	<!-- Rule to create the description of goods headers -->
+	<rule name="createHeaders">
+		<!-- output each field label-->
+		<!-- PONumber Label-->
+		<pad side="right" pattern=" ">
+			<size>
+				<getVariable name="maxPONumberLength"/>
+			</size>
+			<value>
+				 <getVariable name="PONumberLabel"/>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		
+		<!-- POLTNumber Label -->
+		<pad side="right" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTNumberLength"/>
+			</size>
+			<value>
+				 <getVariable name="POLTNumberLabel"/>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		<!-- POLTProductName Label -->
+		<pad side="right" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductNameLength"/>
+			</size>
+			<value>
+				 <getVariable name="POLTProductNameLabel"/>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		<!-- POLTProductQuantity Label -->
+		<pad side="left" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductQuantityLength"/>
+			</size>
+			<value>
+				<getVariable name="POLTProductQuantityLabel"/>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		<!-- POLTProductUnitPrice Label -->
+		<pad side="left" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductUnitPriceLength"/>
+			</size>
+			<value>
+				 <getVariable name="POLTProductUnitPriceLabel"/>
+			</value>
+		</pad>
+		<getVariable name="separator"/>
+		<!-- POLTProductTotalAmount Label -->
+		<pad side="left" pattern=" ">
+			<size>
+				<getVariable name="maxPOLTProductTotalAmountLength"/>
+			</size>
+			<value>
+				 <getVariable name="POLTProductTotalAmountLabel"/>
+			</value>
+		</pad>
+		<!-- New line -->
+		<newline/>
+		
+	</rule>
+	
+	<!-- Rule to create the description of goods footer -->
+	<rule name="createFooter">
+		<setVariable name="totalLabel">
+			<java>
+				<const>com.misys.portal.common.localization.Localization.getString(language, "PO_TOTAL_AMOUNT");</const>
+			</java>
+		</setVariable>
+		
+		<setVariable name="totalValue">
+			<getVariable name="lcCurCode"/>
+			<const> </const>
+			<java>
+				<const>com.misys.portal.common.tools.ConvertTools.bigDecimalToAmountString(lcAmount, lcCurCode, language)</const>
+			</java>				
+		</setVariable>
+		
+		
+		<!-- Compute the space between the total label and the value -->
+		<setVariable name="spaceLength">
+			<test>
+				<predicate>
+					<greater>
+						<getVariable name="maxDescOfGoodsLineLength"/>
+						<add><getVariable name="nbSpace"/><getVariable name="theDescOfGoodsLineLength"/></add>											
+					</greater>
+				</predicate>
+				<then>
+					<sub><getVariable name="maxDescOfGoodsLineLength"/><length><getVariable name="totalLabel"/><getVariable name="totalValue"/></length></sub>
+				</then>
+				<else>
+					<sub>
+						<add><getVariable name="nbSpace"/><getVariable name="theDescOfGoodsLineLength"/></add>
+						<length><getVariable name="totalLabel"/><getVariable name="totalValue"/></length>
+					</sub>
+				</else>
+			</test>				
+		</setVariable>
+		
+		<getVariable name="totalLabel"/>
+		
+		<characters character=" ">
+			<number>
+				<getVariable name="spaceLength"/>
+			</number>
+		</characters>
+		
+		<getVariable name="totalValue"/>
+		
+		<!-- <setVariable name="totalLabel">
+			<getVariable name="totalLabel"/>
+			<pad side="right" pattern=" ">
+				<size>
+					<getVariable name="maxPOLTProductTotalAmountLength"/>
+				</size>
+				<value>
+					 <getVariable name="POLTProductTotalAmountLabel"/>
+				</value>				
+			</pad>
+		</setVariable>-->		
+	</rule>
+	
+	<!-- Rule to create the horizontal line that separates headers, body and footer 
+	 as the hr tag in html -->
+	<rule name="createHR">
+		<characters character="-">
+			<number>
+				<getVariable name="maxDescOfGoodsLineLength"/>
+			</number>
+		</characters>
+		<newline/>
+	</rule>
+	
+	
+	<!-- Rule invoked to create the data model. -->
+	<!-- @param aPO a MasterPurchaseOrderFile. -->
+	<!-- @return Array The data model. -->
+	<rule name="createDataModelFromPO">
+		<!-- Array that stores the LTs data. -->
+		<setVariable name="LTsData"><array/></setVariable>
+		
+		<!-- A PO from the list of POs. -->
+		<setVariable name="aPO"><sourceValue/></setVariable>
+		
+		<!-- Update the lc amount. -->
+		<setVariable name="lcAmount">
+			<java>
+				<const>lcAmount.add(aPO.getAmt());</const>
+			</java>
+		</setVariable>
+		
+		<!-- Set the lc cur code -->
+		<setVariable name="lcCurCode">
+			<java instance="aPO"><const>getCur_code</const></java>
+		</setVariable>
+		
+		<!-- Get the PO number from the source. -->
+		<setVariable name="PONumber">
+			<java instance="aPO"><const>getCust_ref_id</const></java>
+		</setVariable>
+		
+		<!-- Compute the max lengths of each field -->
+		<test>
+			<predicate>
+				<greater>
+					<getVariable name="maxPONumberLength"/>
+					<length><getVariable name="PONumber"/></length>					
+				</greater>
+			</predicate>				
+			<then>
+				<setVariable name="maxPONumberLength">
+					<length><getVariable name="PONumber"/></length>
+				</setVariable>
+			</then>
+		</test>
+		
+		<!-- get the line items from the PO. -->
+		<setVariable name="LTs">
+			<java instance="aPO"><const>getListOfItems</const></java>
+		</setVariable> 
+
+		
+		<!-- Process each Line items and add the result in the list of LTs data. -->
+		<setVariable name="LTsData">
+			<getVariable name="LTsData"/>
+			<call name="createDataModelFromLT">
+				<java><const>return LTs.toArray()</const></java>	
+			</call>
+		</setVariable>
+		
+		<!-- Return the LTs data (lines of the description of goods from aPO). -->
+		<getVariable name="LTsData"/>
+		
+	</rule>
+	
+	<!-- Rule invoked to add the line items details in the data model -->
+	<!-- @param aLT a MasterLineItemFile. -->
+	<!-- @return Array An array containing the LTs data of a PO. -->
+	<rule name="createDataModelFromLT">
+		<!-- Array in which we store the LT data -->
+		<setVariable name="LTData"><array/></setVariable>
+		
+		<!-- a LT File from the list of LTs. -->
+		<setVariable name="aLTFile"><sourceValue/></setVariable>
+		<!-- The Line item from the line item file. -->
+		<setVariable name="aLT">
+			<java instance="aLTFile"><const>getLineItem</const></java>		
+		</setVariable>
+		
+		<!-- Get the fields value -->
+		<setVariable name="POLTNumber">
+			<java instance="aLT"><const>getCust_ref_id</const></java>
+		</setVariable>
+		
+		<setVariable name="POLTProductName">
+			<java instance="aLT"><const>getProduct_name</const></java>
+		</setVariable>
+		
+		
+		<setVariable name="POLTProductQuantity">
+			<java>
+				<const>com.misys.portal.common.tools.ConvertTools.normalizeXML(aLT.getQty_val().getValue())</const>
+			</java>
+		</setVariable>
+		
+		<setVariable name="POLTProductUnitPrice">
+			<java>
+				<const>com.misys.portal.common.tools.ConvertTools.bigDecimalToAmountString(aLT.getPrice_amt(), aLT.getPrice_cur_code(),language)</const>
+			</java>
+		</setVariable>
+		
+		<setVariable name="POLTProductTotalAmount">
+			<java>
+				<const>com.misys.portal.common.tools.ConvertTools.bigDecimalToAmountString(aLT.getTotal_amt(), aLT.getCur_code(), language)</const>
+			</java>
+		</setVariable>
+		
+		<!-- Store the LT data that represent a line of
+		the LC description of goods. -->
+		<setVariable name="LTData">
+			<getVariable name="LTData"/>
+			<test>
+				<predicate>
+					<equals><getVariable name="PONumber"/><const></const></equals>
+				</predicate>
+				<then><const> </const></then>
+				<else><getVariable name="PONumber"/></else>				
+			</test>
+			<test>
+				<predicate>
+					<equals><getVariable name="POLTNumber"/><const></const></equals>
+				</predicate>
+				<then><const> </const></then>
+				<else><getVariable name="POLTNumber"/></else>				
+			</test>	
+			<test>
+				<predicate>
+					<equals><getVariable name="POLTProductName"/><const></const></equals>
+				</predicate>
+				<then><const> </const></then>
+				<else><getVariable name="POLTProductName"/></else>				
+			</test>
+			<test>
+				<predicate>
+					<equals><getVariable name="POLTProductQuantity"/><const></const></equals>
+				</predicate>
+				<then><const> </const></then>
+				<else><getVariable name="POLTProductQuantity"/></else>				
+			</test>
+			<test>
+				<predicate>
+					<equals><getVariable name="POLTProductUnitPrice"/><const></const></equals>
+				</predicate>
+				<then><const> </const></then>
+				<else><getVariable name="POLTProductUnitPrice"/></else>				
+			</test>
+			<test>
+				<predicate>
+					<equals><getVariable name="POLTProductTotalAmount"/><const></const></equals>
+				</predicate>
+				<then><const> </const></then>
+				<else><getVariable name="POLTProductTotalAmount"/></else>				
+			</test>
+		</setVariable>
+		
+		<!-- Add the LT data to the array of LTs data. 
+		<setVariable name="LTsData"><getVariable name="LTData"/></setVariable> -->
+		
+		<!-- Return the LT data (a line of the description of goods.) -->
+		<getVariable name="LTData"/>
+
+		<!-- Compute the max length of each field -->
+		<test>
+			<predicate>
+				<greater>
+					<getVariable name="maxPOLTNumberLength"/>
+					<length><getVariable name="POLTNumber"/></length>
+				</greater>
+			</predicate>				
+			<then>
+				<setVariable name="maxPOLTNumberLength">
+					<length><getVariable name="POLTNumber"/></length>
+				</setVariable>
+			</then>	
+		</test>
+		
+		<test>
+			<predicate>
+				<greater>
+					<getVariable name="maxPOLTProductNameLength"/>
+					<length><getVariable name="POLTProductName"/></length>					
+				</greater>
+			</predicate>				
+			<then>
+				<setVariable name="maxPOLTProductNameLength">
+					<length><getVariable name="POLTProductName"/></length>
+				</setVariable>
+			</then>
+		</test>
+		
+		<test>
+			<predicate>
+				<greater>
+					<getVariable name="maxPOLTProductQuantityLength"/>
+					<length><getVariable name="POLTProductQuantity"/></length>					
+				</greater>
+			</predicate>				
+			<then>
+				<setVariable name="maxPOLTProductQuantityLength">
+					<length><getVariable name="POLTProductQuantity"/></length>
+				</setVariable>
+			</then>
+		</test>
+		
+		<test>
+			<predicate>
+				<greater>
+					<getVariable name="maxPOLTProductUnitPriceLength"/>
+					<length><getVariable name="POLTProductUnitPrice"/></length>					
+				</greater>
+			</predicate>				
+			<then>
+				<setVariable name="maxPOLTProductUnitPriceLength">
+					<length><getVariable name="POLTProductUnitPrice"/></length>
+				</setVariable>
+			</then>
+		</test>
+		
+		<test>
+			<predicate>
+				<greater>
+					<getVariable name="maxPOLTProductTotalAmountLength"/>
+					<length><getVariable name="POLTProductTotalAmount"/></length>					
+				</greater>
+			</predicate>				
+			<then>
+				<setVariable name="maxPOLTProductTotalAmountLength">
+					<length><getVariable name="POLTProductTotalAmount"/></length>
+				</setVariable>
+			</then>					
+		</test>	
+		
+		<!-- Update the
+		global variable if the current line generated
+		is greater than the previous. -->
+		<setVariable name="tmpDescOfGoodsLineLength">
+			<call name="computeDescOfGoodsLength"/>
+		</setVariable>
+		<test>
+			<predicate>
+				<greater>
+					<getVariable name="theDescOfGoodsLineLength"/>
+					<getVariable name="tmpDescOfGoodsLineLength"/>
+				</greater>
+			</predicate>
+			<then>
+				<setVariable name="theDescOfGoodsLineLength">
+					<getVariable name="tmpDescOfGoodsLineLength"/>
+				</setVariable>
+			</then>
+		</test>
+	
+	</rule>
+	
+	<!-- Compute the description of goods length
+		generated from the PO data -->
+	<!-- @return The size of the description of goods produced
+		with the data of the current LT. -->
+	<rule name="computeDescOfGoodsLength">
+		<add>
+		<getVariable name="maxPONumberLength"/>	
+		<getVariable name="maxPOLTNumberLength"/>
+		<getVariable name="maxPOLTProductNameLength"/>	
+		<getVariable name="maxPOLTProductQuantityLength"/>		
+		<getVariable name="maxPOLTProductUnitPriceLength"/>	
+		<getVariable name="maxPOLTProductTotalAmountLength"/>
+		</add>	
+	</rule>
+	
+	<!-- Compute the description of goods format. -->
+	<!-- @return The format of the description of goods. -->
+	<rule name="computeFormat">
+		<test>
+			<predicate>
+				<greater>					
+					<getVariable name="maxDescOfGoodsLineLength"/>
+					<!--  The value 2 represents the space between the 3 fields -->
+					<add><const>2</const><getVariable name="maxPONumberLength"/><getVariable name="maxPOLTNumberLength"/><getVariable name="maxPOLTProductNameLength"/></add>					
+				</greater>
+			</predicate>				
+			<then>
+				<getVariable name="fourLine"/>
+			</then>
+			<else>
+				<test>
+				<predicate>
+					<greater>
+						<getVariable name="maxDescOfGoodsLineLength"/>
+						<add><getVariable name="nbSpace"/><getVariable name="theDescOfGoodsLineLength"/></add>
+					</greater>
+				</predicate>					
+				<then>
+					<getVariable name="twoLine"/>
+				</then>
+				<else>
+					<getVariable name="oneLine"/>
+				</else>
+				</test>
+			</else>
+		</test>
+	</rule>
+
+</xcl>

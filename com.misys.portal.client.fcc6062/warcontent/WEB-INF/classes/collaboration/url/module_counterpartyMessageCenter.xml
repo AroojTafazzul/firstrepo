@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="customer" scope="product">
+	<name>module_counterpartyMessageCenter</name>
+	<methodParam>referenceid</methodParam>
+	<methodParam>tnxid</methodParam>
+	<methodParam>productcode</methodParam>
+	<methodParam>tnxtype</methodParam>
+	<bindingParam>operation</bindingParam>
+	<staticParam>menuaction</staticParam>
+	<action>
+		<actionCode>CounterpartyTasksMonitoringList</actionCode>
+		<class>CounterpartyTasksMonitoringListPortlet</class>
+		<method>getTasksMonitoring</method>
+		<permission>collaboration_counterparty_mc_access</permission>
+		<operation>TASKS_MONITORING</operation>
+		<referenceid>-</referenceid>
+		<tnxid>-</tnxid>
+		<productcode>-</productcode>
+		<tnxtype>-</tnxtype>
+		<menuaction>TasksMonitoring</menuaction>
+	</action>
+	<action>
+		<actionCode>CounterpartyTasksMonitoring</actionCode>
+		<class>CounterpartyTasksMonitoringPortlet</class>
+		<method>openFromCustomerPending</method>
+		<permission>collaboration_counterparty_mc_access</permission>
+		<operation>TASKS_MONITORING</operation>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+		<productcode>%</productcode>
+		<tnxtype>%</tnxtype>
+		<menuaction>TasksMonitoring</menuaction>
+	</action>
+</module>

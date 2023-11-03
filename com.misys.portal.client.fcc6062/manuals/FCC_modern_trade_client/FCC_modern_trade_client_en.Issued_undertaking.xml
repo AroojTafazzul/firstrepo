@@ -1,0 +1,3591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: Undertaking Issued ;PERM=BG_access"
+         id="UI_UX" role="TOPIC">
+  <title><application moreinfo="none">Undertaking Issued</application></title>
+
+  <para role="TEXT">Undertaking Issued (UI) is an independent documentary
+  instrument issued by the bank. The bank initiates an irrevocable guarantee
+  at the request of its customer (the instructing party / applicant). The sum
+  of money is paid to a third party, (the beneficiary), provided a complying
+  demand is made.</para>
+
+  <para role="TEXT">The undertaking may be termed as "Passive Instrument", as
+  it is not usually drawn, because the applicant/instructing party and
+  beneficiary generally settle the underlying contract/relationship outside of
+  the undertaking. The undertaking remains until its expiry and serves as
+  security under the commercial transaction. In most cases, demands are only
+  made when the applicant/instructing party is in breach of its underlying
+  contract/relationship.</para>
+
+  <para role="TEXT">The bank makes the payment to the beneficiary against a
+  demand and presentation of specified documentation in accordance with the
+  terms of the undertaking.</para>
+
+  <para role="TEXT">The Undertaking Issued user interface reflects the
+  transaction request from the perspective of an applicant and the applicant's
+  bank, typically known as the Issuing Bank. 'Issuance request' is the initial
+  event that creates the UI transaction event. This event could only be
+  created once per UI. If changes to the basic details of the UI are needed,
+  an 'Amendment request' event could be created. Once the beneficiary submits
+  their demand along with the specified documents to claim the payment, a
+  'Claims Received' event is created. The 'Amend' and 'Claims Received' events
+  can be created multiple times and at any point in the UI lifecycle prior to
+  its expiry. Issuance request can be for the final issuance of undertaking by
+  the issuing bank or if this request is marked as “Provisional”, then it is
+  for vetting the text of the undertaking by the issuing bank. On finalisation
+  of the text between the corporate customer and the bank the actual
+  undertaking will be issued by the bank.</para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">This guide uses the terms "<emphasis
+    role="bold">UI</emphasis>", "<emphasis role="bold">Undertaking</emphasis>"
+    and "<guilabel moreinfo="none">Undertaking Issued</guilabel>"
+    interchangeably.</para>
+
+    <para role="TEXT">The terms "<emphasis role="bold">record</emphasis>" and
+    "<emphasis role="bold">transaction</emphasis>" both refer to entries in
+    the system relating to the function being discussed.</para>
+  </section>
+
+  <section condition="TITLE=Undertaking Issued Landing Page;PERM=bg_access;ACCESS=BG_LP_UX"
+           role="TOPIC">
+    <title>Undertaking Issued Landing Page</title>
+
+    <para role="TEXT">The Undertaking Issued Landing page displays a list of
+    UIs based on the transaction status. The Landing page view is customizable
+    based on your requirement. <note>
+        <para>You can customise the list of columns displayed through
+        SDK.</para>
+      </note></para>
+
+    <para>The following image illustrates the Undertaking Issued landing
+    page:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/UILandingpage1.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Templates</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Use this option to Create, Edit and Delete an
+          Undertaking Issued template.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Request
+        Undertaking</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Use this option to initiate a new request for
+          Undertaking, enter the desired terms of a new undertaking and submit
+          them to the Issuing Bank of your choice.<note>
+              <para>The UI initiation feature is available only to maker
+              user.</para>
+            </note></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>The Undertaking dashboard segregates transactions based on their
+    current status like draft, awaiting authorization, awaiting response from
+    client or bank rejected or purged from bank.The following ribbon items
+    enable you to perform various actions on individual UIs or in bulk, based
+    on the tab you are on. Individual tabs and related functionality are
+    described below:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/ribbon_UIL1.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject> <note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Draft</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the UIs in draft state and also the
+            transactions that checker has returned for improvement. You can
+            <emphasis role="bold">Edit</emphasis>, <emphasis
+            role="bold">View</emphasis>, <emphasis
+            role="bold">Discard</emphasis> or view the history of events that
+            Undertaking Issued has gone through, through <emphasis
+            role="bold">Details</emphasis> action.<note>
+                <para>This tab is available only to a maker user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Actions</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Undertaking Issued transactions on
+            which the bank has requested action from client maker user. You
+            can perform any of the actions, listed against each transaction.
+            <note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para><guimenuitem moreinfo="none">Actions</guimenuitem>
+                      tab is available only to maker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Action will be based on the transaction status.
+                      This will list down transactions that is awaiting action
+                      from corporate user.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending
+          Approval</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Undertaking Issued
+            transactions that are awaiting client approval from a second user
+            within the corporate. You can perform any of the actions, listed
+            against each transaction.<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para>The <emphasis role="bold">Authorise</emphasis>
+                      action item is available only for a checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>A user with batch submission permission can select
+                      multiple transactions to <emphasis
+                      role="bold">Approve</emphasis> or <emphasis
+                      role="bold">Return</emphasis> though the checkbox
+                      provided for every transactions listed in this
+                      tab.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      a transaction.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending at
+          Bank</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Undertaking Issued
+            transactions that are awaiting bank approval. You can <emphasis
+            role="bold">View</emphasis> the transaction or check the history
+            of events that Undertaking Issued has gone through, through
+            <emphasis role="bold">Details</emphasis> action.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Live</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the approved Undertaking Issued
+            records and and the expired Undertaking Issued records by the
+            bank.<note>
+                <para>The above mentioned actions are available only for maker
+                user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Rejected</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the rejected Undertaking Issued
+            records by the bank. The status given to such UIs is "Not
+            Processed". You can <emphasis role="bold">View</emphasis> the
+            transaction details or check the history of events that
+            Undertaking Issued has gone through, through <emphasis
+            role="bold">Details</emphasis> action.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Closed</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Undertaking Issued transactions
+            that have been marked as purged by the Issuing Bank's Trade
+            Services team. You cannot initiate further amendments or messages
+            on such a transaction, and can only use its data for inquiry
+            purposes. You can <emphasis role="bold">View</emphasis> and view
+            the history of events that purged Undertaking Issued has gone
+            through, through <emphasis role="bold">Details</emphasis>
+            action.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The <guiicon>Advance Filter</guiicon> presents you with various
+    filter options like <emphasis role="bold">Channel Reference</emphasis>,
+    <emphasis role="bold">Bank Reference</emphasis>, <emphasis
+    role="bold">Event</emphasis>, <emphasis role="bold">Entity</emphasis>,
+    <emphasis role="bold">Applicant Name</emphasis>, <emphasis
+    role="bold">Beneficiary</emphasis>, <emphasis
+    role="bold">Currency</emphasis> and <emphasis role="bold">Expiry
+    Date</emphasis>. Enter the relevant search criterion and apply the filter
+    to list all the relevant Undertaking Issued transactions. You can also
+    select the time frame for which data needs to be fetched.</para>
+
+    <para>You can perform the following actions on the listed
+    transactions:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of UI transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of UIs displayed on the dashboard. Click on the Download icon
+          to list the formats in which the files can be downloaded. You can
+          download Current Data or Full Data.<itemizedlist>
+              <listitem>
+                <para>Current Data: Downloads the transactions displayed on
+                screen.</para>
+              </listitem>
+
+              <listitem>
+                <para>Full Data: Downloads all the transactions available
+                under a particular status tab like Draft, Rejected and
+                more.</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed UI
+          transactions.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      Undertaking Issued transactions. The actions are available in relevant
+      tabs based on the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction)</para>
+          </listitem>
+
+          <listitem>
+            <para>If there are multiple actions available for a transaction, a
+            few actions may accessed by clicking on this icon
+            <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/dots_icon.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject>.</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+			
+			<row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clear</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/clear.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to clear the transaction from list. Only
+              amendment / message rejected event can be cleared from the list,
+              however this event will still be available in
+              enquiry.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delete</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to delete the Issuance Request rejected
+              events from the list and it is no longer available in Fusion
+              Corporate Channels.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Customer
+              Instructions</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cust_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Consent Response', 'Customer
+              Instructions' and attach supporting documents if any, to submit
+              the Customer Instructions to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clean Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel>Amendment
+              Response</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amendresp_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Amendment
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Disposal Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/disposal_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to provide the disposal instructions on a
+              discrepant Undertaking Issued. The available options
+              are:<itemizedlist>
+                  <listitem>
+                    <para>Agree to pay against the document</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Hold the document</para>
+                  </listitem>
+                </itemizedlist></para><para>Fill all the mandatory fields in
+              the General Details section and attach supporting documents if
+              any, to submit the Disposal Instructions to bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Cancel Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cancel_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Cancel
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Authorise</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/authorise.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to authorise the selected transaction.
+              You can either approve or return the transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Approve</emphasis>
+                      or <emphasis role="bold">Return</emphasis> a transaction
+                      is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note> </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amend</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amend_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to amend the selected transaction.<note>
+                  <para>Option to <emphasis role="bold">Amend</emphasis> a
+                  transaction is available only to a maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Request for Settlement</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Correspondence</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/correspondence_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to initiate correspondence with bank for
+              the selected transaction..</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to assign the reference to the
+              transaction for which no customer reference is assigned, this
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to update/assign the entity of
+              transaction. This provision is available under Live Tab. This
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Audit Trail</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/audit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the audit trail of transaction.
+              This option shows all the users associated with the transaction
+              since its initiation.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=bg_access;ACCESS=BG_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking any
+      of the following actions against any given transaction:<itemizedlist>
+          <listitem>
+            <para>Details</para>
+          </listitem>
+
+          <listitem>
+            <para>Return</para>
+          </listitem>
+
+          <listitem>
+            <para>Approve</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details/Return/Approve</guilabel></entry>
+
+              <entry valign="top"><para>Displays the transaction details, all
+              the events of transaction, attachments and charges associated
+              with the transaction. The information is spread over three tabs
+              'Transaction Details', 'Events' and 'Additional Information'.
+              Individual tabs are described below:<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Undertaking Issued
+                      Landing</emphasis> button at the top of <emphasis
+                      role="bold">Details</emphasis> page to navigate back to
+                      Undertaking Issued Landing page.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Journey</emphasis>
+                      button at the top of <emphasis
+                      role="bold">Details</emphasis> page to view the history
+                      of events that the transaction has gone through.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note><itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Transaction
+                    Details</emphasis>: Displays the details of the
+                    transaction that is opened from the listing page. The tab
+                    lists the fields based on the action you click against the
+                    transaction.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Events</emphasis>: Displays
+                    the history of events that transaction has gone through.
+                    The transactions are either acknowledged by the bank or a
+                    reporting event is initiated by bank that requires an
+                    action to be performed by a corporate user. <note>
+                        <para>In case an action is pending on the corporate
+                        user, a <emphasis role="bold">Respond</emphasis>
+                        button is present against the stated event, that
+                        navigates user to screen to perform the respective
+                        action.</para>
+                      </note></para>
+
+                    <para>If you are viewing the transaction details of an
+                    amended transaction, you can use the <emphasis
+                    role="bold">Compare</emphasis> button to see a comparative
+                    view of amended transaction (N) and transaction on which
+                    amendment was made (N-1).</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Attachments' added as
+                    part of this transaction and also displays 'Documents' and
+                    'Fees and Charges' details.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Template;PERM=bg_access;ACCESS=BG_TM_UX"
+           role="TOPIC">
+    <title>Templates</title>
+
+    <para role="TEXT">Click on <emphasis role="bold">Templates</emphasis> icon
+    on the landing page to open the Template Maintenance form. The Template
+    Maintenance form displays a list of templates that the corporate user has
+    created. The list of templates are segregated over the following
+    tabs:<itemizedlist>
+        <listitem>
+          <para>Recently Updated: Lists all the recently updated
+          templates.</para>
+        </listitem>
+
+        <listitem>
+          <para>Frequently Used: Lists all the frequently used
+          templates.</para>
+        </listitem>
+
+        <listitem>
+          <para>All: Lists all the templates.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para role="TEXT">Click on <emphasis role="bold">Create
+    Template</emphasis> button to create a new template form with the current
+    details pre-saved. The system will request a template name to be entered
+    that can be used at a later stage to create further Letters of Credit with
+    similar details.</para>
+  </section>
+
+  <section condition="TITLE=Request Undertaking;PERM=bg_access;ACCESS=BG_RUI_UX"
+           role="TOPIC">
+    <title>Request Undertaking</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">Request
+    Undertaking</emphasis> form. The form contains several functions and
+    allows you to initiate various types of Undertaking request.</para>
+
+    <para role="TEXT">You can view all the sections of Undertaking Initiation
+    form and also navigate to any section from the left pane of <emphasis
+    role="bold">Undertaking Issued</emphasis> request form. The sections are
+    marked with a green tick <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/ILC_Generaldetails.gif" width="16mm"/>
+        </imageobject>
+      </inlinemediaobject> when all the mandatory fields of section are filled
+    with valid values.</para>
+
+    <note>
+      <para><itemizedlist>
+          <listitem>
+            <para>The <emphasis role="bold">Request Undertaking</emphasis>
+            feature is available only for a maker user.</para>
+          </listitem>
+
+          <listitem>
+            <para>Fusion Corporate Channels provides an option to save the
+            transaction each time user clicks on Next or manually saves the
+            transaction.</para>
+          </listitem>
+        </itemizedlist></para>
+    </note>
+
+    <para>Amendment of an amended <emphasis role="bold">Undertaking
+    Issued</emphasis> transaction is property based. If the property
+    <property>trade.amend.restriction.enabled</property> is set to 'true' then
+    an <guimenu>UI</guimenu> transaction can be amended only once, then user
+    must wait for bank's response to make another amendment on the
+    transaction. If the property is set to 'False' then amendment over an
+    already amended transaction is allowed.<note>
+        <para>This is applicable only to amendment transactions.</para>
+      </note></para>
+
+    <section condition="TITLE=General Details;PERM=bg_access;ACCESS=BG_GD_UX"
+             role="TOPIC">
+      <title>General Details</title>
+
+      <para>This section lists all the fields pertaining to general details
+      section of <emphasis role="bold">Request Undertaking</emphasis>
+      form.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Is this
+              Provisional?</guilabel></entry>
+
+              <entry valign="top">Select to mark the transaction a provisional
+              UI. <tip>
+                  <para role="TEXT">A provisional UI uses the 'Client Wording'
+                  feature for the transaction negotiations between the Bank
+                  and you. This allows the transaction to be suspended in
+                  status 'Wording Under Review' before an agreement is reached
+                  and it is moved to the status 'Final Wording'. Once the Bank
+                  User approves the provisional UI, the status changes to
+                  'New' and it is treated as any regular UI in the
+                  system.</para>
+                </tip></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Mode of Transmission</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select Mode of
+              Transmission for the Undertaking Issued. The selected mode is
+              used for transmitting the Undertaking Request by Issuing Bank.
+              Available values are:<itemizedlist>
+                  <listitem>
+                    <para>Swift</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Telex</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Courier</para>
+                  </listitem>
+                </itemizedlist><note>
+                  <para role="TEXT">If you select <type>SWIFT</type>, the
+                  system automatically checks upon submission that the
+                  Undertaking application does not contain any illegal
+                  characters and that the narratives do not exceed the maximum
+                  length allowed by SWIFT. If a problem is found, you must
+                  correct those fields or switch to another method.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel role="bold"> Create
+              From</guilabel></entry>
+
+              <entry valign="top"><para role="TEXT">Click on this option to
+              create an Undertaking Request from the list of Undertaking
+              Issued form. The list of Undertaking forms are segregated among
+              the following:<itemizedlist>
+                  <listitem>
+                    <para>Template: Click on this option to create a new
+                    Undertaking Request using an existing template. Upon using
+                    this function all values from the referred template shall
+                    be populated with exception to dates, currency, amount
+                    ,customer reference,attachments ,facility details,
+                    transaction accounts and amount of new UI. The templates
+                    are categorized under the following three
+                    sections:<itemizedlist>
+                        <listitem>
+                          <para>Recently Updated</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Frequently Used</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>All</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Bank Template: Click on this option to open a list
+                    of Bank Templates.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Existing Undertaking: Click on this option to open a
+                    list of Existing Undertaking Issued. Upon using this
+                    function all values from the referred template shall be
+                    populated with exception to dates, currency, amount
+                    ,customer reference,attachments ,facility details,
+                    transaction accounts and amount of new UI.</para>
+                  </listitem>
+                </itemizedlist><note>
+                  <para>The selected UI type Template, Existing UI is shown
+                  under the Create From section.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Form of
+              Undertaking</guilabel></entry>
+
+              <entry valign="top">The type of trade product that the
+              Undertaking is being issued for. Select from the dropdown
+              list:<programlisting>Demand Guarantee: Selection of this option enables Extension Details section in Undertaking Details.
+Standby Letter of Credit: Selection of this option enables Confirmation Instructions in the General Details section and Shipment Details and Payment Details sections get enabled in Undertaking Details.
+Dependent Undertaking: Selection of this option mandates the purpose as Issuance of Undertaking.</programlisting></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Purpose</guilabel></entry>
+
+              <entry valign="top">Select the Purpose/Function of the message:
+              <programlisting>Issuance of Undertaking: Instruct the bank to Issue an undertaking that would then be advised to the Beneficiary.
+Counter and Local Undertaking: Instruct the bank to Issue a Counter Undertaking that would then be used by another bank to Issue a local Undertaking. 
+Counter-Counter and Counter Undertaking: Instruct the bank to Issue a Counter Undertaking, which will then be used for the issuance of another counter Undertaking by that bank, before a third bank issues the local Undertaking.</programlisting><note>
+                  <para>Upon selection of 'Counter and Local Undertaking' or
+                  'Counter-Counter and Counter Undertaking' a new section
+                  'Counter Undertaking' gets enabled.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Confirmation Instructions</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify from the group of
+              option buttons, whether the Confirming Bank will be asked to
+              confirm receipt of the Undertaking from the Issuing Bank. The
+              individual buttons are described below. <programlisting
+              format="linespecific">Confirm - The Advising Bank will be asked to confirm.
+May Add - The Advising Bank and the beneficiary can choose whether to confirm.
+Without - No confirmation is required.             </programlisting><note>
+                  <para>This field is available only when the value of 'Form
+                  of Undertaking' is 'Standby'.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel>Transfer
+              Indicator</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Check this field if the UI
+              is transferable and also enter the transfer conditions below the
+              checkbox.<note>
+                  <para>This field is available when the value of 'Form of
+                  Undertaking' is 'Standby'.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter reference
+              information for the beneficiary, if required. The field allows a
+              maximum of 16 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the name for use
+              within your company, for the UI you are creating. The field
+              allows a maximum of 16 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Additional Customer Reference</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT">Additional name for use
+              within your company, for the UI you are creating. Maximum 34
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Bank
+              Reference</guilabel></entry>
+
+              <entry valign="top">Reference assigned by the bank's back office
+              to this Undertaking Issued transaction when the bank created the
+              UI.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Issue
+              Date</guilabel></entry>
+
+              <entry valign="top">Date when the Undertaking Issued transaction
+              was started within <guimenu>Fusion Corporate
+              Channels</guimenu>.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Expiry
+              Date</guilabel></entry>
+
+              <entry valign="top">Date when the Undertaking Issued transaction
+              expires.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Product
+              Code</guilabel></entry>
+
+              <entry valign="top">Displays the product code of the
+              transaction.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Form of
+              Undertaking</guilabel></entry>
+
+              <entry valign="top">Displays the Form of Undertaking associated
+              with the transaction.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Company
+              Name</guilabel></entry>
+
+              <entry valign="top">Displays the name of the company for which
+              the transaction is initiated.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Entity</guilabel></entry>
+
+              <entry valign="top">Displays the name of the entity that
+              initiated the transaction.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Channel
+              Reference</guilabel></entry>
+
+              <entry valign="top">Displays the unique reference number
+              generated by <guimenu>Fusion Corporate
+              Channels</guimenu>.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Name</guilabel></entry>
+
+              <entry valign="top">Displays the name of the applicant.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Customer
+              Instructions</guilabel></entry>
+
+              <entry valign="top">Enter the instructions for the bank. Click
+              on <guilabel>"</guilabel> to choose from the list of available
+              phrases.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Applicant and Beneficiary Details;PERM=bg_access;ACCESS=BG_AB_UX"
+             id="AB" role="TOPIC">
+      <title>Applicant and Beneficiary Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Applicant</guimenu></para></entry>
+
+              <entry valign="top"><para role="TEXT">Name and address of the
+              applicant and optionally the entity (within the applicant
+              company) raising the application.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel role="bold">
+              Entity</guilabel></entry>
+
+              <entry valign="top">Entity making the application. This field is
+              only present if your company has entities defined and you are
+              attached to one or more entities. If you are attached to more
+              than one, click on the drop down icon to select one. If you are
+              attached to only one, the field is preset to that entity and
+              cannot be changed.<note>
+                  <para>In case entity is selected, a new field <guilabel
+                  role="bold">Entity Name</guilabel> is populated.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the applicant.
+              This field allows a maximum of 35 characters. Defaults to the
+              name of your company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the applicant.
+              This field allows a maximum of 4 lines of 35 characters each.
+              Defaults to the address of your company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Country</guilabel></para></entry>
+
+              <entry valign="top">Country of the beneficiary.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Alternate Applicant Details</guimenu>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name and address of the
+              alternate applicant. The details in this section enables to
+              enter an alternative applicant for the Undertaking Issued if the
+              principal applicant desires to apply on behalf of another person
+              or entity.<note>
+                  <para>Enable the slide button to display the 'Name',
+                  'Address' and 'Country' fields.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the alternative
+              applicant. This field allows a maximum of 35 characters.<note>
+                  <para>This field is available only when <guimenu
+                  moreinfo="none">Alternate Applicant Details</guimenu> is
+                  enabled.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the alternative
+              applicant. This field allows a maximum of 3 lines of 35
+              characters each. <note>
+                  <para>This field is available only when <guimenu
+                  moreinfo="none">Alternate Applicant Details</guimenu> is
+                  enabled.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Country</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the alternative
+              applicant's country. Click the magnifying glass icon for a list
+              of countries to select from. <note>
+                  <para>This field is available only when <guimenu
+                  moreinfo="none">Alternate Applicant Details</guimenu> is
+                  enabled.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Beneficiary Details</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Name and address
+              of the beneficiary. Click on the 'Name' field drop down to
+              select the associated beneficiary. You may also add a new
+              beneficiary for the applicant, enter the new Name and Address
+              details of the beneficiary and slide the "<guimenu>Save the
+              Beneficiary</guimenu>" button and also enter the abbreviated
+              name for the new beneficiary.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the beneficiary.
+              Click on the drop down for the list of beneficiaries or enter a
+              new beneficiary name. This field allows a maximum of 35
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the
+              beneficiary. If the beneficiary name is selected from the
+              dropdown this field gets auto-filled, else you must enter the
+              address for the new beneficiary. This field allows a maximum of
+              3 lines of 35 characters each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Country</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the beneficiary's
+              country. Click on the drop down for the list of countries to
+              select from.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">BEI Code</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">BEI (Business Entity
+              Identifier) of the buyer, if the company has been provided with
+              such an ID. Maximum of 11 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Contact Details</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT">Slide to enable
+              Beneficiary Contact Details, if the beneficiary organization has
+              a designated person or a separate office to handle the
+              Undertaking.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of contact from
+              ordering party.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the contact
+              from ordering party. Maximum of 3 lines of 35 characters
+              each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Country</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Country of the designated
+              person or office from the ordering party. Click on the drop down
+              for the list of countries to select from.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Bank Details;PERM=bg_access;ACCESS=BG_BD_UX"
+             role="TOPIC">
+      <title>Bank</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Recipient Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Bank to which you wish to
+              send your Undertaking Issued request. The dropdown list shows a
+              list of banks that your company is a client of.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Issuer's Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The reference (multi
+              purpose string that for instance may identify the liability
+              line) under which the transaction should be recorded. The list
+              box shows the references that are defined for the above selected
+              Recipient Bank.<note>
+                  <para>The references shown are defined and maintained by the
+                  bank. If the bank does not wish to define and use references
+                  per Bank, a non bank-specific Reference field appears in the
+                  Applicant Details section instead.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Issuing Bank</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Bank to which you want to
+              request your Undertaking Issued. The individual fields are
+              described below.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Direct (Issued by selected Issuing
+              Bank)</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the issuing bank of
+              undertaking</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Indirect</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Bank entered by the
+              user will be requested to issue the undertaking. The selected
+              bank will pass on this request to the bank entered by the
+              user.</para></entry>
+            </row>
+
+            <!--<row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Issuing Bank</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Bank to which you want to
+              request your Undertaking Issued. The individual fields are
+              described below.</para></entry>
+            </row>-->
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Swift Code</guimenu></para></entry>
+
+              <entry valign="top"><para>Select the applicable Swift Code that
+              identifies the Issuing bank. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the bank. The
+              lookup shows a list of banks that your company has a
+              relationship with.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the bank. Upon
+              selection of Swift Code this field is auto filled with the
+              address of the bank. This field allows a maximum of 4 lines of
+              35 characters each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Advising Bank</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Bank to which the
+              Undertaking Issued will be sent by the Issuing Bank and which
+              will be responsible for notifying the Undertaking Issued terms
+              to the beneficiary.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Swift Code</guimenu></para></entry>
+
+              <entry valign="top"><para>Select the applicable Swift Code that
+              identifies the Advising bank. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the bank. Upon
+              selection of Swift Code this field is auto filled with the bank
+              counterparties that your company maintains. This field allows a
+              maximum of 35 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the bank. Upon
+              selection of Swift Code this field is auto filled with the
+              address of the bank. This field allows a maximum of 4 lines of
+              35 characters each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Advise Through Bank</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Optional) Bank that will
+              notify the beneficiary of the terms of the Undertaking. Only
+              needed if it is not the same as the Advising
+              Bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Swift Code</guilabel></para></entry>
+
+              <entry valign="top"><para>Select the applicable Swift Code that
+              identifies the Advising bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the bank. Upon
+              selection of Swift Code this field is auto filled with the bank
+              counterparties that your company maintains. This field allows a
+              maximum of 35 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the bank. Upon
+              selection of Swift Code this field is auto filled with the
+              address of the bank. This field allows a maximum of 4 lines of
+              35 characters each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Confirmation Required</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">The user may choose any
+              one of the following parties to confirm the
+              transaction.<itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><guilabel>Other</guilabel><note>
+                        <para>Upon selecting 'Other' as <guilabel
+                        moreinfo="none">Requested Confirmation
+                        Party</guilabel>, you are required to fill the details
+                        of the Confirmation Party. The 'Swift Code', 'Bank
+                        Name' and 'Address' fields get enabled under the
+                        <guilabel moreinfo="none">Requested Confirmation
+                        Party</guilabel> dropdown.</para>
+                      </note></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><guilabel>Advising Bank</guilabel></para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guilabel>Advise Through
+                    Bank</guilabel></para>
+                  </listitem>
+                </itemizedlist><note>
+                  <para>The <guilabel moreinfo="none">Requested Confirmation
+                  Party</guilabel> field gets activated only upon selection of
+                  the following confirmation instructions:<itemizedlist>
+                      <listitem>
+                        <para>Confirm</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>May Add</para>
+                      </listitem>
+                    </itemizedlist></para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Confirming Bank</guimenu></para></entry>
+
+              <entry valign="top"><para role="TEXT">The user must enter the
+              details of the confirming bank.<note>
+                  <para>The <guilabel moreinfo="none">Confirming
+                  Bank</guilabel> field gets activated only upon selection of
+                  the following confirmation instructions:<itemizedlist>
+                      <listitem>
+                        <para>Confirm</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>May Add</para>
+                      </listitem>
+                    </itemizedlist></para>
+                </note></para><para><note>
+                  <para>This field is applicable only when Swift 2018 feature
+                  is 'On'.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Swift Code</guilabel></para></entry>
+
+              <entry valign="top"><para>Swift code that identifies the
+              Confirming bank. Use the magnifying glass icon to select from a
+              list of potential Swift Codes that your company
+              maintains.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the confirming
+              bank. Up to 35 characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the bank. Up to
+              3 lines of a maximum of 35 characters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Undertaking Details;PERM=bg_access;ACCESS=BG_UD_UX"
+             role="TOPIC">
+      <title>Undertaking Details</title>
+
+      <para role="TEXT">The input form for creating an <guilabel
+      moreinfo="none">Undertaking Issued</guilabel> initiation is as
+      follows:</para>
+
+      <section>
+        <title>Type and Expiry</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Type of
+                Undertaking</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the type of
+                Undertaking: <programlisting format="linespecific">Advance Payment
+Bill of Lading
+Customs
+Direct Pay
+Insurance
+Judicial
+Lease
+Payment
+Performance
+Retention
+Shipping
+Tender/Bid
+Warranty/ Maintenance
+Any other local undertaking type</programlisting><note>
+                    <para>Upon selection of 'Any other local undertaking type'
+                    a mandatory field is enabled to mention the details of
+                    'Any other local undertaking type'.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Effective Date </guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the condition for
+                the Undertaking to be effective. </para><para role="TEXT">
+                <programlisting format="linespecific">Upon issuance
+When the underlying contract is signed
+When the advanced payment occurs
+Other</programlisting> </para><note>
+                    <para role="TEXT">When you select 'Other', the date field
+                    below Effective Date is enabled and it is mandatory to
+                    select a date. The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Type</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the type of
+                expiry applicable to the instrument: <type>Open</type>
+                ,<type>Fixed</type> or <type>Conditional</type>.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Activated when Open
+                expiry type is selected. <note>
+                    <para role="TEXT">The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Approximate Expiry Date
+                </guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Activated when Open
+                expiry type is selected. <note>
+                    <para role="TEXT">The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Projected Expiry
+                Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Activated when
+                Conditional expiry type is selected. <note>
+                    <para role="TEXT">The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Event</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Description for the
+                expiry.<note>
+                    <para role="TEXT">When the options Open or Conditional are
+                    selected from the Expiry Date dropdown, Expiry Event is
+                    enabled. In the case of Conditional Expiry Event, this
+                    field is mandatory.</para>
+                  </note></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Amount and Charges</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Undertaking Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency code (three
+                alphabetic characters) and amount (maximum 15 characters
+                including delimiters) of the Undertaking. Click the magnifying
+                glass icon to set the currency code.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Increase/Decrease
+                Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the
+                increase/decrease amount for the Undertaking Issued. Upon
+                filling either of the '<guimenu>Increase Amount</guimenu>' or
+                '<guimenu>Decrease Amount</guimenu>' fields, the value for
+                '<guimenu>New Undertaking Amount</guimenu>' field is
+                auto-calculated. Alternatively, you can also fill the
+                '<guimenu>New Undertaking Amount</guimenu>' field and FCC does
+                the arithmetic to populate the change in terms of increase or
+                decrease amount from the original UI amount. <note>
+                    <para>This field is available only in Undertaking Issued
+                    'Amendment' form.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry nameend="c3" namest="c1" valign="top"><para
+                role="TEXT"> <guilabel moreinfo="none">Variation in
+                Drawing</guilabel> </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Percentage (+)</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the variance
+                (percentage) allowed over the agreed undertaking
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Percentage (-)</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the variance
+                (percentage) allowed below the agreed undertaking
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Issuance Charges</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click the checkbox if
+                Issuance Charges will be borne by Beneficiary.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Correspondent
+                Charges</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click the checkbox if
+                Correspondent Charges will be borne by
+                Beneficiary.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Consortium</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select if the <guilabel
+                moreinfo="none">Undertaking Issued</guilabel> is provided by a
+                consortium.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Consortium Details</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the Consortium
+                details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Net Exposure</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the net exposure
+                amount and currency. Click the drop down to set the currency
+                code.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Additional Amount Information </guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT">This field contains
+                information about additional amounts related to the
+                undertaking, like, interests, tolerances and more.
+                </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Extension</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Extension Basis</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the extension
+                basis, based on whether one-time extension or
+                periodic/recurring extension is to be applied to the
+                Undertaking.<programlisting>Regular
+Rolling</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Extension Upon</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Define when extension
+                will occur. Select the value from available radio buttons:
+                Expiry or Calendar. </para><para role="TEXT">If you select
+                Calendar, you must enter an Extension Date in the field
+                immediately below. If you select Expiry, the date from the
+                Expiry field in the General Details section will be
+                considered</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Extension For -
+                Number</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The duration of the
+                extension. The allowed field length for the field is three
+                numeric characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Extension For -
+                Period</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Lists the unit for the
+                field 'Number'.The dropdown list shows the units available:
+                <programlisting>Days
+Weeks
+Months
+Years.</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Rolling Extension
+                On</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the 'Rolling
+                Extension On' value from available radio buttons: Expiry or
+                Calendar Date. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Rolling Frequency</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Set the rolling
+                frequency value .</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Rolling Frequency -
+                Number</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The duration of Rolling
+                Frequency. The allowed field length for the field is three
+                numeric characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Rolling Frequency -
+                Period</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Lists the unit for the
+                field 'Number'.The dropdown list shows the units available:
+                <programlisting>Days
+Weeks
+Months
+Years.</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Number of Extensions</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Define the Number of
+                Extensions. Three numeric characters to define the number of
+                extensions.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Final Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Expiry date of the
+                Undertaking rolling extension. This date is automatically
+                populated based on the entries in the 'Extension For' and
+                'Number of Extensions' fields. For example, if the Undertaking
+                is to be extended for 2 months and the number of extensions is
+                3, the expiry date of the extended Undertaking will be six
+                months in the future. You can override this value for a date
+                equal to or greater than the automatically generated
+                date</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Advise Extension</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Place a check mark here
+                to indicate that a 'Advice Extension' should be
+                sent.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Days Notice</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Three numeric characters
+                to define the number of days in advance to advise the
+                extension.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Extension Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Pair of option buttons
+                to define whether the extension amount will be original amount
+                or current amount. The individual fields are described below.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Original Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount will be the
+                original amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Current Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount will be the
+                current amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Cancellation Notice
+                (days)</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Three numeric characters
+                to define the number of days in advance to advise the
+                cancellation.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Increase/Decrease Amount</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Increase/Decrease</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The undertaking amount
+                can be automatically increased or decreased for a set
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select from the type
+                from available options <programlisting>Regular - Increase/Decrease an Undertaking amount for a predefined period, allows recursive Increase/Decrease.
+Irregular - Increase/Decrease a predefined amounts on predefined dates using the Irregular option.</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Operation</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the operation
+                type from the available options: <type>Increase</type> and
+                <type>Decrease</type>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">First Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the date on which
+                the undertaking amount will increase or
+                decrease.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Advise Increase/Decrease
+                </guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Fill the details in the
+                following fields to Advise Increase/Decrease
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Days Notice</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Beneficiary gets
+                notified of the increasse/decrease in the undertaking amount.
+                This field value defines the number of days the beneficiary
+                will be notified prior to actual increase/decrease in
+                undertaking amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">First Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the date on which
+                the undertaking amount will increase or
+                decrease.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Frequency</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the frequency
+                value, it defines the number of times the undertaking amount
+                will undergo increase/decrease.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Period</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the unit of the
+                frequency defined in the above field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Number of Times</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Lists the number of
+                times the increase/decrease event shall be
+                executed.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Day in Month</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the day in month
+                on which the undertaking amount will be increased or
+                decreased. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Do you want to fill in as
+                Percentage?</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enable, if you wish to
+                advise Increase/Decrease in percentage.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the increase or
+                decrease amount that the undertaking amount shall
+                undergo.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Contract Information</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel>Undertaking Contract
+                Details</guilabel></entry>
+
+                <entry valign="top">Enter the contract details linked to the
+                Undertaking.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Contract
+                Type</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the applicable
+                contract type from the options listed below.<programlisting
+                format="linespecific">CONTRACT
+DELIVERY
+OFFER
+ORDER
+PROFORMA INVOICE
+PROJECT
+TENDER
+</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select date of creation
+                of the contract.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Contract Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the amount
+                committed for the contract. Click the dropdown to set the
+                currency code.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Percentage Covered</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the percentage
+                covered.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Tender Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select date of expiry
+                for the tender. This field is available when you select TENDER
+                from the Contract Type field. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Contract Narrative</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter a description for
+                the contract.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Terms</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Other
+                Rules</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the rules
+                applicable to the undertaking: <programlisting
+                format="linespecific">URDG
+ISPR
+OTHR
+NONE
+UCPR</programlisting><note>
+                    <para>If 'Other' is selected, the textbox below the
+                    dropdown is activated and the rules details can be entered
+                    here</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Place of
+                Jurisdiction</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Use the dropdown to
+                select the Country for Place of Jurisdiction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Governing Law
+                </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the details of the
+                governing law in the text box</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Language
+                </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the Language in
+                which the undertaking text is written.<note>
+                    <para>When you select 'Other', a text field is enabled and
+                    it is mandatory to enter the language.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Demand
+                Indicator</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the type of
+                demand that would not be accepted, from the list:
+                <programlisting format="linespecific">Multiple demands not permitted
+Multiple and partial demands not permitted
+Partial demands not permitted
+Multiple and partial demands permitted</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Text standard
+                </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">The text specific to the
+                undertaking is to be filled in here, from the available
+                list:<programlisting format="linespecific">Bank Standard
+Beneficiary’s wording as attached
+Our wording as attached
+Same as (specify)</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Special Terms
+                </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the type of Bank
+                Text used: <programlisting format="linespecific">INCL. TERMS OF EFFECTIVENESS
+INCL. TERMS OF REDUCTION
+INCL. TERMS OF EFFECTIVENESS AND TERMS OF REDUCTION</programlisting></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Shipment Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Shipment From</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Place of original
+                shipment for the goods. Up to 65 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Shipment To</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Place of destination in
+                the shipment of goods. Up to 65 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Place of Loading</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Port of loading or
+                departure airport. Up to 65 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Place of Discharge</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Port of discharge or
+                destination airport. Up to 65 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Last Shipment Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">This date must be a
+                valid date prior to the expiry date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Partial Shipment</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Shows whether partial
+                shipment of goods is permitted. Select from the dropdown list:
+                <type>Allowed</type>, <type>Conditional</type> or <type>Not
+                Allowed.</type></para><note>
+                    <para>The "Conditional" option in the dropdown is
+                    available only when Swift 2018 feature is 'On'.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Transhipment</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Shows whether
+                transshipment of goods is permitted. Select from the dropdown
+                list: <type>Allowed</type>, <type>Conditional</type>, or
+                <type>Not Allowed</type>.</para><note>
+                    <para>The "Conditional" option in the dropdown is
+                    available only when Swift 2018 feature is 'On'.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Incoterms Rules</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the incoterm rule
+                for the shipment. Available options are <programlisting>2010
+2020
+Other</programlisting><note>
+                    <para><itemizedlist>
+                        <listitem>
+                          <para>The Bank Administrator can add more Incoterm
+                          Rules and its corresponding terms.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>The Incoterm rule is set to 'Other' when an
+                          Incoterm is received from TI without
+                          'inco_term_year' value.</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Purchase Terms</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The purchase terms
+                describing the responsibilities of the seller and the buyer in
+                the current transaction. The dropdown list shows various
+                values based on what Incoterm Rule is selected.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Named Place</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Geographical place known
+                to the trading partners at which risk passes from one Business
+                party to another according to the Incoterm selected above. Up
+                to 60 characters.</para><para role="TEXT">Mandatory if an
+                Incoterm has been selected.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Transport Mode</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The mode of transport
+                for the shipment. The dropdown list shows the following
+                options:</para><programlisting format="linespecific">Air
+Sea
+Rail
+Road
+Multimodal
+Other - Selecting this option will enable the unlabeled field below this dropdown and it is mandatory to enter information in that field. </programlisting><note>
+                    <para role="TEXT">This field appears when you select a
+                    combination of an MT798 enabled Bank from the
+                    <guilabel>Bank Name</guilabel> dropdown for the
+                    <guilabel>Issuing Bank</guilabel> tab in the
+                    <guilabel>Bank Details</guilabel> section and
+                    <guilabel>SWIFT</guilabel> from the <guilabel>Send LC
+                    by</guilabel> dropdown in the <guilabel>Instructions for
+                    the Bank Only</guilabel> section.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Payment Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Credit Available With</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the bank that
+                would make the credit available for the Undertaking. The
+                available values are as shown below:<programlisting>Advising Bank
+Issuing Bank
+Any Bank
+Other</programlisting><note>
+                    <para>Upon selection of 'Other' as Bank Type, fill the
+                    mandatory fields 'Bank Name' and 'Address'.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Credit Available By</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Specify whether the
+                credit would be available on Demand or on payment of the
+                claim. Available options are:<programlisting>Payment
+On Demand</programlisting></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Narratives</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Text of
+                Undertaking</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">The text specific to the
+                undertaking is to be filled in here. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Underlying
+                Transactions Details </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">The details of the
+                original transaction for which this instrument is to be the
+                secondary payment means, are to be entered here.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Presentation
+                Instructions </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">This field specifies the
+                presentation instructions (for example, form and/or place of
+                presentation) including documents required to make a complying
+                demand </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section condition="TITLE=Counter Undertaking;PERM=bg_access;ACCESS=BG_CD_UX"
+             role="Topic">
+      <title>Counter Undertaking</title>
+
+      <para role="TEXT">The input form for creating an <guilabel
+      moreinfo="none">Undertaking Issued</guilabel> initiation is as
+      follows:<note>
+          <itemizedlist>
+            <listitem>
+              <para>This section is available only when, 'Purpose' is selected
+              as 'Counter and Local Undertaking' or 'Counter-Counter and
+              Counter Undertaking'.</para>
+            </listitem>
+
+            <listitem>
+              <para>The Counter Undertaking feature can be disabled by
+              <parameter>trade.iu.counter.undertaking.enable</parameter> by
+              setting the value to 'False', by default the value is
+              'True'.</para>
+            </listitem>
+          </itemizedlist>
+        </note></para>
+
+      <section>
+        <title>Type and Expiry</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Form of Undertaking </guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the type of
+                undertaking advised. Select the instrument type:
+                <programlisting>Demand Guarantee
+Standby LC
+Dependent Undertaking</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Confirmation Instructions</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT">Specify from the group
+                of option buttons, whether the Advising Bank will be asked to
+                confirm receipt of the Undertaking from the Issuing Bank. The
+                individual buttons are described below. <programlisting
+                format="linespecific">Confirm - The Advising Bank will be asked to confirm.
+May Add - The Advising Bank and the beneficiary can choose whether to confirm.
+Without - No confirmation is required.             </programlisting><note>
+                    <para>This field gets enabled only when the value of 'Form
+                    of Undertaking' is 'Standby'.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Transfer Indicator</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Check this field to
+                enter the transfer conditions below the checkbox.<note>
+                    <para>This field gets activated only when the value of
+                    'Form of Undertaking' is 'Standby'.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Type of
+                Undertaking</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the type of
+                Undertaking: <programlisting format="linespecific">Advance Payment
+Bill of Lading
+Customs
+Direct Pay
+Insurance
+Judicial
+Lease
+Payment
+Performance
+Retention
+Shipping
+Tender/Bid
+Warranty/ Maintenance</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Effective Date </guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the condition for
+                the Undertaking to be effective. </para><para role="TEXT">
+                <programlisting format="linespecific">Upon issuance
+When the underlying contract is signed
+When the advanced payment occurs
+Other</programlisting> </para><note>
+                    <para role="TEXT">When you select 'Other', the date field
+                    below Effective Date is enabled and it is mandatory to
+                    select a date. The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Type</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the type of
+                expiry for the instrument: <type>Open</type>
+                ,<type>Fixed</type> or <type>Conditional</type>.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Activated when Fixed
+                expiry type is selected. <note>
+                    <para role="TEXT">The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Approximate Expiry Date
+                </guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Activated when the
+                options Open or Conditional are selected from the Expiry Date
+                dropdown, Expiry Event is enabled. In the case of Conditional
+                Expiry Event, this field is mandatory. <note>
+                    <para role="TEXT">The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Projected Expiry Date
+                </guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Activated when
+                Conditional expiry type is selected. <note>
+                    <para role="TEXT">The system checks that the date is valid
+                    and is greater than the application date.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Event</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Description for the
+                expiry.<note>
+                    <para role="TEXT">When you select the option Projected
+                    from Expiry Date dropdown, Expiry Event is enabled and it
+                    is mandatory to enter the required data.</para>
+                  </note></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Beneficiary</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the beneficiary.
+                Maximum of 35 characters. Use the dropdown to set these fields
+                from a customer list that your company
+                maintains.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                beneficiary. Maximum of 3 lines of 35 characters
+                each.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Beneficiary Country</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Country of the
+                beneficiary. Use the dropdown to select one.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Beneficiary Contact
+                Details</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Slide to enable
+                Beneficiary Contact Details, if the beneficiary organization
+                has a designated person or a separate office to handle the
+                Undertaking.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of contact from
+                ordering party.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Address</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the contact
+                from ordering party. Maximum of 3 lines of 35 characters
+                each.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Country of the
+                designated person or office from the ordering party. Click on
+                the drop down for the list of countries to select
+                from.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Amount and Charges</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Undertaking Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency code (three
+                alphabetic characters) and amount (maximum 15 characters
+                including delimiters) of the Undertaking. Click the magnifying
+                glass icon to set the currency code.</para></entry>
+              </row>
+
+              <row>
+                <entry nameend="c3" namest="c1" valign="top"><para
+                role="TEXT"> <guilabel moreinfo="none">Variation in
+                Drawing</guilabel> </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Percentage (+)</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the variance
+                (percentage) allowed over the agreed undertaking
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Percentage (-)</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the variance
+                (percentage) allowed below the agreed undertaking
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Issuance Charges</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click the checkbox if
+                Issuance Charges will be borne by Beneficiary.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Correspondent
+                Charges</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click the checkbox if
+                Correspondent Charges will be borne by
+                Beneficiary.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Consortium</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select if the
+                <application id="ent_Issued_undertaking"> Undertaking
+                Issued</application> is provided by a
+                consortium.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Consortium Details</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the Consortium
+                details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Additional Amount Information </guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT">This field contains
+                information about additional amounts related to the
+                undertaking, like, interests, tolerances and more.
+                </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Increase/Decrease</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Increase/Decrease</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The undertaking amount
+                can be automatically increased or decreased for a set
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select from the type
+                from available options <programlisting>Regular - Increase/Decrease an Undertaking amount for a predefined period, allows recursive Increase/Decrease.
+Irregular - Increase/Decrease a predefined amounts on predefined dates using the Irregular option.</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Operation</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the operation
+                type from the available options: <type>Increase</type> and
+                <type>Decrease</type>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">First Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the date on which
+                the undertaking amount will increase or
+                decrease.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Advise Increase/Decrease
+                </guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Fill the details in the
+                following fields to Advise Increase/Decrease
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Days Notice</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Beneficiary gets
+                notified of the increasse/decrease in the undertaking amount.
+                This field value defines the number of days the beneficiary
+                will be notified prior to actual increase/decrease in
+                undertaking amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">First Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the date on which
+                the undertaking amount will increase or
+                decrease.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Frequency</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the frequency
+                value, it defines the number of times the undertaking amount
+                will undergo increase/decrease.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Period</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the unit of the
+                frequency defined in the above field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Number of Times</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Lists the number of
+                times the increase/decrease event shall be
+                executed.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Day in Month</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the day in month
+                on which the undertaking amount will be increased or
+                decreased. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Do you want to fill in as
+                Percentage?</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enable, if you wish to
+                advise Increase/Decrease in percentage.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the increase or
+                decrease amount that the undertaking amount shall
+                undergo.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Terms</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Rules
+                Applicable</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the rules
+                applicable to the undertaking: <programlisting
+                format="linespecific">URDG
+ISPR
+OTHR
+NONE
+UCPR</programlisting><note>
+                    <para>If 'Other' is selected, the textbox below the
+                    dropdown is activated and the rules details can be entered
+                    here</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Place of
+                Jurisdiction</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Use the dropdown to
+                select the Country for Place of Jurisdiction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Governing Law
+                </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the details of the
+                governing law in the text box</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Text Language
+                </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the Language in
+                which the undertaking text is written.<note>
+                    <para>When you select 'Other', a text field is enabled and
+                    it is mandatory to enter the language.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Demand
+                Indicator</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Select the type of
+                demand that would not be accepted, from the list:
+                <programlisting format="linespecific">Multiple demands not permitted
+Multiple and partial demands not permitted
+Partial demands not permitted
+Multiple and partial demands permitted</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Text standard
+                </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">The text specific to the
+                undertaking is to be filled in here, from the available
+                list:<programlisting format="linespecific">Bank Standard
+Beneficiary’s wording as attached
+Our wording as attached
+Same as (specify)</programlisting></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section>
+        <title>Narratives</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Undertaking
+                Terms and Conditions</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">Fill the actual text of
+                the Counter Undertaking.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Underlying
+                Transactions Details </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">The details of the
+                original transaction for which this instrument is to be the
+                secondary payment means, are to be entered here.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Presentation
+                Instructions </guilabel></entry>
+
+                <entry valign="top"><para role="TEXT">This field specifies the
+                presentation instructions (for example, form and/or place of
+                presentation) including documents required to make a complying
+                demand </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section condition="TITLE=Licenses;PERM=bg_access;ACCESS=BG_LD_UX"
+             role="Topic">
+      <title>Licenses</title>
+
+      <para role="TEXT">Click on the <guibutton>Select License</guibutton>
+      button and the <guilabel>List of licenses</guilabel> appears. Use
+      <guilabel>License Number</guilabel> and <guilabel>Currency</guilabel>
+      fields to narrow down your search.</para>
+
+      <important>
+        <para role="TEXT">There are a few conditions that must be met for the
+        licenses to be displayed in the popup. The following provides
+        information for the conditions that could point to reasons that make
+        licenses available or not available in the popup:</para>
+
+        <orderedlist>
+          <listitem>
+            <para role="TEXT">You should have created license(s) and linked it
+            to the beneficiary selected in the Secondary Beneficiary Details
+            section on this page. If you have selected a drawee for whom there
+            are no licenses created, the popup will display a blank list.
+            (This condition applies only if your administrator has selected
+            <guilabel>Non-Principal Only</guilabel> in the License Definition.
+            For any other selection, all licenses are available.)</para>
+          </listitem>
+
+          <listitem>
+            <para role="TEXT">Your selection of the transfer expiry date for
+            the UI from the general details section should be within the valid
+            to and from date of the license. Only licenses that match this
+            criterion are displayed. If the transfer expiry date is beyond the
+            license validity date, the list displays blank.</para>
+          </listitem>
+
+          <listitem>
+            <para role="TEXT">Your selection of multi-currency during license
+            creation will allow you to select a currency in the Transfer
+            Amount field that is different from the license currency and
+            display the license in the popup. However, if multi-currency has
+            not been selected, then the currency in the Transfer Amount field
+            has to be the same as the license field for the license to be
+            available in the popup.</para>
+          </listitem>
+        </orderedlist>
+      </important>
+
+      <para role="TEXT">Once you have selected a license, you have to enter a
+      value in the Allocated Amount field that is equal to the transaction
+      amount of the UI (refer to Amount Details section). If the amount
+      available for the license is less than the transaction amount of the UI,
+      you have to add and link one or more licenses to fill for the
+      deficit.</para>
+
+      <para role="TEXT">If you have already linked a license, the details are
+      displayed for System ID, Back Office Reference, License Number and
+      Allocated Amount. You can choose to delete a linked license by clicking
+      the <guibutton moreinfo="none">Delete</guibutton> icon in the right-hand
+      column.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Channel
+              Reference</guilabel></entry>
+
+              <entry valign="top">Unique reference number generated by
+              <productname id="ent_appli">Fusion Corporate
+              Channels</productname> for this License.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Bank
+              Reference</guilabel></entry>
+
+              <entry valign="top">Issuing Bank's internal reference number
+              generated by the back office for this Undertaking.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">License
+              Number</guilabel></entry>
+
+              <entry valign="top">Unique identification number defined by the
+              licensing authorities.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel>Currency</guilabel></entry>
+
+              <entry valign="top">Currency for the license.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">
+              Amount</guilabel></entry>
+
+              <entry valign="top">Original amount of the license.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel>Outstanding
+              Amount</guilabel></entry>
+
+              <entry valign="top">Outstanding amount available for the
+              license.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel>Outstanding In Transaction
+              Currency</guilabel></entry>
+
+              <entry valign="top">Outstanding license amount value converted
+              to the currency of the current transaction.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel>Valid To Date</guilabel></entry>
+
+              <entry valign="top">Expiry date or the book off date of the
+              license.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel>Non Principal</guilabel></entry>
+
+              <entry valign="top">Non Principal Party details. Displays
+              Beneficiary for Import License, Consignee for Export License and
+              Payee for FX License.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel>Allow Overdraw</guilabel></entry>
+
+              <entry valign="top">Displays whether the drawdown amount is
+              permitted to be more than the remaining allocation amount for
+              the license.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Actions</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Take the appropriate
+              action on the license by either enabling the selected licenses
+              to be linked to the product or canceling the selection by using
+              the delete icon under 'Actions' column.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Instructions to Bank;PERM=bg_access;ACCESS=BG_IB_UX"
+             role="TOPIC">
+      <title>Instructions to Bank</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colwidth="249*"/>
+
+          <colspec colwidth="751*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delivery of Original Undertaking</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the delivery Mode
+              of undertaking from the dropdown menu, available options
+              are:<programlisting>By Collection
+By Courier
+By Mail
+By Messenger - hand-deliver
+By registered mail or airmail
+Other</programlisting><note>
+                  <para>Upon selection of 'Other' as 'Mode of Delivery' option
+                  a mandatory field 'Name of Other Party' gets enabled.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delivery To</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Instruction to deliver the
+              document to. Select from the available options:<programlisting>Ourselves
+Beneficiary
+Agent
+Representative
+Other</programlisting><note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Upon selection of "Other" as <guilabel
+                      moreinfo="none">Delivery to</guilabel> option a
+                      mandatory "<guilabel moreinfo="none">Party Name and
+                      Address</guilabel>" text box is enabled which you must
+                      fill.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>The options available for this field are
+                      configurable from bank side through database.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Principal Account</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Account number that you
+              want the Issuing Bank to use to debit any principal amount in
+              the life of the transaction. Click the dropdown to select the
+              account.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Fee Account</guilabel> </para></entry>
+
+              <entry valign="top">Account number that you want the Issuing
+              Bank to use to debit any charges and commissions related to the
+              transaction. Click the dropdown to select the account.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Any additional information
+              that would not fit in any of the narratives above. Maximum 100
+              lines of 65 characters. Click the button to the right of this
+              field, to select predefined phrases to insert into this
+              field.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Attachment;PERM=bg_access;ACCESS=BG_AT_UX"
+             role="TOPIC">
+      <title>Attachment</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">File Upload</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Upload supporting files
+              either by 'Drag and Drop' method or by 'Browsing' to the file
+              location. You can attach up to 5 the supporting documents of
+              size 1 Mega Byte each. The file types supported are
+              <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+              PDF, GIF, ZIP</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Browse</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Browse button and Drag and
+              Drop field, which you can optionally use to attach a file from
+              your local hard disk to give additional details pertaining to
+              this Undertaking.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=bg_access;ACCESS=BG_PV_UX"
+             role="Topic">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application and also allows you to
+      either Save or Submit the application.</para>
+    </section>
+  </section>
+</section>

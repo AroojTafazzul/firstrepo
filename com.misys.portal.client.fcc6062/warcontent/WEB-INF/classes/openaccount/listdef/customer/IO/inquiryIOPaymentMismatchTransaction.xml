@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="IO_SCREEN"/>
+			<parameter name = "OPTION_CODE" binding_code="OPTION_ACCEPT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="MODE_CODE" binding_code="MODE_ACCEPT"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_PAYMENT_REQUEST"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="seller_name" align="left" width="40%" loca_key="SELLER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>	
+	<column name="sub_tnx_type_code" align="center" width="20%" loca_key="TYPE"/>
+	<column name="prod_stat_code" align="center" width="13%" loca_key="STATUS">
+		<script>
+				var tnxTypeCode = row.getColumnValue("tnx_type_code");
+				var prodStatCode = row.getColumnValue("prod_stat_code");
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"")+")"; 
+		</script>
+	</column>
+	<column name ="tnx_type_code" hidden = "y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="po_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="PO_REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="seller_name"
+		loca_key="SELLER_NAME"
+		size="35"
+		max_length="70"
+		input="y"
+		type="SellerName"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+
+	<parameter
+		name="export_list"
+		file_name="inquiryIO"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->	
+	<candidate name="import_open_account">
+		<filter>
+		<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_PAYMENT_REQUEST
+				</value>
+			</criteria>
+		
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="po_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					po_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="group_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					group_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="payment_flag"/>
+				<operator type="equal"/>
+				<value type="code">
+					N034_YES
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_PARTIALLY_MATCHED
+				</value>
+			</criteria>
+			<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_ACKNOWLEDGED
+			</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_PAYMENT_REQUEST
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="po_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					po_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="group_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					group_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_BUSINESS_REJECTED
+				</value>
+			</criteria>
+			<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_ACKNOWLEDGED
+			</value>
+			</criteria>
+		</filter>
+		
+		<filter>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_PAYMENT_MISMATCH_REJECT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="po_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					po_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="group_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					group_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_INCOMPLETE
+			</value>
+			</criteria>
+		<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_PAYMENT_REQUEST
+				</value>
+			</criteria>
+		</filter>
+		
+		<filter>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_PAYMENT_MISMATCH_ACCEPT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="po_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					po_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="group_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					group_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_INCOMPLETE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_PAYMENT_REQUEST
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter>
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>
+</listdef>

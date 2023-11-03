@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.treasury.listdef_fx_multiple_submission" identifier="ref_id">
+<batch type="submit">
+		<parameter name="SCREEN" value="FX_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		<javascript url="misys._config.submitFXOrder"/>
+	</batch>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="FX_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_STANDING_INSTRUCTIONS"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="5em" loca_key="ENTITY"/>
+	<column name="bo_ref_id" align="center" width="5em" loca_key="BO_REFERENCEID"/>
+	<column name="cust_ref_id" align="left" width="45%" loca_key="CUST_REFERENCEID"/>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="action_req_code" hidden="y"/>
+	
+	<column name="Customer_Counterparty@counterparty_act_no" width="8em" loca_key="DEBIT_ACCOUNT"/>
+	<column name="Bank_Counterparty@counterparty_name" align="left" width="37%" loca_key="BENEFICIARY_NAME"/>
+	<column name="Bank_Counterparty@counterparty_act_no" width="37%" loca_key="BENEFICIARY_ACCOUNT"/>
+	<column name="cur_code" align="center" width="3em" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="5em" loca_key="AMOUNT"/>
+	<column name="value_date" align="center" width="6em" loca_key="VALUEDATE"/>
+	<column name="sub_product_code" align="center" width="5em" loca_key="DEAL_TYPE"/>
+	<column name="inp_dttm" align="right" width="6em" loca_key="INP_DTTM"/>
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>	
+	<column name="tnx_val_date" hidden="y" />
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		loca_key="CUST_REFERENCEID"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="DEAL_TYPE"
+	    type="AvaliableSubProductType"
+	    input="y"
+	    multiple_values="SPOT,FWD,WFWD"/>		
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+		<!-- 
+	<parameter
+		name="counter_cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CTR_CURCODE"/>
+		-->
+	<parameter
+		name="zero"
+		type="hidden"
+		default="0"/>	
+
+	<!-- candidates -->	
+	<candidate name="foreign_exchange">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counter_cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counter_cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="value_date"/>
+				<operator type="supOrEqual"/>
+				<value type="date">current</value>
+			</criteria>		
+			<criteria>
+				<column name="tnx_stat_code"/>			
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						sub_product_code
+					</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+		</criteria>
+	</filter>
+	
+</listdef>

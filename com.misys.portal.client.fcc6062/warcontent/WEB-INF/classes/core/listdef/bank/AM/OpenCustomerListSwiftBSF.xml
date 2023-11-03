@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef selection_mode="single" ordered="n" huge="n" help="LIST_HELP_INQUIRY" page="50">
+	
+	<column name="Company@abbv_name" width="50%" loca_key="CUSTOMERABBVNAME">
+		<url>
+			<parameter name="SCREEN" value="BSF_SCREEN"/>
+			<parameter name="COMPANY_ID" column="customer_id"/>
+			<parameter name="ACCOUNT_ID" value=""/>
+			<parameter name="OPTION_CODE" value="SWIFT_ACCOUNT_MAINTENANCE"/>
+			<parameter name="OPERATION_CODE" value="DISPLAY_ACCOUNT_LIST"/>
+		</url>
+	</column>
+	
+	<column name="Company@name" align="left" width="30%" loca_key="CUSTOMERNAME"/>
+	<column name="customer_id" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="abbv_name"
+		loca_key="CUSTOMERABBVNAME"
+		size="16"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="name"
+		loca_key="CUSTOMERNAME"
+		size="16"
+		max_length="35"
+		input="y"/>
+
+
+
+	<!-- candidates -->	
+	<candidate name="customer_bank">
+		<filter>
+			<criteria>
+				<column name="Company@company_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					customer_id
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="Company@abbv_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					abbv_name
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="Company@name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					name
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="status" default_order_type="a" page="100" js_binding="misys.binding.common.listdef_mc">
+
+	
+
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="TRADEADMIN_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		
+		</url>
+	</column>
+	
+	<column name="ref_id" align="center" width="12em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="10em" loca_key="ENTITY"/>
+	<column name="bo_deal_name" align="left" width="20em" loca_key="DEAL"/>
+	<column name="bo_facility_name" align="left" width="20em" loca_key="FACILITY"/>
+	<column name="bo_ref_id" align="left;white-space:pre" width="11em" loca_key="OUTSTANDING_ALIAS"/>
+	<column name="cust_ref_id" align="left" width="10em" loca_key="CUST_REFERENCE"/>
+	<column name="Company@rmGroup" align="left" width="15em" loca_key="XSL_PARA_RM_GROUP"/>
+	<column name="pricing_option" align="center" width="12em" loca_key="LN_PRICING_OPTION"/>
+<!-- 	<column name="allInRate" align="center" width="10em" loca_key="LN_ALL_IN_RATE"/> -->
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	
+	<column name="liab_amt" align="right" width="16em" loca_key="CURRENT_OUTSTANDING_AMT"/>	
+	<column name="fx_rate" align="right" width="16em" loca_key="LN_FX_RATE">
+		<script>
+			var fxConversionRate = row.getColumnValue("fx_conversion_rate");
+			var facilityCurrency = row.getColumnValue("fac_cur_code");
+			var loanCurrency  = row.getColumnValue("cur_code");
+			if(!("".equals(""+fxConversionRate+"")) &amp;&amp; !("".equals(""+facilityCurrency+"")) &amp;&amp; !((""+loanCurrency+"").equals(""+facilityCurrency+"")) )
+			{
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.formatFXConversionRateValues(""+fxConversionRate+"",""+language+"");
+			}
+			value;
+		</script>
+	</column>
+	<column name="effective_date" align="right" width="10em" loca_key="EFFECTIVE_DATE"/>
+	<column name="repricing_frequency" align="right" width="12em" loca_key="LN_REPRICING_FREQUENCY"/>
+	<column name="repricing_date" align="right" width="10em" loca_key="LN_REPRICING_DATE"/>
+	<column name="status" align="right" width="9em" loca_key="LOAN_STATUS"/>	
+	
+	<column name="cust_reference" hidden="y" />
+	<column name="fx_conversion_rate" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="fac_cur_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="bo_deal_name"
+		size="35"
+		max_length="40"
+		loca_key="DEAL"
+		input="y"
+		default=""/>
+	<parameter
+		name="bo_facility_name"
+		size="35"
+		max_length="35"
+		loca_key="FACILITY"
+		input="y"
+		default=""/>
+
+	<parameter name="cust_reference" size="20" max_length="20"
+		loca_key="BORROWER_REF" input="y" type="AvailableLNBorrowerReference"
+		productCode="LN" default="" />	
+		
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="OUTSTANDING_ALIAS"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="CUST_REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+	<parameter
+	    name="status"
+	    loca_key="STATUS"
+	    type="AvailableLoanStatus"
+	    input="y"
+	    multiple_values="A,I"/>
+	<parameter
+		name="export_list"
+		file_name="inquiryLN"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->	
+	<candidate name="loan_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_deal_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_deal_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_facility_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_facility_name
+				</value>
+			</criteria>
+
+			<criteria>
+				<column name="borrower_reference" />
+				<operator type="like" />
+				<value type="parameter">
+					cust_reference
+				</value>
+			</criteria>
+				
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PENDING
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="status"/>
+				<operator type="like"/>
+				<value type="parameter">
+					status
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

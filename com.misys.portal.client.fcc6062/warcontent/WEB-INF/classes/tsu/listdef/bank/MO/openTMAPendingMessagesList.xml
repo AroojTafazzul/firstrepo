@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+
+<!-- Columns -->
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="SCREEN" value="TMA_SCREEN"/>
+		</url>
+	</column>
+    <column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="po_ref_id" align="center" width="10%" loca_key="PO_REFERENCEID"/>
+	<column name="link_ref_id" align="center" width="15%" loca_key="LINK_REF_ID"/>
+	<column name="buyer_name" align="center" width="10%" loca_key="BUYER_NAME"/>
+	<column name="seller_name" align="center" width="10%" loca_key="SELLER_NAME"/>
+	<column name="cur_code" align="center" width="10%" loca_key="CUR_CODE"/> 
+ 	<column name="ordered_amt" align="center" width="15%" loca_key="ORDERED_AMT"/> 
+	<column name="tid" align="center" width="15%" loca_key="TID"/>  
+	<column name="message_type" align="center" width="20%" loca_key="MESSAGE_TYPE"/>  
+	<column name="tnx_id" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	
+	<!-- parameters -->
+	<!-- size and max_length not updated -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="po_ref_id"
+		size="20"
+		loca_key="PO_REFERENCEID"
+		max_length="35"
+		input="y"
+		default=""/>
+	<parameter
+		name="link_ref_id"
+		size="20"
+		loca_key="LINK_REF_ID"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="buyer_name"
+		loca_key="BUYER_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="seller_name"
+		loca_key="SELLER_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="tid"
+		size="20"
+		max_length="35"
+		loca_key="TID"
+		input="y"
+		default=""/>
+	<parameter
+	    name="message_type"
+	    loca_key="MESSAGE_TYPE"
+	    type="TMAMessageType"
+	    input="y"
+	    multiple_values="001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023,024,025,026,027,028,029,030,031,032,033,034,035,036,037,038,040,041,042,044,045,046,047,048,049,050,051,052"/>
+		
+	 <!-- candidates -->
+	 <candidate name="tsu_message">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="po_ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						po_ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="link_ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						link_ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="message_type"/>
+					<operator type="like"/>
+					<value type="parameter">message_type</value>
+				</criteria>
+				<criteria>
+					<column name="tid"/>
+					<operator type="like"/>
+					<value type="parameter">tid</value>
+				</criteria>
+				<criteria>
+					<column name="seller_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						seller_name
+					</value>
+				</criteria>
+				<criteria>
+					<column name="buyer_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						buyer_name
+					</value>
+				</criteria>
+				<criteria>
+					<column name="baseline_stat_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						baseline_stat_code
+					</value>
+			</criteria>
+		</filter>
+	</candidate> 
+	<filter>
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+		<criteria>
+			<column name="baseline_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N301_PENDING
+			</value>
+		</criteria>
+	</filter>
+</listdef> 

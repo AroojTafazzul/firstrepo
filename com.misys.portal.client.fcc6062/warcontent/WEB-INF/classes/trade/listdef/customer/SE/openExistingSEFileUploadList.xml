@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="200"  js_binding="misys.binding.common.listdef_mc">
+
+    <column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="SE_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+		</url>
+	</column>	
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="20%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="ObjectDataString@upload_file_type" align="center" width="20%" loca_key="XSL_HEADER_UPLOAD_FILE_TYPE"/>
+    <column name="applicant_act_no" align="center" width="25%" loca_key="XSL_HEADER_UPLOAD_ACCOUNT"/>  
+    <column name="ObjectDataString@file_type_name" align="center" width="20%" loca_key="XSL_HEADER_UPLOAD_FILE_NAME"/>    
+    <column name="appl_date" align="center" width="6em" loca_key="LAST_MODIFY_DATE"/>    
+	<column name="prod_stat_code" align="center" width="15%" loca_key="STATUS" sort="n"/>  
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>		
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="applicant_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		default=""
+		/>	
+	<parameter
+	    name="file_type"
+	    loca_key="XSL_HEADER_UPLOAD_FILE_TYPE"
+	    type="CLIENTFileUploadAvaliableFileType"
+	    input="y"
+	    multiple_values=""/>	
+	<parameter
+		name="applicant_act_no"
+		size="20"
+		max_length="19"
+		loca_key="XSL_HEADER_UPLOAD_ACCOUNT"
+		input="y"
+		type="AccountNo"
+		productType="SE:ULOAD"/>
+	<parameter
+		name="create_date"
+		type="range"
+		input="y"
+		range_from_label="LAST_MODIFY_DATE_FROM"
+		range_to_label="LAST_MODIFY_DATE_TO"
+		default="blank"/>
+	
+	<!-- candidates -->	
+	<candidate name="secure_email_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="ObjectDataString@upload_file_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					file_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_act_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+			<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="like"/>
+				<value type="string">
+					ULOAD
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					create_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					create_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PENDING
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_REJECTED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N047_ULOAD
+					</value>
+				</value>
+			</criteria>		
+		</filter>	
+	</candidate>
+
+</listdef>

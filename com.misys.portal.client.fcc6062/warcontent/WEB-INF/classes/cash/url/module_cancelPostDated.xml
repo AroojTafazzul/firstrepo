@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="customer" scope="product">
+	<name>module_cancelPostDated</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<bindingParam>tnxtype</bindingParam>
+	<bindingParam>mode</bindingParam>
+	<methodParam>templateid</methodParam>
+	<methodParam>referenceid</methodParam>
+	<methodParam>featureid</methodParam>
+	<methodParam>tnxid</methodParam>
+	<staticParam>menuaction</staticParam>
+	<action>
+		<actionCode>OpenCancelPostDatedList</actionCode>
+		<class>FundTransferListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>ft_postdated_transaction_access</permission>
+		<operation>-</operation>
+		<option>CANCEL</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>14</tnxtype>
+		<menuaction>OpenCancelPostDatedList</menuaction>
+		<bookmarkable>true</bookmarkable>
+		<favourite>true</favourite>
+	</action>
+	<action>
+		<actionCode>OpenUnsignedCancelPostDatedTransaction</actionCode>
+		<class>FundTransferPortlet</class>
+		<method>openPendingFT</method>
+		<permission>ft_postdated_transaction_cancel</permission>
+		<operation>-</operation>
+		<option>CANCEL</option>
+		<mode>UNSIGNED</mode>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+		<templateid>-</templateid>
+		<tnxtype>14</tnxtype>
+		<menuaction>OpenUnsignedCancelPostDatedTransactionList</menuaction>
+	</action>	
+	<!-- Cancel post dated transaction -->
+	<action>
+		<actionCode>CancelFTInitiation</actionCode>
+		<class>FundTransferPortlet</class>
+		<method>cancelPostDatedFT</method>
+		<permission>ft_postdated_transaction_cancel</permission>
+		<operation>REJECT</operation>
+		<option>CANCEL</option>
+		<mode>UNSIGNED</mode>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+    	<templateid>-</templateid>
+		<tnxtype>01</tnxtype>
+		<featureid>-</featureid>
+	</action>
+	<!-- end -->
+</module>

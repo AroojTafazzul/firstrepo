@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef selection_mode="single" ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="account_no" default_order_type="d" page="50" source="opics"  js_binding="misys.binding.cash.fx_position">
+
+	
+	<onSelectionChangedScript>"dojo.publish('CMEQFXDealsPosition', [{ currency : \"" + row.getColumnValue("currency") +
+	"\",customer : \"" + parameters.get("customer").getValue() + "\",start_date: \""+ parameters.get("start_date").getValue() + "\"}]);" + 
+	"dojo.publish('CMEQFXDealsByDay', [{}]);"</onSelectionChangedScript>
+	<onSelectionClearedScript>dojo.publish('CMEQFXDealsPosition', [{}]);dojo.publish('CMEQFXDealsByDay', [{}]);</onSelectionClearedScript>
+	
+	
+	<column name="branchName" align="center" width="25%" loca_key="BRANCHNAME"/>
+	<column name="customer" align="center" width="25%" loca_key="CUSTOMER"/>
+	<column name="currency" align="center" width="25%" loca_key="CURCODE"/>
+	<column name="position" align="right" width="25%" loca_key="POSITION"/>
+
+	<parameter
+		name="customer"
+		size="35"
+		max_length="35"
+		loca_key="CUSTOMERREFERENCE"
+		input="y"
+		type="AvailableReference" 
+		productCode="FX"
+		default=""/>
+	<parameter
+		name="start_date"
+		loca_key="STARTDATE"
+		input="y"
+		type="Date"
+		default=""/>
+	<parameter
+		name="opicslist"
+		type="hidden"
+		default="FXDEALS"/>
+
+	<!-- candidates -->	
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="customer"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer
+				</value>
+			</criteria>
+			<criteria>
+				<column name="customer_list"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer_list
+				</value>
+			</criteria>
+			<criteria>
+				<column name="opicslist"/>
+				<operator type="like"/>
+				<value type="parameter">
+					opicslist
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

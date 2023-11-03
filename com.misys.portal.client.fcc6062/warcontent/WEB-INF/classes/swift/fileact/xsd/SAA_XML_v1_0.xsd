@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns="urn:swift:xsd:saa.mxs.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:swift:xsd:saa.mxs.01">
+    <!-- String restrictions and formats -->
+    <xs:simpleType name="SwString">
+        <xs:restriction base="xs:string" />
+    </xs:simpleType>
+    <xs:simpleType name="SwBoolean">
+        <xs:restriction base="xs:boolean" />
+    </xs:simpleType>
+    <xs:simpleType name="SwInt">
+        <xs:restriction base="xs:int" />
+    </xs:simpleType>
+    <xs:complexType name="SwAny" mixed="true">
+        <xs:sequence>
+            <xs:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="X1">
+        <xs:restriction base="xs:string">
+            <xs:length value="11" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="X2">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="X3">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="X4">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinancialInstitution">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="105" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="BranchInformation">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="70" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CityName">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="35" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Location">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="105" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Countrycode">
+        <xs:restriction base="xs:string">
+            <xs:length value="2" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Nickname">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="32" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TargetRoutingPoint">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MANRoutingCode">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="6" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Reference">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="40" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Priority">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1" />
+            <xs:maxInclusive value="9" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DN">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="100" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Service">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="30" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RequestType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="30" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="UserReference">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="30" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CreationTime">
+        <xs:restriction base="xs:string">
+            <xs:length value="12" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CBTRoutingInfo">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="20" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SenderReference">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="50" />
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Enumerated types -->
+    <xs:simpleType name="TargetApplicationRule">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="InternalRouting" />
+            <xs:enumeration value="CBTApplication" />
+            <xs:enumeration value="RoutingPoint" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Validation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="None" />
+            <xs:enumeration value="Minimum" />
+            <xs:enumeration value="Intermediate" />
+            <xs:enumeration value="Maximum" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DispositionState">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Verify" />
+            <xs:enumeration value="Authorise" />
+            <xs:enumeration value="Modify" />
+            <xs:enumeration value="Ready" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NetworkPriority">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Normal" />
+            <xs:enumeration value="Urgent" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageFormat">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MX" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageSubFormat">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Input" />
+            <xs:enumeration value="Output" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MessageNature">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FinancialNature" />
+            <xs:enumeration value="TextNature" />
+            <xs:enumeration value="NetworkNature" />
+            <xs:enumeration value="SecurityNature" />
+            <xs:enumeration value="ServiceNature" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CBTApplication">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ApplicationInterface" />
+            <xs:enumeration value="SwiftnetInterface" />
+            <xs:enumeration value="MessageEntry" />
+            <xs:enumeration value="MessengerAdapter" />
+            <xs:enumeration value="Other" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NonRepType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SvcOpt" />
+            <xs:enumeration value="SvcMand" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AuthResult">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Success" />
+            <xs:enumeration value="Bypassed" />
+            <xs:enumeration value="Failed" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ResponseDuplCreation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="None" />
+            <xs:enumeration value="PDE" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IntvCategory">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TransmissionReport" />
+            <xs:enumeration value="DeliveryReport" />
+            <xs:enumeration value="TransmissionResponse" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TransmissionNetwork">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ApplicationNetwork" />
+            <xs:enumeration value="SwiftNetNetwork" />
+            <xs:enumeration value="OtherNetwork" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NetworkDeliveryStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NetworkWaitingAck" />
+            <xs:enumeration value="NetworkTimedOut" />
+            <xs:enumeration value="NetworkAcked" />
+            <xs:enumeration value="NetworkNacked" />
+            <xs:enumeration value="NetworkRejectedLocally" />
+            <xs:enumeration value="NetworkAborted" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DeliveryNetwork">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ApplicationNetwork" />
+            <xs:enumeration value="SwiftNetNetwork" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ReceiverDeliveryStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RcvUnknown" />
+            <xs:enumeration value="RcvOverdue" />
+            <xs:enumeration value="RcvDelivered" />
+            <xs:enumeration value="RcvAborted" />
+            <xs:enumeration value="RcvDelayedNak" />
+            <xs:enumeration value="RcvAcked" />
+            <xs:enumeration value="RcvNacked" />
+            <xs:enumeration value="RcvTruncated" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DuplCreation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="None" />
+            <xs:enumeration value="PDM" />
+            <xs:enumeration value="PDE" />
+            <xs:enumeration value="PDE_PDM" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="OrigMessageFields">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NoOriginal" />
+            <xs:enumeration value="Minimum" />
+            <xs:enumeration value="Condensed" />
+            <xs:enumeration value="Full" />
+            <xs:enumeration value="Expanded" />
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Types -->
+    <xs:complexType name="AddressFullName">
+        <xs:sequence>
+            <xs:element name="X1" type="X1" />
+            <xs:element name="X2" type="X2" minOccurs="0" />
+            <xs:element name="X3" type="X3" minOccurs="0" />
+            <xs:element name="X4" type="X4" minOccurs="0" />
+            <xs:element name="FinancialInstitution" type="FinancialInstitution" minOccurs="0" />
+            <xs:element name="BranchInformation" type="BranchInformation" minOccurs="0" />
+            <xs:element name="CityName" type="CityName" minOccurs="0" />
+            <xs:element name="Location" type="Location" minOccurs="0" />
+            <xs:element name="CountryCode" type="Countrycode" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Address">
+        <xs:choice>
+            <xs:element name="Nickname" type="Nickname" />
+            <xs:element name="FullName" type="AddressFullName" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="TargetApplication">
+        <xs:sequence>
+            <xs:element name="TargetApplicationRule" type="TargetApplicationRule" minOccurs="0" />
+            <xs:element name="TargetRoutingPoint" type="TargetRoutingPoint" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageOrigin">
+        <xs:sequence>
+            <xs:element name="CBTApplication" type="SwString" />
+            <xs:element name="MessagePartner" type="SwString" minOccurs="0" />
+            <xs:element name="SessionNr" type="SwInt" minOccurs="0" />
+            <xs:element name="SeqNr" type="SwInt" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SWIFTNetRequestAttribute">
+        <xs:sequence>
+            <xs:element name="RequestorDN" type="DN" />
+            <xs:element name="ResponderDN" type="DN" />
+            <xs:element name="Service" type="Service" />
+            <xs:element name="RequestType" type="RequestType" minOccurs="0" />
+            <xs:element name="NRIndicator" type="SwBoolean" minOccurs="0" />
+            <xs:element name="NonRepType" type="NonRepType" minOccurs="0" />
+            <xs:element name="NonRepWarning" type="SwString" minOccurs="0" />
+            <xs:element name="SwiftRef" type="SwString" minOccurs="0" />
+            <xs:element name="SwiftRequestRef" type="SwString" minOccurs="0" />
+            <xs:element name="CBTReference" type="SwString" minOccurs="0" />
+            <xs:element name="SNLEndPoint" type="SwString" minOccurs="0" />
+            <xs:element name="SnFQueueName" type="SwString" minOccurs="0" />
+            <xs:element name="SnFInputTime" type="SwString" minOccurs="0" />
+            <xs:element name="SnFPDMHistory" type="SwAny" minOccurs="0" />
+            <xs:element name="ValidationDescriptor" type="SwAny" minOccurs="0" />
+            <xs:element name="AuthResult" type="AuthResult" minOccurs="0" />
+            <xs:element name="AuthValue" type="SwAny" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SWIFTNetResponseAttribute">
+        <xs:sequence>
+            <xs:element name="ResponderDN" type="SwString" minOccurs="0" />
+            <xs:element name="NonRepType" type="NonRepType" minOccurs="0" />
+            <xs:element name="NonRepWarning" type="SwString" minOccurs="0" />
+            <xs:element name="ResponseRef" type="SwString" minOccurs="0" />
+            <xs:element name="SwiftResponseRef" type="SwString" minOccurs="0"/>
+            <xs:element name="CBTReference" type="SwString" minOccurs="0" />
+            <xs:element name="DuplCreation" type="ResponseDuplCreation" minOccurs="0" />
+            <xs:element name="ValidationDescriptor" type="SwAny" minOccurs="0" />
+            <xs:element name="AuthResult" type="AuthResult" minOccurs="0" />
+            <xs:element name="AuthValue" type="SwAny" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NetworkAttribute">
+        <xs:sequence>
+            <xs:element name="SWIFTNetRequestAttribute" type="SWIFTNetRequestAttribute" />
+            <xs:element name="SWIFTNetResponseAttribute" type="SWIFTNetResponseAttribute" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FormatAttributeMX">
+        <xs:sequence />
+    </xs:complexType>
+    <xs:complexType name="FormatAttribute">
+        <xs:sequence>
+            <xs:element name="FormatAttributeMX" type="FormatAttributeMX" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SWIFTNetSecurityAttribute">
+        <xs:sequence>
+            <xs:element name="SigningRequired" type="SwBoolean" minOccurs="0" />
+            <xs:element name="SignerDN" type="SwString" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SecurityAttribute">
+        <xs:sequence>
+            <xs:element name="SWIFTNetSecurityAttribute" type="SWIFTNetSecurityAttribute" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Intervention">
+        <xs:sequence>
+            <xs:element name="IntvCategory" type="IntvCategory" />
+            <xs:element name="CreationTime" type="CreationTime" />
+            <xs:element name="ApplicationOrigin" type="SwString" />
+            <xs:element name="OperatorOrigin" type="SwString" />
+            <xs:element name="Text" type="SwAny" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Interventions">
+        <xs:sequence>
+            <xs:element name="Intervention" type="Intervention" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TransmissionReport">
+        <xs:sequence>
+            <xs:element name="Network" type="TransmissionNetwork" />
+            <xs:element name="NetworkAttribute" type="NetworkAttribute" />
+            <xs:element name="NetworkSessionNr" type="SwInt" />
+            <xs:element name="NetworkSeqNr" type="SwInt" />
+            <xs:element name="NetworkDeliveryStatus" type="NetworkDeliveryStatus" />
+            <xs:element name="Interventions" type="Interventions" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeliveryReport">
+        <xs:sequence>
+            <xs:element name="Network" type="DeliveryNetwork" />
+            <xs:element name="NetworkAttribute" type="NetworkAttribute" />
+            <xs:element name="NetworkSessionNr" type="SwInt" />
+            <xs:element name="NetworkSeqNr" type="SwInt" />
+            <xs:element name="ReceiverDeliveryStatus" type="ReceiverDeliveryStatus" />
+            <xs:element name="Interventions" type="Interventions" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ReportLPI">
+        <xs:sequence>
+            <xs:element name="OrigSenderReference" type="SenderReference" minOccurs="0" />
+            <xs:element name="MessageOrigin" type="MessageOrigin" />
+            <xs:element name="Modified" type="SwBoolean" minOccurs="0" />
+            <xs:element name="OriginalRelatedMessage" type="SwBoolean" minOccurs="0" />
+            <xs:element name="ReportingApplication" type="SwString" />
+            <xs:element name="BackToNonOriginator" type="SwBoolean" minOccurs="0" />
+            <xs:element name="DuplEmission" type="SwBoolean" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageLPI">
+        <xs:sequence>
+            <xs:element name="OriginalMessage" type="SwBoolean" minOccurs="0" />
+            <xs:element name="ModifyAllowed" type="SwBoolean" minOccurs="0" />
+            <xs:element name="DeleteInhibited" type="SwBoolean" minOccurs="0" />
+            <xs:element name="MinValidation" type="Validation" minOccurs="0" />
+            <xs:element name="CBTPriority" type="Priority" minOccurs="0" />
+            <xs:element name="DispositionState" type="DispositionState" minOccurs="0" />
+            <xs:element name="NetworkAttribute" type="NetworkAttribute" />
+            <xs:element name="SecurityAttribute" type="SecurityAttribute" minOccurs="0" />
+            <xs:element name="FormatAttribute" type="FormatAttribute" minOccurs="0" />
+            <xs:element name="TargetApplication" type="TargetApplication" minOccurs="0" />
+            <xs:element name="MessageOrigin" type="MessageOrigin" minOccurs="0" />
+            <xs:element name="CBTRoutingInfo" type="CBTRoutingInfo" minOccurs="0" />
+            <xs:element name="MANRoutingCode" type="MANRoutingCode" minOccurs="0" />
+            <xs:element name="DuplEmission" type="SwBoolean" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageTPI">
+        <xs:sequence>
+            <xs:element name="NetworkDelivNotify" type="SwBoolean" minOccurs="0" />
+            <xs:element name="Network" type="TransmissionNetwork" minOccurs="0" />
+            <xs:element name="NetworkPriority" type="NetworkPriority" minOccurs="0" />
+            <xs:element name="NetworkSessionNr" type="SwInt" minOccurs="0" />
+            <xs:element name="NetworkSeqNr" type="SwInt" minOccurs="0" />
+            <xs:element name="DuplCreation" type="DuplCreation" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MessageSRI">
+        <xs:sequence>
+            <xs:element name="UserReference" type="UserReference" minOccurs="0" />
+            <xs:element name="UserPDE" type="SwBoolean" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Message">
+        <xs:sequence>
+            <xs:element name="MessageFormat" type="MessageFormat" />
+            <xs:element name="MessageSubFormat" type="MessageSubFormat" />
+            <xs:element name="Sender" type="AddressFullName" />
+            <xs:element name="Receiver" type="Address" />
+            <xs:element name="LiveMessage" type="SwBoolean" minOccurs="0" />
+            <xs:element name="MessageNature" type="MessageNature" />
+            <xs:element name="MessageLPI" type="MessageLPI" />
+            <xs:element name="MessageTPI" type="MessageTPI" />
+            <xs:element name="MessageSRI" type="MessageSRI" />
+            <xs:element name="MessageText" type="SwAny" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Report">
+        <xs:sequence>
+            <xs:element name="Addressee" type="AddressFullName" />
+            <xs:element name="OrigMessageFields" type="OrigMessageFields" />
+            <xs:element name="OrigMessage" type="Message" minOccurs="0" />
+            <xs:element name="ReportLPI" type="ReportLPI" />
+            <xs:choice>
+                <xs:element name="TransmissionReport" type="TransmissionReport" />
+                <xs:element name="DeliveryReport" type="DeliveryReport" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LogicalReply">
+        <xs:sequence>
+            <xs:element name="SenderReference" type="SwString" minOccurs="0" />
+            <xs:element name="SuccessIndication" type="SwBoolean" />
+            <xs:element name="ErrorText" type="SwString" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DataPDU">
+        <xs:sequence>
+            <xs:element name="SenderReference" type="SwString" minOccurs="0" />
+            <xs:choice>
+                <xs:element name="Message" type="Message" />
+                <xs:element name="Report" type="Report" />
+                <xs:element name="LogicalReply" type="LogicalReply" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- Root element -->
+    <xs:element name="DataPDU" type="DataPDU">
+    </xs:element>
+</xs:schema>

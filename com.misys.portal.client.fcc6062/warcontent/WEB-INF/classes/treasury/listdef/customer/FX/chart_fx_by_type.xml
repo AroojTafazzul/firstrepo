@@ -1,0 +1,19 @@
+<listdef page='25'>
+	<name>Foreign Exchange per Type</name>
+	<description>Foreign Exchange per Type</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='amt' hidden='y'/>
+	<column name='cur_code' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<column name='fx_type' hidden='y'/>
+	<candidate name='FX'/>
+	<group graph='bar'>
+		<column name='fx_type' ></column>
+		<aggregate type='sum' cur='EUR'>
+			<column name='amt'></column>
+			<description locale='en'>Amount (EUR)</description>
+			<description locale='fr'>Montant (EUR)</description>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

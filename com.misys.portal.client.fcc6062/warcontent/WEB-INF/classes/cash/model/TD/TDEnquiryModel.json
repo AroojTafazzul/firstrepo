@@ -1,0 +1,310 @@
+{
+	"pagePermission": "td_access",
+	"TD": [
+		{
+			"enquiryHeaderComponent": {
+				"layoutClass": "p-grid",
+				"buttons": [
+					{
+						"buttonType": "termDepositLanding",
+						"buttonName": "termDepositLanding",
+						"layout": "12",
+						"styleClass": "primaryButton1",
+						"routerLink": "productListing",
+						"render": true,
+						"permission": "td_access",
+						"queryParams": {
+							"productCode": "TD",
+							"subProductCode": "CSTD",
+							"option": "GENERAL"
+						}
+					}
+				],
+				"txnStatusButton": [
+				]
+			}
+		},
+		{
+			"enquiryDetailComponent": {
+				"layoutClass": "p-col-12",
+				"noOfColoums": 4,
+				"Displaykeys": [
+					{
+						"apiMapping": "channelReference",
+						"label": "channelReference",
+						"feildType": "text",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "accountNumber",
+						"label": "accountNumber",
+						"feildType": "text",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "valueDateTermNumber",
+						"label": "tdTenorLabel",
+						"feildType": "termNumber",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "valueDateTermCode",
+						"label": "tdTenorCodeLabel",
+						"feildType": "termCode",
+						"layoutClass": "p-col-2",
+						"translateValue": "tdTenorPeriod_"
+					},
+					{
+						"apiMapping": "amount",
+						"label": "amount",
+						"feildType": "amount",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "currency",
+						"label": "currencyE",
+						"feildType": "currency",
+						"layoutClass": "p-col-2"
+					},
+					{
+						"apiMapping": "maturitydate",
+						"label": "maturitydate",
+						"feildType": "text",
+						"layoutClass": "p-col-2"
+					}
+				]
+			}
+		},
+		{
+			"enquiryTabComponent": {
+				"layoutClass": "p-col-12",
+				"displayTabs": [
+					{
+						"depositDetails": {
+							"permission": "",
+							"id": "depositDetails",
+							"label": "depositDetails",
+							"child": {
+								"layoutClass": "p-col-12",
+								"componentKey": "reviewTransactionDetailsComponent",
+								"listdefPath": "",
+								"data": "render"
+							},
+							"enquiryButtonComponent": [
+								{
+									"commentButtons": {
+										"commentSection": {
+											"name": "comments",
+											"type": "narrative-textarea",
+											"swift": false,
+											"fieldSize": 65,
+											"maxRowCount": 270,
+											"enteredCharCount": 0,
+											"rowCount": 0,
+											"rows": 1,
+											"cols": 51,
+											"allowedCharCount": 13500,
+											"maxlength": 13500,
+											"disableNextLineCharCount": "true",
+											"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+											"styleClass": [
+												"indented-text-area-field-65"
+											],
+											"rendered": false,
+											"hintTextControl": false,
+											"showValidationMessage": false,
+											"hintText": "commentsHintText"
+										},
+										"RejectButton": {
+											"name": "return",
+											"type": "button",
+											"rendered": false,
+											"layoutClass": "p-col-5",
+											"styleClass": "secondaryButton rightDirect",
+											"required": false
+										},
+										"approveButton": {
+											"name": "approve",
+											"type": "button",
+											"rendered": false,
+											"layoutClass": "p-col-1",
+											"styleClass": "primaryButton rightDirect",
+											"required": false
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"events": {
+							"permission": "",
+							"id": "history",
+							"label": "events",
+							"child": {
+								"layoutClass": "p-col-12",
+								"componentKey": "reviewHistoryComponent",
+								"listdefPath": "/cash/listdef/customer/TD/TDApprovedOrRejectedByBank",
+								"data": "render"
+							}
+						}
+					},
+					{
+			            "messages": {
+			              "permission": "",
+			              "id": "Messages",
+			              "label": "messages",
+			              "child": {
+			                "layoutClass": "p-col-12",
+			                "componentKey": "",
+			                "listdefPath": "",
+			                "data": "render"
+			              }
+			            }
+			        },
+					{
+						"additionalInformation": {
+							"permission": "",
+							"id": "additionalInformation",
+							"label": "additionalInformation",
+							"child": {
+								"layoutClass": "p-col-12",
+								"componentKey": "additionalInfoTabComponent",
+								"listdefPath": "",
+								"data": "render"
+							}
+						}
+					},
+					{
+						"master": {
+							"permission": "",
+							"id": "master",
+							"label": "master",
+							"child": {
+								"layoutClass": "p-col-12",
+								"componentKey": "",
+								"listdefPath": "",
+								"data": "render"
+							}
+						}
+					}
+				],
+				"tnxStatus": [
+					{
+						"01": [
+							{
+								"01": [
+									"depositDetails"
+								]
+							},
+							{
+								"02": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"03": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"04": [
+									"depositDetails",
+									"events",
+									"additionalInformation"
+								]
+							},
+							{
+								"09": [
+									"depositDetails"
+								]
+							}
+						]
+					},
+					{
+						"03": [
+							{
+								"01": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"02": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"03": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"04": [
+									"depositDetails",
+									"events",
+									"additionalInformation"
+								]
+							}
+						]
+					},
+					{
+						"13": [
+							{
+								"01": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"02": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"03": [
+									"depositDetails",
+									"additionalInformation"
+								]
+							},
+							{
+								"04": [
+									"depositDetails",
+									"events",
+									"additionalInformation"
+								]
+							}
+						]
+					},
+					{
+						"15": [
+							{
+								"04": [
+									"depositDetails",
+									"events",
+									"additionalInformation"
+								]
+							}
+						]
+					},
+					{
+						"MASTER": [
+							{
+								"ACKNOWLEDGED": [
+									"depositDetails",
+									"events",
+									"additionalInformation"
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

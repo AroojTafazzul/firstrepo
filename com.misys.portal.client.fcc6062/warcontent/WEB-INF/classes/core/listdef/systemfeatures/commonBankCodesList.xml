@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bic" default_order_type="d" page="20">
+	
+	<column name="bic" align="left" width="15%" loca_key="BIC_CODE"/>
+	<column name="branch" align="left" width="15%" loca_key="BRANCH_CODE"/>
+	<column name="bank_name" align="left" width="15%" loca_key="BANK_NAME"/>
+	<column name="city" align="left" width="15%" loca_key="BANK_CITY"/>
+	<column name="country" align="center" width="15%" loca_key="BANK_COUNTRY"/>
+	
+	<!-- Hidden Fields -->
+	<column name="type" hidden="y"/>
+	<column name="address" hidden="y"/>
+	<column name="postCode" hidden="y"/>
+	<column name="parentId" hidden="y"/>
+	<column name="inst_id_name" hidden="y"/>
+	<column name="inst_id_value" hidden="y"/>
+	<column name="name" loca_key="BRANCH_NAME" hidden="y"/>
+	
+	<!-- candidates -->
+	<candidate name="bankData">
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="type"/>
+			<operator type="like"/>
+			<value type="string">
+				01
+			</value>
+		</criteria>
+	</filter>
+</listdef>

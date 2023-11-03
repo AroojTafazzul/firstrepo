@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="20" data_key="tnx_id">
+
+	<column name="ref_id" align="left" width="15%" loca_key="REFERENCEID" columnFilterType="input-multiselect">
+		<!-- JavaScript Pass back -->
+        <js-pass-back keyName="column">
+            <array-element index="0" column="ref_id"/>
+            <array-element index="1" column="beneficiary_name"/>
+            <array-element index="2" column="amt"/>
+            <array-element index="3" column="entity"/>
+            <array-element index="4" column="cur_code"/>
+            <array-element index="5" column="tnx_amt"/>
+            <array-element index="6" column="iss_date"/>
+            <array-element index="7" column="tnx_id"/>
+            <array-element index="8" column="bo_tnx_id"/>
+        </js-pass-back>
+	</column>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="beneficiary_name" align="left" width="15%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="tnx_amt" align="right" width="12%" loca_key="AMOUNT" columnFilterType="input-multiselect"/>
+	<column name="iss_date" align="left" width="12%" loca_key="ISS_DATE" columnFilterType="input-multiselect"/>
+
+	<column name="tnx_id" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+    	multiple="y"
+      type="Entity"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		type="Currency"
+		loca_key="CURCODE"/>
+	<parameter
+		name="current_date_value"
+		hidden="true"/>
+
+	<!-- candidates -->	
+	<candidate name="export_letter_of_credit">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="superior"/>
+				<value type="string">0@USD</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter or="y">					
+		<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_EXPIRE
+				</value>
+		</criteria>
+		<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_EXPIRED
+				</value>
+		</criteria>			
+	</filter>
+	
+	<filter or="y">					
+		<criteria>
+    		<column name="prod_stat_code"/>
+    		<operator type="equal"/>
+    		<value type="code">
+    			N005_ACCEPTED
+    		</value>																				
+		</criteria>
+		<criteria>
+    		<column name="prod_stat_code"/>
+    		<operator type="equal"/>
+    		<value type="code">
+    			N005_BILL_CLEAN
+    		</value>																				
+		</criteria>
+    	<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N005_DISCREPANT
+			</value>																				
+		</criteria>				
+	</filter>
+	
+</listdef>
+

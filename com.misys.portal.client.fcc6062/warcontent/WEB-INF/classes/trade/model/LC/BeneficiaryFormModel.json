@@ -1,0 +1,744 @@
+{
+       "screen": "CustomerSystemFeaturesScreen",
+       "isAccordionView": "true",
+       "beneficiaryGeneralDetail": {
+            "entity": {
+			"name": "Entity",
+			"type": "input-dropdown-filter",
+			"options": {
+
+			},
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"required": true,
+			"previewValueAttr": "shortName"
+			},
+             "beneficiaryProductType": {
+                    "name": "beneficiaryProductType",
+                    "type": "input-dropdown-filter",
+                    "source": "codeData",
+                    "codeID": "C016",
+                    "defaultValue": "",
+                    "disabled": true,
+                    "options": [],
+		             "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+		             "styleClass": [
+		              "applicant_bene_entity_class"
+		              ],
+                    "rendered": true,
+                    "previewValueAttr": "shortName",
+                    "required": true
+             },
+             "beneficiaryDetailsImp": {
+                    "name": "beneficiaryDetailsImp",
+                    "type": "text",
+                    "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+                    "styleClass": [
+                           "mainSubHeader"
+                    ],
+                    "rendered": false,
+					"groupChildren": [
+						"beneficiaryActiveFlag",
+						"beneficiaryCounterpartyName",
+						"beneficiaryAddressLine1",
+						"beneficiaryAddressLine2",
+						"beneficiaryAddressLine3",
+						"beneCountry",
+						"benePostalCode",
+						"beneficiaryPreApproved",
+						"beneficiaryThresholdCurCode",
+						"beneficiaryThresholdAmt"
+					]
+             },
+             "beneficiaryActiveFlag": {
+                    "name": "beneficiaryActiveFlag",
+                    "type": "checkbox",
+                    "defaultValue": "Y",
+                    "layoutClass": "p-col-12 leftwrapper padding_zero",
+                    "rendered": false,
+					"mapBooleanValue": true,
+					"grouphead": "beneficiaryDetailsImp"
+             },
+             "beneficiaryCounterpartyName": {
+                    "name": "beneficiaryCounterpartyName",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+					"grouphead": "beneficiaryDetailsImp"
+             },
+             "beneficiaryAddressLine1": {
+                    "name": "beneficiaryAddressLine1",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+					"grouphead": "beneficiaryDetailsImp",
+					"clubbedHeaderText": "clubbed_address",
+					"clubbedList": [
+						"beneficiaryAddressLine1",
+						"beneficiaryAddressLine2",
+						"beneficiaryAddressLine3"
+					],
+					"clubbedDelimiter": ","
+             },
+             "beneficiaryAddressLine2": {
+                    "name": "beneficiaryAddressLine2",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+					"grouphead": "beneficiaryDetailsImp",
+					"clubbed": true
+             },
+              "beneficiaryAddressLine3": {
+                    "name": "beneficiaryAddressLine3",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+					"grouphead": "beneficiaryDetailsImp",
+					"clubbed": true
+             },
+             "beneCountry": {
+                    "name": "beneCountry",
+                    "type": "input-dropdown-filter",
+		             "options": {},
+		             "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero filter_dropdown",
+		             "styleClass": [
+		                    "no-margin-multiselect"
+		              ],
+                    "rendered": false,
+                    "previewScreen": false,
+                    "disabled": false,
+			  		"grouphead": "beneficiaryDetailsImp"
+             },
+             "benePostalCode": {
+              "name": "benePostalCode",
+              "type": "input-text",
+              "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+              "styleClass": [
+                "margin-all-side"
+              ],
+              "maxlength": 15,
+              "required": false,
+              "rendered": false,
+			  "previewScreen": false,
+              "grouphead": "beneficiaryDetailsImp"
+            },
+             "space2": {
+                    "noofspacers": "1",
+                    "prefix": "two",
+                    "sectionType": "spacerModel",
+                    "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+             },
+             "beneficiaryAccountDetails": {
+                    "name": "beneficiaryAccountDetails",
+                    "type": "text",
+                    "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+                    "styleClass": [
+                           "mainSubHeader"
+                    ],
+					"previewScreen": false,
+                    "rendered": false
+             },
+             "accountListTable": {
+				  "name": "accountListTable",
+				  "columns": [],
+				  "label": "hideControl",
+				  "type": "edit-table",
+				  "rendered": true,
+				  "data": [],
+				  "styleClass": [
+				    "accountListTable"
+				  ],
+				  "layoutClass": "p-col-12"
+			},
+             "beneficiaryAccountNo": {
+                    "name": "beneficiaryAccountNo",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false
+             },
+             "beneficiaryAccountCurCode": {
+                    "name": "beneficiaryAccountCurCode",
+                    "type": "input-dropdown-filter",
+             "options": {
+              },
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+             "styleClass": [
+                    "applicant_bene_entity_class"
+             ],
+                    "rendered": false,
+                    "previewScreen": false
+             },
+             "cnapsCode": {
+              "name": "cnapsCode",
+              "type": "input-text",
+              "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper",
+              "styleClass": [
+                "margin-all-side"
+              ],
+              "rendered": false
+        },
+        "cnapsCodeIcons": {
+              "name": "cnapsCodeIcons",
+              "type": "icon",
+              "iconName": "search",
+              "rendered": false,
+              "layoutClass": "layoutIcon",
+              "styleClass": "iconStyle",
+              "parentStyleClass": "parentIconStyle",
+              "previewScreen": false
+            },
+            "beneficiaryBankCode": {
+                    "name": "beneficiaryBankCode",
+                    "type": "input-text",
+                    "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-4 leftwrapper",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly": true
+             },
+           "beneficiaryBranchCode": {
+                    "name": "beneficiaryBranchCode",
+                    "type": "input-text",
+                    "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-8 leftwrapper",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly": true
+             },
+             "beneficiaryBranchCodeIcons": {
+             "name": "beneficiaryBranchCodeIcons",
+             "type": "icon",
+             "iconName": "search",
+             "rendered": false,
+             "layoutClass": "layoutIcon",
+             "styleClass": "iconStyle",
+             "parentStyleClass": "parentIconStyle",
+             "previewScreen": false
+             },
+             "beneficiaryBankIfscCode": {
+                    "name": "beneficiaryBankIfscCode",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper",
+                    "styleClass": [
+                		"margin-all-side"
+              		],
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly": true
+             },
+             "beneficiaryBankIfscCodeIcons": {
+             "name": "beneficiaryBankIfscCodeIcons",
+             "type": "icon",
+             "iconName": "search",
+             "rendered": false,
+             "layoutClass": "layoutIcon",
+             "styleClass": "iconStyle",
+             "parentStyleClass": "parentIconStyle",
+             "previewScreen": false
+             },
+             "beneficiaryBankSwiftCode": {
+                    "name": "beneficiaryBankSwiftCode",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper",
+                    "styleClass": [
+               		 "margin-all-side"
+              		],
+                    "rendered": false,
+                    "previewScreen": false
+             },
+             "beneficiaryBankSwiftCodeIcons": {
+             "name": "beneficiaryBankSwiftCodeIcons",
+             "type": "icon",
+             "iconName": "search",
+             "rendered": false,
+             "layoutClass": "layoutIcon",
+             "styleClass": "iconStyle",
+             "parentStyleClass": "parentIconStyle",
+             "previewScreen": false
+             },
+             "beneficiaryBankName": {
+              "name": "beneficiaryBankName",
+              "type": "input-text",
+              "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper",
+              "styleClass": [
+                "margin-all-side"
+              ],
+              "rendered": false,
+              "readonly" : false,
+			  "previewScreen": false
+        },
+        "beneficiaryBranchName": {
+              "name": "beneficiaryBranchName",
+              "type": "input-text",
+              "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper",
+              "styleClass": [
+                "margin-all-side"
+              ],
+              "rendered": false,
+              "readonly" : false,
+			  "previewScreen": false
+       },
+             "beneficiaryBankIfscName": {
+                    "name": "beneficiaryBankIfscName",
+                    "type": "input-dropdown",
+                    "options": [
+                    ],
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "required": false,
+                    "readonly" : false
+                    
+             },
+             "beneficiaryBankIfscAddressLine1": {
+                    "name": "beneficiaryBankIfscAddressLine1",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero bank_addressAlign",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly" : false
+             },
+             "beneficiaryBankIfscAddressLine2": {
+                    "name": "beneficiaryBankIfscAddressLine2",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero bank_addressAlign",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly" : false
+             },
+             "beneficiaryBankIfscAddressLine3": {
+                    "name": "beneficiaryBankIfscAddressLine3",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero bank_addressAlign",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly" : false
+             },
+             "beneficiaryBankCountry": {
+                    "name": "beneficiaryBankCountry",
+                     "type": "input-dropdown-filter",
+                    "options": [
+                    ],
+                    "styleClass": [
+                    "no-margin-multiselect"
+              ],
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero filter_dropdown",
+                    "rendered": false,
+                    "previewScreen": false
+             },
+             "beneficiaryBankIfscCity": {
+                    "name": "beneficiaryBankIfscCity",
+                    "type": "input-text",
+                    "options": [
+                    ],
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "maxlength": 35,
+                    "rendered": false,
+                    "previewScreen": false
+             },
+             "beneficiaryBranchAddressRequired": {
+                    "name": "beneficiaryBranchAddressRequired",
+                    "type": "checkbox",
+                    "layoutClass": "p-col-12 leftwrapper padding_zero",
+                    "rendered": false,
+					"mapBooleanValue": true,
+                    "previewScreen": false,
+                    "disabled": false
+             },
+             "beneficiaryBranchAddress": {
+                    "name": "beneficiaryBranchAddress",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "required": false,
+             		"disabled": true
+             },
+             "beneficiaryBranchAddress1": {
+                    "name": "beneficiaryBranchAddress1",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "required": false,
+             		"disabled": true
+             },
+             "beneficiaryBranchAddress2": {
+                    "name": "beneficiaryBranchAddress2",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "required": false,
+		            "disabled": true
+             },
+             "interMediaryBank": {
+                    "name": "interMediaryBank",
+                    "type": "input-switch",
+                    "defaultValue": "N",
+                    "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+                    "styleClass": [
+                           "appl-detail-header"
+                    ],
+                    "rendered": false,
+					"previewScreen": false,
+					"mapBooleanValue": true,
+                    "dynamicCriteria": {
+                           "renderCheck": false,
+                           "presentSection": "beneficiaryGeneralDetail",
+                           "dependControl": "interMediaryBank",
+                           "dependSection": "beneficiaryGeneralDetail",
+                           "requiredValue": "Y"
+                    }
+             },
+             "interMediaryBankIfscCode": {
+                    "name": "interMediaryBankIfscCode",
+                    "type": "input-text",
+                    "options": [
+                    ],
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false
+             },
+             "interMediaryBankIfscCodeIcons": {
+             "name": "interMediaryBankIfscCodeIcons",
+             "type": "icon",
+             "iconName": "search",
+             "rendered": false,
+             "layoutClass": "layoutIcon",
+             "styleClass": "iconStyle",
+             "parentStyleClass": "parentIconStyle",
+             "previewScreen": false
+             },
+             "interMediaryBankIfscName": {
+                    "name": "interMediaryBankIfscName",
+                    "type": "input-text",
+                    "options": [
+                    ],
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "required": false,
+                    "disabled": false,
+                    "readonly" : false
+             },
+			 "interMediaryBankIfscAddress": {
+				"name": "interMediaryBankIfscAddress",
+		        "type": "input-text",
+		        "hidden": true,
+		        "previewScreen": false
+		     },
+             "interMediaryBankIfscAddressLine1": {
+                    "name": "interMediaryBankIfscAddressLine1",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "required": false,
+                    "readonly" : false
+             },
+             "interMediaryBankIfscAddressLine2": {
+                    "name": "interMediaryBankIfscAddressLine2",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly" : false
+             },
+             "interMediaryBankIfscAddressLine3": {
+                    "name": "interMediaryBankIfscAddressLine3",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "readonly" : false
+             },
+             "interMediaryBankIfscCity": {
+                    "name": "interMediaryBankIfscCity",
+                    "type": "input-dropdown-filter",
+             "options": {},
+             "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero filter_dropdown",
+             "styleClass": [
+                    "no-margin-multiselect"
+              ],
+                    "rendered": false,
+                    "previewScreen": false,
+                    "disabled": false
+             },
+             "space1": {
+                    "noofspacers": "1",
+                    "prefix": "one",
+                    "sectionType": "spacerModel",
+                    "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+             },
+             "accountActiveFlag": {
+				"name": "accountActiveFlag",
+				"type": "checkbox",
+				"layoutClass": "p-col-12 leftwrapper padding_zero",
+				"rendered": false,
+				"mapBooleanValue": true,
+				"previewScreen": false
+			},
+             "saveAccountButton": {
+                    "name": "saveAccountButton",
+                    "type": "rounded-button",
+                    "styleClass": [
+                           "browseButton"
+                    ],
+                    "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+                    "btndisable": false,
+                    "rendered": false,
+                    "previewScreen": false
+             },
+             "addAccountButton": {
+                    "name": "addAccountButton",
+                    "type": "rounded-button",
+                    "styleClass": [
+                           "browseButton"
+                    ],
+                    "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+                    "btndisable": false,
+                    "rendered": false,
+                    "previewScreen": false
+             },
+			 "updateAccountButton": {
+                    "name": "updateAccountButton",
+                    "type": "rounded-button",
+                    "styleClass": [
+                           "browseButton"
+                    ],
+                    "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+                    "btndisable": false,
+                    "rendered": false,
+                    "previewScreen": false
+             },
+
+             "space3": {
+                    "noofspacers": "1",
+                    "prefix": "three",
+                    "sectionType": "spacerModel",
+                    "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+             },
+             "defaultAccount": {
+                    "name": "defaultAccount",
+                    "type": "input-dropdown",
+                    "options": {
+                    },
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+					"previewValueAttr": "label"
+             },
+             "beneficiaryPreApproved": {
+                    "name": "beneficiaryPreApproved",
+                    "type": "checkbox",
+                    "layoutClass": "p-col-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+					"mapBooleanValue": true,
+			  		"grouphead": "beneficiaryDetailsImp"
+             },
+             "beneficiaryThresholdCurCode": {
+                    "name": "beneficiaryThresholdCurCode",
+                    "type": "input-dropdown-filter",
+		            "options": {},
+		            "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12 widthForCur chargeAmt leftwrapper padding_zero",
+				     "styleClass": [
+				       "applicant_bene_entity_class"
+				     ],
+		             "grouphead": "beneficiaryDetailsImp",
+		             "rendered": false,
+		             "previewScreen": false,
+					 "clubbedHeaderText": "beneficiaryThresholdAmt",
+				      "clubbedList": [
+				        "beneficiaryThresholdCurCode",
+				        "beneficiaryThresholdAmt"
+				      ],
+					  "previewValueAttr": "shortName"
+             },
+             "beneficiaryThresholdAmt": {
+                    "name": "beneficiaryThresholdAmt",
+                    "type": "fcc-currency",
+		            "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-12 leftwrapper padding_zero",
+				    "styleClass": [
+				      "amt"
+				    ],
+                    "grouphead": "beneficiaryDetailsImp",
+                    "rendered": false,
+					"maxlength": 15,
+					"clubbed": true,
+                    "previewScreen": false
+             },
+             "beneficiaryOtherDetails": {
+                    "name": "beneficiaryOtherDetails",
+                    "type": "text",
+                    "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+                    "styleClass": [
+                           "mainSubHeader"
+                    ],
+                    "previewScreen": true,
+                    "rendered": false,
+					"groupChildren": [
+						"beneficiaryId",
+						"beneficiaryPayeeRef",
+						"beneficiaryCustRef",
+						"beneficiaryEmail1",
+						"beneficiaryEmail2",
+						"beneficiaryPhone",
+						"beneficiaryMailingName",
+						"beneficiaryDescription",
+						"beneficiaryAddress1",
+						"beneficiaryAddress2",
+						"beneficiaryAddress3",
+						"beneficiaryCountry",
+						"beneficiaryPostalCode"
+					]
+             },
+             "beneficiaryId": {
+                    "name": "beneficiaryId",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryPayeeRef": {
+                    "name": "beneficiaryPayeeRef",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryCustRef": {
+                    "name": "beneficiaryCustRef",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryEmail1": {
+                    "name": "beneficiaryEmail1",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryEmail2": {
+                    "name": "beneficiaryEmail2",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryFax": {
+                    "name": "beneficiaryFax",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "maxlength": 32,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryPhone": {
+                    "name": "beneficiaryPhone",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "maxlength": 32,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryMailingName": {
+                    "name": "beneficiaryMailingName",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "maxlength": 40,
+                    "rendered": false,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryDescription": {
+                    "name": "beneficiaryDescription",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryAddress1": {
+                    "name": "beneficiaryAddress1",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+                    "grouphead": "beneficiaryOtherDetails",
+					"clubbedHeaderText": "beneficiaryAddress",
+					"clubbedList": [
+						"beneficiaryAddress1",
+						"beneficiaryAddress2",
+						"beneficiaryAddress3",
+						"beneficiaryCountry"
+					],
+					"clubbedDelimiter": ","
+             },
+             "beneficiaryAddress2": {
+                    "name": "beneficiaryAddress2",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+					"clubbed": true,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+              "beneficiaryAddress3": {
+                    "name": "beneficiaryAddress3",
+                    "type": "input-text",
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+                    "rendered": false,
+                    "previewScreen": false,
+					"clubbed": true,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+             "beneficiaryCountry": {
+                    "name": "beneficiaryCountry",
+                     "type": "input-dropdown-filter",
+                    "options": [
+                    ],
+                    "styleClass": [
+                    "no-margin-multiselect"
+              ],
+                    "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero filter_dropdown",
+                    "rendered": false,
+                    "previewScreen": false,
+					"clubbed": true,
+                    "grouphead": "beneficiaryOtherDetails"
+             },
+		     "beneficiaryPostalCode": {
+		          "name": "beneficiaryPostalCode",
+	              "type": "input-text",
+	              "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+	              "styleClass": [
+	                "margin-all-side"
+	              ],
+	              "maxlength": 15,
+	              "required": false,
+	              "rendered": false,
+	              "grouphead": "beneficiaryOtherDetails"
+	         },
+			 "operation": {
+			      "name": "operation",
+				  "type": "input-text",
+			      "hidden": true,
+			      "previewScreen": false
+		     },
+			 "accountId": {
+			      "name": "accountId",
+				  "type": "input-text",
+			      "hidden": true,
+			      "previewScreen": false
+		     },
+			 "groupId": {
+			      "name": "groupId",
+                  "type": "input-text",
+			      "hidden": true,
+			      "previewScreen": false
+			 },
+             "id": "BeneficiaryGeneralDetailComponent",
+             "helpId": "GD"
+       }
+}

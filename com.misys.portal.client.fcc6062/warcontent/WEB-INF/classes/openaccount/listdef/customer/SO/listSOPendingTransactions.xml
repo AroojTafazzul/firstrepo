@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" default_order="ref_id" default_order_type="d" page="50">
+	
+	<!-- columns -->
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="SCREEN" column="product_code"/>
+		</url>
+	</column>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="seller_name" align="left" width="30%" loca_key="ENTITY_NAME_SELLER"/>
+	<column name="issuer_ref_id" align="center" width="20%" loca_key="PO_NUMBER"/>
+	<column name="full_type" computation="sum" align="center" width="20%" loca_key="TYPE">
+		<column name="tnx_type_code"/>
+		<column name="sub_tnx_type_code"/>
+	</column>
+	<column name="tnx_stat_code" align="center" width="20%" loca_key="STATUS" sort="n"/>
+	<column name="buyer_name" align="left" width="20%" loca_key="BUYER_NAME"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>
+ 
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="seller_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_SELLER"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="cust_ref_id"
+		size="15"
+		max_length="35"
+		loca_key="PURCHASEORDER"
+		input="y"
+		default=""/>
+	<parameter
+		name="buyer_name"
+		loca_key="BUYER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="currency"/>
+    
+	<parameter
+		name="export_list"
+		file_name="pendingPO"
+		type="export"/>
+
+	<!-- candidates -->	
+	<candidate name="sell_order">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="entity"/>
+					<operator type="like"/>
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+				<criteria>
+					<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+				<criteria>
+					<column name="cur_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						cur_code
+					</value>
+				</criteria>
+				<criteria>
+					<column name="buyer_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						buyer_name
+					</value>
+				</criteria>
+				<criteria>
+					<column name="issuer_ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						issuer_ref_id
+					</value>
+				</criteria>
+			</filter>
+	</candidate>
+	
+	<filter or="y">
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_NEW
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_CONSENT
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_INQUIRE
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_RESUBMIT
+			</value>
+		</criteria>
+	</filter>
+	
+  	<filter or="y">
+    	<criteria>
+      		<column name="tnx_stat_code"/>
+      		<operator type="different"/>
+      		<value type="code">
+        		N004_ACKNOWLEDGED
+      		</value>
+    		</criteria>
+<!--     	<criteria> -->
+<!--       		<column name="prod_stat_code"/> -->
+<!--       		<operator type="equal"/> -->
+<!--       		<value type="code"> -->
+<!--         		N005_INPROGRESS -->
+<!--       		</value> -->
+<!--     	</criteria> -->
+  </filter>
+
+</listdef>

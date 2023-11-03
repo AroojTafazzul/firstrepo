@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Standing Orders</title>
+
+  <info />
+
+  <para role="TEXT">This chapter describes the functions of Standing Orders and explains
+  how to create and maintain standing orders for call and notice accounts
+  using Opics Portal.</para>
+
+  <section role="ITEM">
+    <title>About Standing Orders</title>
+
+    <para role="TEXT">Standing Orders is an additional function provided for call and
+    notice accounts, where you can specify the first payment amount, regular
+    payment amount and final payment amount. By default, the first payment
+    amount and final payment amounts consider the regular payment amount if no
+    stub dates are entered.</para>
+
+    <para role="TEXT">Here, you can specify the payment schedule for an order. For a new
+    order, you can enter the first payment date. After the first payment is
+    generated, the back end calculates the next payment date based on the
+    payment frequency, payment day, and pay date rule.</para>
+
+    <tip>
+      <para role="TEXT">: An account can have multiple standing orders.</para>
+    </tip>
+
+    <para role="TEXT">For call and notice accounts you can specify the following using the
+    portal:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para role="TEXT">Verify the generated payments automatically.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Add standing instructions to generated payments.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Authorize standing instructions automatically for generated
+        payments.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Enter Usual ID, if standing instructions are added to the
+        generated payment.</para>
+
+        <note>
+          <para role="TEXT">: If Usual Id is specified, you can add usual instructions to
+          the payments. Else if, the Usual ID is not specified, then the GIME
+          parameter for Usual ID is selected. If the GIME parameter is set as
+          <emphasis>Yes</emphasis> and the customer has a usual settlement
+          instruction where the Usual ID is equal to the account number, the
+          usual settlement is added to the payment. If the GIME parameter is
+          set as <emphasis>No</emphasis>, or a usual instruction does not
+          exist, Opics Plus follows the payment instruction hierarchy to
+          determine the standing instructions to be added to the deal.</para>
+        </note>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">You can also enter standing orders without a final payment date. In
+    such case, orders continue to be generated until a final payment date is
+    entered and arrived.</para>
+
+    <tip>
+      <para role="TEXT">: If instructions are not entered, or <emphasis>Add SI</emphasis>
+      field is not selected for a standing order, then manually add the
+      instructions for the resulting payment.</para>
+    </tip>
+  </section>
+
+  <section role="ITEM">
+    <title>Creating a Standing Order</title>
+
+    <para role="TEXT">In the portal <emphasis>Home page</emphasis>, click
+    <emphasis>Standing Order </emphasis>and under <emphasis>Standing Orders
+    </emphasis>select <emphasis>Add</emphasis> to create a new standing order
+    for an account.</para>
+
+    <para role="TEXT">The input form and its respective fields are described in the
+    following tables.</para>
+
+    <section role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">Specify the following under <emphasis>General Details</emphasis>
+      section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Customer Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the counterparty who initiates the standing
+                order.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the issuer who processes the standing
+                order.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Transfer Details</title>
+
+      <para role="TEXT">Specify the following under <emphasis>Transfer Details</emphasis>
+      section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <guilabel>Debit Amount</guilabel>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the number that identifies the account. The account
+                must be open and verified. Click the magnifying glass icon and
+                select an account number from the list.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Debit Account Name</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the name of the account.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Debit Account Currency</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the currency of the account and the standing
+                order payments.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Period</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Specifies the frequency of standing order
+                payments.</para>
+
+                <para role="TEXT">Valid periods are:</para>
+
+                <itemizedlist>
+                  <listitem>
+                    <para role="TEXT">
+                      <guibutton>Annual</guibutton>
+                    </para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">
+                      <guibutton>Semi-annual</guibutton>
+                    </para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">
+                      <guibutton>Quarterly</guibutton>
+                    </para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">
+                      <guibutton>Monthly</guibutton>
+                    </para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">
+                      <guibutton>Fortnightly</guibutton>
+                    </para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">
+                      <guibutton>Weekly</guibutton>
+                    </para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">
+                      <guibutton>Daily</guibutton>
+                    </para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guibutton>Once</guibutton> :
+                    <emphasis>Period</emphasis> and <emphasis>Payment
+                    day</emphasis> generates the <emphasis>Next Payment
+                    Date</emphasis>. If period is set as
+                    <emphasis>Once</emphasis>, then the <emphasis>Next Payment
+                    Date</emphasis> does not apply.</para>
+                  </listitem>
+                </itemizedlist>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Pay Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Specifies the rule used to adjust next payment dates
+                that fall on non-business days.</para>
+
+                <para role="TEXT">This date is adjusted as follows:</para>
+
+                <itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><guibutton>Preceding</guibutton> : The previous
+                    business day.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guibutton>Succeeding</guibutton> : The next
+                    business day.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guibutton>Modified</guibutton> : The next business
+                    day if the next business day is in the current month or
+                    the previous business day if the next business day is not
+                    in the current month.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guibutton>Default</guibutton> : The next payment
+                    date is not adjusted. If the default rule is used, the
+                    value date of the payment is the next business day.</para>
+                  </listitem>
+                </itemizedlist>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>First Payment Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the date the first payment is to be made for the
+                standing order.</para>
+
+                <para role="TEXT">This date must be greater than the branch processing
+                date but less than final payment date. If first payment date
+                is within the settlement period, a warning message is
+                displayed.</para>
+
+                <note>
+                  <para role="TEXT">: This date cannot be changed if the first payment is
+                  already generated.</para>
+                </note>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <guilabel>First Payment Amount</guilabel>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the amount of the first payment on the standing order
+                denominated in the currency of the account. If this amount is
+                not entered, it accepts the regular payment amount.</para>
+
+                <para role="TEXT">This amount is required if the
+                <emphasis>Period</emphasis> option is set as
+                <emphasis>Once</emphasis>.</para>
+
+                <note>
+                  <para role="TEXT">: This amount cannot be zero and also cannot be
+                  changed if the first payment is already generated.</para>
+                </note>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Next Payment Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the next scheduled date for payment of the standing
+                order. This date is generated using Payment day and
+                Period.</para>
+
+                <para role="TEXT">This date must be greater than the current branch
+                processing date and must be a valid business day for the
+                currency of the account. If Pay date is set as Default, this
+                date need not be a valid business day. This date must be
+                greater than the First Payment Date and less than the Final
+                Payment Date (if entered).</para>
+
+                <note>
+                  <para role="TEXT">: This date cannot be changed during the settlement
+                  period for the standing order.</para>
+                </note>
+
+                <para role="TEXT">If this date is within the settlement period, a warning
+                message is displayed.</para>
+
+                <para role="TEXT">This Date is not applicable if the
+                <emphasis>Period</emphasis> option is selected as
+                <emphasis>Once</emphasis>. Next payment date can be updated
+                once the first payment is generated.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Payment Day</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the day of the month that the standing order is
+                paid.</para>
+
+                <para role="TEXT">This value is entered in the format
+                <emphasis>nn</emphasis>, where <emphasis>nn</emphasis> is a
+                value from 01 to 31.</para>
+
+                <para role="TEXT">This field is not required if
+                <emphasis>Period</emphasis> is selected as
+                <emphasis>Daily</emphasis>. For <emphasis>Weekly</emphasis>
+                and <emphasis>Fortnightly</emphasis> periods, this is the day
+                of the week when payments are produced. Its value can be a
+                number between <emphasis>01</emphasis> and
+                <emphasis>07</emphasis>, where <emphasis>01</emphasis>
+                indicates <emphasis>Monday</emphasis> and
+                <emphasis>07</emphasis> indicates
+                <emphasis>Sunday</emphasis>.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Next Payment Amount</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the regular non-zero amount of the payments made
+                (between the first and final payments) on the standing order
+                denominated in the currency of the account.</para>
+
+                <note>
+                  <para role="TEXT">: If the <emphasis>Period</emphasis> option is set as
+                  <emphasis>Once</emphasis>, this field is not
+                  displayed.</para>
+                </note>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Final Payment Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Is the date the final payment for the standing order is
+                made. If this date is not entered, then standing orders
+                continue to be generated until a final payment date is entered
+                and arrived.</para>
+
+                <para role="TEXT">This date must be greater than the branch processing
+                date plus the greater of processing days or branch currency
+                settlement days, plus one.</para>
+
+                <para role="TEXT">For example,</para>
+
+                <itemizedlist>
+                  <listitem>
+                    <para role="TEXT">If a payment in a certain currency is scheduled for
+                    the 31st with two settlement days, the payment is produced
+                    in the batch of the 28th for value on the 31st.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">Thus, the final payment date can be entered as 31st
+                    only if the branch processing date is less than or equal
+                    to the 28th.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT">If the standing order specifies three processing
+                    days, then the final payment can be entered as 31st only
+                    if the branch processing date is less than or equal to the
+                    27th.</para>
+                  </listitem>
+                </itemizedlist>
+
+                <note>
+                  <para role="TEXT">: If the <emphasis>Period</emphasis> option is set as
+                  <emphasis>Once</emphasis>, this field is not displayed. In
+                  such case, the final payment date is the first payment
+                  date.</para>
+                </note>
+
+                <para role="TEXT">
+                  <emphasis role="bold">Cancellation</emphasis>
+                </para>
+
+                <para role="TEXT">To cancel a standing order, the final payment date must
+                be set equal to the date the final payment is to be made.
+                Payments that are already generated because the next payment
+                date is within the settlement period are not cancelled. Such
+                payment must be reversed manually.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Final Payment Amount</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the amount of the final payment for the
+                standing order. Its value can be zero.</para>
+
+                <para role="TEXT">If the final payment amount is not entered, it takes the
+                regular payment amount when a final payment date is selected.
+                To cancel a standing order without a final payment, specify
+                this amount as zero.</para>
+
+                <para role="TEXT">This amount cannot be entered if a final payment date is
+                not selected.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Standing Order Text</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates a free format text that describes the
+                transaction. This text is reflected in the generated
+                payment.</para>
+
+                <para role="TEXT">It accepts alphanumeric characters in upper case with
+                blank spaces, dash, full stop (period) and forward slash only.
+                Characters entered in lower case are translated and stored as
+                upper case.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Usual id</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the code that identifies the usual customer
+                payment instructions. Usual instructions are alternatives to
+                standing instructions.</para>
+
+                <para role="TEXT">If this value is entered, and standing order is selected
+                to add instructions automatically, then usual instructions are
+                added to the generated payment.</para>
+
+                <note>
+                  <para role="TEXT">: <emphasis>Usual ID</emphasis> field is displayed
+                  only if <emphasis>Add SI</emphasis> is selected in Opics
+                  Plus.</para>
+                </note>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Click <emphasis>Submit</emphasis> to create the standing orders
+      for the selected account. To cancel the entry or to refill the above
+      form click <emphasis>Cancel</emphasis>.</para>
+
+      <para role="TEXT">The standing order request is submitted to the bank where the
+      back-end processes the request and updates the account
+      accordingly.</para>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Sending Message to Bank</title>
+
+    <para role="TEXT">Opics Portal facilitates sending messages to the bank to modify an
+    existing standing order.</para>
+
+    <section role="ITEM">
+      <title>Modifying an Existing Order</title>
+
+      <para role="TEXT">Using Opics Portal, you can make the following modifications to an
+      existing standing order:</para>
+
+      <orderedlist>
+        <listitem>
+          <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click
+          <emphasis>Standing Order</emphasis> and then under <emphasis>Message
+          to Bank</emphasis>, click <emphasis>From
+          Existing</emphasis><emphasis>Order</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+          the order that needs to be modified and click
+          <emphasis>Search</emphasis>. A list of records is displayed for all
+          deposit transactions with the specified currency.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Click the <emphasis>System ID</emphasis> of a transaction to
+          open the transaction for the required modification.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Making a Standing Order Inquiry</title>
+
+    <para role="TEXT">Opics Portal provides information about the status, the details, and
+    the history of standing orders initiated by the user. The list of
+    transactions is confined to those transactions entered on the current
+    processing date.</para>
+
+    <para role="TEXT">You can make inquiries on standing orders as follows:</para>
+
+    <orderedlist>
+      <listitem>
+        <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click
+        <emphasis>Standing Order</emphasis> and then click
+        <emphasis>Inquiry</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+        the order.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Select the <emphasis>Output Format</emphasis> to display on
+        <emphasis>Screen</emphasis>, or save the results in
+        <emphasis>CSV</emphasis> or <emphasis>Spreadsheet</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click <emphasis>Search</emphasis> to retrieve a list of records
+        displaying transactions with standing orders in the specified
+        currency.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click the <emphasis>System ID</emphasis> of a transaction to
+        view the details of a particular standing order.</para>
+      </listitem>
+    </orderedlist>
+
+    <tip>
+      <para role="TEXT">: You can use wildcards in your search string. For example, type
+      *MYTEXT* to search for the items containing the MYTEXT string.</para>
+    </tip>
+
+    <para role="TEXT">Moreover, you can also filter or sort the information returned from
+    the portal on a multi or single column basis.</para>
+  </section>
+</chapter>

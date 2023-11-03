@@ -1,0 +1,50 @@
+{
+	"productcode" : "MODULE_FEE_PAYMENT",
+	"buttons": [
+		{
+			"buttonName": "feePaymentHeader",
+			"permission": "bk_blfp_save",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=BK&subProductCode=BLFP&tnxTypeCode=01&mode=INITIATE&option=BK_LOAN_FEE_PAYMENT"
+		}
+	],
+	"tabs": [{
+			"tabName": "draft",
+			"permission": "bk_blfp_save",
+			"index": 0,
+			"listdefName": "/loan/listdef/customer/FT/feePaymentDraftListing",
+			"selected": "true"
+		},
+		{
+			"tabName": "uiPendingApproval",
+			"permission": "bk_blfp_access",
+			"index": 1,
+			"listdefName": "/loan/listdef/customer/FT/feePaymentPendingApprovalListing",
+			"selected": ""
+		},
+		{
+			"tabName": "uiPendingBankApproval",
+			"permission": "bk_blfp_access",
+			"index": 2,
+			"listdefName": "/loan/listdef/customer/FT/feePaymentPendingBankListing",
+			"selected": ""
+		},
+		{
+			"tabName": "acknowledged",
+			"permission": "bk_blfp_access",
+			"index": 3,
+			"listdefName": "/loan/listdef/customer/FT/feePaymentAcknowledgedListing",
+			"selected": "",
+			"severalSubmit": "bk_rejected_maintain",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "delete",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "delete"
+		      	}
+			]
+		}
+	]
+}

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" help="LIST_HELP_BANK_INV_INQUIRY"
+	default_order="inv_due_date" default_order_type="a" page="25"
+	js_binding="misys.binding.feesandbilling.bankinvoice">
+
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="FB_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+	<!-- Columns -->
+	<column name="ref_id" align="center" width="10%" loca_key="REFERENCEID"/>
+	<column name="entity" align="center" width="8%" loca_key="ENTITY" />
+	<column name="CustomerReference@bank_abbv_name" align="center" width="10%" loca_key="BANK" />
+	<column name="bo_ref_id" align="center" width="18%" loca_key="INVOICE_REF" />
+	<column name="CustomerReference@description" align="center" width="15%" loca_key="CUSTOMER_ID" />
+	<column name="fb_cur_code" align="center" width="4em" loca_key="CURCODE" />
+	<column name="due_amt" align="right" width="10%" loca_key="DUE_AMOUNT" />
+	<column name="appl_date" align="center" width="7%" loca_key="INVOICE_DATE" />
+	<column name="inv_due_date" align="center" width="7%" loca_key="DUE_DATE" />
+	<column name="payment_status" align="center" width="8%" loca_key="PAYMENT_STATUS" />
+	<column name="product_code" hidden="y"/>
+	<column name="Attachment@attachment_id" hidden="y" />
+		
+	<column name="download" width="7%" loca_key="COLUMN_ACTIONS" sort= "n">
+		<url downloadAction="y"  >
+			<parameter name="REF_ID" column="ref_id" />
+			<parameter name="SCREEN" column="product_code"/>
+			<parameter name="TYPE_CODE" business_code="N425_INVOICE_DATA" />
+			<parameter name="ATTACHMENTID" column="attachment_id" />
+		</url>
+	</column>
+
+	<!-- Hidden Column -->
+	<column name="applicant_reference" hidden="y" />
+	
+	<column name="company_id" hidden="y" />
+	<column name="status" hidden="y">
+	<script>
+	    var status = row.getColumnValue("status");
+        value = com.misys.portal.common.localization.Localization.getDecode(language,"N426",""+status+"");
+        value;
+    </script>
+	</column>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="*"/>
+	<parameter name="entity" 
+			size="20" 
+			max_length="35" 
+			loca_key="ENTITY"
+			input="y" 
+			default="" 
+			type="entity" />
+	<parameter name="bank" 
+			size="20"
+			max_length="35" 
+			loca_key="BANK"
+			input="y" 
+			default="" 
+			type="EntityBank"
+			mandatory="false" />
+	<parameter name="bo_ref_id" 
+			loca_key="INVOICE_REF" 
+			size="20"
+			max_length="65" 
+			input="y" />
+	<parameter name="applicant_reference" 
+			size="20" 
+			max_length="20"
+			loca_key="CUSTOMER_ID" 
+			input="y" 
+			default=""
+			type="CustomerReference" 
+			mandatory="false" />
+	<parameter name="AmountRange" 
+			type="AmountRange" 
+			input="y"	
+			range_from_label="AmountFrom"
+			range_to_label="AmountTo" 
+			default="blank" />
+	<parameter name="create_date" 
+			type="range" 
+			input="y"
+			range_from_label="INVOICE_DATE_FROM" 
+			range_to_label="INVOICE_DATE_TO"
+			default="blank" />
+	<parameter name="inv_due_date" 
+			type="range" 
+			input="y"	
+			range_from_label="DUE_DATE_FROM" 
+			range_to_label="DUE_DATE_TO" 
+			default="blank" />
+	<parameter name="payment_status" 
+			type="PaymentStatus"
+			loca_key="PAYMENT_STATUS" 
+			input="y" 
+			multiple_values="02,03" />		
+			
+	<parameter name="export_list" file_name="inquiryINVB" type="export">
+	</parameter>
+	<!-- candidates -->
+	<candidate name="FeesAndBillingMaster">
+		<filter>
+			<criteria>
+				<column name="entity" />
+				<operator type="like" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="CustomerReference@bank_abbv_name" />
+				<operator type="like" />
+				<value type="parameter">
+					bank
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_reference" />
+				<operator type="like" />
+				<value type="parameter">
+					applicant_reference
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+
+			<criteria>
+				<column name="appl_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					create_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					create_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inv_due_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					inv_due_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inv_due_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					inv_due_date@to
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="due_amt" />
+				<operator type="supOrEqual" />
+				<value type="parameter">	
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+
+			<criteria>
+				<column name="due_amt" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="payment_status" />
+				<operator type="like" />
+				<value type="parameter">
+					payment_status
+				</value>
+			</criteria>
+			<criteria>
+				<column name="status" />
+				<operator type="like" />
+				<value type="string">
+					A
+				</value>
+			</criteria>
+		</filter>
+	
+	</candidate>
+</listdef>

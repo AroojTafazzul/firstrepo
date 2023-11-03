@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"  page="50" default_order="ref_id" default_order_type="d" >
+
+	<column name="ref_id" align="left" width="15%" loca_key="REFERENCEID">
+			<!-- JavaScript Pass back -->
+        <js-pass-back keyName="column">
+            <array-element index="0" column="ref_id"/>
+            <array-element index="1" column="beneficiary_name"/>
+            <array-element index="2" column="exp_date"/>
+            <array-element index="3" column="bo_ref_id"/>
+            <array-element index="3" column="tnx_id"/>
+        </js-pass-back>
+		</column>
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF">
+		<value candidate="shipping_guarantee" loca_key="N005_01"/>
+	</column>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+    <column name="beneficiary_name" align="left" width="14%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amt" align="right" width="12%" loca_key="AMOUNT" columnFilterType="input-multiselect"/>
+    <column name="exp_date" align="left" width="12%" loca_key="EXP_DATE" columnFilterType="input-multiselect"/>   
+	<column name="tnx_id" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="Entity"
+		/>
+	<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		multiple="y"
+		type="Beneficiary"
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		type="Currency"
+		loca_key="CURCODE"
+		/>
+	<parameter
+		name="exp_date"
+		type="range"
+		loca_key="EXP_DATE"
+		input="y"
+		default="blank"/>
+	
+	<!-- candidates -->	
+	<candidate name="shipping_guarantee_master">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+					<criteria>
+			<column name="exp_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				exp_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="exp_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				exp_date@to
+			</value>
+		</criteria>
+		</filter>
+	</candidate>
+
+	<candidate name="shipping_guarantee">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>	
+			</criteria>
+					<criteria>
+			<column name="exp_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				exp_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="exp_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				exp_date@to
+			</value>
+		</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_REJECTED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_NEW
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

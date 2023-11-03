@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc" identifier="ref_id" crossPageSelection="y">
+
+	<batch type="submit">
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="PRODUCT_CODE" column="product_code" business_code="N001_SE"/>
+		<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_REPORT"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="OPERATION_CODE" binding_code="OPERATION_LIST_REPORT"/>
+			<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SCREEN" value="TRADEADMIN_SCREEN"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="10%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="20%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="ObjectDataString@act_no" align="center" width="20%" loca_key="SE_ACCOUNT_NO"/>
+	<column name="topic" align="left" width="30%" loca_key="TOPIC"/>
+	<column name="bo_ref_id" align="center" width="20%" loca_key="BO_REFERENCEID"/>
+	<column name="bo_inp_dttm" align="left" width="10%" loca_key="INP_DTTM"/>
+	<column name="tnx_stat_code" align="left" width="10%" loca_key="STATUS" sort="n"/>
+
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+
+	<column name="tnx_type_code" hidden="y"/>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	
+	
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="applicant_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="act_no"
+		size="20"
+		max_length="35"
+		loca_key="SE_ACCOUNT_NO"
+		input="y"
+		default=""/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REFERENCEID"
+		input="y"
+		default=""/>    
+	<parameter
+		name="last_modified_date"
+		type="range"
+		input="y"
+		range_from_label="LAST_MODIFY_DATE_FROM"
+		range_to_label="LAST_MODIFY_DATE_TO"
+		default="blank"/>
+	
+	<!-- candidates -->	
+	<candidate name="secure_email">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="priority"/>
+				<operator type="like"/>
+				<value type="parameter">
+					priority
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED_BANK
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					act_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					last_modified_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					last_modified_date@to
+				</value>
+			</criteria>
+			
+		</filter>
+	</candidate>
+</listdef>

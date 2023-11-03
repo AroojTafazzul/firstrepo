@@ -1,0 +1,1265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=System Features - User Maintenance;PERM=sy_user_access;ACCESS=SY_USER"
+         role="TOPIC">
+  <title>User Maintenance Module</title>
+
+  <para role="TEXT">As an administrator at a client company, you use the
+  <application moreinfo="none">User Maintenance</application> module to
+  create, modify or delete user accounts at your company, define the
+  permissions granted to those users, and reset user passwords.</para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">The term "account" is used in the sense it is normally used in
+    software, to mean a user's registration with a system enabling him or her
+    to log in - not in the everyday banking sense of a place to keep
+    money.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Functions</title>
+
+    <para role="TEXT">The User Maintenance functions are part of the System Features menu.
+    They are as follows:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Profiles</guimenuitem>:</term>
+
+        <listitem>
+          <para role="TEXT">Maintain user accounts. A user's account details are called
+          his or her profile. You can create new accounts, update existing
+          accounts, and delete existing accounts. You cannot delete your own
+          account. A company's main default administrator account can only be
+          deleted by the bank. When you create a new user account, you are
+          then shown a link to set up the user's permissions.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Permissions</guimenuitem>:</term>
+
+        <listitem>
+          <para role="TEXT">Assign permissions to users. You do this by granting roles,
+          which are sets of permissions. These permissions define which
+          modules of <xi:include href="../entities_en.xml"
+          xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude" />
+          the user can use, and what amount of money the user can submit
+          transactions for when dealing with each bank.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem>Entities</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Manage users' entities, by associating entities with users. A
+          user's entities defines the scope of transactions that that user can
+          access. It enables the company to attach users to departments or
+          branches.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem
+        moreinfo="none">Authentication</guimenuitem>:</term>
+
+        <listitem>
+          <para role="TEXT">Reset user passwords.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section role="ITEM">
+    <title>Profiles</title>
+
+    <para role="TEXT">Maintain user accounts. A user's account details are called his or
+    her profile.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a list of all
+    the existing user accounts at your company. You can search the list by
+    entering search criteria in the <guilabel moreinfo="none">Last
+    Name</guilabel>, <guilabel moreinfo="none">First Name</guilabel> and
+    <guilabel moreinfo="none">Login</guilabel> fields at the top of the
+    page.</para>
+
+    <para role="TEXT">The list of existing user accounts has the following columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*" />
+
+        <colspec colname="c2" colwidth="8.0*" />
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Field</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">First Name and Last Name of the
+            user.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Login</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Login Id used by the user to log into
+            <xi:include href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude" />. This login Id
+            uniquely identifies a user account within the
+            company.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify an account by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm" />
+        </imageobject>
+      </inlinemediaobject> icon, or delete it by clicking the <guibutton
+    moreinfo="none">Delete</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">You cannot delete your own account. A company's main
+    default administrator account <literal>admin</literal> can only be deleted
+    by the bank. Therefore the entries for these accounts do not have the
+    <guibutton moreinfo="none">Delete</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">If a user that you delete has initiated some transaction
+    events that are still pending, a new <emphasis role="bold">Save</emphasis>
+    or <emphasis role="bold">Submit</emphasis> of these transactions needs to
+    be done by an authorised user to re-activate them.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_add.gif" role="ICON_ADD"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject>button at the bottom of the list to add an
+    account.</para>
+
+    <section role="ITEM">
+      <title>Profiles Form</title>
+
+      <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add</guibutton> display the same form, but in the case
+      of <guibutton moreinfo="none">Add</guibutton> it is blank (except that
+      the <emphasis role="bold">Company</emphasis> is set to your company) and
+      in the case of <guibutton moreinfo="none">Edit</guibutton> it is preset
+      with the existing details of the user's account. After entering the
+      details, click <emphasis role="bold">Save</emphasis> at the bottom of
+      the form.</para>
+
+      <para role="TEXT">The form is as follows:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="5.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu moreinfo="none">Main
+              Details</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This is the user profile
+              definition.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Company</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Reminder of the company's abbreviated
+              name that is part of the user identification in <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Login
+              Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Login Id that the user will use to log
+              into <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />. This identifies
+              the user uniquely within the company. Maximum of 32
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Password</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Present only for <emphasis
+              role="bold">Add</emphasis>.) Default password for the user.
+              <note>
+                  <para role="TEXT">The password policy, which defines the maximum and
+                  minimum length of the password, the characters accepted, and
+                  the combination of characters, is set up in the system by
+                  your administrator.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Confirm
+              Password</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(Present only for <emphasis
+              role="bold">Add</emphasis>.) Retype the default password.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">First
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">First name of the user. Maximum of 35
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Last
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Last name of the user. Maximum of 35
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> (line 1)</para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the user. Up to 3 lines of
+              35 characters each. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Select from the dropdown list:
+              <literal>Inactive</literal> or <literal>Active</literal>. This
+              is useful to temporarily inactivate and disable the user's
+              access to <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Preferences</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This section defines the user
+              preferences used to customise the user's <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+              pages.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Time
+              Zone</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Time zone area for the user.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Language</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Language to be used on the <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> pages for the
+              user. Select from the dropdown list: <literal>English</literal>
+              or <literal>French</literal>. This also determines the date and
+              number format presented to the user. Defaults to the company's
+              language.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Base
+              Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Preferred currency code (three
+              alphabetic characters) for the user. Defaults to the company's
+              base currency.</para><para role="TEXT">Click the magnifying glass icon to
+              select the currency code.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu moreinfo="none">Other
+              Details</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This section defines additional data
+              about the user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Phone</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">(Optional) Phone number. Maximum of 24
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Fax</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">(Optional) Fax number. Maximum of 24
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">E-mail</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">(Optional) Email address. Maximum of
+              40 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Summit User
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">The user's user ID in the back-office
+              software. This is used to link to the back-office software.
+              Maximum of 40 characters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Permissions</title>
+
+    <para role="TEXT">Assign permissions to users. These permissions define which modules
+    of <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude" /> the user can use, and what
+    amount of money the user can submit transactions for when dealing with
+    each bank.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a list of all
+    the existing user accounts at your company. You can search the list by
+    entering search criteria in the <guilabel moreinfo="none">Last
+    Name</guilabel>, <guilabel moreinfo="none">First Name</guilabel> and
+    <guilabel moreinfo="none">Login</guilabel> fields at the top of the
+    page.</para>
+
+    <para role="TEXT">The list of existing user accounts has the following columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*" />
+
+        <colspec colname="c2" colwidth="8.0*" />
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Field</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">First Name and Last Name of the
+            user.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Login</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Login Id used by the user to log into
+            <xi:include href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude" />. This login Id
+            uniquely identifies a user account within the
+            company.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify a user's permissions by clicking the
+    <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm" />
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">You cannot add or delete users via this list - you can
+    only add or delete users by using the <emphasis
+    role="bold">Profiles</emphasis> function.</para>
+
+    <section role="ITEM">
+      <title>Permissions Form</title>
+
+      <para role="TEXT">When you click the <guiicon moreinfo="none">Edit</guiicon>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon, you get the following form.</para>
+
+      <para role="TEXT">Note that this form uses the term "authorisation level " for the
+      concept referred to in the Jurisdiction Maintenance module as a role or
+      an authorisation. In this form, the word "roles" means those roles that
+      are sets of permissions granting the user access to indivdual
+      modules.</para>
+
+      <para role="TEXT">After entering the details, click <emphasis
+      role="bold">Save</emphasis> at the bottom of the form. The updated
+      permissions take effect the next time the user logs in to <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude" />.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="5.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu moreinfo="none">User
+              Details</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This is a reminder/summary of the user
+              profile.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Company</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Company's abbreviated name that is
+              part of the user identification in <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Login
+              Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Login Id that the user uses to log
+              into <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">First Name and Last Name of the
+              user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none"></guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Authorisation Levels</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This section defines the authorisation
+              levels granted to this user for each bank. These authorisation
+              levels define the maximum amount that the user is allowed to
+              submit transactions for.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Level for
+              &lt;Bank Name&gt;</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">(One field for each bank that the
+              company is allowed to deal with.) Authorisation level granted to
+              this user for handling transactions with this bank. Select from
+              the dropdown list, which lists all the levels made available to
+              your company by the relevant bank. You can select blank.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none"></guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Roles</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This section defines which
+              functionalities, modules and actions in <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> the user has
+              access to.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Left
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">List of roles granted to the user.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Right
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">List of remaining roles that could be
+              granted to the user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">&lt;&lt;Add</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Grant the roles selected in the list
+              of available roles (<guilabel>Right Section</guilabel>) to the
+              user. To select multiple items on a Windows-based PC, hold down
+              <emphasis role="bold">Ctrl</emphasis> while selectng them.
+              </para><para role="TEXT">The selected roles are moved to the list of roles
+              granted to the user (<guilabel>Left
+              Section</guilabel>).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Remove&gt;&gt;</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Remove the roles selected from the
+              list of roles currently granted to the user (<guilabel>Left
+              Section</guilabel>).</para><para role="TEXT">The selected roles are moved
+              back to the list of available roles (<guilabel>Right
+              Section</guilabel>).</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Entities</title>
+
+    <para role="TEXT">Assign entities to users. These entities represent the parts of your
+    company (for example, departments or branches) that the user is attached
+    to.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a list of all
+    the existing user accounts at your company. You can search the list by
+    entering search criteria in the <guilabel moreinfo="none">Last
+    Name</guilabel>, <guilabel moreinfo="none">First Name</guilabel> and
+    <guilabel moreinfo="none">Login</guilabel> fields at the top of the
+    page.</para>
+
+    <para role="TEXT">The list of existing user accounts has the following columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*" />
+
+        <colspec colname="c2" colwidth="8.0*" />
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Field</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">First Name and Last Name of the
+            user.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Login</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Login Id used by the user to log into
+            <xi:include href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude" />. This login Id
+            uniquely identifies a user account within the
+            company.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify the set of entities a user is attached to
+    by clicking the <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm" />
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">You cannot add or delete users via this list - you can
+    only add or delete users by using the <emphasis
+    role="bold">Profiles</emphasis> function.</para>
+
+    <section role="ITEM">
+      <title>Entities Form</title>
+
+      <para role="TEXT">When you click the <guiicon moreinfo="none">Edit</guiicon>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon, you get the following form.</para>
+
+      <para role="TEXT">After entering the details, click <emphasis
+      role="bold">Save</emphasis> at the bottom of the form. The changes take
+      effect the next time the user logs in to <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude" />.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="5.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu moreinfo="none">User
+              Details</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This is a reminder/summary of the user
+              profile.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Company</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Company's abbreviated name that is
+              part of the user identification in <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Login
+              Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Login Id that the user uses to log
+              into <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">First Name and Last Name of the
+              user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Entities</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This section defines which entities
+              the user is attached to.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Left
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">List of entities that the user is
+              attached to. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Right
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">List of remaining entities that the
+              user could be attached to.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">&lt;&lt;Add</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Attach the entities selected in the
+              list of available entities (<guilabel>Right Section</guilabel>)
+              to the user. To select multiple items on a Windows-based PC,
+              hold down <emphasis role="bold">Ctrl</emphasis> while selectng
+              them. </para><para role="TEXT">The selected entities are moved to the list
+              of roles granted to the user (<guilabel>Left
+              Section</guilabel>).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Remove&gt;&gt;</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Remove the entities selected from the
+              list of entities currently granted to the user (<guilabel>Left
+              Section</guilabel>).</para><para role="TEXT">The selected entities are moved
+              back to the list of available entities (<guilabel>Right
+              Section</guilabel>).</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Authentication</title>
+
+    <note>
+      <para role="TEXT">Access to this module must be given with care, and only to the
+      password administrator.</para>
+    </note>
+
+    <para role="TEXT">Reset users' passwords. This is especially useful whenever a user
+    has forgotten his or her password.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a list of all
+    the existing user accounts at your company. You can search the list by
+    entering search criteria in the <guilabel moreinfo="none">Last
+    Name</guilabel>, <guilabel moreinfo="none">First Name</guilabel> and
+    <guilabel moreinfo="none">Login</guilabel> fields at the top of the
+    page.</para>
+
+    <para role="TEXT">The list of existing user accounts has the following columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*" />
+
+        <colspec colname="c2" colwidth="8.0*" />
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Field</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">First Name and Last Name of the
+            user.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Login</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Login Id used by the user to log into
+            <xi:include href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude" />. This login Id
+            uniquely identifies a user account within the
+            company.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify a user's password by clicking the
+    <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm" />
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column.</para>
+
+    <para role="TEXT">You cannot add or delete users via this list - you can
+    only add or delete users by using the <emphasis
+    role="bold">Profiles</emphasis> function.</para>
+
+    <section role="ITEM">
+      <title>Authentication Form</title>
+
+      <para role="TEXT">When you click the <guiicon moreinfo="none">Edit</guiicon>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon, you get the following form.</para>
+
+      <para role="TEXT">After entering the details, click <emphasis
+      role="bold">Save</emphasis> at the bottom of the form. The changes take
+      effect the next time the user logs in to <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude" />.</para>
+
+      <para role="TEXT">When the password is changed, the password expiry date is computed
+      and stored, and the counter of invalid login attempts is reset. The user
+      is also re-activated if previously inactive.</para>
+
+      <informaltable>
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="5.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu moreinfo="none">User
+              Details</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"></para></entry>
+
+              <entry valign="top"><para role="TEXT">This is a reminder/summary of the user
+              profile.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Company</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Company's abbreviated name that is
+              part of the user identification in <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Login
+              Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Login Id that the user uses to log
+              into <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif"
+                               role="CHAR_INFO" width="4mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">First Name and Last Name of the
+              user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Password</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">New password. <note>
+                  <para role="TEXT">The password policy, which defines the maximum and
+                  minimum length of the password, the characters accepted, and
+                  the combination of characters, is set up in the system by
+                  your administrator.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel moreinfo="none">Confirm
+              Password</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Retype the new
+              password.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+</section>

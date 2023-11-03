@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ListDef xml for beneficiary details Look Up -->
+<listdef ordered="y" default_order="account_id" page="50">
+
+	<column name="entity" hidden="y" />
+	<column name="account_id" hidden="y" />
+	<column name="account_no" hidden="y" />
+	<column name="cur_code" hidden="y" />
+	<column name="address_line_1" hidden="y" />
+	<column name="address_line_2" hidden="y" />
+	<column name="address_line_3" hidden="y" />
+	<column name="bank_name" hidden="y" />
+	<column name="country" hidden="y" />
+	<column name="bank_iso_code" hidden="y" />
+	<column name="bank_routing_no" hidden="y" />
+	<column name="threshold_amt" hidden="y" />
+	<column name="threshold_cur_code" hidden="y" />
+	<column name="bank_address_line_1" hidden="y" />
+	<column name="bank_address_line_2" hidden="y" />
+
+	<column name="counterparty_name" hidden="y" />
+	<column name="counterparty_nickname" hidden="y" />
+	<column name="branch_name" hidden="y" />
+	<column name="branch_address_line_1" hidden="y" />
+	<column name="branch_address_line_2" hidden="y" />
+
+	<column name="inter_bank_name" hidden="y" />
+	<column name="inter_bank_swift" hidden="y" />
+	<column name="inter_bank_address1" hidden="y" />
+	<column name="inter_bank_country" hidden="y" />
+	<column name="inter_bank_routing_no" hidden="y" />
+
+	<column name="pre_approved" hidden="y" />
+	<column name="product_type" hidden="y" />
+	<column name="active_flag" hidden="y" />
+	<column name="tnx_stat_code" hidden="y" />
+
+	<!-- parameters -->
+	<parameter name="account_id" input="n" default=""/>
+	<parameter name="account_no" input="n" default=""/>
+
+	<!-- candidates -->
+	<candidate name="staticAccountMaster">
+		<filter>
+			<criteria>
+				<column name="active_flag"/>
+				<operator type="equal"/>
+				<value type="code">
+					N034_YES
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<candidate name="staticAccount">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="equal" />
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="equal" />
+				<value type="code">
+					N004_CHECKER_RETURN
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="equal" />
+				<value type="code">
+					N004_BUSINESS_REJECT
+				</value>
+			</criteria>
+		</filter>
+
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="active_flag" />
+			<operator type="equal" />
+			<value type="code">
+				N034_YES
+			</value>
+		</criteria>
+		<criteria>
+			<column name="account_id" />
+			<operator type="like" />
+			<value type="parameter">
+				account_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="account_no" />
+			<operator type="like" />
+			<value type="parameter">
+				account_no
+			</value>
+		</criteria>
+	</filter>
+
+</listdef>

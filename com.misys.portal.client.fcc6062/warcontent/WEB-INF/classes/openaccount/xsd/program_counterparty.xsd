@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for Company file.
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd">
+		<xs:annotation>
+			<xs:documentation>This includes the common xsd</xs:documentation>
+		</xs:annotation>
+	</xs:include>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/staticBeneficiary.xsd">
+		<xs:annotation>
+			<xs:documentation>This includes the static beneficiary xsd</xs:documentation>
+		</xs:annotation>
+	</xs:include>
+	<xs:element name="program_counterparty" type="program_counterparty" />
+	
+	<xs:complexType name="program_counterparty">
+		<xs:sequence>
+			<xs:element minOccurs="1" name="program_code" type= "ThirtyFiveCharacters"/>
+			<xs:element minOccurs="0" name="cpty_customer_reference" type="SixtyFourCharacters"/>
+			<xs:element minOccurs="0" name="prog_cpty_assn_status" type="YesNo"/>
+			<xs:element minOccurs="0" name="bo_status" type="TwoCharacters"/>
+			<xs:element minOccurs="0" name="limit_cur_code" type="currency"/>
+			<xs:element minOccurs="0" name="limit_amt" type="amount"/>
+			<xs:element ref="static_beneficiary" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>	

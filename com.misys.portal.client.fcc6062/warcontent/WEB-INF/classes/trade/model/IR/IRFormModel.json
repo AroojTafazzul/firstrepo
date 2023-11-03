@@ -1,0 +1,292 @@
+{
+  "screen": "InwardRemittanceScreen",
+  "isAccordionView": "true",
+  "generalDetails": {
+    "channelsId": {
+      "name": "channelsId",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29
+    },
+    "remittanceDate": {
+      "name": "remittanceDate",
+      "type": "input-date",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29
+    },
+    "bankReference": {
+      "name": "bankReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+     "customerReference":{
+         "name":"customerReference",
+         "type":"input-text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+         "styleClass":[
+            "margin-side"
+         ],
+         "maxlength":16
+      },
+    "remittanceType": {
+      "name": "remittanceType",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "options": [],
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29
+    },
+    "customerReference": {
+      "name": "customerReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "showLabel": false
+        }
+      ]
+    },
+    "id": "generalDetailsComponent"
+  },
+  "beneficiaryDetails": {
+    "beneficiary": {
+      "prefix": "irBeneficiary",
+      "sectionType": "beneficiaryModel",
+      "hideFields": [      
+        "fullAddress",
+        "country"
+      ]      
+    },
+    "id": "beneficiaryDetailsComponent"
+  },
+  "remitterDetails": {
+    "remitter": {
+      "prefix": "remitter",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "fullAddress",
+        "country"
+      ],
+      "fieldsNotApplicable": [
+        "entity"
+      ],
+      "hideGrpHeaderInView": true
+    },
+    "remitterReference": {
+      "name": "remitterReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ]
+    },
+    "id": "remitterrDetailsComponent"
+  },
+  "amountDetails": {
+    "collectionAmountCurrency": {
+      "name": "collectionAmountCurrency",
+      "type": "input-dropdown-filter",
+      "options": [],
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "no-margin-multiselect"
+      ],
+      "clubbedHeaderText": "collectionAmount",
+      "clubbedList": [
+        "collectionAmountCurrency",
+        "collectionAmount"
+      ]
+    },
+    "collectionAmount": {
+      "name": "collectionAmount",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "clubbed": true
+    },
+    "outstandingCurrency": {
+      "name": "outstandingCurrency",
+      "type": "input-dropdown-filter",
+      "options": [],
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "no-margin-multiselect"
+      ],
+      "clubbedHeaderText": "outstandingAmount",
+      "clubbedList": [
+        "outstandingCurrency",
+        "outstandingAmount"
+      ]
+    },
+    "outstandingAmount": {
+      "name": "outstandingAmount",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "clubbed": true
+    },
+    "id": "amountDetailsComponent"
+  },
+  "bankDetails": {
+     "bankDetails": {
+      "prefix": "irBank",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "header",
+        "entity",
+        "fullAddress",
+        "country"
+      ]
+    },
+    "remitBicCode": {
+      "name": "remitBicCode",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "id": "bankDetailsComponent"
+  },
+  "settlementPaymentDetails": {
+    "accountNumber": {
+      "name": "accountNumber",
+      "type": "input-text",
+      "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+      "styleClass": [
+        "principalAct"
+      ],
+      "rendered": true,
+      "maxlength": 35
+    },
+    "forwardContract": {
+      "name": "forwardContract",
+      "type": "input-text",
+      "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+      "styleClass": [
+        "forwardContract"
+      ],
+      "rendered": true,
+      "maxlength": 35
+    },
+    "narrativePaymentDetails": {
+      "name": "narrativePaymentDetails",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 13500
+    },
+    "id": "settlementDetailsComponent"
+  },
+  "irFileUploadDetails": {  
+    "applicableSections": [
+		{
+		  "productCode": "IR",
+		  "tnxTypeCode": "01"
+		}
+	],
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "btndisable": true,
+      "previewScreen": false
+    },
+    "fileUploadTable": {
+      "name": "fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12"
+    },
+    "attachments" : {
+        "name": "attachments",
+        "rendered": false,
+        "type": "json-obj",
+        "previewScreen": false
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "irFileUploadDetailsComponent"
+  }
+}

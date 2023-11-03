@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="customer" scope="system_features">
+	<name>module_CSFReportExecution</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<methodParam>reportid</methodParam>
+	<methodParam>templateid</methodParam>
+	<staticParam>menuaction</staticParam>
+	<action>
+		<actionCode>ReportExecutionCSF</actionCode>
+		<class>ReportDesignerListPortlet</class>
+		<method>openExistingExecutableReportsList</method>
+		<permission>sy_cust_report_execute</permission>
+		<operation>REPORT_EXECUTE</operation>
+		<option>EXISTING</option>
+		<reportid>-</reportid>
+		<templateid>-</templateid>
+		<menuaction>ReportExecutionCSF</menuaction>
+		<bookmarkable>true</bookmarkable>
+		<favourite>true</favourite>
+	</action>
+	<action>
+		<actionCode>ExecuteReportCSF</actionCode>
+		<class>ReportDesignerPortlet</class>
+		<method>executeReport</method>
+		<permission>sy_cust_report_execute</permission>
+		<operation>REPORT_EXECUTE</operation>
+		<option>EXISTING</option>
+		<reportid>%</reportid>
+		<templateid>-</templateid>
+		<menuaction>ReportExecutionCSF</menuaction>
+	</action>
+	<!--action>
+		<actionCode>ExecuteTemplateReportCSF</actionCode>
+		<class>ReportDesignerPortlet</class>
+		<method>executeReport</method>
+		<permission>sy_cust_report_execute</permission>
+		<operation>REPORT_EXECUTE</operation>
+		<option>EXISTING</option>
+		<reportid>-</reportid>
+		<templateid>%</templateid>
+		<menuaction>ReportExecutionCSF</menuaction>
+	</action-->
+</module>

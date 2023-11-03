@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="20" identifier="tnx_id"  data_key="tnx_id">
+
+	<column name="product_code" align="center" loca_key="PRODUCT_CODE" >
+		<script>
+			value = row.getColumnValue("product_code");
+		</script>
+	</column>
+	<column name="tnx_type_code" align="left" loca_key="EVENT" >
+		<script>
+			value = row.getColumnValue("tnx_type_code");
+		</script>
+	</column>
+	<column name="beneficiary_name" width="9em" align="left" loca_key="BENEFICIARY_NAME"/>
+	<column name="entity" align="left" loca_key="ENTITY"/>
+	<column name="tnx_cur_code" align="left" loca_key="CURCODE" />
+	<column name="tnx_amt" align="right" loca_key="AMOUNT"/>
+	<column name="company_name" align="left" width="20%" loca_key="COMPANY_NAME"/>
+	<column name="status" align="left" loca_key="STATUS" a11ySelectionContext="y">
+		<script>
+			var productCode = row.getColumnValue("product_code");
+			var tnxStatCode = row.getColumnValue("tnx_stat_code");
+			var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+			var prodStatCode = row.getColumnValue("prod_stat_code");
+			var subProductCode = row.getColumnValue("sub_product_code");
+			//laon specific status codes and values
+		 	if(("LN".equals(""+productCode+"")) || (("BK".equals(""+productCode+"")) &amp;&amp; ("LNRPN".equals(""+subProductCode+"")) ))
+            {
+	            if(("BK").equals(""+productCode+"") &amp;&amp; ("LNRPN").equals(""+subProductCode+""))
+				  {
+				          productCode= productCode+"_"+subProductCode;
+				         
+				        
+				   }            
+            	if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03",""+productCode+"");
+				}
+				else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"",""+productCode+"");
+				}
+				else if(("01").equals(""+subTnxStatCode+"")  &amp;&amp;(("02").equals(""+tnxStatCode+"")||("01").equals(""+tnxStatCode+"")))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","01",""+productCode+"");
+				}
+				else if((("17").equals(""+subTnxStatCode+"")||("10").equals(""+subTnxStatCode+""))  &amp;&amp; ("03").equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03",""+productCode+"");
+				}
+				else if(("03").equals(""+subTnxStatCode+"")  &amp;&amp; ("02").equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","02",""+productCode+"");
+				}
+				else if(("05").equals(""+subTnxStatCode+"")  &amp;&amp; ("03").equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","04",""+productCode+"");
+				}				
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"",""+productCode+""); 
+				}
+             
+            }
+			else 
+			{
+				if(value.equals(""))
+				{
+					if(("04").equals(""+tnxStatCode+"") &amp;&amp; !("").equals(""+prodStatCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"")+")";
+					}
+					else if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015","05")+")";
+					}
+					else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+					}
+					else
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")"; 
+					}
+				}
+			
+			}
+			value;
+		</script>
+	</column>
+	<column name="full_type" align="center" width="12%" loca_key="TYPE">
+		<script>
+			var tnxTypeCode = row.getColumnValue("tnx_type_code");
+			var productCode = row.getColumnValue("product_code");
+			var subTnxTypeCode = row.getColumnValue("sub_tnx_type_code");
+			var amdNo = row.getColumnValue("amd_no");
+			// Product specific type aliases, which should reflect in Preview and PDFs also
+			if(!"".equals(""+tnxTypeCode+""))
+			{
+				if("LN".equals(""+productCode+""))
+				{
+					if("03".equals(""+tnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getGTPString(language, "LISTDEF_PRODUCT_TYPE_INCREASE");
+					}
+					else if("13".equals(""+tnxTypeCode+"") &amp;&amp; "16".equals(""+subTnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getGTPString(language, "LISTDEF_PRODUCT_TYPE_PAYMENT");
+					}
+					else if("01".equals(""+tnxTypeCode+"") &amp;&amp; "97".equals(""+subTnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N003",""+subTnxTypeCode+"")+")";
+					}
+					else if("01".equals(""+tnxTypeCode+"") &amp;&amp; "40".equals(""+subTnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getGTPString(language, "LOAN_DRAWDOWN");
+					}	
+					else if("01".equals(""+tnxTypeCode+"") &amp;&amp; "B1".equals(""+subTnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getGTPString(language, "SWINGLINE_ANGULAR_LABEL");
+					}	
+				}
+				else if(!"".equals(""+subTnxTypeCode+""))
+				{
+					if(!"0".equals(""+amdNo+"") &amp;&amp; ( "03".equals(""+tnxTypeCode+"")))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+com.misys.portal.common.localization.Localization.getDecode(language,"N003",""+subTnxTypeCode+"") + ") " +com.misys.portal.common.tools.Utils.formatAmdNo(""+amdNo+"");
+					}
+					else
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N003",""+subTnxTypeCode+"")+")";
+					}
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"");
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="ref_id" align="left" loca_key="REFERENCEID"/>
+	
+	<column name="inp_dttm"   hidden="y" />
+	<column name="prod_stat_code"  hidden="y" >
+		<script>
+			value = row.getColumnValue("tnx_type_code");
+		</script>
+	</column>
+	
+	<column name="counterparty_name" align="left" loca_key="COUNTERPARTY"  hidden="y" >
+		var productCode = row.getColumnValue("product_code");
+		var fscmCode = row.getColumnValue("fscm_program_code");
+		if("CN".equals(""+productCode+""))
+		{
+		if("03".equals(""+fscmCode+"") || "04".equals(""+fscmCode+""))
+		{
+		value = row.getColumnValue("seller_name");
+		}
+		else
+		{
+		value = row.getColumnValue("buyer_name");
+		}
+		}
+		value;
+	</column>
+	<column name="sub_tnx_stat_code" hidden="y" >
+		<script>
+			value = row.getColumnValue("sub_tnx_stat_code");
+		</script>
+	</column>
+	<column name="tnx_id" hidden="y" />
+	<column name="sub_product_code" hidden="y" >
+		<script>
+			value = row.getColumnValue("sub_product_code");
+		</script>
+	</column>
+	<column name="sub_tnx_type_code" hidden="y" >
+		<script>
+			value = row.getColumnValue("sub_tnx_type_code");
+		</script>
+	</column>
+	<column name="tnx_stat_code" hidden="y" >
+		<script>
+			value = row.getColumnValue("tnx_stat_code");
+		</script>
+	</column>
+	<column name="tnx_cur_code" hidden="y" />
+	<column name="fscm_program_code" hidden="y" />
+	<column name="seller_name" hidden="y" />
+	<column name="buyer_name" hidden="y" />
+	<column name="action" align="right" width="16%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_INCOMPLETE"/>
+			<parameter name="bo_facility_id" column="bo_facility_id"/>
+			<parameter name="borrower_reference" column="borrower_reference"/>
+			<parameter name="ACTION_FILTER" value="LN_VEAR"/>
+		</url>
+	</column>
+	
+	<!-- parameters -->
+	<parameter
+		name="parameter1"
+		type="AvailableProducts"
+		size=""
+		max_length=""
+		loca_key="PRODUCTCODE"
+		input="y"
+		default="*" />
+	
+	<!-- candidates -->
+	<candidate name="parameter1">
+	</candidate>
+	
+	<!-- filters -->
+	<filter>
+		<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="in" />
+				<value type="vector">
+					<value type="code">
+						N004_INCOMPLETE
+					</value>
+					<value type="code">
+						N004_UNCONTROLLED
+					</value>
+				</value>
+			</criteria>
+		</filter>
+		<filter or="y">
+			<criteria>
+				<column name="bulk_ref_id"/>
+				<operator type="isNull"/>
+			</criteria>
+		</filter>
+	
+</listdef>

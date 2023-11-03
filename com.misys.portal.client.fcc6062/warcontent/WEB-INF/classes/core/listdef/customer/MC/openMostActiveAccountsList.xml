@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="lineCount" default_order_type="d" page="10" postScriptExecution="y" filterRequired="n" data_key="account_id">
+
+<!-- If order of columns is changed, change corresponding viewerjson for this listdef -->
+	
+	<column name="account@bank_abbv_name" align="left" width="12%" loca_key="BANK_ABBV_NAME" columnFilterType="input-multiselect"/>
+	<column name="account@UserAccount@EntityAccount@entity@abbv_name" align="left" width="12%"  loca_key="ENTITY" groupedColumn="entity" groupedValues = "y" columnFilterType="input-multiselect"/>	
+	<column name="account@UserAccount@EntityAccount@UserEntity@default_entity" align="left" width="12%"  loca_key="DEFAULT_ENTITY" hidden="y" />
+	<column name="account@acct_name" align="left" width="12%" loca_key="ACCOUNT_NAME"/>
+	<column name="account@account_no" align="left" width="12%" loca_key="ACCOUNT_NO"/>
+	<column name="account@account_type" align="left" width="12%" loca_key="ACCOUNT_TYPE" columnFilterType="input-multiselect"/>
+	<column name="account@nickname" align="left" width="12%" loca_key="NICK_NAME" hidden="y"/>
+	<column name="account@cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="AvailableBalance@amt" align="right" width="12%" loca_key="BALANCE"/>
+	<column name="AvailableBalance@convertedAmt" paramCur="account_ccy" align="right" width="12%" loca_key="EQUIVALENT_OPENING_BALANCE"/>
+    
+    <column name="action" align="right" width="14%"  loca_key="ACTIONS">
+    <url action="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_MOST_ACTIVE_ACCOUNTS">
+	   	<parameter name="ACCOUNT_NO" column="Account@account_no"/>
+		<parameter name="ENTITY" column="EntityAccount@entity@abbv_name"/>
+    </url>
+	</column>
+	<column name="account_id" hidden="y"/>	
+    <column name="statement_id" hidden="y"/>
+    <column name="lineCount"  align="left" width="10%" loca_key="COUNT" hidden="y">
+         <script>
+         			var accountID = row.getColumnValue("account_id");
+         			var statementID = row.getColumnValue("statement_id");
+         			if(accountID!= null &amp;&amp; statementID!= null)
+         			{
+         				value = com.misys.portal.common.tools.Utils.getAccountsCount(""+accountID+"",""+statementID+"",rundata);
+         			}
+                    value;
+             </script>
+    </column>
+	
+	<!-- parameters -->
+	<parameter name="account_type" size="2" max_length="2" input="y" loca_key="ACCOUNT_TYPE" type="" multiple="y" hidden= "true"/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+	<parameter
+		name="account_no"
+		size="50"
+		max_length="50"
+		loca_key="ACCOUNT_NO"
+		input="y"
+		default=""
+		multiple="y"
+		type="AccountNo"/>
+	<parameter 
+		name="bank_abbv_name" 
+		size="2" 
+		max_length="2"
+		input="y" 
+		loca_key="BANK_NAME" 
+		type="" />
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		type="Currency"/>
+	<parameter
+		name="account_ccy"
+		input="y"
+		size="3"
+		max_length="3"
+		hidden= "false"
+		loca_key="ACCOUNT_CCY"
+		type="AccountType"/>
+	
+
+	<!-- Candidates -->	
+	<candidate name="AccountStatement">
+		<filter>
+		<criteria>
+				<column name="account@UserAccount@EntityAccount@entity@abbv_name" />
+					<operator type="in" />
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+		<criteria>
+				<column name="account@account_type" />
+				<operator type="in" />
+				<value type="parameter">
+					account_type
+				</value>
+		</criteria>
+		<criteria>
+			<column name="account@account_no" />
+			<operator type="in" />
+			<value type="parameter">
+				account_no
+			</value>
+		</criteria>
+		<criteria>
+			<column name="account@nickname" />
+			<operator type="equal" />
+			<value type="parameter">
+				nickname
+			</value>
+		</criteria>
+		<criteria>
+			<column name="account@cur_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				cur_code
+			</value>
+		</criteria>
+		<criteria>
+				<column name="account@useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+				    View STMT
+				</value>
+		</criteria>
+		<criteria>
+				<column name="account@useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+				    Y
+				</value>
+		</criteria>
+		</filter>
+	</candidate>
+</listdef>

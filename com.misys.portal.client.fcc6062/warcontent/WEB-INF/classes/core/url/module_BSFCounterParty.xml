@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="bank" scope="system_features">
+	<name>module_BSFCustomer</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<bindingParam>mode</bindingParam>
+	<methodParam>featureid</methodParam>
+	<methodParam>company</methodParam>
+	<methodParam>tnxid</methodParam>
+	<methodParam>entity</methodParam>
+	<staticParam>menuaction</staticParam>
+	
+	<action>
+		<actionCode>OpenAssociateCustomertoCounterpartyList</actionCode>
+		<class>BSFCounterPartyListMCPortlet</class>
+		<method>changeCounterPartyCustomerMC</method>
+		<permission>sy_bank_access_fscm_counterparty_customer_mc</permission>
+		<operation>-</operation>
+		<featureid>-</featureid>
+		<company>-</company>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenChangeCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>assignCustomertoCounterPartyMC</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>MODIFY_DRAFT_FEATURES</operation>
+		<featureid>%</featureid>
+		<company>-</company>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenCounterPartyCustomerAssociationBSFMCView</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>assignCustomertoCounterPartyMC</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>DISPLAY_FEATURES</operation>
+		<featureid>%</featureid>
+		<company>%</company>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenModifyCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>assignCustomertoCounterPartyMC</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>MODIFY_DRAFT_FEATURES</operation>
+		<featureid>%</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenModifyAwaitingCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>modifyReturnedCustomerCounterPartyMC</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>MODIFY_AWAITING_FEATURES</operation>
+		<featureid>%</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenCancelCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>revertCustomerCounterPartyMC</method>
+		<permission>sy_bank_cancel_fscm_counterparty_customer_mc</permission>
+		<operation>CANCEL_FEATURES</operation>
+		<featureid>%</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenRevertCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>revertCustomerCounterPartyMC</method>
+		<permission>sy_bank_revert_fscm_counterparty_customer_mc</permission>
+		<operation>REVERT_FEATURES</operation>
+		<featureid>-</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>-</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenReturnCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>revertCustomerCounterPartyMC</method>
+		<permission>sy_bank_revert_fscm_counterparty_customer_mc</permission>
+		<operation>RETURN_FEATURES</operation>
+		<featureid>-</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>-</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenMakerModifyCptyCstAssnBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>modifyReturnedCustomerCounterPartyMC</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>MAKER_MODIFY_FEATURES</operation>
+		<featureid>%</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>assignCustomertoCounterPartyMC</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>COUNTERPARTY_CUSTOMER_ASC</operation>
+		<featureid>%</featureid>
+		<company>-</company>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenCheckCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>checkCounterPartyCustomerMC</method>
+		<permission>sy_bank_approve_fscm_counterparty_customer_mc</permission>
+		<operation>CHECK_FEATURES</operation>
+		<featureid>%</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>COUNTERPARTY_CUST_MAINTENANCE_MC</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>SaveCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>saveCoputerpartyCustomerAssn</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>SAVE_FEATURES</operation>
+		<featureid>-</featureid>
+		<company>-</company>
+		<option>-</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>SaveMakerCptyCustAssnBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>saveCoputerpartyCustomerAssn</method>
+		<permission>sy_bank_modify_fscm_counterparty_customer_mc</permission>
+		<operation>MAKER_SAVE_FEATURES</operation>
+		<featureid>-</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>-</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenApproveCounterPartyCustomerAssociationBSFMC</actionCode>
+		<class>BSFCounterPartyMCPortlet</class>
+		<method>approveCustomerCounterPartyAssnMC</method>
+		<permission>sy_bank_approve_fscm_counterparty_customer_mc</permission>
+		<operation>APPROVE_FEATURES</operation>
+		<featureid>-</featureid>
+		<company>-</company>
+		<tnxid>%</tnxid>
+		<option>-</option>
+		<menuaction>OpenAssociateCustomertoCounterpartyList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenActivateCounterpartyCustomerList</actionCode>
+		<class>BSFCounterPartyListMCPortlet</class>
+		<method>changeCustomerCounterPartyActivationMC</method>
+		<permission>sy_bank_fscm_counterparty_activation</permission>
+		<operation>-</operation>
+		<featureid>-</featureid>
+		<company>-</company>
+		<tnxid>-</tnxid>
+		<option>COUNTERPARTY_CUST_ACTIVATION_MC</option>
+		<menuaction>OpenActivateCounterpartyCustomerList</menuaction>
+	</action>
+	
+</module>

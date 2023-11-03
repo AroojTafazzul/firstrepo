@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="batch_id" default_order_type="d" huge="y" forceDisplaySearch="y" js_binding="misys.binding.listdef.message_center.listdef_batch_inquiry_mc_list" page="50" >
+	
+	<batch type="deletebatch" permission="batch_operation"> 
+		<parameter name="SCREEN" value="MC_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_DELETE_BATCH"/>
+		<parameter name="BATCH_ID" column="batch_id"/>
+	</batch>
+	<column name="batch_id" align="center" width="10em" loca_key="BATCHID"> 
+		<url>
+			<parameter name="SCREEN" value="MC_SCREEN"/>
+			<parameter name="OPERATION_CODE" binding_code="LIST_TRANSACTION_IN_BATCH_OPERATION"/>
+			<parameter name="BATCH_ID" column="batch_id"/>
+		</url>
+	</column>
+	
+	<column name="batch_dttm" align="center" width="7%" loca_key="BATCH_DATE"/>
+	<column name="batch_status" align="center" width="7%" loca_key="STATUS">
+		<script>
+			return com.misys.portal.common.tools.BatchTools.getBatchStatusFromBatchId(rundata,row);
+		</script>
+	</column>
+	<column name="full_name" computation="sum" align="left" width="8%" loca_key="BATCH_MAKER">
+		<column name="User@last_name"/>
+		<column name="User@first_name"/>
+	</column>
+	<column name="batch_cur_code" align="center" width="3em" loca_key="BATCH_CUR_CODE"/>
+	<column name="batch_amt" align="right" width="10%" loca_key="BATCH_AMOUNT"/>
+	<column name="batch_size" align="center" width="3em" loca_key="BATCH_TNX_COUNT"/>
+	<!-- Remote Authorization fields end-->
+	
+	<column name="batch_maker_id" hidden="y"/>
+	<column name="User@last_name" hidden="y"/>
+	<column name="User@first_name" hidden="y"/>	
+	<column name="batch_type" hidden="y"/>	
+	<!-- parameters -->
+	<parameter
+		name="batch_id"
+		size="14" 
+		max_length="22"
+		loca_key="BATCHID"
+		input="y"
+		/>
+	<parameter
+		name="batch_dttm"
+		loca_key="BATCHDATE"
+		type="Date"
+		input="y"
+		default="blank"
+		/>
+	<parameter
+		name="batch_maker_name"
+		size="20"
+		max_length="70"
+		loca_key="BATCH_MAKER"
+		input="y"
+		/>
+	<parameter
+		name="export_list"
+		file_name="batchInquiryList"
+		type="export"
+		batch="y"/>
+	<!-- candidates -->	
+	<candidate name="batch">
+			<filter>
+				<criteria>
+					<column name="batch_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						batch_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="batch_dttm"/>
+					<operator type="equal"/>
+					<value type="parameter">
+						batch_dttm
+					</value>
+				</criteria>
+				<criteria>
+					<column name="full_name" computation="sum">
+						<column name="User@last_name"/>
+						<column name="User@first_name"/>
+					</column>
+					<operator type="like"/>
+					<value type="parameter">
+						batch_maker_name
+					</value>
+				</criteria>
+				<criteria>
+					<column name="batch_type"/>
+					<operator type="equal"/>
+					<value type="string">
+						01
+					</value>
+				</criteria>
+		    </filter>
+	</candidate>
+</listdef>

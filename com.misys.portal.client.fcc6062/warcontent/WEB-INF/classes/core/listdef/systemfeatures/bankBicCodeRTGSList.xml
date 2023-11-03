@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="key_1" default_order_type="d" page="20" >
+	
+	<column name="key_1" align="left" width="10%" loca_key="BIC_CODE">
+	<js-pass-back keyName="column">
+            <array-element index="0" column="key_1"/>
+            <array-element index="1" column="data_1"/>
+            <array-element index="2" column="data_2"/>
+            <array-element index="3" column="data_3"/>
+            <array-element index="4" column="data_4"/>
+            <array-element index="5" column="data_5"/>
+            <array-element index="6" column="data_6"/>
+            <array-element index="7" column="data_7"/>
+            <array-element index="8" column="data_8"/>
+        </js-pass-back>
+	</column>
+	<column name="data_1" align="left" width="10%" loca_key="BANK_NAME"/>
+	<column name="data_2" align="left" width="10%" loca_key="BRANCH_NAME" hidden="y"/>
+	<column name="data_3" align="left" width="10%" loca_key="BANK_ADDRESS" hidden="y"/>
+	<column name="data_4" align="left" width="10%" loca_key="POST_CODE" hidden="y"/>
+	<column name="data_5" align="left" width="10%" loca_key="BANK_CITY"/>
+	<column name="data_6" align="left" width="10%" loca_key="BRANCH_CODE" hidden="y"/>
+	<column name="data_7" align="left" width="10%" loca_key="BANK_COUNTRY"/>
+	<column name="data_8" align="left" width="10%" loca_key="INTERMEDIARY_FLAG" hidden="y"/>
+	<column name="parm_id" hidden="y"/>
+	
+	<parameter name="parm_id" hidden="true"/>
+	<parameter name="data_8" hidden="true"/>
+	<parameter
+		name="key_1"
+		loca_key="BIC_CODE"
+		input="y"
+		default=""/>
+	<parameter
+		name="data_1"
+		loca_key="BANK_NAME"
+		input="y"
+		default=""/>
+	<parameter
+		name="data_6"
+		loca_key="BRANCH_CODE"
+		input="y"
+		default=""/>
+	
+	<!-- candidates -->
+	<candidate name="paramData">
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="parm_id"/>
+			<operator type="equal"/>
+			<value type="parameter">
+					parm_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="data_8"/>
+			<operator type="equal"/>
+			<value type="parameter">
+					data_8
+			</value>
+		</criteria>
+		<criteria>
+			<column name="data_6"/>
+			<operator type="equal"/>
+			<value type="parameter">
+					data_6
+			</value>
+		</criteria>
+		<criteria>
+			<column name="data_1"/>
+			<operator type="equal"/>
+			<value type="parameter">
+					data_1
+			</value>
+		</criteria>
+		<criteria>
+			<column name="key_1"/>
+			<operator type="equal"/>
+			<value type="parameter">
+					key_1
+			</value>
+		</criteria>
+	</filter>
+</listdef>

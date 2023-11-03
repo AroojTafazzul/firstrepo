@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ListDef xml for LC transaction list Look Up -->
+<listdef ordered="y" default_order="tnx_id" default_order_type="d" page="5">
+	<column name="ref_id"  hidden="y"/>
+	<column name="tnx_id"  hidden="y"/>
+	<column name="entity"  hidden="y"/>
+	<column name="applicant_name"  hidden="y"/>
+	<column name="bo_ref_id"  hidden="y"/>
+	<column name="cust_ref_id"  hidden="y"/>
+	<column name="beneficiary_name"  hidden="y"/>
+	<column name="sub_product_code"  hidden="y"/>
+	<column name="tnx_cur_code"  hidden="y"/>
+	<column name="tnx_amt"  hidden="y"/>
+	<column name="lc_available_amt"  hidden="y"/>
+	<column name="iss_date"  hidden="y"/>
+	<column name="exp_date"  hidden="y"/>
+	<column name="prod_stat_code"  hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="release_dttm" hidden="y"/> 
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>
+	<column name="action_req_code" hidden="y"/>
+	<parameter name="entity" input="y" />
+	<parameter name="applicant_name" input="y" />
+	<parameter name="bo_ref_id" input="y" />
+	<parameter name="cust_ref_id" input="y" />
+	<parameter name="beneficiary_name" input="y" />
+	<parameter name="tnx_cur_code" input="y" />
+	<parameter
+		name="exp_date"
+		type="range"
+		input="y"
+		range_from_label="EXP_DATE_FROM"
+		range_to_label="EXP_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="AmountRange"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="AmountFrom"
+		range_to_label="AmountTo"/>
+	<parameter
+		name="issue_date"
+		type="range"
+		input="y"
+		range_from_label="LAST_MODIFY_DATE_FROM"
+		range_to_label="LAST_MODIFY_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="release_dttm"
+		type="range"
+		input="y"
+		range_from_label="LAST_RELEASE_DATE_FROM"
+		range_to_label="LAST_RELEASE_DATE_TO"
+		default="blank"/>
+	
+	<parameter name="ref_id" input="y" />
+	<parameter name="tnx_id" input="y" />
+	<parameter name="tnx_stat_code" input="y" />
+	<parameter name="sub_tnx_stat_code" input="y" />
+	<parameter name="action_req_code" input="y" />
+	
+	<!-- candidates -->
+	<candidate name="LetterOfCredit">
+	<filter>
+		<criteria>
+				<column name="exp_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					exp_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="exp_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					exp_date@to
+				</value>
+			</criteria>
+			<criteria>
+					<column name="entity"/>
+					<operator type="like"/>
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+				<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					tnx_cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					tnx_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="action_req_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					action_req_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					sub_tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="lc_available_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="lc_available_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+					<column name="iss_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						issue_date@from
+					</value>
+				</criteria>
+				<criteria>
+					<column name="iss_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						issue_date@to
+					</value>
+			</criteria>
+			<criteria>
+					<column name="release_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						release_dttm@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="release_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						release_dttm@to
+					</value>
+			</criteria>
+	</filter>
+	</candidate>
+</listdef>

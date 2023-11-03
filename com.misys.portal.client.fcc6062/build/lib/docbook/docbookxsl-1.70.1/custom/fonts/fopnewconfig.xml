@@ -1,0 +1,66 @@
+<fop version="1.0">
+
+	<!-- Strict user configuration -->
+	<strict-configuration>true</strict-configuration>
+
+	<!-- Strict FO validation -->
+	<strict-validation>false</strict-validation>
+
+	<!-- Font Base URL for resolving relative font URLs -->
+  	<font-base>../../../../../lib/docbook/docbookxsl-1.70.1/custom/fonts</font-base>  
+
+	<!--
+		Source resolution in dpi (dots/pixels per inch) for determining the
+		size of pixels in SVG and bitmap images, default: 72dpi
+	-->
+	<source-resolution>72</source-resolution>
+	<!--
+		Target resolution in dpi (dots/pixels per inch) for specifying the
+		target resolution for generated bitmaps, default: 72dpi
+	-->
+	<target-resolution>72</target-resolution>
+
+	<renderers>
+		<renderer mime="application/pdf">
+			<fonts>
+				<font embed-url="arial.ttf" kerning="yes">
+					<font-triplet name="Arial" style="normal" weight="normal"/>
+					<font-triplet name="ArialMT" style="normal" weight="normal"/>
+				</font>
+				<font embed-url="arialbd.ttf" kerning="yes">
+					<font-triplet name="Arial" style="normal" weight="bold"/>
+					<font-triplet name="ArialMT" style="normal" weight="bold"/>
+				</font>
+				<font embed-url="ariali.ttf" kerning="yes">
+				  <font-triplet name="Arial" style="italic" weight="normal"/>
+				  <font-triplet name="ArialMT" style="italic" weight="normal"/>
+				</font>
+				<font embed-url="arialbi.ttf" kerning="yes">
+				  <font-triplet name="Arial" style="italic" weight="bold"/>
+				  <font-triplet name="ArialMT" style="italic" weight="bold"/>
+				</font>
+				<font embed-url="ZapfDingbats.ttf" kerning="yes">
+				  <font-triplet name="ZapfDingbats" style="normal" weight="700"/>
+				  <font-triplet name="ZapfDingbats" style="normal" weight="400"/>
+				  <font-triplet name="ZapfDingbats" style="italic" weight="700"/>
+				  <font-triplet name="ZapfDingbats" style="italic" weight="400"/>
+				</font>
+				<font embed-url="symbol.ttf" kerning="yes">
+				  <font-triplet name="Symbol" style="normal" weight="700"/>
+				  <font-triplet name="Symbol" style="normal" weight="400"/>
+				</font>
+<!--				<substitutions>
+					 <substitution>
+						<from font-family="ZagDingbats" font-style="normal" font-weight="700"/>
+						<to font-family="ZagDingbats" font-style="normal" font-weight="400"/>
+					 </substitution>
+					 <substitution>
+						<from font-family="Symbol" font-style="normal" font-weight="700"/>
+						<to font-family="Symbol" font-style="normal" font-weight="400"/>
+					 </substitution>
+			  </substitutions>-->
+			</fonts>
+		</renderer>
+	</renderers>
+
+</fop>

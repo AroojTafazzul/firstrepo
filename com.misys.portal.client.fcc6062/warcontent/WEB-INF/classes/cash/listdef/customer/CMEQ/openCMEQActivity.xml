@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef  ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="bo_ref_id" default_order_type="d" page="50" source="opics"  js_binding="misys.binding.cash.fx_account_activity">
+
+	
+	<column name="bo_ref_id" align="center" width="8em" loca_key="BO_REFERENCEID"/>
+	<column name="extDescr" align="center" width="20%" loca_key="ACCOUNT_DESCRIPTION_HEADER"/>
+	<column name="dealDate" align="center" width="8em" loca_key="POST_DATE"/>
+	<column name="valueDate" align="center" width="8em" loca_key="EFFECTIVE_DATE"/>
+	<column name="cur_code" align="center" width="20%" loca_key="CURCODE"/>
+	<column name="amount" align="right" width="8em" loca_key="AMOUNT"/>
+	<column name="instuctionInd" align="center" width="20%" loca_key="INSTRUCTION"/>
+	<column name="maturityDate" align="center" width="20%" loca_key="MATURITY"/>
+	<column name="accountNo" align="center" width="20%" loca_key="ACCOUNT"/>	
+
+	<!-- parameters -->
+	
+	<parameter
+		name="customer"
+		size="35"
+		max_length="35"
+		loca_key="CUSTOMERREFERENCE"
+		input="y"
+		type="AvailableReference"
+		productCode="FX"
+		default=""/>
+<!--	<parameter-->
+<!--		name="customer"-->
+<!--		input="y"-->
+<!--		size="10"-->
+<!--		max_length="35"-->
+<!--		loca_key="CUSTOMER"-->
+<!--		default=""/>-->
+	<parameter
+		name="start_date"
+		loca_key="STARTDATE"
+		input="y"
+		type="Date"
+		default=""/>
+	<parameter
+		name="opicslist"
+		input="y"
+		size="10"
+		type="hidden"
+		max_length="35"
+		loca_key="CUSTOMERGROUP"
+		default="ACTIVITY"/>
+	<parameter
+		name="export_list"
+		file_name="activityRecord"
+		type="export"/>
+
+<candidate name="activity">
+		<filter>
+			<criteria>
+				<column name="customer"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer
+				</value>
+			</criteria>
+			<criteria>
+				<column name="opicslist"/>
+				<operator type="like"/>
+				<value type="parameter">
+					opicslist
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+</listdef>

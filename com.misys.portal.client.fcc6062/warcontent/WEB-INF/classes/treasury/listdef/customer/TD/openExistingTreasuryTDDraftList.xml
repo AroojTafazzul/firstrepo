@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50">
+
+	<column name="maturity_date" hidden="y" />
+	<column name="tnx_id" hidden="y"/>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="TD_TRTD_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_STANDING_INSTRUCTIONS"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="15%" loca_key="ENTITY"/>
+	<column name="bo_ref_id" align="center" width="15%" loca_key="BO_REFERENCEID"/>
+	<column name="cust_ref_id" align="left" width="15%" loca_key="CUST_REFERENCEID"/>
+	
+	<!-- ordering account come from OPICS_CUSTOMER_PAYMENT record-->  
+	<column name="Customer_Counterparty@counterparty_act_no" width="15%" loca_key="DEBIT_ACCOUNT"/>
+	<column name="Bank_Counterparty@counterparty_name" align="left" width="20%" loca_key="BENEFICIARY_NAME"/>
+	<column name="Bank_Counterparty@counterparty_act_no" width="15%" loca_key="BENEFICIARY_ACCOUNT"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		loca_key="CUST_REFERENCEID"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+	<parameter 
+		name="today" 
+		input="n" 
+		type="Date">
+			<default><today/></default>
+	</parameter>
+	
+	<!-- common filters -->	
+	
+		<filter>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal" />
+				<value type="code">
+					N002_INQUIRE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counter_cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counter_cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N047_TREASURY_TERM_DEPOSIT
+					</value>			
+				</value>
+			</criteria>
+			<criteria>
+				<column name="maturity_date"/>
+				<operator type="supOrEqual"/>
+				<value type="date">current</value>
+			</criteria>			
+		</filter>
+	
+	<candidate name="term_deposit">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_INCOMPLETE
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<candidate name="term_deposit">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_INPROGRESS
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

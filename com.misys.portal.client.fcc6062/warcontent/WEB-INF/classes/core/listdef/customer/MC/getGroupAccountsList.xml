@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"  default_order="account_id" default_order_type="d" page="50">
+
+<!-- If order of columns is changed, change corresponding viewerjson for this listdef -->
+	<column name="account_no" align="left" width="15%" loca_key="ACCOUNT_NO"/>
+	<column name="account_type" align="left" width="15%" loca_key="ACCOUNT_TYPE"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE"/> 
+	<column name="account_id" hidden="y"/>
+	<column name="acct_name" hidden="y"/>
+	<column name="actv_flag" hidden="y"/>
+	
+	
+	<!-- parameters -->
+	<parameter name="account_type" multiple="y" hidden="true" />
+	<parameter name="actv_flag"  hidden="true" />
+
+	<!-- Candidates -->	
+	<candidate name="Account">
+		<filter>
+		<criteria>
+				<column name="account_type" />
+				<operator type="in" />
+				<value type="parameter">
+					account_type
+				</value>
+		</criteria>
+		<criteria>
+				<column name="actv_flag" />
+				<operator type="equal" />
+				<value type="parameter">
+					actv_flag
+				</value>
+		</criteria>
+		</filter>
+	</candidate>
+</listdef>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="account_type" default_order_type="d" page="50">
+	
+	<!-- columns -->
+	<column name="client_code" align="center" width="8em" loca_key="FA_CLIENT_CODE"/>
+	<column name="client_short_name" hidden="y"/>
+	<column name="cont_code" hidden="y"/>
+	<column name="account_type" hidden="y"/>
+	<column name="currency_name" hidden="y"/>
+	<column name="account_type_des" align="center" width="25%" loca_key="FA_ACCOUNT_TYPE"/>
+	<column name="customer_short_name" align="center" width="8em" loca_key="FA_DEBTOR_NAME">
+		<url>
+			<parameter name="ACCOUNT_TYPE" column="account_type"/>
+			<parameter name="ACCOUNT_TYPE_DES" column="account_type_des"/>
+			<parameter name="CLIENT_CODE" column="client_code"/>
+			<parameter name="CLIENT_SHORT_NAME" column="client_short_name"/>
+			<parameter name="CONT_CODE" column="cont_code"/>
+			<parameter name="CUSTOMER_CODE" column="customer_code"/>
+			<parameter name="CUSTOMER_SHORT_NAME" column="customer_short_name"/>
+			<parameter name="FACTOR_CODE" column="factor_code"/>
+			<parameter name="FACTOR_SHORT_NAME" column="factor_short_name"/>
+			<parameter name="CURRENCY_CODE" column="currency_code"/>
+			<parameter name="CURRENCY_NAME" column="currency_name"/>
+			<parameter name="SCREEN" value="FA_SCREEN"/>
+			<parameter name="OPTION_CODE" binding_code="DEBTOR_INFO"/>
+		</url>
+	</column>	
+	<column name="customer_code" align="center" width="8em" loca_key="FA_DEBTOR_CODE"/>
+	<column name="factor_short_name" align="center" width="8em" loca_key="FA_FACTOR_NAME"/>
+	<column name="factor_code" align="center" width="8em" loca_key="FA_FACTOR_CODE"/>
+	<column name="currency_code" align="center" width="8em" loca_key="FA_INV_CURRENCY_CODE"/>
+	<column name="entity" hidden="y"/>
+	<column name="main_bank_abbv_name" hidden="y"/>
+	
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="client_code"
+		size="15"
+		max_length="15"
+		loca_key="FA_CLIENT_CODE"
+		input="y"/>
+	<parameter
+		name="account_type"
+		loca_key="FA_ACCOUNT_TYPE"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="customer_short_name"
+		loca_key="FA_DEBTOR_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="customer_code"
+		loca_key="FA_DEBTOR_CODE"
+		size="15"
+		max_length="15"
+		input="y"/>
+	<parameter
+		name="factor_short_name"
+		loca_key="FA_FACTOR_NAME"
+		size="20"
+		max_length="15"
+		input="y"/>
+	<parameter
+		name="factor_code"
+		loca_key="FA_FACTOR_CODE"
+		size="15"
+		max_length="15"
+		input="y"/>
+	<parameter
+		name="currency_code"
+		loca_key="FA_INV_CURRENCY_CODE"
+		size="3"
+		max_length="3"
+		input="y"/>
+
+	<!-- candidates -->	
+	<candidate name="FAClientContractInfo">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="client_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					client_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="customer_short_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer_short_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="customer_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="factor_short_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					factor_short_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="factor_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					factor_code
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="currency_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					currency_code
+				</value>
+			</criteria>	
+		</filter>
+	</candidate>
+</listdef>

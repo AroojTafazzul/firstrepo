@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef selection_mode="single" huge="n" help="LIST_HELP_INQUIRY" ordered="y" 
+default_order="description" default_order_type="a" page="100" js_binding="misys.binding.cash.account_balance">
+
+	<onSelectionChangedScript>"dojo.publish('ProjectedBalanceAccounts', [{ account_id : " + row.getColumnValue("account_id") +
+	",branch_no : \"" + row.getColumnValue("branch_no") +
+	"\",end_date : \"" + parameters.get("end_date").getValue() + "\"}]);" +
+    "dojo.publish('ProjectedBalanceSummary', [{ account_id : \"\",branch_no : \"\",date : \"\",lastRecId : \"\"}])"</onSelectionChangedScript>
+	<onSelectionClearedScript>dojo.publish('ProjectedBalanceAccounts', [{ account_id : "",branch_no : "",end_date : ""}]);dojo.publish('ProjectedBalanceSummary', [{ account_id : "",branch_no : "",date : "",lastRecId : ""}]);</onSelectionClearedScript>
+
+	<column name="acct_name" align="left" width="35%" loca_key="ACCOUNT_TITLE"/>
+	<column name="account_no" align="center" width="50%" loca_key="ACCOUNTNO"/>
+	<column name="cur_code" align="center" width="5%" loca_key="CURCODE"/>
+	<!-- <column name="LastStatement@Balance@cur_code" align="center" width="4em" loca_key="CURCODE"/> -->
+
+	<column name="branch_no" hidden="y"/>
+	<column name="account_id" hidden="y"/>
+ 
+ 	<!-- parameters -->
+	<parameter
+		name="account_no"
+		size="19"
+		max_length="19"
+		loca_key="ACCOUNTNO"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+	<parameter
+		name="end_date"
+		loca_key="ENDDATE"
+		input="y"
+		type="Date"
+		default="blank"/>
+
+	<!-- candidates -->	
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>				
+			<criteria>
+				<column name="account_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="actv_flag"/>
+				<operator type="equal"/>
+				<value type="string">
+					Y
+				</value>
+			</criteria>				
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_type"/>
+				<operator type="equal"/>
+				<value type="code">
+					N068_CALL_AND_NOTICE_ACCOUNT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="owner_type"/>
+				<operator type="equal"/>
+					<value type="code">
+						N081_TREASURY_ACCOUNT
+					</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+					View STMT
+	   			</value>
+			</criteria>	
+			<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+					Y
+	   			</value>
+			</criteria>		
+		</filter>	
+	</candidate>
+</listdef>

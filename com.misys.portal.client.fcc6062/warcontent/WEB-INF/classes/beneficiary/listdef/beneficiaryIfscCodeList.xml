@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"
+	default_order_type="d" page="10" parentNodePath="staticData/items" hideSearch="true" source="GenericInputSource"
+	customInterfaceService="beneficiaries" customComponentName="getExternalStaticData" category="fcm">
+
+	<column name="drawee_branch_code" align="left" width="12%" loca_key="BRANCH_CODE"/>
+	<column name="drawee_branch_description" align="left" width="12%" loca_key="BANK_BRANCH"/>
+	<column name="drawee_bank_code" align="left" width="10%" loca_key="BANK_CODE"/>
+	<column name="drawee_bank_description" align="left" width="15%" loca_key="BANK_NAME"/>
+	<column name="clearing_loc_code" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="ifsc" align="left" width="12%" loca_key="IFSC_CODE">
+	<js-pass-back keyName="column">
+            <array-element index="0" column="drawee_branch_code"/>
+            <array-element index="1" column="drawee_branch_description"/>
+            <array-element index="2" column="drawee_bank_code"/>
+            <array-element index="3" column="drawee_bank_description"/>
+            <array-element index="4" column="ifsc"/>
+        </js-pass-back>
+    </column>
+	<column name="neft_indicator" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="rtgs_indicator" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="kotak_bank_ifsc_system" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="imps_indicator" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="micr" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="valid_flag" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<parameter
+		name="branchCode"
+		size="20"
+		loca_key="BRANCH_CODE"
+		input="y"
+		default=""/>
+	<parameter
+		name="bankCode"
+		size="20"
+		loca_key="BANK_CODE"
+		input="y"
+		default=""/>
+		
+	<candidate name="fcmbeneficiary">
+		<filter>
+			<criteria>
+				<column name="drawee_branch_code" />
+				<operator type="like" />
+				<value type="parameter">
+					branchCode
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawee_bank_code" />
+				<operator type="like" />
+				<value type="parameter">
+					bankCode
+				</value>
+			</criteria>			
+		</filter>
+	</candidate>
+</listdef>

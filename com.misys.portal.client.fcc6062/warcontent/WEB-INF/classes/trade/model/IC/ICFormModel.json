@@ -1,0 +1,690 @@
+{
+  "screen": "ImportCollectionScreen",
+  "generalDetails": {
+    "REFERENCEID": {
+      "name": "REFERENCEID",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": true
+    },
+    "creationDate": {
+      "name": "creationDate",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": true
+    },
+    "presentingBak": {
+      "name": "presentingBak",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": true
+    },
+    "DraftAgainst": {
+      "name": "DraftAgainst",
+      "type": "input-dropdown",
+      "source": "codeData",
+      "options": [],
+      "defaultValue": ""
+    },
+    "MATURITY_DATE": {
+      "name": "MATURITY_DATE",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": true,
+      "dynamicCriteria": {
+        "dependControl": "DraftAgainst",
+        "dependSection": "generalDetails",
+        "notRequiredValue": "01",
+        "presentSection": "generalDetails"
+      }
+    },
+    "icTenor": {
+      "name": "icTenor",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "clubbedHeaderText": "icTenor",
+      "clubbedList": [
+      	"icTenor",
+        "tenordays",
+        "tenorPeriod",
+        "tenorafter",
+        "tenorStartType"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "translate": true,
+      "translateValue": "icTenor_",
+      "applicableScreens": [
+        {
+          "isMaster": true,
+          "screen": "eventEnquiry",
+          "productCode": "IC",
+          "tnxTypeCode": [
+            "01",
+            "13",
+            "15"
+          ],
+          "subTnxTypeCode": []
+        }
+      ]
+    },
+   "tenorDetails": {
+      "name": "tenorDetails",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "dynamicCriteria": {
+        "dependControl": "tenorStartType",
+        "dependSection": "generalDetails",
+        "requiredValue": "O",
+        "presentSection": "generalDetails"
+      }
+    },
+    "baseDate": {
+      "name": "baseDate",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": true,
+      "dynamicCriteria": {
+        "dependControl": "DraftAgainst",
+        "dependSection": "generalDetails",
+        "notRequiredValue": "01",
+        "presentSection": "generalDetails"
+      }
+    },
+    "otherECTenorDesc": {
+      "name": "otherECTenorDesc",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": true,
+      "dynamicCriteria": {
+        "dependControl": "icTenor",
+        "dependSection": "generalDetails",
+        "requiredValue": "03",
+        "presentSection": "generalDetails"
+      }
+    },
+    "tenordays": {
+      "name": "tenordays",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "clubbed": true,
+      "maxlength": 29,
+       "dynamicCriteria": {
+        "dependControl": "DraftAgainst",
+        "dependSection": "generalDetails",
+        "notRequiredValue": "01",
+        "presentSection": "generalDetails"
+      }
+    },
+    "tenorPeriod": {
+      "name": "tenorPeriod",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "translate": true,
+      "translateValue": "tenorPeriod_",
+      "clubbed": true,
+       "dynamicCriteria": {
+        "dependControl": "DraftAgainst",
+        "dependSection": "generalDetails",
+        "notRequiredValue": "01",
+        "presentSection": "generalDetails"
+      }
+    },
+    "tenorafter": {
+      "name": "tenorafter",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "translate": true,
+      "translateValue": "tenorafter_",
+      "clubbed": true,
+       "dynamicCriteria": {
+        "dependControl": "DraftAgainst",
+        "dependSection": "generalDetails",
+        "notRequiredValue": "01",
+        "presentSection": "generalDetails"
+      }
+    },
+    "tenorStartType": {
+      "name": "tenorStartType",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "translate": true,
+      "translateValue": "inputSelect_",
+      "clubbed": true,
+      "dynamicCriteria": {
+        "dependControl": "DraftAgainst",
+        "dependSection": "generalDetails",
+        "notRequiredValue": "01",
+        "presentSection": "generalDetails"
+      }
+    },
+    "childRef": {
+      "name": "childRef",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "childRefTable"
+      ],
+      "layoutClass": "p-col-12",
+      "showLabelView": false,
+      "showLabel": false
+    },
+    "id": "generalDetailsComponent"
+  },
+  "icDraweeDrawerDetails": {
+    "drawee": {
+      "prefix": "drawee",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "fullAddress"
+      ],
+      "requiredFields": [
+        "name",
+        "address1"
+      ],
+      "fieldsNotApplicable": [
+        "country"
+      ]
+    },
+    "drawer": {
+      "prefix": "drawer",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "entity",
+        "fullAddress"
+      ],
+      "requiredFields": [
+        "name",
+        "address1"
+      ],
+      "fieldsNotApplicable": [
+        "country"
+      ]
+    },
+    "references": {
+      "name": "references",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "id": "drawerDraweeComponent"
+  },
+  "amountDetails": {
+    "currency": {
+      "name": "currency",
+      "type": "view-mode",
+      "layoutClass": "p-col-12",
+      "styleClass": "",
+      "rendered": true,
+      "clubbed": true
+    },
+   "collectionAmount": {
+      "name": "collectionAmount",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "clubbedHeaderText": "collectionAmount",
+      "clubbedList": [
+        "currency",
+        "collectionAmount"
+      ]
+    },
+    "outstandingAmount": {
+      "name": "outstandingAmount",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "clubbedHeaderText": "outstandingAmount",
+      "clubbedList": [
+        "currency",
+        "outstandingAmount"
+      ]
+    },
+    "id": "amountDetailsComponent"
+  },
+  "bankDetails": {
+    "bankDetails": {
+      "prefix": "bankDetails",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "entity",
+        "fullAddress"
+      ],
+      "requiredFields": [
+        "name",
+        "address1"
+      ],
+      "subSectionGroup": [
+      	"prefix",
+        "remitBicCode"
+      ]
+    },
+    "remitBicCode": {
+      "name": "remitBicCode",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "grouphead": "bankDetailsHeader"
+    },
+    "collectingbank": {
+      "prefix": "collectingbank",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "entity",
+        "fullAddress"
+      ],
+      "requiredFields": [
+        "name",
+        "address1"
+      ],
+      "fieldsNotApplicable": [
+        "country"
+      ],
+      "subSectionGroup": [
+      	"prefix",
+        "collectBicCode"
+      ]
+    },
+    "collectBicCode": {
+      "name": "collectBicCode",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "grouphead": "collectingbankHeader"
+    },
+    "id": "bankDetailsComponent"
+  },
+  "narrativeDetails": {
+    "descGoodsTag": {
+      "name": "descGoodsTag",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "fullWidthView": true,
+      "maxlength": 16
+    },
+    "id": "descGoodsComponent"
+  },
+  "shipmentDetails": {
+    "blNumber": {
+      "name": "blNumber",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "shippingDetailsHeader": {
+      "name": "shippingDetailsHeader",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "shippingFrom": {
+      "name": "shippingFrom",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "shippingTo": {
+      "name": "shippingTo",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "incoTermsRules": {
+      "name": "incoTermsRules",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "incoTermHeader": {
+      "name": "incoTermHeader",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "translate": true,
+     "translateValue": "purchaseTermsValue_"
+    },
+    "namedPlace": {
+      "name": "namedPlace",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16
+    },
+    "id": "shipmentDetailsComponent"
+  },
+  "collectionInstructions": {
+    "advPaymtBy": {
+      "name": "advPaymtBy",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "translate": true,
+      "translateValue": "advPaymtBy_"
+    },
+    "advAcptDueDate": {
+      "name": "advAcptDueDate",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "translate": true,
+      "translateValue": "advAcptDueDate_"
+    },
+    "openCharges": {
+      "name": "openCharges",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "translate": true,
+      "translateValue": "openCharges_"
+    },
+    "outStdcurCharges": {
+      "name": "outStdcurCharges",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "translate": true,
+      "translateValue": "outStdcurCharges_"
+    },
+    "waiveCharge": {
+      "name": "waiveCharge",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "valueOnly": true,
+      "translate": true,
+      "translateValue": "waiveCharge_"
+    },
+    "protestPayment": {
+      "name": "protestPayment",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "valueOnly": true,
+      "translate": true,
+      "translateValue": "protestPayment_"
+    },
+    "protestAccp": {
+      "name": "protestAccp",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "valueOnly": true,
+      "translate": true,
+      "translateValue": "protestAccp_"
+    },
+    "advRefusalBy": {
+      "name": "advRefusalBy",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "translate": true,
+      "translateValue": "advRefusalBy_"
+    },
+    "acceptance": {
+      "name": "acceptance",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "valueOnly": true,
+      "translate": true,
+      "translateValue": "acceptance_"
+    },
+    "storeGoods": {
+      "name": "storeGoods",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "valueOnly": true,
+      "translate": true,
+      "translateValue": "storeGoods_"
+    },
+    "otherInst": {
+      "name": "otherInst",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "fullWidthView": true,
+      "maxlength": 29,
+      "rendered": true
+    },
+    "id": "collectionInstruction"
+  },
+  "icLicenseDetails": {
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "linkLicenseButton": {
+      "itemId": "linkLicense",
+      "name": "linkLicense",
+      "type": "rounded-button",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "browseButton"
+      ],
+      "previewScreen": false
+    },
+    "linkedLicenses": {
+      "name": "linkedLicenses",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "linkedLicenses",
+      "hidden": true
+    },
+    "license": {
+      "name": "license",
+      "type": "edit-table",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "subControlsDetails": [
+        {
+          "REF_ID": {
+            "name": "REF_ID",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "BO_REF_ID": {
+            "name": "BO_REF_ID",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "BO_REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "LS_NUMBER": {
+            "name": "LS_NUMBER",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "LS_NUMBER",
+            "renderd": false
+          }
+        },
+        {
+          "currency": {
+            "name": "currency",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "currency",
+            "renderd": false
+          }
+        },
+        {
+          "amount": {
+            "name": "amount",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "amount",
+            "renderd": false
+          }
+        }
+      ],
+      "data": [],
+      "columns": [],
+      "options": [],
+      "previewScreen": true,
+      "OverDrawStatus": false,
+      "tnsAmountStatus": false,
+      "message1": "",
+      "message2": "",
+      "rendered": false
+    },
+    "licenseUploadError": {
+      "name": "licenseUploadError",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": "licenseUploadError",
+      "rendered": false
+    },
+    "id": "IcLicenseDetailsComponent",
+    "helpId": "LS"
+  },
+  "documents": {
+    "documents": {
+      "name": "documents",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "isResponseArray": true,
+      "type": "fees-and-charges",
+      "rendered": true,
+      "data": [],
+      "layoutClass": "p-col-12"
+    },
+    "id": "additionalInfoTableComponent"
+  }
+}

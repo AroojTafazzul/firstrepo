@@ -1,0 +1,3898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: License;PERM=ls_access" id="LS"
+         role="TOPIC">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_License"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+  <para role="TEXT">In some countries, licenses are required for trade
+  transactions that involve the import or export of goods, or the purchase of
+  foreign currency. A central authority requires banks to monitor the
+  utilisation against the licenses issued to customers. Returns must be made
+  to the governing authority on a regular basis to show the utilisation.
+  Countries also restrict and manage the import and export of items with the
+  help of Licenses <xi:include href="../entities_en.xml"
+  xpointer="ent_License" xmlns:xi="http://www.w3.org/2001/XInclude"/></para>
+
+  <para role="TEXT">The <xi:include href="../entities_en.xml"
+  xpointer="ent_License" xmlns:xi="http://www.w3.org/2001/XInclude"/> module
+  enables you, on behalf of your company, to initiate Licenses, submit them to
+  your issuing bank and link to your import-export trade transactions.
+  Currently, the following six products are enabled for the license linkage to
+  the transactions:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para role="TEXT">Import Letter of Credit</para>
+    </listitem>
+
+    <listitem>
+      <para role="TEXT">Export Letter of Credit</para>
+    </listitem>
+
+    <listitem>
+      <para role="TEXT">Import Collection</para>
+    </listitem>
+
+    <listitem>
+      <para role="TEXT">Export Collection</para>
+    </listitem>
+
+    <listitem>
+      <para role="TEXT">Banker's Guarantee</para>
+    </listitem>
+
+    <listitem>
+      <para role="TEXT">Received Banker's Guarantee</para>
+    </listitem>
+
+    <listitem>
+      <para role="TEXT">Financing Request</para>
+    </listitem>
+  </itemizedlist>
+
+  <para role="TEXT">You can link the license in the Initiate form as well as
+  Amend form. Subsequently you can amend a license, follow up, maintain and
+  exchange messages with the bank like correspondence, Request for settlement,
+  Request for Cancel and Request for Book Off. You can associate a license
+  with one or more existing transactions or associate a transaction with more
+  than one license, which in turn depends on the attributes of the licenses
+  attached during license definition. For example, you can associate or link a
+  USD license to a GBP transaction again depending on the LS attribute.</para>
+
+  <para role="TEXT"><tip>
+      <para role="TEXT">To configure Licenses, contact your bank
+      administrator.</para>
+    </tip></para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">Within this section of the help guide, the terms
+    "<emphasis role="bold">LS</emphasis>", "<emphasis
+    role="bold">Licensing</emphasis> and "<emphasis
+    role="bold">License</emphasis>" are used interchangeably.</para>
+
+    <para role="TEXT">The terms "<emphasis role="bold">record</emphasis>" and
+    "<emphasis role="bold">transaction</emphasis>" both refer to entries in
+    the system relating to the function being discussed.</para>
+  </section>
+
+  <section role="TEXT">
+    <title>License Functions</title>
+
+    <para role="TEXT">The menu for this module has the following groups of
+    functions:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">LS Initiation</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Select a License definition that has been
+          configured in the system and create a license.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">LS Amendment</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Amend the license terms created for a
+          transaction(s).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Message to
+        Bank</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Send a free-format message to the Bank where you
+          have submitted your License application.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Pending LSs</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">View all Licenses that are linked to transactions
+          and are waiting for some form of authorisation or completion.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">LS Inquiry</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Display a list of all existing Licenses in the
+          system based on specific search criteria or filtering</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">LS Maintenance</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Set entities and references, and maintain
+          unsigned, purged and rejected LSs</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section condition="TITLE=LS Initiation;PERM=ls_access;ACCESS=LS_01"
+           role="TOPIC">
+    <title>LS Initiation</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">LS
+    Initiation</emphasis> part of the menu and the forms it uses.</para>
+
+    <section role="ITEM">
+      <title>LS Initiation Options</title>
+
+      <para role="TEXT">This part of the menu contains several functions,
+      providing different ways to create a License that can be linked to a
+      transaction, or create a template that can be used in creating Licenses.
+      <variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From
+            Scratch</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Enter the desired terms of the license and
+              make it available to be linked to transactions.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From
+            Template</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Most of the information for the transaction is
+              defaulted except key data such as the expiry date, currency and
+              amount of the new LS.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Copy From
+            LS</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a license by copying and modifying
+              details from an existing license.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit license records
+              that you or another user have already created and saved, and
+              also records that you have not been able to submit due to lack
+              of authority.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit license records that you or
+              another user have created, but have not been submitted due to
+              lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Initiation - From Scratch Form</title>
+
+      <para role="TEXT">The form displayed by the <guimenuitem>From
+      Scratch</guimenuitem> function for creating a license is as
+      follows:</para>
+
+      <para role="TEXT">Clicking on <guilabel>From Scratch</guilabel> displays
+      the <guilabel>Selection of License Definition for Initiation</guilabel>
+      screen with a list of License Definitions configured by the bank. You
+      can use the Search Options area to filter the list by
+      <guilabel>Entity</guilabel>, <guilabel>Name</guilabel>,
+      <guilabel>Type</guilabel> (Import License, Export License and FX
+      License) and <guilabel>Description</guilabel>.</para>
+
+      <note>
+        <para role="TEXT">The License definitions are set up by your bank
+        administrator.</para>
+      </note>
+
+      <para role="TEXT">The columns returned in the list of license
+      definitions are described as follows:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the License
+                definition.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Type of License. The
+                options are: Import License, Export License and FX
+                License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Entity the definition is
+                linked to. Selecting '*' links it to all entities.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">A description of the
+                License definition.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click on the active hyperlink on the Name column to
+      open a license definition and create a new license on the
+      <guilabel>Create a New License</guilabel> screen. Enter the required
+      information as defined in the following subsections.</para>
+
+      <section role="ITEM">
+        <title>From Scratch Form - General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this
+                License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Template Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name for the template
+                you wish to create. Maximum 20 characters. Mandatory if you
+                click <emphasis
+                role="bold">Template</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name that is to be used
+                within your company for the License that you are creating.
+                Maximum 34 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Application Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date of creation of the
+                LS request in <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. Default is your
+                current date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">License</guimenu> <emphasis
+                role="bold"><guimenu moreinfo="none">Details</guimenu>
+                </emphasis> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Details for the License
+                as given by the authorities. The individual fields are
+                described below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Type of License. This
+                field displays the license type selected: Import License,
+                Export License and FX License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the License as
+                given in the License definition. This is a three character
+                alphanumeric field. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Allow Overdraw</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click to permit the
+                drawdown amount to be more than the remaining allocation
+                amount for the license. If you do not select this option, any
+                overdraw will display an error message. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Allow Multiple Licenses</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Read only field that
+                shows whether multiple licenses for drawdowns on a transaction
+                is allowed. This is set in the middle-office.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Multi Currency</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Read only field that
+                shows whether the license can be used for other currencies
+                while linking to a product transaction. This is set in the
+                middle-office.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Number</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique identification
+                number defined by the licensing authorities. This field is
+                mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Authority Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference ID defined by
+                the licensing authoritiy for your Bank allowing it to use the
+                license.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Registration Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date on which the
+                License was registered. By default, it is today's date.
+                However, you can select an earlier date if your license was
+                issued earlier. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date of issue of the
+                license by licensing authority.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Applicant</guimenu><emphasis role="bold">
+                </emphasis> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">This is the Principal
+                field defined at the License definition. It will default to
+                the following as per the License type selected. It will
+                default to the following as per the License type selected:
+                Import License - Applicant, Export License - Exporter, and FX
+                License - Payer. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para
+                role="TEXT"><guilabel>Payer</guilabel> (for FX
+                LIcense)</para><para
+                role="TEXT"><guilabel>Applicant</guilabel> (for Import
+                License)</para><para role="TEXT"><guilabel>Exporter</guilabel>
+                (for Export License)</para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address details
+                of the payer/applicant/exporter of the license amount. The
+                individual fields are described below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel role="bold">
+                Entity</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Entity that is associated with the
+                payer/applicant/exporter. This field is only present if your
+                company has entities defined and you are attached to one or
+                more entities. If you are attached to more than one, click the
+                magnifying glass icon to select one. If you are attached to
+                only one, the field is preset to that entity and cannot be
+                changed. This field is mandatory.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the
+                payer/applicant/exporter of the license amount. Maximum of 35
+                characters. Defaults to the name of your company. This field
+                is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                payer/applicant/exporter. Maximum of 3 lines of 35 characters
+                each. Defaults to the address of your company. This field is
+                mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Further Identification</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">You can enter or view
+                the details for the legal identity (for example, passport or
+                ROC) of the company. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Beneficiary</guimenu><emphasis role="bold">
+                </emphasis> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">This is the Non
+                Principal Party details. The label will default to:
+                Beneficiary for Import License, Consignee for Export License
+                and Payee for FX License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para
+                role="TEXT"><guilabel>Payee</guilabel> (for FX
+                LIcense)</para><para
+                role="TEXT"><guilabel>Beneficiary</guilabel> (for Import
+                License)</para><para
+                role="TEXT"><guilabel>Consignee</guilabel> (for Export
+                License)</para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address details
+                of the payee/beneficiary/consignee of the license amount in a
+                transaction. The individual fields are described
+                below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel role="bold">
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Name of the payee/beneficiary/consignee.
+                This field is only present if your company has
+                payee/beneficiary/consignee defined and you are attached to
+                one or more payee/beneficiary/consignee. If you are attached
+                to more than one, click the magnifying glass icon to select
+                one. If you are attached to only one, the field is preset for
+                that payee/beneficiary/consignee and cannot be changed. This
+                field is mandatory.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                payee/beneficiary/consignee. Maximum of 3 lines of 35
+                characters each. This field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the
+                payee/beneficiary/consignee country. Click the magnifying
+                glass icon for a list of countries to select from. This field
+                is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Multi-purpose string to
+                be used as a reference for the payee/beneficiary/consignee.
+                Maximum of 34 characters.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Amount Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency code (three
+                alphabetic characters) and amount (maximum 15 characters
+                including delimiters) of the License. Click the magnifying
+                glass icon to set the currency code.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Additional Amount</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Additional amount is the
+                amount in addition to the license amount. For example,
+                pilferage charges.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Additional Amount Details</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter a text description
+                for the additional amount given above.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Total License Amount</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Sum of license amount
+                and additional amount stated in the LS. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Tolerance (+)</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the variance
+                (percentage) allowed over the value of the license amount.
+                Maximum of two digits.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Tolerance (-)</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the variance
+                (percentage) allowed below the value of the license amount.
+                Maximum of two digits.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Validity Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Validity From</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the from date for
+                validity of the license.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Validity Period</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the period from
+                the validity from date that the license is valid for. Enter a
+                number in the field and select from the dropdown. For example,
+                3 Years.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Validity To</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the to date for
+                validity of the license. </para><note>
+                    <orderedlist>
+                      <listitem>
+                        <para role="TEXT">This date must be before the latest
+                        payment date and may fall on a non-business
+                        day.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT">This date is automatically populated
+                        from the Validity Period and the Valid From date if
+                        the Validity Period is specified.</para>
+                      </listitem>
+                    </orderedlist>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Latest Payment Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the date to book
+                off the license. By default, it is set to the validity period.
+                It cannot be earlier than validity to date and can fall on a
+                non-business day.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Shipment Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country of Origin</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Country of origin from
+                where the goods are shipped.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country of Supply</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Country to which the
+                goods are to be shipped.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Incoterms Rules</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the incoterm rule
+                for the shipment. Available options are <programlisting>2010
+2020
+Other</programlisting><note>
+                    <para><itemizedlist>
+                        <listitem>
+                          <para>The Bank Administrator can add more Incoterm
+                          Rules and its corresponding terms.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>The Incoterm rule is set to 'Other' when an
+                          Incoterm is received from TI without
+                          'inco_term_year' value.</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Incoterm</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">The purchase terms
+                describing the responsibilities of the seller and the buyer in
+                the current transaction. The dropdown list shows various
+                values based on what Incoterm Rule is selected.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Named Place</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Geographical place known
+                to the trading partners at which risk passes from one Business
+                party to another according to the Incoterm selected above. Up
+                to 60 characters.</para><para role="TEXT">Mandatory if an
+                Incoterm has been selected.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Bank Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the bank. The
+                dropdown list shows a list of banks that your company has been
+                associated with. This field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issuer's Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The reference (multi
+                purpose string that for instance may identify the liability
+                line) under which the transaction should be recorded. The
+                dropdown list shows the references that are defined for the
+                above selected Issuing Bank. This field is
+                mandatory.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Narrative Details</title>
+
+        <para role="TEXT">You can click the button at the top right of each
+        field to select predefined phrases to insert.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description of Goods</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_tab.gif"
+                                 role="CHAR_ACTION" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Description of the goods
+                and/or services covered by the License. Up to 300 lines of 65
+                characters each. Click the button to the right of this field,
+                to select predefined phrases to insert in the
+                description.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Additional Instructions</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_tab.gif"
+                                 role="CHAR_ACTION" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Description of any
+                further conditions of the License. Up to 300 lines of 65
+                characters each. Click the button to the right of this field,
+                to select predefined phrases to insert in the
+                conditions.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> (File Format
+                Icons)</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column doesn't have a header and
+                displays icons for the type of file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Title</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the title of all
+                documents that have been uploaded for the License.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> File
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the file names of all
+                documents that have been uploaded with the License.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_downloadfile.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                download the file to the local system. This button is
+                displayed once you have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_trash.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                delete the uploaded file. This button is displayed once you
+                have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                attach a file from your local system to give additional
+                details pertaining to this License. It will open the File
+                Details popup. Enter the title for the file upload and browse
+                to the location of the file, and select the file to
+                upload.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Action Buttons</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Name</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Save</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Click this button to save the current
+                License details. The License will be saved in Edit
+                Transactions and can be updated before submission.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Submit</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This option will submit the License for
+                submission to the bank. If further Authorisations are
+                required, it will be held back with a status of "Unsigned" or
+                "Uncontrolled mode" until submitted by an Authorising
+                user.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Template</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                create a template form with the current details pre-saved. The
+                system will request a template name to be entered that can be
+                used at a later stage to create further Licenses with similar
+                details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Cancel</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                cancel the creation of the current License and to clear any
+                details entered.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Help</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                display an online help facility that describes the fields
+                associated with the License Form.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Initiation - From Template</title>
+
+      <para role="TEXT">The From Template option allows a previously created
+      template to be used as a basis for a new License.</para>
+
+      <tip>
+        <para role="TEXT">To create a template, use the <guilabel>From
+        Scratch</guilabel> option and enter the known details, or use the
+        <guilabel>Copy from LS</guilabel> option and create a new one. Remove
+        the fields that are likely to change each time the template is used.
+        Enter the name of the template in the <guilabel>Template ID</guilabel>
+        field, and click on the <guibutton>Template</guibutton> button at the
+        top (or bottom) of the screen.</para>
+      </tip>
+
+      <para role="TEXT">The columns returned in the List of License Templates
+      are described as follows:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Template
+                name</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Entity the template is
+                associated with.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">A description of the
+                template</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">Reference</guilabel>, <emphasis
+      role="bold">Entity</emphasis> or <guilabel
+      moreinfo="none">Description</guilabel> field. To display all templates,
+      enter an asterisk in any of the criteria fields.</para>
+
+      <para role="TEXT">You can modify a template, by clicking the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it by
+      clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon. To use a template, select a template from
+      the <guilabel>List of License Templates</guilabel> by clicking on the
+      <guibutton>Reference</guibutton> field, and view the template on the
+      <guilabel>Create New License from a Template</guilabel> screen. Complete
+      or change the required fields in the rest of the form and click the
+      <emphasis role="bold">Submit</emphasis> button at the top (or bottom) of
+      the screen when ready. For more details on the fields, refer to the
+      section <emphasis>LS Initiation - From Scratch Form</emphasis>.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Initiation - Copy From LS</title>
+
+      <para role="TEXT">Select this option to create a new License using an
+      existing one as a model. The standard License form will be displayed,
+      with most fields populated with values from the original License.</para>
+
+      <para role="TEXT">Complete or change the required fields in the form and
+      click the <emphasis role="bold">Submit</emphasis> button at the top (or
+      bottom) of the screen when ready. For more details on the fields, refer
+      to the section <emphasis>LS Initiation - From Scratch
+      Form</emphasis>.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Initiation - Edit Transactions</title>
+
+      <para role="TEXT">This option allows you to edit and submit a License
+      that you or another user have already started and saved.</para>
+
+      <para role="TEXT">When selected, this option will present a list of LSs
+      that have been prepared and saved by users in your company, but not yet
+      submitted to the bank because the input user either did not try to
+      submit or had insufficient privileges. Click in the <emphasis
+      role="bold">System Id</emphasis> column to open a message for further
+      editing. For more details on the fields, refer to the section
+      <emphasis>LS Initiation - From Scratch Form</emphasis>.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Initiation - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option allows you to retrieve a license that you
+      or another user have already started but have been unable to submit due
+      to insufficient privileges. The licenses can be submitted by an
+      authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of LSs
+      that have been prepared and saved by users in your company, but have not
+      been successfully submitted due to insufficient privileges. Records that
+      were simply saved with no attempt to submit them are not included. Click
+      in the <guilabel moreinfo="none">System Id</guilabel><guilabel
+      moreinfo="none"> </guilabel>column to open the message in a non-editable
+      mode, in order to review the data and perform the submission.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected records.
+      The result of the action is then returned, with a list of records that
+      have now been successfully sent to the company, together with a list of
+      records that have again failed validation. The updated list of unsigned
+      records is then displayed.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=LS Amendment;PERM=ls_access;ACCESS=LS_03"
+           role="TOPIC">
+    <title>LS Amendment</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">LS
+    Amendment</emphasis> part of the menu and the forms it uses.</para>
+
+    <section role="ITEM">
+      <title>LS Amendment Options</title>
+
+      <para role="TEXT">This part of the menu contains several options,
+      providing different ways to create an amendment to an existing
+      License.<variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Existing
+            LS</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Amend an existing LS.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit LS records that
+              you or another user have already created and saved, but not
+              submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit LS records that you or
+              another user have created, but have not been submitted due to
+              lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Amendment - From Existing LS</title>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Licenses is displayed.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity</emphasis>, <guilabel>License Type</guilabel>,
+      <guilabel>Customer Reference</guilabel>, <guilabel>Bank Ref</guilabel>
+      or <guilabel moreinfo="none">Ccy</guilabel> field. The list is not
+      displayed until you have entered search criteria and clicked <emphasis
+      role="bold">Search</emphasis>. To display all records, enter an asterisk
+      (*) in any of the criteria fields.</para>
+
+      <para role="TEXT">The columns returned contains the following
+      information:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity related to
+                the LS transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Type of License. The
+                options are: Import License, Export License and FX
+                License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The unique number used
+                by the Customer for this LS.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this License when the bank
+                acknowledged the original initiation of the LS.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Ccy</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency for the
+                LS</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of the
+                LS</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date the LS was
+                issued.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Valid To Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date the LS
+                expires.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click in the System Id field to select the required LS
+      for amendment.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Amendment - From Existing LS Form</title>
+
+      <para role="TEXT">The form for amending a License is as follows.</para>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - General Details</title>
+
+        <para role="TEXT">This part of the form shows the initial settings of
+        the License. You can overwrite some of these with new values.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Full Transaction Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button at the
+                right-hand side of the General Details title line.) Open a
+                popup window to show the full details of the current
+                License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this
+                License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference that is used
+                within the company or entity for the License that you are
+                amending. Maximum 34 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this License when the bank
+                acknowledged the original initiation of the LS.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Original issue date of
+                the License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Number</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique identification
+                number defined by the licensing authorities. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Authority Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference ID defined by
+                the licensing authority for your Bank allowing it to use the
+                license.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Registration Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date on which the
+                License was registered. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amendment/Request
+                Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date on which the
+                License amendment is initiated or requested. By default, it is
+                today's date. However, you can select a later date for the
+                amendment. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - Amount Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original License Amount</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency and amount of
+                the original License. You cannot change this field. See the
+                next few fields for how to update the amount..</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Increase Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of increase to
+                the original amount. This field and the <emphasis
+                role="bold">Decrease Amount</emphasis> field are mutually
+                exclusive fields.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Decrease Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of decrease to
+                the original amount. This field and the <emphasis
+                role="bold">Increase Amount</emphasis> field are mutually
+                exclusive fields. The amount decreased cannot be greater than
+                the <emphasis role="bold">Original License
+                Amount</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New License Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) New
+                License amount as re-computed from the content of the increase
+                or decrease amount field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Original Additional Amount</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Original amount that is
+                payable to the beneficiary in addition to the license amount.
+                For example, pilferage charges, local freight charges and so
+                on.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Increase Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of increase to
+                the original additional amount. You cannot enter values in
+                both this and the <emphasis role="bold">Decrease
+                Amount</emphasis> field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Decrease Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of decrease to
+                the original additional amount. You cannot enter values in
+                both this and the <emphasis role="bold">Increase
+                Amount</emphasis> field. The amount decreased cannot be
+                greater than the <emphasis role="bold">Original License
+                Amount</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Additional Amount</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">New value for the
+                additional amount information from increase or decrease
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Additional Amount Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Details
+                of the original additional amount request. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Additional Amount Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Details of the new
+                additional amount. This is enabled when you enter a new
+                additional amount. Typically you enter details here when the
+                amendment is not purely a simple increase or decrease of
+                amount; for example, when it is a change of the currency, of
+                the description of goods, etc.). Click the button to the right
+                of this field, to select predefined phrases to insert into
+                this field.</para><para role="TEXT">Up to 100 lines of 65
+                characters each.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Original Total License Amount</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Original total amount
+                that is derived by adding the original license amount and the
+                original additional amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">New Total License Amount</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Total amount that is
+                derived by adding the new license amount and the new
+                additional amount.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - Validity Details</title>
+
+        <para role="TEXT">This part of the form allows the validity details on
+        the License to be changed.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Validity
+                From</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                validity date of the license.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Validity From</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the new (amended)
+                date for validity of the license. By default, it is set to the
+                original date. It cannot be earlier than the original validity
+                from date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Validity Period</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                validity period. In other words, the period that the license
+                is valid for from the validity from date.For example, 2 Weeks.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Validity Period</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the new (amended)
+                validity period. The options are: Days, Weeks, Months and
+                Years. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Validity To</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                validity date to value of the license. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Validity To</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the to date for
+                validity of the license.</para><note>
+                    <orderedlist>
+                      <listitem>
+                        <para role="TEXT">This date must be today's date or a
+                        later date. It may fall on a non-business day.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT">This date is derived from the
+                        Validity Period and the Valid From date if the
+                        Validity Period is specified. If you have entered in
+                        New Validity Period, this field is populated with the
+                        relevant date and is disabled for editing.</para>
+                      </listitem>
+                    </orderedlist>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Latest Payment
+                Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                date to book off the license. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Latest Payment
+                Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the New (amended)
+                date to book off the license. By default, it is set to the
+                validity period. It cannot be earlier than validity to date
+                and can fall on a non-business day.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - Shipment Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Country of Origin</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                country of origin from where the goods were to be
+                shipped.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Country of Origin</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">New (amended) country of
+                origin from where the goods are to be shipped.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Country of Supply</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                country to which the goods were to be shipped.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Country of Supply</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">New (amended) country to
+                which the goods are to be shipped.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Incoterm
+                Rules</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                incoterm rule for the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">New Incoterm Rules</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the incoterm rule
+                for the shipment. Available options are <programlisting>2020
+Other</programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Incoterm</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                purchase terms describing the responsibilities of the seller
+                and the buyer in the current transaction. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Incoterm</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">The purchase terms
+                describing the responsibilities of the seller and the buyer in
+                the current transaction. The dropdown list shows the values
+                available:</para><programlisting format="linespecific">CFR - Cost and Freight
+CIF - Cost Insurance and Freight
+CIP - Carriage And Insurance Paid
+CPT - Carriage Paid To
+DAP - Delivered At Place
+DDP - Delivered Duty Paid
+DPU - Delivered at Place Unloaded
+EXW - Ex Works
+FAS - Free Alongside Ship
+FCA - Free Carrier
+FOB - Free On Board</programlisting></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original Named Place</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">(Non-editable) Original
+                geographical place known to the trading partners at which risk
+                passes from one Business party to another according to the
+                Incoterm selected originally.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">New Named Place</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">New (amended)
+                geographical place known to the trading partners at which risk
+                passes from one Business party to another according to the
+                Incoterm selected on New Purchase Terms above. Up to 60
+                characters.</para><para role="TEXT">Mandatory if an Incoterm
+                has been selected.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - Amendment Narrative</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amendment Narrative</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Details of the amendment
+                request. Typically you enter details here when the amendment
+                is not purely a simple increase or decrease of amount; for
+                example, when it is a change of the currency, of the
+                description of goods, etc.). Click the button to the right of
+                this field, to select predefined phrases to insert into this
+                field. Up to 100 lines of 65 characters each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> (File Format
+                Icons)</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column doesn't have a header and
+                displays icons for the type of file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Title</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the title of all
+                documents that have been uploaded for the License.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> File
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the file names of all
+                documents that have been uploaded with the License.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_downloadfile.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                download the file to the local system. This button is
+                displayed once you have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_trash.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                delete the uploaded file. This button is displayed once you
+                have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                attach a file from your local system to give additional
+                details pertaining to this License. It will open the File
+                Details popup. Enter the title for the file upload and browse
+                to the location of the file, and select the file to
+                upload.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Amendment - Edit Transactions</title>
+
+      <para role="TEXT">This option allows an amended LS that you or another
+      user have already started and saved, to be completed.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing. For more
+      details on the fields, refer to the section <emphasis>LS Amendment -
+      From Existing LS Form</emphasis>.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Amendment - Retrieve Unsigned</title>
+
+      <para role="TEXT">When selected, this option will present a list of
+      amended import LSs that have been prepared and saved by users in your
+      bank, but not yet submitted to the clients because the input user either
+      did not try to submit or had insufficient privileges.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing. For more
+      details on the fields, refer to the section <emphasis>LS Amendment -
+      From Existing LS Form</emphasis>.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected records.
+      The result of the action is then returned, with a list of records that
+      have now been successfully sent to the clients, together with a list of
+      records that have again failed validation. The updated list of unsigned
+      records is then displayed.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=Message to Bank;PERM=ls_access;ACCESS=LS_02"
+           role="TOPIC">
+    <title>Message to Bank</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">Message
+    to Bank</emphasis> part of the menu and the forms it uses.</para>
+
+    <section role="TEXT">
+      <title>Message to Bank Options</title>
+
+      <para role="TEXT">This part of the menu contains several options,
+      providing different ways to send a free-format message to the Issuing
+      Bank.</para>
+
+      <para role="TEXT">A typical use is to reply to a notification of
+      discrepancies on documents presented to the Issuing Bank, or to the
+      acceptance of a draft.<variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Existing
+            LS</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Displays a list of existing Licenses.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Action
+            Required</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Displays a list of license Message to Bank
+              records that requires your responses.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit Message to Bank
+              records that you or another user have already created and saved,
+              but not submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit Message to Bank records that
+              you or another user have created, but have not been submitted
+              due to lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Message to Bank - From Existing LS</title>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Licenses is displayed.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity</emphasis>, <guilabel>License Type</guilabel>,
+      <guilabel>sLicense Number</guilabel>, <guilabel>Bank Ref</guilabel> or
+      <guilabel moreinfo="none">Ccy</guilabel> field.</para>
+
+      <para role="TEXT">The list is not displayed until you have entered
+      search criteria and clicked <emphasis role="bold">Search</emphasis>. To
+      display all records, enter an asterisk in any of the criteria
+      fields.</para>
+
+      <para role="TEXT">The columns returned contains the following
+      information:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity the LS is
+                associated with.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Type of License. The
+                options are: Import License, Export License and FX
+                License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Number</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique identification
+                number defined by the licensing authorities. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this License when the bank
+                acknowledged the original initiation of the LS.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Ccy</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency for the
+                LS.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of the
+                LS</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date the LS was
+                issued.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Valid To Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date the LS
+                expires.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click in the <guilabel>System Id</guilabel> field to
+      select the required LS for sending a message to the bank.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Message to Bank - From Existing LS Form</title>
+
+      <para role="TEXT">The form for creating a free-format message from an
+      existing LS is as follows:</para>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Full Transaction Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button at the
+                right-hand side of the General Details title line.) Open a
+                popup window to show the full details of the current
+                LS.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System ID</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                that was generated by the system for this License when it was
+                created.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference name that is
+                used by the user of the companyfor the License that you are
+                amending. Maximum 34 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this License when the bank
+                acknowledged the original initiation of the LS.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Original issue date of
+                the License.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">License Number</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique identification
+                number defined by the licensing authorities. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Authority Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference ID defined by
+                the licensing authority for your Bank allowing it to use the
+                license.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Registration Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date on which the
+                License was registered. </para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel> Message Type</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Select from the dropdown list:
+                <literal>Correspondence</literal>, <literal>Request for
+                Settlement</literal>, <literal>Request for Book Off</literal>
+                and <literal>Request for Cancellation</literal>. If you select
+                <literal>Request for Settlement</literal>, the fields
+                <guilabel>License Settlement Amount</guilabel>,
+                <guilabel>License Additional Settlement Amount</guilabel> and
+                <guilabel>Total License Settlement Amount</guilabel>,
+                described below, become available.</entry>
+              </row>
+
+              <row>
+                <entry><guilabel>License Settlement Amount</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Amount required for license settlement. Only available
+                if you select <literal>Request for Settlement</literal> in the
+                <guilabel>Message Type</guilabel> field above.</entry>
+              </row>
+
+              <row>
+                <entry><guilabel>License Additional Settlement
+                Amount</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Amount required for any additional amount that is
+                related to license settlement. Only available if you select
+                <literal>Request for Settlement</literal> in the
+                <guilabel>Message Type</guilabel> field above.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - Free Format Message</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Free Format Message</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank. Click the button to the right of this field, to
+                select predefined phrases to insert into this message. Up to
+                100 lines of 65 characters each.</para><note>
+                    <para role="TEXT">The label of the Free Format Message
+                    will be changed to 'Reason for Cancellation' when 'Request
+                    for Cancellation' is selected.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing LS Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> (File Format
+                Icons)</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column doesn't have a header and
+                displays icons for the type of file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Title</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the title of all
+                documents that have been uploaded for the License.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> File
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the file names of all
+                documents that have been uploaded with the License.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_downloadfile.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                download the file to the local system. This button is
+                displayed once you have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_trash.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                delete the uploaded file. This button is displayed once you
+                have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                attach a file from your local system to give additional
+                details pertaining to this License. It will open the File
+                Details popup. Enter the title for the file upload and browse
+                to the location of the file, and select the file to
+                upload.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>Message to Bank - Edit Transactions</title>
+
+      <para role="TEXT">This option allows a Message to Bank that you or
+      another user have already started and saved, to be completed.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Messages to Bank that have been prepared and saved by users in your
+      company, but not yet submitted to the bank because the input user either
+      did not try to submit or had insufficient privileges.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Message to Bank - Action Required</title>
+
+      <para role="TEXT">This option allows to view a list that requires an
+      action.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity</emphasis>, <guilabel>License Number</guilabel>,
+      <guilabel>License Type</guilabel>, <guilabel moreinfo="none">Bank
+      Reference</guilabel> or <guilabel moreinfo="none">Currency</guilabel>
+      fields.</para>
+
+      <para role="TEXT">Click on <guilabel moreinfo="none">System
+      Id</guilabel> to open a form and complete the details.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Message to Bank - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option allows a Message to Bank that you or
+      another user have already started but been unable to submit, to be
+      submitted by an authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Messages to Bank that have been prepared and saved by users in your
+      company, but have not been successfully submitted to the bank because
+      the user had insufficient privileges. Records that were simply saved
+      with no attempt to submit them are not included.</para>
+
+      <para role="TEXT">Click in the <guilabel moreinfo="none">System
+      Id</guilabel><guilabel moreinfo="none"> </guilabel>column to open the
+      record in a non-editable mode, in order to review the data and perform
+      the submission.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected
+      records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is then also displayed.</para>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Pending LSs</title>
+
+    <para role="TEXT">This function will display a list of all Licenses'
+    records that have not been approved by the bank. These can be edited or
+    submitted as required by any user with the appropriate privileges or
+    authorisation.</para>
+
+    <para role="TEXT">The list can be searched by entering search criteria in
+    the <guilabel>Entity</guilabel>, <guilabel>System ID</guilabel>,
+    <guilabel>Beneficiary Name</guilabel>, <guilabel>License Type</guilabel>
+    and <guilabel>Ccy</guilabel> fields. To display all records, enter an
+    asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">The columns returned in the list of Pending LSs are the
+    following:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Entity the LS belongs
+              to.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The type of record.
+              (Message correspondence, Message request for book off, Amend Dec
+              etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the LS.
+              (Uncontrolled (Pending Authorize,), Submitted
+              (sent),)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The beneficiary associated
+              with this LS.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">License Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Type of License. The
+              options are: Import License, Export License and FX
+              License.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ccy</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Currency of the
+              LS.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              LS.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Last Modified Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the LS was last
+              modified.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Users</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Associated users
+              (approvers, submitters, etc.)</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>Only Draft and Incomplete (unauthorised) entries can be
+    edited by clicking the <guibutton>Edit</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif"/>
+        </imageobject>
+      </inlinemediaobject> icon in the left hand column of the entry.
+    Submitted entries may only be viewed. For more details on the fields,
+    refer to the section <emphasis>LS Initiation - From Scratch
+    Form</emphasis>.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>LS Inquiry</title>
+
+    <para role="TEXT">This function will display a list of all Licenses'
+    records that have been submitted to the bank and accepted. These can only
+    be viewed.</para>
+
+    <important>
+      <para>Any further amendment to the LS, regardless of Approved or
+      Rejected from the BO/MO, can be tracked though LS Inquiry option.</para>
+    </important>
+
+    <para role="TEXT">The list can be searched by entering search criteria in
+    the <guilabel>Entity</guilabel>, <guilabel>System ID</guilabel>,
+    <guilabel>Bank Ref.</guilabel>, <guilabel>Our Ref.</guilabel>,
+    <guilabel>Beneficiary Name</guilabel>, <guilabel>License Type</guilabel>
+    and <guilabel>Ccy</guilabel> fields. To display all records, enter an
+    asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">The columns returned in the list of Licenses are the
+    following:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Entity the LS belongs
+              to.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Ref.</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The reference number the
+              bank uses to identify this License.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Our Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The unique number used by
+              you for this LS.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The beneficiary associated
+              with this LS.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">License Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Type of License. The
+              options are: Import License, Export License and FX
+              License.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ccy</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The currency of the
+              LS.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              LS.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Issue date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the LS was
+              issued.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the LS.
+              (Incomplete, Draft, Etc.). </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">Once the page opens with the search criteria inputs, on
+    the grid you will see three icons which will provide Details of the file,
+    History of the file and List of Linked Products. Click on the icons on the
+    left of each entry to view their details.</para>
+
+    <section role="ITEM">
+      <title>List of Linked Products</title>
+
+      <para role="TEXT">On clicking the <guiicon>List of Linked
+      Products</guiicon> icon, a list appears. The information for a specific
+      license linked to different products is displayed here. The
+      <guilabel>System ID</guilabel> field displays the product references to
+      which the license is linked and the <guilabel>License Allocated
+      Amount</guilabel> displays the amount utilised by each linked
+      product.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=LS Maintenance;PERM=ls_access;ACCESS=LS_17"
+           role="TOPIC">
+    <title>LS Maintenance</title>
+
+    <para role="TEXT">This function is used to maintain License records that
+    were created, but are no longer required in the system. You can also view
+    the list of transactions associated with a particular license.</para>
+
+    <section role="ITEM">
+      <title>LS Maintenance - Set Entity</title>
+
+      <para role="TEXT">List all LS transactions and associate an Entity.
+      Click the <emphasis role="bold">Search Options</emphasis> link to
+      display the fields that can be used to filter the list. Only complete
+      the fields that are required for the filter.</para>
+
+      <para role="TEXT">Click <guimenu>Set Entity</guimenu> and then select
+      <guilabel>System ID</guilabel>. You can now associate an entity for the
+      LS by clicking the search icon <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_glass.gif"/>
+          </imageobject>
+        </inlinemediaobject> from the Entity field. Click the
+      <guibutton>Submit</guibutton> button to complete the changes.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Maintenance - Set Reference</title>
+
+      <para role="TEXT">Assign a customer reference to a LS record that
+      currently has none.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of records that have no reference assigned. Click in the <emphasis
+      role="bold">System Id</emphasis> column to open a form where you can
+      assign a reference to the record.</para>
+
+      <para role="TEXT"><note>
+          <para role="TEXT">This action is not validated against the
+          Jurisdiction matrix. All transactions of the current files are
+          updated.</para>
+        </note></para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Maintenance - Unsigned LSs</title>
+
+      <para role="TEXT">List and optionally delete unsigned (unauthorised)
+      License transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of records that are unsigned (unauthorised). You cannot initiate
+      further amendments or messages on such a transaction, and can only use
+      its data for inquiry purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Maintenance - Purged LSs</title>
+
+      <para role="TEXT">List and optionally delete License transactions that
+      have been marked as <type>Purged</type> by the Issuing Bank's Trade
+      Services team. You cannot initiate further amendments or messages on
+      such a transaction, and can only use its data for inquiry
+      purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>LS Maintenance - Rejected LSs</title>
+
+      <para role="TEXT">List and optionally delete Rejected
+      transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of License records that were submitted, but rejected by the bank
+      and have a status of "Not Processed". You cannot initiate further
+      amendments or messages on such a transaction, and can only use its data
+      for inquiry purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+  </section>
+</section>

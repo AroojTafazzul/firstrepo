@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="alert_date" default_order_type="d"   huge="y" forceDisplaySearch="y"  page="50" js_binding="misys.binding.cash.account_summary">
+	
+	<!-- columns -->
+	<column name="entity" align="left" width="10%" loca_key="ENTITY"/>
+	
+	<column name="account_no" align="center" width="10%" loca_key="ACCOUNTNO">		
+		<url>
+			<parameter name="SCREEN" value="AB_SCREEN"/>
+			<parameter name="OPERATION_CODE" value="LIST_STATEMENTS"/>
+			<parameter name="FEATURE_ID" column="Account@UserAccount@account_id"/>
+			<parameter name="ENTITY" parameter="entity"/>
+		</url>
+	</column>
+	
+	<column name="alert_key" align="center" width="10%" loca_key="ALERT_KEY">
+		<script>
+			accountNoValue = row.getColumnValue("account_no").toString();
+			closeBalanceCurCodeValue = row.getColumnValue("amt_curcode").toString(); 
+			closeBalanceAmtValue =row.getColumnValue("amt").toString();
+			closeBalanceValue = closeBalanceCurCodeValue + " " + closeBalanceAmtValue;
+			descriptionValue = com.misys.portal.common.localization.Localization.getGTPString(language, row.getColumnValue("description").toString());
+			thresholdCurCodeValue = row.getColumnValue("amt_threshold_curcode").toString();
+			thresholdAmtValue = row.getColumnValue("amt_threshold").toString();
+			thresholdValue = thresholdCurCodeValue + " " + thresholdAmtValue;
+			Object[] args = {accountNoValue, closeBalanceValue, descriptionValue, thresholdValue};   
+			alertKeyValue = row.getColumnValue("alert_key").toString();
+			value = com.misys.portal.common.localization.Localization.getFormattedString(language,alertKeyValue,args);
+			value;
+		</script>
+	</column>
+	
+	<column name="alert_date" align="center" width="10%" loca_key="ALERT_DATE"/>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID" hidden="y"/>
+	<column name="title" align="center" width="15%" loca_key="TITLE" hidden="y"/>
+	<column name="description" hidden="y"/>
+	<column name="product_code" align="center" width="10%" loca_key="PRODUCT" hidden="y"/>
+	<column name="amt_curcode" align="center" width="5%" loca_key="ALERT_CURCODE" hidden="y"/>
+	<column name="amt" align="right" width="10%" loca_key="ALERT_AMOUNT" hidden="y"/>
+	<column name="account_no" hidden="y"/>
+	<column name="amt_threshold_curcode" hidden="y"/>
+	<column name="amt_threshold" hidden="y"/>
+	<column name="Account@UserAccount@account_id" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="entity"
+		default=""/>
+	<parameter
+		name="account_no"
+		size="35"
+		max_length="35"
+		loca_key="ACCOUNTNO"
+		input="y"
+		type="ViewSTMT"/>
+	<parameter
+		name="alert_date"
+		type="range"
+		input="y"
+		range_from_label="ALERT_DATE_FROM"
+		range_to_label="ALERT_DATE_DATE_TO" 
+		default="blank" />
+	<parameter
+		name="amt_curcode"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"/>	
+	
+	<!-- candidates -->	
+	<candidate name="alert">
+			<filter>
+				<criteria>
+					<column name="entity"/>
+					<operator type="like"/>
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+				<criteria>
+					<column name="account_no"/>
+					<operator type="like"/>
+					<value type="parameter">
+						account_no
+					</value>
+				</criteria>
+				<criteria>
+					<column name="alert_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						alert_date@from
+					</value>
+				</criteria>
+				<criteria>
+					<column name="alert_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						alert_date@to
+					</value>
+				</criteria>
+				<criteria>
+					<column name="amt_curcode"/>
+					<operator type="like"/>
+					<value type="parameter">
+						amt_curcode
+					</value>
+				</criteria>
+			</filter>
+	</candidate>
+</listdef>

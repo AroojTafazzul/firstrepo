@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef huge="y" ordered="y" help="LIST_HELP_UPDATE_FOLDER" default_order="ref_id" default_order_type="d" page="200" js_binding="misys.binding.openaccount.listdef_in_common">
+
+	<batch name="save">
+		<parameter name="SCREEN" value="IN_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_SAVE"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_IN_FOLDER"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+		<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<icon loca_key="ACTION_USER_SAVE" image="/content/images/pic_form_save.gif" permission="fo_save"/>
+		<javascript url="misys._config.saveOpenAccount()"/>
+	</batch>
+	
+	<batch name="submit">
+		<parameter name="SCREEN" value="IP_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_IN_FOLDER"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+		<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<icon loca_key="ACTION_USER_SUBMIT" image="/content/images/pic_form_send.gif" permission="fo_submit"/>
+		<javascript url="misys._config.submitOpenAccount()"/>
+	</batch>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="cust_ref_id" align="left" width="50%" loca_key="PO_NUMBER"/>
+	<column name="buyer_name" align="left" width="50%" loca_key="BUYER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="iss_date" align="center" width="6em" loca_key="ISS_DATE"/>
+ 	
+ 	<column name="entity" hidden="y"/>
+ 	<column name="Counterparty@ObjectDataString@conditions_dealer_financing" align="left" width="16em" loca_key="ISS_DATE" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+		
+	<!-- parameters -->
+	<parameter
+		list="y"		
+		name="amount"
+		size="20"
+		loca_key="AMOUNT"
+		batch="y"
+		input="n"
+		default=""
+		/>	
+	<!-- <parameter
+		name="folderid"
+		type= "hidden"/> -->
+    <parameter name="referenceid" input="n"/>
+	<parameter
+		name="entity"
+		type= "hidden"/>
+
+	<parameter
+  		name="cur_code"
+  		input="y"
+        type="hidden"/>
+	
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="16"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="15"
+		max_length="35"
+		loca_key="PO_NUMBER"
+		input="y"
+		default=""/>
+	<parameter
+		name="_name"
+		loca_key="BUYER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+
+<!-- <parameter
+		name="export_list"
+		file_name="updateDraftFolder"
+		type="export"
+		default="HTMLGroups">
+	</parameter>
+ -->	
+ 
+	<!-- candidates -->	
+	<candidate name="invoice_payable_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+		
+	<filter or="y">
+		<!-- Not registered -->
+		<criteria>
+			<column name="MixCrossReference@ref_id"/>
+			<operator type="isNull"/>
+		</criteria>
+		<!-- Registered with the current folder -->
+		<criteria>
+			<column name="MixCrossReference@child_ref_id"/>
+			<operator type="equal"/>
+			<value type="parameter">
+				referenceid
+			</value>
+		</criteria>
+		<criteria>
+			<column name="Counterparty@ObjectDataString@has_dealer_financing_conditions"/>
+			<operator type="equal"/>
+			<value type="string">Y</value>
+		</criteria>
+	</filter>
+</listdef>

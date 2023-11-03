@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<portlets user="default">
+	<controller name="com.misys.portal.core.portal.controllers.CardPortletController">
+		<parameter name="parameter" value="pane"/>
+	</controller>
+	<portlets user="default">
+		<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+			<parameter name="sizes" value="205,*"/>
+			<parameter name="mode" value="row"/>
+		</controller>
+		<layout position="0" size="NORMAL"/>
+		<portlets user="default">
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+			<layout position="1" size="NORMAL"/>
+			<entry parent="MenuBuilder" type="ref">
+				<parameter name="menu" value="true"/>
+				<layout position="0" size="NORMAL"/>
+			</entry>
+			<entry parent="BookmarkPortlet" type="ref">
+				<parameter name="menu" value="true"/>
+				<layout position="1" size="NORMAL"/>
+			</entry>
+		</portlets>
+		<portlets user="default">
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+			<layout position="2" size="NORMAL"/>
+			<entry parent="GTPRootPortlet" type="ref">
+				<layout position="0" size="NORMAL"/>
+			</entry>
+			<!--
+			<portlets user="default">
+		        <controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+		          <parameter name="mode" value="row" />
+		          <parameter name="sizes" value="33%,33%,33%"/>
+		        </controller>
+		        <layout position="1" size="NORMAL" />
+		        <entry parent="ICOutstandingPerCurrencyChartPortlet" type="ref">
+		        	<control name="com.misys.portal.core.portal.controls.ClearPortletControl"/>
+		          <layout position="0" size="NORMAL" />
+		        </entry>
+		        <entry parent="ICPaymentPerMonthChartPortlet" type="ref">
+		     		<control name="com.misys.portal.core.portal.controls.ClearPortletControl"/>
+		         <layout position="1" size="NORMAL" />
+		        </entry>
+		        <entry parent="ICOutstandingPerEntityChartPortlet" type="ref">
+		     	<control name="com.misys.portal.core.portal.controls.ClearPortletControl"/>
+		         <layout position="2" size="NORMAL" />
+		        </entry>
+		    </portlets>
+		    -->
+		</portlets>
+	</portlets>
+</portlets>
+

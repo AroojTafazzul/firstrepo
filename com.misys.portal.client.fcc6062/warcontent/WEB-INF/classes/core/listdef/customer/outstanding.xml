@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="10">
+	
+	<column name="lc_liab_amt"/>
+	<column name="bo_release_dttm"/>
+
+	<!-- parameters -->
+	<parameter name="referenceid" input="n"/>	
+	<parameter name="productcode" input="n"/>
+
+	<!-- candidates -->	
+	<candidate name="LCTnx">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="equal"/>
+					<value type="parameter">
+						referenceid
+					</value>
+				</criteria>
+				<criteria>
+					<column name="product_code"/>
+					<operator type="equal"/>
+					<value type="parameter">
+						productcode
+					</value>
+				</criteria>
+				<criteria>
+					<column name="tnx_stat_code"/>
+					<operator type="equal"/>
+					<value type="code">
+						N004_ACKNOWLEDGED
+					</value>
+				</criteria>
+			</filter>
+	</candidate>
+	
+	
+	<group graph="bar3d">
+		<!-- <column name="entity"></column>  -->
+		<column name="bo_release_dttm" hierarchy="month"></column>
+		<aggregate type="maximum"><column name="lc_liab_amt"/></aggregate>
+	</group>
+ 
+</listdef>

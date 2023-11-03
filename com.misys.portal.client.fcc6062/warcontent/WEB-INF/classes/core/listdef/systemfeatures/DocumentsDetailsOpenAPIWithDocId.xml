@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ListDef xml for beneficiary details Look Up -->
+<listdef ordered="y" default_order="attachment_id" page="50">
+
+	<column name="attachment_id" hidden="y" />
+	<column name="brch_code" hidden="y" />
+	<column name="company_id" hidden="y" />
+	<column name="description" hidden="y" />
+	<column name="file_name" hidden="y" />
+	<column name="mime_type" hidden="y" />
+	<column name="ref_id" hidden="y" />
+	<column name="title" hidden="y" />
+	<column name="tnx_id" hidden="y" />
+	<column name="type" hidden="y" />
+	<column name="status" hidden="y" />
+	<column name="access_dttm" hidden="y" />
+	<column name="upload_date" hidden="y" />
+	<column name="auto_gen_doc_code" hidden="y" />
+	<column name="doc_id" hidden="y" />
+	
+
+	<column name="dms_id" hidden="y" />
+	<column name="for_fileact" hidden="y" />
+	<column name="customer_id" hidden="y" />
+		<parameter
+		name="attachment_id"
+		size="20"
+		max_length="34"
+		loca_key="XSL_REPORTINGDETAILS_ATTACHMENTS"
+		input="y"
+		default=""/>
+	<parameter
+		name="company_id"
+		size="20"
+		max_length="20"
+		loca_key="COMPANYID"
+		default="*"
+		input="y"/>	
+	
+
+	<!-- candidates -->
+	<candidate name="attachment">
+		<filter>
+			<criteria>
+				<column name="attachment_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					attachment_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="company_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					company_id
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

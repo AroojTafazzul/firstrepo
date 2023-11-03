@@ -1,0 +1,10 @@
+#set ($showCommonHeader = $gtpapp.isCommonHeader($data))
+#set ($commonHeaderContent = $gtpapp.getCommonHeaderContent($data))
+#set ($commonHeadeEnable = $defaultresource.getResource("SHOW_COMMON_HEADER"))
+
+#if($showCommonHeader && $commonHeadeEnable == 'true')
+	## this is the common header display
+	$commonHeaderContent
+	</header>
+#end		
+

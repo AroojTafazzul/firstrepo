@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="name" page="10" source="loanux_facilitiesInquiry" data_key="id">
+
+	<column name="dealName" align="left" width="15%" loca_key="DEAL" columnFilterType="input-multiselect"/>
+	<column name="name" align="left" width="15%" loca_key="FACILITY" columnFilterType="input-multiselect"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="currency" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="available" align="right" width="13%" loca_key="AVAILABLE" columnFilterType="input-multiselect"/>
+	<column name="utilised_amt" align="right" width="13%" loca_key="UTILIZED" columnFilterType="input-multiselect"/>
+	<column name="total_amt" align="right" width="13%" loca_key="totalLimit" columnFilterType="input-multiselect"/>
+	<column name="loanRequestTypeName" hidden="y">
+		<!-- JavaScript Pass back -->
+			<js-pass-back keyName="column">
+				<array-element index="0" column="product_code"/>
+				<array-element index="1" column="id"/>
+				<array-element index="2" column="drawdownAllowed"/>
+				<array-element index="3" column="swinglineAllowed"/>
+			</js-pass-back>
+	</column>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="totalCommitment_amt" hidden="y"/>
+	<column name="status" hidden="y"/>
+	<column name="id" hidden="y"/>
+	<column name="borrowerid" hidden="y"/>
+	<column name="dealId" hidden="y"/>
+	<column name="customerReference" hidden="y"/>
+	<column name="drawdownAllowed" hidden="y"/>
+	<column name="swinglineAllowed" hidden="y"/>
+	
+	<parameter name="bo_deal_name" size="35" max_length="40" loca_key="DEAL" input="y" multiple="y" default="" type="bo_deal_name"/>
+	<parameter name="cur_code" input="y" size="3" max_length="3" multiple="y"  loca_key="CURCODE" type="Currency"/>
+	<parameter name="entity" size="35"	max_length="35"	loca_key="ENTITY" input="y"	default="" multiple="y"	type="Entity"/>
+	<!-- candidates -->
+	<candidate name="facility">
+		<filter>
+			<criteria>
+				<column name="dealName"/>
+				<operator type="in"/>
+				<value type="parameter">bo_deal_name</value>
+			</criteria>
+			<criteria>
+				<column name="currency"/>
+				<operator type="in"/>
+				<value type="parameter">cur_code</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">entity</value>
+			</criteria>
+			<criteria>
+				<column name="status"/>
+				<operator type="equal"/>
+				<value type="string">
+					Active
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

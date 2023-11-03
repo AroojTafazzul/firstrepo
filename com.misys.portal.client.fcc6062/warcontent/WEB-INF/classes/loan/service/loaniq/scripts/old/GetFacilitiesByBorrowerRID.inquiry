@@ -1,0 +1,38 @@
+{
+for $c in /Customer[LIQ.XQS.EQUAL(@id, "%BORROWER_ID%")]
+return
+<borrower>
+  <id>{$c/cus/id}</id>
+  <name>{$c/cus/shortname}</name>
+  {
+  for $d in /DealBorrower[LIQ.XQS.EQUAL(@customerId, $c/cus/id)]/Deal
+  return
+  <deal>
+    <id>{$d/dea/id}</id>
+    <name>{$d/dea/name}</name>
+    {
+    for $f in /FacilityBorrower[LIQ.XQS.EQUAL(@borrowerId, $d/dbr/id)]/Facility
+    return
+    <facility>
+      <id>{$f/fac/id}</id>
+      <name>{$f/fac/name}</name>
+      <fcn>{$f/fac/fcn}</fcn>
+      <currency>{$f/fac/currency}</currency>
+      <total>{$f/fac/globalAvailableAmount}</total>
+      <available>{$f/fac/globalAvailToDrawAmount}</available>
+	  <expiryDate>{
+        for $date in $f/fac/expirationDate return {
+          LIQ.XQ.FORMAT_DATE("%d/%m/%Y", $date)
+        }}
+      </expiryDate>      
+      <maturityDate>{
+        for $date in $f/fac/maturityDate return {
+          LIQ.XQ.FORMAT_DATE("%d/%m/%Y", $date)
+        }}
+      </maturityDate>
+    </facility>
+    }
+  </deal>
+  }
+</borrower>
+}

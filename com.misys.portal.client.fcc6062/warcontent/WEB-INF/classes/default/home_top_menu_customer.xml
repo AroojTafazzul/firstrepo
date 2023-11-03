@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+	Copyright (c) 2000-2011 Misys (http://www.misys.com),
+   	All Rights Reserved. 
+-->
+<menus id="top_menu_customer">
+
+	<menu id="demobank_main">
+		<entry title="MODULE_ACCOUNT_SERVICES" permission="no_permission" ref="demobank_balances_and_transactions"/>
+		<entry title="MODULE_CASH_SERVICES" permission="no_permission" ref="demobank_orders"/>
+		<entry title="MODULE_TRADE_SERVICES" permission="no_permission" ref="demobank_trade_finance"/>
+		<entry title="MODULE_SECURE_EMAIL" permission="no_permission" ref="demobank_secure_email"/>
+		<entry title="MODULE_ADMINISTRATION_SERVICES" permission="no_permission" ref="demobank_services"/>
+	</menu>
+
+	<menu id="demobank_balances_and_transactions">
+		<entry title="MODULE_BALANCES_TRANSACTIONS"  screen="MC_SCREEN" permission="sy_account_service_maintain_access"/>
+		<entry title="MODULE_BALANCES"  screen="AB_SCREEN" permission="ab_account_summary_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry>
+		<entry title="MODULE_STATEMENTS"  screen="AB_SCREEN" permission="ab_account_statement_access">
+			<parameter name="operation" value="LIST_STATEMENTS"/>
+		</entry>
+		<entry title="MODULE_ACCOUNTS"  screen="AB_SCREEN" permission="ab_account_details_access">
+			<parameter name="operation" value="LIST_ACCOUNTS"/>
+		</entry>
+		<entry title="MODULE_TIME_DEPOSIT"  screen="TD_SCREEN" permission="td_access"/>
+		<!-- <entry title="MODULE_LOAN" screen="LN_SCREEN" permission="ln_inquiry_access">
+			<parameter name="operation" value="LOAN_SUMMARY"/>
+			<parameter name="option" value="LOAN"/>			
+		</entry> -->
+		<entry title="MODULE_CASH_FLOW_FORECASTING" permission="ab_cashforecastinginquiry"/>
+		<entry title="MODULE_CASH_MANAGEMENT" screen="CMEQ_SCREEN" permission="cmeq_access"/>
+		<entry title="MODULE_REGIONAL_ACCOUNT_VIEW" screen="AB_SCREEN" permission="regional_acct_view">
+			<parameter name="operation" value="OPERATION_REGIONALACCTVIEW"/>
+		</entry>
+	</menu>
+
+	<menu id="demobank_orders">
+		<entry title="MODULE_TRANSFER" screen="FT_SCREEN" permission="ft_access" />
+		<entry title="MODULE_REMITTANCE" screen="FT_SCREEN" permission="ft_remittance_access">
+			<parameter name="option" value="REMITTANCE"/>
+		</entry>
+		<entry title="MODULE_REMITTANCE" screen="FT_SCREEN" permission="ft_remittance_fi_access">
+			<parameter name="option" value="REMITTANCE_FI"/>
+		</entry>
+		<entry title="MODULE_BILL_PAYMENT" screen="BP_SCREEN" permission="ft_billp_access">
+			<parameter name="option" value="BILLP"/>
+		</entry>
+		<!-- <entry title="MODULE_DDA" screen="DDA_SCREEN" permission="ft_dda_access">
+			<parameter name="option" value="DDA"/>
+		</entry> -->
+		<entry title="MODULE_PAPER_INSTRUMENTS" screen="FT_SCREEN" permission="ft_paperinstrument_access">
+			<parameter name="option" value="PI"/>
+		</entry>
+		<entry title="MOUDLE_CHEQUE_SERVICES" screen="FT_SCREEN" permission="se_chequeservices_access">
+			<parameter name="option" value="CQS"/>
+		</entry>
+		<entry title="MODULE_BULK_SERVICES" screen="BK_SCREEN" permission="bk_access" />
+		<entry screen="SE_SCREEN" title="MODULE_SECURE_EMAIL_GENERIC_FILE_UPLOAD" permission="se_uload_access">
+			<parameter name="option" value="FILE_UPLOAD_HOME_ACTION"/>
+		</entry>
+		<entry title="MODULE_LIQUIDITY_KTP_SERVICES" screen="KTP_SCREEN" permission="access_ktp_mc" />
+		<entry title="MODULE_LIQUIDITY_SERVICES" screen="LIQUIDITY_SCREEN" permission="liquidity_access" />
+	</menu>
+
+	<menu id="demobank_trade_finance">
+		<entry screen="LC_SCREEN" title="N001_LC" permission="lc_access"/>
+		<entry screen="EL_SCREEN" title="N001_EL" permission="el_access"/>
+		<entry screen="IC_SCREEN" title="N001_IC" permission="ic_access"/>
+		<entry screen="EC_SCREEN" title="N001_EC" permission="ec_access"/>
+		<entry screen="IU_SCREEN" title="N001_IU" permission="bg_access"/>
+		<entry screen="RU_SCREEN" title="N001_RU" permission="br_access"/>
+		<entry screen="BG_SCREEN" title="N001_BG" permission="bg_access"/>
+		<entry screen="BR_SCREEN" title="N001_BR" permission="br_access"/>
+		<entry screen="TF_SCREEN" title="N001_TF" permission="tf_access"/>
+		<entry screen="SG_SCREEN" title="N001_SG" permission="sg_access"/>
+		<entry screen="IR_SCREEN" title="N001_IR" permission="ir_access"/>
+<!-- 		<entry title="MODULE_INWARD_REMITTANCE" screen="IR_SCREEN" permission="ir_access" /> -->
+		<!-- <entry title="MODULE_FACTORING" screen="FA_SCREEN" permission="fa_access"/> -->
+<!-- 		<entry title="MODULE_DOCUMENT_MANAGEMENT" permission="no_permission"> -->
+<!-- 			<parameter name="href" value=""/> -->
+<!-- 		</entry> -->
+		<entry title="MODULE_INVOICE_PAYABLE" screen="IP_SCREEN" permission="ip_access" />
+		<entry title="MODULE_INVOICE" screen="IN_SCREEN" permission="in_access" />
+	</menu>
+
+	<menu id="demobank_secure_email">
+		<entry title="MODULE_SECURE_EMAIL_NEW_MESSAGE" permission="disabled">
+		</entry>
+		<entry title="MODULE_SECURE_EMAIL_REQUEST_FOR_DRAFT" permission="disabled">
+		</entry>
+		<entry title="MODULE_SECURE_EMAIL_STATEMENT_AND_REPORT_REQUEST" permission="disabled">
+		</entry>		
+	</menu>
+	
+	<menu id="demobank_services">
+		<entry screen="CSF_SCREEN" title="MENU_CHANGE_ENTITIES" permission="access_customer_entity_mc">
+			<parameter name="option" value="CUSTOMER_ENTITY_MAINTENANCE_MC"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_JURISDICTION" permission="access_customer_authorisation_mc">
+			<parameter name="option" value="JURISDICTION_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_USER" permission="access_customer_user_mc">
+			<parameter name="option" value="USER_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_DATA" permission="sy_data_access">
+			<parameter name="option" value="DATA_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_ALERT" permission="sy_alert_access">
+			<parameter name="option" value="ALERT_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_REPORT_DESIGNER" permission="sy_report_parameter_maintain">
+			<parameter name="option" value="REPORT_DESIGNER_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_AUDIT_ACTION" permission="audit_access">
+			<parameter name="option" value="AUDIT_HOME_ACTION"/>
+		</entry>
+	</menu>
+</menus>

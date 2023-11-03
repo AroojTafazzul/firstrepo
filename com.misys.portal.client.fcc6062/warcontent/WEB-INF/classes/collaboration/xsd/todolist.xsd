@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for a Collaboration task. XML validation 
+			Copyright (c) 2000-2004 NEOMAlogic (http://www.neomalogic.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:element name="todolist">
+	    <xs:complexType>
+	        <xs:sequence>
+				<xs:element ref="todo_list_id">
+					<xs:annotation>
+						<xs:documentation>Todo list Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="name" type="FiftyCharacters">
+					<xs:annotation>
+						<xs:documentation>Todo list name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="description" type="OneHundredCharacters">
+					<xs:annotation>
+						<xs:documentation>Todo list description.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="issue_date" type="Date">
+					<xs:annotation>
+						<xs:documentation>Issue date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_user_id">
+					<xs:annotation>
+						<xs:documentation>Issue date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issue_company_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Issue date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="type">
+					<xs:annotation>
+						<xs:documentation>Todo list type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+</xs:schema>

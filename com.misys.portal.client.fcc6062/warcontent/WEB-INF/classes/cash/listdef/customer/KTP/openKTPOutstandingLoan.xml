@@ -1,0 +1,84 @@
+<listdef page="25" source="com.misys.portal.report.ktp.KTPInputSource" huge="y" js_binding="misys.binding.cash.ktp.messagecenter.ktp_outstanding_loan">
+	<name>SPEC_VIEW_BAL_PE</name>
+	<description>Encours Prêts/Emprunts</description>
+	<multiProduct>N</multiProduct>
+	<report_type>01</report_type>
+	<product_code>SPEC_VIEW_BAL_PE</product_code>
+	<equivalentCurrency />
+	<use_absolute_width>N</use_absolute_width>
+	<order_list_by_default>N</order_list_by_default>
+	<column name='ENTITE_CENTRALISEE' width="15%" abbreviation='N'>
+		<description locale='en'>Centralized Entity</description>
+		<description locale='fr'>Entité Centralisée</description>
+	</column>
+	<column name='DESCRIPTION_COMPTE' align="center" width="20%" abbreviation='N'>
+		<description locale='en'>Account Description</description>
+		<description locale='fr'>Description du Compte</description>
+	</column>
+	<column name='ENTITE_CENTRALISATRICE' width="15%" abbreviation='N'>
+		<description locale='en'>Centralizing Entity</description>
+		<description locale='fr'>Entité Centralisatrice</description>
+	</column>
+	<column name='SOLDE_DEBITEUR' align="right" width="8em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Oustanding Debit</description>
+		<description locale='fr'>Solde Débiteur</description>
+	</column>
+	<column name='SOLDE_CREDITEUR' align="right" width="8em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Oustanding Crebit</description>
+		<description locale='fr'>Solde Créditeur</description>
+	</column>
+	<column name="DEVISE" align="center" width="5em" abbreviation='N'>
+		<description locale='en'>Currency</description>
+		<description locale='fr'>Devise</description>
+	</column> 
+	<column name='DATE_STATEMENT' align="center" width="8em" abbreviation='N'>
+		<description locale='en'>Outstanding at</description>
+		<description locale='fr'>Solde au</description>
+	</column>
+
+	<!-- <parameter name="entity" size="20" loca_key="ENTITY" input="y" type="Entity" default="" hidden="false"/>-->
+	<parameter name="centralizedEntity" mandatory="true" size="20" input="y" type="EntityNoWildcard" default="" hidden="false">
+		<description locale='en'>Centralized Entity</description>
+		<description locale='fr'>Entité Centralisée</description>
+	</parameter>
+	<!-- Type is set initially to AvailableProducts bit is overriden at page startup to include only an empty value --> 
+	<parameter input="y" name="centralizingEntity" mandatory="true" hidden="false" type="AvailableProducts">
+		<description locale='en'>Centralizing Entity</description>
+		<description locale='fr'>Entité Centralisatrice</description>
+	</parameter>
+	<parameter input='y' name='DU' mandatory='false' type='Date' default='today' currency=''>
+		<description locale='en'>From</description>
+		<description locale='fr'>Du</description>
+	</parameter>
+	<parameter input='y' name='AU' mandatory='false' type='Date' default='today' currency=''>
+		<description locale='en'>To</description>
+		<description locale='fr'>Au</description>
+	</parameter>
+	
+	<parameter name='export_list' file='SPEC_VIEW_BAL_PE' type='export' file_name='SPEC_VIEW_BAL_PE' />
+	<candidate name='SPEC_VIEW_BAL_PE'>
+		<filter>
+			<criteria>
+				<column name='SOLDE_AU'></column>
+				<operator type='supOrEqual'></operator>
+				<value type='parameter'>DU</value>
+			</criteria>
+			<criteria>
+				<column name='SOLDE_AU'></column>
+				<operator type='infOrEqual'></operator>
+				<value type='parameter'>AU</value>
+			</criteria>
+			<criteria>
+				<column name='ENTITE_CENTRALISEE'/>
+				<operator type='like'/>
+				<value type='parameter'>centralizedEntity</value>
+			</criteria>
+			<criteria>
+				<column name='ENTITE_CENTRALISATRICE'/>
+				<operator type='like'/>
+				<value type='parameter'>centralizingEntity</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<executable_flag>Y</executable_flag>
+</listdef>

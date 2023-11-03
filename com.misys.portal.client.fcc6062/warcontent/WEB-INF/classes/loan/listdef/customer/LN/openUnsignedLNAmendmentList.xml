@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="100" js_binding="misys.binding.common.listdef_mc" identifier="tnx_id" crossPageSelection="y" help="LIST_HELP_EXISTING_RETRIEVE_UNSIGNED">
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>	
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+
+	<batch type="submit">
+		<parameter name="SCREEN" value="LN_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_AMEND"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="LN_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_AMEND"/>
+			<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="15%" loca_key="ENTITY"/>
+	<column name="bo_deal_name" align="left" width="15%" loca_key="DEAL"/>
+	<column name="bo_facility_name" align="left" width="20%" loca_key="FACILITY"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="sub_product_code" align="center" width="15%" loca_key="LOAN_TRANSACTION_TYPE"/>
+	<column name="full_name" align="center" width="20%" loca_key="USER_NAME">
+		<script>
+			var displayStyle = com.misys.portal.core.util.JetspeedResources.getInt("username.display.style.mode",0);
+			var firstName = row.getColumnValue("Inputter@first_name");
+			var lastName = row.getColumnValue("Inputter@last_name");
+			value = lastName + ", " + firstName;
+			if(displayStyle == 1)
+			{
+				value = firstName + " " + lastName;
+			}
+			value;
+		</script>
+	</column>
+	<column name="appl_date" align="center" width="6em" loca_key="APPL_DATE"/>
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>	
+	
+	<!-- parameters -->
+	<parameter name="ref_id" size="20" max_length="20" loca_key="REFERENCEID" input="y" default=""/>
+	<parameter name="entity" size="35" max_length="35" loca_key="ENTITY" input="y" default="" type="entity"/>
+  	<parameter name="bo_deal_name" size="35" max_length="40" loca_key="DEAL" input="y" default=""/>
+  	<parameter name="bo_facility_name" size="35" max_length="35" loca_key="FACILITY" input="y" default=""/>
+	<parameter name="user_name" loca_key="USER_NAME" size="35" max_length="35" input="y"/>
+	<parameter name="cur_code" input="y" size="3" max_length="3" loca_key="CURCODE" type="currency"/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    type="AvailableLoanSwingLineTransactionType"
+	     multiple_values="SWG,LNDR"
+	    input="y"
+	    />	
+	
+	<!-- candidates -->
+	<candidate name="loan">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_deal_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_deal_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_facility_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_facility_name
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+					<column name="sub_product_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						sub_product_code
+					</value>
+				</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter or="y">
+		<criteria>
+			<column name="Inputter@last_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="Inputter@first_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+		<businesscriteria type="isAmendement"/>
+	</filter>
+</listdef>

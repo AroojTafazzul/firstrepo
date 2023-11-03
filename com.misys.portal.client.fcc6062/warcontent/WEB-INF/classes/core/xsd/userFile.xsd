@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for Company file.
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/user.xsd">
+		<xs:annotation>
+			<xs:documentation>This includes the user xsd</xs:documentation>
+		</xs:annotation>
+	</xs:include>
+	<xs:element name="user_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="user" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="user_roles" minOccurs="0"/>
+				<xs:element ref="user_entities" minOccurs="0"/>
+				<xs:element name="operation_type" minOccurs="1" maxOccurs="1" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

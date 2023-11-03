@@ -1,0 +1,163 @@
+## Sample.
+#set ($LogoFile = $config.getConfiguration().getString("site.header.logo"))
+#set ($LoginScreen = $config.getConfiguration().getString("screen.login"))
+#set ($LogoutScreen = $config.getConfiguration().getString("action.logout"))
+#set ($language = $gtpapp.getLanguage())
+#set ($message = $l10n.getGTPString($language,"CEYLAN_WELCOME_MESSAGE"))
+#set ($message_logged_out = $l10n.getGTPString($language,"WELCOME_MESSAGE"))
+#set ($skiplink = $l10n.getGTPString($language,"SKIPTO_CONTENT"))
+#set ($skipmenulink = $l10n.getGTPString($language,"SKIPTO_MENU"))
+#set ($login = $l10n.getGTPString($language,"LOGIN"))
+#set ($logout = $l10n.getGTPString($language,"LOGOUT"))
+#set ($user = $l10n.getString($language,"USER"))
+#set ($home = $l10n.getString($language,"HOME"))
+#set ($contextPath = $gtpapp.getContextPath())
+#set ($servletPath = $gtpapp.getServletPath())
+#if ($data.User.hasLoggedIn())
+##
+## This is the top navigation bar displayed for a logged in user
+#set ($companyType = $data.User.getCompanyType())
+#if ($companyType == "03")
+#set ($featuresScreen = "CustomerSystemFeaturesScreen")
+#else
+#set ($featuresScreen = "BankSystemFeaturesScreen")
+#end
+<div class="contentWrapper" style="min-height: calc(100vh - 7.4em);">
+<!-- BEGIN WELCOME BAR  -->
+<ul style="display:none">
+ <li><a href="#GTPRootPortlet" title="$skiplink">$skiplink</a></li>
+ <li><a href="#MenuBuilder" title="$skipmenulink">$skipmenulink</a></li>
+</ul>
+<div class="header logged">
+  <div class="panel2">
+	<a href='$link' title="$message" class="logo"></a>
+#* 
+	<div class="submenu">
+    	<a href="$contextPath$servletPath/screen/$featuresScreen">
+    		<img src="$contextPath/content/images/demobank/settings.png" width="16" height="16" alt="System Features"></a>
+    	<a href="javascript:void(0)" onclick="window.open('$contextPath$servletPath/screen/OnlineHelpScreen?helplanguage=$language&amp;accesskey=$language', 'OnlineHelp', 'width=1000,height=700,resizable=yes,scrollbars=yes');">
+    		<img src="$contextPath/content/images/demobank/help.png" width="16" height="16" alt="Help"></a>
+	</div>
+*#
+
+	<div class="welcomemessage">
+		$message <strong>$!data.User.FirstName $!data.User.LastName</strong>
+		{<a href='$contextPath$servletPath/screen/$featuresScreen'>my profile</a>}
+		<a href='$link.setAction($LogoutScreen)' class="myButton" style="margin-left:15px;">
+			<!--<img src="$contextPath/content/images/demobank/logout.png" width="16" height="16" id="logoutButton" alt="$logout">-->
+			logout
+		</a>
+	</div>
+	
+	<div id="header_top_options">
+		<dl class="login_details">
+			<dt class="date">Today is:</dt><dd>$actualDate</dd>
+			<dt class="last_login">Last login:</dt><dd>$lastLoginDate</dd>
+		</dl>
+#*
+		<ul class="top_menu">
+			<li><a href="#">Get Support</a></li>
+			<li><a href="#">Contact Us</a></li>
+		</ul>
+*#
+	</div>
+  </div>
+
+#* TOP MENU *#
+  <div class="panel3">
+		<ul class="topnav">
+			<li id="topMenuEntry0">
+				<a href='$link'></a>
+			</li>
+		#foreach($entry in $mainMenu)
+			<li id="topMenuEntry$velocityCount">
+				<a href="#">$l10n.getGTPString($language,$entry.getEntryName())</a>
+				#if ($entry.hasEntries())
+					<ul class="subnav shadow">
+					#foreach($subEntry in $entry.getEntries())
+						<li class="subnavgroup">
+							<a href="$subEntry.getEntryAction()">$l10n.getGTPString($language,$subEntry.getEntryName())</a>
+							#*<p>$subEntry.getFormattedEntryName($language)</p>*#
+						</li>
+					#end
+					</ul>
+				#end
+				#*<span class=""></span>*#
+			</li>
+		#end
+		</ul>
+  </div>
+</div>
+#else
+##
+## This is the top navigation bar displayed for the anonymous user, i.e. they are not logged in
+##
+<!-- BEGIN WELCOME BAR  -->
+<div class="header">
+ <div class="panel2"><a title="$message"><p class="logo"></p></a>
+  <div class="submenu">
+   <a href='$link.setScreen($LoginScreen)'><img src="$contextPath/content/images/demobank/login.png" width="16" height="16" alt="$login"></a>
+  </div>
+ </div>
+ <div class="panel1">
+  <h1 class="message">$message &#187; <a href='$link.setScreen($LoginScreen)'>Login to My Account</a></h1>
+ </div>
+</div>
+#end
+
+<script type='text/javascript'>
+	//hide all submenus
+	dojo.query('.ceylan ul.subnav').style("display", "none");
+
+    dojo.addOnLoad(function() {
+
+    	dojo.query('.ceylan ul.topnav li > a').forEach(function(item) {
+    		dojo.query(item).connect('onclick', function(evt) {
+    			var menu = item.nextSibling.nextSibling;
+    			hideAllSubmenus();
+    			dojo.fx.wipeIn({node : menu}).play();
+    		});
+    	});
+    	dojo.query(".colmask").connect("onclick", function(evt) {
+    		hideAllSubmenus();
+    	});
+    });
+	function hideAllSubmenus() {
+		dojo.query('.ceylan ul.subnav').forEach(function(item){
+		    if (item.style.display != "none"){
+		    	dojo.fx.wipeOut({node : item}).play();
+		    }
+		});
+	}
+</script>
+
+
+<script type='text/javascript'>
+function getParentPortlet(node) {
+	var parent = node.parentNode;
+	while (!dojo.hasClass(parent,"portlet") && parent.nodeName != "BODY") 
+	{
+		parent = parent.parentNode;
+	}
+	return (parent.nodeName != "BODY") ? parent: null;
+};
+
+dojo.addOnLoad(function() {
+    dojo.query('.ceylan .showHide').forEach(function(item) { 
+        dojo.connect(item, "onclick",function(evt) {
+           dojo.query(" > img", item).toggleClass("action-portlet-expand").toggleClass("action-portlet-collapse");
+ 			var actualPortlet = getParentPortlet(item);
+			var toShowHide = dojo.query(".portlet-section-body", actualPortlet)[0];
+			if (toShowHide.style.display != 'none') {
+				dojo.fx.wipeOut({node : toShowHide, duration: 1000}).play();
+			} 
+			else {
+				dojo.fx.wipeIn({node : toShowHide, duration: 1000}).play();
+			}
+            evt.preventDefault();
+        });
+    }); 	
+	
+});
+
+</script>

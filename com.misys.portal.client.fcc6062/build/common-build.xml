@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+====================================================================== 
+
+ Common Build file for Misys Portal
+ 
+ This is common taks repository, it's not meant to be run on its own.
+ Use the Ant script specific to your client.
+                                                                                  
+====================================================================== 
+ -->
+<project 
+	name="Misys Portal"
+	default="usage"
+	basedir="."
+	xmlns:ant4eclipse="antlib:org.ant4eclipse"
+	xmlns:antcontrib="antlib:net.sf.antcontrib">
+
+	<description>
+	    This is the ANT file dedicated common targets to build/deploy the Misys Portal.
+    </description>
+
+	<loadproperties srcfile="${workspace.dir}/${project.portal.name}/app_data/config/client.properties">
+		<filterchain>
+			<linecontains>
+				<contains value="angular.prod.mode"/>
+			</linecontains>
+		</filterchain>
+	</loadproperties>
+
+	<loadproperties srcfile="${workspace.dir}/${project.portal.name}/app_data/config/client.properties">
+		<filterchain>
+			<linecontains>
+				<contains value="fccui.angular.prod.mode"/>
+			</linecontains>
+		</filterchain>
+	</loadproperties>
+
+	<target name="usage">
+		<fail message="This is common taks repository, it's not meant to be run on its own. Use the Ant script specific to your client." />
+	</target>
+
+	<!-- IMPORTS/DEPENDENCIES -->
+
+	<!-- ant contrib -->
+	<taskdef uri="antlib:net.sf.antcontrib" resource="net/sf/antcontrib/antlib.xml" />
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${workspace.dir}/${project.libraries.name}/thirdparty/build/ant-contrib-1.0b3.jar" />
+
+	<!-- ant4eclipse -->
+	<taskdef uri="antlib:org.ant4eclipse" resource="org/ant4eclipse/antlib.xml" />
+	<import file="lib/macros/a4e-jdt-macros.xml" />
+
+	<!-- catalina ant -->
+	<taskdef resource="org/apache/catalina/ant/antlib.xml" />
+
+	<!-- import dojo targets -->
+	<import file="dojo-build.xml" />
+
+	<!-- businesscodes and urlaliases -->
+	<import file="build.xml" />
+
+
+	<!-- PATTERNSETS DEFINITION -->
+
+	<!-- DEFAULT (CORE) PATTERNSETS -->
+
+	<patternset id="core.config.patternset">
+		<exclude name="audit/**" />
+		<exclude name="loan/**" />
+		<exclude name="opics/**" />
+		<exclude name="audit.properties" />
+		<exclude name="configuration.xml" />
+		<exclude name="log4j.properties" />
+		<exclude name="portal.properties" />
+		<exclude name="environment.properties" />
+		<exclude name="services.xml" />
+		<exclude name="torque.properties" />
+		<exclude name="turbine.properties" />
+	</patternset>
+
+	<patternset id="core.content.patternset">
+		<exclude name="js-src/**"/>
+		<exclude name="psml/**"/>
+		<exclude name="xml/**"/>
+		<exclude name="mobile/**" unless="exclude.mobile.content=false"/>
+		<exclude name="fccui-lib/**"/>
+		<exclude name="fccui-src/**"/>
+		<exclude name="tradeui-src/**"/>
+		<exclude name="tradeui-lib/**"/>		
+	</patternset>
+
+	<patternset id="core.templates.patternset" />
+
+	<patternset id="core.resources.patternset">
+		<include name="master_registry.xml" />
+		<include name="log4j.properties" />
+		<include name="meridianInstallation.properties" />
+		<include name="axis/**" />
+		<include name="axis2-web/**" />
+		<include name="cash/**" />
+		<include name="collaboration/**" />
+		<include name="core/**" />
+		<include name="loan/**" />
+		<include name="openaccount/**" />
+		<include name="opics/**" />
+		<include name="seamlessfx/**" />
+		<include name="trade/**" />
+		<include name="treasury/**" />
+		<include name="tsu/**" />
+		<include name="mobile/**" />
+		<include name="feesandbilling/**" />
+		<include name="schematron/**"/>
+		<include name="fcm/**"/>
+		<include name="openapi/**"/>
+		<include name="widget/**"/>
+		<exclude name="mobile/**" unless="exclude.mobile.content=false"/>
+	</patternset>
+
+
+	<!-- CLIENT PATTERNSETS -->
+
+	<patternset id="client.config.patternset" refid="core.config.patternset" />
+	<patternset id="client.content.patternset" refid="core.content.patternset" />
+	<patternset id="client.templates.patterset" />
+	<patternset id="client.webinf.patternset" />
+	<patternset id="client.resources.patternset" />
+
+
+
+	<!--                     -->
+	<!-- FILESETS DEFINITION -->
+	<!--                     -->
+
+
+	<!-- CLIENT FILESETS -->
+
+	<!-- client config -->
+	<fileset id="client.config" dir="${client.config.dir}" erroronmissingdir="false">
+		<patternset refid="client.config.patternset" />
+	</fileset>
+	<!-- client content -->
+	<fileset id="client.content" dir="${client.content.dir}" erroronmissingdir="false">
+		<patternset refid="client.content.patternset" />
+	</fileset>
+	<!-- client templates -->
+	<fileset id="client.templates" dir="${client.templates.dir}" erroronmissingdir="false">
+		<patternset refid="client.templates.patterset" />
+	</fileset>
+	<!-- client WEB-INF -->
+	<fileset id="client.webinf" dir="${client.dir}/build/ear/war/WEB-INF" erroronmissingdir="false">
+		<patternset refid="client.webinf.patternset" />
+	</fileset>
+	<!-- client resources -->
+	<fileset id="client.resources" dir="${client.resources.dir}" erroronmissingdir="false">
+		<patternset refid="client.resources.patternset" />
+	</fileset>
+
+
+	<!-- DEFAULT (CORE) FILESETS -->
+
+	<!-- default config -->
+	<fileset id="core.config" dir="${config.dir}">
+		<patternset refid="core.config.patternset" />
+		<include name="interfaces/*" />
+	</fileset>
+	<!-- default content -->
+	<fileset id="core.content" dir="${content.dir}">
+		<patternset refid="core.content.patternset" />
+	</fileset>
+	<!-- default templates -->
+	<fileset id="core.templates" dir="${templates.dir}">
+		<patternset refid="core.templates.patternset" />
+	</fileset>
+	<!-- core resources -->
+	<fileset id="core.resources" dir="${resources.dir}">
+		<patternset refid="core.resources.patternset" />
+	</fileset>
+
+
+	<!-- CORE LIBRARIES -->
+	<fileset id="core.lib" dir="${libraries.dir}">
+		<include name="endorsed/*.jar" />
+		<include name="misys/*.jar" />
+		<include name="thirdparty/*.jar" />
+	</fileset>
+
+
+	<!-- CLIENT LIBRARIES -->
+	<fileset id="client.lib" dir="${libraries.dir}">
+		<include name="thirdparty/axis/*.jar" />
+		<include name="thirdparty/jaxb/*.jar" />
+		<include name="thirdparty/rampart/*.jar" />
+		<include name="thirdparty/ehcache/*.jar" />
+		<include name="thirdparty/*.jar" />
+		<!-- include name="misys/cash/*.jar" / -->
+		<include name="misys/loan/*.jar" />
+		<include name="misys/opics/*.jar" />
+		<!-- include name="misys/trade/*.jar" / -->
+	</fileset>
+
+	<!-- class file excludes -->
+	<patternset id="portal.src">
+	</patternset>
+
+	<patternset id="webapp.src">
+	</patternset>
+
+	<patternset id="client.js.delete">
+	</patternset>
+
+	<!-- Version classpath -->
+	<path id="version.classpath">
+		<fileset id="version.lib" dir="${libraries.dir}">
+			<include name="thirdparty/commons-logging*.jar" />
+		</fileset>
+	</path>
+
+	<!-- Manifest -->
+	<manifest id="manifest" file="MANIFEST.MF">
+		<attribute name="Implementation-Version" value="${delivery.version}" />
+		<attribute name="Implementation-Vendor" value="Misys" />
+		<attribute name="Built-By" value="${user.name}" />
+	</manifest>
+
+	<target name="clean">
+		<delete dir="${target.dir}" />
+		<delete failonerror="false">
+			<fileset dir="${libraries.dir}/misys">
+				<include name="${project.portal.name}.*.jar" />
+				<include name="${project.common.name}.jar" />
+				<include name="${project.jetspeed.name}.jar" />
+				<include name="${project.webapp.name}.jar" />
+				<include name="${project.report.name}.jar" />
+				<include name="${project.interfaces.name}.jar" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="version" description="Generates and compiles a com.misys.portal.Version class containing the current delivery number.">
+		<echo>
+		Setting the release version to ${delivery.version}-${client.name}.
+	    </echo>
+		<copy todir="${target.dir}/tmp">
+			<fileset dir="${libraries.dir}/misys">
+				<include name="Version.java"/>
+			</fileset>
+		</copy>
+
+		<replaceregexp file="${target.dir}/tmp/Version.java" match="(String[ ]*VERSION[ ]*=[ ]*).*" replace='\1"${delivery.version}-${client.name}";' byline="true" />
+
+		<javac bootclasspath="${java.runtime}" classpathref="version.classpath" extdirs="" source="${java.version.src}" target="${java.version.target}" srcdir="${target.dir}/tmp" destdir="${target.dir}/tmp">
+			<include name="Version.java"/>
+		</javac>
+	</target>
+
+	<target name="compile" depends="clean,version" description="Compiles the customer specific Java code.">
+
+		<ant4eclipse:installedJREs>
+			<jre id="jre15" location="${java.jre}" />
+		</ant4eclipse:installedJREs>
+
+		<ant4eclipse:linkedResourceVariable name="WORKSPACE_LOC" location="${workspace.dir}" />
+
+		<!-- Compile customer specific code -->
+		<buildJdtProject
+			workspaceDirectory="${workspace.dir}"
+			projectname="${project.portal.name}"
+			targetLevel="${java.version.src}"
+			sourceLevel="${java.version.target}"/>
+
+	</target>
+	<target name="jar">
+		<!-- migration scripts -->
+		<jar destfile="${migration.dir}/migration_scripts_client.jar" compress="true" manifest="MANIFEST.MF">
+			<fileset dir="${client.file.dir}" />
+		</jar>
+
+	</target>
+
+	<target name="war" depends="dojo-build,mobile-build,tradeui-build,fccui-build,clean-js,compile,jar" description="Creates the WAR file.">
+
+		<war destfile="${target.dir}/${war.name}" webxml="${client.dir}/build/ear/war/WEB-INF/web.xml" duplicate="preserve" zip64Mode="always">
+
+			<!-- config -->
+			<zipfileset refid="client.config" prefix="config" />
+			<zipfileset refid="core.config" prefix="config" />
+
+			<!-- content -->
+			<zipfileset refid="client.content" prefix="content" />
+			<zipfileset refid="core.content" prefix="content" />
+
+			<!-- resources -->
+			<classes refid="client.resources" />
+			<classes refid="core.resources" />
+
+			<!-- client WEB-INF -->
+			<zipfileset refid="client.webinf" prefix="WEB-INF" />
+
+			<!-- core libraries -->
+			<mappedresources>
+				<fileset refid="core.lib" />
+				<chainedmapper>
+					<flattenmapper/>
+					<globmapper from="*" to="WEB-INF/lib/*"/>
+				</chainedmapper>
+			</mappedresources>
+
+			<!-- client libraries -->
+			<mappedresources>
+				<fileset refid="client.lib" />
+				<chainedmapper>
+					<flattenmapper/>
+					<globmapper from="*" to="WEB-INF/lib/*"/>
+				</chainedmapper>
+			</mappedresources>
+
+			<mappedresources>
+				<fileset refid="core.services" />
+				<chainedmapper>
+					<flattenmapper/>
+					<globmapper from="*" to="WEB-INF/services/*"/>
+				</chainedmapper>
+			</mappedresources>
+
+
+			<!-- client code -->
+			<zipfileset dir="${docroot.dir}/WEB-INF/classes"  includes="com/**" prefix="WEB-INF/classes" erroronmissingdir="false">
+				<patternset refid="portal.src" />
+			</zipfileset>
+			<zipfileset dir="${target.dir}/tmp" includes="com/**" prefix="WEB-INF/classes" />
+		</war>
+	</target>
+
+	<target name="clean-js" description="Deletes the obfuscated/layered JS files.">
+		<delete includeemptydirs="true">
+			<fileset dir="${content.dir}/js" defaultexcludes="no">
+				<patternset refid="client.js.delete">
+				</patternset>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="ear" description="Creates the EAR file.">
+		<ear destfile="${target.dir}/${ear.name}" appxml="${client.dir}/build/ear/META-INF/application.xml">
+			<fileset dir="${target.dir}">
+				<include name="${war.name}"/>
+			</fileset>
+			<fileset dir="${client.dir}/build/ear">
+				<exclude name="META-INF/application.xml" />
+				<include name="META-INF/*" />
+			</fileset>
+		</ear>
+	</target>
+
+	<!-- Deployment tasks. -->
+	<target name="deploy-env" if="custom.build=false">
+		<echo>setting the default deployment envioronment</echo>
+		<property file="default.properties"/>
+	</target>
+
+	<!-- tomcat tasks -->
+	<target name="deploy" depends="deploy-env">
+		<echo message="deploying ${target.dir}/${war.name} to ${tomcat.path} on ${tomcat.url}" />
+		<deploy url="${tomcat.url}" username="${tomcat.username}" password="${tomcat.password}" path="${tomcat.path}" war="file:${target.dir}/${war.name}" />
+	</target>
+	<target name="start">
+		<start url="${tomcat.url}" username="${tomcat.username}" password="${tomcat.password}" path="${tomcat.path}" />
+	</target>
+	<target name="stop">
+		<stop url="${tomcat.url}" username="${tomcat.username}" password="${tomcat.password}" path="${tomcat.path}" />
+	</target>
+	<target name="reload">
+		<reload url="${tomcat.url}" username="${tomcat.username}" password="${tomcat.password}" path="${tomcat.path}" />
+	</target>
+	<target name="undeploy">
+		<echo message="undeploying ${tomcat.path} from ${tomcat.url}" />
+		<undeploy url="${tomcat.url}" username="${tomcat.username}" password="${tomcat.password}" path="${tomcat.path}" />
+	</target>
+
+	<target name="mobile-build" depends="mobile-content-copy" unless="exclude.mobile.content">
+
+		<antcall target="npm-packages-install">
+			<param name="directory.path" value="${workspace.dir}/${project.portal.name}/build/mobile" />
+		</antcall>
+
+		<exec dir="${workspace.dir}/${project.portal.name}/build/mobile" executable="cmd" osfamily="windows">
+			<arg value="/C"/>
+			<arg value="npm run build"/>
+		</exec>
+
+		<exec dir="${workspace.dir}/${project.portal.name}/build/mobile" executable="npm" osfamily="unix">
+			<arg value="run"/>
+			<arg value="build"/>
+		</exec>
+
+	</target>
+
+	<!-- Copy client mobile resources -->
+	<target name="mobile-content-copy">
+		<copy todir="${mobile.content.src.dir}" failonerror="false" overwrite="true">
+			<fileset dir="${client.content.dir}/mobile">
+				<include name="**" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="npm-packages-install">
+		<exec dir="${directory.path}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg value="/C"/>
+			<arg value="npm install"/>
+		</exec>
+
+		<exec dir="${directory.path}" executable="npm" osfamily="unix" failonerror="true">
+			<arg value="install"/>
+		</exec>
+	</target>
+
+	<!-- START - For tradeui(Undertaking) project -->
+
+	<target name="tradeui-build">
+		<if>
+			<available file="${client.tradeui.project.dir}" type="dir" />
+			<then>
+				<antcall target="npm-packages-install">
+					<param name="directory.path" value="${client.tradeui.project.dir}" />
+				</antcall>
+				<!--<echo message="Running Angular Lint on client-tradeui Project ..." />
+				<antcall target="angular-lint">
+					<param name="directory.path" value="${client.tradeui.project.dir}" />
+				</antcall>-->
+				<if>
+					<equals arg1="${angular.prod.mode}" arg2="true"/>
+					<then>
+						<antcall target="tradeui-build-prod"/>
+					</then>
+				</if>
+				<if>
+					<equals arg1="${angular.prod.mode}" arg2="false"/>
+					<then>
+						<antcall target="tradeui-build-dev"/>
+					</then>
+				</if>
+			</then>
+		</if>
+	</target>
+	<target name="angular-lint" description="running Angular Lint for the respective project path, passed as input">
+		<exec dir="${directory.path}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg value="/C"/>
+			<arg value="ng lint --eslint-config=.eslintrc-dev.json --fix"/>
+		</exec>
+		<exec dir="${directory.path}" executable="npm" osfamily="unix" failonerror="true">
+			<arg value="run"/>
+			<arg value="lint --eslint-config=.eslintrc-dev.json --fix"/>
+		</exec>
+	</target>
+
+	<target name="tradeui-build-prod" description="prod mode angular build for tradeui">
+		<echo message="Running prod mode tradeui-build...${angular.prod.mode}" />
+		<exec dir="${client.tradeui.project.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg value="/C"/>
+			<arg value="node --max-old-space-size=4096 ./node_modules/@angular/cli/bin/ng build --configuration production --sourceMap=false --aot=true --extractLicenses=false --statsJson=false --progress=false --output-hashing none"/>
+		</exec>
+		<exec dir="${client.tradeui.project.dir}" executable="npm" osfamily="unix" failonerror="true">
+			<arg value="run"/>
+			<arg value="--max-old-space-size=4096 ./node_modules/@angular/cli/bin/ng build --configuration production --sourceMap=false --aot=true --extractLicenses=false --statsJson=false --progress=false --output-hashing none"/>
+		</exec>
+		<!-- Create Folder -->
+		<echo message="Creating TRADEUI folder..." />
+		<mkdir dir="${target.trade.ui.dir}"/>
+		<echo message="Copy the Files from [${client.tradeui.dist.dir}] to [${target.trade.ui.dir}] folder..." />
+		<copy todir="${target.trade.ui.dir}" overwrite="true">
+			<fileset dir="${client.tradeui.dist.dir}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+		<echo message="Copy the Core Localization Files [target.trade.ui.dir=${docroot.dir}/content/TRADEUI] folder..." />
+		<copy todir="${tradeui.core.assets.target.dir}" overwrite="true">
+			<fileset dir="${tradeui.core.assets.src.dir}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+	</target>
+
+
+	<target name="tradeui-build-dev" description="dev mode angular build for tradeui">
+		<echo message="Running dev tradeui-build...${angular.prod.mode}" />
+		<exec dir="${client.tradeui.project.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg value="/C"/>
+			<arg value="node ./node_modules/@angular/cli/bin/ng build --optimization=false --buildOptimizer=false --sourceMap=true --aot=true --extractLicenses=false --statsJson=false --progress=false"/>
+		</exec>
+		<exec dir="${client.tradeui.project.dir}" executable="npm" osfamily="unix" failonerror="true">
+			<arg value="run"/>
+			<arg value="./node_modules/@angular/cli/bin/ng build --optimization=false --buildOptimizer=false --sourceMap=true --aot=true --extractLicenses=false --statsJson=false --progress=false"/>
+		</exec>
+		<!-- Create Folder -->
+		<echo message="Creating TRADEUI folder..." />
+		<mkdir dir="${target.trade.ui.dir}"/>
+		<echo message="Copy the Files from [${client.tradeui.dist.dir}] to [${target.trade.ui.dir}] folder..." />
+		<copy todir="${target.trade.ui.dir}" overwrite="true">
+			<fileset dir="${client.tradeui.dist.dir}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+		<echo message="Copy the Core Localization Files from [${webapp.docroot.dir}/tradeui-lib/src/assets/translate/core/] to [target.trade.ui.dir=${docroot.dir}/content/TRADEUI] folder..." />
+		<copy todir="${tradeui.core.assets.target.dir}" overwrite="true">
+			<fileset dir="${tradeui.core.assets.src.dir}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="create-client-folders">
+		<echo message="Creating client folders."/>
+		<mkdir dir="${client.tradeui.project.dir}/src/app/client/common/"></mkdir>
+		<mkdir dir="${client.tradeui.project.dir}/src/app/client/trade/iu/"></mkdir>
+		<mkdir dir="${client.tradeui.project.dir}/src/app/client/trade/ru/"></mkdir>
+		<mkdir dir="${client.tradeui.project.dir}/src/app/client/bank/"></mkdir>
+		<echo file="${client.tradeui.project.dir}/src/app/client/client.module.ts" append="false">
+		import { NgModule } from '@angular/core';
+		
+		@NgModule({
+		})
+
+		export class ClientModule { }
+		</echo>
+		<echo file="${client.tradeui.project.dir}/src/app/client/client.routes.ts" append="false">
+			import { RouterModule, Routes } from '@angular/router';
+			import { NgModule } from '@angular/core';
+			import { CoreRouters } from 'tradeui';
+
+			const routes: Routes = [
+			
+			];
+
+			@NgModule({
+			  imports: [RouterModule.forRoot(routes)],
+			  exports: [RouterModule]
+			})
+
+			export class ClientRouters extends CoreRouters {}
+		</echo>
+	</target>
+	
+	<target name="create-client-tradeui" description="Creates the client-tradeui project if it doesn't already exist.">
+		<if>
+			<available file="${client.tradeui.project.dir}" type="dir"/>
+			<then>
+				<echo message="Angular Project [${project.client.tradeui.name}] already exists." />
+			</then>
+			<else>
+				<echo message="Creating angular project [${project.client.tradeui.name}] with routing and scss." />
+				<exec dir="${client.dir}" executable="cmd" osfamily="windows" failonerror="true">
+					<arg value="/C"/>
+					<arg value="ng new ${project.client.tradeui.name} --routing --style=scss"/>
+				</exec>
+				<exec dir="${client.dir}" executable="npm" osfamily="unix" failonerror="true">
+					<arg value="run"/>
+					<arg value="new ${project.client.tradeui.name} --routing --style=scss"/>
+				</exec>
+				<antcall target="create-client-folders"/>
+				<echo message="Installing the tradeui library." />
+				<copy todir="${client.tradeui.project.dir}" overwrite="true">
+					<fileset dir="${webapp.docroot.dir}/content/tradeui-lib/">
+						<include name="*.tgz"/>
+					</fileset>
+				</copy>
+				<exec dir="${client.tradeui.project.dir}" executable="cmd" osfamily="windows" failonerror="true">
+					<arg value="/C"/>
+					<arg value="npm install ${tradeui.core.lib.file.name}"/>
+				</exec>
+				<exec dir="${client.tradeui.project.dir}" executable="npm" osfamily="unix" failonerror="true">
+					<arg value="install ${tradeui.core.lib.file.name}"/>
+				</exec>
+				<delete file="${client.tradeui.project.dir}/${tradeui.core.lib.file.name}"/>
+			</else>
+		</if>
+	</target>
+	<!-- END - For tradeui(Undertaking) project -->
+
+	<!-- START - For UX project -->
+	<target name="create-client-fccui" description="Creates the client-fccui project if it doesn't already exist.">
+		<if>
+			<available file="${client.fccui.project.dir}" type="dir"/>
+			<then>
+				<echo message="Angular Project [${project.client.fccui.name}] already exists." />
+			</then>
+			<else>
+				<echo message="Creating angular project [${project.client.fccui.name}] with routing and scss." />
+
+				<exec dir="${workspace.dir}/${project.portal.name}" executable="cmd" osfamily="windows" failonerror="false">
+					<arg value="/C"/>
+					<arg value="npm i @angular/cli@12.x"/>
+				</exec>
+				<exec dir="${workspace.dir}/${project.portal.name}" executable="npm" osfamily="unix" failonerror="false">
+					<arg value="run"/>
+					<arg value="i @angular/cli@12.x"/>
+				</exec>
+			
+				<exec dir="${workspace.dir}/${project.portal.name}" executable="cmd" osfamily="windows" failonerror="true">
+					<arg value="/C"/>
+					<arg value="ng new ${project.client.fccui.name} --routing --style=scss"/>
+				</exec>
+				<exec dir="${workspace.dir}/${project.portal.name}" executable="npm" osfamily="unix" failonerror="true">
+					<arg value="run"/>
+					<arg value="new ${project.client.fccui.name} --routing --style=scss"/>
+				</exec>
+			
+				<exec dir="${client.fccui.project.dir}" executable="cmd" osfamily="windows" failonerror="true">
+					<arg value="/C"/>
+					<arg value="npm i rxjs@6.5.5 --save-dev"/>
+				</exec>
+				<exec dir="${client.fccui.project.dir}" executable="npm" osfamily="unix" failonerror="true">
+					<arg value="run"/>
+					<arg value="i  rxjs@6.5.5 --save-dev"/>
+				</exec>				
+
+				<echo message="Installing the fccui library." />
+				<copy todir="${client.fccui.project.dir}" overwrite="true">
+					<fileset dir="${webapp.docroot.dir}/content/fccui-lib/">
+						<include name="*.tgz"/>
+					</fileset>
+				</copy>
+				<exec dir="${client.fccui.project.dir}" executable="cmd" osfamily="windows" failonerror="true">
+					<arg value="/C"/>
+					<arg value="npm install ${fccui.core.lib.file.name}"/>
+				</exec>
+				<exec dir="${client.fccui.project.dir}" executable="npm" osfamily="unix" failonerror="true">
+					<arg value="install ${fccui.core.lib.file.name}"/>
+				</exec>
+				
+				<!-- <delete file="${client.fccui.project.dir}/${fccui.core.lib.file.name}"/> -->
+				<!-- post angular project creation changes -->
+				<!-- <antcall target="post-client-fccui-project"/> -->
+				
+				<!-- copying the sources being maintained for the client SDK project generation --> 
+				<copy todir="${client.fccui.project.dir}" overwrite="true">
+					<fileset dir="${webapp.docroot.dir}/content/fccui-lib/ref">
+					</fileset>
+				</copy>
+				
+				<!-- copying the styles and assets --> 
+				<copy todir="${client.fccui.project.dir}/src/assets" overwrite="true">
+					<fileset dir="${webapp.docroot.dir}/content/fccui-src/src/assets">
+					</fileset>
+				</copy>	
+				<copy todir="${client.fccui.project.dir}/src/styles" overwrite="true">
+					<fileset dir="${webapp.docroot.dir}/content/fccui-src/src/styles">
+					</fileset>
+				</copy>		
+				
+			</else>
+		</if>
+	</target>
+	
+	<target name="update-fccui-library" description="Update fccui library from updated fccui-0.0.0.tgz library file">
+		<if>
+			<available file="${client.fccui.project.dir}" type="dir"/>
+			<then>
+				<echo message="Installing the fccui library." />
+				<!-- Delete old package-lock files -->
+				<delete file="${client.fccui.project.dir}/package-lock.json"/>			
+				
+				<copy todir="${client.fccui.project.dir}" overwrite="true">
+					<fileset dir="${webapp.docroot.dir}/content/fccui-lib/">
+						<include name="*.tgz"/>
+					</fileset>
+				</copy>	
+			</then>
+			<else>
+				<echo message="Angular Project [${project.client.fccui.name}] doesn't exists. Cann't update the library" />
+			</else>
+		</if>
+		<if>
+			<available file="${client.fccui.project.dir}/node_modules" type="dir"/>
+			<then>
+				<echo message="Delete node_modules directory" />
+				<delete dir="${client.fccui.project.dir}/node_modules"/>
+			</then>
+		</if>
+	</target>
+	
+	
+	<target name="fccui-build">
+		<if>
+			<available file="${client.fccui.project.dir}" type="dir" />
+			<then>
+				<!--
+				<antcall target="npm-packages-install">
+					<param name="directory.path" value="${client.fccui.project.dir}" />
+				</antcall>
+				-->
+				<exec dir="." executable="cmd" osfamily="windows">
+					<arg value="/C"/>
+					<arg value="fccui-install.bat"/>
+				</exec>
+				<exec dir="." executable="sh" osfamily="unix">
+					<arg line="fccui-install.sh"/>
+				</exec>
+				<!--<echo message="Running Angular Lint on client-fccui Project ..." />
+				<antcall target="angular-lint">
+					<param name="directory.path" value="${client.fccui.project.dir}" />
+				</antcall>-->
+				<if>
+					<equals arg1="${fccui.angular.prod.mode}" arg2="false"/>
+					<then>
+						<antcall target="fccui-build-dev"/>
+					</then>
+					<else>
+						<antcall target="fccui-build-prod"/>						
+					</else>
+				</if>
+			</then>
+		</if>
+	</target>	
+	
+	<target name="fccui-build-prod" description="prod mode angular build for fccui">
+		<echo message="Running prod client-fccui-build...${fccui.angular.prod.mode}" />
+		<exec dir="${client.fccui.project.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg value="/C"/>
+			<arg value="node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration production --optimization=false --sourceMap=false --aot=true --extractLicenses=false --statsJson=false --progress=false --buildOptimizer=false"/>
+		</exec>
+		<exec dir="${client.fccui.project.dir}" executable="node" osfamily="unix" failonerror="true">
+			<arg line="--max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration production --optimization=false --sourceMap=false --aot=true --extractLicenses=false --statsJson=false --progress=false --buildOptimizer=false" />
+		</exec>
+		<!-- Create Folder -->
+		<echo message="Creating fccUI folder..." />
+		<mkdir dir="${target.fcc.ui.dir}"/>
+		<echo message="Copy the Files from [${client.fccui.dist.dir}] to [${target.fcc.ui.dir}] folder..." />
+		<copy todir="${target.fcc.ui.dir}" overwrite="true">
+			<fileset dir="${client.fccui.dist.dir}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+	</target>
+	
+
+	<target name="fccui-build-dev" description="dev mode angular build for fccui">
+		<echo message="Running dev fccui-build...${angular.prod.mode}" />
+		<exec dir="${client.fccui.project.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg value="/C"/>
+			<arg value="node --max-old-space-size=8000 ./node_modules/@angular/cli/bin/ng build --optimization=false --sourceMap=true --aot=true --extractLicenses=false --statsJson=false --progress=false --buildOptimizer=false"/>
+		</exec>
+		<exec dir="${client.fccui.project.dir}" executable="npm" osfamily="unix" failonerror="true">
+			<arg value="run"/>
+			<arg value="--max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --optimization=false --sourceMap=true --aot=true --extractLicenses=false --statsJson=false --progress=false --buildOptimizer=false"/>
+		</exec>
+		<!-- Create Folder -->
+		<echo message="Creating fccUI folder..." />
+		<mkdir dir="${target.fcc.ui.dir}"/>
+		<echo message="Copy the Files from [${client.fccui.dist.dir}] to [${target.fcc.ui.dir}] folder..." />
+		<copy todir="${target.fcc.ui.dir}" overwrite="true">
+			<fileset dir="${client.fccui.dist.dir}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+	</target>	
+
+			<!-- END - For UX project -->
+
+<!-- PMD relate tasks -->
+	
+	<!--  PMD libraries  -->
+	<path id="pmd.classpath">
+		<fileset id="pmd.lib" dir="${libraries.dir}">
+			<include name="pmd/*.jar" />
+		</fileset>
+	</path>
+	<!-- PMD task --> 
+	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
+	<target name="pmd" >
+		<pmd rulesetfiles="${libraries.dir}/pmd/MPPMDPreference.rule" failOnRuleViolation="true" maxRuleViolations="1000" >
+			<formatter type="xml" toFile="${client.dir}/pmdreport.xml"/>
+			<formatter type="net.sourceforge.pmd.renderers.HTMLRenderer" toFile="${client.dir}/PMDViolations.html" toConsole="true" />
+			<fileset dir="${workspace.dir}">
+				<include name="${project.portal.name}/**/*.java" />
+			</fileset>
+		</pmd>
+	</target>	
+
+</project>

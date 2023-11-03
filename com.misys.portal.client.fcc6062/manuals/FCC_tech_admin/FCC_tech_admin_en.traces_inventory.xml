@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Traces Inventory</title>
+
+  <para>All expected errors trapped in <xi:include
+  href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude"
+  xpointer="ent_appli" /> are referenced with a single Error
+  Code as described in the previous chapter. They are listed below together
+  with a short description.</para>
+
+  <para>For some error additional information may be provided to help the
+  investigation, such as contextual data that may be related to the incident:
+  this piece of information is returned in the message.</para>
+
+  <para>Note that a large portion of errors will be related to the database
+  instance serving as a data store for <xi:include href="../entities_en.xml"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" />. These
+  errors will generally be associated with a <exceptionname>SQL
+  Exception</exceptionname> message, and the overall status of the database
+  such as the availability of a connection to the instance or its maximum size
+  that should then be checked by the administrator.</para>
+
+  <para>When errors are related to various file accesses or so-called
+  <exceptionname>SAX Exceptions</exceptionname>, the administrator should
+  check that all files of the standard <xi:include href="../entities_en.xml"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" />
+  distribution are to be found and readable, and that access rights expected
+  on the <xi:include href="../entities_en.xml"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" />
+  directory trees are met.</para>
+
+  <section>
+    <title>Module Ids Inventory</title>
+
+    <para>Reminder: the 5 first digits of <xi:include
+    href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xpointer="ent_appli" /> 5+8 digits exceptions give the module id.</para>
+
+    <informaltable>
+      <tgroup cols="3">
+        <colspec colname="c1" colwidth="1*" />
+
+        <colspec colname="c2" colwidth="3*" />
+
+        <colspec colname="c3" colwidth="3*" />
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Module Id</para></entry>
+
+            <entry valign="top"><para>Module description</para></entry>
+
+            <entry valign="top"><para>Additional Information</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para>00001</para></entry>
+
+            <entry valign="top"><para>Audit</para></entry>
+
+            <entry valign="top"><para>Check the validity of any quoted SQL
+            statement against the database instance.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para>00002</para></entry>
+
+            <entry valign="top"><para>Calendar</para></entry>
+
+            <entry valign="top"><para>Check the validity of any quoted SQL
+            statement against the database instance.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para>00003</para></entry>
+
+            <entry valign="top"><para>Low level database access</para></entry>
+
+            <entry valign="top"><para>Check that the database is accessible
+            and that no XSL style sheet of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para>00004</para></entry>
+
+            <entry valign="top"><para><xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> Configuration</para></entry>
+
+            <entry valign="top"><para>Check that all configuration files are
+            valid.</para></entry>
+          </row>
+
+          <row>
+            <entry>00005</entry>
+
+            <entry>Incoming document parser</entry>
+
+            <entry>Check that no XSL style sheet of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing.</entry>
+          </row>
+
+          <row>
+            <entry>00006</entry>
+
+            <entry><xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> Localization</entry>
+
+            <entry>Verify that localization files exist and are valid in
+            ./config/localization</entry>
+          </row>
+
+          <row>
+            <entry>00007</entry>
+
+            <entry><xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> Portlets</entry>
+
+            <entry>Check that all configuration files are valid.</entry>
+          </row>
+
+          <row>
+            <entry>00008</entry>
+
+            <entry>Interfaces</entry>
+
+            <entry>Check that the interfaces configuration is
+            accessible.</entry>
+          </row>
+
+          <row>
+            <entry>00009</entry>
+
+            <entry><xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> Screens</entry>
+
+            <entry>Check that all configuration files are valid.</entry>
+          </row>
+
+          <row>
+            <entry>00010</entry>
+
+            <entry>Security</entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry>00011</entry>
+
+            <entry>Security</entry>
+
+            <entry>Check geoScramble class</entry>
+          </row>
+
+          <row>
+            <entry>00012</entry>
+
+            <entry>Convert Tools</entry>
+
+            <entry>Check that no XSL style sheet of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing.</entry>
+          </row>
+
+          <row>
+            <entry>00013</entry>
+
+            <entry>Jetspeed Portlet</entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry>00014</entry>
+
+            <entry>NewsContentProviderManager</entry>
+
+            <entry>Check the syndication.adapter.module properties.</entry>
+          </row>
+
+          <row>
+            <entry>00015</entry>
+
+            <entry>RSSNewsContentProvider</entry>
+
+            <entry>Check the RSS connection parameters.</entry>
+          </row>
+
+          <row>
+            <entry>00016</entry>
+
+            <entry>Interfaces</entry>
+
+            <entry>Check that all configuration files are valid and Check the
+            validity of any quoted SQL statement against the database
+            instance.</entry>
+          </row>
+
+          <row>
+            <entry>00017</entry>
+
+            <entry>Message Center</entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry>00018</entry>
+
+            <entry>Product</entry>
+
+            <entry>Check that all configuration files are valid and Check the
+            validity of any quoted SQL statement against the database instance
+            if any.</entry>
+          </row>
+
+          <row>
+            <entry>00019</entry>
+
+            <entry>CustomerReferenceSet</entry>
+
+            <entry>Check that all configuration files are valid and Check the
+            validity of any quoted SQL statement against the database
+            instance. Check the validity of the customer_reference.xsl
+            file.</entry>
+          </row>
+
+          <row>
+            <entry>00020</entry>
+
+            <entry>Security</entry>
+
+            <entry>Check the validity of any quoted SQL statement against the
+            database instance.</entry>
+          </row>
+
+          <row>
+            <entry>00021</entry>
+
+            <entry>Internal</entry>
+
+            <entry></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section>
+    <title>Exception Ids Inventory</title>
+
+    <para>Reminder: the digits 6 and 7 of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" /> 8 digits
+    exceptions give the exception id.</para>
+
+    <informaltable>
+      <tgroup cols="3">
+        <colspec colname="c1" colwidth="1*" />
+
+        <colspec colname="c2" colwidth="3*" />
+
+        <colspec colname="c3" colwidth="3*" />
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Exception Id</para></entry>
+
+            <entry valign="top"><para>Exception Class</para></entry>
+
+            <entry valign="top"><para>Additional Information</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry
+            valign="top"><para><exceptionname>001</exceptionname></para></entry>
+
+            <entry
+            valign="top"><para><classname>com.neomalogic.gtp.common.tracer.
+            GTPException</classname></para></entry>
+
+            <entry valign="top"><para>Check the additional
+            message.</para></entry>
+          </row>
+
+          <row>
+            <entry
+            valign="top"><para><exceptionname>002</exceptionname></para></entry>
+
+            <entry
+            valign="top"><para><classname>com.neomalogic.gtp.core.portal.
+            PortletException</classname></para></entry>
+
+            <entry valign="top"><para>Check that all configuration files are
+            valid.</para></entry>
+          </row>
+
+          <row>
+            <entry
+            valign="top"><para><exceptionname>003</exceptionname></para></entry>
+
+            <entry
+            valign="top"><para><classname>com.neomalogic.gtp.interfaces.core.
+            UnknownInterfaceException</classname></para></entry>
+
+            <entry valign="top"><para>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            complete, especially .JAR Interfaces files.</para></entry>
+          </row>
+
+          <row>
+            <entry
+            valign="top"><para><exceptionname>004</exceptionname></para></entry>
+
+            <entry
+            valign="top"><para><classname>com.neomalogic.gtp.interfaces.core.
+            RuntimeInterfaceException</classname></para></entry>
+
+            <entry valign="top"><para>Check interfaces
+            configuration.</para></entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>005</exceptionname></entry>
+
+            <entry><classname>com.workingdogs.village.DataSetException</classname></entry>
+
+            <entry>Check the validity of any quoted SQL statement against the
+            database instance.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>006</exceptionname></entry>
+
+            <entry><classname>java.io.CharConversionException</classname></entry>
+
+            <entry>Check that all configuration files are valid.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>007</exceptionname></entry>
+
+            <entry><classname>java.io.EOFException</classname></entry>
+
+            <entry>Check that all configuration files are valid.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>008</exceptionname></entry>
+
+            <entry><classname>java.io.FileNotFoundException</classname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>009</exceptionname></entry>
+
+            <entry><classname>java.io.IOException</classname></entry>
+
+            <entry>Check that all configuration files are valid. Check that no
+            configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is missing.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>010</exceptionname></entry>
+
+            <entry><classname>java.io.UnsupportedEncodingException</classname></entry>
+
+            <entry>Check that all configuration files are valid.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>011</exceptionname></entry>
+
+            <entry><classname>java.lang.Exception</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>012</exceptionname></entry>
+
+            <entry><classname>java.lang.ClassNotFoundException</classname></entry>
+
+            <entry>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is complete, especially
+            .JAR files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>013</exceptionname></entry>
+
+            <entry><classname>java.lang.CloneNotSupportedException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>014</exceptionname></entry>
+
+            <entry><classname>java.lang.IllegalAccessException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>015</exceptionname></entry>
+
+            <entry><classname>java.lang.InstantiationException</classname></entry>
+
+            <entry>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is complete, especially
+            .JAR files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>016</exceptionname></entry>
+
+            <entry><classname>java.lang.InterruptedException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>017</exceptionname></entry>
+
+            <entry><classname>java.lang.NoSuchFieldException</classname></entry>
+
+            <entry>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is complete and up to date,
+            especially .JAR files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>018</exceptionname></entry>
+
+            <entry><classname>java.lang.NoSuchMethodException</classname></entry>
+
+            <entry>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is complete and up to date,
+            especially .JAR files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>019</exceptionname></entry>
+
+            <entry><classname>java.lang.RuntimeException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>020</exceptionname></entry>
+
+            <entry><classname>java.lang.ArithmeticException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>021</exceptionname></entry>
+
+            <entry><classname>java.lang.ArrayStoreException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>022</exceptionname></entry>
+
+            <entry><classname>java.lang.IllegalArgumentException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>023</exceptionname></entry>
+
+            <entry><classname>java.lang.IllegalThreadStateException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>024</exceptionname></entry>
+
+            <entry><classname>java.lang.NumberFormatException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>025</exceptionname></entry>
+
+            <entry><classname>java.lang.IllegalMonitorStateException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>026</exceptionname></entry>
+
+            <entry><classname>java.lang.IllegalStateException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>027</exceptionname></entry>
+
+            <entry><classname>java.lang.IndexOutOfBoundsException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>028</exceptionname></entry>
+
+            <entry><classname>java.lang.ArrayIndexOutOfBoundsException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>029</exceptionname></entry>
+
+            <entry><classname>java.lang.StringIndexOutOfBoundsException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>030</exceptionname></entry>
+
+            <entry><classname>java.lang.NegativeArraySizeException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>031</exceptionname></entry>
+
+            <entry><classname>java.lang.NullPointerException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>032</exceptionname></entry>
+
+            <entry><classname>java.lang.SecurityException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>033</exceptionname></entry>
+
+            <entry><classname>java.lang.UnsupportedOperationException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>034</exceptionname></entry>
+
+            <entry><classname>java.lang.ClassCastException</classname></entry>
+
+            <entry>Check the additional message</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>035</exceptionname></entry>
+
+            <entry><classname>java.lang.reflect.
+            InvocationTargetException</classname></entry>
+
+            <entry>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is complete and up to date,
+            especially .JAR files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>036</exceptionname></entry>
+
+            <entry><classname>java.lang.reflect.
+            UndeclaredThrowableException</classname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>037</exceptionname></entry>
+
+            <entry><classname>java.net.MalformedURLException</classname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>038</exceptionname></entry>
+
+            <entry><classname>java.net.UnknownHostException</classname></entry>
+
+            <entry>Check the network adapter.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>039</exceptionname></entry>
+
+            <entry><classname>java.sql.SQLException</classname></entry>
+
+            <entry>Check the validity of any quoted SQL statement against the
+            database instance.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>040</exceptionname></entry>
+
+            <entry><classname>java.util.MissingResourceException</classname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>041</exceptionname></entry>
+
+            <entry><classname>javax.xml.parsers.
+            ParserConfigurationException</classname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>042</exceptionname></entry>
+
+            <entry><classname>javax.xml.transform.
+            TransformerConfigurationException</classname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially XSL style sheets.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>043</exceptionname></entry>
+
+            <entry><classname>javax.xml.transform.TransformerException</classname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially XSL style sheets.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>044</exceptionname></entry>
+
+            <entry><classname>org.apache.turbine.util.db.pool.
+            ConnectionWaitTimeoutException</classname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>045</exceptionname></entry>
+
+            <entry><classname>org.apache.turbine.util.security.
+            DataBackendException</classname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>046</exceptionname></entry>
+
+            <entry><classname>org.apache.turbine.util.security.
+            EntityExistsException</classname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>047</exceptionname></entry>
+
+            <entry><classname>org.apache.turbine.util.security.
+            PasswordMismatchException</classname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>048</exceptionname></entry>
+
+            <entry><classname>org.apache.turbine.util.security.
+            TurbineSecurityException</classname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>049</exceptionname></entry>
+
+            <entry><classname>org.apache.turbine.util.security.
+            UnknownEntityException</classname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><exceptionname>050</exceptionname></entry>
+
+            <entry><classname>org.xml.sax.SAXException</classname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially XSL style sheets.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section>
+    <title>Turbine Category</title>
+
+    <para>Reminder: exceptions thrown by Turbine are 5 digits long.
+    You'll find their inventory in the following table.</para>
+
+    <informaltable>
+      <tgroup cols="3">
+        <colspec colname="c1" colwidth="1*" />
+
+        <colspec colname="c2" colwidth="3*" />
+
+        <colspec colname="c3" colwidth="3*" />
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Error No</para></entry>
+
+            <entry valign="top"><para>Error Message</para></entry>
+
+            <entry valign="top"><para>Additional Information</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry
+            valign="top"><para><errorcode>00000</errorcode></para></entry>
+
+            <entry valign="top"><para><errorname>E00000 - Unable to find the
+            JDBC driver java class</errorname></para></entry>
+
+            <entry valign="top"><para>Check that no configuration file of the
+            <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is missing, especially the various property files
+            and that no .JAR files is missing.</para></entry>
+          </row>
+
+          <row>
+            <entry
+            valign="top"><para><errorcode>00003</errorcode></para></entry>
+
+            <entry valign="top"><para><errorname>E00003 - Error running a
+            Scheduled Job</errorname></para></entry>
+
+            <entry valign="top"><para>Check the additional
+            message.</para></entry>
+          </row>
+
+          <row>
+            <entry
+            valign="top"><para><errorcode>00007</errorcode></para></entry>
+
+            <entry valign="top"><para><errorname>E00007 - - Base
+            Peer</errorname></para></entry>
+
+            <entry valign="top"><para>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            complete, especially .JAR Interfaces files.</para></entry>
+          </row>
+
+          <row>
+            <entry
+            valign="top"><para><errorcode>00016</errorcode></para></entry>
+
+            <entry valign="top"><para><errorname>E00016 - Couldn't close
+            database connection</errorname></para></entry>
+
+            <entry valign="top"><para>Check that the database is reachable and
+            working.</para></entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00017</errorcode></entry>
+
+            <entry><errorname>E00017 - Couldn't commit the JDBC
+            connection.</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00018</errorcode></entry>
+
+            <entry><errorname>E00018 - Couldn't create a JDBC
+            statement&hellip;</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00019</errorcode></entry>
+
+            <entry><errorname>E00019 - Couldn't prepare a
+            statement&hellip;</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00020</errorcode></entry>
+
+            <entry><errorname>E00020 - Couldn't rollback the
+            connection</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00021</errorcode></entry>
+
+            <entry><errorname>E00021 - Couldn't change connection's auto
+            commit mode&hellip;</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00022</errorcode></entry>
+
+            <entry><errorname>E00022 - DBSecurityService :
+            message</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00023</errorcode></entry>
+
+            <entry><errorname>E00023 - DBUserManager :
+            message</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00025</errorcode></entry>
+
+            <entry><errorname>E00025 - Group : Failed to retrieve global group
+            object</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00026</errorcode></entry>
+
+            <entry><errorname>E00026 - IDBroker : message</errorname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00031</errorcode></entry>
+
+            <entry><errorname>E00031 - ParameterParser : File upload
+            failed</errorname></entry>
+
+            <entry>Check your browser configuration. Check the additional
+            message.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00048</errorcode></entry>
+
+            <entry><errorname>E00048 - TemplateNavigation :
+            message</errorname></entry>
+
+            <entry>Check that the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is complete and up to
+            date.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00050</errorcode></entry>
+
+            <entry><errorname>E00050 - Turbine : message</errorname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00051</errorcode></entry>
+
+            <entry><errorname>E00051 - TurbineAssemblerBroker :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files and that no .JAR
+            files is missing.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00052</errorcode></entry>
+
+            <entry><errorname>E00052 - TurbineCastorService :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files and that no .JAR
+            files is missing.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00053</errorcode></entry>
+
+            <entry><errorname>E00053 - TurbineGlobalCacheService :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files and that no .JAR
+            files is missing.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00054</errorcode></entry>
+
+            <entry><errorname>E00054 - TurbineSchedulerService :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files and that no .JAR
+            files is missing.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00055</errorcode></entry>
+
+            <entry><errorname>E00055 - TurbineService :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files and that no .JAR
+            files is missing.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00056</errorcode></entry>
+
+            <entry><errorname>E00056 - TurbineTemplateService :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files and that no .JAR
+            files is missing.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00057</errorcode></entry>
+
+            <entry><errorname>E00057 - TurbineUploadService :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files and that no .JAR
+            files is missing.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00058</errorcode></entry>
+
+            <entry><errorname>E00058 - TurbineUser :
+            message</errorname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00059</errorcode></entry>
+
+            <entry><errorname>E00059 - TurbineVelocityService :
+            message</errorname></entry>
+
+            <entry>Check that no configuration file of the <xi:include href="../entities_en.xml" xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_applibis" /> distribution is
+            missing, especially the various property files.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00062</errorcode></entry>
+
+            <entry><errorname>E00062 - WorkerThread :
+            message</errorname></entry>
+
+            <entry>Check the additional message.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00068</errorcode></entry>
+
+            <entry><errorname>E00068 - Unable to commit the transaction no
+            transaction active for this thread &hellip;</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+
+          <row>
+            <entry><errorcode>00069</errorcode></entry>
+
+            <entry><errorname>E00069 - Unable to rollback the transaction no
+            transaction active for this thread + thread</errorname></entry>
+
+            <entry>Check that the database is reachable and working.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+</chapter>

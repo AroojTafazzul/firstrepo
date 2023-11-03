@@ -1,0 +1,68 @@
+<listdef page='25' source='com.misys.portal.report.ktp.KTPInputSource' js_binding="misys.binding.cash.ktp.messagecenter.ktp_active_conventions">		
+	<name>SPEC_VIEW_CONVENTION</name>
+	<description>Centralisation de Recette</description>
+	<multiProduct>N</multiProduct>	
+	<report_type>01</report_type>	
+	<product_code>SPEC_VIEW_CONVENTION</product_code>	
+	<equivalentCurrency />	
+	<use_absolute_width>N</use_absolute_width>	
+	<order_list_by_default>N</order_list_by_default>
+	 	
+	<column name='IBAN_CENTRALISATEUR' align="center" width="12%" abbreviation='N'>	
+		<description locale='en'>Bank Reference</description>
+		<description locale='fr'>Référence Bancaire Centralisateur</description>
+	</column>	
+	<column name='RANG' align="center" width="4%"  abbreviation='N'>	
+		<description locale='en'>Order</description>
+		<description locale='fr'>Rang</description>
+	</column>	
+	<column name='BANQUE' align="left" width="10%"  abbreviation='N'>	
+		<description locale='en'>Bank</description>
+		<description locale='fr'>Banque</description> 
+	</column>
+	<column name='DESC_CENTRALISE' align="left" width="13%"  abbreviation='N'>	
+		<description locale='en'>Description</description>
+		<description locale='fr'>Description</description>
+	</column>	
+	<column name='DENOTAGE' align="left" width="6%"  abbreviation='N'>	
+		<description locale='en'>Description</description>
+		<description locale='fr'>Dénotage</description>
+	</column>	
+	<column name='IBAN_CENTRALISE' align="center" width="10%" abbreviation='N'>	
+		<description locale='en'>Centralized Bank Reference</description>
+		<description locale='fr'>Référence Bancaire Centralisé </description>
+	</column>	
+	<column name='ACTIVATION_DATE' align="center" width="6%" abbreviation='N'>	
+		<description locale='en'>Activation Date</description>
+		<description locale='fr'>Date d'activation</description>
+	</column>	
+	<column name='DESACTIVATION_DATE' align="center" width="6%" abbreviation='N'>	
+		<description locale='en'>Desactivation Date</description>
+		<description locale='fr'>Date de désactivation</description>
+	</column>
+	
+	<column name="CENTRALIZING_ACCOUNTS" align="center" width="12%" hidden="y">
+		<description locale='en'>Centralizing Accounts</description>
+		<description locale='fr'>Comptes Centralisateurs</description>
+	</column>
+	<column name="CENTRALIZED_ACCOUNTS" align="center" width="88%" hidden="y">
+		<description locale='en'>Centralized Accounts</description>
+		<description locale='fr'>Comptes Centralisés</description>
+	</column>
+	
+	<parameter name="entity" size="20" loca_key="ENTITY" input="y" type="Entity" default=""/>
+	
+	<parameter name='export_list' file='SPEC_VIEW_CONVENTION' type='export' file_name='SPEC_VIEW_CONVENTION' />
+	
+	<candidate name="SPEC_VIEW_CONVENTION">
+		<filter>
+			<criteria>
+				<column name="ENTITY"/>
+				<operator type="like"/>
+				<value type="parameter">entity</value>
+			</criteria>
+		</filter>
+	</candidate>	
+	<executable_flag>Y</executable_flag>	
+		
+</listdef>		

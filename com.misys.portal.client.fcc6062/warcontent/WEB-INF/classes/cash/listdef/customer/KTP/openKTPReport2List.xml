@@ -1,0 +1,137 @@
+<listdef page='25' source='com.misys.portal.report.ktp.KTPInputSource' huge="y" js_binding="misys.binding.cash.ktp.messagecenter.ktp_account_statement">
+	<name>SPEC_VIEW_ACCSTAT</name>
+	<description>Account Statement</description>
+	<multiProduct>N</multiProduct>
+	<report_type>01</report_type>
+	<product_code>SPEC_VIEW_ACCSTAT</product_code>
+	<equivalentCurrency />
+	<use_absolute_width>N</use_absolute_width>
+	<order_list_by_default>N</order_list_by_default>
+	<column name='DATE_OPERATION' align="center" width="8em" abbreviation='N'>
+		<description locale='en'>Operation date</description>
+		<description locale='fr'>Date d'opération</description>
+	</column>
+	<column name='DATE_VALEUR' align="center" width="8em" abbreviation='N'>
+		<description locale='en'>Value Date</description>
+		<description locale='fr'>Date de valeur</description>
+	</column>
+	<column name='CODE_OPERATION' width="30%" abbreviation='N'>
+		<description locale='en'>Operation Code</description>
+		<description locale='fr'>Code d'opération</description>
+	</column>
+	<column name='LIBELLE' width="35%" abbreviation='N'>
+		<description locale='en'>Label</description>
+		<description locale='fr'>Libellé</description>
+	</column>
+	<column name='REFERENCE' width="35%" abbreviation='N'>
+		<description locale='en'>Reference</description>
+		<description locale='fr'>Référence</description>
+	</column>
+	<column name="DEVISE" align="center" width="5em" abbreviation='N'>
+		<description locale='en'>Currency</description>
+		<description locale='fr'>Devise</description>
+	</column> 
+	<column name='DEBIT' align="right" width="8em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Debit</description>
+		<description locale='fr'>Débit</description>
+	</column>
+	<column name='CREDIT' align="right" width="8em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Credit</description>
+		<description locale='fr'>Crédit</description>
+	</column>
+	<column name='SOLDE' align="right" width="8em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Oustanding</description>
+		<description locale='fr'>Solde</description>
+	</column>
+	
+	<parameter name="entity" size="20" loca_key="ENTITY" input="y" type="Entity" default="" hidden="false"/>
+	<parameter input='y' name='ACCOUNT_NO' mandatory='false' hidden='false' max_length="34" type='KTPAccountNo'>
+		<description locale='en'>Account</description>
+		<description locale='fr'>Compte</description>
+	</parameter>
+	<parameter input='y' name='TYPE_DATE' mandatory='false' hidden='false' type='com.misys.portal.report.ktp.KTPConstrainedParameter'>
+		<description locale='en'>Solde type</description>
+		<description locale='fr'>Type de solde</description>
+	</parameter>
+	<parameter input='y' name='DU' mandatory='false' type='Date' default='today' currency=''>
+		<description locale='en'>From</description>
+		<description locale='fr'>Du</description>
+	</parameter>
+	<parameter input='y' name='AU' mandatory='false' type='Date' default='today' currency=''>
+		<description locale='en'>To</description>
+		<description locale='fr'>Au</description>
+	</parameter>
+	<parameter input='y' name='TYPE_FLUX' mandatory='false' hidden='false' type='com.misys.portal.report.ktp.KTPConstrainedParameter'>
+		<description locale='en'>Flow Type</description>
+		<description locale='fr'>Type de flux</description>
+	</parameter>
+	<parameter input='y' name='SENS' mandatory='false' hidden='false' type='com.misys.portal.report.ktp.KTPConstrainedParameter'>
+		<description locale='en'>Debit/Credit</description>
+		<description locale='fr'>Sens</description>
+	</parameter>
+	<parameter input='y' name='SOUS_TOTAUX_PAR_DATE' mandatory='false' hidden='false' type='com.misys.portal.report.ktp.KTPConstrainedParameter'>
+		<description locale='en'>Sub-totals per date</description>
+		<description locale='fr'>Sous-totaux par date</description>
+	</parameter>
+	<parameter
+		name="MontantMinMax"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="REPORT_MINIMUM_AMOUNT"
+		range_to_label="REPORT_MAXIMUM_AMOUNT">
+	</parameter>
+	<parameter name="DEVISE" size="3" loca_key="DEVISE" input="y" default="EUR"/>
+	
+	<parameter name='export_list' file='SPEC_VIEW_ACCSTAT' type='export' file_name='SPEC_VIEW_ACCSTAT' />
+	<candidate name='SPEC_VIEW_ACCSTAT'>
+		<filter>
+			<criteria>
+				<column name='DATE_VALEUR'></column>
+				<operator type='supOrEqual'></operator>
+				<value type='parameter'>DU</value>
+			</criteria>
+			<criteria>
+				<column name='DATE_VALEUR'></column>
+				<operator type='infOrEqual'></operator>
+				<value type='parameter'>AU</value>
+			</criteria>
+			<criteria>
+				<column name='COMPTE'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>ACCOUNT_NO</value>
+			</criteria>
+			<criteria>
+				<column name='TYPE_FLUX'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>TYPE_FLUX</value>
+			</criteria>
+			<criteria>
+				<column name='TYPE_DATEKTP'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>TYPE_DATE</value>
+			</criteria>
+			<criteria>
+				<column name='SENS'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>SENS</value>
+			</criteria>
+			<criteria>
+				<column name='SOUS_TOTAUX_PAR_DATE'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>SOUS_TOTAUX_PAR_DATE</value>
+			</criteria>
+			<criteria>
+				<column name='MONTANT'></column>
+				<operator type='supOrEqual'></operator>
+				<value type='parameter'>MontantMinMax@fromAmount</value>
+			</criteria>
+			<criteria>
+				<column name='MONTANT'></column>
+				<operator type='infOrEqual'></operator>
+				<value type='parameter'>MontantMinMax@toAmount</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<executable_flag>Y</executable_flag>
+</listdef>

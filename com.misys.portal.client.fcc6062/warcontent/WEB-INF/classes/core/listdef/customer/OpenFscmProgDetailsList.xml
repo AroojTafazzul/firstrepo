@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" default_order="program_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="program_code" align="center" width="25%" loca_key="PROGRAM_CODE">
+		<url>
+			<parameter name="SCREEN" value="CSF_SCREEN"/>
+			<parameter name="PROGRAM_ID" column="program_id"/>
+			<parameter name="OPTION_CODE" binding_code="DISPLAY_FSCMPROG"/>
+		</url>
+	</column>
+	<column name="program_id" hidden="y"/>
+	
+	<column name="program_name" align="left" width="20%" loca_key="PROGRAM_NAME"/>
+	<column name="program_type" align="left" width="25%" loca_key="PROGRAM_TYPE"/>
+	<column name="program_sub_type" align="center" width="20%" loca_key="PROGRAM_SUB_TYPE"/>
+	<column name="status" align="left" width="10%" loca_key="STATUS">
+	<script>
+		     var status = row.getColumnValue("status");
+             value = com.misys.portal.common.localization.Localization.getDecode(language,"N020",""+status+"");
+	          value;
+      </script>
+      </column>
+	<column name="is_proxy" hidden='y'/>
+	<!-- parameters -->
+	 <parameter
+                name="program_code"
+                loca_key="PROGRAM_CODE"
+                size="16"
+                max_length="35"
+                input="y"/>
+        <parameter
+                name="program_name"
+                loca_key="PROGRAM_NAME"
+                size="16"
+                max_length="35"
+                input="y"/>
+        <parameter
+                name="status"
+                type="AvailableUserStatusFlag"
+                size="1"
+                max_length=""
+                loca_key="STATUS"
+                input="y"
+                default=""
+                multiple_values="A,I"/>
+
+
+	<!-- candidates -->	
+		<candidate name="fscm_prog">
+		<filter>
+			<criteria>
+				<column name="program_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					program_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="program_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					program_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="status"/>
+				<operator type="like"/>
+				<value type="parameter">
+					status
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<filter>
+		<criteria>
+			<column name="status"/>
+			<operator type="different"/>
+			<value type="code">
+				N020_DELETED
+			</value>
+		</criteria>
+	</filter>
+	<filter or = "y">
+		<criteria>
+			<column name="is_proxy"/>
+			<operator type="different"/>
+			<value type="code">
+				N034_YES
+			</value>
+		</criteria>
+		<criteria>
+			<column name="is_proxy"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>
+</listdef>
+
+ 
+	

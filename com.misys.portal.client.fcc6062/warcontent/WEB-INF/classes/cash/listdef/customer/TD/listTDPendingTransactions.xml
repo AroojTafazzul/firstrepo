@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+	
+	<!-- columns -->
+	<column name="action" width="3%" align="center"> 
+		<url action="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="SCREEN" column="product_code"/>
+		</url>
+	</column>
+
+	<column name="ref_id" align="center" width="13%" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="10%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="20%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="full_type" computation="sum" align="center" width="6%" loca_key="TYPE">
+		<column name="tnx_type_code"/>
+		<column name="sub_tnx_type_code"/>
+	</column>
+	<column name="status" align="center" width="10%" loca_key="STATUS" sort="n">
+		<script>
+			if (value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+				
+				if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015","05")+")";
+				}
+				else if(("99").equals(""+subTnxStatCode+"")||("").equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")"; 
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="td_type" align="center" width="10%" loca_key="DEPOSIT_TYPE"/>
+	<column name="tenor" align="left" width="6%" loca_key="TENOR" sort="n">
+		<script>
+			if (value.equals(""))
+			{
+				var maturityTermNbr = row.getColumnValue("value_date_term_number");
+				var maturityTermCode = row.getColumnValue("value_date_term_code");
+				if("1".equals(""+maturityTermNbr+""))
+				{
+					value = maturityTermNbr +" "+ com.misys.portal.common.localization.Localization.getDecode(language,"N413_S",""+maturityTermCode+"");
+				}
+				else
+				{
+					value = maturityTermNbr +" "+ com.misys.portal.common.localization.Localization.getDecode(language,"N413",""+maturityTermCode+"");
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="ObjectDataString@placement_act_name" align="center" width="12%" loca_key="PLACEMENT_ACCOUNT"/>
+	<column name="cur_code" align="center" width="3%" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="8%" loca_key="AMOUNT"/>
+	<column name="value_date" align="center" width="6%" loca_key="VALUE_DATE"/>
+	<column name="inp_dttm" align="center" width="6%" loca_key="INP_DTTM"/>
+
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="value_date_term_number" hidden="y"/>
+	<column name="value_date_term_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="*"/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="applicant_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		default=""
+		/>
+	<!--<parameter
+		name="td_type"
+		loca_key="DEPOSIT_TYPE"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="maturity_date_term_code"
+		loca_key="TENOR"
+		size="20"
+		max_length="35"
+		input="y"/>			
+	--><parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		type="Currency"
+		input="y"/>
+
+	<parameter
+		name="export_list"
+		file_name="pendingTD"
+		type="export"/>
+
+	<!-- candidates -->	
+	<candidate name="term_deposit">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="entity"/>
+					<operator type="like"/>
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+				<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+				<!--<criteria>
+					<column name="td_type"/>
+					<operator type="like"/>
+					<value type="parameter">
+						td_type
+					</value>
+				</criteria>
+				<criteria>
+					<column name="maturity_date_term_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						maturity_date_term_code
+					</value>
+				</criteria>
+				--><criteria>
+					<column name="cur_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						cur_code
+					</value>
+				</criteria>
+				<criteria>
+					<column name="sub_product_code"/>
+					<operator type="equal"/>
+					<value type="code">
+						N047_CASH_TERM_DEPOSIT
+					</value>
+				</criteria>
+			</filter>
+	</candidate>
+	
+	<filter or="y">
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_NEW
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_AMEND
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_INQUIRE
+			</value>
+		</criteria>
+	</filter>
+	
+  <filter or="y">
+    <criteria>
+      <column name="tnx_stat_code"/>
+      <operator type="different"/>
+      <value type="code">
+        N004_ACKNOWLEDGED
+      </value>
+    </criteria>
+    <criteria>
+      <column name="prod_stat_code"/>
+      <operator type="equal"/>
+      <value type="code">
+        N005_INPROGRESS
+      </value>
+    </criteria>
+  </filter>
+
+</listdef>

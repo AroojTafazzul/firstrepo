@@ -1,0 +1,162 @@
+{
+  "screen": "FundTransferScreen",
+    "isAccordionView": "true",
+    "showPreviewDateField": "false",
+  "chequeBookRequestGeneralDetails": {
+     "entity": {
+			"name": "Entity",
+			"type": "input-dropdown-filter",
+			"options": {
+				
+			},
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"previewValueAttr": "shortName"
+	},
+	"accountNumber": {
+		"name": "accountNumber",
+		"type": "input-dropdown",
+		"options": {
+			
+		},
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12",
+      "styleClass": "margin-side",
+      "previewValueAttr": "number"
+	},
+	"accountId": {
+	"name": "accountId",
+	"type": "input-text",
+	"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	"styleClass": "newLCAmtStyle",
+    "hidden": true,
+	"previewScreen": false
+	},
+	"applReference": {
+	"name": "applReference",
+	"type": "input-text",
+	"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	"styleClass": "newLCAmtStyle",
+    "hidden": true,
+	"previewScreen": false
+	},
+	"noOfChequesBooks": {
+      "name": "noOfChequesBooks",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12",
+      "styleClass": [
+        "subheader-title",
+        "margin-side"
+      ],
+      "rendered": true,
+      "previewValueAttr": "number"
+    },    
+    "deliveryMode": {
+      "name": "deliveryMode",
+      "type": "text",
+     "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "deliveryModeOptions": {
+	      "name": "deliveryModeOptions",
+	      "source": "codeData",
+		  "options": [],
+		  "defaultValue": "03",
+	      "type": "input-radio",
+	      "styleClass": [
+	        "radiocontainer p-grid",
+	        "margin-side"
+	      ],
+	      "showLabel": true,
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12"
+	    },
+	 "branchCode": {
+		"name": "branchCode",
+		"type": "input-text",
+		"options": [
+	    ],
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12",
+      "styleClass": "margin-side",
+      "previewValueAttr": "shortName",
+      "rendered": false,
+      "dynamicCriteria": {
+        "dependControl": "deliveryModeOptions",
+        "dependSection": "chequeBookRequestGeneralDetails",
+        "requiredValue": "08",
+        "presentSection": "chequeBookRequestGeneralDetails"
+      }
+
+	},
+	"branchCodeIcons": {
+	 "name": "branchCodeIcons",
+	 "type": "icon",
+	 "iconName": "search",
+	 "rendered": false,
+	 "layoutClass": "layoutIcon",
+	 "styleClass": "iconStyle",
+	 "parentStyleClass": "parentIconStyle",
+	 "previewScreen": false
+	},
+    "collectorsName": {
+      "name": "collectorsName",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12",
+      "styleClass": [
+        "subheader-title",
+        "margin-side"
+      ],
+      "rendered": false,
+      "dynamicCriteria": {
+        "dependControl": "deliveryModeOptions",
+        "dependSection": "chequeBookRequestGeneralDetails",
+        "requiredValue": "08",
+        "presentSection": "chequeBookRequestGeneralDetails"
+      }
+
+    },
+    "collectorsIdentification": {
+      "name": "collectorsIdentification",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12",
+      "styleClass": [
+        "subheader-title",
+        "margin-side"
+      ],
+      "rendered": false,
+      "dynamicCriteria": {
+        "dependControl": "deliveryModeOptions",
+        "dependSection": "chequeBookRequestGeneralDetails",
+        "requiredValue": "08",
+        "presentSection": "chequeBookRequestGeneralDetails"
+      }
+
+    },
+    "chequeNote": {
+      "name": "chequeNote",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12",
+      "styleClass": [
+        "noteStyle"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+	"chequeNoteMessage": {
+      	 "name": "chequeNoteMessage",
+         "type": "text",
+         "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12",
+         "styleClass": [
+         "noteMessageStyle"
+         ],
+         "rendered": true,
+         "previewScreen": false
+    },
+    "id": "ChequeBookRequestGeneralDetailsComponent",
+    "helpId": "GD"
+     }
+}

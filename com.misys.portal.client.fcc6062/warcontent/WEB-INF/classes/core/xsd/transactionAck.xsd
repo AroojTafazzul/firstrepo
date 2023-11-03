@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema for Transaction Acknowledgement.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	
+	<xs:element name="transaction_acknowledgement">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ref_id"  minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Reference ID.Mandatory when sent by Backoffice</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="tnx_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction ID.Mandatory when sent by Backoffice</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="status"  minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Status of the Transaction.ACK/NACK</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bo_ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office Reference ID.Mandatory when sent by Portal</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bo_tnx_id"  minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office Transaction ID.Mandatory when sent by Portal</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:element name="narrative_message_status"  minOccurs="0">
+					<xs:annotation>
+						<xs:documentation></xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

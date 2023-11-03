@@ -1,0 +1,173 @@
+{
+	"common": [
+		{
+			"actionName": "EDIT",
+			"permissions": [
+				"fcm_save_payments_instrument","fcm_save_payments_batch"
+			],
+			"permissionSuffix": [],
+			"url": "#/commonProductScreen",
+			"urlQueryParams":	{
+						"option": "PAYMENTS",
+						"operation": "UPDATE_FEATURES",               
+						"category": "FCM",
+						"paymentReferenceNumber": {
+							"readFromTransaction": true,
+							"field": "PAYMENT_REFERENCE_NUMBER"
+						}
+			},
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_DRAFT","FCMPS_PENDING_SUBMIT","FCMPS_REJECTED"
+					]
+				}
+			]
+		},
+		{
+			"actionName": "APPROVE",
+			"permissions": [
+				"fcm_approve_payments_instrument","fcm_approve_payments_batch"
+			],
+			"permissionSuffix": [],
+			"url": "",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_PENDING_MY_APPROVAL"
+					]
+				}
+			]
+		},
+		{
+			"actionName": "REJECT",
+			"permissions": [
+				"fcm_return_payments_instrument","fcm_return_payments_batch"
+			],
+			"permissionSuffix": [],
+			"url": "",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_PENDING_MY_APPROVAL"
+					]
+				}
+			]
+		},
+		{
+			"actionName": "DISCARD",
+			"permissions": [
+				"fcm_view_payments_instrument"
+			],
+			"permissionSuffix": [],
+			"url": "",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_DRAFT","FCMPS_PENDING_APPROVAL","FCMPS_PENDING_SUBMIT","FCMPS_PENDING_SEND","FCMPS_REJECTED"
+					]
+				}
+			]
+		},
+		{
+			"actionName": "REMIND_CHECKER",
+			"permissions": [
+				"fcm_view_payments_instrument"
+			],
+			"permissionSuffix": [],
+			"url": "",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_PENDING_APPROVAL","FCMPS_PENDING_SEND","FCMPS_REJECTED"
+					]
+				}
+			]
+		},
+		{
+			"actionName": "REPEAT_TRANSACTION",
+			"permissions": [
+				"fcm_view_payments_instrument"
+			],
+			"permissionSuffix": [],
+			"url": "",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_PENDING_APPROVAL","FCMPS_PENDING_SEND","FCMPS_REJECTED","FCMPS_SENT_TO_BANK","FCMPS_DELETED","FCMPS_DEBITED"
+					]
+				}
+			]
+		},
+		{
+			"actionName": "SEND",
+			"permissions": [
+				"fcm_send_payments_instrument"
+			],
+			"permissionSuffix": [],
+			"url": "",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_PENDING_SEND"
+					]
+				}
+			]
+		},
+		{
+			"actionName": "SCRAP",
+			"permissions": [
+				"fcm_scrap_payments_instrument"
+			],
+			"permissionSuffix": [],
+			"url": "",
+			"urlScreenType": "ANGULAR",
+			"urlType": "Internal",
+			"urlLoadType": "",
+			"imagePath": "",
+			"paymentsStatus": [
+				{
+					"operation": "IS",
+					"applicableValues": [
+						"FCMPS_PENDING_SEND"
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,73 @@
+{
+	"productcode": "BENE",
+	"enableMultipeDownloadFormat": true,
+	"showPopup": false,
+	"actionPopup" : true,
+	"buttons": [
+		{
+			"buttonName": "createBeneficary",
+			"permission": "fcm_modify_customer_beneficiary_mc",
+			"buttonClass": "primaryButton",
+			"routerLink": "commonProductScreen?option=BENEFICIARY_MASTER_MAINTENANCE_MC&operation=ADD_FEATURES&category=FCM"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "beneficiaryAllTabs",
+			"listdefName": "/beneficiary/listdef/beneficiaryAllList",
+			"permission": "fcm_access_customer_beneficiary_mc",
+			"index": 0,
+			"selected": "true",
+			"actionCode":"OpenFCMBeneListing"
+		},
+		{
+			"tabName": "beneficiaryApproved",
+			"listdefName": "/beneficiary/listdef/beneficiaryApprovedFCMList",
+			"permission": "fcm_access_customer_beneficiary_mc",
+			"index": 1,
+			"selected": "true",
+			"commentsRequired": "true",
+			"actionCode":"OpenFCMApprovedBeneListing"
+		},
+		{
+			"tabName": "beneficiaryUaPendingApproval",
+			"listdefName": "/beneficiary/listdef/beneficiaryPendingFCMList",
+			"permission": "fcm_access_customer_beneficiary_mc",
+			"index": 2,
+			"selected": "true",
+			"commentsRequired": "true",
+			"actionCode":"OpenFCMPendingApprovlBeneListing",
+			"severalSubmit": "fcm_approve_customer_beneficiary_mc",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "beneficiarySuspendTab",
+			"listdefName":  "/beneficiary/listdef/beneficiarySuspendedFCMList",
+			"permission": "fcm_access_customer_beneficiary_mc",
+			"index": 3,
+			"selected": "",
+			"actionCode":"OpenFCMSuspendedBeneListing"
+		},
+		{
+			"tabName": "beneficiaryModificationRequired",
+			"listdefName":  "/beneficiary/listdef/beneficiaryRejectedFCMList",
+			"permission": "fcm_access_customer_beneficiary_mc",
+			"index": 4,
+			"selected": "",
+			"actionCode":"OpenFCMModificationBeneListing"
+		}
+	]
+}

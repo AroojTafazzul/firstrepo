@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bo_release_dttm" default_order_type="d" page="10" data_key="ref_id">
+
+
+	<column name="product_code" align="left" loca_key="PRODUCT_CODE" hidden="y" showCode="y" />
+	<column name="ref_id" align="left" width="15%"  loca_key="REFERENCEID" columnFilterType="input-multiselect">
+	</column>
+	<column name="tnx_id" showCode="y" hidden="y"/>
+	<column name="entity" align="left" width="14%" loca_key="ENTITY_NAME_APPLICANT" columnFilterType="input-multiselect"/>
+	<column name="counterparty_name" align="left" width="14%" loca_key="Counter Party" columnFilterType="input-multiselect"/>
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" loca_key="CURCODE" width="10%" />
+	<column name="tnx_amt" align="right" width="14%" loca_key="AMOUNT"/>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" showAsDefault="n" columnFilterType="input-multiselect"/> <!-- Customer Reference -->
+	<column name="tnx_type_code" align="left" width="11%" showCode="y" isColumnSortDisabled="y" isCodeField="y" codeId="N002" loca_key="event" columnFilterType="input-multiselect"/>
+
+	<column name="exp_date" align="left" width="12%" loca_key="EXP_DATE"/>
+	<column name="inp_dttm" align="left" width="12%" loca_key="INP_DTTM" showAsDefault="n" />  <!-- Input date -->
+	<column name="prod_stat_code" align="left" width="14%" loca_key="STATUS" sort="n" isCodeField="y" codeId="N005" showCode="y" columnFilterType="input-multiselect"/>
+	<column name="tnx_stat_code" loca_key="Status" align="left" width="14%" showCode="y" isCodeField="y" codeId="N015" hidden="y"/>
+	<column name="release_dttm" align="left" width="12%" loca_key="RELEASE_DTTM" showAsDefault="n"/>
+	<column name="iss_date" align="left" width="12%" loca_key="ISS_DATE" showAsDefault="n"/>
+
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_STAT_CODE" column="prod_stat_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_ACKNOWLEDGED"/>
+			<parameter name="ACTION_REQ_CODE" column="action_req_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="ACTION_FILTER_RD" value="RD"/>
+		</url>
+	</column> 
+	<column name="action_req_code" align="left" width="15%" loca_key="TYPE"  showCode="y" isCodeField="y" codeId="N042" hidden="y"/>
+	
+	<column name="sub_tnx_stat_code" showCode="y" isCodeField="y" codeId="N015" hidden="y" />
+ 	<column name="sub_product_code" showCode="y" isCodeField="y" codeId="N047" hidden="y" />
+	<column name="sub_tnx_type_code" showCode="y" isCodeField="y" codeId="N003" hidden="y" />
+	<column name="bo_release_dttm" hidden="y" />
+	<column name="tnx_val_date" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter name="tnx_val_date" type="AvailableTimeFrames" loca_key="TIME_FRAMES" input="y" default="blank"/>
+	<parameter name="ref_id" size="20"  max_length="20" loca_key="REFERENCEID" default="" input="y" type=""/>
+	<parameter name="counterparty_name" size="35" max_length="35" loca_key="Counter Party" input="y" default="" type="" />
+	<parameter name="entity" size="35" max_length="35" loca_key="ENTITY_NAME_APPLICANT" input="y" multiple="y" default="" type="Entity"/>
+	<parameter name="bo_ref_id" loca_key="BO_REF" size="20" max_length="35" input="y" type=""/>
+	<parameter name="cur_code" input="y" size="3" max_length="3" loca_key="CURCODE" multiple="y" type="Currency"/>
+	<parameter name="parameter1" type="AvailableProducts" size="" max_length="" loca_key="PRODUCTCODE" input="y" default="*" hidden="true"/>
+	<parameter name="exp_date" loca_key="EXP_DATE" type="range" input="y" default="blank"/>
+	<parameter
+		name="prod_stat_code"
+		size="12"
+		max_length="20"
+		loca_key="PRODUCT_STAT_CODE"
+		input="y"
+		default=""
+		multiple="y"
+		isCodeField="y" 
+		codeId="N005">
+	</parameter>
+	<parameter
+		name="inp_dttm"
+		type="range"
+		loca_key="INP_DTTM"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="customerRef"
+		input="y"
+		default=""/>
+	<parameter name="sub_product_code" loca_key="PRODUCT_SUBTYPE" type="AvaliableSubProductType" input="y" hidden="true"/>
+	<parameter name="product_code" size="" max_length="3" loca_key="PRODUCT_CODE" input="y" type="" hidden="true"/>
+	<parameter
+		name="export_list"
+		file_name="ActionRequiredTradeList"
+		type="export"/>
+	<parameter
+name="tnx_type_code"
+size="12"
+max_length="20"
+loca_key="TRANSACTION_TYPE_CODE"
+input="y"
+multiple="y"
+default=""
+isCodeField="y"
+codeId="N002"/>
+<parameter
+name="sub_tnx_type_code"
+size="12"
+max_length="20"
+loca_key="SUB_TRANSACTION_TYPE_CODE"
+input="y"
+multiple="y"
+default=""
+isCodeField="y"
+codeId="N003"
+hidden="true"/>
+<parameter
+name="event"
+size="12"
+max_length="20"
+loca_key="event"
+input="y"
+multiple="y"
+default=""
+isClubbed="y"
+hidden="true"
+type="TnxTypeSubTnxType"
+clubbedFieldsList="tnx_type_code,sub_tnx_type_code"/>
+
+	<!-- candidates -->
+	<candidate name="parameter1">
+		<filter>
+			<criteria>
+				<column name="ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name" />
+				<operator type="like" />
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity" />
+				<operator type="in" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code" />
+				<operator type="in" />
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			 <criteria>
+	          <column name="cust_ref_id"/>
+	          <operator type="like"/>
+	          <value type="parameter">
+	            cust_ref_id
+	          </value>
+	        </criteria>
+			<criteria>
+				<column name="bo_ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code" />
+				<operator type="in" />
+				<value type="parameter">
+					tnx_type_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code" />
+				<operator type="in" />
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="exp_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					exp_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="exp_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					exp_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>	
+			<criteria>
+				<column name="inp_dttm" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="like" />
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="action_req_code" />
+				<operator type="isNotNull" />
+			</criteria>
+			<criteria>
+				<column name="CrossReference@child_tnx_id" />
+				<operator type="isNull" />
+			</criteria>
+			<criteria>
+				<column name="CrossReference@type_code" />
+				<operator type="equal" />
+				<value type="code">
+					N043_ACTION_REQUIRED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="different" />
+				<value type="code">
+					N004_CONTROLLED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code" />
+				<operator type="different" />
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="tnx_val_date" />
+			<operator type="supOrEqual" />
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date" />
+			<operator type="infOrEqual" />
+			<value type="parameter">
+				tnx_val_date@to
+			</value>
+		</criteria>
+	</filter>
+
+</listdef>

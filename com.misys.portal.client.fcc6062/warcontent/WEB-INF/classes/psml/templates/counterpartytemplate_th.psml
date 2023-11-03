@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?><portlets user="default">
+	<controller name="com.misys.portal.core.portal.controllers.CardPortletController">
+		<parameter name="parameter" value="pane"></parameter>
+	</controller>
+	<portlets>
+		<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+			<parameter name="sizes" value="250,*"/>
+			<parameter name="mode" value="row"></parameter>
+		</controller>
+		<layout position="0"></layout>
+		<metainfo>
+			<title>Home Page</title>
+		</metainfo>
+		<portlets>
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"></controller>
+			<layout position="1"></layout>
+			<entry type="ref" parent="CounterpartyUserTools_en">
+				<layout position="0"></layout>
+				<parameter name="menu" value="true"/>
+			</entry>
+			<entry type="ref" parent="CounterpartyTradeApplicationsPortlet">
+				<layout position="1"></layout>
+				<parameter name="menu" value="true"/>
+				<metainfo>
+					<title>Trade Applications</title>
+					<description>Trade Applications</description>
+				</metainfo>
+			</entry>
+		</portlets>
+		<portlets>
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"></controller>
+			<layout position="1"></layout>
+			<entry type="ref" parent="CounterpartyOngoingTasksList">
+				<layout position="0"/>
+				<metainfo>
+					<title>Ongoing Tasks</title>
+					<description>Ongoing Tasks</description>
+				</metainfo>
+			</entry>
+			<entry type="ref" parent="EmptyContent">
+				<layout position="1"></layout>
+			</entry>
+			<entry type="ref" parent="EmptyFeed">
+				<layout position="2"></layout>
+			</entry>
+		</portlets>
+	</portlets>
+</portlets>

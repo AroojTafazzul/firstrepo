@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="template_usage_count,last_usage_date" default_order_type="d,d" page="50">
+
+	<column name="template_id" align="left" width="15%" loca_key="TEMPLATE_NAME">
+		<url>
+			<parameter name="SCREEN" value="LC_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_TEMPLATE"/>
+			<parameter name="TEMPLATE_ID" column="template_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect">
+		<!-- JavaScript Pass back -->
+        <js-pass-back keyName="column">
+            <array-element index="0" column="template_id"/>
+            <array-element index="1" column="sub_product_code"/>
+        </js-pass-back>
+	</column>
+	<column name="applicant_name" align="left" width="14%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="template_description" align="left" width="20%" loca_key="DESCRIPTION"/>
+	<!-- hidden columns -->
+	<column name="product_code" hidden="y" showCode = "y"/>
+    <column name="sub_product_code" hidden="y" showCode = "y"/>       
+	<column name="template_usage_count" hidden="y"/>
+	<column name="last_usage_date" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="template_id"
+		size="20"
+		max_length="20"
+		loca_key="TEMPLATE_NAME"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="Entity"/>
+	<parameter
+		name="export_list"
+		file_name="frequentlyUsedFTTemplate"
+		type="export"/>
+	
+	<!-- candidates -->	
+	<candidate name="template_fund_transfer">
+		<filter>
+			<criteria>
+				<column name="template_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					template_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

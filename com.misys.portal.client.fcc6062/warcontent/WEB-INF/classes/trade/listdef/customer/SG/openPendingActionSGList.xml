@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="tnx_val_date" default_order_type="d" page="20">
+
+	<column name="ref_id" align="center" width="15%" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="SG_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_EXISTING"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DISCREPANT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef"/>
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF"/>
+	<column name="iss_date" align="left" width="12%" loca_key="ISS_DATE"/>
+	<column name="action_req_code" align="left" width="15%" loca_key="ACTION_TYPE" columnFilterType="input-multiselect" isColumnSortDisabled="y" isCodeField="y" codeId="N042"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="applicant_name" align="left" width="14%" loca_key="applicant" hidden="y"/>
+	<column name="beneficiary_name" align="left" width="14%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="tnx_amt" align="right" width="12%" loca_key="AMOUNT"/>
+	<column name="exp_date" align="left" width="12%" loca_key="EXP_DATE"/>
+	<column name="status" align="left" width="11%" loca_key="STATUS" columnFilterType="input-multiselect" hidden="y">
+		<script>
+			if (value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+				
+				if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03");
+				}
+				else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+""); 
+				}
+			}
+			value;
+		</script>
+	</column>
+ 	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_STAT_CODE" column="prod_stat_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_ACKNOWLEDGED"/>
+			<parameter name="ACTION_REQ_CODE" column="action_req_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="ACTION_FILTER_RD" value="RD"/>
+		</url>
+	</column> 
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y" isCodeField="y" codeId="N001"/>
+	<column name="prod_stat_code" hidden="y" showCode="y" isCodeField="y" codeId="N005"/>
+	<column name="tnx_stat_code" hidden="y" showCode="y" isCodeField="y" codeId="N004"/>
+	<column name="tnx_type_code" hidden="y" showCode="y" isCodeField="y" codeId="N002"/>
+	<column name="action_req_code" hidden="y" showCode="y" isCodeField="y" codeId="N042"/>
+	<column name="ObjectDataTime@bo_release_dttm" hidden="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="bo_release_dttm"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="ref_id"
+		size="16"
+		max_length="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>
+		<parameter
+		name="bo_ref_id"
+		size="64"
+		max_length="64"
+		loca_key="BO_REF"
+		input="y"
+		default=""/>
+	<parameter
+		name="iss_date"
+		type="range"
+		loca_key="ISS_DATE"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="action_req_code"
+		loca_key="ACTION_TYPE"
+		input="y"
+		multiple="y"
+		type="Action_Type"
+		default=""
+		isCodeField="y" codeId="N042"
+		/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		multiple="y"
+		default=""
+		type="Entity"/>
+		<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		multiple="y"
+		config_maxLength=""
+		type="Beneficiary"/>
+		<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		default=""
+		type="Currency"/>
+	<parameter
+		name="exp_date"
+		type="range"
+		loca_key="EXP_DATE"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="export_list"
+		file_name="pendingActionSGList"
+		type="export">
+	</parameter>
+	<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>		
+	<parameter
+		name="applicant_name"
+		loca_key="applicant"
+		size="35"
+		max_length="35"
+		input="y"
+		hidden="true"
+		config_maxLength=""
+		/>
+
+	<!-- candidates -->	
+	<candidate name="shipping_guarantee">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="action_req_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					action_req_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="exp_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					exp_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="exp_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					exp_date@to
+				</value>
+			</criteria>
+				<criteria>
+				<column name="ObjectDataTime@bo_release_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					bo_release_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataTime@bo_release_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					bo_release_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+        	<column name="cust_ref_id" />
+        	<operator type="like" />
+        	<value type="parameter">
+        		cust_ref_id
+        	</value>
+        	</criteria>
+        	<criteria>
+        		<column name="iss_date" />
+        		<operator type="supOrEqual" />
+        		<value type="parameter">
+        			iss_date@from
+        		</value>
+        	</criteria>
+        	<criteria>
+        		<column name="iss_date" />
+        		<operator type="infOrEqual" />
+        		<value type="parameter">
+        			iss_date@to
+        		</value>
+        	</criteria>
+		</filter>
+	</candidate>
+	
+	<filter>
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N043_ACTION_REQUIRED
+			</value>
+		</criteria>
+		<criteria>
+      		<column name="tnx_stat_code" />
+			<operator type="different" />
+			<value type="code">
+				N004_CONTROLLED
+			</value>
+    	</criteria>
+		<criteria>
+			<column name="tnx_stat_code" />
+			<operator type="different" />
+			<value type="code">
+				N004_UNCONTROLLED
+			</value>
+		</criteria>
+	</filter>
+</listdef>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ListDef xml for trade bank details Look Up -->
+<listdef ordered="y" default_order="abbv_name" default_order_type="a" page="10">
+
+	
+	<column name="abbv_name" align="left" width="15%" loca_key="ABBVNAME"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="name" align="left" width="15%" loca_key="NAME"/>
+	<column name="address_line_1" align="left" width="15%" loca_key="ADDRESSLINE1" />
+	<column name="address_line_2" align="left" width="15%" loca_key="ADDRESSLINE2"/>
+	<column name="dom" align="left" width="15%" loca_key="ADDRESSLINE3"/>
+	<column name="iso_code" align="left" width="15%" loca_key="BICCODE" columnFilterType="input-multiselect"/>
+	<column name="contact_name" hidden="y" />
+	<column name="phone" hidden="y" />
+	
+	<column name="bank_id" hidden="y">
+		<!-- JavaScript Pass back -->
+			<js-pass-back keyName="column">
+				<array-element index="0" column="iso_code"/>
+				<array-element index="1" column="name"/>
+				<array-element index="2" column="address_line_1"/>
+				<array-element index="3" column="address_line_2"/>
+				<array-element index="4" column="dom"/>
+				<array-element index="5" column="contact_name"/>
+				<array-element index="6" column="phone"/>
+			</js-pass-back>
+	</column>
+	
+
+<!-- parameters -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="Entity"/>
+	<parameter
+		name="iso_code"
+		size="11"
+		max_length="11"
+		loca_key="BICCODE"
+		input="y"
+		default=""
+		type="iso_code"/>
+
+	<!-- candidates -->
+	<candidate name="StaticBank">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="iso_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					iso_code
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

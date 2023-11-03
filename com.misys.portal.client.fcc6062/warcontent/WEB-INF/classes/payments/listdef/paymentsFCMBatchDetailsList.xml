@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef page="10" hideSearch="true" source="GenericInputSource" category="fcm"
+	parentNodePath="batchPaymentList/data/paymentDetail" customInterfaceService="paymentsListing" customComponentName="getPaymentDetails"
+	ordered="y" enableFilterPopup="true" default_order="instrumentstatus" default_order_type="d">
+	
+	<column name="makerDate" align="left" width="12%" loca_key="initiationDate" columnFilterType="input-multiselect"/>
+	<column name="debtorAccount@id@other@id" align="left" width="12%" loca_key="payFrom" columnFilterType="input-multiselect"/>
+	<column name="creditorDetails@creditorName" align="left" width="12%" loca_key="beneficiaryName" columnFilterType="input-multiselect"/>
+	<column name="creditorAgent@otherId" align="left" width="12%" loca_key="ifscCode" columnFilterType="input-multiselect"/>
+	<column name="creditorDetails@account@currency" align="left" width="6%" loca_key="ccy" columnFilterType="input-multiselect"/>
+	<column name="instructedAmountCurrencyOfTransfer2@amount" align="left" width="12%" loca_key="amount" columnFilterType="input-multiselect"/>
+	<column name="instrumentstatus" align="left" width="12%" loca_key="status" columnFilterType="input-multiselect"/>
+	<column name="paymentReferenceNumber" align="left" width="15%" loca_key="paymentBatchReferenceId" isColumnSortDisabled="y" columnFilterType="input-multiselect" hidden="y"/>
+	<column name="instrumentPaymentReference" align="left" width="12%" loca_key="instrumentPaymentReference" hidden="y" />
+	<column name="index" align="left" width="12%" loca_key="index" hidden="y" />
+	<column name="isBatchPayment" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="methodOfPayment" align="left" width="12%" loca_key="package" hidden="y"/>
+	
+	<column name="action" align="right" width="12%" loca_key="ACTIONS">
+	    <url fcmAction="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_ON_BATCH_PAYMENTS_STATUS">
+	    	   	<parameter name="PAYMENTS_STATUS" column="instrumentstatus"/>
+	    	   	<parameter name="PAYMENT_REFERENCE_NUMBER" column="paymentReferenceNumber"/>
+	    </url>
+	</column>
+	
+	<parameter name="creditorDetails@creditorName" size="35" max_length="35"
+	loca_key="beneficiaryName" input="y" default="" multiple="y" type="EntityFilter" />
+	
+	<parameter name="instrumentstatus" size="35" max_length="35"
+	loca_key="Status" input="y" default="" type="Beneficiary" />
+		
+	<candidate name="fcmpayments">
+		<filter>
+			<criteria>
+				<column name="creditorDetails@creditorName" />
+				<operator type="like" />
+				<value type="parameter">
+					creditorDetails@creditorName
+				</value>
+			</criteria>
+			<criteria>
+				<column name="instrumentstatus" />
+				<operator type="like" />
+				<value type="parameter">
+					instrumentstatus
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

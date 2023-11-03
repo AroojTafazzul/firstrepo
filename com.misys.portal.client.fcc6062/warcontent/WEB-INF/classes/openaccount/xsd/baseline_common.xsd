@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sch="http://www.ascc.net/xml/schematron" 
+	elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:documentation xml:lang="en"> Schema W3C contains 
+            types and elements used in baseline-like other Schema W3C for validating
+            GTP products XML Files. Copyright (c) 2000-2006 NEOMAlogic
+            (http://www.neomalogic.com), All Rights Reserved. </xs:documentation>
+    </xs:annotation>
+	<xs:annotation>
+		<xs:documentation>Baseline Business Rules</xs:documentation> 
+           <xs:appinfo>
+           <sch:pattern name="Transport rules" xmlns:sch="http://www.ascc.net/xml/schematron">
+			<sch:rule context="routing_summary">
+				<sch:report test="transport_type='01' and transport_mode = '01' and transport_sub_type='01'
+					and count(../routing_summary[transport_type = '01' and transport_mode = '01' and transport_sub_type= '02' 
+					and transport_group = current()/transport_group]) = 0">A destination airport is mandatory
+					for each group of transports by air in the individual transport mode.</sch:report>	
+				<sch:report test="transport_type='01' and transport_mode = '02' and transport_sub_type='01'
+					and count(../routing_summary[transport_type = '01' and transport_mode = '02' and transport_sub_type= '02' 
+					and transport_group = current()/transport_group]) = 0">A discharge port is mandatory
+					for each group of transports by sea in the individual transport mode.</sch:report>	
+				<sch:report test="transport_type='01' and transport_mode = '03' and transport_sub_type='01'
+					and count(../routing_summary[transport_type = '01' and transport_mode = '03' and transport_sub_type= '02' 
+					and transport_group = current()/transport_group]) = 0">A place of receipt is mandatory
+					for each group of transports by road in the individual transport mode.</sch:report>	
+				<sch:report test="transport_type='01' and transport_mode = '04' and transport_sub_type='01'
+					and count(../routing_summary[transport_type = '01' and transport_mode = '04' and transport_sub_type= '02' 
+					and transport_group = current()/transport_group]) = 0">A place of receipt is mandatory
+					for each group of transports by rail in the individual transport mode.</sch:report>																																			
+			</sch:rule>
+			</sch:pattern>
+			<sch:pattern name="Allowance rules" xmlns:sch="http://www.ascc.net/xml/schematron">
+			<sch:rule context="allowance">
+				<sch:report test="allowance_type='02' and direction =''">An allowance with the type "02"
+					(i.e. an adjustment) must contain a direction node.</sch:report>
+				<sch:report test="(allowance_type = '01' or allowance_type = '03')
+					and (direction or direction != '')">An allowance with the type "<value-of select="allowance_type"/>" 
+					(i. e. tax of a freight charge) must not contain a direction node.</sch:report>	
+			</sch:rule>	
+			</sch:pattern>
+		</xs:appinfo>			
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/> 
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/lt.xsd"/>    
+    <xs:annotation>
+        <xs:documentation xml:lang="en"> Elements : </xs:documentation>
+    </xs:annotation>
+    <xs:element name="issuer_ref_id" type="ThirtyFiveCharacters"/>
+	<xs:element name="group_id" type="TwentyCharacters"/>    
+    <xs:element name="buyer_abbv_name" type="ThirtyFiveCharacters"/>
+	<!--xs:element name="buyer_name" type="ThirtyFiveCharacters"/-->
+	<xs:element name="buyer_bei" type="BEIIdentifier"/>
+	<xs:element name="buyer_bank_bic" type="BICIdentifier"/>
+	<xs:element name="buyer_street_name" type="SeventyCharacters"/>
+	<xs:element name="buyer_post_code" type="SixteenCharacters"/>
+	<xs:element name="buyer_town_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="buyer_country_sub_div" type="ThirtyFiveCharacters"/>
+	<xs:element name="buyer_country" type="TwoCharacters"/>
+	<xs:element name="buyer_reference" type="ThirtyFourCharacters"/>					
+	<xs:element name="seller_abbv_name" type="ThirtyFiveCharacters"/>
+	<!--xs:element name="seller_name" type="ThirtyFiveCharacters"/-->
+	<xs:element name="seller_bei" type="BEIIdentifier"/>
+	<xs:element name="seller_bank_bic" type="BICIdentifier"/>
+	<xs:element name="seller_street_name" type="SeventyCharacters"/>
+	<xs:element name="seller_post_code" type="SixteenCharacters"/>
+	<xs:element name="seller_town_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="seller_country_sub_div" type="ThirtyFiveCharacters"/>
+	<xs:element name="seller_country" type="TwoCharacters"/>	
+	<xs:element name="seller_reference" type="ThirtyFourCharacters"/> 
+    <xs:element name="bill_to_abbv_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="bill_to_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="bill_to_bei" type="BEIIdentifier"/>
+	<xs:element name="bill_to_street_name" type="SeventyCharacters"/>
+	<xs:element name="bill_to_post_code" type="SixteenCharacters"/>
+	<xs:element name="bill_to_town_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="bill_to_country_sub_div" type="ThirtyFiveCharacters"/>
+	<xs:element name="bill_to_country" type="TwoCharacters"/>				
+	<xs:element name="ship_to_abbv_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="ship_to_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="ship_to_bei" type="BEIIdentifier"/>
+	<xs:element name="ship_to_street_name" type="SeventyCharacters"/>
+	<xs:element name="ship_to_post_code" type="SixteenCharacters"/>
+	<xs:element name="ship_to_town_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="ship_to_country_sub_div" type="ThirtyFiveCharacters"/>
+	<xs:element name="ship_to_country" type="TwoCharacters"/>	
+	<xs:element name="consgn_abbv_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="consgn_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="consgn_bei" type="BEIIdentifier"/>
+	<xs:element name="consgn_street_name" type="SeventyCharacters"/>
+	<xs:element name="consgn_post_code" type="SixteenCharacters"/>
+	<xs:element name="consgn_town_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="consgn_country_sub_div" type="ThirtyFiveCharacters"/>
+	<xs:element name="consgn_country" type="TwoCharacters"/>
+	<xs:element name="part_ship" type="YesNo"/>
+	<xs:element name="tran_ship" type="YesNo"/>
+	<xs:element name="nb_mismatch" type="positiveInteger"/>
+	<xs:element name="full_match" type="YesNo"/>
+	<xs:element name="total_amt" type="amount"/>					
+	<!-- <xs:element name="total_cur_code" type="currency"/> -->
+	<!-- <xs:element name="total_net_amt" type="amount"/> -->					
+	<xs:element name="total_net_cur_code" type="currency"/>
+	<xs:element name="order_total_amt" type="amount"/>					
+	<xs:element name="order_total_cur_code" type="currency"/>
+	<xs:element name="order_total_net_amt" type="amount"/>					
+	<xs:element name="order_total_net_cur_code" type="currency"/>
+	<xs:element name="accpt_total_amt" type="amount"/>					
+	<xs:element name="accpt_total_cur_code" type="currency"/>
+	<xs:element name="accpt_total_net_amt" type="amount"/>					
+	<xs:element name="accpt_total_net_cur_code" type="currency"/>					
+	<xs:element name="liab_total_amt" type="amount"/>
+	<xs:element name="outstanding_total_amt" type="amount"/>					
+	<xs:element name="liab_total_cur_code" type="currency"/>
+	<xs:element name="liab_total_net_amt" type="amount"/>					
+	<xs:element name="liab_total_net_cur_code" type="currency"/>
+	<xs:element name="fin_inst_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="fin_inst_bic" type="BICIdentifier"/>
+	<xs:element name="fin_inst_street_name" type="SeventyCharacters"/>
+	<xs:element name="fin_inst_post_code" type="SixteenCharacters"/>
+	<xs:element name="fin_inst_town_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="fin_inst_country_sub_div" type="ThirtyFiveCharacters"/>
+	<xs:element name="fin_inst_country" type="TwoCharacters"/>
+	<xs:element name="seller_account_name" type="ThirtyFiveCharacters"/>
+	<xs:element name="seller_account_iban" type="IBANIdentifier"/>
+	<xs:element name="seller_account_bban" type="BBANIdentifier"/>
+	<xs:element name="seller_account_upic" type="UPICIdentifier"/>
+	<xs:element name="seller_account_id" type="ThirtyFiveCharacters"/>	
+	<!-- <xs:element name="last_match_date" type="Date"/> -->
+	<xs:element name="reqrd_commercial_dataset" type="YesNo"/>	
+	<xs:element name="reqrd_transport_dataset" type="YesNo"/>	
+	<xs:element name="submitr_bic" type="BICIdentifier"/>
+	<xs:element name="data_set_id" type="ThirtyFiveCharacters"/>
+	<xs:element name="freight_charges_type" type="FreightCharges1Code"/>
+	<xs:element name="payment_terms_type" type="PaymentTerms1Code"/>	
+	<xs:element name="version" type="positiveInteger"/>
+	<xs:element name="buyer_bank_type_code" type="TwoCharacters"/>
+	<xs:element name="seller_bank_type_code" type="TwoCharacters"/>
+	<xs:element name="issuer_type_code" type="TwoCharacters"/>
+	<xs:element name="final_presentation" type="YesNo"/>
+	<xs:element name="submission_type" type="FourCharacters"/>
+	<xs:element name="line_items" type="line_items"/>
+	<xs:element name="payments" type="payments"/>
+	<xs:element name="finance_repayment_amt" type="amount"/>
+	<xs:element name="finance_repayment_cur_code" type="currency"/>
+	<xs:element name="finance_repayment_action" type="TwoCharacters"/>
+	<xs:element name="finance_repayment_eligible" type="YesNo"/>
+	<xs:element name="fin_date" type="Date"/>
+	<xs:element name="fin_due_date" type="Date"/>	
+	<xs:element name="outstanding_repayment_amt" type="amount"/>
+	<xs:element name="outstanding_repayment_cur_code" type="currency"/>
+	<xs:element name="interest_repayment_amt" type="amount"/>
+	<xs:element name="interest_repayment_cur_code" type="currency"/>
+	<xs:element name="charges_repayment_amt" type="amount"/>
+	<xs:element name="charges_repayment_cur_code" type="currency"/>
+	<xs:element name="total_repaid_amt" type="amount"/>
+	<xs:element name="total_repaid_cur_code" type="currency"/>
+	<xs:element name="payment" type="PaymentTerms1">
+	<xs:element name="repay_date" type="Date"/>
+	<xs:element name="settlement_amt" type="amount"/>
+	<xs:element name="settlement_cur_code" type="currency"/>
+	<xs:element name="settlement_date" type="Date"/>
+		<xs:annotation>
+			<xs:documentation>Payment terms 
+			by means of a code and a limit in time.</xs:documentation>
+		</xs:annotation>					
+	</xs:element>
+	<xs:element name="contacts" type="contacts"/>
+	<xs:element name="contact" type="ConctactPerson">
+		<xs:annotation>
+			<xs:documentation>Person to contact in a 
+			given organisation.</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="incoterms" type="incoterms"/>
+	<xs:element name="incoterm" type="Incoterms1">
+		<xs:annotation>
+			<xs:documentation>Specifies the applicable Incoterm 
+			and associated location.</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="adjustments" type="adjustments">
+		<xs:annotation>
+			<xs:documentation>Variances 
+			on price for the goods.</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="taxes" type="taxes">
+		<xs:annotation>
+			<xs:documentation>Amounts of money due to the government
+			 or tax authority, according to various pre-defined 
+			 parameters linked to the value 
+			 of the goods in a trade transaction.</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="freight_charges" type="freight_charges">
+		<xs:annotation>
+			<xs:documentation>Charges related to the 
+			conveyance of goods.</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="allowance" type="Allowance">
+		<xs:annotation>
+			<xs:documentation>The allowances that
+			can be either taxes, either adjustments or 
+			freight charges.</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="user_defined_informations" type="user_defined_informations"/>
+	<xs:element name="user_defined_information" type="UserInfo">
+		<xs:annotation>
+			<xs:documentation>Information important for the users 
+			of the message/service, which cannot be captured
+			 in any other message component/element. 
+			 For example: Warehouse number.</xs:documentation>
+		</xs:annotation>	
+	</xs:element>
+	<xs:element name="routing_summaries" type="routing_summaries"/>
+	<xs:element name="routing_summary" type="Transport">		
+	<xs:annotation>
+		<xs:documentation>Information related to the conveyance of goods.
+		</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- Types -->
+	<xs:simpleType name="AllowanceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="FreightCharges1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="CLCT"/>
+			<xs:enumeration value="PRPD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PaymentTerms1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AMNT"/>
+			<xs:enumeration value="PRCT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IBANIdentifier">
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value=".{0}|[a-zA-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BBANIdentifier">
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".{0}|[a-zA-Z0-9]{1,30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BEIIdentifier">
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value=".{0}|[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UPICIdentifier">
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".{0}|[0-9]{8,17}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:complexType name="payments">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="payment"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+	<xs:complexType name="PaymentTerms1">
+		<xs:complexContent>
+		<xs:extension base="Bulk">	
+		<xs:sequence>
+			<xs:element minOccurs="0" name="payment_id" type="positiveInteger"/>
+			<xs:choice>
+				<xs:element name="code" type="PaymentTime1Code"/>
+				<xs:element name="other_paymt_terms" type="HundredFourtyCharacters"/>
+			</xs:choice>
+			<xs:element name="nb_days" type="positiveInteger" minOccurs="0"/>	
+			<xs:element name="amt" type="amount" minOccurs="0"/>	
+			<xs:element name="cur_code" type="currency" minOccurs="0"/>	
+			<xs:element name="pct" type="PercentageRate" minOccurs="0"/>	
+		</xs:sequence>
+		</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="PaymentTime1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CASH"/>
+			<xs:enumeration value="EMTD"/>
+			<xs:enumeration value="EPRD"/>
+			<xs:enumeration value="PRMD"/>
+			<xs:enumeration value="IREC"/>
+			<xs:enumeration value="PRMR"/>
+			<xs:enumeration value="EPRR"/>
+			<xs:enumeration value="EMTR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:complexType name="contacts">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="contact"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+	<xs:complexType name="ConctactPerson">
+		<xs:complexContent>
+		<xs:extension base="Bulk">	
+		<xs:sequence>
+			<xs:element minOccurs="0" name="ctcprsn_id" type="positiveInteger"/>
+			<xs:element name="type" type="ContactType"/>		
+			<xs:element name="name" type="ThirtyFiveCharacters"/>
+			<xs:element minOccurs="0" name="name_prefix" type="NamePrefix1Code"/>
+			<xs:element minOccurs="0" name="given_name" type="ThirtyFiveCharacters"/>
+			<xs:element minOccurs="0" name="role" type="ThirtyFiveCharacters"/>
+			<xs:element minOccurs="0" name="phone_number" type="PhoneNumber"/>
+			<xs:element minOccurs="0" name="fax_number" type="PhoneNumber"/>
+			<xs:element minOccurs="0" name="email" type="TwoHundredFiftySixCharacters"/>
+		</xs:sequence>
+		</xs:extension>
+		</xs:complexContent>
+	</xs:complexType> 
+	
+	<xs:simpleType name="NamePrefix1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="DOCT"/>
+			<xs:enumeration value="MIST"/>
+			<xs:enumeration value="MISS"/>
+			<xs:enumeration value="MADM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="PhoneNumber">
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".{0}|\+[0-9]{1,3}-[0-9()+\-]{1,30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:simpleType name="ContactType">
+        <xs:annotation>
+            <xs:documentation>Contact Type. Standard values  01 for a seller,
+             02 for a buyer, 03 for a seller bank contact, 04 for a buyer bank contact,
+             05 for a bill to contact, 06 for a ship to 
+             and 07 for a consignee contact.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+			<xs:pattern 
+				value=".{0}|01|02|03|04|05|06|07"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="incoterms">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="incoterm"/>
+        </xs:sequence>
+    </xs:complexType> 
+       
+	<xs:complexType name="Incoterms1">
+		<xs:complexContent>
+		<xs:extension base="Bulk">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="inco_term_id" type="positiveInteger"/>
+			<xs:choice>
+				<xs:element name="code" type="Incoterms1Code"/>
+				<xs:element name="other" type="ThirtyFiveCharacters"/>
+			</xs:choice>
+			<xs:element name="location" type="ThirtyFiveCharacters" minOccurs="0"/>
+		</xs:sequence>
+		</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="Incoterms1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="EXW"/>
+			<xs:enumeration value="FCA"/>
+			<xs:enumeration value="FAS"/>
+			<xs:enumeration value="FOB"/>
+			<xs:enumeration value="CFR"/>
+			<xs:enumeration value="CIF"/>
+			<xs:enumeration value="CPT"/>
+			<xs:enumeration value="CIP"/>
+			<xs:enumeration value="DAF"/>
+			<xs:enumeration value="DAT"/>
+			<xs:enumeration value="DAP"/>
+			<xs:enumeration value="DES"/>
+			<xs:enumeration value="DEQ"/>
+			<xs:enumeration value="DDU"/>
+			<xs:enumeration value="DDP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:complexType name="adjustments">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="allowance"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="taxes">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="allowance"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="freight_charges">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="allowance"/>
+        </xs:sequence>
+    </xs:complexType>     
+  
+  <xs:simpleType name="AllowanceTypeCode">
+  	<xs:union memberTypes="AdjustmentType1Code TaxType8Code ChargeType8Code"/>
+  </xs:simpleType>
+  
+    <xs:complexType name="Allowance">
+    <xs:complexContent>
+	<xs:extension base="Bulk">
+   	 <xs:sequence>
+   	 	<xs:element minOccurs="0" name="allowance_id" type="positiveInteger"/>
+   	 	<xs:element name="allowance_type" type="AllowanceType"/>
+		<xs:choice>
+			<xs:element name="type" type="AllowanceTypeCode"/>
+			<xs:element name="other_type" type="ThirtyFiveCharacters"/>
+		</xs:choice>
+		<xs:group ref="curAmtRateChoice"/>
+		<xs:element name="direction" type="AdjustmentDirection1Code" minOccurs="0"/>
+		</xs:sequence>
+	</xs:extension>
+	</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- <xs:complexType name="Taxe">
+    <xs:complexContent>
+	<xs:extension base="Bulk">
+	 <xs:sequence>
+		<xs:choice>
+			<xs:element name="type" type="TaxType8Code"/>
+			<xs:element name="other_type" type="ThirtyFiveCharacters"/>
+		</xs:choice>
+		<xs:group ref="CurAmtRateChoice"/>
+	</xs:sequence>
+	</xs:extension>
+	</xs:complexContent>
+    </xs:complexType> 
+		
+	<xs:complexType name="FreightCharge">
+    <xs:complexContent>
+	<xs:extension base="Bulk">
+	 <xs:sequence>
+		<xs:choice>
+			<xs:element name="type" type="ChargeType8Code"/>
+			<xs:element name="other_type" type="ThirtyFiveCharacters"/>
+		</xs:choice>
+		<xs:group ref="CurAmtRateChoice"/>
+		</xs:sequence>						
+		</xs:extension>
+		</xs:complexContent>
+    </xs:complexType> -->
+      
+	<xs:simpleType name="AdjustmentDirection1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ADDD"/>
+			<xs:enumeration value="SUBS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AdjustmentType1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="REBA"/>
+			<xs:enumeration value="DISC"/>
+			<xs:enumeration value="CREN"/>
+		</xs:restriction>
+	</xs:simpleType> 
+
+	<xs:simpleType name="TaxType8Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PROV"/>
+			<xs:enumeration value="NATI"/>
+			<xs:enumeration value="STAT"/>
+			<xs:enumeration value="WITH"/>
+			<xs:enumeration value="STAM"/>
+			<xs:enumeration value="COAX"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ChargeType8Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SIGN"/>
+			<xs:enumeration value="STDE"/>
+			<xs:enumeration value="STOR"/>
+			<xs:enumeration value="PACK"/>
+			<xs:enumeration value="PICK"/>
+			<xs:enumeration value="DNGR"/>
+			<xs:enumeration value="SECU"/>
+			<xs:enumeration value="INSU"/>
+			<xs:enumeration value="COLF"/>
+			<xs:enumeration value="CHOR"/>
+			<xs:enumeration value="CHDE"/>
+			<xs:enumeration value="AIRF"/>
+			<xs:enumeration value="TRPT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="user_defined_informations">
+		<xs:sequence>
+			<xs:element ref="user_defined_information" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UserInfo">
+		<xs:complexContent>
+		<xs:extension base="Bulk">
+		<xs:sequence>
+			<xs:element name="type" type="UserInfoType"/>
+			<xs:element minOccurs="0" name="user_info_id" type="positiveInteger"/>
+			<xs:element name="label" type="ThirtyFiveCharacters"/>
+			<xs:element name="information" type="HundredFourtyCharacters"/>
+		</xs:sequence>
+		</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="UserInfoType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="Transport">
+		<xs:complexContent>
+		<xs:extension base="Bulk">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="transport_id" type="positiveInteger"/>
+			<xs:element minOccurs="0" name="transport_mode" type="TransportMode"/>
+			<xs:element name="transport_type" type="TransportType"/>
+			<xs:element minOccurs="0" name="transport_group" type="positiveInteger"/>
+			<xs:element minOccurs="0" name="transport_sub_type" type="TransportSubType"/>
+			<xs:choice>
+				<xs:group ref="airport"/>
+				<xs:group ref="port"/>
+				<xs:group ref="place"/>
+				<xs:element name="taking_in_charge" type="ThirtyFiveCharacters"/>
+				<xs:element name="place_final_dest" type="ThirtyFiveCharacters"/>
+			</xs:choice>
+		</xs:sequence>
+		</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:group name="airport">
+		<xs:choice>
+			<xs:element name="airport_loading_code" type="SixCharacters"/>
+			<xs:element name="airport_discharge_code" type="SixCharacters"/>
+			<xs:sequence>
+				<xs:element name="airport_loading_name" type="ThirtyFiveCharacters" minOccurs="0"/>
+				<xs:element name="town_loading"	type="ThirtyFiveCharacters"/>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="airport_discharge_name" type="ThirtyFiveCharacters" minOccurs="0"/>						
+				<xs:element name="town_discharge" type="ThirtyFiveCharacters"/>
+			</xs:sequence>
+		</xs:choice>
+	</xs:group>
+	
+	<xs:group name="port">
+		<xs:choice>
+			<xs:element name="port_loading" type="ThirtyFiveCharacters"/>
+			<xs:element name="port_discharge" type="ThirtyFiveCharacters"/>
+		</xs:choice>
+	</xs:group>
+	
+	<xs:group name="place">
+		<xs:choice>
+			<xs:element name="place_receipt" type="ThirtyFiveCharacters"/>
+			<xs:element name="place_delivery" type="ThirtyFiveCharacters"/>
+		</xs:choice>
+	</xs:group>
+	
+	<xs:complexType name="routing_summaries">
+		<xs:sequence>
+			<xs:element ref="routing_summary" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="TransportMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportModeAir">
+		<xs:restriction base="TransportMode">
+			<xs:enumeration value="01"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportModeSea">
+		<xs:restriction base="TransportMode">
+			<xs:enumeration value="02"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportModeRoadRail">
+		<xs:restriction base="TransportMode">
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!--xs:simpleType name="TransportModeOther">
+		<xs:restriction base="TransportMode">
+			<xs:enumeration value=""/>
+		</xs:restriction>
+	</xs:simpleType-->
+	
+	<xs:simpleType name="TransportType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportTypeIndividual">
+		<xs:restriction base="TransportType">
+			<xs:enumeration value="01"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportTypeMultimodal">
+		<xs:restriction base="TransportType">
+			<xs:enumeration value="02"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportSubType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportSubTypeDeparture">
+		<xs:restriction base="TransportSubType">
+			<xs:enumeration value="01"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportSubTypeDestination">
+		<xs:restriction base="TransportSubType">
+			<xs:enumeration value="02"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TransportSubTypeOther">
+		<xs:restriction base="TransportSubType">
+			<xs:enumeration value=""/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="line_items">
+		<xs:sequence>
+			<xs:element ref="lt_tnx_record" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:group name="curAmtRateChoice">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="rate" type="PercentageRate"/>
+			</xs:sequence>		
+			<xs:sequence>
+				<xs:element name="amt" type="amount"/>
+				<xs:element name="cur_code" type="currency"/>
+			</xs:sequence>
+		</xs:choice>
+	</xs:group>
+	
+	<xs:group name="curAmtPctChoice">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="pct" type="PercentageRate"/>
+			</xs:sequence>		
+			<xs:sequence>
+				<xs:element name="amt" type="amount"/>
+				<xs:element name="cur_code" type="currency"/>
+			</xs:sequence>
+		</xs:choice>
+	</xs:group>
+  							
+</xs:schema>

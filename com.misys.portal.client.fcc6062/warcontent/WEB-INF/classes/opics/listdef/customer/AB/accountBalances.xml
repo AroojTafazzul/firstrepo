@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="value_date" default_order_type="d" page="50" 
+		 viewer="SimpleTable" subscribe_topic="accounts">
+
+	<column name="type" align="center" width="20%" loca_key="TYPE"/>
+	<column name="description" align="left" width="20%" loca_key="DESCRIPTION"/>
+	<column name="value_date" align="center" width="20%" loca_key="DATE"/>
+	<column name="cur_code" align="center" width="20%" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="20%" loca_key="AMOUNT"/>
+
+	<!-- parameters -->
+	<parameter
+		name="account_id"
+		input="n"/>	
+
+	<!-- candidates -->	
+	<candidate name="account_balance">
+		<filter>
+			<criteria>
+				<column name="Statement@account_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

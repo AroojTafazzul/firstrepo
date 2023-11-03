@@ -1,0 +1,50 @@
+<!-- portal will send you the loan alias and prepayment date -->
+
+<prepayment_rule>
+	<!-- loan alias -->
+	<bo_ref_id>ABC</bo_ref_id>
+
+	<!-- can we request a prepayment on this loan -->
+	<!-- Y/N -->
+	<requestable>Y</requestable>
+
+	<!-- current loan balance -->
+	<outstanding>5000.12</outstanding>
+
+	<!-- loan balance at the date of the prepayment -->
+	<projected_outstanding>3456.78</projected_outstanding>
+
+	<note_date>12/12/2012</note_date>
+	<note_rate>5</note_rate>
+	<net_yield_rate>4</net_yield_rate>
+	<min_prepayment_premium_pct>50</min_prepayment_premium_pct>
+	<!--
+			7_93 - Rider 7/93
+			9_96 - Rider 9/96
+			PP   - % Premium
+			EUC  - End User Computation 
+	 -->
+	<calculation_method>7_93</calculation_method>
+
+	<!-- % premium, only if calculation method is PP (% premium) -->
+	<percentage_premium>2.5</percentage_premium>
+
+	<!-- 
+			IDD   - Installment Due Day
+			LBD   - Last Business Day
+			ABD   - Any Business Day
+			PERDI - Per Diem
+ 	 -->			 
+	<exception_interest_method>LBD</exception_interest_method>
+
+	<number_interest_days>4</number_interest_days>
+
+	<exception_interest_amount>1200.98</exception_interest_amount>
+
+	<prepayment_term>42</prepayment_term>
+
+	<!-- assumed re-investment rate -->
+	<assumed_rate>4</assumed_rate>
+
+	<yield_maintenance_start_date>12/12/2011</yield_maintenance_start_date>
+</prepayment_rule>

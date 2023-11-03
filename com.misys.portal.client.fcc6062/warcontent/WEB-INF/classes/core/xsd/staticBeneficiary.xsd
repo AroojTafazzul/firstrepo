@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Misys FBCC for Trade Portal Interfaces Schema Copyright (c) 2000-2016 
+	Misys (http://www.misys.com) All Rights Reserved. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for a GTP
+			company. XML validation
+			Copyright (c) 2000-2011 Misys
+			(http://www.misys.com), All
+			Rights Reserved.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd" />
+	<xs:element name="static_beneficiary">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" ref="beneficiary_id">
+					<xs:annotation>
+						<xs:documentation>Beneficiary Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="abbv_name">
+					<xs:annotation>
+						<xs:documentation>Abbreviated name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="name">
+					<xs:annotation>
+						<xs:documentation>Name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="address_line_1">
+					<xs:annotation>
+						<xs:documentation>First line of address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="address_line_2">
+					<xs:annotation>
+						<xs:documentation>Second line of address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dom">
+					<xs:annotation>
+						<xs:documentation>Domicile.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="country">
+					<xs:annotation>
+						<xs:documentation>Country.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_name">
+					<xs:annotation>
+						<xs:documentation>Contact name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="phone">
+					<xs:annotation>
+						<xs:documentation>Phone number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="fax">
+					<xs:annotation>
+						<xs:documentation>Fax number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="telex">
+					<xs:annotation>
+						<xs:documentation>Telex number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="reference">
+					<xs:annotation>
+						<xs:documentation>Reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="email">
+					<xs:annotation>
+						<xs:documentation>Email address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="web_address">
+					<xs:annotation>
+						<xs:documentation>Web address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="prtry_id_type">
+					<xs:annotation>
+						<xs:documentation>Proprietary Id and Type. Expected values in the FORMAT of {ProprietaryId}{configured separator}{ProprietaryType}.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="access_opened">
+					<xs:annotation>
+						<xs:documentation>Access Opened Flag.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="notification_enabled">
+					<xs:annotation>
+						<xs:documentation>Notification enabled flag.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="fscm_enabled" type="YesNo" nillable="true">
+					<xs:annotation>
+						<xs:documentation>FSCM Enabled Flag.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="beneficiary_company_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Beneficiary Company Abbreviation Name.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="brch_code">
+					<xs:annotation>
+						<xs:documentation>Branch Code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="company_id">
+					<xs:annotation>
+						<xs:documentation>Company Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="entity">
+					<xs:annotation>
+						<xs:documentation>Entity.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field">
+					<xs:annotation>
+						<xs:documentation>
+
+							The Core delivery is already using below
+							mentioned Keys as
+							additional
+							fields in the existing system, which
+							is "recommended"
+							not to use
+							the
+							same name in the creation new
+							additional fields.
+							Already
+							existing ADDITIONAL FIELD NAME list:
+							{[
+							access_credit_note_product,
+							access_opened_prog_01,
+							access_opened_prog_02,
+							access_opened_prog_03,
+							access_opened_prog_04,
+							account,
+							account_type,
+							bank_address_line_1,
+							bank_address_line_2,
+							bank_dom,
+							bank_iso_code,
+							bank_name,
+							bei,
+							conditions_01,
+							conditions_03,
+							conditions_04,
+							country_sub_div,
+							erp_id,
+							has_conditions_01,
+							has_conditions_02,
+							has_conditions_03,
+							has_conditions_04,
+							legal_id_no,
+							modified_dttm,
+							post_code,
+							street_name,
+							town_name
+							]}
+
+							NOTE: Its RECOMMENDED for the customizer
+							TO CHOOSE NAMES/KEYS that are
+							not in the above mentioned
+							"ADDITIONAL FIELD NAME" list.
+
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

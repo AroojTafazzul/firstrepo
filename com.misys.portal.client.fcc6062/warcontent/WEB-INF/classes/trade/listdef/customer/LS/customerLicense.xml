@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id"
+       default_order_type="d" page="20" data_key="ref_id">
+       <batch type="submit">
+			<parameter name="SCREEN" value="LC_SCREEN"/>
+			<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_AMEND"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+       </batch>
+       <column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE" columnFilterType="input-multiselect">
+       						<!-- JavaScript Pass back -->
+			        <js-pass-back keyName="column">
+			        	<array-element index="0" column="ref_id"/>
+			            <array-element index="1" column="bo_ref_id"/>
+			            <array-element index="2" column="ls_number"/>
+			            <array-element index="3" column="LicenseDefinition@allow_overdraw"/>
+			            <array-element index="4" column="convertedAmt"/>
+			        </js-pass-back>
+       </column>
+       <column name="ls_number" align="left" width="15%" loca_key="LS_NUMBER" columnFilterType="input-multiselect"/>
+       <column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+       <column name="ls_amt" align="right" width="12%" loca_key="LS_AMT" columnFilterType="input-multiselect"/>
+	   <column name="ls_liab_amt" align="right" width="12%" loca_key="LS_LIAB_AMT" columnFilterType="input-multiselect"/>
+       <column name="convertedAmt" align="right" width="15%" paramCur="account_ccy" loca_key="EQUIVALANT_LS_LIAB_AMT" columnFilterType="input-multiselect"/>
+       <column name="valid_to_date" align="left" width="12%" loca_key="VALID_TO_DATE" columnFilterType="input-multiselect"/>
+       <column name="beneficiary_name" align="left" width="15%" loca_key="NON_PRINCIPAL" columnFilterType="input-multiselect"/>
+       <column name="LicenseDefinition@allow_overdraw" align="center" width="12%"
+             loca_key="ALLOW_OVERDRAW" columnFilterType="input-multiselect"/>
+             
+       <column name="LicenseDefinition@ls_type" align="center" width="12%"
+             loca_key="LS_TYPE" columnFilterType="input-multiselect" hidden="y">
+                  	<script>
+				value = row.getColumnValue("LicenseDefinition@ls_type");
+				value;
+			</script>
+		</column>
+       <column name="LicenseProduct@product_code" hidden="y">
+	       	<script>
+				value = row.getColumnValue("LicenseProduct@product_code");
+				value;
+			</script>
+		</column>
+		 <column name="LicenseProduct@sub_product_code" hidden="y">
+	       	<script>
+				value = row.getColumnValue("LicenseProduct@sub_product_code");
+				value;
+			</script>
+		</column>
+	   <column name="beneficiary_name" align="left" width="12%" loca_key="BENEFICIARY_NAME" hidden="y"/>
+       <column name="entity" hidden="y" />
+       <column name="bo_ref_id" hidden="y" />
+       <column name="allow_multi_cur" hidden="y" />
+       <column name="ls_liab_amt" hidden="y" />
+       <column name="valid_to_date" hidden="y" />
+       <column name="counterparty_abbv_name" hidden="y" />
+	   <column name="LicenseDefinition@allow_multi_ls" hidden= "y"/>
+	
+       <!-- parameters -->
+	<parameter name="product_code" input="y" size="3" max_length="3"
+	loca_key="PRODUCT_CODE" hidden="true" />
+	<parameter name="allow_multi_ls" input="y" size="3"
+	max_length ="3" loca_key = "ALLOW_MULTIPLE_LS" hidden= "true"/>
+	<parameter name="valid_to_date" input="y" size="3"
+		max_length="3" loca_key="VALID_TO_DATE" hidden="true" />
+	<parameter name="counterparty_abbv_name" input="y" size="20"
+		max_length="35" loca_key="COUNTERPARTY_NAME" hidden="true" />
+	<parameter name="account_ccy" hidden="true" />
+	<parameter name="ref_id" input="y" size="16" max_length="20"
+		loca_key="CHANNEL_REFERENCE"/>
+	<parameter name="ls_number" input="y" size="16" max_length="20"
+		loca_key="LS_NUMBER" type="LSNumber" />		
+	<parameter name="cur_code" input="y" size="3" max_length="3"
+		loca_key="CURCODE" type="Currency" />
+		<parameter name="beneficiary_name" input="y" size="3" max_length="3"
+loca_key="BENEFICIARY_NAME" hidden= "true"/>
+<parameter name="sub_product_code" input="y" size="3" max_length="3"
+loca_key="SUB_PRODUCT_CODE" hidden= "true"/>
+<parameter name="ls_type" input="y" size="3" loca_key="LS_TYPE" hidden="true"/>
+       <!-- candidates -->
+       <candidate name="license_master">
+             <filter>
+                    <criteria>
+                           <column name="prod_stat_code" />
+                           <operator type="not in" />
+                           <value type="vector">
+                                 <value type="code">
+                                        N005_CANCELLED
+                                 </value>
+                                 <value type="code">
+                                        N005_EXPIRED
+                                 </value>
+                                 <value type="code">
+                                        N005_BOOK_OFF
+                                 </value>
+                                 <value type="code">
+                                        N005_PURGED
+                                 </value>
+                           </value>
+                    </criteria>
+             </filter>
+      </candidate>
+      
+            <filter>
+             <criteria>
+                    <column name="cur_code"/>
+                    <operator type="like"/>
+                    <value type="parameter">
+                           cur_code
+                    </value>
+             </criteria>
+              <criteria>
+                    <column name="ref_id"/>
+                    <operator type="equal"/>
+                    <value type="parameter">
+                           ref_id
+                    </value>
+             </criteria>
+           <criteria>
+				<column name="beneficiary_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+				beneficiary_name
+				</value>
+				</criteria>
+             <criteria>
+                    <column name="ls_number"/>
+                    <operator type="equal"/>
+                    <value type="parameter">
+                           ls_number
+                    </value>
+             </criteria>
+             <criteria>
+                    <column name="LicenseDefinition@allow_multi_ls"/>
+                    <operator type="equal"/>
+                    <value type="parameter">
+                           allow_multi_ls
+                    </value>
+             </criteria>
+             <criteria>
+                    <column name="ref_id"/>
+                    <operator type="in"/>
+                    <value type="parameter">
+                           ref_id
+                    </value>
+             </criteria>
+           </filter>
+           <filter>
+             <criteria>
+                    <column name="LicenseProduct@product_code"/>
+                    <operator type="equal"/>
+                    <value type="parameter">
+                           product_code
+                    </value>
+             </criteria>
+           </filter>
+              <filter>
+             <criteria>
+                    <column name="LicenseDefinition@ls_type"/>
+                    <operator type="equal"/>
+                    <value type="parameter">
+                           ls_type
+                    </value>
+             </criteria>
+           </filter>
+            <filter>
+			<criteria>
+				<column name="counterparty_abbv_name" />
+				<operator type="equal" />
+				<value type="parameter">
+					counterparty_abbv_name
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="valid_to_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					valid_to_date
+				</value>
+			</criteria>
+		</filter>
+	<filter or="y">
+             <criteria>
+                    <column name="LicenseProduct@sub_product_code"/>
+                    <operator type="equal"/>
+                    <value type="parameter">
+                           sub_product_code
+                    </value>
+             </criteria>
+             <criteria>
+                    <column name="LicenseProduct@sub_product_code"/>
+                    <operator type="equal"/>
+                          <value type="code">
+                                        N047_WILDCARD
+                          </value>
+             </criteria>
+    	</filter>		
+</listdef>

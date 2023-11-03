@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" page="100" default_order="ref_id" js_binding="misys.binding.loan.ln_pending_list" default_order_type="d">
+	
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="SCREEN" value="LN_SCREEN"/>
+		</url>
+	</column>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="company_name" align="left" width="35%" loca_key="COMPANY"/>
+	<column name="Company@rmGroup" align="left" width="35%" loca_key="XSL_PARA_RM_GROUP"/>
+	<column name="full_type" computation="sum" align="center" width="20%" loca_key="TYPE">
+		<column name="tnx_type_code"/>
+		<column name="sub_tnx_type_code"/>
+	</column>
+	<column name="cur_code" align="center" width="5em" loca_key="CURCODE"/>
+	
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="effective_date_col" computation="maximum" align="right" width="8em" loca_key="EFFECTIVE_DATE">
+		<column name="ObjectDataDate@bulk_Effective_Date"/>
+		<column name="effective_date"/>		
+	</column>	
+	<column name="release_dttm" align="center" width="10em" loca_key="RELEASE_DTTM"/>
+	
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>	
+	<column name="ObjectDataDate@bulk_Effective_Date" hidden="y"/>
+	<column name="effective_date" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"/>
+	<parameter
+		name="company"
+		loca_key="COMPANY"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="currency"/>
+
+	<parameter
+		name="export_list"
+		file_name="pendingLN"
+		type="export"/>
+		
+		<parameter
+		name="effective_date"
+		type="range"
+		input="y"
+		range_from_label="LOAN_PENDING_EFFECTIVE_DATE_FROM"
+		range_to_label="DATETO_LABEL"
+		default="blank"/>
+
+	<!-- candidates -->	
+	<candidate name="loan">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+			<criteria>
+				<column name="company_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					company
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="effective_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					effective_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="effective_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					effective_date@to
+				</value>
+			</criteria>
+			</filter>
+	</candidate>
+	
+		<candidate name="bulk_loan">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_deal_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_deal_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="company_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					company
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="child_product_code"/>
+				<operator type="equal"/>
+					<value type="code">
+						N001_LN
+					</value>		
+			</criteria>
+			<criteria>
+				<column name="ObjectDataDate@bulk_Effective_Date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					effective_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataDate@bulk_Effective_Date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					effective_date@to
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter or="y">
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_NEW
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_AMEND
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N002_INQUIRE
+			</value>
+		</criteria>
+	</filter>
+	
+		
+	<filter and="y">
+		<criteria>
+			   <column name="bulk_ref_id"/>
+			   <operator type="isNull"/>
+			</criteria>
+			
+			<criteria>
+			  <column name="sub_tnx_stat_code"/>
+			   <operator type="different"/>
+				<value type="code">
+					N015_STOPOVER
+				</value>
+		</criteria>
+	</filter>
+	
+  <filter or="y">
+    <criteria>
+      <column name="tnx_stat_code"/>
+      <operator type="different"/>
+      <value type="code">
+        N004_ACKNOWLEDGED
+      </value>
+    </criteria>
+    <criteria>
+      <column name="prod_stat_code"/>
+      <operator type="equal"/>
+      <value type="code">
+        N005_INPROGRESS
+      </value>
+    </criteria>
+  </filter>
+
+</listdef>

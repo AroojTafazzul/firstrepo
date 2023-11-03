@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef  ordered="y" huge="N" forceDisplaySearch='y' default_order="cycleNo"
+	help="LIST_HELP_INQUIRY" page="50" source="loaniq_Repayment">
+	
+	<column name="cycleNo" align="left" width="10%" loca_key="LN_REPAYMENT_CYCLE_NO" />
+	<column name="currentOutstandingAmt" hidden="y" columnFilterType="input-multiselect" >
+	<script>
+			var currentOutstandingAmt = row.getColumnValue("currentOutstandingAmt");
+			var loan_ccy = row.getColumnValue("loan_ccy");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+currentOutstandingAmt+"",""+loan_ccy+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="repaymentType" hidden="y" columnFilterType="input-multiselect" />
+	<column name="repaymentFrequency" hidden="y"  columnFilterType="input-multiselect" />
+		<column name="principleAmt" align="right" width="15%" loca_key="LN_REPAYMENT_PRINCIPLE_AMT" columnFilterType="input-multiselect" >
+		<script>
+			var principleAmt = row.getColumnValue("principleAmt");
+			var loan_ccy = row.getColumnValue("loan_ccy");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+principleAmt+"",""+loan_ccy+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="unpaidPrincipleAmt" align="right" width="20%" loca_key="LN_REPAYMENT_UNPAID_PRINCIPLE_AMT" columnFilterType="input-multiselect" >
+		<script>
+			var unpaidPrincipleAmt = row.getColumnValue("unpaidPrincipleAmt");
+			var loan_ccy = row.getColumnValue("loan_ccy");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+unpaidPrincipleAmt+"",""+loan_ccy+"",""+language+"");
+			value;
+		</script>
+	</column>
+	
+	<column name="dueDate" align="center" width="30%" loca_key="LN_REPAYMENT_DUE_DATE" columnFilterType="input-multiselect" >
+		 <script>
+			var dueDate = row.getColumnValue("dueDate");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+dueDate+"",""+language+"");
+			value;
+		</script> 
+	</column>
+
+	<column name="remainingAmt" align="right" width="10%" loca_key="LN_REPAYMENT_REMAINING_AMT" columnFilterType="input-multiselect" >
+		<script>
+			var remainingAmt = row.getColumnValue("remainingAmt");
+			var loan_ccy = row.getColumnValue("loan_ccy");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+remainingAmt+"",""+loan_ccy+"",""+language+"");
+			value;
+		</script>
+	</column>	
+	
+	<column name="loan_ccy" hidden="y" columnFilterType="input-multiselect" />	
+	
+		<!-- candidates -->	
+	<candidate name="loanInterestDetails" >
+	</candidate>
+	
+</listdef>
+

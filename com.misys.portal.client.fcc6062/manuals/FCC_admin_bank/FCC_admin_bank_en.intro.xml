@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=Introduction" role="TOPIC">
+  <title>Introduction</title>
+
+  <para>This document describes the <xi:include href="../entities_en.xml"
+  xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> front-end
+  for users managing the parameters of the system at a bank middle-office and
+  Bank Group sites. Such users are sometimes called bank administrators in
+  this document, and should not be confused with the administrators of the
+  system found at a client site.</para>
+
+  <para>Their main tasks are: maintenance of their fellow middle-office users,
+  the definition and preparation of the system jurisdiction; and maintenance
+  of the list of client companies. The administrator of a bank group is also
+  in charge of the maintenance of the list of banks within the group.</para>
+
+  <para>All these features are available within a single menu in the same
+  page. This page can be accessed by clicking <xi:include
+  href="../entities_en.xml" xpointer="ent_System_F"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> like on the home page.</para>
+
+  <note>
+    <para>The availability of the <emphasis role="bold">System
+    Features</emphasis> menu and its functions is dependent on the permissions
+    assigned to the user. Only those functions the user is authorised to use
+    will be displayed.</para>
+  </note>
+
+  <para>The following <xi:include href="../entities_en.xml"
+  xpointer="ent_System_F" xmlns:xi="http://www.w3.org/2001/XInclude"/> modules
+  are available and covered in this manual:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para><application moreinfo="none">Change Profile</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Jurisdiction
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Rates
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Customer
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Bank Maintenance</application> (for
+      the bank group administrator)</para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">User Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Alerts
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Report Designer</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Parameter
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Guarantee
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Standby LC
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Facility
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">FSCM Program</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">Biller
+      Maintenance</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">License
+      Definition</application></para>
+    </listitem>
+
+    <listitem>
+      <para><application moreinfo="none">CounterParty
+      Maintenance</application></para>
+    </listitem>
+  </itemizedlist>
+
+  <para>Only administrative tasks are described in this manual. They are not
+  on the <xi:include href="../entities_en.xml" xpointer="ent_System_F"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> page because they are are more
+  closely related to the transactional aspects of <xi:include
+  href="../entities_en.xml" xpointer="ent_appli"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/>. Moreover the level of
+  jurisdiction required does not have the same constraints as for the above
+  modules. The related modules are:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para><application>New Maintenance </application></para>
+    </listitem>
+
+    <listitem>
+      <para><application>Audit Trail </application></para>
+    </listitem>
+  </itemizedlist>
+
+  <para>In each chapter, an introduction provides an overview of the module
+  followed by a detailed presentation of each option available in the module.
+  An option generally corresponds to a sub-menu item.</para>
+
+  <section>
+    <title>Terminology</title>
+
+    <para>A Cash and Trade Portal system is used by two types of organisation:
+    banks, and companies that are customers of banks. We refer to the latter
+    as "customers" or "clients" - we use these two terms
+    interchangeably.</para>
+
+    <para>In addition, we use the term "bank group" to mean a site with
+    overriding authority over the system, such as a bank's head office.</para>
+
+    <para>A member of the staff of a client or bank is called a "user". A user
+    with special administrator privileges is called an "administrator".</para>
+
+    <para>A Cash and Trade Portal system has two different user interfaces:
+    for a user at a client, and for a user at a bank or bank group.</para>
+
+    <para>Both interfaces have a section called System Features, containing
+    functions for administering and configuring the Cash and Trade Portal
+    system. The rest of the interface contains end-user functions. Which
+    functions are available to a given user depends on that user's
+    privileges.</para>
+
+    <para>The document that a bank can provide, such as Letters of Credit,
+    Standby Letters of Credit, Shipping Guarantees, and so on, are referred to
+    as "products".</para>
+
+    <para>The communications between bank and client about an individual
+    instance of a product typically consist of a sequences of messages. For
+    example, the communications regarding a Letter of Credit would consist of
+    the client's initial request, the bank's formal response, possibly some
+    free-format messages containing further discussion, and possibly some
+    further responses from the bank.</para>
+
+    <para>These individual messages are called "transactions" or "transaction
+    events". Those sent by the bank in reply to a client message are called
+    "reporting messages" (because the bank is "reporting back" - they should
+    not be confused with reports produced using the Report Designer module).
+    The whole set of messages concerning one instance of a individual product
+    is called a "file" (this represents a "file of documents" and should not
+    be confused with the files that can be uploaded containing details of a
+    transaction)..</para>
+
+    <para>When a new file is created - for example, a client user creates a
+    new Letter of Credit request - <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> gives it
+    a unique reference number called its System Id. This is used throughout
+    the system to identify it.</para>
+  </section>
+
+  <section>
+    <title>Audience</title>
+
+    <para>This manual is addressed to an administrator at a bank (including
+    the bank group), and describes the administrator functions in the bank
+    user interface.</para>
+  </section>
+
+  <section>
+    <title>Access Permissions and Administration</title>
+
+    <para>The <xi:include href="../entities_en.xml" xpointer="ent_System_F"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> module is accessible for all
+    logged-in bank users from the bank home page. However, different users see
+    different features available, depending on their permissions. User
+    permissions can be fully customised, but the following main categories of
+    user can be highlighted:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>All bank users are given access to the <application
+        moreinfo="none">Change Profile</application> module.</para>
+      </listitem>
+
+      <listitem>
+        <para>The bank administrator user is given access to the <application
+        moreinfo="none">Change Profile</application> and <application
+        moreinfo="none">User Maintenance</application> modules.</para>
+      </listitem>
+
+      <listitem>
+        <para>A customer administrator is given access to the <application
+        moreinfo="none">Customer Maintenance</application> module.</para>
+      </listitem>
+
+      <listitem>
+        <para>A bank group administrator is given access to the <application
+        moreinfo="none">Bank Maintenance</application> module.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>When the bank (and bank group) is initially created, an
+    administrator user is automatically created with the
+    <varname>login</varname> <literal moreinfo="none">bankadmin</literal> and
+    <varname>password</varname> <literal moreinfo="none">password</literal>,
+    and granted the default permissions required to create and administer
+    additional users.</para>
+  </section>
+
+  <section>
+    <title><xi:include href="../entities_en.xml" xpointer="ent_System_F"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> Terminology</title>
+
+    <section>
+      <title>Bank Group</title>
+
+      <para>In keeping with the multi-bank organisations promoted by the
+      Global Cash and Trade Business Lines, a higher bank group level exists,
+      that creates and manages various bank entities. Such bank group
+      administrators are given access to the <application moreinfo="none">Bank
+      Maintenance</application> module, whereas this module does not appear in
+      the <xi:include href="../entities_en.xml" xpointer="ent_System_F"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> modules accessed by single
+      bank institution (also called <literal
+      moreinfo="none">branches</literal>).</para>
+
+      <para><xi:include href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> also allows the bank group
+      to manage cross-bank customers (also called <literal
+      moreinfo="none">international customers</literal>) that deal with
+      multiple banks within the group. In such a configuration the bank group
+      can also perform the usual middle-office Cash and Trade operations, as
+      done by classic bank institution. The <application moreinfo="none">Bank
+      Maintenance</application> module is described in a dedicated
+      chapter.</para>
+    </section>
+
+    <section>
+      <title>Roles</title>
+
+      <para>A <systemitem moreinfo="none">Role</systemitem> defines a set of
+      basic permissions (such as <literal moreinfo="none">create LC</literal>,
+      <literal moreinfo="none">add user</literal> and so on) that are checked
+      before the system gives the user access to the corresponding
+      functionalities. Roles therefore define user profiles.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Specific <systemitem moreinfo="none">Role</systemitem>s are
+          set-up for the bank middle-office jurisdiction, and granted through
+          the <xi:include href="../entities_en.xml" xpointer="ent_System_F"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> to middle-office users,
+          who consequently are granted the corresponding permissions.
+          <systemitem moreinfo="none">Role</systemitem>s are therefore the
+          perfect way to set up a particular bank user profile, and are
+          particularly useful to ease and simplify administration
+          tasks.</para>
+        </listitem>
+
+        <listitem>
+          <para>But even more crucial, the bank specifies and sets up which
+          roles its customer companies will be given access to. The roles are
+          prepared by the bank to match the company jurisdiction organisation,
+          and therefore simplify the customer administration tasks: indeed if
+          the roles are correctly set up, a customer company will simply have
+          to grant the relevant prepared roles to its <xi:include
+          href="../entities_en.xml" xpointer="ent_appli"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> users. Well-defined
+          roles also simplify and fasten the customer training. This ability
+          to grant only a predefined set of roles to a company is an easy way
+          to restrict which products the company has access to. For instance,
+          it would be the preferred way to exclude the Shipping Guarantee
+          product from the set of products that a customer can manage). In
+          such an initial roles preparation phase, basic roles giving access
+          to all Cash and Trade functionality can be defined, but fine grained
+          roles can also be defined if required by the company, in order to
+          match a more complex organisation.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The role preparation phase should be carefully handled and
+      considered as part of the <xi:include href="../entities_en.xml"
+      xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      parameterisation. Indeed once a panel of roles has been prepared, the
+      creation of customer companies in the system becomes straight forward,
+      merely consisting in granting the company access to the relevant roles.
+      Note the system is initially delivered with a set of default roles that
+      should cover most of the bank's needs.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Date and Amount Formats</title>
+
+    <para>When entering a date in a date field, two formats are available. You
+    can enter it in the form <replaceable>DD/MM/YYYY</replaceable> or
+    <replaceable>DDMMYY</replaceable> if your locale is for instance France,
+    or in the form <replaceable>MM/DD/YYYY</replaceable> or
+    <replaceable>MMDDYY</replaceable> if your locale is for instance the
+    USA..</para>
+
+    <para><informalexample>
+        <para>For example, entering <literal moreinfo="none">180401</literal>
+        produces a display of <literal moreinfo="none">18/04/2001</literal>,
+        which in a French locale corresponds to 18th April 2001.</para>
+      </informalexample></para>
+
+    <para>When you enter an amount, the system automatically formats the value
+    entered according to the currency selected. You can either enter the
+    amount using the decimal and group delimiters of your locale (for example,
+    respectively [,] and [space] for France, or [.] and [,] for Singapore), or
+    directly as a series of digits.</para>
+
+    <para><informalexample>
+        <para>For example, <literal moreinfo="none">123456.00</literal> in a
+        Singaporean locale produces a display of <literal
+        moreinfo="none">123,456.00</literal> if the currency involved is
+        associated with 2 decimal places.</para>
+      </informalexample></para>
+  </section>
+
+  <section>
+    <title>Forward and Back Browser Buttons Behaviour</title>
+
+    <para>When you use a Browser's Forward and Back buttons, the browser's
+    default behaviour is displayed and <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> doesn't
+    provide any customised messages.</para>
+  </section>
+
+  <section>
+    <title>Browser to Operating System Compatibility Matrix</title>
+
+    <para>The matrix lists browser compatibility with various Operating
+    Systems(OS).</para>
+
+    <para>T - Tested</para>
+
+    <para>S - Supported</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="10">
+        <colspec colname="c2" colwidth="81*"/>
+
+        <colspec colname="c3" colwidth="101*"/>
+
+        <colspec colwidth="84*"/>
+
+        <colspec colwidth="88*"/>
+
+        <colspec colwidth="98*"/>
+
+        <colspec colname="c9" colwidth="136*"/>
+
+        <colspec colwidth="125*"/>
+
+        <colspec colwidth="116*"/>
+
+        <colspec colwidth="110*"/>
+
+        <colspec colwidth="61*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Browser Name</para></entry>
+
+            <entry valign="top"><para>Applicable Version</para></entry>
+
+            <entry valign="top">Windows 7</entry>
+
+            <entry valign="top">Windows 8.1</entry>
+
+            <entry valign="top">Windows 10</entry>
+
+            <entry valign="top"><para>macOS 10.12 (Sierra)</para></entry>
+
+            <entry valign="top">macOS 10.13 (High Sierra)</entry>
+
+            <entry valign="top">macOS 10.14 (Mojave)</entry>
+
+            <entry valign="top">OSX EL Captain</entry>
+
+            <entry valign="top">iOS (iPad)</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para>Chrome</para></entry>
+
+            <entry valign="top"><para>84/85</para></entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">T</entry>
+
+            <entry valign="top"><para>S</para></entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top"><para>Firefox</para></entry>
+
+            <entry valign="top"><para>79</para></entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">T</entry>
+
+            <entry valign="top"><para>S</para></entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top"><para>Microsoft Edge</para></entry>
+
+            <entry valign="top"><para>86</para></entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top">T</entry>
+
+            <entry valign="top"><para/></entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top"><para>Internet Explorer</para></entry>
+
+            <entry valign="top"><para>11</para></entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top"><para/></entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top"><para>Safari</para></entry>
+
+            <entry valign="top"><para>13</para></entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"><para>S</para></entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para>Safari</para></entry>
+
+            <entry valign="top"><para>12.1</para></entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"><para>S</para></entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top">S</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section>
+    <title>Antivirus Scanning Service</title>
+
+    <para>This service provides an interface from <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> to an antivirus scanner of
+    your company's choice. You can scan any attachment for viruses before
+    uploading it from any transaction screen in <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+
+    <note>
+      <para>This service is enabled by the <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> Administrator.</para>
+    </note>
+  </section>
+
+  <section>
+    <title>Common Features</title>
+
+    <para>Many options, when selected, display a page that lists relevant
+    records. These list pages have some things in common:</para>
+
+    <para><itemizedlist>
+        <listitem>
+          <para>You can enter search criteria in a group of fields at the top
+          of the page and click <guibutton role="bold">Search</guibutton> , to
+          make the list show only records that match these criteria. These
+          fields represent the most important fields in the record, as do the
+          columns in the table.</para>
+        </listitem>
+
+        <listitem>
+          <para>You can use wildcards in these fields. The wildcard character
+          is an asterisk (*). You can use it anywhere in a field.</para>
+        </listitem>
+
+        <listitem>
+          <para>On pages where the list might be very long - for example, if
+          there are many transactions - the list is not displayed until you
+          have entered the search criteria and clicked <guibutton
+          role="bold">Search</guibutton>. In these cases, enter an asterisk in
+          any of the search fields to get the entire list.</para>
+        </listitem>
+
+        <listitem>
+          <para>If a company has entities defined in its profile, then a
+          column and a search criterion field for <emphasis
+          role="bold">Entity</emphasis> appear in addition to the columns and
+          fields mentioned in the individual descriptions below.</para>
+        </listitem>
+
+        <listitem>
+          <para>You can click the triangular icons in the heading of a column
+          to sort the display on that column in ascending or descending
+          order.</para>
+        </listitem>
+
+        <listitem>
+          <para>There may be a column where you can click to open the
+          individual record for viewing or editing. These are described in the
+          sections for the individual options.</para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+
+  <section>
+    <title>Maker-Checker Functionality</title>
+
+    <para>Maker-Checker is a functionality where a transaction has to be
+    approved by another user before it can be processed. The transaction
+    created by a user (maker), has to be checked and approved by another user
+    (checker) with required permissions. This functionality is permissions
+    driven and users can be assigned either as a maker or a checker, or both.
+    A user can also be assigned as a maker for one transaction and as a
+    checker for another transaction. The maker can view details for all
+    rejected transactions by using Audit Trail.</para>
+
+    <section>
+      <title>Maker-Checker Functionality - Bank Admin</title>
+
+      <para>The following is the list of system features functions where
+      Maker-Checker is available for Bank Admins:</para>
+
+      <para><itemizedlist>
+          <listitem>
+            <para>Entity: creation, modification and deletion.</para>
+          </listitem>
+
+          <listitem>
+            <para>Bank Authorisation Matrix: creation, modification,
+            deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Customer Authorisation Matrix: creation, modification,
+            deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Bank User Maintenance: creation, modification,
+            deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Customer User Entities: assignment</para>
+          </listitem>
+
+          <listitem>
+            <para>Customer User Accounts Access: assignment</para>
+          </listitem>
+
+          <!-- <listitem>
+            <para>Subscription Package Template: creation, modification,
+            deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Entity Pool Token Assignment: creation, modification,
+            deletion</para>
+          </listitem> -->
+
+          <listitem>
+            <para>Reset Password</para>
+          </listitem>
+        </itemizedlist></para>
+    </section>
+
+    <section>
+      <title>Maker-Checker Functionality - Bank Group Admin</title>
+
+      <para>The following is the list of system features functions where
+      Maker-Checker is available for Bank Group Admins:</para>
+
+      <para><itemizedlist>
+          <listitem>
+            <para>Roles: creation, modification, deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Customer Group: creation, modification, deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Customer User Maintenance: creation, modification,
+            deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Bank User Maintenance: creation, modification,
+            deletion</para>
+          </listitem>
+
+          <listitem>
+            <para>Reset Password</para>
+          </listitem>
+        </itemizedlist></para>
+    </section>
+
+    <section>
+      <title>Maker-Checker Functionality - Workflow</title>
+
+      <para>The following is the maker-checker workflow:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>For each function listed, the following additional columns are
+          displayed for users with Checker permissions:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Status - The status is used to indicate the type of
+              pending transaction for checker to validate (Add, Modify and
+              Delete).</para>
+            </listitem>
+          </itemizedlist>
+
+          <itemizedlist>
+            <listitem>
+              <para>Maker User Id - The user Id of the creator of the
+              transaction.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>You can modify a transaction by clicking the <guiicon
+          moreinfo="none">Edit</guiicon> <inlinemediaobject>
+              <imageobject>
+                <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                           width="4mm"/>
+              </imageobject>
+            </inlinemediaobject> icon in the right-hand column, view it in
+          non-editable mode by clicking the <guibutton>View</guibutton>
+          <inlinemediaobject>
+              <imageobject>
+                <imagedata fileref="../images/icon_popup.gif"
+                           role="ICON_POPUP" width="4.5mm"/>
+              </imageobject>
+            </inlinemediaobject> icon, or delete it by clicking the <guibutton
+          moreinfo="none">Delete</guibutton> <inlinemediaobject>
+              <imageobject>
+                <imagedata fileref="../images/icon_trash.gif"
+                           role="ICON_TRASH" width="4mm"/>
+              </imageobject>
+            </inlinemediaobject> icon. If the checker feature for your user ID
+          is enabled for a particular transaction, you can cancel a
+          transaction by clicking on the <guilabel>Cancel</guilabel>
+          <inlinemediaobject>
+              <imageobject>
+                <imagedata fileref="../images/icon_makerchecker_cancel.gif"
+                           role="ICON_MK_CANCEL" width="4mm"/>
+              </imageobject>
+            </inlinemediaobject> icon and review by clicking on the
+          <guilabel>A</guilabel><guilabel>pprove or Reject or
+          Return</guilabel> <inlinemediaobject>
+              <imageobject>
+                <imagedata fileref="../images/icon_makerchecker_action.gif"
+                           role="ICON_MK_ACTION" width="4mm"/>
+              </imageobject>
+            </inlinemediaobject> icon. Clicking on the Approve or Reject or
+          Return icon displays the Approve or Reject or Return form.</para>
+        </listitem>
+
+        <listitem>
+          <para>You can review the transaction details and use the buttons at
+          the bottom of the page to process further. You can choose to
+          approve, reject or return the transaction submitted by maker. Refer
+          to the section on Action Buttons for information on button
+          functions. You can enter your comments for returning a transaction
+          in the <guilabel>Comments (for return)</guilabel> text box.</para>
+        </listitem>
+      </orderedlist>
+
+      <section role="ITEM">
+        <title>Approve or Reject or Return Form - Action Buttons</title>
+
+        <para role="TEXT">The operations that can be performed from this form
+        are listed below. They appear at the bottom of the page. For each of
+        them, a popup window will appear to confirm the choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry nameend="c2" namest="c1"
+                valign="top"><para>Operation</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Approve</guiicon> </para></entry>
+
+                <entry valign="top">Approve the transaction.</entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Reject</guiicon> </para></entry>
+
+                <entry valign="top">Reject the transaction.</entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Return</guiicon> </para></entry>
+
+                <entry valign="top">Return the transaction to the maker with
+                comments. The transaction is displayed with the status
+                'Returned' to the maker, and the maker can correct it and
+                submit it again to the checker for a review.</entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Cancel</guiicon> </para></entry>
+
+                <entry valign="top"><para>Leave the current page and return to
+                the System Features menu.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+  </section>
+</chapter>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema for Authorisation holder. Includes authorisation and level roles</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/authorisation.xsd"/>
+	
+	<xs:element name="authorisation_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="authorisation" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="authorisation_levels" minOccurs="1"/>
+				<xs:element name="operation_type" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

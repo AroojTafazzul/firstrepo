@@ -1,0 +1,345 @@
+<module domain="customer" scope="system_features">
+	<name>module_CSFCustomerPayee</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<bindingParam>mode</bindingParam>
+	<methodParam>featureid</methodParam>
+	<methodParam>tnxid</methodParam>
+	<staticParam>menuaction</staticParam>
+	<!-- ADDED FOR MAKER CHEKER FLOW START -->
+	<action>
+		<actionCode>OpenSaveNewCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveNewCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>SAVE_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenAddCustomerPayeeBILLP</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenDraftNewCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveNewCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>DRAFT_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenSaveReturnedCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveReturnCustomerPayeeMC</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>MAKER_SAVE_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenDraftReturnedCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveReturnCustomerPayeeMC</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>DRAFT_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenSaveExistingCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>SAVE_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<mode>EXISTING</mode>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenDraftExistingCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>DRAFT_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<mode>EXISTING</mode>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenDeleteCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>deleteCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>DELETE_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenDeleteReturnedCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>deleteCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>DELETE_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenReturnCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>revertCustomerPayeeMC</method>
+		<permission>revert_customer_billp_mc</permission>
+		<operation>RETURN_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenApproveCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>approveCustomerPayeeMC</method>
+		<permission>approve_customer_billp_mc</permission>
+		<operation>APPROVE_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>		
+		<actionCode>OpenMakerModifyCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>modifyReturnedCustomerPayeeMC</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>MAKER_MODIFY_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>		
+		<actionCode>OpenModifyDraftCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>modifyReturnedCustomerPayeeMC</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>MODIFY_DRAFT_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>		
+		<actionCode>OpenModifyAwaitingCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>modifyReturnedCustomerPayeeMC</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>MODIFY_AWAITING_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenDisplayCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>displayCustomerPayeeMC</method>
+		<permission>access_customer_billp_mc</permission>
+		<operation>DISPLAY_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenCancelCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>revertCustomerPayeeMC</method>
+		<permission>cancel_customer_billp_mc</permission>
+		<operation>CANCEL_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenCheckCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>checkCustomerPayeeMC</method>
+		<permission>approve_customer_billp_mc</permission>
+		<operation>CHECK_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenRevertCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>revertCustomerPayeeMC</method>
+		<permission>revert_customer_billp_mc</permission>
+		<operation>REVERT_FEATURES</operation>
+		<featureid>%</featureid>
+		<tnxid>%</tnxid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<!-- ADDED FOR MAKER CHEKER FLOW END -->
+	
+	
+	
+	
+	<action>
+		<actionCode>OpenMaintainCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeeListPortlet</class>
+		<method>maintainCustomerPayee</method>
+		<permission>access_customer_billp_mc</permission>
+		<operation>-</operation>
+		<featureid>-</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+		<favourite>true</favourite>
+	</action>
+	<action>
+		  <actionCode>OpenGeneralPayee</actionCode>
+		  <class>CustomerSystemFeaturesPortlet</class>
+		  <method>openGeneralHomeModule</method>
+		  <permission>access_customer_billp_mc</permission>
+		  <operation>-</operation>
+		  <featureid>-</featureid>
+		  <option>PAYEE_MAINTENANCE_HOME_ACTION</option>
+		  <menuaction>OpenGeneralPayee</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenModifyCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>modifyCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>MODIFY_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<!-- <action>
+		<actionCode>OpenDeleteCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>deleteCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>DELETE_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenMaintainCustomerPayeeBILLP</menuaction>
+	</action> -->
+	<!-- maintain payee registration -->
+	<!-- <action>
+		<actionCode>OpenMaintainCustomerPayeeDDA</actionCode>
+		<class>CSFCustomerPayeeListPortlet</class>
+		<method>maintainCustomerPayee</method>
+		<permission>sy_payee_register_dda_access</permission>
+		<operation>-</operation>
+		<featureid>-</featureid>
+		<option>DDA</option>
+		<menuaction>OpenMaintainCustomerPayeeDDA</menuaction>
+	</action> -->
+	<!-- <action>
+		<actionCode>OpenModifyCustomerPayeeDDA</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>modifyCustomerPayee</method>
+		<permission>sy_payee_register_dda_modify</permission>
+		<operation>MODIFY_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>DDA</option>
+		<menuaction>OpenMaintainCustomerPayeeDDA</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenSaveCustomerPayeeDDA</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveCustomerPayee</method>
+		<permission>sy_payee_register_dda_modify</permission>
+		<operation>SAVE_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>DDA</option>
+		<menuaction>OpenMaintainCustomerPayeeDDA</menuaction>
+	</action> -->
+<!-- 	<action>
+		<actionCode>OpenDeleteCustomerPayeeDDA</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>deleteCustomerPayee</method>
+		<permission>sy_payee_register_dda_delete</permission>
+		<operation>DELETE_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>DDA</option>
+		<menuaction>OpenMaintainCustomerPayeeDDA</menuaction>
+	</action> -->
+	<action>
+		<actionCode>OpenAddCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeeListPortlet</class>
+		<method>addCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>ADD_FEATURES</operation>
+		<featureid>-</featureid>
+		<option>PR_BILLP</option>
+		<menuaction>OpenAddCustomerPayeeBILLP</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenNewCustomerPayeeBILLP</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>newCustomerPayee</method>
+		<permission>modify_customer_billp_mc</permission>
+		<operation>ADD_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>BILLP</option>
+		<menuaction>OpenAddCustomerPayeeBILLP</menuaction>
+	</action>
+	
+	<!-- <action>
+		<actionCode>OpenAddCustomerPayeeDDA</actionCode>
+		<class>CSFCustomerPayeeListPortlet</class>
+		<method>addCustomerPayee</method>
+		<permission>sy_payee_register_dda_access</permission>
+		<operation>-</operation>
+		<featureid>%</featureid>
+		<option>PR_DDA</option>
+		<menuaction>OpenAddCustomerPayeeDDA</menuaction>
+	</action> -->
+<!-- 	<action>
+		<actionCode>OpenNewCustomerPayeeDDA</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>newCustomerPayee</method>
+		<permission>sy_payee_register_dda_add</permission>
+		<operation>ADD_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>PR_DDA</option>
+		<menuaction>OpenAddCustomerPayeeDDA</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenSaveNewCustomerPayeeDDA</actionCode>
+		<class>CSFCustomerPayeePortlet</class>
+		<method>saveNewCustomerPayee</method>
+		<permission>sy_payee_register_dda_add</permission>
+		<operation>SAVE_FEATURES</operation>
+		<featureid>%</featureid>
+		<option>PR_DDA</option>
+		<menuaction>OpenAddCustomerPayeeDDA</menuaction>
+	</action> -->
+	
+	
+</module>

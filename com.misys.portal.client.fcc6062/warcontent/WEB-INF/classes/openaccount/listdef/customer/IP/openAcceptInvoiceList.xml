@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="50" default_order="ref_id" default_order_type="d" js_binding="misys.binding.common.listdef_mc" identifier="ref_id" crossPageSelection="y">
+    
+    <batch type="submit">
+		<parameter name="SCREEN" value="IP_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_EXISTING"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="MODE_CODE" binding_code="MODE_ACCEPT"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		<icon loca_key="ACTION_USER_SUBMIT" image="/content/images/pic_form_save.gif" permission="fscm_ip_buyer_acceptance_access"/>
+	</batch>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="IP_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_EXISTING"/>
+			<parameter name="MODE_CODE" binding_code="MODE_ACCEPT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	
+	<column name="entity" align="left" width="25%" loca_key="ENTITY"/>
+	<column name="buyer_name" align="left" width="20%" loca_key="ENTITY_NAME_BUYER"/>
+	<column name="issuer_ref_id" align="left" width="20%" loca_key="INVOICE_REFERENCE_LABEL"/>
+	<column name="seller_name" align="left" width="20%" loca_key="ENTITY_NAME_SELLER"/>
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="tnx_cur_code" align="center" width="3em" loca_key="CURCODE"/>
+	<column name="iss_date" align="center" width="6em" loca_key="INVOICE_DATE"/>
+	<column name="due_date" align="center" width="6em" loca_key="INVOICE_DUE_DATE"/>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="buyer_name"
+		loca_key="ENTITY_NAME_BUYER"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="issuer_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="INVOICE_REFERENCE_LABEL"
+		input="y"
+		default=""/>
+	<parameter
+		name="seller_name"
+		loca_key="ENTITY_NAME_SELLER"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+    <parameter
+		name="iss_date"
+		type="range"
+		input="y"
+		range_from_label="INVOICE_DATE_FROM"
+		range_to_label="INVOICE_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="due_date"
+		type="range"
+		input="y"
+		range_from_label="INVOICE_DUE_DATE_FROM"
+		range_to_label="INVOICE_DUE_DATE_TO"
+		default="blank"/>
+
+	<!-- candidates -->	
+	<candidate name="invoice_payable">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="issuer_ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					issuer_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="buyer_name" />
+				<operator type="like" />
+				<value type="parameter">
+					buyer_name
+				</value>
+			</criteria>
+            <criteria>
+				<column name="cur_code" />
+				<operator type="like" />
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="iss_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					iss_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="iss_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					iss_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="due_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					due_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="due_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					due_date@to
+				</value>
+			</criteria>
+			<criteria>
+			 <column name="prod_stat_code"/>
+				<operator type="different"/>
+					<value type="code">
+						N005_PURGED
+					</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter>
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N042_PRESENTATION_ACCEPTANCE
+			</value>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N043_ACTION_REQUIRED
+			</value>
+		</criteria>
+	</filter>
+	
+</listdef>

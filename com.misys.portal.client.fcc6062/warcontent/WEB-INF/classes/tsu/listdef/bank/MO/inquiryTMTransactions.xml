@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="50" identifier="ref_id" js_binding="misys.binding.common.listdef_mc">
+	
+	<!-- <batch type="zip">
+		<parameter name="SCREEN" value="TMA_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_ZIP"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+	</batch> -->
+	
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="TMA_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<!-- <column name="entity" align="left" width="20%" loca_key="ENTITY"/> -->
+	<column name="link_ref_id" align="left" width="15%" loca_key="LINK_REF_ID"/>
+	<column name="tid" align="left" width="15%" loca_key="TID"/>
+	<column name="po_ref_id" align="left" width="15%" loca_key="PO_REFERENCE"/>
+	<column name="seller_name" align="left" width="25%" loca_key="SELLER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="message_type" align="center" width="15%" loca_key="MESSAGE_TYPE"/>
+	<column name="baseline_stat_code" align="center" width="15%" loca_key="TMA_STATUS"/>
+	<column name="prod_stat_code" align="center" width="15%" loca_key="STATUS"/>
+ 
+	<column name="product_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<!-- <parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/> -->
+	<!-- <parameter
+		name="group_id"
+		size="20"
+		max_length="35"
+		loca_key="FOLDERID"
+		input="y"
+		default=""/> -->
+	<parameter
+		name="link_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="LINK_REF_ID"
+		input="y"
+		default=""/>
+	<parameter
+		name="tid"
+		size="20"
+		max_length="35"
+		loca_key="TID"
+		input="y"
+		default=""/>
+	<parameter
+		name="po_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="PO_REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="seller_name"
+		loca_key="SELLER_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+	    name="baseline_stat_code"
+	    type="AvailableTMAStatus"
+	    loca_key="TMA_STATUS"
+	    input="y"
+	    multiple_values="ACTV,AMRQ,CLRQ,CLSD,COMP,DARQ,ESTD,PMTC,PNDG,PROP,RARQ,SCRQ,SERQ,FPTR,FAIL"
+	    />
+	  <parameter
+		name="prod_stat_code"
+		type="AvaliableProductStatus"
+		loca_key="STATUS"
+		input="y"
+		multiple_values="98,43,75,55,77,A6,A0,A8,32,03,01"/>
+		<parameter
+	    name="message_type"
+	    loca_key="MESSAGE_TYPE"
+	    type="TMAMessageType"
+	    input="y"
+	    multiple_values="001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023,024,025,026,027,028,029,030,031,032,033,034,035,036,037,038,040,041,042,044,045,046,047,048,049,050,051,052"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		type="Currency"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+	<parameter
+		name="export_list"
+		file_name="inquiryTM"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->	
+	<candidate name="tsu_message_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="po_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					po_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="link_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					link_ref_id
+				</value>
+			</criteria>
+				<criteria>
+				<column name="tid"/>
+				<operator type="like"/>
+				<value type="parameter">
+					tid
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<!-- <criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria> -->
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="baseline_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					baseline_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="message_type"/>
+				<operator type="like"/>
+				<value type="parameter">message_type</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+	
+	<filter>
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+	</filter>
+	<filter or="y">
+		<criteria>
+             <column name="error_code"/>
+             <operator type="not in"/>
+             <value type="vector">
+                   <value type="code">
+                       N305_GBF
+                  	</value>
+             </value>
+        </criteria>
+        <criteria>
+			<column name="error_code"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>
+</listdef>

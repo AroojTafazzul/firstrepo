@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="upload_template_id" default_order_type="d"
+	page="50">
+
+	<!-- Columns -->
+	<column name="name" align="left" width="20%" loca_key="LISTDEF_PO_COLUMN_NAME">
+		<url>
+			<parameter name="SCREEN" value="PO_SCREEN" />
+			<parameter name="OPERATION_CODE" binding_code="UPLOAD_TEMPLATE_MAINTAIN_PO" />
+			<parameter name="FEATURE_ID" column="upload_template_id" />
+			<parameter name="PRODUCT_CODE" business_code="N001_PO" />
+		</url>
+	</column>
+	<column name="description" align="left" width="60%"
+		loca_key="LISTDEF_PO_COLUMN_DESCRIPTION" />
+	<column name="executable" align="center" width="10%"
+		loca_key="LISTDEF_PO_COLUMN_RELEASED" />
+ 
+	<column name="product_code" hidden="y" />
+	<column name="upload_template_id" hidden="y" />
+
+	<!-- parameters -->
+	<parameter name="name" size="20" max_length="35"
+		loca_key="LISTDEF_PO_COLUMN_NAME" input="y" />
+	<parameter name="description" size="20" max_length="100"
+		loca_key="LISTDEF_PO_COLUMN_DESCRIPTION" input="y" />
+
+	<!-- candidates -->
+	<candidate name="baselineuploadtemplate">
+		<filter>
+			<criteria>
+				<column name="name" />
+				<operator type="like" />
+				<value type="parameter">
+					name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="description" />
+				<operator type="like" />
+				<value type="parameter">
+					description
+				</value>
+			</criteria>
+			<criteria>
+				<column name="executable" />
+				<operator type="like" />
+				<value type="parameter">
+					executable
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="product_code" />
+			<operator type="in" />
+			<value type="vector">
+				<value type="code">
+					N001_PO
+				</value>
+			</value>
+		</criteria>
+	</filter>
+
+</listdef>

@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Lending Services: Fee Payments;PERM=ln_access;"
+         id="LN_FEE_UX" role="TOPIC">
+  <title><application id="ent_Loan">Fee Payments</application></title>
+
+  <para role="TEXT">This module enables you to view the current status of
+  various Fee Payments that were initiated. You can initiate a new Fee Payment
+  for a Facility. A deal consists of one or more facilities. A deal is
+  structured for a company by a bank or group of banks to meet the company's
+  financial needs.</para>
+
+  <para role="TEXT">To use the modules in Lending Services, your company must
+  have arranged a deal with the Issuing Bank.</para>
+
+  <section condition="TITLE=Fee Payments Landing Page;PERM=ln_access;ACCESS=FT_LNFP_GENERAL"
+           role="TOPIC">
+    <title>Fee Payments Landing Page</title>
+
+    <para>The Fee Payments Landing page displays a list of Fee Payments
+    transactions, the transactions are displayed in multiple tabs based on the
+    current status of transaction. The Landing page view is customizable based
+    on your requirement.<note>
+        <para>You can customise the list of columns displayed through
+        SDK.</para>
+      </note></para>
+
+    <para>The following image illustrates the Fee Payments landing
+    page:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/fee_landing.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Initiate Fee
+          Payments</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Use this option to initiate a new fee payments
+            for the desired Facility. This function displays a list of deals
+            and related facilities, from which you can select a facility for
+            which the fee is to be paid.The facilities are listed based on the
+            deals user has access to.<note>
+                <para>The Fee Payment initiation feature is available only to
+                maker user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The Fee Payments listing page segregates transactions based on their
+    current status like Draft, Pending Approval, Pending at Bank or
+    Acknowledged. The following ribbon items enable you to perform various
+    actions on individual transaction based on the tab you are on. Individual
+    tabs and related functionality are described below:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/fee_ribbon.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject><note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Tab</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Draft</guilabel></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all the Fee Payments
+              transactions in draft state and also the transactions that
+              checker has returned for improvement.<note>
+                  <para><guimenuitem moreinfo="none">Draft</guimenuitem> tab
+                  is available only to maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">Pending Approval</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all existing Fee
+              Payments transactions that are awaiting client approval from a
+              second user within the corporate.<note>
+                  <para><itemizedlist>
+                      <listitem>
+                        <para>The <emphasis role="bold">Authorise</emphasis>
+                        action item is available only for a checker
+                        user.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>A user with batch submission permission can
+                        select multiple transactions to <emphasis
+                        role="bold">Approve</emphasis> or <emphasis
+                        role="bold">Return</emphasis> though the checkbox
+                        provided for every transactions listed in this
+                        tab.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>It is mandatory to provide the comments to
+                        return a transaction.</para>
+                      </listitem>
+                    </itemizedlist></para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel role="bold">Pending at
+              Bank</guilabel></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all existing Fee
+              Payments transactions that are awaiting bank
+              approval.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Acknowledged</guilabel></entry>
+
+              <entry valign="top"><para role="TEXT">Lists all Acknowledged Fee
+              Payments transactions.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para>The <guiicon>Advance Filter</guiicon> presents you with various
+    filter options like <emphasis role="bold">Status</emphasis>, <emphasis
+    role="bold">Deal</emphasis>, <emphasis role="bold">Facility</emphasis>,
+    <emphasis role="bold">Channel Reference</emphasis>, <emphasis
+    role="bold">Fee(s)</emphasis>, <emphasis role="bold">Effective
+    Date</emphasis>, <emphasis role="bold">Currency</emphasis>. Enter the
+    relevant search criterion and apply the filter to list all the relevant
+    Fee Payment records. You can also select the time frame for which data
+    needs to be fetched.</para>
+
+    <para>You can perform the following actions on the listed loan
+    records:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of Fee Payment transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of Fee Payment transactions displayed on the dashboard.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed Fee
+          Payment transactions.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on Fee
+      Payment transactions. The actions are available in relevant tabs based
+      on the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction).</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Approve</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/approve_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to approve the selected transaction.
+              <note>
+                  <para>Option to <emphasis role="bold">Approve</emphasis> a
+                  transaction is available only to checker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Return</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/return_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to return the selected transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Return</emphasis>
+                      a transaction is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Transaction Details;PERM=ln_access;ACCESS=BK_BLFP_DETAIL_UX"
+           role="Topic">
+    <title>Transaction Details</title>
+
+    <para>This section describes the information presented on clicking the
+    details button against any given transaction:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c3" colwidth="6.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Field</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><guilabel
+            role="bold">Details</guilabel></entry>
+
+            <entry valign="top"><para>Displays the <guimenu>Transaction
+            Details</guimenu> and <guimenu>Additional Information</guimenu>,
+            which shows customer attachments, if any. The information is
+            spread over two tabs, individual tabs are described
+            below:<itemizedlist>
+                <listitem>
+                  <para><emphasis role="bold">Transaction Details</emphasis>:
+                  Displays the details of Fee Payments transaction that is
+                  opened from the listing page. The tab opens details in
+                  read-only mode.</para>
+                </listitem>
+
+                <listitem>
+                  <para><emphasis role="bold">Additional
+                  Information</emphasis>: Lists the 'Customer Attachments'
+                  added as part of this transaction.</para>
+                </listitem>
+              </itemizedlist></para><para>You can perform following actions on
+            the opened transactions:<itemizedlist>
+                <listitem>
+                  <para><guimenu>Fee Payments Landing</guimenu>: You can
+                  navigate back to Fee Payments Landing page.</para>
+                </listitem>
+
+                <listitem>
+                  <para><guimenu>Journey</guimenu>: You can view the history
+                  of events that the transaction has gone through.</para>
+                </listitem>
+              </itemizedlist></para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section role="Topic">
+    <title>Initiate Fee Payment</title>
+
+    <para>This section provides the details on Fee Payments initiation for
+    Deals.</para>
+
+    <section condition="TITLE=General Details;PERM=ln_access;ACCESS=BK_BLFP_GD_UX"
+             role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">The General Details form for Fee Payments initiation
+      comprises of the following fields:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Deal Name</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the deal for which
+              you wish to initiate Fee Payment. Upon selection of Deal all the
+              related facilities are listed.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Facility</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Select the facility for
+              which you wish to initiate Fee Payment.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Borrower Reference</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Back Office Reference of
+              the logged in user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Entity</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">The entity (jurisdiction
+              information) associated with the loan applicant
+              details.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Fees;PERM=ln_access;ACCESS=BK_BLFP_FP_UX"
+             role="ITEM">
+      <title>Fees</title>
+
+      <para role="TEXT">The Fees form comprises of following fields:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="3.0*"/>
+
+          <colspec colname="c3" colwidth="5.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel>Effective Date</guilabel></entry>
+
+              <entry valign="top"><para>Select the effective date from which
+              the fee details are to be fetched. The fee details are fetched
+              from Loan Back Office and displayed on <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. The bank can
+              configure fee types in back office, example of Fees configured
+              in back office are as shown below:<programlisting>Available Fee
+Unutilized Fee
+Utilized Fee</programlisting></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Attachments;PERM=ln_access;ACCESS=BK_BLFP_AT_UX"
+             role="TOPIC">
+      <title>Attachments</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">File Upload</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Upload supporting files
+              either by 'Drag and Drop' method or by 'Browsing' to the file
+              location. You can attach up to 5 the supporting documents of
+              size 1 Mega Byte each. The file types supported are
+              <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+              PDF, GIF, ZIP</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Browse</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Browse button and Drag and
+              Drop field, which you can optionally use to attach a file from
+              your local hard disk to give additional details pertaining to
+              this drawdown.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=ln_access;ACCESS=BK_BLFP_PV_UX"
+             role="Topic">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application form and also allows you
+      to either Save or Submit the application.</para>
+    </section>
+  </section>
+</section>

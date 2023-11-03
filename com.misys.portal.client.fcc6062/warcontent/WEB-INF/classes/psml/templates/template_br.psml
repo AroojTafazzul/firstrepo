@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<portlets user="default">
+  <controller name="com.misys.portal.core.portal.controllers.CardPortletController">
+    <parameter name="parameter" value="pane" />
+  </controller>
+  <portlets user="default">
+    <controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+      <parameter name="mode" value="row" />
+      <parameter name="sizes" value="205,*,220" />
+    </controller>
+    <layout position="0" size="NORMAL" />
+    <metainfo>
+      <title>P�gina Inicial</title>
+    </metainfo>
+    <portlets user="default">
+      <controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController" />
+      <layout position="1" size="NORMAL" />
+      <entry parent="UserTools_br" type="ref">
+        <parameter name="menu" value="true" />
+        <layout position="0" size="NORMAL" />
+      </entry>
+      <entry parent="TradeApplicationsPortlet" type="ref">
+        <parameter name="menu" value="true" />
+        <metainfo>
+          <title>Aplicativos de Trade</title>
+          <description>Aplicativos de Trade</description>
+        </metainfo>
+        <layout position="1" size="NORMAL" />
+      </entry>
+      <entry parent="BookmarkPortlet" type="ref">
+        <parameter name="menu" value="true" />
+        <metainfo>
+          <title>Meus Favoritos</title>
+          <description>Meus Favoritos</description>
+        </metainfo>
+        <layout position="2" size="NORMAL" />
+      </entry>
+    </portlets>
+    <portlets user="default">
+      <controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController" />
+      <layout position="2" size="NORMAL" />
+      <entry parent="CustomerOngoingTasksList" type="ref">
+		<layout position="0" size="NORMAL" />
+	  </entry>
+      <entry parent="EmptyContent" type="ref">
+        <layout position="1" size="NORMAL" />
+      </entry>
+      <entry parent="EmptyFeed" type="ref">
+        <layout position="2" size="NORMAL" />
+      </entry>
+      <entry parent="CustomerOngoingTasksList" type="ref">
+        <layout position="3" size="NORMAL" />
+      </entry>
+      <portlets user="default">
+        <controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+          <parameter name="mode" value="row" />
+          <parameter name="csstag" value="ROWCOLUMNHOME"/>
+          <parameter name="sizes" value="50%,50%"/>
+        </controller>
+        <layout position="4" size="NORMAL" />
+        <entry parent="OutstandingPortlet" type="ref">
+          <layout position="1" size="NORMAL" />
+        </entry>
+        <entry parent="HomeAccountSummaryListPortlet" type="ref">
+		  <layout position="2" size="NORMAL" />
+		</entry>
+	</portlets>
+        <entry parent="RatePortlet" type="ref">
+          <parameter name="menu" value="true" />
+          <layout position="5" size="NORMAL" />
+        </entry>
+		<entry parent="ActionRequiredPortlet" type="ref">
+			<parameter name="menu" value="true"/>
+			<layout position="6" size="NORMAL"/>
+		</entry>
+		<entry parent="DiscrepancyPortlet" type="ref">
+			<parameter name="menu" value="true"/>
+			<layout position="7" size="NORMAL"/>
+		</entry>        
+    </portlets>
+    <portlets user="default">
+      <controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+      <layout position="3" size="NORMAL" />
+      <entry parent="TradeCalendarPortlet" type="ref">
+        <parameter name="menu" value="true" />
+        <layout position="0" size="NORMAL" />
+      </entry>
+      <entry parent="AllEventsPortlet" type="ref">
+        <parameter name="menu" value="true" />
+        <layout position="1" size="NORMAL" />
+      </entry>
+    </portlets>
+  </portlets>
+</portlets>

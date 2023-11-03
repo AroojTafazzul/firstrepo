@@ -1,0 +1,98 @@
+## Sample.
+#set ($LogoFile = $config.getConfiguration().getString("site.header.logo"))
+#set ($LoginScreen = $config.getConfiguration().getString("screen.login"))
+#set ($LogoutScreen = $config.getConfiguration().getString("action.logout"))
+#set ($language = $gtpapp.getLanguage())
+#set ($message = $l10n.getGTPString($language,"WELCOME_MESSAGE"))
+#set ($skiplink = $l10n.getGTPString($language,"SKIPTO_CONTENT"))
+#set ($skipmenulink = $l10n.getGTPString($language,"SKIPTO_MENU"))
+#set ($login = $l10n.getGTPString($language,"LOGIN"))
+#set ($logout = $l10n.getGTPString($language,"LOGOUT"))
+#set ($user = $l10n.getString($language,"USER"))
+#set ($home = $l10n.getString($language,"HOME"))
+#if ($data.User.hasLoggedIn())
+##
+## This is the top navigation bar displayed for a logged in user
+#set ($companyType = $data.User.getCompanyType())
+#if ($companyType == "03")
+#set ($featuresScreen = "CustomerSystemFeaturesScreen")
+#else
+#set ($featuresScreen = "BankSystemFeaturesScreen")
+#end
+<div class="contentWrapper" style="min-height: calc(100vh - 7.4em);">
+<!-- BEGIN WELCOME BAR  -->
+<ul style="display:none">
+ <li><a href="#GTPRootPortlet" title="$skiplink">$skiplink</a></li>
+ <li><a href="#MenuBuilder" title="$skipmenulink">$skipmenulink</a></li>
+</ul>
+<div class="header">
+  <div id="banner">
+  	<div id="jv_logo"><a href='$link'><img src="$LogoFile" alt="$message" title="$message" class="logo"></a></div>
+  	<div id="wb_logo"></div>
+  </div>
+  <div id="navbar">
+	  <div id="nav_main">
+	  	<div id="date" nowrap="">
+	  		<a id="nav_date" target="_top" href="https://workbench.mellon.com/myworkbench/myworkbench.jsp#REGIONAL_SETTINGS">
+	  		<script type="text/javascript">
+				<!--
+				var currentTime = new Date();
+				var month = currentTime.getMonth() + 1;
+				var day = currentTime.getDate();
+				var year = currentTime.getFullYear();
+				document.write(month + "/" + day + "/" + year);
+				var hours = currentTime.getHours();
+				var minutes = currentTime.getMinutes();
+				var seconds = currentTime.getSeconds();
+				if (minutes < 10){
+					minutes = "0" + minutes;
+				}
+				document.write("  " + hours + ":" + minutes + " ");
+				if(hours > 11){
+					document.write("PM");
+				} else {
+					document.write("AM");
+				}
+				//-->
+			</script>
+	  		</a>
+	  	</div>
+	  	<div id="nav_home">
+	  		<a class="currentPage" target="_top" href="https://workbench.mellon.com/index.jsp">Home</a>
+	  	</div>
+	  	<div id="nav_cust">
+	  		<a target="_top" href="https://workbench.mellon.com/myworkbench/myworkbench.jsp">Customize</a>
+	  	</div>
+	  	<div id="nav_supp"><a target="_top" href="https://workbench.mellon.com/support/index.jsp">Support</a></div>
+	  	<div id="nav_site"><a target="_top" href="https://workbench.mellon.com/sitemap/index.jsp">Site Map</a></div>
+	  	<div id="nav-log"><a target="_top" href="https://workbench.mellon.com/logout.jsp">Logout</a></div>
+	  </div>
+  </div>
+  <div class="panel1">
+    <div class="breadcrumb"><a href='$link'>$home</a></div>
+    <div class="message">$message &#187; $!data.User.FirstName/$!data.User.Company</div>
+        <div class="submenu">
+    	<a href='$link.setAction($LogoutScreen)'>
+    		<img src="/content/images/demobank/logout.png" width="16" height="16" id="logoutButton" alt="$logout"></A>
+    	<a href="$contextPath$servletPath/screen/$featuresScreen">
+    		<img src="/content/images/demobank/settings.png" width="16" height="16" alt="System Features"></a>
+    	<a href="javascript:void(0)" onclick="window.open('$contextPath$servletPath/screen/OnlineHelpScreen?helplanguage=fr&amp;accesskey=fr', 'OnlineHelp', 'width=1000,height=700,resizable=yes,scrollbars=yes');">
+    		<img src="/content/images/demobank/help.png" width="16" height="16" alt="Help"></A></div>
+  </div>
+</div>
+#else
+##
+## This is the top naviation bar displayed for the anonymous user, i.e. they are not logged in
+##
+<!-- BEGIN WELCOME BAR  -->
+<div class="header">
+ <div class="panel2"><img src="$LogoFile" alt="$message" title="$message" class="logo">
+  <div class="submenu">
+   <a href='$link.setScreen($LoginScreen)'><img src="/content/images/demobank/login.png" width="16" height="16" alt="$login"></a>
+  </div>
+ </div>
+ <div class="panel1">
+  <h1 class="message">$message &#187; <a href='$link.setScreen($LoginScreen)'>Login to My Account</a></h1>
+ </div>
+</div>
+#end

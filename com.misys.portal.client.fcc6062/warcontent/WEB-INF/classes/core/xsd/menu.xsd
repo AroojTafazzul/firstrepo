@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.misys.com/portal/xsd/menu.xsd" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ms="http://www.misys.com/portal/xsd">
+    <annotation>
+    	<documentation>description of a menu. It can contains</documentation></annotation>
+    <element name="menu" type="ms:menuType">
+    	<annotation>
+    		<documentation>W3C Schema definition for Misys Portal menu definition</documentation>
+    	</annotation></element>
+    
+    <complexType name="menuType">
+    	<choice maxOccurs="unbounded" minOccurs="1">
+    		<element name="entry" nillable="true">
+                <annotation>
+                	<documentation>Describe an Entry to a Screen</documentation>
+                </annotation>
+                <complexType>
+                	<sequence maxOccurs="unbounded" minOccurs="0">
+                		<element name="parameter" nillable="true">
+                			<complexType>
+                				<attribute name="name" type="string">
+                				</attribute>
+                				<attribute name="value"
+                					type="string">
+                				</attribute>
+                			</complexType></element>
+                	</sequence>
+    				<attribute name="screen" type="string"></attribute>
+    				<attribute name="permission" type="string"></attribute>
+    				<attribute name="title" type="string"></attribute>
+    				<attribute name="description" type="string" use="optional"></attribute>
+    			</complexType>
+    		</element>
+    		<element name="entry" nillable="true">
+                <annotation>
+                	<documentation>Describe an Entry to an Action Code</documentation>
+                </annotation>
+                <complexType>
+                	<attribute name="screen" type="string"></attribute>
+                	<attribute name="actioncode" type="string"
+                		use="optional">
+                	</attribute>
+                	<attribute name="permission" type="string"></attribute>
+                	<attribute name="title" type="string"></attribute>
+                	<attribute name="description" type="string"
+                		use="optional">
+                	</attribute>
+                </complexType>
+    		</element>
+    		<element name="entry" nillable="true">
+                <annotation>
+                	<documentation>Describe an Entry to another menu</documentation>
+                </annotation>
+    			<complexType>
+    				<attribute name="ref" type="string"></attribute>
+    				<attribute name="permission" type="string"></attribute>
+    				<attribute name="title" type="string"></attribute>
+    				<attribute name="description" type="string" use="optional"></attribute>
+    			</complexType>
+    		</element>
+    	</choice>
+    	<attribute name="id" type="string" use="required"></attribute>
+    </complexType>
+
+    <element name="menus">
+    	<complexType>
+    		<sequence maxOccurs="unbounded" minOccurs="0">
+    			<element ref="ms:menu"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>

@@ -1,0 +1,3288 @@
+<section xmlns:xalan="http://xml.apache.org/xalan">
+<title>Configurable Parameters List</title>
+<itemizedlist>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P049</para>
+<para>
+<literal>Usage : </literal>[DEPRECATED] Used to configure the document management folder path based on
+    document code, format, type like Generate or Upload.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    document code KEY_2 - document format KEY_3 - screen from KEY_4 - document
+    type DATA_2 - edit mode stylesheet DATA_3 - DM folder url DATA_4 -
+    unsigned mode stylesheet DATA_5 - document folder url DATA_7 - template
+    flag </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P050</para>
+<para>
+<literal>Usage : </literal>Used to configure document transformation information like
+    transformation code, documentFormat, document code.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id DATA_1 -
+    transformation code option DATA_2 - document format DATA_3 - document code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P051</para>
+<para>
+<literal>Usage : </literal>Used to associate the license types to various product codes.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - License Type Code, DATA_1 - Product Code </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P060</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store the logo details which are used while
+    generating the documents by including those logo text.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id DATA_1 - logo
+    id DATA_3 - footer text DATA_4 - header text line1 DATA_5 - header text
+    line2 DATA_6 - header text line3 </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P061</para>
+<para>
+<literal>Usage : </literal>Parameter Configuration as per bank, where parameter setup will determine 
+    which bank's exchange. rate to pick we have  Source Bank Abbv Name 
+    and to take the rates of Destination Bank Abbv Name </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> DATA_1 - Destination Bank Abbv Name  KEY_1 - Source Bank Abbv Name 
+    KEY_2 - parameter for ('CCY' for currency only, 'XCH' for exchange rate only, '*' for both)</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P108</para>
+<para>
+<literal>Usage : </literal>Used to store the downtime configuration created through
+    online parameters maintenance for portal.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - bank_abbv_name KEY_6 - downtime label
+   
+    DATA_1 -START_BUSINESS_HOUR DATA_2 - END_BUSINESS_HOUR  DATA_3 -HOLIDAY1 DATA_4 -HOLIDAY2</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P109</para>
+<para>
+<literal>Usage : </literal>Used to store the financial holidays configuration created through
+    online parameters maintenance for portal. Client may use scripts to
+    maintain the values.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - bank_abbv_name/country name KEY_2 -
+    productCode/'*' KEY_3 - subProductCode/'*' KEY_8,KEY_9,KEY_10 - Weekly
+    Holidays/'**' DATA_1 - dd/mm/yyyy </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P110</para>
+<para>
+<literal>Usage : </literal>Used to store the Financial CutOff time configuration created
+    through online parameters maintenance for portal. Client may use scripts
+    to maintain the values.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - bank_abbv_name KEY_2 - productCode
+    KEY_3 - subProductCode/'**' KEY_4 - SUBSCRIPTION_CODE KEY_5 - AMOUNT_LIMIT
+    KEY_6 - COUNTRY  KEY_8 - CURRENCY  KEY_10 - CLEARING CODE
+    KEY_11 = Indicator that cut off was created when maker checker is off.
+    DATA_1 - HOUR DATA_2 - MINUTES DATA_3 - OFFSET DATA_4 - TIME ZONE
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P111</para>
+<para>
+<literal>Usage : </literal>Used to configure the custom sub products for any product.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - product code DATA_1 - sub product
+    code. </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P112</para>
+<para>
+<literal>Usage : </literal>Used to configure fact and opinion questions,option, answers
+    associated with the question. These are used for password reset using
+    question answers and presently not supported in 5.0</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - FA KEY_2 - question
+    number DATA_1 - question DATA_2 - option A DATA_3 - option B DATA_4 -
+    option C DATA_5 - correct answer </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P113</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P114</para>
+<para>
+<literal>Usage : </literal>Used to configure value added services.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - service serial no KEY_2
+    - service_name KEY_3 - bank_abbv_name DATA_1 - standard currency DATA_2 -
+    standard charge </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P115</para>
+<para>
+<literal>Usage : </literal>Used to configure Beneficiary Advice Templates.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - maintaining bank's id KEY_1 -
+    Template_ID KEY_2 - Template Description KEY_3 - flag to indicate if
+    associated customers are all (Y/N) DATA_1 - Column Label DATA_2 - Column
+    Data Type DATA_3 - Column Alignment DATA_4 - Column Width </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P116</para>
+<para>
+<literal>Usage : </literal>Used to configure Beneficiary Advice customers associated.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - maintaining bank's id KEY_1 -
+    Template_ID KEY_2 - Company Abbv Name KEY_3 - Entity Abbv Name
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P117</para>
+<para>
+<literal>Usage : </literal>Used to configure charges applicable for a transaction.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - Main bank abbreviation name KEY_1
+    - Subscription Package or * KEY_2 - Product Code or * KEY_3 - Sub Product
+    Code or * DATA_1 - Standard Charge Currency DATA_2 - Standard Charge
+    Amount DATA_3 - Special Charge Currency DATA_4 - Special Charge Amount
+    DATA_5 - Special Charge Expiry (DD/MM/YYYY) DATA_6 - Waiver (Y or N)
+    DATA_7 - Waiver Expiry (DD/MM/YYYY) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P118</para>
+<para>
+<literal>Usage : </literal>Used to configure Beneficiary Advice Product Specific Template
+    Properties.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - '*' KEY_1 - Product (FT , TD , BK
+    etc.) KEY_2 - Product Type (INT, TPT, DOM, MT103 etc) DATA_1 - Beneficiary
+    Advice Enabled (Y/N) DATA_2 - Email 1 (Y/N) DATA_3 - Email 2 (Y/N) DATA_4
+    - Phone (Y/N) DATA_5 - Fax (Y/N) DATA_6 - Mail (Y/N) DATA_7 - Print (Y/N)
+    DATA_8 - IVR (Y/N) DATA_9 - Delivery Method Multi Selection (Y/N) DATA_10
+    - Max No. of rows allowed for Bene Adv Table DATA_11 - Free Format Message
+    Length DATA_12 - Free format Message Width </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P119</para>
+<para>
+<literal>Usage : </literal>Used to configure File types for bulk file upload with
+    permissions.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Bank Abbv Name -
+    Determines Whether particular file type can be uploaded for the bank KEY_2
+    - Product Type - For Portal sub product code of FT (INT, DOM etc). 
+    This should be set as "*" for FLEXI mode. DATA_2 -
+    Email 1 (Y/N) KEY_3 - Product Group - For portal sub product code for BK
+    (COLLE - collections,PAYMT- Payments KEY_4 - Map Code - Actual Name of
+    Map_ to be sent to Data mapper (nothing but FT),PAYRL - Payroll) DATA_4 -
+    Phone (Y/N) DATA_1 - File Type - Type of the file to be uploaded. This is
+    displayed for the customer based on permission (Payroll-INT
+    Standard,payroll - INT Special etc) DATA_2 - Permission Name - Permission
+    to display file type (ft_bulk_bp_ibg_std_upload etc) DATA_3 - Format Name
+    in file system (SG_INT_PAY_COLL,SG_INT&lt;PAY_WITH_Advice) DATA_5 - Format
+    Type - Fixed or CSV will be passed to DataMapper (Fixed,CSV) DATA_6 -
+    Header Account Level Flag (Y/N) - Field to specify whether account is
+    mandatory while uploading DATA_7 - Header Value date Level flag (Y/N) -
+    Field to specify whether value date is mandatory while uploading DATA_8 -
+    Amendable (Y/N) DATA_9 - Multi Product Group (Y/N) DATA_10 - Multi Entity
+    allowed (Y/N) N for Singapore DATA_11 - File Encrypted (Y/N) - File being
+    uploaded in encrypted. DATA_12 - Payroll Type (Employee, Executive etc)
+    DATA_12 - Compressed File Type DATA_13 - Fixed table for advise DATA_14 -
+    Override Duplicate Customer Reference Check (Y/N) DATA_15 - Restrict from
+    Merge. </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P420</para>
+<para>
+<literal>Usage : </literal>Not being used</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P120</para>
+<para>
+<literal>Usage : </literal>Used to configure Permission associated to product codes and sub
+    product codes.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Product code KEY_2 -
+    Sub Product Code Product - '**' for product code permission DATA_1 -
+    Permission name </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P121</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P122</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P123</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P124</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P125</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P126</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P127</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P128</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P129</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P130</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P131</para>
+<para>
+<literal>Usage : </literal>Permission associated to product codes and sub product
+    codes.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> key_1 - Resource key data_1 - Resource name
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P132</para>
+<para>
+<literal>Usage : </literal>Balance Type defined for Regional Account View</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * Representing configuration for all banks DATA_1 - Balance Type - 05,03
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P150</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P200</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store submission alerts configured information
+    through System Features.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    alertType KEY_2 - productCode KEY_3 - date_code || tnx_type_code KEY_4 -
+    issuer_abbv_name KEY_5 - alertLanguage KEY_6 - entity KEY_9 - abbvName
+    KEY_10 - address KEY_11 - customer_abbv_name KEY_12 - tnx_amount_sign
+    KEY_13 - tnx_currency KEY_14 - tnx_amount KEY_15 - prod_stat_code DATA_1 -
+    issuer_abbv_name || address </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P201</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store the Calendar alerts configured information
+    through System Features.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    alertType KEY_2 - productCode KEY_3 - date_code || tnx_type_code KEY_4 -
+    issuer_abbv_name KEY_5 - alertLanguage KEY_6 - entity KEY_7 - offset KEY_8
+    - offsetSign KEY_9 - abbvName KEY_10 - address DATA_1 - issuer_abbv_name
+    || address </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P202</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store the scheduled reports creation
+    information.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id 
+	KEY_1 - report id KEY_2 - report abbv name KEY_3 - job id 
+	KEY_4 - frequency KEY_5 - viewer type like CSV, pdf 
+	KEY_6 - language KEY_7 - interface target name reportemailjob 
+	KEY_9 - Bank Abbreviation Name KEY_10 - Bank TimeZone.
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P203</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P204</para>
+<para>
+<literal>Usage : </literal>At present not being used. This parameter is not intended to
+    manually configure. Used by Portal application to store the cash balance
+    alert creation information. Not being used in V5.0</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 - alert
+    type KEY_3 - tnx type code or date code or * KEY_4 - bank abbv name KEY_5
+    - alert language KEY_6 - entity abbv name KEY_7 - abbv name KEY_8 -
+    address KEY_9 - customer abbv name KEY_10 - account number KEY_11 -
+    threshold currency KEY_12 - threshold amount KEY_13 - threshold sign
+    KEY_14 - credit currecny KEY_15 - credit amount KEY_16 - debit currency
+    KEY_17 - debit amount DATA_1 - account number </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P205</para>
+<para>
+<literal>Usage : </literal>At present not being used. This parameter is not intended to
+    manually configure. Used by Portal application to store the cash
+    transaction alert creation information. Not being used in V5.0</para>
+<para>
+<literal>Table Name      : </literal>GRP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 - alert
+    type KEY_3 - tnx type code or date code or * KEY_4 - bank abbv name KEY_5
+    - alert language KEY_6 - entity abbv name KEY_7 - abbv name KEY_8 -
+    address KEY_9 - customer abbv name KEY_10 - account number KEY_11 -
+    threshold currency KEY_12 - threshold amount KEY_13 - threshold sign
+    KEY_14 - credit currecny KEY_15 - credit amount KEY_16 - debit currency
+    KEY_17 - debit amount DATA_1 - account number </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P210</para>
+<para>
+<literal>Usage : </literal>Used to confugre the fields to be presented to user for defining
+    the grouping rule for Purchase Order or Invoice Payable.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P211</para>
+<para>
+<literal>Usage : </literal>Used to configure the authentication modes applicable for
+    customer.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> GTP_LARGE_PARAM_KEY PARAM_ID - unique id KEY_1
+    - group abbv name KEY_2 - bank abbv name GTP_LARGE_PARAM_DATA PARAM_ID -
+    unique id DATA_1 - authenication mode </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P212</para>
+<para>
+<literal>Usage : </literal>Used to configure the authentication modes applicable for
+    customer.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> GTP_LARGE_PARAM_KEY PARAM_ID - unique id KEY_1
+    - bank abbv name KEY_2 - company abbv name GTP_LARGE_PARAM_DATA PARAM_ID -
+    unique id DATA_1 - authenication mode </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P216</para>
+<para>
+<literal>Usage : </literal>Used to configure Collaboration for both Cash and Trade products</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		KEY_1 - product code 
+    		KEY_2 - sub-product code 
+    		DATA_1 - boolean flag whether collaboration is enabled for this product/subproduct (Y/N)
+    		DATA_2 - boolean flag whether user-to-bank collaboration is enabled (Y/N)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P217</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P218</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P219</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P220</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+		    Portal application to store the bookmark creation
+		    information.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">Below are required key and data columns for configuring this parameter,
+    	GTP_LARGE_PARAM_KEY 
+    		PARM_ID - P220
+    		KEY_1 - userId
+    		PARAM_ID - unique parameter id generated for a company and user.
+    	GTP_LARGE_PARAM_DATA
+    		PARAM_ID - 	unique parameter id generated for a company and user.
+    		DATA_1 - actionCode
+    		DATA_2 - Bookmark description
+    		DATA_3 - source of bookmark (eg. Cash, Trade etc.)
+    		DATA_4 - unique bookmark id generated for each bookmark
+    		DATA_5 - Bookmark Url
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P221</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P222</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P223</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P224</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P225</para>
+<para>
+<literal>Usage : </literal>This parameter is used to generated the preallocated references
+    (bo_ref_id). Can be done on bank side or through interfaces. Later will be
+    also available on bankgroup side.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P226</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store guarantee creation details
+    information.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    Guarantee name DATA_1 - Guarantee type DATA_2 - Guarantee type description
+    DATA_3 - is guarantee activated DATA_4 - is Specimen selected DATA_6 -
+    guarantee is standard or WYSIWYG Editor DATA_7 - guarantee text id DATA_8
+    - Specimen name DATA_9 - document id DATA_11 - fo stylesheet name
+    DATA_12 - Sub product code for Undertaking Issued
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P227</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store guarantee assinged customer, entity details
+    information.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    guarantee name KEY_2 - Customer abbv name KEY_3 - entity abbv name or *
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P228</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P229</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P230</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P231</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P232</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P233</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P234</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P235</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P236</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P237</para>
+<para>
+<literal>Usage : </literal>Used to configure Bulk Payroll Types.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA, GTP_LARGE_PARAM_KEY AND
+    GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank abbv Name KEY_2 -
+    bulk product code (bk) KEY_3 - sub product code(payrol) KEY_4 - payroll
+    type DATA_1 - payroll type description DATA_2 - permission Largeparam key-
+    sub product's applicable for payroll type per bank COMPANY_ID - * KEY_1 -
+    bank abbv Name KEY_2 - bulk product code (bk) KEY_3 - sub product
+    code(payrol) KEY_4 - payroll type param_id Largeparam data- sub product's
+    applicable for payroll type per bank param_id : DATA_1 -child product code
+    DATA_2 -child product type DATA_3 - child sub product code </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P238</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store guarantee creation details
+    information.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    Guarantee name DATA_1 - Guarantee type DATA_2 - Guarantee type description
+    DATA_3 - is guarantee activated DATA_4 - is Specimen selected DATA_6 -
+    guarantee is standard or WYSIWYG Editor DATA_7 - guarantee text id DATA_8
+    - Specimen name DATA_9 - document id DATA_11 - fo stylesheet name
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P240</para>
+<para>
+<literal>Usage : </literal>Used to configure custom CSS theme details.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - customer type KEY_2 -
+    customer user company abbv name or * KEY_3 - customer name KEY_4 - DashBoard Name
+    DATA_1 - CSS  theme name  DATA_2 - Enable Mutiple Logo (Y/N)</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P241</para>
+<para>
+<literal>Usage : </literal>Used to configure the custom psml file name for each type of
+    bankgroup/bank/customer/counterparty under the Owner company.
+    </para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    COMPANY_ID - *
+    KEY_1 - company type 
+    KEY_2 - owner abbv name 
+    DATA_1 - psml template name 
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P242</para>
+<para>
+<literal>Usage : </literal>Used to configure velocity template navigation files for
+    branding.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - customer type KEY_2 -
+    customer user company abbv name or * KEY_3 - customer name  KEY_4 - DashBoard Name
+    DATA_1 - top vm file name DATA_2 - bottom vm file name </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P243</para>
+<para>
+<literal>Usage : </literal>Used to configure Auto Generated Documents information XSL file
+    Name, Output file name, Output file title, Output file type, Output file
+    Type code "N107", Language to use for XSL transformation.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - prod code KEY_2 - main
+    bank abbv name KEY_3 - tnx stat code KEY_4 - tnx type code KEY_5 - prod
+    stat code KEY_6 - user type KEY_7 - user language KEY_8 - There are more
+    parameters created per product in
+    TransactionProductFile.getListOfParameters() which is redefined in the
+    product KEY_9 will contain the name/code of the type of domestic guarantee. 
+    DATA_1 - style sheet file name DATA_2 - generated file name DATA_3
+    - attachment title DATA_4 - content type as defined by N033 DATA_5 -
+    auto-gerated document code N107 DATA_6 - language DATA_7(For Bank/Bank Group)- Y/N
+    While processing incoming file(transaction coming from Back Office) if customer wants 
+    to generate cover letter  or not.</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P250</para>
+<para>
+<literal>Usage : </literal>Used to create counterparty and configure products to
+    counterparty.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> company-id - Company id of the owner of the
+    counterparty KEY_1 - counterpartyAbbvName KEY_2 - counterpartyId KEY_3 -
+    beneficiary name KEY_4 - customer abbreviation name KEY_5 - customer id
+    DATA1 - DATA20 - product name </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P994</para>
+<para>
+<literal>Usage : </literal>Used to configure the URLs and logos applicable for customer for landing page.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> GTP_LARGE_PARAM_KEY PARAM_ID - unique id COMPANY_ID - company_id 
+    KEY_1 - bank abbv name  GTP_LARGE_PARAM_DATA PARAM_ID - unique id 
+    DATA_1 - External URL path DATA_2 - Title DATA_3 - Logo image path DATA_4 - Description DATA_5 - IDENTIFIER(PATH - Youtube videos, LINK - Support Urls, ICON - icons) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>720</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P251</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P252</para>
+<para>
+<literal>Usage : </literal>Used to configure style sheet per channel and customer.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - news channel company id KEY_1 -
+    specify the channel_id is this style sheet associated to. KEY_2 - * |
+    value, to say if this style sheet is common to all users or specific one.
+    DATA_1 - style sheet file name </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P253</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store internal content provider, syndicated news
+    feed information as part of the customer profile creation.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id DATA_1 -
+    channle id assigned to customer </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P254</para>
+<para>
+<literal>Usage : </literal>Used to configure news deafult styleSheet for displaying the new to
+    cusutomer.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - specify '*' if style sheet is
+    common or specific for a bank company id KEY_1 - specify the stylesheet
+    name(display-news-default.xsl) DATA_1 - specify the style sheet name which
+    is a localization key(NEWS_STYLE_SHEET_DEFAULT) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P260</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P261</para>
+<para>
+<literal>Usage : </literal>Used to configure Relation Ship Manager Group.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 - iso 2
+    character country code KEY_2 - iso 3 character currency code KEY_3 -
+    clearing code acronym KEY_4 - clearing code prefix DATA_1 - clearing code
+    description DATA_2 - mandatory indicator DATA_3 - validation rule desc
+    (format) DATA_4 - validation reg exp </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P300</para>
+<para>
+<literal>Usage : </literal>Used to configure Clearing Codes.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 - iso 2
+    character country code KEY_2 - iso 3 character currency code KEY_3 -
+    clearing code acronym KEY_4 - clearing code prefix DATA_1 - clearing code
+    description DATA_2 - mandatory indicator DATA_3 - validation rule desc
+    (format) DATA_4 - validation reg exp </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P327</para>
+<para>
+<literal>Usage : </literal>To retrieve Liquidity Branch Reference dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID - customer company id KEY_1 - Seller Code 
+    DATA_1 - Description DATA_2 - ISO ALPHA -2 code 
+    DATA_3 - ISO ALPHA -3 code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P301</para>
+<para>
+<literal>Usage : </literal>IBAN codes - Used to configure IBAN character country codes and
+    character currency code.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 - iso 2
+    character country code KEY_2 - iso 3 character currency code DATA_1 -
+    mandatory indicator </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P304</para>
+<para>
+<literal>Usage : </literal>Biller category. Used to configure Biller category code and
+    description.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> Brch_code = 00001 ompany_id - * KEY_1 - Biller category code
+     KEY_2 - bank abbv name -todo - if not specified then *
+    DATA_1 - Biller category description DATA_2 - Biller registration required
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P305</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P306</para>
+<para>
+<literal>Usage : </literal>Used to configure for which all products and guarantee type is
+		Provisional status applicable
+	</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> Brch_code = 00001 ompany_id - *
+		KEY_1 - bank
+		abbv name -todo - if not specified then * KEY_2 - Product
+		Code KEY_3 - Sub Product Code
+		KEY_4 - Trasaction type code DATA_1 -
+		Guarantee type DATA_2 - Y/N
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P307</para>
+<para>
+<literal>Usage : </literal>Used to configure Biller reference options.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> Brch_code - 00001 KEY_1 - bank abbv name -todo
+    - if not specified then * KEY_2 - payee code KEY_3 - reference id DATA_1 -
+    option code DATA_2 - option value </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P308</para>
+<para>
+<literal>Usage : </literal>Used to configure Reporting options.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> Brch_code - 00001 KEY_1 - Product Code
+    KEY_2 - Sub Product Code KEY_3 - Tnx Type Code KEY_4 - Prod Status Code DATA_1 -
+    option code(DATA_1 option is used for "Review transaction details popup") 
+    DATA_2 - option code(DATA_2 option is used for "View details popup")
+    Data_1 can be SUMMARY or FULL and Data_2 can either be SUMMARY, FULL or UPDATED </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P311</para>
+<para>
+<literal>Usage : </literal>Account Type description. Used to configure the account product
+    types supporting in portal and their description.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Bank Account Type KEY_2
+    - Bank Account Product Type DATA_1 - Portal Account Type (N068) DATA_2 -
+    Description DATA_3 - Reserved Balance Display indicator(Y/N)</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P312</para>
+<para>
+<literal>Usage : </literal>Parameters related to account assignment to products in association
+    with sub product, sql script will differ from datbase to database. For
+    account assignment to products in association with sub product below are
+    the parameters configured by bank.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Account Type KEY_2 -
+    Account Product Type KEY_3 - Customer Account Type KEY_4 - Currency KEY_5
+    - Internal/External/Treasury Account(01/05/10) DATA_1 - Sub Product Code (e.g. INT,
+    DOM, MEPS, MT101, ... IF there is not Sub Product code add **) DATA_2 -
+    Debit (Y/N) DATA_3 - Credit (Y/N) DATA_4 - Product Specific code (e.g.
+    FIXED_DEPOSIT for TD) DATA_5 - Product Code (FT, TD, ...) Ex: For LC the
+    DATA_1 will be ** and DATA_5 will be LC</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P315</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P316</para>
+<para>
+<literal>Usage : </literal>FX parameters setup. Used to configure whether fx enabled for a
+    product in association with sub product, what are currency supporting for
+    board rate and contract options, if supporting what are minimum and
+    maximum amounts, number of contracts supporting, whether amount utilize
+    indicator is enabled, whether tolerance enabled, if enabled what is the
+    tolerance percentage.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> FX related bank level parameters COMPANY_ID -
+    bank company id KEY_1 -
+    FX_ASSIGN_PRODUCTS/FX_BOARD_RATE/FX_CONTRACT_OPT/FX_NBR_CONTRACT/FX_TOLERANCE_RATE
+    KEY_1 - FX_ASSIGN_PRODUCTS KEY_2 - Product Code KEY_3 - Sub Product Code DATA_1 - is FX enabled(Y/N) 
+    KEY_1 - FX_BOARD_RATE KEY_2 - Currency DATA_1 - Minimum Amount Value DATA_2 - Maximum Amount value DATA_3 - is BoardRate Option enabled for currency(Y/N) 
+    KEY_1 - FX_CONTRACT_OPT KEY_2 - Currency DATA_1 - Minimum Amount Value DATA_2 - Maximum Amount value(Y/N) DATA_3 - is Contracts Option enabled for currency(Y/N) 
+    KEY_1 - FX_NBR_CONTRACT KEY_2 - Product Code KEY_3 - Sub Product Code DATA_1 - Number of Contracts DATA_2 - Amount Utilize display indicator(Y/N) 
+    KEY_1 - FX_TOLERANCE_RATE KEY_2 - Product Code KEY_3 - Sub Product Code DATA_1 - Tolerance display indicator(Y/N) DATA_2 - Tolerance percentage </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P320</para>
+<para>
+<literal>Usage : </literal>Contact help desk related email setup. Used to configure recipient
+    email address, topic description and language.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    topic_id KEY_2 - bank_abbv_name DATA_1 - email address(recipient) DATA_2 -
+    topic description DATA_3 - language </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P321</para>
+<para>
+<literal>Usage : </literal>Secure Eamil (Non standard Request) related email setup. Used to configure recipient
+    email address, topic description and language.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    topic_id KEY_2 - bank_abbv_name DATA_1 - email address(recipient) DATA_2 -
+    topic description DATA_3 - language </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P330</para>
+<para>
+<literal>Usage : </literal>Used to confgiure Bulk transaction code description based on
+    transaction code, product group and product type.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - transaction code id
+    KEY_2 - bank_abbv_name KEY_3 - product group KEY_4 - product type DATA_1 -
+    transaction code description </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P340</para>
+<para>
+<literal>Usage : </literal>Bulk Mapper. Used to configure whether bulk transaction is manual
+    or upload, bulk type, payroll type, ft type, description.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - company abbv name KEY_2
+    - manual/upload KEY_3 - bulk type KEY_4 - payroll type KEY_5 - ft type
+    DATA_1 - sub product code DATA_2 - default description </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P341</para>
+<para>
+<literal>Usage : </literal>Defines the columns in an uploaded file for Flexi format for Bulk upload</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	COMPANY_ID - * 
+    	KEY_1 - File format (FLEXI)
+    	KEY_2 - Company abbreviated name (e.g. DEMOBANK) 
+    	DATA_1 - Sequence (Integer starting from and including zero)
+    	DATA_2 - Property to which this field is mapped for the Bean in context (e.g. sub_product_code)
+    	DATA_3 - Bean context (BULK|FT|BULKFILE|FTFILE)
+    	DATA_4 - Mandatory (Y|N)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P342</para>
+<para>
+<literal>Usage : </literal>To Retrive the Bundle name based on product code and subproduct code</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	COMPANY_ID - * 
+    	KEY_1 - Product code
+    	KEY_2 - Subproduct code 
+    	DATA_1 - Bundle Name
+    	DATA_2 - Second Bundle Name(in case if another bundle has to be trigger after triggering the first bundle)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P500</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P502</para>
+<para>
+<literal>Usage : </literal>Used to save currencies(ISO code and description) assigned to static banks.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - Bank or Bank Group Company Id. 
+    KEY_1 - Static bank Id. 
+    KEY_2 - Currency ISO Code. 
+    DATA_1 - Currency Description.</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P513</para>
+<para>
+<literal>Usage : </literal>Used to configure whether payment narrative / transaction remark should be mandatory or not based on </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Sub product Code
+    KEY_3 - Debit Ccy
+    KEY_4 - Credit Ccy
+    DATA_1 - Mandatory Indicator (Y/N).</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P514</para>
+<para>
+<literal>Usage : </literal>Used to configure whether Intermediary Bank Details should be mandatory or not based on </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Transaction Currency.</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P515</para>
+<para>
+<literal>Usage : </literal>Used to configure whether Valid Country Transaction Currency should be mandatory or not based on </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Currency.
+    DATA_1 - Country Codes</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P516</para>
+<para>
+<literal>Usage : </literal>Used to configure for the Remittance Currencies which will be excluded from intermediary bank country code check</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Transaction Currency</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P517</para>
+<para>
+<literal>Usage : </literal>Used to configure for whether remittance reason should be mandatory or not</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Beneficiary Currency
+    DATA_1 - Mandatory Indicator (Y/N)</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P313</para>
+<para>
+<literal>Usage : </literal>Used to configure allowed list of currencies per product, sub product</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Product Code.
+    KEY_3 - Sub Product Code
+    KEY_4 - product type currency enabled (e.g. Y or N)
+    DATA_1 - Transaction Currency</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P314</para>
+<para>
+<literal>Usage : </literal>Used to configure allowed list of personas for corporate and bank facing dashboards</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    KEY_1 - Bank/company Abbv Name 
+    KEY_2 - Persona.
+    DATA_1 - reportId
+    DATA_2 - groupId
+    DATA_3 -dataSet
+    DATA_4 - embedTokenUrl
+    DATA_5 - embedUrl
+    DATA_6 - dv_role
+    DATA_7 -rlsFilter
+    DATA_8 -persona
+    DATA_9	-filterPaneEnabled
+	DATA_10 -navigationPaneEnabled
+</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P600</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - 2 KEY_1 - 1 (MilestonesScheduler task Id from gtp_scheduled_job)
+    KEY_2 - MilestoneScheduler (task's name) DATA_1 - last treatment date (format : DD/MM/YYYY) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P650</para>
+<para>
+<literal>Usage : </literal>Used to configure a group sections of Purchase Order, Invoice
+    Payable whether to display or hide.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> customer_id - customer company id KEY_1 -
+    company abbv name KEY_2 - product code DATA_1 - section name which to
+    shown or not on screen DATA_2 - Y/N which represents display or hide
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P651</para>
+<para>
+<literal>Usage : </literal>Used to configure the file description, permission and other
+    details for file upload.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    file type (The file type specified here will be displayed to the customer
+    user in a drop down and must be selected prior to uploading the file to
+    the system) DATA_1 - description DATA_2 - permission (This field will
+    contain the name of the permission to be assigned to gain access to upload
+    the particular file type) DATA_3 - name in file system ( Contains the
+    actual name of the file to be sent to the back office. This name is not
+    required for the customer but will be the name used when passing to the
+    back office. ) DATA_4 - account level flag ( This field will specify
+    whether it is a mandatory requirement that the user selects an account to
+    be used for the specified file type. ) DATA_5 - decryption required flag (
+    This field will specify whether files uploaded by the customer for this
+    file type should be decrypted. ) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P652</para>
+<para>
+<literal>Usage : </literal>Used to configure the report type, sub type description, permission
+    and other details for file download.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    report type KEY_3 - report sub type DATA_1 - report type description
+    DATA_2 - report sub type description DATA_3 - permission DATA_4 - name in
+    file system DATA_5 - generate PDF DATA_6 - archiving period DATA_7 -
+    creation Date DATA_8 - report name </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P653</para>
+<para>
+<literal>Usage : </literal>Term Deposit Types. Used to configure Term Deposit types for a
+    particular bank.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank abbv name DATA_1 -
+    Deposit Type DATA_2 - TD Account Type DATA_3 - TD Product Type DATA_4 -
+    Tenor number DATA_5 - Tenor code ( ex: M (Monthly), (D)Daily, (W) Weekly
+    DATA_6 - Currency </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P654</para>
+<para>
+<literal>Usage : </literal>TD Maturity Instructions. Used to configure Term Deposit Maturity
+    Instructions for a particular bank in association with deposit
+    type.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank_abbv_name KEY_2 -
+    unique_id (as KEY_1 is bank_abbv_name same for all records,to represent
+    each row as unique) DATA_1 - deposit_type (all characters in capital
+    letters and each word concatenating with '_' and for default type it
+    should be '*') DATA_2 - product_type (eg: 'GT' or 'FP') DATA_3 -
+    maturity_instruction_description DATA_4 - maturity_instruction_code (1
+    Character) DATA_5 - indicates whether credit A/c for TD should be
+    mandatory or not for corresponding maturity instruction(Y/N)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P655</para>
+<para>
+<literal>Usage : </literal>At present not being used.</para>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P656</para>
+<para>
+<literal>Usage : </literal>Used to configure postal code length per Country.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - Country Code DATA_1 - Length of the
+    postal code </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P657</para>
+<para>
+<literal>Usage : </literal>TD No.of days before Maturity. Used to configure the number of day
+    before maturity an TD Update/ Withdrwal is valid to perform.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Bank abbv name KEY_2 -
+    Product code i.e TD DATA_1 - Y/N (Whether before no.of days configured for
+    TD Update or not.) DATA_2 - No.of days (TD Update should be submitted
+    no.of days before the maturity date) DATA_3 - Y/N (Whether before no.of
+    days configured for TD Withdrawal or not.) DATA_4 - No.of days (TD
+    Withdrawal should be submitted no.of days before the maturity date)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P658</para>
+<para>
+<literal>Usage : </literal>Recurring start date configuration. Used to configure minmum and
+    maximum offset for start date.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    product code KEY_3 - sub product code DATA_1 - minimum offset (in days)
+    DATA_2 - maximum offset (in days) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P659</para>
+<para>
+<literal>Usage : </literal>Recurring payment enablement. Used to configure the products with
+    sub product code to enable the recurring payment.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    product code KEY_3 - sub product code DATA_1 - Y/N (Recurring Flag)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P660</para>
+<para>
+<literal>Usage : </literal>Recurring frequency. Used to configure recurring frequency details
+    like daily, weekly, monthly, exact, last day of the month or both,
+    transfer limit.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - bank abbv name DATA_1 -
+    01 (daily) DATA_2 - 02 (weekly) DATA_3 - 03 (monthly) DATA_4 - 01,02,03
+    (01 - Exact , 02 - last day of the month, 03 - both) DATA_5 - number (No.
+    of transfer limit) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P690</para>
+<para>
+<literal>Usage : </literal>Used to configure whether confirmation details need to be displayed
+    based on the product, sub product and mode.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Product Code(FT) KEY_2
+    - Sub Product Code(INT/TPT) DATA_1 - (Y or N) For Scratch DATA_2 - (Y or
+    N) For Draft DATA_3 - (Y or N) For Unsigned </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P750</para>
+<para>
+<literal>Usage : </literal>Used to configure Limit screen Product type code, Product Template.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 - Company Abbv Name  DATA_1 - LC/BG Type(Y or N) DATA_2 - BG Template(Y or N) DATA_3 - Benificiary and Country(Y or N)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P751</para>
+<para>
+<literal>Usage : </literal>Used to configure Products Applicable for Facility and Limit.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 - Product Code  KEY_3 - Sub Product Code DATA_1 = true/false (If data_1 = true then Facility/Limit details section is displayed else it will not be displayed.)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P777</para>
+<para>
+<literal>Usage : </literal>Used to configure stop over transactions based on the product and
+    sub product.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 -
+    Product Code(FT) KEY_3 - Sub Product Code(INT/TPT) DATA_1 - (Y or N)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P778</para>
+<para>
+<literal>Usage : </literal>Used to configure stop over transactions based on the product and
+    sub product.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 -
+    Product Code(FT) KEY_3 - Sub Product Code(INT/TPT) KEY_4 -  BorrowerId KEY_5 - DealId DATA_1 - TransactionAmt
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P803</para>
+<para>
+<literal>Usage : </literal>Used for Fund Transfer Cut off time for Future Payments</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID: If '*' is mentioned, all banks will inherit the same cut-off time.
+
+			KEY_1: Abbv name of the bank, '*' for all banks.
+			
+			KEY_2: Product code, FT for Fund transfers.    
+			
+			KEY_3: FT Type Code (Internal/Domestic/Bill, etc) If '*', then the limits apply for all types.
+			
+			DATA_1: The release hour (0-23)
+			
+			DATA_2: The release minute (0-59)
+			
+			DATA_3: The timezone of the indicated time.
+	    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P804</para>
+<para>
+<literal>Usage : </literal>Used for SDK data entry for audit</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * 
+	    KEY_1 - Application Name(FCM))
+	    KEY_2 - PRODUCT/ACTIONCODE(Identifier)
+	    DATA_1 - Product Module
+	    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P940</para>
+<para>
+<literal>Usage : </literal>This parameter is used to define the maximum lines limit of 
+	    narrative fields when overriding the swift standard.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - Product code
+	     DATA_1 -Field Size DATA_2 - Field Name</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P951</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store customer profile details as part of the
+    customer profile creation.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> customer_id - customer company id DATA_4 -
+    Dual control DATA_7 - Company status DATA_8 - Company password
+    validity(company password expiry) DATA_9 - ATTACHMENT_MAX_UPLOAD_SIZE
+    DATA_10 - RETENTION_PERIOD DATA_11 - BEI DATA_12 - STREET_NAME DATA_13 -
+    POST_CODE DATA_14 - TOWN_NAME DATA_15 - COUNTRY_SUB_DIV DATA_16 -
+    CRM_EMAIL DATA_17 - fscm.company.parameter.01.conditions DATA_18 -
+    fscm.company.parameter.02.conditions DATA_19 -
+    fscm.company.parameter.03.conditions </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P952</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store bank profile details as part of the bank
+    profile creation.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> In case of bank: customer_id - customer
+    company id DATA_12 - STREET_NAME DATA_13 - POST_CODE DATA_14 - TOWN_NAME
+    DATA_15 - COUNTRY_SUB_DIV DATA_16 - CRM_EMAIL </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P953</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store customer profile details as part of the
+    customer profile creation. Note - data_16, data_17, data_18 used for
+    client SHB(JIRA ID - MPS-21213) </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> customer_id - customer company id DATA_1 -
+    legal id type DATA_2 - legal id number DATA_3 - Country legal id DATA_4 -
+    authorize own transaction DATA_5 - bulk authorize limit DATA_6 - auto
+    forward date DATA_7 - check file hash value DATA_8 - check duplicate file
+    DATA_9 - check duplicate customer reference DATA_10 - file encryption
+    method DATA_11 - reject file on error DATA_12 - merge demerge allowed
+    DATA_13 - bulk draft on error DATA_14 - County DATA_15 - Country Name
+    DATA_16 - Chambers of commerce Id DATA_17 - Region DATA_18 - Bank user
+    Id/Administrator </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P954</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store the Customer User events creation informtaion
+    like event date, Recurring events details, title, type and
+    description.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> customer_id - customer company id KEY_1 -
+    event_type (N016 : private, public) KEY_2 - user_id (owner_id) KEY_3 -
+    occurrence_id DATA_1 - start_date DATA_2 - end_date DATA_3 -
+    date_recursive_type (N904) DATA_4 - day_of_week (N905) DATA_5 -
+    day_of_month DATA_6 - DATA_type (N903) DATA_7 - title DATA_9 -
+    evt_description </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P995</para>
+<para>
+<literal>Usage : </literal>This parameter is used to render html content from the sever based on class configured</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> customer_id - customer company id KEY_1 -
+    widget_name DATA_1 - className DATA_2 - relative path of a file DATA_3 - relative path of file</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P996</para>
+<para>
+<literal>Usage : </literal>Cheque number range. Used to configure cheque number range of any
+    non zero positive number</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * DATA_1 - cheque number range.
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P997</para>
+<para>
+<literal>Usage : </literal>Cheque book request. - Used to configure Number of Cheque Books
+    Request Minimum, Maximum configuration.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * DATA_1 - mimimum number of
+    cheque books DATA_2 - maximum number of cheque books </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P998</para>
+<para>
+<literal>Usage : </literal>Used to configure reauthentication type per product code and sub
+    product code.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * KEY_1 - product code KEY_2 -
+    sub product code KEY_3 - transaction type code DATA_1 - reauthentication
+    type </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P999</para>
+<para>
+<literal>Usage : </literal>Delivery Modes For Cashier Order, Demand Draft, Cheque Book. Used
+    to configure delivery modes options per product in association with sub
+    product code.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * DATA_1 - Y/N (Mail to
+    Applicant) - CO/DD DATA_2 - Y/N (Mail to Beneficiary) - CO/DD DATA_3 - Y/N
+    (Collect from Branch) - CO/DD DATA_11 - Y/N (Normal Mail To Applicant) -
+    Cheque Book DATA_12 - Y/N (Registered Mail To Applicant) - Cheque Book
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P700</para>
+<para>
+<literal>Usage : </literal>To configure possible reasons for stopping cheaque specific to
+    client SHB.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P701</para>
+<para>
+<literal>Usage : </literal>To configure possible reasons for getting IFSC codes</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">COMPANY_ID - Bank Company Id KEY_1 -IFSC Code, KEY_2- NEFT, KEY_3 - RTGS,
+    DATA_1 - Bank Name, DATA_2 - Bank Address  , DATA_3 - City
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P703</para>
+<para>
+<literal>Usage : </literal>To configure possible reasons for getting Singapore Transfer BIC codes</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">COMPANY_ID - Bank Company Id, KEY_1 -Bank BIC code,
+  	  DATA_1 - Name, DATA_2 - Bank name, DATA_3 - Bank Address line 1  , DATA_4 - Post Code, DATA_5 - City ,
+  	  DATA_6 - Country, DATA_7 - Branch, DATA_8 - Required Intermediary Bank(Y/N) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C007</para>
+<para>
+<literal>Usage : </literal>To retrieve remittance description for product MT103 and MT202
+    .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C008</para>
+<para>
+<literal>Usage : </literal>To retrieve TRANSFER PURPOSE dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C010</para>
+<para>
+<literal>Usage : </literal>To retrieve Standby LC Type dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C011</para>
+<para>
+<literal>Usage : </literal>To retrieve Product Type dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * 
+    LONG_DESC - * is also included
+    PRODUCT_CODE - For Bg and *
+    SHORT_DESC - * is also included 
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C082</para>
+<para>
+<literal>Usage : </literal>To retrieve Product Type dropdown list for SWIFT2020.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * 
+    LONG_DESC - * is also included
+    PRODUCT_CODE - For Bg and *
+    SHORT_DESC - * is also included 
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C015</para>
+<para>
+<literal>Usage : </literal>To retrieve Tenor Type dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - *
+    LONG_DESC - Upto 1 year (Start and end dates are included)
+    CODE_VAL - 01 to 04(including * also)
+    PRODUCT_CODE - For Bg and * 
+    SHORT_DESC - (0-365)(start date and end date)</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C012</para>
+<para>
+<literal>Usage : </literal>To retrieve Standby LC Rules Applicable dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P955</para>
+<para>
+<literal>Usage : </literal>To populate product type</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * DATA_1 - product_type</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P798</para>
+<para>
+<literal>Usage : </literal>
+	    MT798 or Online interfacing Modes For Customers per attached Bank. 
+	    Used to configure MT798 mode option per Customer in association with Bank.
+    </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+	    COMPANY_ID - company_id 
+	    KEY_1 - attached bank_id 
+	    KEY_2 - product_code
+	    KEY_3 - sub_product_code (* incase there is no subproductcode) 
+	    DATA_1 - Y/N (MT798)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P799</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store Standby Letter of Credit template creation details
+    information.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    Standby Letter of Credit name DATA_1 - Standby Letter of Credit type DATA_2 - Standby Letter of Credit type description
+    DATA_3 - is Standby Letter of Credit activated DATA_4 - is Specimen selected DATA_6 -
+    Standby Letter of Credit is standard or WYSIWYG Editor DATA_7 - Standby Letter of Credit text id DATA_8
+    - Specimen name DATA_9 - document id DATA_11 - fo stylesheet name
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P800</para>
+<para>
+<literal>Usage : </literal>This parameter is not intended to manually configure. Used by
+    Portal application to store Standby Letter of Credit assinged customer, entity details
+    information.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    Standby Letter of Credit name KEY_2 - Customer abbv name KEY_3 - entity abbv name or *
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P801</para>
+<para>
+<literal>Usage : </literal>This parameter used to configure list of the valid the sub_tnx_type_code values which 
+    are applicable for the combination of  tnx_type_code and product_code</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    COMPANY_ID - customer company id(default value *)
+    KEY_1 - product code (Example : BG or SI etc)
+    KEY_2 - sub transaction type code (Example : 05 - 'Release' etc which represents business code N003 )
+    DATA_1 - sub transaction type code (Example : 05 - 'Release' etc which represents business code N003 )
+    DATA_2 - transaction type code (Ex: '01'/'03'/'13' - means 'New' or 'Amend' etc which represents business code C071)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P802</para>
+<para>
+<literal>Usage : </literal>Used to associate the Inco terms specified by the Banks.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - Bank NAme, Key 2= year ,Key 3 =Y/N DATA_1 - inco term DATA_2 = Y/N </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P807</para>
+<para>
+<literal>Usage : </literal>Used to associate the demand indicators specified by the Banks.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - Bank Name, Key 2= product, DATA_1 - demand indicator, DATA_2 = Y/N, DATA_3 = codes </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P803</para>
+<para>
+<literal>Usage : </literal>Used for Fund Transfer Cut-off-time/Release-time for Future Payments.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+			COMPANY_ID: If '*' is mentioned, all banks will inherit the same cut-off time.
+			KEY_1: Abbv name of the bank, '*' for all banks.
+			KEY_2: Product code, FT for Fund transfers.
+			KEY_3: FT Type Code (Internal/Domestic/Bill, etc) If '*', then the limits apply for all types.
+			DATA_1: The release hour (0-23)
+			DATA_2: The release minute (0-59)
+			DATA_3: The time-zone of the indicated time.
+		</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P310</para>
+<para>
+<literal>Usage : </literal>This parameter used to save and retrieve entities for the Report</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    COMPANY_ID - customer company id(default value *)
+    KEY_1 - reportID
+    KEY_2 - reportName
+    KEY_3 - entities
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P767</para>
+<para>
+<literal>Usage : </literal>This parameter used to create report using data stored outside portal</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    COMPANY_ID - customer company id(default value *)
+    KEY_1 - Company abbv name
+    KEY_2 - Single Product Code
+    Data_1 - Input Source Classname
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C013</para>
+<para>
+<literal>Usage : </literal>To retrieve BG Rules Applicable dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C014</para>
+<para>
+<literal>Usage : </literal>To retrieve Transportation Doc Type dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C016</para>
+<para>
+<literal>Usage : </literal>To retrieve Beneficiary Master - Sub Products Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C017</para>
+<para>
+<literal>Usage : </literal>To retrieve Beneficiary Master Upload - Sub Products Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C018</para>
+<para>
+<literal>Usage : </literal>To retrieve Charges Payer - Payer Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C019</para>
+<para>
+<literal>Usage : </literal>To retrieve Charges Payee - Payee Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C020</para>
+<para>
+<literal>Usage : </literal>To retrieve Payment Code - Payment Code Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C021</para>
+<para>
+<literal>Usage : </literal>To retrieve Certificate Type - Certificate Type Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C022</para>
+<para>
+<literal>Usage : </literal>To retrieve Clauses Required - Clauses Required Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C023</para>
+<para>
+<literal>Usage : </literal>To retrieve Match Assured Party - Match Assured Party Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C024</para>
+<para>
+<literal>Usage : </literal>To retrieve Other Certificate Type - Other Certificate Dataset Type Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C025</para>
+<para>
+<literal>Usage : </literal>To retrieve Account Identification Type - Account Identification Type Drop Down List.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C026</para>
+<para>
+<literal>Usage : </literal>Contains the License Types that are applicable to define a License Template by the Bank.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - *  
+    Default Values - Export License/FX License/Import License
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C028</para>
+<para>
+<literal>Usage : </literal>To retrieve Non principal default types from dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * 
+    Default Values - Any Non-Principal/Non-Principal Only/Non-Principal in country
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C027</para>
+<para>
+<literal>Usage : </literal>To retrieve Treasury Branch Reference dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID - * 
+    LONG_DESC - Treasury Branch Name
+    CODE_VAL - Treasury Branch Code
+    PRODUCT_CODE - *
+    SUB_PRODUCT_CODE - *
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C029</para>
+<para>
+<literal>Usage : </literal>To retrieve the time periods as Days/Weeks/Months/Years</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+		COMPANY_ID - * 
+		LONG_DESC - Time Periods
+		CODE_VAL - Time Periods
+		PRODUCT_CODE - *
+		SUB_PRODUCT_CODE - *
+		</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C030</para>
+<para>
+<literal>Usage : </literal>To retrieve various Loan Pricing Options</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Pricing option ,
+  		CODE_VAL - Code Value for Pricing option,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C031</para>
+<para>
+<literal>Usage : </literal>To retrieve various Loan Repricing frequency from LoanIQ.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Repricing Frequency,
+  		CODE_VAL - Code Value for Repricing Frequency,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C032</para>
+<para>
+<literal>Usage : </literal>To retrieve various Loan Risk Types from LoanIQ. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Risk Type ,
+  		CODE_VAL - Code Value for Risk Type,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P347</para>
+<para>
+<literal>Usage : </literal>To retrieve the address for a particular product.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+			COMPANY_ID - * 
+			Key_1 - Product Type
+			Key_2 - Sub Product
+	    	Data_1 - Address Type ( Address Type can be PA - Postal Address , SA - SWIFT Address
+	    			 or CA - Charge Accout Address)
+	    	NOTE-  Entity doesn't have a SWIFT Adress, so the alternative address is taken as the SWIFT Address.
+	    	For FSCM products Postal Address is taken.
+			Sub Product has to be specified only when the Product Type is FT, else its **.
+		</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P760</para>
+<para>
+<literal>Usage : </literal>This parameter is for configuring mail subject and body template.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - bank_id KEY_1 -
+    bank name KEY_2 - type of alert  KEY_3 - product_code KEY_4 -
+    sub_product_code KEY_5 - tnx_type KEY_6 - product_status KEY_7 - recipient KEY_8 - Destination Customer -00 Bank -01
+     DATA_1 - subject_key DATA_2 - body_key Data3 - Folder Name Data4 - Send Attachment (Y/N)
+    || address </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P761</para>
+<para>
+<literal>Usage : </literal>This parameter is used for configuring the type of input source for the web service. The source can be ERP,SSO etc. This parameter enables client to control the
+  	usage of web service for specific users or actions.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  			COMPANY_ID - company_id 
+    		KEY_1 - Bank/BankGroup/Customer
+    		KEY_2 - Web Service name
+    		KEY_3 - Actioncode
+    		KEY_4 - source
+    		DATA_1 - Y/N
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P762</para>
+<para>
+<literal>Usage : </literal>This parameter is used for configuring indirect reference to Listdef xml file for the Listdef web service. There is no initial script for this
+  	parameter. Client should configure manually if ListDefwebservice is used.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+  			COMPANY_ID -  company_id 
+    		    KEY_1 -  userid
+			    KEY_2 -  bank abbv name
+			    KEY_3 - source logical name
+			    KEY_4 - source context from which source     		
+    		DATA_1 - ListDef file path.
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P763</para>
+<para>
+<literal>Usage : </literal>This parameter is used for configuring the message sequence of incoming TMA messages to process it. From KEY_3 on wards the message types should be configured, along with unique identifier in DATA_3 on wards respectively
+  	Note that message types should be configured in asc order. If there is a event submitted from the Portal and it required some set of messages as response, we need to configure
+  	the pending message as well in the sequnece of parameter. DATA_2 should be Y for cases when there is action pending from the customer for an event.
+  	For example: An Initialbaselinesubmission(019) event submitted from FBCC requires 3 messages 001, 018, 010 from TMA
+  	 hence in the parameter configuration requires 019 as well as one of the key.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+  			COMPANY_ID -  company_id 
+			    KEY_1 -  product code
+			    KEY_2 -	Event type
+			    KEY_3 - message type    		
+    		DATA_1 - actual message sequence to be processed as per the ISO standared, separated by delimiter ":"
+    		DATA_2 - Y/N - Whether this event requires any action(like accept/reject) from the portal side, based on which event in progress flad is set to "Y".
+    		eg: For a TMA initiated IO amendment, the buyer has to accept/reject the amendment, no other event should be allowed till this action is completed.
+    		The values is set as "Y", based on this condition, the TM master will be updated with event in progress flag.
+    		DATA_3 - Unique identifier for the message type in KEY_3 
+    		eg: 
+    		1. If message 015 has this as the identifier value "//SubmitrPropsdBaselnRef/Submitr/BIC_//SellrBk/BIC", both are xpaths in the xml message, and their values have to be same.
+    		2. If message 011 has this as the identifier value "//RptTp/Tp_CURR://EstblishdBaselnId/AmdmntSeqNb_*", we have two conditions to validate, which are separated by a ":"
+    		 	a) value at xpath location //RptTp/Tp, in the message, should be equal to "CURR",
+    		 	b) value at xpath location //EstblishdBaselnId/AmdmntSeqNb, in the message, should not be null/empty.
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P764</para>
+<para>
+<literal>Usage : </literal>
+			This parameter used to configure the hours in report scheduling. If this parameter is configured it will enable to configure report at a 
+			particular hour and minute. Infact, it supports the configuration of maximum number of reports that a company can schedule as well number of records
+			that a report can fetch from database. 
+    </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+  			COMPANY_ID -  company id of customer/bank/bank group to which the Report parameter is configured.
+		    KEY_1 -  owner abbv name
+ 			DATA_1 - Maximum number of reports that can configured for report scheduling(* - means no limit for the report scheduling)
+ 			DATA_2 - Maximum number of records to be fetched from the report (*- means all records to be fetched from the report)
+ 			DATA_3 - hours in 24 hours format separated by delimiter : in ascending order
+ 			DATA_4 - Default hour.Warning - to be configured from one of the value in DATA_3 only
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P765</para>
+<para>
+<literal>Usage : </literal>Used to configure Error Floating window configuration per product.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		COMPANY_ID -  company id of to which the error floating window is configured. ex: customer/bank/bank group.
+    		KEY_1 - product code 
+    		KEY_2 - sub-product code 
+    		DATA_1 - Y/N flag tells whether error floating window is enabled for this product/subproduct (Y/N)
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C033</para>
+<para>
+<literal>Usage : </literal>To retrieve various Freight Charge types used by TMA. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Freight Charge Type,
+  		CODE_VAL - Code Value for Freight Charge Type,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C034</para>
+<para>
+<literal>Usage : </literal>To retrieve various Incoterms codes used by TMA. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Incoterm Code,
+  		CODE_VAL - Code Value for Incoterm Code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C035</para>
+<para>
+<literal>Usage : </literal>To retrieve various Value Date's used by FX SPOT. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Spot Value Date,
+  		CODE_VAL - Code Value for Spot Value Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C036</para>
+<para>
+<literal>Usage : </literal>To retrieve various Value Date's used by FX FORWARD. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Forward Value Date,
+  		CODE_VAL - Code Value for Forward Value Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C037</para>
+<para>
+<literal>Usage : </literal>To retrieve various Option Date's used by FX WINDOW FORWARD. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Window Forward Option Date,
+  		CODE_VAL - Code Value for Window Forward Option Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C038</para>
+<para>
+<literal>Usage : </literal>To retrieve various Value Date's used by FX WINDOW FORWARD. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Forward Value Date,
+  		CODE_VAL - Code Value for Forward Value Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C039</para>
+<para>
+<literal>Usage : </literal>To retrieve various Actions used by Payment Split. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Payment Split Drop Down,
+  		CODE_VAL - Code Value for Actions used by Payment Split,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C040</para>
+<para>
+<literal>Usage : </literal>To retrieve various Actions used by Drawdown. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Payment Drawdown Drop Down,
+  		CODE_VAL - Code Value for Actions Drawdown,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C041</para>
+<para>
+<literal>Usage : </literal>To retrieve various Request date used by Treasury Term Options FT. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Request date used by FT Drop Down,
+  		CODE_VAL - Code Value for Request date used by by FT Drop Down,
+  		PRODUCT_CODE - FT,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C042</para>
+<para>
+<literal>Usage : </literal>To retrieve various Request date used by Treasury Static Options FT. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Request date used by FT Drop Down,
+  		CODE_VAL - Code Value for Request date used by by FT Drop Down,
+  		PRODUCT_CODE - FT,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C043</para>
+<para>
+<literal>Usage : </literal>To retrieve various Start Date's used by Treasury TD. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Start Date,
+  		CODE_VAL - Code Value for Start Date,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C044</para>
+<para>
+<literal>Usage : </literal>To retrieve  Actions used by TD. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Start Date,
+  		CODE_VAL - Code Value for Start Date,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C045</para>
+<para>
+<literal>Usage : </literal>To retrieve various Maturity Date's used by Treasury TD. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Maturity Date,
+  		CODE_VAL - Code Value for Maturity Date,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C046</para>
+<para>
+<literal>Usage : </literal>To retrieve various Action Details used by Treasury Certificate of Deposit Contract. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Action Details,
+  		CODE_VAL - Code Value for Action Details,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C047</para>
+<para>
+<literal>Usage : </literal>To retrieve various Phrase types. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Phrase type,
+  		CODE_VAL - Code Value for Phrase type ,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C048</para>
+<para>
+<literal>Usage : </literal>To retrieve various Narrative Categories where phrases are applicable. </para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Narrative Category,
+  		CODE_VAL - Code Value for Narrative Category ,
+  		PRODUCT_CODE - LC/BG/SI/*,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C049</para>
+<para>
+<literal>Usage : </literal>To retrieve the time periods as Days/Months</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+	COMPANY_ID - * 
+	LONG_DESC - Time Periods
+	CODE_VAL - Time Periods
+	PRODUCT_CODE - LC
+	SUB_PRODUCT_CODE - *
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C050</para>
+<para>
+<literal>Usage : </literal>To retrieve the charge upto dropdown for revolving LC.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for charge upto,
+  		CODE_VAL - Code Value for charge upto,
+  		PRODUCT_CODE - LC
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C051</para>
+<para>
+<literal>Usage : </literal>To retrieve various Guarantee references</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Guarantee reference,
+  		CODE_VAL - Code Value for Guarantee reference ,
+  		PRODUCT_CODE - BG,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C052</para>
+<para>
+<literal>Usage : </literal>To retrieve tenor period details</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for tenor period,
+  		CODE_VAL - Code Value for tenor period,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C053</para>
+<para>
+<literal>Usage : </literal>To retrieve tenor days type</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for tenor days type,
+  		CODE_VAL - Code Value for tenor days type,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C054</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of liquidity frequency for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C055</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of liquidity sub group types for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C056</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C057</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C058</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C059</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C060</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C061</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C062</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C063</para>
+<para>
+<literal>Usage : </literal>To retrieve the options of delivery mode for the user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C064</para>
+<para>
+<literal>Usage : </literal>To retrieve the document types.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	COMPANY_ID - * 
+    	LONG_DESC - Long Description for document type,
+  		CODE_VAL - FBCC document type code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - FBTI document type code,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P052</para>
+<para>
+<literal>Usage : </literal>Used to associate the phrase types to various product codes.</para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - Phrase Type Code, DATA_1 - Product Code </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P371</para>
+<para>
+<literal>Usage : </literal>USed to Configure the account types shown in account summary automatically without going
+    through user account set-up in customer side.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - customer company id KEY_1 -
+    Account_type ( Refer BusinessCodes for account type)
+    Sample Script for account LA(Loan Account,account type='05') to be shown automatically in account summary:
+    Insert into gtp_param_data (brch_code,parm_id,company_id,key_1,key_2,key_3,key_4,key_5,key_6,key_7,key_8,key_9,
+    key_10,key_11,key_12,key_13,key_14,key_15,key_16,key_17,key_18,key_19,key_20,wild_card_ind,data_1,data_2,data_3,
+    data_4,data_5,data_6,data_7,data_8,data_9,data_10,data_11,data_12,data_13,data_14,data_15,data_16,data_17,
+    data_18,data_19,data_20) values ('00001','P371','*','**','05','**','**','**','**','**','**','**','**','**',
+    '**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**',
+    '**','**','**','**','**','**','**','**','**');
+      </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C071</para>
+<para>
+<literal>Usage : </literal>To retrieve TRANSACTION_TYPE_CODES in the Authorisation Matrix screen dropdown list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * CODE_VAL - tnx_type_code</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C072</para>
+<para>
+<literal>Usage : </literal>To retrieve the balance type options of liquidity  user .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> COMPANY_ID - * </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C073</para>
+<para>
+<literal>Usage : </literal>To define the fscm program types .</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for fscm program type,
+  		CODE_VAL - FSCM program type code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - Short Description FSCM program type code,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C074</para>
+<para>
+<literal>Usage : </literal>To define the fscm program sub-type category.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for fscm program type,
+  		CODE_VAL - FSCM program sub-type category code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - Short Description FSCM program sub-type category code,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C075</para>
+<para>
+<literal>Usage : </literal>To define the repricing option</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for repricing option label,
+  		CODE_VAL - repricing option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - repricing option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C076</para>
+<para>
+<literal>Usage : </literal>To define the repricing new loan options</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for repricing new loan label,
+  		CODE_VAL - repricing new loan value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - repricing new loan value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C077</para>
+<para>
+<literal>Usage : </literal>To define the repricing adjust remaining amount options</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for adjust remaining amount option label,
+  		CODE_VAL - adjust remaining amount option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - adjust remaining amount option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C078</para>
+<para>
+<literal>Usage : </literal>To define finance repayment options</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for adjust remaining amount option label,
+  		CODE_VAL - adjust remaining amount option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - adjust remaining amount option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C079</para>
+<para>
+<literal>Usage : </literal>To define fee product options</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for adjust remaining amount option label,
+  		CODE_VAL - adjust remaining amount option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - adjust remaining amount option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P766</para>
+<para>
+<literal>Usage : </literal>Used to configure the table name and reference column for the product/transaction element product.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		COMPANY_ID -  company id
+    		KEY_1 - product/transaction element product 
+    		DATA_1 - master table name
+    		DATA_2 - master table reference column
+    		DATA_3 - transaction table name
+    		DATA_4 - transaction table reference column
+    		DATA_5 - transaction table reference column
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P767</para>
+<para>
+<literal>Usage : </literal>Used to configure the different fscm program sub-types </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		COMPANY_ID -  company id
+    		KEY_1 - Bank
+    		KEY_2 - fscm program sub-type
+    		KEY_3 - sub-type category
+    		DATA_1 - description
+    		DATA_2 - Multiple Finance
+    		DATA_3 - Anchorparty
+    		DATA_4 - Counterparty
+    		DATA_5 - Invoice uploaded by
+    		DATA_6 - Invoice submitted by
+    		DATA_7 - Buyer acceptance required
+    		DATA_8 - Finance Request By
+    		DATA_9 - Finance Debit Party
+    		DATA_10 - Finance Credit Party
+    		DATA_11 - Finance Settled By
+    		DATA_12 - Residual Payment By
+    		DATA_13 - Principal Risk Party
+    		DATA_14 - Multiple Finance Allowed
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P048</para>
+<para>
+<literal>Usage : </literal>Used to configure the credit account per bank for fees and charges- invoice payment.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    	PARAM_ID - unique id
+    	COMPANY_ID - customer company id
+    	KEY_1 - bank abbv name
+    	DATA_1 - credit account number
+    	DATA_2 - credit account currency
+     </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P343</para>
+<para>
+<literal>Usage : </literal>To Retrieve the back office based on product code and subproduct code and operation</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+    	COMPANY_ID - * 
+    	KEY_1 - Product code
+    	KEY_2 - Subproduct code
+    	KEY_3 - Operation type 
+    	DATA_1 - BackOffice name
+    	DATA_2 - Synchronous or Asynchronous 
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P768</para>
+<para>
+<literal>Usage : </literal>Used to configure Legal Text for a bank. This legal text is used in Lending Portal</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+	    COMPANY_ID - * 
+	    KEY_1 - BANK_ABBV_NAME for bank specific or '*' to apply same legal text for all banks 
+	    KEY_2 - FACILITY_TYPE eg:Use REV for REVOLVER type and TERM for TERM Facility type
+	    KEY_3 - TRANSACTION_TYPE eg:DRAWDOWN,REPRICING etc. 
+	    DATA_1 - Localization Key to be used for picking legal text value, this key should be available in loan_*.properties file 
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P372</para>
+<para>
+<literal>Usage : </literal>Used to store the Bank Specific Payroll configuration created for Scheduled Reports. Client may use scripts
+    to maintain the values.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+	    Below are required key and data columns for configuring this parameter,
+			KEY_1 - bank_abbv_name 
+    		DATA_1 - Y/N 
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P264</para>
+<para>
+<literal>Usage : </literal>
+			This parameter used to configure the cross currency for standard payment. If this parameter is configured it will enable to configure cross currency per branch/bank.
+    </para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+  			COMPANY_ID -  company id of customer/bank/bank group to which the Cross Currency parameter is configured.
+		    KEY_1 -  owner abbv name
+ 			DATA_1 - Y/N(indicates enabled or disabled)
+ 	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P911</para>
+<para>
+<literal>Usage : </literal>Deactivate user profile Schedular</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+				
+		COMPANY_ID - * 
+    	KEY_1 - Category(for Bank: BK ,for client: CL)
+    	KEY_2 - Bank Name
+    	KEY_3 - Operation type 
+    	DATA_1 - Number of days of inactivity
+    	DATA_2 - Email id mail to be send 
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P912</para>
+<para>
+<literal>Usage : </literal>Role Update Alert</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+				
+		COMPANY_ID - * 
+    	KEY_1 - Bank Name
+    	KEY_2 - Category(for Bank: BK ,for client: CL)
+    	KEY_3 - Operation type (R - Role Changes, P - Permission Changes) 
+    	DATA_1 - Email id mail to be send 
+	</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P704</para>
+<para>
+<literal>Usage : </literal>To configure possible reasons for getting HK RTGS Bank List</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    	 COMPANY_ID - Company Id, 
+    	KEY_1 -Bank BIC code,
+    	DATA_1 - Name,       
+    	DATA_2 - Bank Name, 
+    	DATA_3 - Bank Address Line1  , 
+    	DATA_4 - Address Line2 Post Code, 
+    	DATA_5 - Address Line3 City,
+  	  	DATA_6 - Address Line3 Branch, 
+  	  	DATA_7 - Country , 
+  	  	DATA_8 - Required Intermediary Bank(Y/N) </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P769</para>
+<para>
+<literal>Usage : </literal>Used to configure getFee Calculation-Parameterization</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> 
+	    COMPANY_ID - default * 
+	    KEY_1 - BANK_ABBV_NAME for bank specific or default '*' to apply same to all banks 
+	    KEY_2 - PRODUCT_CODE
+	    KEY_3 - SUBPRODUCT_CODE
+	    KEY_4 - Payment System (defined in portal.properties)
+	    DATA_1 - CURRENCY
+	    DATA_2 - AMOUNT(threshold value above which service will be called))
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P900</para>
+<para>
+<literal>Usage : </literal>Used to configure the custom widget for any dashboardType.</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - dashboardType (global_dashboard, cash_dashboard, trade_dashboard, loan_dashboard, fscm_dashboard) DATA_1 - widget name(role name). </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C090</para>
+<para>
+<literal>Usage : </literal>To retrieve Event types list.</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID - * 
+    LONG_DESC - Events Description (Ex: Issuance, Amendment, Message)
+    SHORT_DESC - Events Short Description (Ex: ISSU, AMD, MSG)
+    CODE_VAL - Transaction Type Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C091</para>
+<para>
+<literal>Usage : </literal>To retrieve clearing code list for treasury-instructions</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID 	- * 
+    LONG_DESC 	- Clearing code description(Used for treasury-instructions)
+    SHORT_DESC 	- Clearing code Abbreviation
+    CODE_VAL 	- Code for clearing code.
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C092</para>
+<para>
+<literal>Usage : </literal>To retrieve time frame list for listdef</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID 	- * 
+    LONG_DESC 	- Time frame description(eg. DAYS)
+    SHORT_DESC 	- Time frame Abbreviation(eg. D/M/Y)
+    CODE_VAL 	- Number of days/month/year.
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P780</para>
+<para>
+<literal>Usage : </literal>List of Payment Methods methods used for filtering out remittance instructions in Drawdown, Repricing and Increase Screens. </para>
+<para>
+<literal>Table Name      : </literal>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific"> KEY_1 - bank_abbv_name, DATA_1 - Allowed Payment Method</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C093</para>
+<para>
+<literal>Usage : </literal>To retrieve Event types list for Product Code</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID - *
+    LONG_DESC - Events Description (Ex: Issuance, Amendment, Message)
+    SHORT_DESC - Events Short Description (Ex: ISSU, AMD, MSG)
+    CODE_VAL - Product Status Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C094</para>
+<para>
+<literal>Usage : </literal>To retrieve types for Action Required List</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID - *
+    LONG_DESC - Action Required Types Description (Ex: Consent Response etc)
+    SHORT_DESC - Types Short Description (Ex: CONTRESP, AMDRESP etc)
+    CODE_VAL - Action Type Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C095</para>
+<para>
+<literal>Usage : </literal>To retrieve types for Tenor Types List</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+    COMPANY_ID - *
+    LONG_DESC - Tenor Types Description (Ex: Sight etc)
+    SHORT_DESC - Types Short Description (Ex: SIGHT, ACCPT etc)
+    CODE_VAL - Tenor Type Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C096</para>
+<para>
+<literal>Usage : </literal>To retrieve sub product codes list for Product Code</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+     COMPANY_ID - *
+    LONG_DESC - Sub product codes Description (Ex: Trust Receipts, Import Loan Collection etc.)
+    SHORT_DESC - Sub product codes Short Description (Ex: ITRPT, IBCLC etc.)
+    CODE_VAL - Sub Product Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>P707</para>
+<para>
+<literal>Usage : </literal>configure product models for UX screens</para>
+<para>
+<literal>Table Name      : </literal>GTP_PARAM_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+			COMPANY_ID - default *
+			KEY_1 -
+			BANK_ABBV_NAME for bank specific or default '*' to apply same to all
+			banks
+			KEY_2 - model type(FORM, SUBMIT, ENQUIRY, EVENT-DETAILS, API-MAPPING, SUBSECTION)
+			KEY_3 - PRODUCT CODE
+			KEY_4 - SUBPRODUCT CODE
+			KEY_5 - Transaction type code
+			KEY_6 - subtransaction type code
+			KEY_7 - option
+			KEY_8 - operation
+			KEY_9 - mode
+			DATA_1 - resource
+			DATA_2 - action code
+			DATA_3 - permission
+		</programlisting>
+</listitem>
+<listitem>
+<para>
+<literal>Parameter Id    : </literal>C097</para>
+<para>
+<literal>Usage : </literal>To retrieve types for Term Codes List</para>
+<para>
+<literal>Table Name      : </literal>GTP_CODE_DATA</para>
+<para>Below are required key and data columns for configuring this parameter, </para>
+<programlisting format="linespecific">
+		    COMPANY_ID - *
+		    LONG_DESC - Term Codes Description (Ex: Sight / Document Against Payment etc)
+		    SHORT_DESC - Term Codes Short Description (Ex: SIGHT, ACCPT etc)
+		    CODE_VAL - Term Codes Code
+		    PRODUCT_CODE - Product Code
+		    SUB_PRODUCT_CODE - Sub Product Code
+		</programlisting>
+</listitem>
+</itemizedlist>
+</section>

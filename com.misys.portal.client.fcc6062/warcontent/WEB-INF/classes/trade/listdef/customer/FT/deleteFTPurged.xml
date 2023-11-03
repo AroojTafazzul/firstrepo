@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" help="LIST_HELP_MAINTAIN" default_order="ref_id" default_order_type="d" page="50" identifier="ref_id" crossPageSelection="y">
+	
+	<batch type="delete">
+		<parameter name="SCREEN" value="FT_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_TRANSACTION_DELETE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_EXISTING"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+	</batch>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="40%" loca_key="ENTITY"/>
+<!-- Two kinds of data are stored, the name if there is one beneficiary, the number if there is more-->
+	<!-- Two kinds of data are stored, the name if there is one beneficiary, the number if there is more-->
+	<column name="counterparty_name" align="center" width="60%" loca_key="BENEFICIARIES_NAME">
+		<script>
+			if (value.equals(""))
+			{
+				value = row.getColumnValue("ObjectDataNumber@counterparty_nb") +" "+ com.misys.portal.common.localization.Localization.getGTPString(language, "BENEFICIARY_LABEL");
+			}
+			value;
+		</script>
+	</column>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	
+	<column name="prod_stat_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="ObjectDataNumber@counterparty_nb" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+	<!-- candidates -->	
+	<candidate name="fund_transfer_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

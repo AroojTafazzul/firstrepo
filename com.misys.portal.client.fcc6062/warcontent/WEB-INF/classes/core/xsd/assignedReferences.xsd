@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for an assigned BO reference. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="assigned_references">
+	    <xs:complexType>
+	        <xs:sequence>
+	            <xs:element minOccurs="0" maxOccurs="unbounded" name="customer" type="customer_recordType"/>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+	<xs:complexType name="customer_recordType">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="product" type="product_recordType"/>
+		</xs:sequence>
+		<xs:attribute name="abbv_name" use="required"/>
+		<xs:attribute name="reference" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="product_recordType">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="reference" type="reference_recordType"/>
+		</xs:sequence>
+		<xs:attribute name="code" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="reference_recordType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+	</xs:simpleType>
+</xs:schema>

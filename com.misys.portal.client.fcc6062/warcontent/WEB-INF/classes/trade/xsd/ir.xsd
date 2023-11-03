@@ -1,0 +1,515 @@
+﻿﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for IR. XML validation 
+			Copyright (c) 2000-2004 NEOMAlogic (http://www.neomalogic.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="ir_tnx_record">
+		<xs:annotation>
+			<xs:documentation>Inward Remittance Business Rules</xs:documentation>
+			<xs:appinfo>
+				<!-- IR - Check transaction type code -->
+				<sch:pattern name="IR - Check the transaction type code" xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ir_tnx_record">
+						<sch:assert test="tnx_type_code = '13'">
+							The transaction type code <value-of select="tnx_type_code"/> is not authorised.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern>
+				<!-- ************************* -->
+				<!-- IR Inquire Business Rules -->
+				<!-- ************************* -->
+				<!-- IR Inquire mandatory fields -->
+				<sch:pattern name="IR Inquire - Mandatory fields " xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ir_tnx_record">
+						<sch:report test="tnx_type_code = '13' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(free_format_text) or free_format_text = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<!-- IR Inquire not authorised fields -->
+				<sch:pattern name="IR Inquire - Not authorised fields " xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/ir_tnx_record">
+						<sch:report test="tnx_type_code = '13' and
+									(brch_code
+									 or ref_id
+									 or bo_ref_id
+									 or cust_ref_id
+									 or company_id
+									 or entity
+									 or prod_stat_code
+									 or appl_date
+									 or tnx_id
+									 or tnx_type_code
+									 or sub_tnx_type_code
+									 or inp_user_id
+									 or inp_dttm
+									 or ctl_user_id
+									 or ctl_dttm
+									 or release_user_id
+									 or release_dttm
+									 or bo_inp_user_id
+									 or bo_inp_dttm
+									 or bo_ctl_user_id
+									 or bo_ctl_dttm
+									 or bo_release_user_id
+									 or bo_release_dttm
+									 or tnx_val_date
+									 or tnx_cur_code
+									 or tnx_amt
+									 or ir_cur_code
+									 or ir_amt
+									 or ir_liab_amt
+									 or ir_type_code
+									 or ir_sub_type_code
+									 or fwd_contract_no
+									 or act_no
+									 or beneficiary_abbv_name
+									 or beneficiary_name
+    								 or beneficiary_address_line_1
+    								 or beneficiary_address_line_2
+									 or beneficiary_dom
+                                     or beneficiary_country
+									 or beneficiary_reference
+									 or remitter_name
+									 or remitter_address_line_1
+									 or remitter_address_line_2
+									 or remitter_dom
+                                     or remitter_country
+									 or remitter_reference
+									 or link_tnx_id
+									 or instructions_required
+									 or fee_act_no
+									 or remittance_date
+									 or remitting_bank/abbv_name
+									 or remitting_bank/name
+									 or remitting_bank/address_line_1
+									 or remitting_bank/address_line_2
+									 or remitting_bank/dom
+									 or remitting_bank/reference
+									 or issuing_bank/abbv_name
+									 or issuing_bank/name
+									 or issuing_bank/address_line_1
+									 or issuing_bank/address_line_2
+									 or issuing_bank/dom
+									 or issuing_bank/reference
+									 or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Reference id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="template_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Template id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_tnx_id">
+					<xs:annotation>
+						<xs:documentation>Back office transaction id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element ref="tnx_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="company_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Id of the company that represents 
+							the beneficiary of the IR.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="company_name">
+					<xs:annotation>
+						<xs:documentation>Name of the company that 
+							represents the beneficiary of the 
+							IR.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="brch_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Branch code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office attributed reference 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sub_tnx_type_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction sub type 
+							code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="cust_ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Customer attributed reference 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_type_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction type 
+							code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="prod_stat_code">
+					<xs:annotation>
+						<xs:documentation>Product status 
+							code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="tnx_stat_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction status 
+							code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+					<xs:annotation>
+						<xs:documentation>Sub Transaction Status Code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="inp_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Inputter user 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="inp_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Input date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_inp_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office inputter 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_inp_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office input 
+							date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ctl_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Controller user 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ctl_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Control date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="release_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Releaser user 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="release_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Release date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_ctl_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office control 
+							date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_ctl_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office controller 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_release_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office release 
+							date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_release_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office release user 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="product_code">
+					<xs:annotation>
+						<xs:documentation>Product code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sub_product_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Sub Product code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="appl_date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Import collection application 
+							date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_val_date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction value 
+							date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ir_cur_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The currency of the Doc. 
+							Collection.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- ADD INCOMING V4 -->
+				<xs:element ref="ir_amt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The amount of the Doc. 
+							Collection.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ir_liab_amt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The outstanding amount of the 
+							collection. It may evolve as a consequence to 
+							partial settlements.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="ir_outstanding_amt">
+					<xs:annotation>
+						<xs:documentation>The current outstanding amount of the 
+							collection</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- END ADD INCOMING V4 -->
+				<xs:element ref="ir_type_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The type of the collection: for 
+							now, only Regular or Direct. Later on, we may 
+							add Presentation Under a Documentary Credit, 
+							etc.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_cur_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction currency 
+							code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_amt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction 
+							amount.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="act_no" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Account 
+							number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ir_sub_type_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Sub type code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="beneficiary_abbv_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The abbreviated name of the 
+							beneficiary / importer / buyer.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="beneficiary_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The name of the beneficiary / importer 
+							/ buyer. When the bank issues the notification, 
+							it will be defaulted with the information 
+							pertaining to its chosen 
+							customer.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="beneficiary_address_line_1" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>His first line of 
+							address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="beneficiary_address_line_2" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>His second line of 
+							address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="beneficiary_dom" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>His domicile of third line of 
+							address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+                <xs:element ref="beneficiary_country" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The country of the 
+							beneficiary.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="beneficiary_reference" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>An additional reference related 
+							to the beneficiary of the 
+							collection.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="entity" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Entity</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- ADD INCOMING V4 -->
+				<xs:element ref="remitter_abbv_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The abbv name of the remitter / exporter 
+							/ seller.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- END ADD INCOMING V4 -->
+				<xs:element ref="remitter_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The name of the remitter / exporter 
+							/ seller.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="remitter_address_line_1" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>His first line of 
+							address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="remitter_address_line_2" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>His second line of 
+							address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="remitter_dom" minOccurs="0" nillable="true">
+					<xs:annotation>
+						<xs:documentation>His domicile or third line of 
+							address.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+                <xs:element ref="remitter_country" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The country of the  
+							remitter.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="remitter_reference" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The usual additional 
+							reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="remitting_bank" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Parent node for the remitting 
+							bank information</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_comment" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office 
+							comment.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="narrative_payment_details" minOccurs="0" type="HundredFourtyCharacters" nillable="true">
+					<xs:annotation>
+						<xs:documentation>A narrative for additional 
+							collection instructions.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="attachments" minOccurs="0"/>
+				<xs:element ref="fee_act_no" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Fee account 
+							number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="fwd_contract_no" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The number of the forward 
+							contract which the beneficiary wants to be used for 
+							the debit of the principal 
+							amount.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="remittance_date" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Remittance Date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="instructions_required" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Whether instructions are reauired for this Inward Remittance.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="free_format_text" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Used as a zone of communication 
+							between the client and the 
+							bank</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="maturity_date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Maturity date for acceptation, paiement, discrepancies.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="issuing_bank" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Parent node for the issuing 
+							bank information</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="charges" minOccurs="0"/>
+				<xs:element minOccurs="0" ref="cross_references"/>
+				<xs:element ref="additional_field" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element minOccurs="0" ref="action_req_code"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ir_liab_amt" type="amount"/>
+	<xs:element name="ir_type_code">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>The type of the remittance: 01 - Standard or 
+					02 - Cheque.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,254 @@
+import { FccConstants } from "../../../common/core/fcc-constants";
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
+
+import { ProductService } from "../../../base/services/product.service";
+import { FccGlobalConstant } from "../../core/fcc-global-constants";
+import { ProductFormHeaderParams } from "../../model/params-model";
+import { CommonService } from "../../services/common.service";
+import { ConfirmationGuardDialogComponent } from "../../../confirmation-guard-dialog/confirmation-guard-dialog.component";
+import { MatDialog } from "@angular/material/dialog";
+import { ProductStateService } from "../../../corporate/trade/lc/common/services/product-state.service";
+import { EventEmitterService } from "../../services/event-emitter-service";
+import { Overlay } from "@angular/cdk/overlay";
+const moment = require('moment');
+
+@Component({
+  selector: "product-form-header",
+  templateUrl: "./product-form-header.component.html",
+  styleUrls: ["./product-form-header.component.scss"],
+})
+export class ProductFormHeaderComponent implements OnInit,AfterViewInit, OnDestroy {
+  @Input() data: ProductFormHeaderParams;
+  productFormKey: string;
+  productformrefId: string;
+  formName: string;
+  isViewDetailEnabled: boolean;
+  isSubHeaderEnabled: boolean;
+  mainheaderStyle: any;
+  mainheaderStyleArabic = "mainheaderArabic";
+  mainheader = "mainheader";
+  view;
+  subHeaderText;
+  dir: string = localStorage.getItem("langDir");
+  innerTabsData: any;
+  currentSection: any;
+  oldIndex = 0;
+  tabChange: boolean;
+  activeIndex = 0;
+  activeInnerIndex = 0;
+  displayTime = false;
+  savedTime: any;
+  styleClassName: string;
+  sysId = 'sysID';
+  sysTdArabic = 'sysIDarabic';
+  setSystemID = false;
+  channelRefID: any;
+
+
+  constructor(protected overlay: Overlay,
+    protected productService: ProductService,
+    protected translateService: TranslateService,
+    protected commonService: CommonService,
+    protected router: Router,
+    protected dialog: MatDialog,
+    protected stateService: ProductStateService,
+    protected eventEmitterService: EventEmitterService
+  ) {}
+  ngAfterViewInit(): void {
+    this.productService.setSectionDetails.subscribe((res) => {
+      this.currentSection = res;
+      if (document.querySelector(FccConstants.WIDGET_CONTAINER) != null 
+      && this.currentSection !== FccGlobalConstant.PAYMENTS_BULK_FILEUPLOAD_GENERAL_DETAILS) {
+        const cssclass = FccConstants.WIDGET_CONTAINER +","+ FccConstants.RIGHT_HEADER_SECTION;
+        const tabCssclass = FccConstants.TAB_PARENT_DIV;
+        if (this.currentSection === FccGlobalConstant.SUMMARY_DETAILS) {
+          this.display(this.getElementByQuerySelector(cssclass),false);
+          this.display(this.getElementByQuerySelector(tabCssclass),false);
+        } else {
+          if(this.data.operation === FccGlobalConstant.UPDATE_FEATURES && this.data.option === FccGlobalConstant.PAYMENTS){
+            this.display(this.getElementByQuerySelector(cssclass),false);
+            this.display(this.getElementByQuerySelector(tabCssclass),false);
+          }else{
+            this.display(this.getElementByQuerySelector(cssclass),true);
+            this.display(this.getElementByQuerySelector(tabCssclass),true);
+          }
+        }
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    if (this.dir === FccGlobalConstant.LANUGUAGE_DIR_ARABIC) {
+      this.mainheaderStyle = this.mainheaderStyleArabic;
+      this.styleClassName = this.sysTdArabic;
+    } else {
+      this.mainheaderStyle = this.mainheader;
+      this.styleClassName = this.sysId;
+    }
+
+    this.formName = this.productService.getFormName(
+      this.data.productCode,
+      this.data.tnxTypeCode,
+      this.data.subTnxTypeCode,
+      this.data.subProductCode,
+      this.data.option,
+      this.data.operation
+    );
+    if (
+      this.data.tnxTypeCode === FccGlobalConstant.N002_NEW &&
+      this.formName === FccGlobalConstant.PRODUCT_EL
+    ) {
+      this.productFormKey = this.translateService.instant(
+        "ExportLetterOfCreditMT700Header"
+      );
+    } else {
+      this.productFormKey = this.translateService.instant(this.formName);
+    }
+    this.view = this.translateService.instant(FccGlobalConstant.VIEW_MODE);
+    this.productformrefId =
+      this.data.refId !== undefined ? ": ".concat(this.data.refId) : "";
+    // To remove the below product specific code once MPS-69379 is fixed.
+    if (
+      (this.data.productCode === FccGlobalConstant.PRODUCT_LN ||
+        this.data.productCode === FccGlobalConstant.PRODUCT_TD) &&
+      (this.data.tnxTypeCode === FccGlobalConstant.N002_NEW ||
+        this.data.tnxTypeCode === FccGlobalConstant.N002_AMEND ||
+        this.data.tnxTypeCode === FccGlobalConstant.N002_INQUIRE)
+    ) {
+      this.isViewDetailEnabled = false;
+    } else {
+      this.isViewDetailEnabled = this.productService.isViewDetailEnabled(
+        this.data
+      );
+    }
+    this.isSubHeaderEnabled = this.productService.isSubHeaderEnabled(this.data);
+    this.oldIndex = this.activeIndex;
+
+    this.commonService.autoSavedTime.subscribe(val=>{
+      if(this.commonService.isnonEMptyString(val)) {
+        const autoSavedTime = moment(val).format('h:mm A');
+        this.displayTime = true;
+        this.savedTime = `${this.translateService.instant('autoSavedAt',{ time: autoSavedTime })}`;
+      } else {
+        this.displayTime = false;
+      }
+    });
+    this.commonService.batchRefId.subscribe((batchRefId) => {
+      if(this.commonService.isnonEMptyString(batchRefId)){
+        this.setSystemID = true;
+        this.channelRefID = batchRefId;
+      } else {
+        this.setSystemID = false;
+      }
+
+    });
+  }
+
+  /**
+   * perform onclickview action in product form page
+   * @param event onclickview event
+   */
+  onClickView() {
+    this.productService.onClickView$.next(true);
+  }
+
+  handleHyperlink(hyperlinkData) {
+    if (hyperlinkData?.routerLink) {
+      this.router.navigateByUrl(hyperlinkData.routerLink);
+    }
+  }
+
+  checkTabChange(tab, event) {
+    if (event.index !== this.oldIndex) {
+      let isAutoSaveValid = false;
+    if (this.stateService.getAutoSaveConfig()?.isAutoSaveEnabled) {
+      isAutoSaveValid = true;
+      this.displayTime = true;
+    } else {
+      isAutoSaveValid = false;
+      this.displayTime = false;
+    }
+
+    const section = this.stateService.getSectionNames();
+    if (this.dialog.openDialogs.length === 0 && isAutoSaveValid === true) {
+      const dialogRef = this.dialog.open(ConfirmationGuardDialogComponent, {
+        panelClass: 'confirmDialogClass',
+        scrollStrategy: this.overlay.scrollStrategies.noop(),
+        height: '12.5em',
+        width: '37.5em',
+        autoFocus: false,
+        disableClose: false,
+        hasBackdrop: true,
+        data: { isBene: isAutoSaveValid },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result === "saveForLater") {
+          this.eventEmitterService.autoSaveForLater.next(section[0]);
+          this.activeIndex = event.index;
+          this.onTabChange(tab, event);
+        } else if (result === "cancel") {
+          this.eventEmitterService.cancelTransaction.next(section[0]);
+          this.activeIndex = event.index;
+          this.onTabChange(tab, event);
+        } else {
+          this.activeIndex = this.oldIndex;
+        }
+      });
+    } else {
+      this.onTabChange(tab, event);
+    }
+    }
+  }
+
+  onTabChange(tab, event) {
+    this.oldIndex = event.index;
+    this.data.productsList.forEach((productType) => {
+      if (productType.index === event.index) {
+        if (document.querySelector(FccConstants.WIDGET_CONTAINER) != null) {
+          if (this.commonService.isEmptyValue(productType.tabProductTypes)) {
+            (
+              document.querySelector(
+                FccConstants.WIDGET_CONTAINER
+              ) as HTMLElement
+            ).style.display = FccConstants.STYLE_NONE;
+          } else {
+            (
+              document.querySelector(
+                FccConstants.WIDGET_CONTAINER
+              ) as HTMLElement
+            ).style.display = FccConstants.STYLE_BLOCK;
+          }
+        }
+      }
+    });
+    this.productService.onProductFormChange$.next(event);
+  }
+
+  onInnerTabChange(event, tabs) {
+    event.value = tabs;
+    this.productService.onInnerProductFormChange$.next(event);
+  }
+
+  display(doc,flag){
+    if(doc){
+      if(flag){
+        doc.style.display = FccConstants.STYLE_FLEX;
+      }else{
+        doc.style.display = FccConstants.STYLE_NONE;
+      }
+    }
+  }
+
+  getElementByQuerySelector(cssclass){
+    return (
+      document.querySelector(
+        cssclass
+      ) as HTMLElement
+    );
+  }
+  ngOnDestroy() {
+    this.productService.onClickView$.next(false);
+  }
+}

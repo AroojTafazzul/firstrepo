@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"  page="50" default_order="ref_id" default_order_type="d" >
+
+	<column name="ref_id" align="left" width="15%" loca_key="REFERENCEID">
+			<!-- JavaScript Pass back -->
+        <js-pass-back keyName="column">
+            <array-element index="0" column="ref_id"/>
+            <array-element index="1" column="beneficiary_name"/>
+            <array-element index="2" column="exp_date"/>
+            <array-element index="3" column="bo_ref_id"/>
+            <array-element index="3" column="tnx_id"/>
+        </js-pass-back>
+		</column>
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="applicant_name" align="left" width="14%" loca_key="APPLICANT_NAME" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amt" align="right" width="14%" loca_key="AMOUNT" columnFilterType="input-multiselect"/>
+    <column name="exp_date" align="left" width="12%" loca_key="EXP_DATE" columnFilterType="input-multiselect"/>   
+	<column name="tnx_id" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		loca_key="BO_REF"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		type="Currency"
+		multiple="y"
+		loca_key="CURCODE"
+		/>
+	<parameter
+		name="exp_date"
+		type="range"
+		loca_key="EXP_DATE"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="current_date_value"
+		hidden="true"/>
+	
+
+	<candidate name="export_letter_of_credit_master">
+		<filter>
+		<criteria>
+			<column name="ref_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+				ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+		</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>	
+			</criteria>
+					<criteria>
+			<column name="exp_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				exp_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="exp_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				exp_date@to
+			</value>
+		</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_CANCELLED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_REJECTED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_EXPIRE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_EXPIRED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="exp_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					current_date_value
+				</value>
+			</criteria>
+			<criteria>
+				<column name="lc_liab_amt"/>
+				<operator type="!="/>
+				<value type="column">
+					0
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

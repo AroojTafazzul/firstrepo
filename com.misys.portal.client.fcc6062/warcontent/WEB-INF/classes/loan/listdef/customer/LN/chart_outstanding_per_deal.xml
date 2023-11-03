@@ -1,0 +1,24 @@
+<listdef page='25'>
+	<name>Outstanding per Deal</name>
+	<description isLocalizationKey='y'>XSL_REPORT_CHART_OUTSTANDING_PER_DEAL_DESCRIPTION</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='product_code' hidden='y'/>
+	<column name='ln_amt' hidden='y'/>
+	<column name='ln_cur_code' hidden='y'/>
+	<column name='bo_deal_name' hidden='y'/>
+	<candidate name='loan_master'/>
+	<group graph='bar'>
+		<column name='bo_deal_name'/>
+		<aggregate type='sum' cur='EUR'>
+			<column name='ln_amt'/>
+			<description locale='en'>Total (EUR)</description>
+			<description locale='fr'>Total (EUR)</description>
+		</aggregate>
+		<!-- aggregate type='count'>
+			<column name='ref_id'/>
+			<description locale='en'>Number of Files</description>
+			<description locale='fr'>Nombre de Dossiers</description>
+		</aggregate-->
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

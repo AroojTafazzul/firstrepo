@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title><xi:include href="../entities_en.xml" xpointer="ent_News_M"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> Module</title>
+
+  <section>
+    <title>Overview</title>
+
+    <para>When a user connects to <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>, the
+    home page includes a section showing items of news provided by the
+    bank.</para>
+
+    <para>As the bank group administrator, you use the <xi:include
+    href="../entities_en.xml" xpointer="ent_News_M"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> module to maintain this news
+    service. It provides your bank's customers with updated news and analysis
+    compiled by the bank's Trade Services team.</para>
+
+    <!--  <para>You can also see news items - known as syndicated news - delivered
+    regularly from an external news aggregator. As the bank group
+    administrator, you can see items from all aggregators known to the system.
+    Any other user can see items from only one chosen aggregator.</para> -->
+
+    <note>
+      <para>This module is available only to the Bank Group
+      administrator.</para>
+    </note>
+  </section>
+
+  <section condition="TITLE=Channels;PERM=news_access;ACCESS=NC_01" id="NCH"
+           role="TOPIC">
+    <title>Channels</title>
+
+    <para role="TEXT">A content provider or channel is a set of news items.
+    There are internal channels, where you as bank group administrator create
+    the news items yourself, and external channels, supplying news items from
+    external aggregators.</para>
+
+    <para role="TEXT"><xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> can
+    maintain as many channels as the bank group needs, to distinguish
+    different feeds of information for different audiences.</para>
+
+    <para role="TEXT">For instance, you could have different internal channels
+    for different languages; or, you could have one internal channel that
+    appears on every user's home page before log in, and others that appear
+    when the user logs in.</para>
+
+    <para role="TEXT">When a company is created in <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, one internal and one
+    external channel is selected to be displayed to its users whenever they
+    log in.</para>
+
+    <para role="TEXT">The list of content providers is set up by the technical
+    administrator when installing <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>, by
+    making entries in the appropriate properties file.</para>
+  </section>
+
+  <section>
+    <title>Terminology</title>
+
+    <para>Each news item has three parts:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Topic</para>
+
+        <para>An image (typically a logo), showing what category the news item
+        belongs to. The categories available are set up by the technical
+        administrator when installing <xi:include href="../entities_en.xml"
+        xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>. The
+        topic is a link, which typically goes to an external website that is
+        an overview appropriate to the category.</para>
+      </listitem>
+
+      <listitem>
+        <para>Title</para>
+
+        <para>A brief headline summarising the news item. This can optionally
+        be a link, which would typically go to an external website giving
+        background information on the news item.</para>
+      </listitem>
+
+      <listitem>
+        <para>Text</para>
+
+        <para>The text of the news item.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section role="ITEM">
+    <title>Functions</title>
+
+    <para>The News Maintenance functions are on their own menu, reached by
+    clicking <emphasis role="bold">News Maintenance</emphasis> on the bank
+    administrator's main menu. They are as follows:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guisubmenu>Internal News</guisubmenu></term>
+
+        <listitem>
+          <para>Maintain news provided from within the bank</para>
+        </listitem>
+      </varlistentry>
+
+      <!--  <varlistentry>
+        <term><guisubmenu>Syndicated News</guisubmenu></term>
+
+        <listitem>
+          <para>View news provided by publicly available RSS (Really Simple
+          Syndication) news channels.</para>
+        </listitem>
+      </varlistentry> -->
+    </variablelist>
+  </section>
+
+  <section condition="TITLE=Internal News;PERM=news_access;ACCESS=NE_01"
+           id="NEWS" role="TOPIC">
+    <title>Internal News</title>
+
+    <para>This section describes the <emphasis role="bold">Internal
+    News</emphasis> function and the forms it uses.</para>
+
+    <section>
+      <title>Internal News Options</title>
+
+      <para>This action has two sub-menu items, for maintaining internal news
+      items.</para>
+
+      <section>
+        <title>View News Items</title>
+
+        <para>You can view and maintain existing news items. When you select
+        this option, you are presented with a list of all the existing news
+        channels (that is, internal content providers) currently defined on
+        your <xi:include href="../entities_en.xml" xpointer="ent_appli"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> system.</para>
+
+        <para>The list of existing news channels has the following
+        columns:</para>
+
+        <informaltable>
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.4*"/>
+
+            <colspec colname="c2" colwidth="7.5*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Channel
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para>Abbreviated name that uniquely
+                identifies the channel.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">TItle</guilabel> </para></entry>
+
+                <entry valign="top"><para>Name of the channel.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+
+        <para>Click in the <guilabel moreinfo="none">Channel Name</guilabel>
+        column to get a list of all the news items currently visible on that
+        channel.</para>
+
+        <para>The list of news items has the following elements. It is similar
+        in appearance to the way the list appears on users' home pages, except
+        that it has an extra column with action icons. It has no column
+        headings - the field names given here refer to the terminology defined
+        above.</para>
+
+        <para><informaltable>
+            <tgroup cols="2">
+              <colspec colname="c1" colwidth="2.4*"/>
+
+              <colspec colname="c2" colwidth="7.5*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para>Field</para></entry>
+
+                  <entry valign="top"><para>Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Topic</guilabel> </para></entry>
+
+                  <entry valign="top"><para>Image or logo, showing what
+                  category the news item belongs to. It is a link, typically
+                  to an external website that is an overview appropriate to
+                  the category.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">TItle</guilabel> </para></entry>
+
+                  <entry valign="top"><para>Headline summarising the news
+                  item. It can be a link, typically to an external website
+                  giving background information on the news
+                  item.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Text</guilabel> </para></entry>
+
+                  <entry valign="top"><para>(Below the title) Text of the news
+                  item.</para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+
+        <para role="TEXT">You can modify a news item by clicking the <guiicon
+        moreinfo="none">Edit</guiicon> <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                         width="4mm"/>
+            </imageobject>
+          </inlinemediaobject> icon in the right-hand column, or delete it by
+        clicking the <guibutton moreinfo="none">Delete</guibutton>
+        <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                         width="4mm"/>
+            </imageobject>
+          </inlinemediaobject> icon. You can scroll up and down the list by
+        clicking the up and down arrows in the right-hand column.</para>
+      </section>
+
+      <section>
+        <title>Add News Items</title>
+
+        <para>Add new news items.</para>
+
+        <para>When you select this option, you are presented with a list of
+        all the existing news channels (that is, content providers) currently
+        defined on your <xi:include href="../entities_en.xml"
+        xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        system.</para>
+
+        <para>The list of existing news channels has the following
+        columns:</para>
+
+        <informaltable>
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.4*"/>
+
+            <colspec colname="c2" colwidth="7.5*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Channel
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para>Abbreviated name that uniquely
+                identifies the channel.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">TItle</guilabel> </para></entry>
+
+                <entry valign="top"><para>Name of the channel.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+
+        <para>Click in the <guilabel moreinfo="none">Channel Name</guilabel>
+        column to get a form for adding a new news item to that
+        channel.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>Internal News Item Form</title>
+
+      <para role="TEXT">The <guibutton moreinfo="none">Add News
+      Item</guibutton> function, and the <guiicon
+      moreinfo="none">Edit</guiicon> action reached from the <emphasis
+      role="bold">View News Item</emphasis> function, both display the same
+      form; but in the case of <guibutton moreinfo="none">Add</guibutton> it
+      is blank and in the case of <guibutton moreinfo="none">Edit</guibutton>
+      it is preset with the existing details of the news item. After entering
+      the details, click <emphasis role="bold">Save</emphasis> at the bottom
+      of the form.</para>
+
+      <informaltable>
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="1.9*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="6.8*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Topic</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of the topic (that is, category)
+              that the news item belongs to. Select from the dropdown list.
+              The content of the list, specifying the name and image for each
+              topic, will have been set up by the technical administrator. You
+              do not see the image itself in this form.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Title</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Headline summarising the news item.
+              </para><para>If either of the next two fields is filled in, this
+              is a link, typically to background information on the news item.
+              If both are blank this is not a link.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Link</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Web address (Uniform Resource Locator,
+              URL) of the website that is to open when a user clicks on the
+              title (see above) of the news item. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Attached
+              File</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Text field and Browse button to attach
+              a file from your local hard disk, which a user can download by
+              clicking on the title (see above) of the news item.
+              </para><para>This capability is only available to registered
+              users. If an attachment is added to a news item in the default
+              news channel, non-registered users will not be able to download
+              the file.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none"/>
+              </para></entry>
+
+              <entry valign="top"><para/></entry>
+
+              <entry valign="top"><para>Text area for the actual text of the
+              news item. There are features for formatting, such as specifying
+              font and colour, and inserting links and images. There is no
+              limit on the amount of data you can enter, but keep in mind that
+              a long text (more than 10 - 15 lines) will badly clutter the
+              users' Home page, and should therefore be
+              avoided.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <!-- <section>
+    <title>Syndicated News</title>
+
+    <para>View news provided by publicly available RSS (Really Simple
+    Syndication) news channels.</para>
+
+    <para>When you select this option, you are presented with a list of all
+    the RSS channels (that is, external content providers) known to your
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> system.</para>
+
+    <para>The list of RSS channels has the following columns:</para>
+
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.4*"/>
+
+        <colspec colname="c2" colwidth="7.5*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <guilabel moreinfo="none">Channel
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name that uniquely
+            identifies the channel.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">TItle</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the channel.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para>Click in the <guilabel moreinfo="none">Channel Name</guilabel>
+    column to get a list of all the news items currently visible on that
+    channel.</para>
+
+    <para>Click a news item to open it in a Web browser.</para>
+
+    <para>You cannot do any maintenance or administration on RSS channels.
+    This function exists purely for you to see news items. As the bank group
+    administrator, you can see items from all RSS channels known to the
+    system. Any other user can see items from only one chosen RSS
+    channel.</para>
+
+    <section>
+      <title>Syndicated News Item Form</title>
+
+      <para role="TEXT">The <guibutton moreinfo="none">Syndicated News
+      Item</guibutton> function, and the <guiicon
+      moreinfo="none">Edit</guiicon> action reached from the <emphasis
+      role="bold">View News Item</emphasis> function, both display the same
+      form; but in the case of <guibutton moreinfo="none">Add</guibutton> it
+      is blank and in the case of <guibutton moreinfo="none">Edit</guibutton>
+      it is preset with the existing details of the news item. After entering
+      the details, click <emphasis role="bold">Save</emphasis> at the bottom
+      of the form.</para>
+
+      <informaltable>
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="1.9*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="6.8*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Topic</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of the topic (that is, category)
+              that the news item belongs to. Select from the dropdown list.
+              The content of the list, specifying the name and image for each
+              topic, will have been set up by the technical administrator. You
+              do not see the image itself in this form.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Title</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Headline summarising the news item.
+              </para><para>If either of the next two fields is filled in, this
+              is a link, typically to background information on the news item.
+              If both are blank this is not a link.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Link</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Web address (Uniform Resource Locator,
+              URL) of the website that is to open when a user clicks on the
+              title (see above) of the news item. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Attached
+              File</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Text field and Browse button to attach
+              a file from your local hard disk, which a user can download by
+              clicking on the title (see above) of the news item.
+              </para><para>This capability is only available to registered
+              users. If an attachment is added to a news item in the default
+              news channel, non-registered users will not be able to download
+              the file.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none"/>
+              </para></entry>
+
+              <entry valign="top"><para/></entry>
+
+              <entry valign="top"><para>Text area for the actual text of the
+              news item. There are features for formatting, such as specifying
+              font and colour, and inserting links and images. There is no
+              limit on the amount of data you can enter, but keep in mind that
+              a long text (more than 10 - 15 lines) will badly clutter the
+              users' Home page, and should therefore be
+              avoided.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>-->
+</chapter>

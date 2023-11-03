@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=System Features: Trust Relationship;ACCESS=SY_TRS_B"
+         role="TOPIC">
+  <title><xi:include href="../entities_en.xml"
+  xpointer="ent_trust_relationship"
+  xmlns:xi="http://www.w3.org/2001/XInclude" /></title>
+
+  <section condition="TITLE=Administration: Trust Relationship;PERM=sy_bank_trust_relationship_access;ACCESS=SY_TRS_B"
+           id="TRL" role="TOPIC">
+    <title>Overview</title>
+
+    <para role="TEXT">As a bank group administrator, you can link customers
+    across different banks or branches by creating a trust relationship. You
+    can then link users of these customers and enable them to view account
+    balances in a uni-directional or bi-directional exchange of
+    information.</para>
+
+    <note>
+      <para role="TEXT">Trust relationship is not available for multi-bank
+      customers.</para>
+    </note>
+</section>
+    <section role="ITEM">
+      <title><xi:include href="../entities_en.xml"
+      xpointer="ent_trust_relationship"
+      xmlns:xi="http://www.w3.org/2001/XInclude" /> - Navigation</title>
+
+      <para role="TEXT">To navigate to the <emphasis role="bold"><xi:include
+      href="../entities_en.xml" xpointer="ent_trust_relationship"
+      xmlns:xi="http://www.w3.org/2001/XInclude" /></emphasis> function, from
+      the toolbar, select <emphasis>System Features</emphasis> from the home
+      page, then select <emphasis><xi:include href="../entities_en.xml"
+      xpointer="ent_trust_relationship"
+      xmlns:xi="http://www.w3.org/2001/XInclude" /></emphasis> from the left
+      navigation menu.</para>
+    </section>
+
+    <section role="ITEM">
+      <title><xi:include href="../entities_en.xml"
+      xpointer="ent_trust_relationship"
+      xmlns:xi="http://www.w3.org/2001/XInclude" /> - Customer Level
+      List</title>
+
+      <para role="TEXT">You (Bank Group Administrators) can use this option to
+      create and manage trust relationship details for your Bank's customers.
+      When you select the <guisubmenu>Customer Level</guisubmenu> option, you
+      are presented with a list of all the existing customer level trust
+      relationships for your banks. You can search the list by entering search
+      criteria in the <guilabel moreinfo="none">From Bank</guilabel>,
+      <guilabel>To Bank</guilabel>, <guilabel>From Customer</guilabel>,
+      <guilabel>To Customer</guilabel>, <guilabel>Relation</guilabel> (*,
+      Uni-directional and Bi-directional), <guilabel>Relationship
+      Status</guilabel> (*, Active and Inactive), <guilabel
+      moreinfo="none">Status</guilabel> and <guilabel>Actor</guilabel> fields
+      at the top of the page. Click the <guilabel>Download File</guilabel>
+      button to download the list in CSV and Spreadsheet (MS Excel)
+      format.</para>
+
+      <note>
+        <para><guilabel>Status</guilabel> and <guilabel>Actor</guilabel>
+        fields are available only if maker-checker functionality is
+        enabled.</para>
+      </note>
+
+      <para role="TEXT">You can view the following columns in the list of
+      trust relationships:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">From
+              Bank</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the bank to which
+              the customer establishing the trust relationship belongs to.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">To
+              Bank</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the bank to which
+              the customer with whom the relationship is established with
+              belongs to.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">From
+              Customer</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the customer from
+              where Regional Account View may be accessed.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">To
+              Customer</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the customer with
+              whom the trust relationship is established.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Relation</guilabel> </para></entry>
+
+              <entry valign="top"><para>Type of relationship established at
+              the customer level, whether Uni-directional or Bi-directional.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Relationship Status</guilabel> </para></entry>
+
+              <entry valign="top"><para>Status of the relationship, whether
+              active or inactive. </para></entry>
+            </row>
+
+            <row>
+              <entry
+              valign="top"><para><guilabel>Status</guilabel></para></entry>
+
+              <entry valign="top"><para>Indicates the status of the pending
+              record set by the checker.</para><note>
+                  <para>This column is available if maker-checker
+                  functionality is enabled.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel>Maker User
+              </guilabel></para></entry>
+
+              <entry valign="top"><para>Displays the user ID of the maker of
+              the transaction.</para><note>
+                  <para>This column is available if maker-checker
+                  functionality is enabled.</para>
+                </note></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can modify a trust relationship by clicking the
+      <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, view it in
+      non-editable mode by clicking the <guibutton>View</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                       width="4.5mm" />
+          </imageobject>
+        </inlinemediaobject> icon, or delete it by clicking the <guibutton
+      moreinfo="none">Delete</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+
+      <note>
+        <para role="TEXT">Once user-level associations are set up, you cannot
+        delete a trust relationship.</para>
+      </note>
+
+      <para role="TEXT">Click the <guibutton moreinfo="none">Add a new trust
+      relationship</guibutton> button at the bottom of the list to add a trust
+      relationship. <guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add a new trust relationship </guibutton>display the
+      same form, but in the case of <guibutton
+      moreinfo="none">Edit</guibutton>, the <guilabel>From Bank</guilabel>,
+      <guilabel>To Bank</guilabel>, <guilabel>From Customer</guilabel> and
+      <guilabel>To Customer</guilabel> fields are not editable.</para>
+
+      <para role="TEXT">Cancel a transaction by clicking on the
+      <guibutton>Cancel</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_makerchecker_cancel.gif" />
+          </imageobject>
+        </inlinemediaobject> icon or approve by clicking the
+      <guibutton>Action</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_makerchecker_action.gif" />
+          </imageobject>
+        </inlinemediaobject> icon. These icons are available if maker-checker
+      is enabled for your profile.</para>
+
+      <section role="ITEM">
+        <title>Trust Relationship Form - Customer Level Details</title>
+
+        <para role="TEXT">The Trust Relationship form for customers has the
+        following details:</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*" />
+
+              <colspec colname="c2" colwidth="1.0*" />
+
+              <colspec colname="c3" colwidth="6.0*" />
+
+              <thead>
+                <row>
+                  <entry valign="top"><para>Field</para></entry>
+
+                  <entry valign="top"><para>Type</para></entry>
+
+                  <entry valign="top"><para>Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel>Trust Relationship
+                  Details</guilabel></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top">This section has details for the
+                  customers and their banks that form the trust
+                  relationship.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">From
+                  Bank</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click on the magnifying glass icon
+                  and select the bank to which the customer establishing the
+                  trust relationship belongs to. The <guilabel>List of
+                  Banks</guilabel> popup opens and you can click on the
+                  <guilabel>Abbreviated Name</guilabel> column to select the
+                  required bank.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">From
+                  Customer</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click on the magnifying glass icon
+                  and select the customer who wants to establish the
+                  relationship.The <guilabel>List of Customers</guilabel>
+                  popup opens and you can click on the <guilabel>Abbreviated
+                  Name</guilabel> column to select the required customer. The
+                  list of customers available is linked to the Bank you
+                  selected from <guilabel>From Bank</guilabel>.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">To
+                  Bank</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click on the magnifying glass icon
+                  and select the bank to which the customer with whom the
+                  trust relationship is being established belongs to. The
+                  <guilabel>List of Banks</guilabel> popup opens and you can
+                  click on the <guilabel>Abbreviated Name</guilabel> column to
+                  select the required bank.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">To
+                  Customer</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click on the magnifying glass icon
+                  and select the customer with whom the trust relationship is
+                  being established.The <guilabel>List of Customers</guilabel>
+                  popup opens and you can click on the <guilabel>Abbreviated
+                  Name</guilabel> column to select the required customer. The
+                  list of customers available is linked to the Bank you
+                  selected from <guilabel>To Bank</guilabel>.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Relationship Status</guilabel>
+                  </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the status of the trust
+                  relationship from the options: Active and Inactive.
+                  </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Direction</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the direction of flow of
+                  information once the trust relationship is established. The
+                  options are: Uni-directional and Bi-directional.
+                  Uni-directional allows the flow of information from
+                  <guilabel>From Customer</guilabel> to <guilabel>To
+                  Customer</guilabel> and Bi-directional allows between both
+                  customers. </para><warning>
+                      <para>Once you have selected Bi-directional and users
+                      have been linked between two customers, you cannot
+                      change to Uni-directional. However, if you have selected
+                      Uni-directional, you can change it to Bi-directional
+                      anytime.</para>
+                    </warning></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Trust Relationship Customer Level Form - Action Buttons</title>
+
+        <para role="TEXT">The operations that can be performed from this form
+        are listed below. They appear at the bottom of the page. For each of
+        them, a popup window will appear to confirm the choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry nameend="c2" namest="c1"
+                valign="top"><para>Operation</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Submit</guiicon> </para></entry>
+
+                <entry valign="top">Save the trust relationship and submit it
+                to the system. <note role="TEXT">
+                    <para>Remember to click <emphasis
+                    role="bold">Submit</emphasis> when the changes have been
+                    made. Navigating away from the page will lose the changes,
+                    even if the <emphasis role="bold">OK</emphasis> on the
+                    sub-form(s) where the changes were made has been clicked
+                    and they are shown on the list within the form.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Cancel</guiicon> </para></entry>
+
+                <entry valign="top"><para>Leave the current page and return to
+                the System Features menu.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Help</guiicon> </para></entry>
+
+                <entry valign="top"><para>Open a popup window displaying the
+                online help pages.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title><xi:include href="../entities_en.xml"
+      xpointer="ent_trust_relationship"
+      xmlns:xi="http://www.w3.org/2001/XInclude" /> - User Level List</title>
+
+      <para role="TEXT">You (Bank Group Administrators) can use this option to
+      create and manage trust relationship details for users of customers in
+      your Banks. When you select this option, you are presented with a list
+      of all the existing customer level trust relationships for your bank's
+      customers. You can search the list by entering search criteria in the
+      <guilabel moreinfo="none">From Bank</guilabel>, <guilabel>To
+      Bank</guilabel>, <guilabel>From Customer</guilabel>, <guilabel>To
+      Customer</guilabel>, <guilabel>Relation</guilabel> (*, Uni-directional
+      and Bi-directional) and <guilabel>Relationship Status</guilabel> (*,
+      Active and Inactive) fields at the top of the page. Click the
+      <guilabel>Download File</guilabel> button to download the list in CSV
+      and Spreadsheet (MS Excel) format.</para>
+
+      <para role="TEXT">You can view the following columns in the list of user
+      level trust relationships:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">From
+              Bank</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the bank to which
+              the customer establishing the trust relationship belongs to.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">To
+              Bank</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the bank to which
+              the customer with whom the relationship is established with
+              belongs to.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">From
+              Customer</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the customer
+              creating the trust relationship.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">To
+              Customer</guilabel> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name of the customer with
+              whom the trust relationship is created.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Relation</guilabel> </para></entry>
+
+              <entry valign="top"><para>Type of relationship established at
+              the customer level, whether Uni-directional or Bi-directional.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Relationship Status</guilabel> </para></entry>
+
+              <entry valign="top"><para>Status of the relationship, whether
+              active or inactive. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can access the trust relationships at user level
+      for a customer by clicking the required row. You are displayed the
+      <guilabel>Trust Relationship at User Level</guilabel> screen.</para>
+
+      <para role="TEXT">On this screen, you can search the list by entering
+      search criteria in the <guilabel moreinfo="none">From User</guilabel>,
+      <guilabel>To User</guilabel>, <guilabel>Relation</guilabel> (*,
+      Uni-directional and Bi-directional), <guilabel>Relationship
+      Status</guilabel> (*, Active and Inactive), <guilabel
+      moreinfo="none">Status</guilabel> and <guilabel>Actor</guilabel> fields
+      at the top of the page. Click the <guilabel>Download File</guilabel>
+      button to download the list in CSV and Spreadsheet (MS Excel)
+      format.</para>
+
+      <para role="TEXT">You are displayed the <guilabel>Trust Relationship at
+      User Level</guilabel> with the details shown in the table below.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">From
+              User</guilabel> </para></entry>
+
+              <entry valign="top"><para>Login ID of the user establishing the
+              trust relationship. </para><note>
+                  <para>The <guilabel>From User</guilabel> can access
+                  <emphasis>Regional Account View</emphasis> and view accounts
+                  of both customers (<guilabel>From Customer</guilabel> and
+                  <guilabel>To Customer</guilabel>) when a uni-directional set
+                  up is selected. The From User and To User can view each
+                  others accounts when a bi-directional set up is
+                  selected.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">To
+              User</guilabel> </para></entry>
+
+              <entry valign="top"><para>Login ID of the user with whom the
+              relationship is being established.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Relation</guilabel> </para></entry>
+
+              <entry valign="top"><para>Type of relationship established at
+              the user level, whether Uni-directional or Bi-directional.
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Relationship Status</guilabel> </para></entry>
+
+              <entry valign="top"><para>Status of the relationship, whether
+              active or inactive. </para></entry>
+            </row>
+
+            <row>
+              <entry
+              valign="top"><para><guilabel>Status</guilabel></para></entry>
+
+              <entry valign="top"><para>Indicates the status of the pending
+              record set by the checker.</para><note>
+                  <para>This column is available if maker-checker
+                  functionality is enabled.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel>Maker User
+              </guilabel></para></entry>
+
+              <entry valign="top"><para>Displays the user ID of the maker of
+              the transaction.</para><note>
+                  <para>This column is available if maker-checker
+                  functionality is enabled.</para>
+                </note></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">You can modify a trust relationship by clicking the
+      <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, view it in
+      non-editable mode by clicking the <guibutton>View</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                       width="4.5mm" />
+          </imageobject>
+        </inlinemediaobject> icon, or delete it by clicking the <guibutton
+      moreinfo="none">Delete</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm" />
+          </imageobject>
+        </inlinemediaobject> icon. Click the <guibutton moreinfo="none">Add a
+      new trust relationship</guibutton> button at the bottom of the list to
+      add a trust relationship. <guiicon moreinfo="none">Edit</guiicon> and
+      <guibutton moreinfo="none">Add a new trust relationship
+      </guibutton>display the same form.</para>
+
+      <para role="TEXT">Cancel a transaction by clicking on the
+      <guibutton>Cancel</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_makerchecker_cancel.gif" />
+          </imageobject>
+        </inlinemediaobject> icon or approve by clicking the
+      <guibutton>Action</guibutton> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_makerchecker_action.gif" />
+          </imageobject>
+        </inlinemediaobject> icon. These icons are available if maker-checker
+      is enabled for your profile.</para>
+
+      <para role="TEXT">The Create or Modify Trust Relationship at User Level
+      form is described in the following subsections.</para>
+
+      <section role="ITEM">
+        <title>Trust Relationship Form - User Level Details</title>
+
+        <para role="TEXT">The Trust Relationship form for the user level has
+        the following details:</para>
+
+        <para role="TEXT"><informaltable role="TEXT">
+            <tgroup cols="3">
+              <colspec colname="c1" colwidth="2.0*" />
+
+              <colspec colname="c2" colwidth="1.0*" />
+
+              <colspec colname="c3" colwidth="6.0*" />
+
+              <thead>
+                <row>
+                  <entry valign="top"><para>Field</para></entry>
+
+                  <entry valign="top"><para>Type</para></entry>
+
+                  <entry valign="top"><para>Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel>Trust Relationship
+                  Details</guilabel></entry>
+
+                  <entry valign="top"></entry>
+
+                  <entry valign="top">This section has details for the linking
+                  of the customers' users and their banks to form the trust
+                  relationship.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">From
+                  Bank</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Abbreviated name of the bank to
+                  which the customer establishing the trust relationship
+                  belongs to.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">From
+                  Customer</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Abbreviated name for the customer
+                  belonging to <guilabel>From Bank</guilabel> wanting to
+                  establish the relationship. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">From
+                  User</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click on the magnifying glass icon
+                  and select the user who has to be linked to establish the
+                  relationship. The <guilabel>List of Users</guilabel> popup
+                  opens and you can click on the <guilabel>Abbreviated
+                  Name</guilabel> column to select the required user. The list
+                  of users available is linked to the Customer you selected
+                  from <guilabel>From Customer</guilabel>.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">To
+                  Bank</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Abbreviated name of the bank to
+                  which the customer with whom the trust relationship is being
+                  established belongs to. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">To
+                  Customer</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Abbreviated name for the customer
+                  belonging to <guilabel>To Bank</guilabel> with whom the
+                  trust relationship is being established. </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel moreinfo="none">To
+                  User</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_excla.gif"
+                                   role="CHAR_EXCLA" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_action.gif"
+                                   role="CHAR_ACTION" width="3mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Click on the magnifying glass icon
+                  and select the user who has to be linked with the
+                  <guilabel>From User</guilabel> to establish the
+                  relationship. The <guilabel>List of Users</guilabel> popup
+                  opens and you can click on the <guilabel>Abbreviated
+                  Name</guilabel> column to select the required user. The list
+                  of users available is linked to the Customer you selected
+                  from <guilabel>To Customer</guilabel>.</para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Relationship Status</guilabel>
+                  </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_arrow.gif"
+                                   role="CHAR_ARROW" width="2mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Select the status of the trust
+                  relationship from the options: Active and Inactive.
+                  </para></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><para> <guilabel
+                  moreinfo="none">Direction</guilabel> </para></entry>
+
+                  <entry valign="top"><para> <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="../images/char_info.gif"
+                                   width="4mm" />
+                      </imageobject>
+                    </inlinemediaobject> </para></entry>
+
+                  <entry valign="top"><para>Direction of flow of information
+                  once the trust relationship is established. It can be either
+                  Uni-directional and Bi-directional. Uni-directional allows
+                  the flow of information from <guilabel>From
+                  Company</guilabel> to <guilabel>To Company</guilabel> and
+                  Bi-directional allows between both companies. In other
+                  words, Uni-directional allows the <guilabel>From
+                  User</guilabel> to view account balances of <guilabel>To
+                  User</guilabel>, however, the reverse is not true.
+                  Bi-directional allows both <guilabel>From User</guilabel>
+                  and <guilabel>To User</guilabel> to view each others account
+                  balances. </para></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable></para>
+      </section>
+
+      <section role="ITEM">
+        <title>Trust Relationship Company Level Form - Action Buttons</title>
+
+        <para role="TEXT">The operations that can be performed from this form
+        are listed below. They appear at the bottom of the page. For each of
+        them, a popup window will appear to confirm the choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry nameend="c2" namest="c1"
+                valign="top"><para>Operation</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Submit</guiicon> </para></entry>
+
+                <entry valign="top">Save the trust relationship. <note
+                    role="TEXT">
+                    <para>Remember to click <emphasis
+                    role="bold">Submit</emphasis> when the changes have been
+                    made. Navigating away from the page will lose the changes,
+                    even if the <emphasis role="bold">OK</emphasis> on the
+                    sub-form(s) where the changes were made, has been clicked,
+                    and they are shown on the list within the form.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Cancel</guiicon> </para></entry>
+
+                <entry valign="top"><para>Leave the current page and return to
+                the System Features menu.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Help</guiicon> </para></entry>
+
+                <entry valign="top"><para>Open a popup window displaying the
+                online help pages.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+</chapter>

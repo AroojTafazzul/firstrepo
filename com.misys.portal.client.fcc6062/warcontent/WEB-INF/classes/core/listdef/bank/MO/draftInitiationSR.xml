@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="200">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="OPERATION_CODE" binding_code="OPERATION_LIST_REPORT"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SCREEN" value="TRADEADMIN_SCREEN"/>
+		</url>
+	</column>
+	<column name="company_name" align="left" width="60%" loca_key="COMPANY"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="full name" computation="sum" align="left" width="40%" loca_key="USER_NAME">
+		<column name="BOInputter@last_name"/>
+		<column name="BOInputter@first_name"/>
+	</column>
+	<column name="bo_inp_dttm" align="center" width="6em" loca_key="RELEASE_DTTM"/>
+	
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="BOInputter@last_name" hidden="y"/>
+	<column name="BOInputter@first_name" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="company_name"
+		loca_key="COMPANY"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="user_name"
+		loca_key="USER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<!-- candidates -->	
+	<candidate name="standby_received">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="company_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					company_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_INCOMPLETE_BANK
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="company_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					company_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED_BANK
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<businesscriteria type="isNew"/>
+	</filter>
+	<filter or="y">
+		<criteria>
+			<column name="BOInputter@first_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="BOInputter@last_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>		
+	</filter>
+</listdef>

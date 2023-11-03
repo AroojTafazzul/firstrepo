@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef selection_mode="single" ordered="n" huge="n" help="LIST_HELP_INQUIRY" default_order="account_no" default_order_type="d" page="50">
+
+	<onSelectionChangedScript>"dojo.publish('accounts', [{ account_id : " + row.getColumnValue("account_id") + " }])"</onSelectionChangedScript>
+	<onSelectionClearedScript>dojo.publish('accounts', [{}])</onSelectionClearedScript>
+	
+	<column name="account_no" align="center" width="8em" loca_key="ACCOUNTNO"/>
+	<column name="name" align="left" width="8em" loca_key="COMPANY"/>
+	<column name="bank_name" align="left" width="8em" loca_key="BANK"/>
+	<column name="description" align="left" width="20%" loca_key="DESCRIPTION"/>
+	<column name="type" align="center" width="20%" loca_key="TYPE"/>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="cur_code" align="center" width="20%" loca_key="CURCODE"/>
+
+	<column name="account_id" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="account_no"
+		size="35"
+		max_length="35"
+		loca_key="ACCOUNTNO"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+
+	<!-- candidates -->	
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="account_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="actv_flag"/>
+				<operator type="equal"/>
+				<value type="string">
+					Y
+				</value>
+			</criteria>
+			
+		</filter>	
+	</candidate>
+
+</listdef>

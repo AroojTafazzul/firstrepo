@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" help="LIST_HELP_INQUIRY" default_order="value_date" default_order_type="d" page="50" 
+		 viewer="SimpleTable" subscribe_topic="accounts">
+		 
+	<column name="value_date" align="center" width="20%" loca_key="DATE"/>
+	<column name="type" align="center" width="20%" loca_key="TYPE"/>
+	<column name="ClosedBalance@cur_code" align="center" width="20%" loca_key="CURCODE"/>
+	<column name="ClosedBalance@amt" align="right" width="20%" loca_key="AMOUNT"/>
+
+		
+	<!-- candidates -->	
+	<candidate name="account_statement_master">
+		<filter>
+			<criteria>
+				<column name="type"/>
+				<operator type="equal"/>
+				<value type="string">
+					01
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ClosedBalance@cur_code"/>
+				<operator type="different"/>
+				<value type="string">YYYY</value>
+			</criteria>
+			
+		</filter>
+	</candidate>	
+
+		<group>
+			<column name="ClosedBalance@cur_code"/>
+			<aggregate type="sum">
+				<column name="ClosedBalance@amt"/>
+			</aggregate>
+		</group>
+	
+</listdef>

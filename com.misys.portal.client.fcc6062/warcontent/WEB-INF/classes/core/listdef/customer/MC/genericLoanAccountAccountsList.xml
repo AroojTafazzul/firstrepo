@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="modified_dttm" default_order_type="d" page="10" data_key="account_id">
+
+	<column name="bank_abbv_name" align="left" width="10%"  loca_key="BANK_NAME" columnFilterType="input-multiselect"/>
+	<column name="useraccount@EntityAccount@entity@abbv_name" align="left" width="10%"  loca_key="ENTITY" groupedColumn="entity" groupedValues = "y" columnFilterType="input-multiselect"/>
+	<column name="UserAccount@EntityAccount@UserEntity@default_entity" align="left" width="12%"  loca_key="DEFAULT_ENTITY" hidden="y" />
+	<column name="acct_name" align="left" width="12%" loca_key="ACCOUNT_NAME"/>
+	<column name="account_no" align="left" width="12%" loca_key="ACCOUNT_NO"/>
+	<column name="account_type" hidden="y"/>
+	<column name="account_type_code" align="left" width="12%" loca_key="ACCOUNT_TYPE" columnFilterType="input-multiselect"><script>value = row.getColumnValue("account_type");value;</script></column>
+	<column name="nickname" align="left" width="12%" loca_key="nickName" hidden="y"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="RunningStatement@AvailableBalance@amt" align="right" width="10%" loca_key="BALANCE"/>
+    <column name="RunningStatement@AvailableBalance@convertedAmt" paramCur="account_ccy" align="right" width="14%" loca_key="EQUIVALENT_OPENING_BALANCE"/>
+    <column name="modified_dttm" hidden="y"/>
+    <column name="account_id" align="left" width="5%" loca_key="ACCOUNT_ID" hidden="y"/>
+    <column name="useraccount@favourite" size="2" max_length="2" loca_key="FAVOURITE" hidden="y"/>
+    <column name="action" align="right" width="14%" loca_key="ACTIONS">
+    <url action="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_LOAN_ACCOUNTS">
+	   	<parameter name="ACCOUNT_NO" column="account_no"/>
+    </url>
+	</column>
+   
+    <!-- parameters -->
+	<parameter name="account_type" size="2" max_length="2" input="y" default="all" loca_key="ACCOUNT_TYPE" type="AccountType"/>
+	<parameter name="account_no" size="50" max_length="50" input="y" default="" multiple="y" loca_key="ACCOUNT_NUMBER" type="AccountNo"/>
+	<parameter name="bank_abbv_name" size="2" max_length="2" input="y" loca_key="BANK_NAME" type="" />
+	<parameter name="entity" size="20"	max_length="35" loca_key="ENTITY" input="y" default="" multiple="y" type="Entity"/>
+	<parameter name="cur_code" input="y" size="3" max_length="3" loca_key="CURCODE" default="" multiple="y" type="Currency"/>
+	<parameter name="favourite" size="2" max_length="2" input="y"  default="" multiple="y" loca_key="FAVOURITE" type="AccountType"/>
+	<parameter name="account_ccy" input="y" size="3" max_length="3" loca_key="ACCOUNT_CCY" default="" hidden="false" type="AccountType"/>
+
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="account_type" />
+				<operator type="equal" />
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_no" />
+				<operator type="in" />
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+                <column name="useraccount@favourite" />
+                <operator type="in" />
+                <value type="parameter">
+                    favourite
+                </value>
+             </criteria>
+               <criteria>
+				<column name="owner_type"/>
+				<operator type="different"/>
+				<value type="code">
+				N081_OTHER_BANK
+				</value>
+			</criteria>
+             <criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+				View STMT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+				Y
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	</listdef>

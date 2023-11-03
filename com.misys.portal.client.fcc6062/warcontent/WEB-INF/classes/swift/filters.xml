@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+	Copyright (c) 2000-2010 Misys (http://www.misys.com),
+	All Rights Reserved. 
+-->
+<filters>
+	<!-- LC New	-->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '01') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<!--<message><name>700</name><type>SWIFT</type></message>-->
+		<message><name>798770</name><type>SWIFT</type></message>
+		<message><name>798700</name><type>SWIFT</type></message>		
+	</filter>
+	<!-- TELEX -->
+	<filter>
+		<rule>(event.adv_send_mode == '02') &amp;&amp; (event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '01') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>700</name><type>TELEX</type></message>		
+	</filter>
+	<!-- SI New	-->
+	<!-- SWIFT -->	
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'SI') &amp;&amp; (event.tnx_type_code == '01') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>798784</name><type>SWIFT</type></message>
+		<message><name>798760</name><type>SWIFT</type></message>				
+	</filter>
+	
+	<!-- SI Amend (Request Release)	-->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'SI') &amp;&amp; (event.tnx_type_code == '03') &amp;&amp; (event.sub_tnx_type_code == '05')</rule>	
+		<message><name>798783</name><type>SWIFT</type></message>				
+	</filter>	
+	
+		
+	<!-- SI Amend	-->
+	<!-- SWIFT -->	
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'SI') &amp;&amp; (event.tnx_type_code == '03') &amp;&amp; (event.sub_tnx_type_code != '05')</rule>	
+		<message><name>798786</name><type>SWIFT</type></message>
+		<message><name>798767</name><type>SWIFT</type></message>
+	</filter>	
+	
+	<!-- SI Free Format (Respond to extend or pay Standby LC) -->
+	<!-- We have to create a sub_type or a flag in the future to differentiate from a standard free format -->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'SI' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code == '20' || event.sub_tnx_type_code == '21') &amp;&amp; (event.prod_stat_code == '86')</rule>
+		<message><name>798778</name><type>SWIFT</type></message>	
+	</filter>			
+
+	<!-- SI Free Format (Claim for payment) -->
+	<!-- SWIFT -->
+	<!-- <filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'SI' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code == '25')</rule>
+		<message><name>798712</name><type>SWIFT</type></message>	
+	</filter> -->
+	
+	<!-- SI Free Format (Corresponence) -->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'SI') &amp;&amp; (event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>798788</name><type>SWIFT</type></message>		
+		<message><name>798799</name><type>SWIFT</type></message>		
+	</filter>		
+
+	<!-- LC Amend -->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '03') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<!--message><name>707</name><type>SWIFT</type></message-->
+		<message><name>798772</name><type>SWIFT</type></message>
+		<message><name>798707</name><type>SWIFT</type></message>		
+	</filter>
+	<!-- TELEX -->
+	<filter>
+		<rule>(event.adv_send_mode == '02') &amp;&amp; (event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '03') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>707</name><type>TELEX</type></message>
+	</filter>
+	
+	<!-- LC Response to Advice of Discrepancy -->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code == '08' || event.sub_tnx_type_code == '09')</rule>
+		<message><name>798749</name><type>SWIFT</type></message>	
+	</filter>
+	<!-- TELEX -->
+	<filter>
+		<rule>(event.adv_send_mode == '02') &amp;&amp; (event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>799</name><type>TELEX</type></message>
+	</filter>	
+	
+	<!-- LC Free Format -->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>798788</name><type>SWIFT</type></message>		
+		<message><name>798799</name><type>SWIFT</type></message>		
+	</filter>
+	<!-- TELEX -->
+	<filter>
+		<rule>(event.adv_send_mode == '02') &amp;&amp; (event.product_code == 'LC') &amp;&amp; (event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>799</name><type>TELEX</type></message>
+	</filter>
+	
+	<!-- EL Free Format -->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'EL' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code == '46' || event.sub_tnx_type_code == '47')</rule>
+		<message><name>798735</name><type>SWIFT</type></message>		
+	</filter>
+	
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'EL' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code == '12')</rule>
+		<message><name>798722</name><type>SWIFT</type></message>		
+	</filter>
+		
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'EL' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04' &amp;&amp; event.sub_tnx_type_code != '08' &amp;&amp; event.sub_tnx_type_code != '09')</rule>
+		<message><name>798788</name><type>SWIFT</type></message>
+		<message><name>798799</name><type>SWIFT</type></message>		
+	</filter>
+	<!-- TELEX -->
+	<filter>
+		<rule>(event.adv_send_mode == '02') &amp;&amp; (event.product_code == 'EL' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>799</name><type>TELEX</type></message>
+	</filter>	
+	
+	<!-- BG New	-->
+	<!-- SWIFT -->
+	<filter>
+		<!-- <rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'BG')</rule>-->
+		<!-- <rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'BG') &amp;&amp; (event.tnx_type_code == '01')</rule> -->	
+		<rule>(event.product_code == 'BG') &amp;&amp; (event.tnx_type_code == '01') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<!-- <message><name>760</name><type>SWIFT</type></message>-->
+		<message><name>798761</name><type>SWIFT</type></message>
+		<message><name>798760</name><type>SWIFT</type></message>				
+	</filter>
+	<!-- TELEX -->
+	<filter>
+		<rule>(event.adv_send_mode == '02') &amp;&amp; (event.product_code == 'BG') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>760</name><type>TELEX</type></message>
+	</filter>		
+	
+	<!-- BG Amend	-->
+	<!-- SWIFT -->	
+	<filter>
+		<!-- <rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'BG') &amp;&amp; (event.tnx_type_code == '03') &amp;&amp; (event.bg_release_flag == 'N') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>-->
+		<!-- <rule>(event.product_code == 'BG') &amp;&amp; (event.tnx_type_code == '03') &amp;&amp; (event.bg_release_flag == 'N')</rule>-->
+		<rule>(event.product_code == 'BG') &amp;&amp; (event.tnx_type_code == '03')&amp;&amp; (event.sub_tnx_type_code != '04')&amp;&amp; (event.sub_tnx_type_code != '05')</rule>
+		<message><name>798763</name><type>SWIFT</type></message>
+		<message><name>798767</name><type>SWIFT</type></message>				
+	</filter>
+	
+	<!-- BG Amend (Request Release)	-->
+	<!-- SWIFT -->	
+	<filter>
+		<rule>(event.product_code == 'BG') &amp;&amp; (event.tnx_type_code == '03') &amp;&amp; (event.sub_tnx_type_code == '05')</rule>
+		<message><name>798783</name><type>SWIFT</type></message>				
+	</filter>
+	
+	<!-- BG Free Format (Respond to extend or pay Guarantee) -->
+	<!-- We have to create a sub_type or a flag in the future to differentiate from a standard free format -->
+	<!-- SWIFT -->
+	<filter>
+		<!-- ><rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'BG' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>-->
+		<!-- <rule>(event.product_code == 'BG' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code == '20' || event.sub_tnx_type_code == '21')</rule>-->
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'BG' &amp;&amp; event.tnx_type_code == '13')  &amp;&amp; (event.sub_tnx_type_code == '20' || event.sub_tnx_type_code == '21') &amp;&amp; (event.prod_stat_code == '86')</rule>
+		<message><name>798778</name><type>SWIFT</type></message>	
+	</filter>	
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'BG' &amp;&amp; event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>798788</name><type>SWIFT</type></message>
+		<message><name>798799</name><type>SWIFT</type></message>		
+	</filter>
+	
+	<!-- BR/SR Free Format (Claim for BR/SR) -->
+	<!-- We have to create a new sub_type or a flag in the future to differentiate from a standard free format -->
+	<!-- SWIFT -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'BR' || event.product_code == 'SR') &amp;&amp; event.tnx_type_code == '13' &amp;&amp; (event.sub_tnx_type_code == '25')</rule>
+		<message><name>798712</name><type>SWIFT</type></message>	
+	</filter>
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.product_code == 'SR' || event.product_code == 'BR') &amp;&amp; (event.tnx_type_code == '13') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>798788</name><type>SWIFT</type></message>		
+		<message><name>798799</name><type>SWIFT</type></message>		
+	</filter>
+	
+	
+	<!-- FT New -->
+	<!-- SWIFT -->
+	<!-- only outgoing ft? -->
+	<filter>
+		<rule>(event.adv_send_mode == '01') &amp;&amp; (event.ft_type == '02') &amp;&amp; (event.product_code == 'FT') &amp;&amp; (event.tnx_type_code == '01') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>103</name><type>SWIFT</type></message>
+	</filter>
+	<!-- TELEX -->
+	<filter>
+		<rule>(event.adv_send_mode == '02') &amp;&amp; (event.ft_type == '02') &amp;&amp; (event.product_code == 'FT') &amp;&amp; (event.tnx_type_code == '01') &amp;&amp; (event.sub_tnx_type_code != '04')</rule>
+		<message><name>103</name><type>TELEX</type></message>
+	</filter>
+</filters>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="Payment@paymt_date" default_order_type="a" page="100">
+	
+	<column name="Payment@paymt_date" align="center" width="6em" loca_key="DATE" />
+	<column name="Payment@amt" align="right" width="12em" loca_key="AMOUNT" />
+	<column name="Payment@cur_code" align="center" width="4em" loca_key="CURCODE" />
+	<column name="Payment@code" align="left" width="100%" loca_key="TYPE" />
+	
+	<column name="Payment@ref_id" hidden="y" />
+	<!-- parameters -->
+	<parameter name="referenceid" input="y"/>
+	
+	<candidate name="loan_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">referenceid</value>
+			</criteria>
+			<criteria>
+				<column name="Payment@ref_id"/>
+				<operator type="isNotNull"/>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

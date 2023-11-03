@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="50">
+
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="IN_SCREEN" />
+			<parameter name="REFERENCE_ID" column="ref_id" />
+			<parameter name="PRODUCT_CODE" column="product_code" />
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL" />
+		</url>
+	</column>
+	<column name="ref_id" align="center" width="15%" loca_key="REFERENCEID" />
+	<column name="entity" align="left" width="10%" loca_key="ENTITY" />
+	<column name="issuer_ref_id" align="left" width="10%" loca_key="INVOICE_REFERENCE_LABEL" />
+	<column name="buyer_name" align="left" width="10%" loca_key="BUYER_NAME"/>
+	<column name="cur_code" align="center" width="5%" loca_key="CURCODE" />	
+	<column name="total_net_amt" align="right" width="8%" loca_key="INV_AMOUNT" />
+	<column name="finance_amt" align="right" width="8%" loca_key="FINANCED_AMNT">
+		<script>
+				var prodStatCode = row.getColumnValue("prod_stat_code");
+				var financedAmt = row.getColumnValue("finance_amt");
+				var curCode = row.getColumnValue("finance_cur_code");
+
+				if(!financedAmt.equals(""))
+				{
+					value = com.misys.portal.common.tools.ConvertTools.bigDecimalToAmountString(financedAmt.getValue() ,""+curCode+"" ,language);
+				}	
+				else
+				{
+					value = "";
+				}	
+				value;
+		</script>
+	</column>
+	<column name="liab_total_net_amt" align="right" width="10%" loca_key="OS_AMOUNT" />
+	
+	<column name="prod_stat_code" align="center" width="10%" loca_key="STATUS"/>
+	<column name="iss_date" align="center" width="8%" loca_key="ISS_DATE" />
+
+	<column name="product_code" hidden="y" />
+	<column name="finance_cur_code" hidden="y" />
+	<column name="finance_amt" hidden="y" />
+	
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="16"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="issuer_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="INVOICE_REFERENCE_LABEL"
+		input="y"
+		default=""/>
+	<parameter
+		name="buyer_name"
+		loca_key="BUYER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE" 
+		type="currency"/>
+
+	<parameter
+		name="export_list"
+		file_name="inquiryIN"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->
+	<candidate name="invoice_master">
+		<filter>
+			<criteria>
+				<column name="ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="issuer_ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					issuer_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity" />
+				<operator type="like" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="buyer_name" />
+				<operator type="like" />
+				<value type="parameter">
+					buyer_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code" />
+				<operator type="like" />
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code" />
+				<operator type="different" />
+				<value type="code">
+					N005_PENDING
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

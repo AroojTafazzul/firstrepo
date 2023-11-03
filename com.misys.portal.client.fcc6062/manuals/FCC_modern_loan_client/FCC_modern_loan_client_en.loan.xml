@@ -1,0 +1,2536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Lending Services: Loan;PERM=ln_access;" id="LN_UX"
+         role="TOPIC">
+  <title><application id="ent_Loan">Loans</application></title>
+
+  <para role="TEXT">A facility is a credit line available to the borrower
+  based on a credit agreement. A deal consists of one or more facilities. A
+  deal is structured for a company by a bank or group of banks to meet the
+  company's financial needs.</para>
+
+  <para role="TEXT">To use the modules in Lending Services, your company must
+  have arranged a deal with the Issuing Bank.</para>
+
+  <section condition="html" role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">The guide uses the terms "<emphasis
+    role="bold">Drawdown</emphasis>" and "<emphasis
+    role="bold">Loan</emphasis>" interchangeably. The term "<emphasis
+    role="bold">Outstanding</emphasis>" is also used to represent the current
+    amount borrowed against an existing facility.</para>
+
+    <para role="TEXT">The terms "<emphasis role="bold">record</emphasis>" and
+    "<emphasis role="bold">transaction</emphasis>" both refer to entries in
+    the system relating to the function being discussed.</para>
+  </section>
+
+  <section condition="TITLE=Lending Services Landing Page;PERM=ln_access;ACCESS=LN_GENERAL"
+           role="TOPIC">
+    <title>Lending Services Landing Page</title>
+
+    <para>The Lending Services Landing page displays a list of loan
+    transactions, the transactions are displayed in multiple tabs based on the
+    current status of transaction. The Landing page view is customizable based
+    on your requirement.<note>
+        <para>You can customise the list of columns displayed through
+        SDK.</para>
+      </note></para>
+
+    <para>The following image illustrates the Loan landing page:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/loanlandingpage.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Initiate
+          Drawdown</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Use this option to initiate a new request for
+            Loan, enter the desired terms of a new loan and submit them to the
+            Issuing Bank of your choice. This function displays a list of
+            facilities, from which you can select a facility to be the subject
+            of your drawdown request.The facilities are grouped based on the
+            deal that they belong to. Use the Advanced Filter option and
+            select the filter criterion from Deal, Currency and Entity to
+            display the required Facilities.<note>
+                <para>The loan initiation feature is available only to maker
+                user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The loan listing page segregates transactions based on their current
+    status like draft, awaiting authorization, awaiting response from client
+    or bank and rejected or purged from bank.The following ribbon items enable
+    you to perform various actions on individual transaction or in bulk, based
+    on the tab you are on. Individual tabs and related functionality are
+    described below: <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/loan_ribbon.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject><note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Draft</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the loan transactions in draft state
+            and also the transactions that checker has returned for
+            improvement.<note>
+                <para><guimenuitem moreinfo="none">Draft</guimenuitem> tab is
+                available only to maker user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending
+          Approval</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing loan transactions that are
+            awaiting client approval from a second user within the
+            corporate.<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para>The <emphasis role="bold">Authorise</emphasis>
+                      action item is available only for a checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>A user with batch submission permission can select
+                      multiple transactions to <emphasis
+                      role="bold">Approve</emphasis> or <emphasis
+                      role="bold">Return</emphasis> though the checkbox
+                      provided for every transactions listed in this
+                      tab.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      a transaction.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending at
+          Bank</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing loan transactions that are
+            awaiting bank approval.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Live</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the approved loan records by the bank.
+            Slide the "Multi Selection for Rollover" icon <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/multi_loans.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject> to select the loans and initiate a rollover
+            request on an existing loan.<note>
+                <para>As a pre-condition to grouping loans for rollover, the
+                loan transactions must be of same Facility, Pricing Option,
+                Currency and Rollover date. Once a loan transaction is
+                selected for rollover only the relevant transactions that
+                conform are displayed and all the non-conforming transactions
+                are removed from selection list.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Rejected</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the loan records rejected by the bank.
+            The status given to such records is "Not Processed".</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The <guiicon>Advance Filter</guiicon> presents you with various
+    filter options like <emphasis role="bold">Event</emphasis>, <emphasis
+    role="bold">Deal</emphasis>, <emphasis role="bold">Facility</emphasis>,
+    <emphasis role="bold">Channel Reference</emphasis>, <emphasis
+    role="bold">Entity</emphasis>, <emphasis role="bold">Currency</emphasis>
+    and <emphasis role="bold">Pricing Option</emphasis>. Enter the relevant
+    search criterion and apply the filter to list all the relevant loan
+    records. You can also select the time frame for which data needs to be
+    fetched.</para>
+
+    <para>You can perform the following actions on the listed loan
+    records:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of loan transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of loan transactions displayed on the dashboard.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed loan
+          transactions.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      loan transactions. The actions are available in relevant tabs based on
+      the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction).</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Authorise</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/authorise.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to authorise the selected transaction.
+              You can either approve or return the transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Approve</emphasis>
+                      or <emphasis role="bold">Return</emphasis> a transaction
+                      is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note> </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Rollover</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/Loanrollover_pay.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to request a rollover in the loan on
+              an existing loan.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Increase</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/Loanroll_inc_pay.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to request an increase in the loan
+              amount on an existing loan.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Payment</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/repayment.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to initiate a loan
+              repayment.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Reference</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to assign the reference to the
+              transaction for which no customer reference is assigned, this
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Entity</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to update/assign the entity of
+              transaction. This provision is available under Live Tab. This
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+			
+			<row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clear</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/clear.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to clear the transaction from list. Only
+              amendment / message rejected event can be cleared from the list,
+              however this event will still be available in
+              enquiry.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delete</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to delete the Issuance Request rejected
+              events from the list and it is no longer available in Fusion
+              Corporate Channels.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=ln_access;ACCESS=LN_LNDR_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking the
+      details button against any given transaction:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Displays the <guimenu>Loan
+              Details</guimenu>, all the <guimenu>Events</guimenu> associated
+              with the transaction, <guimenu>Interests</guimenu> associated
+              with the transaction, <guimenu>Repayment Schedule</guimenu>
+              linked with the transaction and <guimenu>Additional
+              Information</guimenu>, which shows customer attachments, if any.
+              The information is spread over five tabs, individual tabs are
+              described below:<itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Loan Details</emphasis>:
+                    Displays the details of the loan transaction that is
+                    opened from the listing page. The tab opens details in
+                    read-only mode.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Events</emphasis>: Displays
+                    the history of events that transaction has gone through.
+                    The transactions are either acknowledged by the bank or a
+                    reporting event is initiated by bank that requires an
+                    action to be performed by a corporate user. <note>
+                        <para>In case an action is pending on the corporate
+                        user, a <emphasis role="bold">Respond</emphasis>
+                        button is present against the stated event, that
+                        navigates user to screen to perform the respective
+                        action.</para>
+                      </note></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Interest</emphasis>: Displays
+                    the details of interest incurred on the displayed
+                    transaction. You can also download the interest schedule
+                    in csv format.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Repayment Schedule</emphasis>:
+                    Displays the repayment schedule of the loan transaction.
+                    You can also download the repayment schedule in csv
+                    format.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Customer Attachments'
+                    added as part of this transaction.</para>
+                  </listitem>
+                </itemizedlist></para><para>You can perform following actions
+              on the opened transactions:<itemizedlist>
+                  <listitem>
+                    <para><guimenu>Initiate Rollover</guimenu>: You can
+                    initiate a rollover request on the transaction, if
+                    applicable.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><guimenu>Request Increase</guimenu>: You can
+                    initiate a increase request on the transaction, if
+                    applicable.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><guimenu>Make Principal Payment</guimenu>: You can
+                    initiate a principal payment transaction, if
+                    applicable.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><guimenu>Journey</guimenu>: You can view the history
+                    of events that the transaction has gone through.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="Topic">
+      <title>Initiate Drawdown</title>
+
+      <para>This section provides the details on drawdown initiation through
+      facilities.</para>
+
+      <section role="ITEM">
+        <title>Facilities for Drawdown</title>
+
+        <para role="TEXT">This function displays a list of facilities, from
+        which you can select one to be the subject of your drawdown
+        request.The facilities are grouped according to the deal that they
+        belong to. You can filter the group of facilities through Advanced
+        Filter option. To filter the list of facilities based on the listed
+        columns, you must enter a filter criterion in the search bar and click
+        the Search icon.</para>
+
+        <note>
+          <para role="TEXT"><orderedlist>
+              <listitem>
+                <para>The logged in user, associated to a customer reference,
+                can initiate a drawdown, only on those facilities that have
+                the corresponding borrower reference associated with the
+                facility.</para>
+              </listitem>
+
+              <listitem>
+                <para>The 'Drawdown Initiation' feature is available only to
+                maker user.</para>
+              </listitem>
+
+              <listitem>
+                <para>To open a form to create a drawdown request, click on a
+                facility name.</para>
+              </listitem>
+            </orderedlist></para>
+        </note>
+
+        <para role="TEXT">The form for listed facilities to request a loan
+        drawdown is as follows:</para>
+      </section>
+
+      <section condition="TITLE=General Details;PERM=ln_access;ACCESS=LN_LNDR_GD_UX"
+               role="ITEM">
+        <title>General Details</title>
+
+        <para role="TEXT">The General Details form for initiation comprises of
+        the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Deal Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the deal that
+                this facility is part of.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Facility</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the name of the
+                facility .</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">FCN</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Facility
+                Control Number. Unique ID identifying the
+                facility</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Effective Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Date when
+                this facility became operative, that is, the earliest date
+                when you could draw down against this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Date until
+                which the borrower can make a payment.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Maturity Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Date by
+                which a drawdown can be availed under a
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Sanction Limit</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the limit of
+                the amount sanctioned for this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Available</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the amount
+                remaining available (not yet drawn) in this
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the issuing
+                bank. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Loan Request Type</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the Loan request
+                type.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Entity Details</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">This subsection of the
+                form displays the details of the applicant that is associated
+                with the Back Office Reference.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Borrower Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Back Office Reference of
+                the logged in user.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Entity</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The entity (jurisdiction
+                information) associated with the loan applicant
+                details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The name of the entity.
+                Defaults to the entity associated with the customer (borrower)
+                in case of single entity.</para><note>
+                    <para role="TEXT">In case the customer (borrower) is
+                    assigned to multiple entities, a lookup is available to
+                    select from the list of entity.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Address</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The address information
+                of the entity. Maximum of 3 lines of 35 characters
+                each</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Customer Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference for use within
+                your company, for the drawdown you are creating. Maximum 34
+                characters.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Loan;PERM=ln_access;ACCESS=LN_LNDR_LR_UX"
+               role="ITEM">
+        <title>Loan</title>
+
+        <para role="TEXT">The loan form comprises of following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel>Loan Amount</guilabel></entry>
+
+                <entry valign="top">The amount of the loan (Currency must also
+                be selected)<note>
+                    <para role="TEXT">List of currency is filtered as per the
+                    selected facility.</para>
+
+                    <para role="TEXT">User should not be able to do a drawdown
+                    greater than available limit. There is a property set for
+                    user to either do a drawdown greater than facility
+                    available limit or to exceed the same.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Pricing
+                Option</guilabel></entry>
+
+                <entry valign="top">The pricing option for the loan (Base,
+                Fixed, Libor and more). The details are fetched based on
+                selected facility.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Risk type</guilabel></entry>
+
+                <entry valign="top">Risk types based on selected
+                facility.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Maturity Date</guilabel></entry>
+
+                <entry valign="top">The maturity date of the loan.<note>
+                    <para role="TEXT">Maturity Date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Rollover
+                Frequency</guilabel></entry>
+
+                <entry valign="top">The frequency of the rollover calculation
+                on the loan.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Rollover Date</guilabel></entry>
+
+                <entry valign="top">Date on which the loan can be rolled over.
+                <note>
+                    <para role="TEXT">Rollover Date should be calculated based
+                    on effective date and repricing frequency.
+                    Customer(Borrower can however change the repricing date of
+                    the loan)</para>
+
+                    <para role="TEXT">Rollover date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Remittance
+                Instructions</guilabel></entry>
+
+                <entry valign="top"><para>This section contains the remittance
+                instruction details for the loan.</para><note>
+                    <para>This section is not applicable for Loan IQ 7.1.
+                    However, for Loan IQ 7.3, it is available. You
+                    administrator has to enable the field in the
+                    <property>loan.properties</property> file: If
+                    <property>remittance.instruction.section.required</property>
+                    = true, this field will appear. If it is false, the field
+                    will be hidden.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=ln_access;ACCESS=LN_LNDR_AT_UX"
+               role="TOPIC">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Upload supporting files
+                either by 'Drag and Drop' method or by 'Browsing' to the file
+                location. You can attach up to 5 the supporting documents of
+                size 1 Mega Byte each. The file types supported are
+                <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+                PDF, GIF, ZIP</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this drawdown.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Preview;PERM=ln_access;ACCESS=LN_PV_UX"
+               role="Topic">
+        <title>Preview</title>
+
+        <para role="TEXT">This section opens in read only mode and shows all
+        the details that you have filled in the application form and also
+        allows you to either Save or Submit the application.</para>
+      </section>
+    </section>
+
+    <section condition="TITLE=Initiate Swingline;PERM=ln_access;ACCESS=LN_0197"
+             role="TOPIC">
+      <title>Initiate Swingline</title>
+
+      <para>This section provides details on swingline initiation.</para>
+
+      <section role="ITEM">
+        <title>Facilities for Drawdown</title>
+
+        <para role="TEXT">This function displays a list of facilities, from
+        which you can select one to be the subject of your swingline
+        request.The facilities are grouped according to the deal that they
+        belong to. You can filter the group of facilities through Advanced
+        Filter option. To filter the list of facilities based on the listed
+        columns, you must enter a filter criterion in the search bar and click
+        the Search icon.</para>
+
+        <note>
+          <para role="TEXT"><orderedlist>
+              <listitem>
+                <para>The logged in user, associated to a customer reference,
+                can initiate a swingline, only on those facilities that have
+                the corresponding borrower reference associated with the
+                facility.</para>
+              </listitem>
+
+              <listitem>
+                <para>The 'Swingline Initiation' feature is available only to
+                maker user.</para>
+              </listitem>
+
+              <listitem>
+                <para>To open a form to create a swingline request, click on a
+                facility name.</para>
+              </listitem>
+            </orderedlist></para>
+        </note>
+
+        <para role="TEXT">The form for listed facilities to request a loan
+        swingline is as follows:</para>
+      </section>
+
+      <section condition="TITLE=General Details;PERM=ln_access;ACCESS=LN_SWG_GD_UX"
+               role="ITEM">
+        <title>General Details</title>
+
+        <para role="TEXT">The General Details form for initiation comprises of
+        the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Deal Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the deal that
+                this facility is part of.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Facility</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the name of the
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">FCN</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Facility
+                Control Number. Unique ID identifying the
+                facility</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Effective Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Date when
+                this facility became operative, that is, the earliest date
+                when you could draw down against this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Date until
+                which the borrower can make a payment.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Maturity Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Date by
+                which a drawdown can be availed under a
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Sanction Limit</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the limit of
+                the amount sanctioned for this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Available</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the amount
+                remaining available (not yet drawn) in this
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the issuing
+                bank. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Loan Request Type</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the Loan request
+                type.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Entity Details</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">This subsection of the
+                form displays the details of the applicant that is associated
+                with the Back Office Reference.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Borrower Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Back Office Reference of
+                the logged in user.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Entity</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The entity (jurisdiction
+                information) associated with the loan applicant
+                details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The name of the entity.
+                Defaults to the entity associated with the customer (borrower)
+                in case of single entity.</para><note>
+                    <para role="TEXT">In case the customer (borrower) is
+                    assigned to multiple entities, a lookup is available to
+                    select from the list of entity.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Address</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">The address information
+                of the entity. Maximum of 3 lines of 35 characters
+                each</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Customer Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference for use within
+                your company, for the drawdown you are creating. Maximum 34
+                characters.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Loan;PERM=ln_access;ACCESS=LN_SWG_LR_UX"
+               role="ITEM">
+        <title>Loan</title>
+
+        <para role="TEXT">The Loan Swingline form comprises of the following
+        fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel>Loan Amount</guilabel></entry>
+
+                <entry valign="top">The amount of the loan (Currency must also
+                be selected)<note>
+                    <para role="TEXT">List of currency is filtered as per the
+                    selected facility.</para>
+
+                    <para role="TEXT">User should not be able to do a drawdown
+                    greater than available limit. There is a property set for
+                    user to either do a drawdown greater than facility
+                    available limit or to exceed the same.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Pricing
+                Option</guilabel></entry>
+
+                <entry valign="top">The pricing option for the loan (Base,
+                Fixed, Libor and more). The details are fetched based on
+                selected facility.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Risk type</guilabel></entry>
+
+                <entry valign="top">Risk types based on selected
+                facility.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Maturity Date</guilabel></entry>
+
+                <entry valign="top">The maturity date of the loan.<note>
+                    <para role="TEXT">Maturity Date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Rollover
+                Frequency</guilabel></entry>
+
+                <entry valign="top">The frequency of the rollover calculation
+                on the loan.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Rollover Date</guilabel></entry>
+
+                <entry valign="top">Date on which the loan can be rolled over.
+                <note>
+                    <para role="TEXT">Rollover Date should be calculated based
+                    on effective date and repricing frequency.
+                    Customer(Borrower can however change the repricing date of
+                    the loan)</para>
+
+                    <para role="TEXT">Rollover date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Remittance
+                Instructions</guilabel></entry>
+
+                <entry valign="top"><para>This section contains the remittance
+                instruction details for the loan.</para><note>
+                    <para>This section is not applicable for Loan IQ 7.1.
+                    However, for Loan IQ 7.3, it is available. You
+                    administrator has to enable the field in the
+                    <property>loan.properties</property> file: If
+                    <property>remittance.instruction.section.required</property>
+                    = true, this field will appear. If it is false, the field
+                    will be hidden.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=ln_access;ACCESS=LN_SWG_AT_UX"
+               role="TOPIC">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Upload supporting files
+                either by 'Drag and Drop' method or by 'Browsing' to the file
+                location. You can attach up to 5 the supporting documents of
+                size 1 Mega Byte each. The file types supported are
+                <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+                PDF, GIF, ZIP</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this drawdown.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Preview;PERM=ln_access;ACCESS=LN_PV_UX"
+               role="Topic">
+        <title>Preview</title>
+
+        <para role="TEXT">This section opens in read only mode and shows all
+        the details that you have filled in the application form and also
+        allows you to either Save or Submit the application.</para>
+      </section>
+    </section>
+
+    <section condition="TITLE=Initiate Rollover;PERM=ln_access;ACCESS=LN_ROLL_UX"
+             role="Topic">
+      <title>Initiate Rollover</title>
+
+      <para>This section provides the details on a loan rollover initiation.
+      You can initiate a loan rollover request on the ongoing loans through
+      following two ways: <itemizedlist>
+          <listitem>
+            <para>Use the action icon available for applicable loan
+            transactions - Hover over the list of transactions and click on
+            the <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/Loanrollover_pay.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject> icon to initiate a rollover for the loan
+            transaction.</para>
+          </listitem>
+
+          <listitem>
+            <para>Multi Selection for Rollover - Slide this icon
+            <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/multi_loans.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject> to select multiple loan transactions. After
+            selection of transactions click on "Rollover" icon to initiate
+            rollover.<note>
+                <para>As a pre-condition to grouping loans for rollover, the
+                loan transactions must be of same Facility, Pricing Option,
+                Currency and Rollover date. Once a loan transaction is
+                selected for rollover only the relevant transactions that
+                conform are displayed and all the non-conforming transactions
+                are removed from selection list.</para>
+              </note></para>
+          </listitem>
+        </itemizedlist></para>
+
+      <section condition="TITLE=General Details;PERM=ln_access;ACCESS=BK_LNRPN_GD_UX"
+               role="ITEM">
+        <title>General Details</title>
+
+        <para role="TEXT">This section displays a single or list of loans for
+        which you are about to initiate a rollover request. You can perform
+        following actions on the displayed transactions: <itemizedlist>
+            <listitem>
+              <para>Click on the greater than arrow icon to view the details
+              of the loan. The following image illustrates the greater than
+              icon to open the card view, the icon is enclosed in the blue
+              box.</para>
+            </listitem>
+
+            <listitem>
+              <para>Delete a loan transaction if you do not wish to initiate a
+              rollover request for an already selected loan. The following
+              image illustrates the delete icon enclosed in the red box.<note>
+                  <para>The delete option is present only when there are
+                  multiple loan transactions.</para>
+                </note></para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para role="TEXT"><inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="images/GD_rollover.png" width="165mm"/>
+            </imageobject>
+          </inlinemediaobject></para>
+
+        <section condition="TITLE=Create New Loan;PERM=ln_access;ACCESS=LN_LNDR_LR_UX"
+                 role="ITEM">
+          <title>Create New Loan</title>
+
+          <para role="TEXT">You can create a single or multiple loans for the
+          rollover loans. Click on "<interface>Create New Loan</interface>"
+          icon to initiate a new loan. The newly created loans are displayed
+          in a tabular format which can be edited or deleted.</para>
+
+          <para role="TEXT">The input form for creating a new loan is as
+          below:</para>
+
+          <informaltable role="TEXT">
+            <tgroup cols="2">
+              <colspec colname="c1" colwidth="3.0*"/>
+
+              <colspec colname="c3" colwidth="5.0*"/>
+
+              <thead>
+                <row>
+                  <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                  <entry valign="top"><para
+                  role="TEXT">Description</para></entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry valign="top"><guilabel>Currency</guilabel></entry>
+
+                  <entry valign="top">Enter the currency in which you wish to
+                  create a new loan request. The currency list is filtered
+                  based on the selected loans.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Amount</guilabel></entry>
+
+                  <entry valign="top">Enter the amount of loan.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Risk type</guilabel></entry>
+
+                  <entry valign="top">Risk types based on selected loans. This
+                  is a read only field.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Pricing
+                  Option</guilabel></entry>
+
+                  <entry valign="top">The pricing option for the loan (Base,
+                  Fixed, Libor and more). The details are fetched based on
+                  selected loans.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Customer
+                  Reference</guilabel></entry>
+
+                  <entry valign="top">Enter the name for use within your
+                  company.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Effective
+                  Date</guilabel></entry>
+
+                  <entry valign="top">Date from which the loan becomes
+                  effective. This is a read only field and the effective date
+                  is set to "Rollover Date" of the selected loan
+                  transactions.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Maturity
+                  Date</guilabel></entry>
+
+                  <entry valign="top">Enter the maturity date of the
+                  loan.<note>
+                      <para role="TEXT">Maturity Date should be less than
+                      maturity date of facility.</para>
+                    </note></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Rollover
+                  Frequency</guilabel></entry>
+
+                  <entry valign="top">Enter the frequency of the rollover
+                  calculation on the loan.</entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Rollover
+                  Date</guilabel></entry>
+
+                  <entry valign="top">Date on which the loan can be rolled
+                  over. This is a read only field.<note>
+                      <para role="TEXT">Rollover Date is calculated based on
+                      effective date and rollover frequency.</para>
+
+                      <para role="TEXT">Rollover date should be less than
+                      maturity date of facility.</para>
+                    </note></entry>
+                </row>
+
+                <row>
+                  <entry valign="top"><guilabel>Create Another
+                  Loan</guilabel></entry>
+
+                  <entry valign="top">Select this checkbox to create another
+                  loan and click on "<interface>Create</interface>". The
+                  header of the new loan window displays the following
+                  information related to loan rollover: <itemizedlist>
+                      <listitem>
+                        <para>Amount to Rollover: The total sum of rollover,
+                        inclusive of all the selected loans.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>Total New Loan Amount: The sum total of all the
+                        loans that you have created.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>Principal Payment: The pending principal amount
+                        that remains from rollover, after creation of new
+                        loans.</para>
+                      </listitem>
+                    </itemizedlist><note>
+                      <para><itemizedlist>
+                          <listitem>
+                            <para>You can initiate a loan increase request from
+                            this form by creating a loan request for an amount
+                            greater than the rollover amount, in this case you
+                            will be prompted to confirm that you wish to apply
+                            for loan increase.</para>
+                          </listitem>
+
+                          <listitem>
+                            <para>All the newly created loans are listed on the
+                            screen, you can also delete these loans through this
+                            <inlinemediaobject>
+                                <imageobject>
+                                  <imagedata fileref="images/delete.png" width="5mm"/>
+                                </imageobject>
+                              </inlinemediaobject> icon.</para>
+                          </listitem>
+                        </itemizedlist></para>
+                    </note></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </section>
+      </section>
+
+      <section condition="TITLE=Interest Payment;PERM=ln_access;ACCESS=BK_LNRPN_IP_UX"
+               role="ITEM">
+        <title>Interest Payment</title>
+
+        <para role="TEXT">This section displays the interest accrued on the
+        rollover loans. You can choose to pay the interest amount fully or
+        partially through the checkbox option available against each interest
+        accrued detail.</para>
+
+        <para>This section displays the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel>Interest
+                Payments</guilabel></entry>
+
+                <entry valign="top">Displays the interest accrued details
+                against each loan for which the rollover is being
+                initiated.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Net Cash Flow</guilabel></entry>
+
+                <entry valign="top">You can view the net cashflow amount for
+                the rollover of the loan(s).</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Additional
+                Details</guilabel></entry>
+
+                <entry valign="top"><para>Enter the additional details for the
+                bank, if any.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=ln_access;ACCESS=BK_LNRPN_AT_UX"
+               role="TOPIC">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Upload supporting files
+                either by 'Drag and Drop' method or by 'Browsing' to the file
+                location. You can attach up to 5 the supporting documents of
+                size 1 Mega Byte each. The file types supported are
+                <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+                PDF, GIF, ZIP</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this drawdown.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Preview;PERM=ln_access;ACCESS=BK_LNRPN_PV_UX"
+               role="Topic">
+        <title>Preview</title>
+
+        <para role="TEXT">This section opens in read only mode and shows all
+        the details that you have filled in the application form and also
+        allows you to either Save or Submit the application.</para>
+      </section>
+    </section>
+
+    <section role="Topic">
+      <title>Initiate Drawdown Increase</title>
+
+      <para>This section provides the details on loan drawdown increase
+      initiation.</para>
+
+      <section condition="TITLE=General Details;PERM=ln_access;ACCESS=LN_LNDR_GD_UX"
+               role="ITEM">
+        <title>General Details</title>
+
+        <para role="TEXT">The General Details form for increase initiation
+        comprises of the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Channel Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by Fusion Corporate Channels for this loan increase
+                transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Issuing Bank's internal
+                reference number generated by the back office for this loan
+                increase.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Deal</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the deal that
+                this facility is part of.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Facility</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the name of the
+                facility .</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">FCN</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Facility
+                Control Number. Unique ID identifying the
+                facility</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Effective Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date when
+                this facility became operative, that is, the earliest date
+                when you could draw down against this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date until
+                which the borrower can make a payment.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Maturity Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date by
+                which a drawdown can be availed under a
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Sanction Limit</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the limit of
+                the amount sanctioned for this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Available</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the amount
+                remaining available (not yet drawn) in this
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the issuing
+                bank. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Borrower Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Back Office Reference of
+                the logged in user.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Rollover Date</guilabel></entry>
+
+                <entry valign="top">Date on which the loan can be rolled over.
+                <note>
+                    <para role="TEXT">Rollover Date should be calculated based
+                    on effective date and repricing frequency.
+                    Customer(Borrower can however change the repricing date of
+                    the loan)</para>
+
+                    <para role="TEXT">Rollover date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Maturity Date</guilabel></entry>
+
+                <entry valign="top">The maturity date of the loan.<note>
+                    <para role="TEXT">Maturity Date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Balance
+                Outstanding</guilabel></entry>
+
+                <entry valign="top">Displays the outstanding loan
+                balance.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Loan Increase;PERM=ln_access;ACCESS=LN_LNDR_INC_UX"
+               role="ITEM">
+        <title>Loan Increase</title>
+
+        <para role="TEXT">The Loan Increase form for an active loan comprises
+        of the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Increase
+                Amount</guilabel></entry>
+
+                <entry valign="top">Enter the amount for which you wish to
+                apply for the loan.<note>
+                    <para role="TEXT">The currency is auto-populated to base
+                    currency of loan in progress.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>New Outstanding
+                Amount</guilabel></entry>
+
+                <entry valign="top">Displays the outstanding amount to be
+                repaid by the applicant. The amount displayed is sum of unpaid
+                amount of loan in progress and the amount filled in the
+                <guilabel>Increase Amount</guilabel> field. This is a
+                read-only field.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Additional
+                Details</guilabel></entry>
+
+                <entry valign="top">Enter the additional details of the
+                transaction, if any.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=ln_access;ACCESS=LN_LNDR_AT_UX"
+               role="TOPIC">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Upload supporting files
+                either by 'Drag and Drop' method or by 'Browsing' to the file
+                location. You can attach up to 5 the supporting documents of
+                size 1 Mega Byte each. The file types supported are
+                <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+                PDF, GIF, ZIP</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this drawdown.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Preview;PERM=ln_access;ACCESS=LN_LNDR_PV_UX"
+               role="Topic">
+        <title>Preview</title>
+
+        <para role="TEXT">This section opens in read only mode and shows all
+        the details that you have filled in the application form and also
+        allows you to either Save or Submit the application.</para>
+      </section>
+    </section>
+
+    <!--<section role="Topic">
+      <title>Initiate Swingline Increase</title>
+
+      <para>This section provides the details on Swingline increase
+      initiation.</para>
+
+      <section condition="TITLE=General Details;PERM=ln_access;ACCESS=LN_SWG_INC_GD_UX"
+               role="ITEM">
+        <title>General Details</title>
+
+        <para role="TEXT">The General Details form for Swingline increase
+        initiation comprises of the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Channel Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by Fusion Corporate Channels for this loan increase
+                transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Issuing Bank's internal
+                reference number generated by the back office for this loan
+                increase.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Deal</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the deal that
+                this facility is part of.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Facility</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the name of the
+                facility .</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">FCN</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Facility
+                Control Number. Unique ID identifying the
+                facility</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Effective Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date when
+                this facility became operative, that is, the earliest date
+                when you could draw down against this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date until
+                which the borrower can make a payment.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Maturity Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date by
+                which a drawdown can be availed under a
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Sanction Limit</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the limit of
+                the amount sanctioned for this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Available</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the amount
+                remaining available (not yet drawn) in this
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the issuing
+                bank. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Borrower Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Back Office Reference of
+                the logged in user.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Rollover Date</guilabel></entry>
+
+                <entry valign="top">Date on which the loan can be rolled over.
+                <note>
+                    <para role="TEXT">Rollover Date should be calculated based
+                    on effective date and repricing frequency.
+                    Customer(Borrower can however change the repricing date of
+                    the loan)</para>
+
+                    <para role="TEXT">Rollover date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Maturity Date</guilabel></entry>
+
+                <entry valign="top">The maturity date of the loan.<note>
+                    <para role="TEXT">Maturity Date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Balance
+                Outstanding</guilabel></entry>
+
+                <entry valign="top">Displays the outstanding loan
+                balance.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Loan Increase;PERM=ln_access;ACCESS=LN_SWG_INC_UX"
+               role="ITEM">
+        <title>Loan Increase</title>
+
+        <para role="TEXT">The Loan Increase form for Swingline initiation
+        comprises of the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Increase
+                Amount</guilabel></entry>
+
+                <entry valign="top">Enter the amount for which you wish to
+                apply for the loan.<note>
+                    <para role="TEXT">The currency is auto-populated to base
+                    currency of loan in progress.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>New Outstanding
+                Amount</guilabel></entry>
+
+                <entry valign="top">Displays the outstanding amount to be
+                repaid by the applicant. The amount displayed is sum of unpaid
+                amount of loan in progress and the amount filled in the
+                <guilabel>Increase Amount</guilabel> field. This is a
+                read-only field.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Additional
+                Details</guilabel></entry>
+
+                <entry valign="top">Enter the additional details of the
+                transaction, if any.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=ln_access;ACCESS=LN_SWG_AT_UX"
+               role="TOPIC">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Upload supporting files
+                either by 'Drag and Drop' method or by 'Browsing' to the file
+                location. You can attach up to 5 the supporting documents of
+                size 1 Mega Byte each. The file types supported are
+                <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+                PDF, GIF, ZIP</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this drawdown.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Preview;PERM=ln_access;ACCESS=LN_SWG_PV_UX"
+               role="Topic">
+        <title>Preview</title>
+
+        <para role="TEXT">This section opens in read only mode and shows all
+        the details that you have filled in the application form and also
+        allows you to either Save or Submit the application.</para>
+      </section>
+    </section>-->
+
+    <section role="Topic">
+      <title>Initiate Loan Repayment</title>
+
+      <para>This section provides the details on loan repayment
+      initiation.</para>
+
+      <section condition="TITLE=General Details;PERM=ln_access;ACCESS=LN_LNDR_GD_UX"
+               role="ITEM">
+        <title>General Details</title>
+
+        <para role="TEXT">The General Details form for loan repayment
+        initiation comprises of the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Channel Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by Fusion Corporate Channels for this loan increase
+                transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Issuing Bank's internal
+                reference number generated by the back office for this loan
+                increase.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Deal</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the deal that
+                this facility is part of.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Facility</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the name of the
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">FCN</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Facility
+                Control Number. Unique ID identifying the
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Effective Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date when
+                this facility became operative, that is, the earliest date
+                when you could draw down against this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date until
+                which the borrower can make a payment.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Maturity Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the date by
+                which a drawdown can be availed under a
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Sanction Limit</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the limit of
+                the amount sanctioned for this facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Available</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the amount
+                remaining available (not yet drawn) in this
+                facility.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the issuing
+                bank. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Borrower Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Back Office Reference of
+                the logged in user.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Maturity Date</guilabel></entry>
+
+                <entry valign="top">The maturity date of the loan.<note>
+                    <para role="TEXT">Maturity Date should be less than
+                    maturity date of facility.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Balance
+                Outstanding</guilabel></entry>
+
+                <entry valign="top">Displays the outstanding loan
+                balance.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Loan Repayment;PERM=ln_access;ACCESS=LN_SWG_PAY_UX"
+               role="ITEM">
+        <title>Loan Repayment</title>
+
+        <para role="TEXT">The Loan Repayment form for initiation comprises of
+        the following fields:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel>Effective
+                Date</guilabel></entry>
+
+                <entry valign="top">Date from which the loan becomes
+                effective. <note>
+                    <para role="TEXT">Effective Date should not be less than
+                    application date and more than facility maturity
+                    date.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Repayment
+                Amount</guilabel></entry>
+
+                <entry valign="top">Enter the repayment amount.<note>
+                    <para role="TEXT">The currency is auto-populated to base
+                    currency of loan in progress.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>New Outstanding
+                Amount</guilabel></entry>
+
+                <entry valign="top">Displays the outstanding amount remaining
+                to be repaid by the applicant. The amount displayed is
+                difference of initial outstanding amount of loan in progress
+                and the amount filled in the <guilabel>Repayment
+                Amount</guilabel> field. This is a read-only field.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Additional
+                Details</guilabel></entry>
+
+                <entry valign="top">Enter the additional details of the
+                transaction, if any.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=ln_access;ACCESS=LN_LNDR_AT_UX"
+               role="TOPIC">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Upload supporting files
+                either by 'Drag and Drop' method or by 'Browsing' to the file
+                location. You can attach up to 5 the supporting documents of
+                size 1 Mega Byte each. The file types supported are
+                <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+                PDF, GIF, ZIP</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this drawdown.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Preview;PERM=ln_access;ACCESS=LN_LNDR_PV_UX"
+               role="Topic">
+        <title>Preview</title>
+
+        <para role="TEXT">This section opens in read only mode and shows all
+        the details that you have filled in the application form and also
+        allows you to either Save or Submit the application.</para>
+      </section>
+    </section>
+  </section>
+</section>

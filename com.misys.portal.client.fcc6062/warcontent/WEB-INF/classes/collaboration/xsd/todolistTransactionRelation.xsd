@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for a Collaboration task. XML validation 
+			Copyright (c) 2000-2004 NEOMAlogic (http://www.neomalogic.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/mtp/interfaces/xsd/common.xsd"/>
+	<xs:element name="todolist_transaction_relation">
+	    <xs:complexType>
+	        <xs:sequence>
+				<xs:element minOccurs="0" ref="todo_list_id">
+					<xs:annotation>
+						<xs:documentation>Todo List Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_id">
+					<xs:annotation>
+						<xs:documentation>Transaction id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="ref_id">
+					<xs:annotation>
+						<xs:documentation>Letter of credit reference 
+							id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+</xs:schema>

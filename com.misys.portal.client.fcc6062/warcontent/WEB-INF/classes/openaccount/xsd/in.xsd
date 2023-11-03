@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sch="http://www.ascc.net/xml/schematron" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for PO. XML validation 
+			Copyright (c) 2000-2006 NEOMAlogic (http://www.neomalogic.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/baseline_common.xsd"/> 
+	<xs:element name="in_tnx_record">
+		<xs:annotation>
+			<xs:documentation>Invoice Business Rules</xs:documentation>
+			<xs:appinfo>
+
+				<!-- IN - Check transaction type code -->
+				<sch:pattern 
+					name="IN - Check the transaction type code" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:assert 
+							test="tnx_type_code = '01' or tnx_type_code = '03' or tnx_type_code = '13'">
+							The transaction type code <value-of select="tnx_type_code"/> is not authorised.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+
+				<!-- ********************* -->
+				<!-- IN New Business Rules -->
+				<!-- ********************* -->
+
+				<!-- IN New mandatory fields -->
+				<sch:pattern 
+					name="IN New - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(appl_date) or appl_date = '')
+									or (not(exp_date) or exp_date = '')
+									or (not(total_net_cur_code) or total_net_cur_code = '')
+									or (not(total_net_amt) or total_net_amt = '')
+									or (not(total_cur_code) or total_cur_code = '')
+									or (not(total_amt) or total_amt = '')
+									or (not(buyer_name) or buyer_name = '')
+									or (not(buyer_post_code) or buyer_post_code = '')
+									or (not(buyer_town) or buyer_town = '')
+									or (not(buyer_country) or buyer_country = '')
+									or (not(seller_name) or seller_name = '')
+									or (not(seller_post_code) or seller_post_code = '')
+									or (not(seller_town) or seller_town = '')
+									or (not(seller_country) or seller_country = '')
+									or (not(issuing_bank/abbv_name) or issuing_bank/abbv_name = '')
+									or (not(buyer_bank/abbv_name) or buyer_bank/abbv_name = '')
+									or (not(seller_bank/abbv_name) or seller_bank/abbv_name = '')
+									or (not(part_ship) or part_ship='')
+									or not(line_items/lt_tnx_record)
+									or not(payments/payment)
+									or not(line_items/lt_tnx_record/po_ref_id))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- IN New not authorised fields -->
+				<sch:pattern 
+					name="IN New - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(ref_id 
+									or bo_ref_id 
+									or fin_bo_ref_id
+									or tnx_id 
+									or group_id
+									or company_id 
+									or iss_date
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or bo_comment
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- IN New - Constraints -->
+				<sch:pattern 
+					name="IN New - Check the issue date is posterior or equal to the application date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+								(number(concat(concat(substring(appl_date,7,4), substring(appl_date,4,2)), substring(appl_date,1,2))) &gt;
+								number(concat(concat(substring(iss_date,7,4), substring(iss_date,4,2)), substring(iss_date,1,2))))">
+							The issue date must be posterior or equal to the application date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="IN New - Check the last shipment date is posterior or equal to the application date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and last_ship_date != '' and
+								(number(concat(concat(substring(last_ship_date,7,4), substring(last_ship_date,4,2)), substring(last_ship_date,1,2))) &lt;
+								number(concat(concat(substring(appl_date,7,4), substring(appl_date,4,2)), substring(appl_date,1,2))))">
+							The last shipment date must be posterior or equal to the application date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- *********************** -->
+				<!-- IN Amend Business Rules -->
+				<!-- *********************** -->
+
+				<!-- IN Amend mandatory fields -->
+				<sch:pattern 
+					name="IN Amend - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(sub_tnx_type_code) or sub_tnx_type_code = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- IN Amend not authorised fields -->
+				<sch:pattern 
+					name="IN Amend - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(template_id
+									or tnx_id
+									or company_id
+									or entity
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm
+									or appl_date
+									or iss_date
+									or last_ship_date
+									or tnx_cur_code
+									or tnx_amt
+									or issuer_ref_id
+									or buyer_abbv_name
+									or buyer_name
+									or buyer_bei
+									or buyer_bank_bic
+									or buyer_street_name
+									or buyer_post_code
+									or buyer_town_name
+									or buyer_country_sub_div
+									or buyer_country
+									or buyer_reference
+									or seller_abbv_name
+									or seller_name
+									or seller_bei
+									or seller_bank_bic
+									or seller_street_name
+									or seller_post_code
+									or seller_town_name
+									or seller_country_sub_div
+									or seller_reference
+									or seller_country
+									or bill_to_abbv_name
+									or bill_to_name
+									or bill_to_bei
+									or bill_to_street_name
+									or bill_to_post_code
+									or bill_to_town_name
+									or bill_to_country_sub_div
+									or bill_to_country
+									or ship_to_abbv_name
+									or ship_to_name
+									or ship_to_bei
+									or ship_to_street_name
+									or ship_to_post_code
+									or ship_to_town_name
+									or ship_to_country_sub_div
+									or ship_to_country 
+									or consgn_abbv_name
+									or consgn_name
+									or consgn_bei
+									or consgn_street_name
+									or consgn_post_code
+									or consgn_town_name
+									or consgn_country_sub_div
+									or consgn_country
+									or goods_desc
+									or part_ship
+									or tran_ship
+									or nb_mismatch
+									or full_match
+									or total_amt
+									or total_cur_code
+									or total_net_amt
+									or total_net_cur_code
+									or order_total_amt
+									or order_total_cur_code
+									or order_total_net_amt
+									or order_total_net_cur_code
+									or accpt_total_amt
+									or accpt_total_cur_code
+									or accpt_total_net_amt
+									or accpt_total_net_cur_code
+									or liab_total_amt
+									or liab_total_cur_code
+									or liab_total_net_amt
+									or liab_total_net_cur_code
+									or fin_inst_bic
+									or fin_inst_name
+									or fin_inst_street_name
+									or fin_inst_post_code
+									or fin_inst_town_name
+									or fin_inst_country_sub_div
+									or fin_inst_country
+									or seller_account_name
+									or seller_account_iban
+									or seller_account_bban
+									or seller_account_upic
+									or seller_account_id
+									or last_match_date
+									or reqrd_commercial_dataset
+									or reqrd_transport_dataset
+									or submitr_bic
+									or data_set_id
+									or freight_charges_type
+									or version
+									or payments
+									or line_items
+									or routing_summaries
+									or user_defined_informations
+									or contacts
+									or adjustments
+									or taxes
+									or freight_charges
+									or incoterms
+									or charges
+									or bo_comment
+									or advising_bank/abbv_name
+									or advising_bank/name
+									or advising_bank/address_line_1
+									or advising_bank/address_line_2
+									or advising_bank/dom
+									or advising_bank/reference
+									or seller_bank/abbv_name
+									or seller_bank/name
+									or seller_bank/address_line_1
+									or seller_bank/address_line_2
+									or seller_bank/dom
+									or seller_bank/reference
+									or buyer_bank/abbv_name
+									or buyer_bank/name
+									or buyer_bank/address_line_1
+									or buyer_bank/address_line_2
+									or buyer_bank/dom
+									or buyer_bank/reference)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- IN Amend - Constraints -->			
+
+
+				<!-- ************************* -->
+				<!-- IN Inquire Business Rules -->
+				<!-- ************************* -->
+
+				<!-- IN Inquire mandatory fields -->
+				<sch:pattern 
+					name="IN Inquire - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(sub_tnx_type_code) or sub_tnx_type_code = '')
+									or (not(free_format_text) or free_format_text = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- IN Inquire not authorised fields -->
+				<sch:pattern 
+					name="IN Inquire - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/in_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									(template_id
+									or tnx_id
+									or company_id
+									or entity
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm
+									or tnx_id
+									or appl_date
+									or iss_date
+									or last_ship_date
+									or tnx_cur_code
+									or tnx_amt
+									or issuer_ref_id
+									or buyer_abbv_name
+									or buyer_name
+									or buyer_bei
+									or buyer_bank_bic
+									or buyer_street_name
+									or buyer_post_code
+									or buyer_town_name
+									or buyer_country_sub_div
+									or buyer_country
+									or buyer_reference
+									or seller_abbv_name
+									or seller_name
+									or seller_bei
+									or seller_bank_bic
+									or seller_street_name
+									or seller_post_code
+									or seller_town_name
+									or seller_country_sub_div
+									or seller_reference
+									or seller_country
+									or bill_to_abbv_name
+									or bill_to_name
+									or bill_to_bei
+									or bill_to_street_name
+									or bill_to_post_code
+									or bill_to_town_name
+									or bill_to_country_sub_div
+									or bill_to_country
+									or ship_to_abbv_name
+									or ship_to_name
+									or ship_to_bei
+									or ship_to_street_name
+									or ship_to_post_code
+									or ship_to_town_name
+									or ship_to_country_sub_div
+									or ship_to_country 
+									or consgn_abbv_name
+									or consgn_name
+									or consgn_bei
+									or consgn_street_name
+									or consgn_post_code
+									or consgn_town_name
+									or consgn_country_sub_div
+									or consgn_country
+									or goods_desc
+									or part_ship
+									or tran_ship
+									or nb_mismatch
+									or full_match
+									or total_amt
+									or total_cur_code
+									or total_net_amt
+									or total_net_cur_code
+									or order_total_amt
+									or order_total_cur_code
+									or order_total_net_amt
+									or order_total_net_cur_code
+									or accpt_total_amt
+									or accpt_total_cur_code
+									or accpt_total_net_amt
+									or accpt_total_net_cur_code
+									or liab_total_amt
+									or liab_total_cur_code
+									or liab_total_net_amt
+									or liab_total_net_cur_code
+									or fin_inst_bic
+									or fin_inst_name
+									or fin_inst_street_name
+									or fin_inst_post_code
+									or fin_inst_town_name
+									or fin_inst_country_sub_div
+									or fin_inst_country
+									or seller_account_name
+									or seller_account_iban
+									or seller_account_bban
+									or seller_account_upic
+									or seller_account_id
+									or last_match_date
+									or reqrd_commercial_dataset
+									or reqrd_transport_dataset
+									or submitr_bic
+									or data_set_id
+									or freight_charges_type
+									or version
+									or payments
+									or line_items
+									or routing_summaries
+									or user_defined_informations
+									or contacts
+									or adjustments
+									or taxes
+									or freight_charges
+									or incoterms
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>		
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element minOccurs="0" ref="brch_code">
+						<xs:annotation>
+							<xs:documentation>Branch code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ref_id">
+						<xs:annotation>
+							<xs:documentation>Invoice reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="template_id">
+						<xs:annotation>
+							<xs:documentation>Template id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="issuer_ref_id">
+						<xs:annotation>
+							<xs:documentation>Issuer reference id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Back office attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Back office attributed finance reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="program_id">
+						<xs:annotation>
+							<xs:documentation>Program indentifier for the transaction</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="cust_ref_id">
+						<xs:annotation>
+							<xs:documentation>Customer attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="group_id">
+						<xs:annotation>
+							<xs:documentation>Group
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="tnx_id">
+						<xs:annotation>
+							<xs:documentation>Transaction id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_tnx_id"/>
+					<xs:element minOccurs="0" ref="company_id">
+						<xs:annotation>
+							<xs:documentation>Id of the company that initiated 
+								the letter of credit.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- minOccurs=0 because the company can possibly be not be provided when bank initiated transaction --><xs:element minOccurs="0" ref="company_name">
+						<xs:annotation>
+							<xs:documentation>Id of the company that initiated 
+								the letter of credit.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- minOccurs=0 because the company can possibly be not be provided when bank initiated transaction -->
+					<xs:element minOccurs="0" ref="tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>In order to identify the type of 
+								transaction applied to one file during a 
+								particular event of its life (and hence 
+								attached to a transaction id), we introduce the 
+								notion of transaction type 
+								code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>In some cases, an additional code 
+								is required to further define the type of the 
+								transaction. This is the case for the amendment 
+								of an Import LC or a Banker's Guarantee where 
+								the transaction type code is AMEND, but where 
+								the system needs to know more precisely the 
+								type of amendment in order to prepare the 
+								display of its details accordingly. It is also 
+								the case for the creation of such an Import LC 
+								if it is initiated through the Upload 
+								feature.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" ref="prod_stat_code">
+						<xs:annotation>
+							<xs:documentation>The product status code is in 
+								charge of indicating which is the functional 
+								status currently born by the transaction file. 
+								Thanks to this code, we can know if the 
+								transaction initiation has been approved by the 
+								bank and into which state the record has been 
+								updated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>During the course of a 
+								transaction input by the customer, control and 
+								finally submission to the bank for processing, 
+								and subsequently input and eventually control 
+								and release of the reporting by the bank 
+								officer, the transaction record is going 
+								through several stages</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Sub Transaction Status Code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" ref="product_code">
+						<xs:annotation>
+							<xs:documentation>Product code.
+							'IN' for the Invoice.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="sub_product_code" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Sub Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" ref="inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Inputter user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Input date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Controller user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Control date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_user_id">
+						<xs:annotation>
+							<xs:documentation>Releaser user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_dttm">
+						<xs:annotation>
+							<xs:documentation>Release date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office inputter 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office input 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office controller 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office control 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office release user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office release 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_val_date">
+						<xs:annotation>
+							<xs:documentation>Transaction value 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="appl_date">
+						<xs:annotation>
+							<xs:documentation>Application 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="1" ref="iss_date">
+						<xs:annotation>
+							<xs:documentation>Issue date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="1" ref="due_date">
+						<xs:annotation>
+							<xs:documentation>Due date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="exp_date">
+						<xs:annotation>
+							<xs:documentation>Expiry date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_date">
+						<xs:annotation>
+							<xs:documentation>Amendment date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_no">
+						<xs:annotation>
+							<xs:documentation>Amendment 
+								number.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_amt">
+						<xs:annotation>
+							<xs:documentation>Transaction 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="entity">
+						<xs:annotation>
+							<xs:documentation>Entity</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Buyer abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_name">
+						<xs:annotation>
+							<xs:documentation>Buyer 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_bei">
+						<xs:annotation>
+							<xs:documentation>Buyer bei.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_bank_bic">
+						<xs:annotation>
+							<xs:documentation>Buyer bank bic.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_street_name">
+						<xs:annotation>
+							<xs:documentation>Buyer 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_post_code">
+						<xs:annotation>
+							<xs:documentation>Buyer 
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_town_name">
+						<xs:annotation>
+							<xs:documentation>Buyer
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Buyer country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_country">
+						<xs:annotation>
+							<xs:documentation>Buyer country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="buyer_reference">
+						<xs:annotation>
+							<xs:documentation>Buyer reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="seller_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Seller abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_name">
+						<xs:annotation>
+							<xs:documentation>Seller 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_bei">
+						<xs:annotation>
+							<xs:documentation>Seller bei.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_bank_bic">
+						<xs:annotation>
+							<xs:documentation>Seller bank bic.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_street_name">
+						<xs:annotation>
+							<xs:documentation>Seller 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_post_code">
+						<xs:annotation>
+							<xs:documentation>Seller 
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_town_name">
+						<xs:annotation>
+							<xs:documentation>Seller
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Seller country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_country">
+						<xs:annotation>
+							<xs:documentation>Seller country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="seller_reference">
+						<xs:annotation>
+							<xs:documentation>Seller reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="bill_to_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Bill to abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bill_to_name">
+						<xs:annotation>
+							<xs:documentation>Bill to 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bill_to_bei">
+						<xs:annotation>
+							<xs:documentation>Bill to bei.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bill_to_street_name">
+						<xs:annotation>
+							<xs:documentation>Bill to 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bill_to_post_code">
+						<xs:annotation>
+							<xs:documentation>Bill to 
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bill_to_town_name">
+						<xs:annotation>
+							<xs:documentation>Bill to
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bill_to_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Bill to country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bill_to_country">
+						<xs:annotation>
+							<xs:documentation>Bill to country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Ship to abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_name">
+						<xs:annotation>
+							<xs:documentation>Ship to 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_bei">
+						<xs:annotation>
+							<xs:documentation>Ship to bei.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_street_name">
+						<xs:annotation>
+							<xs:documentation>Ship to 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_post_code">
+						<xs:annotation>
+							<xs:documentation>Ship to 
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_town_name">
+						<xs:annotation>
+							<xs:documentation>Ship to
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Ship to country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_to_country">
+						<xs:annotation>
+							<xs:documentation>Ship to country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Consignee abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_name">
+						<xs:annotation>
+							<xs:documentation>Consignee 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_bei">
+						<xs:annotation>
+							<xs:documentation>Consignee bei.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_street_name">
+						<xs:annotation>
+							<xs:documentation>Consignee 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_post_code">
+						<xs:annotation>
+							<xs:documentation>Consignee 
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_town_name">
+						<xs:annotation>
+							<xs:documentation>Consignee
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Consignee country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="consgn_country">
+						<xs:annotation>
+							<xs:documentation>Consignee country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="goods_desc">
+						<xs:annotation>
+							<xs:documentation>Description of goods.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="part_ship">
+						<xs:annotation>
+							<xs:documentation>Partial shipment 
+								detail.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tran_ship">
+						<xs:annotation>
+							<xs:documentation>Transshipment 
+								detail.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="last_ship_date">
+						<xs:annotation>
+							<xs:documentation>Last shipment 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="nb_mismatch">
+						<xs:annotation>
+							<xs:documentation>Number of missmacth.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="full_match">
+						<xs:annotation>
+							<xs:documentation>Number of fullmatch.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="total_amt">
+						<xs:annotation>
+							<xs:documentation>Transaction 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="total_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="total_net_amt">
+						<xs:annotation>
+							<xs:documentation>Transaction net 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="total_net_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction net currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="total_adjustments">
+						<xs:annotation>
+							<xs:documentation>total adjustments(simplified invoice)</xs:documentation>
+						</xs:annotation>
+					</xs:element>				
+					<xs:element minOccurs="0" ref="order_total_amt">
+						<xs:annotation>
+							<xs:documentation>Order total
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="order_total_cur_code">
+						<xs:annotation>
+							<xs:documentation>Order total currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="order_total_net_amt">
+						<xs:annotation>
+							<xs:documentation>Order net 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="order_total_net_cur_code">
+						<xs:annotation>
+							<xs:documentation>Order net currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="accpt_total_amt">
+						<xs:annotation>
+							<xs:documentation>Invoice accepted
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="accpt_total_cur_code">
+						<xs:annotation>
+							<xs:documentation>Invoice accepted currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="accpt_total_net_amt">
+						<xs:annotation>
+							<xs:documentation>Invoice accepted net
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="accpt_total_net_cur_code">
+						<xs:annotation>
+							<xs:documentation>Invoice accepted net currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="liab_total_amt">
+						<xs:annotation>
+							<xs:documentation>Invoice liability
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="outstanding_total_amt">
+						<xs:annotation>
+							<xs:documentation>Invoice outstanding
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="liab_total_cur_code">
+						<xs:annotation>
+							<xs:documentation>Invoice liability currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="liab_total_net_amt">
+						<xs:annotation>
+							<xs:documentation>Invoice liability net
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="liab_total_net_cur_code">
+						<xs:annotation>
+							<xs:documentation>Invoice liability net currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_inst_bic">
+						<xs:annotation>
+							<xs:documentation>Financial institution bic.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_inst_name">
+						<xs:annotation>
+							<xs:documentation>Financial institution
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_inst_street_name">
+						<xs:annotation>
+							<xs:documentation>Financial institution 
+								Street name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_inst_post_code">
+						<xs:annotation>
+							<xs:documentation>Financial institution
+								post code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_inst_town_name">
+						<xs:annotation>
+							<xs:documentation>Financial institution
+								 town name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_inst_country_sub_div">
+						<xs:annotation>
+							<xs:documentation>Financial institution country sub 
+								division.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_inst_country">
+						<xs:annotation>
+							<xs:documentation>Financial institution country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>																					
+					<xs:element minOccurs="0" ref="seller_account_name">
+						<xs:annotation>
+							<xs:documentation>Seller account name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="seller_account_iban">
+						<xs:annotation>
+							<xs:documentation>Seller account iban.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="seller_account_bban">
+						<xs:annotation>
+							<xs:documentation>Seller account bban.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="seller_account_upic">
+						<xs:annotation>
+							<xs:documentation>Seller account upic.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="seller_account_id">
+						<xs:annotation>
+							<xs:documentation>Unique and unambiguous identification 
+							for the seller account.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="last_match_date">
+						<xs:annotation>
+							<xs:documentation>the latest date on which a data set must 
+							be matched with a baseline.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="reqrd_commercial_dataset">
+						<xs:annotation>
+							<xs:documentation>Specifies whether the commercial documents must be 
+							submitted for the current transaction or not.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="reqrd_transport_dataset">
+						<xs:annotation>
+							<xs:documentation>Specifies whether the transport documents must be 
+							submitted for the current transaction or not.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="submitr_bic">
+						<xs:annotation>
+							<xs:documentation>Specifies the party that must 
+							submit the data sets.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="data_set_id">
+						<xs:annotation>
+							<xs:documentation>Identification of a set of data.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="freight_charges_type">
+						<xs:annotation>
+							<xs:documentation>Identifies whether the freight charges 
+							associated with the goods are "prepaid" or "collect".</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="payment_terms_type">
+						<xs:annotation>
+							<xs:documentation>Payment terms : percentage or amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="version">
+						<xs:annotation>
+							<xs:documentation>Identification of a set of data.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="buyer_bank_type_code">
+						<xs:annotation>
+							<xs:documentation>Buyer bank type code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="seller_bank_type_code">
+						<xs:annotation>
+							<xs:documentation>Seller bank type code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="issuer_type_code">
+						<xs:annotation>
+							<xs:documentation>Issuer type code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="final_presentation">
+						<xs:annotation>
+							<xs:documentation>If all documents have been presented.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="submission_type">
+						<xs:annotation>
+							<xs:documentation>Submission_Type : Lodge or Full Push Through</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tid">
+						<xs:annotation>
+							<xs:documentation>TSU ID.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fscm_programme_code">
+						<xs:annotation>
+							<xs:documentation>Financial Supply Chain Programme Code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="eligibility_flag">
+						<xs:annotation>
+							<xs:documentation>Eligibility flag</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inv_eligible_amt">
+						<xs:annotation>
+							<xs:documentation>Invoice Eligibile Amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="inv_eligible_cur_code">
+						<xs:annotation>
+							<xs:documentation>Invoice Eligibile Currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inv_eligible_pct">
+						<xs:annotation>
+							<xs:documentation>Invoice Eligibile Percentage</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_amt">
+						<xs:annotation>
+							<xs:documentation>Finance Amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_cur_code">
+						<xs:annotation>
+							<xs:documentation>Finance Currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_offer_flag">
+						<xs:annotation>
+							<xs:documentation>Finance Offer Flag</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_requested_flag">
+						<xs:annotation>
+							<xs:documentation>Finance requested flag</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_requested_amt">
+						<xs:annotation>
+							<xs:documentation>Finance requested amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_requested_cur_code">
+						<xs:annotation>
+							<xs:documentation>Finance requested currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_repayment_amt">
+						<xs:annotation>
+							<xs:documentation>Finance Repayment Amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_repayment_cur_code">
+						<xs:annotation>
+							<xs:documentation>Finance Repayment Currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_repayment_action">
+						<xs:annotation>
+							<xs:documentation>Finance Repayment Action</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="finance_repayment_eligible">
+						<xs:annotation>
+							<xs:documentation>Finance Repayment Eligibility Flag</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_date">
+						<xs:annotation>
+							<xs:documentation>Finance Date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fin_due_date">
+						<xs:annotation>
+							<xs:documentation>Finance Due Date</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="repay_date">
+						<xs:annotation>
+							<xs:documentation>Repay Finance Date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="outstanding_repayment_amt">
+						<xs:annotation>
+							<xs:documentation>Outstanding Repayment Amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="outstanding_repayment_cur_code">
+						<xs:annotation>
+							<xs:documentation>Outstanding Repayment Currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="interest_repayment_amt">
+						<xs:annotation>
+							<xs:documentation>Interest Repayment Amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="interest_repayment_cur_code">
+						<xs:annotation>
+							<xs:documentation>Interest Repayment Currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="charges_repayment_amt">
+						<xs:annotation>
+							<xs:documentation>Charges Repayment Amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="charges_repayment_cur_code">
+						<xs:annotation>
+							<xs:documentation>Charges Repayment Currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="total_repaid_amt">
+						<xs:annotation>
+							<xs:documentation>Total Repaid Amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="total_repaid_cur_code">
+						<xs:annotation>
+							<xs:documentation>Total Repaid Currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>										
+										
+					<xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field"/>
+					
+					<xs:element minOccurs="0" ref="line_items"/>																															
+					<xs:element minOccurs="0" ref="contacts"/>	
+					<xs:element minOccurs="0" ref="payments"/>
+					<xs:element minOccurs="0" ref="incoterms"/>
+					<xs:element minOccurs="0" ref="adjustments"/>
+					<xs:element minOccurs="0" ref="taxes"/>
+					<xs:element minOccurs="0" ref="freight_charges"/>
+					<xs:element minOccurs="0" ref="user_defined_informations"/>
+					<xs:element minOccurs="0" ref="routing_summaries"/>
+					<xs:element minOccurs="0" ref="buyer_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the buyer bank</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="issuing_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the issuing bank 
+								information</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="seller_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the seller bank 
+								information</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="advising_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the advising 
+								bank information</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_comment">
+						<xs:annotation>
+							<xs:documentation>Back office 
+								comment.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="free_format_text">
+						<xs:annotation>
+							<xs:documentation>Used as a zone of communication 
+								between the client and the 
+								bank.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="charges"/>					
+					<xs:element minOccurs="0" ref="attachments"/>
+					<xs:element minOccurs="0" ref="cross_references"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

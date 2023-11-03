@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ====================================================================== 
+
+     This is the ANT file dedicated to build a SQL scripts 
+     	- database creation
+     	- inital values
+                                                                                  
+     ====================================================================== -->
+<project name="PortalDatabaseScriptsGeneration" default="dbvalues">
+	<description>
+		 This is the ANT file dedicated to build a SQL scripts 
+		     	- inital values
+	</description>
+	
+	<property file="build.properties"/>
+	<property file="flyway_build.properties"/>
+	<property file="../../app_data/config/flyway.properties"/> 
+	<property file="${dbspecific.properties}"/>
+	<fileset id="db.profle.dml.sql"  dir="${client.source.dir}">
+		<include name="*.sql"/>
+	</fileset>
+
+	<target name="dbvalues" description="Generation of standard values scripts">
+		<echo message="Generation of standard values"/>
+		<antcall target="generateValues" inheritall="false">
+			<param name="JurisdictionValues" value="${client.source.dir}/mpJurisdictionValues.xml" />
+			<param name="PermissionRoleValues" value="${client.source.dir}/mpPermissionRoleValues.xml" />
+			<param name="MasterCurrencyValues" value="${client.source.dir}/mpMasterCurrencyValues.xml" />
+			<param name="RateValues" value="${client.source.dir}/mpRateValues.xml" />
+			<param name="BankCurrencyValues" value="${client.source.dir}/mpBankCurrencyValues.xml" />
+			<param name="CodeValues" value="${client.source.dir}/mpCodeValues.xml" />
+			<!--Added for MSSQL -->
+			<param name="SequenceValues" value="${client.source.dir}/mpIDTableValues.xml" />
+		</antcall>
+		<copy todir="${target.dbvalues.dir}" overwrite="true">
+		    <fileset refid="db.profle.dml.sql"/>
+		 </copy>
+		<!--Remove Comment once ant 1.8 is included in eclipse to refresh the project -->
+		<!-- <eclipse.refreshLocal resource="XmlToDatabase" depth="infinite"/> -->
+	</target>
+	
+	<!--======================================================================
+			F L Y W A Y
+		=======================================================================-->
+		<path id="flyway.lib.path">
+			<!-- include all jars from the Flyway AntLib distribution -->
+			<fileset dir="${libraries.dir}" includes="*.jar" />
+		</path>
+
+		<taskdef uri="antlib:org.flywaydb.ant" resource="org/flywaydb/ant/antlib.xml" classpathref="flyway.lib.path" />
+		
+		<taskdef resource="net/sf/antcontrib/antlib.xml" 
+				classpath="${workspace.dir}/build/lib/ant-contrib-1.0b3.jar"/>
+	<!--
+			Custom function to represent the webapp version by replacing dots with hyphens, since Flyway interprets dots as
+			folder hierarchy. For ex. converts 5.3.1.2 to 5-3-1-2
+		-->
+		<scriptdef language="javascript" name="replaceDotByHyphen">
+			<attribute name="dotvalue" />
+			<attribute name="hyphenvalue" />
+			<![CDATA[
+				project.setProperty(attributes.get("hyphenvalue"), attributes.get("dotvalue").replaceAll('\\.','-'));
+			]]>
+		</scriptdef>
+	<!--
+			Custom function equivalent to javascript:toLowerCase()
+		-->
+		<scriptdef language="javascript" name="lower">
+			<attribute name="string" />
+			<attribute name="to" />
+			
+			var input = attributes.get("string");
+			var output = (input == "MS_SQL") ? "mssql" : input.toLowerCase();
+			 project.setProperty(attributes.get("to"), output);
+		</scriptdef>
+		
+		<!--
+			Custom function to extract only the file name from the fully qualified path.
+			NOTE: The file name along with the file extension is returned.
+		-->
+		<scriptdef language="javascript" name="getFileName">
+			<attribute name="filepath" />
+			<attribute name="filename" />
+			<![CDATA[
+				var filepath = attributes.get("filepath");
+				project.setProperty(attributes.get("filename"), filepath.substring(filepath.lastIndexOf('\\')+1));
+			]]>
+		</scriptdef>
+	<!-- This target is used to set up and initialize all the flyway related properties and variables -->
+	<target name="set-flyway-target-properties">
+			<replaceDotByHyphen dotvalue="${webapp.version}" hyphenvalue="webapp-version"/>
+			<property name="flyway.script.dir" value="${flyway.root.dir}/${db.type}/${webapp-version}"/>
+			<property name="flyway.script.dir.version" value="${flyway.root.dir}/version"/>
+			<property name="flyway.script.dir.base" value="${flyway.script.dir}/base"/>
+			<property name="flyway.script.dir.migration" value="${flyway.script.dir}/migration"/>
+			<property name="flyway.script.dir.custom" value="${flyway.script.dir}/custom"/>
+			<property name="flyway.base.version.script.name" value="${flyway.sqlMigrationPrefix}${webapp.version}__BaselineScript${flyway.sqlMigrationSuffix}"/>
+			<property name="flyway.base.version.script" value="${flyway.script.dir.base}/${flyway.base.version.script.name}"/>
+	</target>
+	<!--
+			Prepares for flyway-init.
+			After the RUN_XX target runs from common-build.xml, this task moves the generated initialization scripts
+			from the target/XX directory to target/flyway/{db.type} and also moves the flyway schema version table creation script.
+		-->
+	<target name="prepare-flyway-init" description="Prepare flyway initialization and versioning scripts">
+		<copy todir="${flyway.script.dir.base}" description="move the initialization files to flyway and rename with version">
+			<fileset dir="${target.dbvalues.dir}">
+				<include name="*${flyway.sqlMigrationSuffix}"/>
+			</fileset>
+		</copy>
+	</target>
+	<!-- Prepares the versioning scripts for Flyway migrate.
+			Creates the versioning scripts for the migration scripts from the target/XX directory to target/flyway/version. 
+		-->
+		<target name="prepare-migration-version-script">
+			<property name="version-suffix" value="" />
+			<mkdir dir="${flyway.script.dir.version}"/>
+			<mkdir dir="${flyway.script.dir.version}/migration"/>
+			<for param="theFile">
+				        <path>
+				            <fileset dir="${flyway.script.dir.migration}">
+				                <include name="**/*.sql"/>
+				            	<exclude name="**/*BaselineScript*.sql"/>
+				            </fileset>
+				        </path>
+				        <sequential>
+				            <echo message="@{theFile}"/>
+				        	<local name="version" />
+				        	<local name="description"/>
+				        	<local name="script"/>
+				        	<propertyregex override="yes" property="version" input="@{theFile}"
+			    	            regexp="(.*)${flyway.sqlMigrationPrefix}(.*)${flyway.sqlMigrationSeparator}(.*)"
+			    	            select="\2"></propertyregex>
+			    			<propertyregex override="yes" property="description" input="@{theFile}"
+			    	            regexp="(.*)${flyway.sqlMigrationPrefix}(.*)${flyway.sqlMigrationSeparator}(.*)${flyway.sqlMigrationSuffix}"
+			    	            select="\3"></propertyregex>
+				        	<propertyregex override="yes" property="script" input="@{theFile}"
+			    	            regexp="(.*)(${flyway.sqlMigrationPrefix})(.*)"
+			    	            select="\2\3"></propertyregex>
+				        	<touch file="${flyway.sqlMigrationPrefix}${version}${flyway.sqlMigrationSeparator}${version-suffix}${description}${flyway.sqlMigrationSuffix}" />
+			    			<move file="${flyway.sqlMigrationPrefix}${version}${flyway.sqlMigrationSeparator}${version-suffix}${description}${flyway.sqlMigrationSuffix}" todir="${flyway.script.dir.version}/migration">
+			    			</move>
+			    			<getFileName filepath="${flyway.script.dir.version}/migration" filename="${flyway.sqlMigrationPrefix}${version}${flyway.sqlMigrationSeparator}${version-suffix}${description}${flyway.sqlMigrationSuffix}" />
+			    			<echo message="${flyway.script.dir.version}/migration"/>
+				        	<echo message="${version}"/>
+			    			<concat destfile="${flyway.script.dir.version}/migration//${flyway.sqlMigrationPrefix}${version}${flyway.sqlMigrationSeparator}${version-suffix}${description}${flyway.sqlMigrationSuffix}">
+INSERT INTO ${flyway.table} ("version_rank", "installed_rank", 
+						"version", "description", "type", "script", 
+						"installed_by", "execution_time", "success")
+			VALUES ((select max("version_rank") + 1 from ${flyway.table}), (select max("installed_rank") + 1 from ${flyway.table}),
+						'${version}', '${description}', 'SQL', '${script}', 
+						'FLYWAY','0', 1);
+			COMMIT;		
+			    			</concat>
+				        </sequential>
+				    </for>
+		</target>
+	<!--
+			Prepares for Flyway migrate.
+			Copies the migration scripts from the target/XX directory to target/flyway 
+			and renames the files as per Flyway configuration.
+		-->
+		<target name="prepare-migrate-flyway">
+			<lower string="${db.type}" to="db.type.lowercase" />
+			<!-- Handle DDLs and DMLs separately -->
+			<copy todir="${flyway.script.dir.migration}">
+				<fileset dir="${client.migration.dir}" includes="${db.type.lowercase}/**/*${flyway.sqlMigrationSuffix}" />
+			</copy>
+		</target>
+	
+	<!--
+			Main wrapper task for performing the pre-requisites for initialization / migration through Flyway
+		-->
+		<target name="prepare-flyway" depends="set-flyway-target-properties">
+			<taskdef uri="antlib:org.flywaydb.ant" resource="org/flywaydb/ant/antlib.xml" classpathref="flyway.lib.path" />
+			<!--
+			<property name="flyway.locations" value="${flyway.locations}" />
+			<property name="flyway.target" value="${flyway.target}" />
+			-->
+			<delete dir="${flyway.script.dir}" />
+			<mkdir dir="${flyway.script.dir}" />
+			<mkdir dir="${flyway.script.dir.migration}" />
+			<antcall target="prepare-migrate-flyway" />
+			<antcall target="prepare-migration-version-script" />
+		</target>
+	
+	<target name="generateValues">
+		<delete dir="${target.dbvalues.dir}"/>
+		<mkdir dir="${target.dbvalues.dir}" />
+		<xslt in="${PermissionRoleValues}" out="${target.dbvalues.dir}/1.permissionsValues.csv" style="permissions2csv.xsl">
+			<factory name="org.apache.xalan.processor.TransformerFactoryImpl"/>
+			<sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+		</xslt>
+		<xslt in="${PermissionRoleValues}" out="${target.dbvalues.dir}/1.RolesValues.csv" style="roles2csv.xsl">
+			<factory name="org.apache.xalan.processor.TransformerFactoryImpl"/>
+			<sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+		</xslt>
+
+		<xslt in="${PermissionRoleValues}" out="${target.dbvalues.dir}/1.permissionRoleValues.html" style="dbvalues2html.xsl">
+			<factory name="org.apache.xalan.processor.TransformerFactoryImpl"/>
+			<sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+		</xslt>		
+		
+		<xslt in="${PermissionRoleValues}" out="${target.dbvalues.dir}/1.permissionRoleValues.sql" style="dbvalues2oracle.xsl">
+			<factory name="org.apache.xalan.processor.TransformerFactoryImpl"/>
+			<sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+		</xslt>
+
+		<xslt in="${JurisdictionValues}" out="${target.dbvalues.dir}/2.jurisdictionValues.sql" style="dbvalues2oracle.xsl">
+			<factory name="org.apache.xalan.processor.TransformerFactoryImpl"/>
+			<sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+		</xslt>
+
+		<xslt in="${MasterCurrencyValues}" out="${target.dbvalues.dir}/3.masterCurrencyValues.sql" style="dbvalues2oracle.xsl"/>
+
+		<xslt in="${RateValues}" out="${target.dbvalues.dir}/4.rateValues.sql" style="dbvalues2oracle.xsl"/>
+
+		<xslt in="${CodeValues}" out="${target.dbvalues.dir}/5.codeValues.sql" style="dbvalues2oracle.xsl"/>
+		
+		<xslt failOnError="false"
+		 in="${BankDataValues}" out="${target.dbvalues.dir}/10.bankDataValues.sql" style="dbvalues2oracle.xsl"/>
+		
+		<xslt in="${BankCurrencyValues}" out="${target.dbvalues.dir}/6.bankCurrencyValues.sql" style="dbvalues2oracle.xsl"/>
+
+		<!-- Added for Sequenece -->
+		<antcall target="includeSeqvalues" />
+
+		<!-- Replace jurisdiction values -->
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.abbv.name\}" flags="g"
+				 replace="${bankgroup.abbv.name}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.name\}" flags="g"
+				 replace="${bankgroup.name}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.address.line.1\}" flags="g"
+				 replace="${bankgroup.address.line.1}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.address.line.2\}" flags="g"
+				 replace="${bankgroup.address.line.2}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.domicile\}" flags="g"
+				 replace="${bankgroup.domicile}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.country\}" flags="g"
+				 replace="${bankgroup.country}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.language\}" flags="g"
+				 replace="${bankgroup.language}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.base.currency\}" flags="g"
+				 replace="${bankgroup.base.currency}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.bankadmin.first.name\}" flags="g"
+				 replace="${bankgroup.bankadmin.first.name}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.bankadmin.last.name\}" flags="g"
+				 replace="${bankgroup.bankadmin.last.name}"/>
+		<replaceregexp file="${target.dbvalues.dir}/2.jurisdictionValues.sql"
+				 match="\{bankgroup.bankadmin.timezone\}" flags="g"
+				 replace="${bankgroup.bankadmin.timezone}"/>
+	</target>
+	
+	<target name="includeSeqvalues" if="${sequence.value.required}">
+       <xslt in="${SequenceValues}" out="${target.dbvalues.dir}/9.sequenceValues.sql" style="dbvalues2oracle.xsl"/>
+    </target>
+
+</project>

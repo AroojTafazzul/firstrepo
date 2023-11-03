@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Feature Setup</title>
+
+  <para>This chapter guides you to enable the features exclusive to modern
+  <productname id="ent_appli">Fusion Corporate Channels</productname>.</para>
+
+  <section role="ITEM">
+    <title>Forgot Password or Username?</title>
+
+    <para>This section guides you to setup the 'Forgot Password or Username'
+    feature in the modern <productname id="ent_appli">Fusion Corporate
+    Channels</productname>.</para>
+
+    <para>The following steps guide you to setup the feature:<orderedlist>
+        <listitem>
+          <para>Set the <property>forgotpassword.show</property> to 'True' in
+          <filename>portal.properties</filename>, by default, the property is
+          set to 'False'.</para>
+        </listitem>
+
+        <listitem>
+          <para>Ensure that the following whitelist property in
+          <filename>fcc_ux.properties</filename> is assigned the value
+          <property>forgotpassword.show</property>:<programlisting>#configkeys.public.whitelist = FORGOTPASSWORD_SHOW</programlisting></para>
+        </listitem>
+
+        <listitem>
+          <para>Set the recaptcha properties as shown below:<programlisting>#Properties to set the captcha service for login page
+captcha.provider = recaptcha
+
+# version for recaptcha (2 or 3)
+services.recaptcha.version = 2
+</programlisting></para>
+        </listitem>
+
+        <listitem>
+          <para>Un comment the following property to set the recaptcha
+          validation classname:<programlisting>
+# Uncomment the below line to enable default implementation for google recaptcha
+#services.ReCaptchaValidationService.classname = com.misys.portal.common.services.ReCaptchaValidationServiceImpl
+</programlisting></para>
+        </listitem>
+
+        <listitem>
+          <para>Comment the following property to enable the above set
+          property:<programlisting>
+# Below line to be commented in order to use the above line
+services.ReCaptchaValidationService.classname = com.misys.portal.common.services.SimulatorReCaptchaImpl
+</programlisting></para>
+        </listitem>
+
+        <listitem>
+          <para>Update the following properties when new 'site.key' and
+          'secret.key' are generated:<programlisting>services.recaptcha.site.key =gaXx9LH4ARmdnluMZn8hRBT+VpqhF9vuxCcCrzOtZJoteZY19zaSFblsJlqezW/32HaE4dsr6s17gYcZOFV0atvdK4HXSv1J4N4+8Di6nw9AdqVdWM+Sk1TqInoMgMFxfKzVcZuta8f+svhYBlnq86XTIrRpzbKPLxTLAJOBQXjfttKA/E9igRQvU+YlAONYebRIElbcbxIjS9YTLf303KAFH5WcabLhgbDHAMG8uXOejJLNwmFhtZ0c0S3VAEJoMHcqmlhGDY
+4sFy7NVhhqnIN2H5fqtQwZSz53GwEB+7BGPf6b+ESPYG3a38Ar26tk4h0QsybLLqr+odvskGClHg==
+
+services.recaptcha.secret.key =jPvRdqUvaIPs+rxXgZg97mwN6qQTPUyufan7K8B0MzFkr2ReeWNcajpp22Fj5anOc7iUYpA3mTwYuHvY3Aoh/1LH5FS3BSHclSuhG5/XrK/e++1QeEI6bzlO5bkagEYcXs8JgaazEKW9I33NE2SdkJjAG6fweL9ubHgnusS1oZHS+MDmCrYzH4NBDIQ9gnNONH1JOdyKv4r6DSvyD3iJnUu4p7LrRbELIPqZOtBBPjCS0MEC1uhZhnNYTi
+DR558sTwuG7Qc9r0sNkNYM2r9PEYJC6Zmfyl9dnX5SU3GvdVPiztReoX3+mpKTC4k1jv+ErIxwtDnAkMph/RXT0nkPWA==
+</programlisting></para>
+        </listitem>
+
+        <listitem>
+          <para>Uncomment the following property to enable E-mail
+          notification:<programlisting># score is used only for Recaptcha V3
+#This service needs to be commented to use SimulatorEmailService to simulate OTP flow
+#This service should be uncommented to trigger the email notification flow
+#services.MultiFactorAuthenticationService.classname = com.misys.portal.common.services.EmailService
+</programlisting></para>
+        </listitem>
+
+        <listitem>
+          <para>Comment the following property to enable E-mail
+          notification:<programlisting>#Below line to be commented in order to use the EmailService.
+services.MultiFactorAuthenticationService.classname = com.misys.portal.common.services.SimulatorEmailService
+</programlisting></para>
+        </listitem>
+      </orderedlist></para>
+
+    <para>The following properties in turbine.properties define the modes
+    through which forgot password feature is achieved:<programlisting>#forgot.mode is used to set the modes when user chooses the option 'Forgot Password'
+services.LoginModesService.forgotPassword.modes = forgot_password, otp_auth, otp_auth_validate, reset_password
+services.LoginModesService.forgotPassword.modes.forgot_password.classname = com.misys.portal.common.actions.NormalModeHandler
+services.LoginModesService.forgotPassword.modes.otp_auth.classname = com.misys.portal.common.actions.OtpHandler 
+services.LoginModesService.forgotPassword.modes.otp_auth_validate.classname = com.misys.portal.common.actions.OtpValidateHandler
+services.LoginModesService.forgotPassword.modes.reset_password.classname = com.misys.portal.common.actions.ChangePasswordModeHandler</programlisting></para>
+
+    <section role="ITEM">
+      <title>Key Store Setup</title>
+
+      <para>This section describes the key store setup for encoding the site
+      and secret key.</para>
+
+      <section role="ITEM">
+        <title>Available Key Store</title>
+
+        <para>You can use the already available key store to encode the site
+        and secret key. The following steps guide you to configure the
+        available key store: <orderedlist>
+            <listitem>
+              <para>Update the location of private keystore for the following
+              property, available in
+              <filename>sso.properties</filename>:<programlisting>#Location of the Private Key keystore. 
+oidc.sso.encryption.keystore.location = C:/OpenSSL-Win64/bin/identity.jks</programlisting></para>
+            </listitem>
+
+            <listitem>
+              <para>Update the password of keystore, available in
+              <filename>sso.properties</filename>:<programlisting>#Password of Keystore
+oidc.sso.encryption.keystore.pswd = password</programlisting></para>
+            </listitem>
+
+            <listitem>
+              <para>Update the password of keyentry, available in
+              <filename>sso.properties</filename>:<programlisting>#Password of the keyentry
+oidc.sso.encryption.keyentry.pswd = password
+</programlisting></para>
+            </listitem>
+
+            <listitem>
+              <para>Update the alias used for keyentry, available in
+              <filename>sso.properties</filename>:<programlisting>#Alias used in Keyentry
+oidc.sso.encryption.keyentry.alias = mykey
+</programlisting></para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+
+      <section role="ITEM">
+        <title>New Key Store</title>
+
+        <para>You can set up a key store to encode the site and secret key.
+        The following steps guide you to configure a new key store:
+        <orderedlist>
+            <listitem>
+              <para>Install OpenSSL</para>
+            </listitem>
+
+            <listitem>
+              <para>Use the following command to create a private key and
+              public certificate:<programlisting><command>openssl req -newkey rsa:2048 -x509 -keyout cakey.pem -out cacert.pem -days 3650</command></programlisting><itemizedlist>
+                  <listitem>
+                    <para><keycode>cakey.pem</keycode> is the private
+                    key.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><keycode>cacert.pem</keycode> is the public
+                    certificate.</para>
+                  </listitem>
+                </itemizedlist></para>
+            </listitem>
+
+            <listitem>
+              <para>Use the following java utility to create a JKS
+              keystore:<programlisting><command>java utils.ImportPrivateKey -keystore identity.jks -storepass password -keyfilepass privatepassword -certfile cacert.pem -keyfile cakey.pem -alias mykey</command></programlisting></para>
+
+              <para>Alternatively, you can use the following commands to
+              create a PKCS12 / JKS file<orderedlist numeration="lowerroman">
+                  <listitem>
+                    <para>Use the following command to create a PKCS12
+                    keystore:<programlisting><command>openssl pkcs12 -export -in cacert.pem -inkey cakey.pem -out identity.p12 -name "mykey"</command></programlisting></para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Use the following keytool command to convert the
+                    PKCS12 keystore to JKS keytstore:<programlisting><command>keytool -importkeystore -destkeystore identity.jks -deststorepass password -srckeystore identity.p12 -srcstoretype PKCS12 -srcstorepass password</command></programlisting></para>
+                  </listitem>
+                </orderedlist></para>
+            </listitem>
+
+            <listitem>
+              <para>Use the following command to create a trust
+              keystore:<programlisting><command>keytool -import -file cacert.pem -keystore trust.jks -storepass password</command></programlisting></para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>Google reCAPTCHA Setup</title>
+
+      <para>This section describes the google reCAPTCHA configurations.<note>
+          <para>This is not a mandatory step, however, it is recommended that
+          you use your company registration to use Google reCAPTCHA.</para>
+        </note></para>
+
+      <para>The following steps guide you to setup the feature:<orderedlist>
+          <listitem>
+            <para>Click on the link <ulink
+            url="https://www.google.com/recaptcha/admin/create">https://www.google.com/recaptcha/admin/create</ulink>
+            to create a new account or sign-in using an existing google
+            account.</para>
+          </listitem>
+
+          <listitem>
+            <para>Fill all the details on the site and submit.</para>
+          </listitem>
+
+          <listitem>
+            <para>Copy and encode the 'Site Key' and 'Secret Key'</para>
+          </listitem>
+
+          <listitem>
+            <para>Update these encoded keys against the respective properties
+            in <filename>portal.properties</filename>, as shown
+            below:<programlisting>services.recaptcha.site.key =
+services.recaptcha.secret.key =</programlisting></para>
+          </listitem>
+        </orderedlist></para>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Video Chat</title>
+
+    <para>This section guides you to setup the 'Video Chat' feature in the
+    modern <productname id="ent_appli">Fusion Corporate
+    Channels</productname>.</para>
+
+    <para>The following steps guide you to setup the feature:<orderedlist>
+        <listitem>
+          <para>Set the property <property>videochat.enable</property> to
+          'True' in <filename>portal.properties</filename>, by default, the
+          property is set to 'False'.</para>
+        </listitem>
+
+        <listitem>
+          <para>Run the DDL script to create the table
+          <database>GTP_CHAT_PROPERTY</database>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Configure the database table
+          <database>GTP_CHAT_PROPERTY</database> with the following
+          information:<itemizedlist>
+              <listitem>
+                <para>COMPANY_ABBV_NAME: Name of the company that you are
+                enabling the feature for.</para>
+              </listitem>
+
+              <listitem>
+                <para>BANK_ABBV_NAME: Name of the serving bank.</para>
+              </listitem>
+
+              <listitem>
+                <para>USER_NAME: Name of customer user.</para>
+              </listitem>
+
+              <listitem>
+                <para>WIDGET_KEY: The unique widget key.</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+
+        <listitem>
+          <para>'Get Live Help' icon on the homepage is available for the FCC
+          customer.</para>
+        </listitem>
+      </orderedlist></para>
+  </section>
+</chapter>

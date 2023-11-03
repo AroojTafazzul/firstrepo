@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for a GTP user. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	
+	 <xs:redefine schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd">
+	 	<xs:simpleType name="product_code">
+	 		<xs:restriction base="product_code">
+				<xs:enumeration value="BG"/>
+				<xs:enumeration value="*"/>
+	 		</xs:restriction>
+	 	</xs:simpleType>
+	 </xs:redefine>
+	 
+	 <xs:redefine schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd">
+	 	<xs:complexType name="counterparty">
+	 		<xs:complexContent>
+	 			<xs:restriction base="counterparty">
+					<xs:element name="counterparty" type="ThirtyFiveCharacters" nillable="true"/> 	
+				</xs:restriction>
+			</xs:complexContent>
+	 	</xs:complexType>
+	 </xs:redefine>
+	 
+	 <!--  <xs:override schemaLocation="common.xsd">
+	  	  <xs:complexType name="counterparty">
+            <xs:complexContent>
+                <xs:restriction base="counterparty">
+                    <xs:sequence>
+                        <xs:element name="counterparty" type="ThirtyFiveCharacters" nillable="true"/> 	
+                    </xs:sequence>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+         <xs:simpleType name="product_code">
+            <xs:restriction base="product_code">
+	                <xs:enumeration value="BG" />
+	                <xs:enumeration value="*" />
+            </xs:restriction>
+        </xs:simpleType>
+	  
+	  </xs:override> -->
+	 
+	 <xs:complexType name="facility_entities">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="facility_entity"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="facility_entity">
+		<xs:sequence>
+			<xs:element name="entity_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="limits">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="limit"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="limit">
+		<xs:sequence>
+			<!-- <xs:element name="limit_id" type="positiveInteger" nillable="true"/> -->
+			
+			<!-- <xs:element name="facility_id" type="positiveInteger" nillable="true"/> -->
+			
+			<xs:element name="limit_reference" type="TwentyCharacters" nillable="true"/>
+			
+			<xs:element name="cur_code" type="currency" nillable="true"/>
+			
+			<xs:element name="limit_amt" type="amount" nillable="true"/>
+			
+			<xs:element name="utilised_amt" type="amount" nillable="true"/>
+			
+			<xs:element name="review_date" type="Date" nillable="true"/>
+			
+			<xs:element name="limit_pricing_details" type="xs:string" nillable="true"/>
+			
+			<xs:element name="limit_product_code" type="TwoCharacters"/>
+			
+			<xs:element name="limit_sub_product_code" type="FiveCharacters"/>
+			
+			<xs:element name="product_type_code" type="product_type_code"/>
+			
+			<xs:element name="product_template" type="FourtyCharacters" nillable="true"/>
+			
+			<xs:element name="country" type="countryCode" nillable="true"/>
+			
+			<xs:element name="limit_counterparty" type="ThirtyFiveCharacters" nillable="true"/>
+			
+			<xs:element name="outstanding_amt" type="amount" nillable="true"/>
+			
+			<xs:element name="limit_status" type="OneCharacter" nillable="true"/>
+			
+			<xs:element name="limit_entities" type="limit_entities" nillable="true"/>
+			
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="limit_entities">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="limit_entity"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="limit_entity">
+		<xs:sequence>
+			<xs:element name="entity_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+			<xs:element name="limit_reference" type="TwentyCharacters" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="TwoHundredFiftyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	 
+	 
+	<xs:element name="master_facility_record">
+	    <xs:complexType>
+	        <xs:sequence>
+				
+				<!-- <xs:element name="facility_id" type="positiveInteger" nillable="true"/> -->
+				
+				<xs:element name="facility_reference" type="TwentyCharacters" nillable="true"/>
+				
+				<xs:element name="bank_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+				
+				<!-- <xs:element name="owner_id" type="positiveInteger" nillable="true"/> -->
+				<!-- <xs:element name="brch_code" type="FiveCharacters" nillable="true"/> -->
+				<!-- <xs:element name="company_abbv_name" type="ThirtyFiveCharacters" nillable="true"/> -->
+				
+				<xs:element name="facility_description" type="xs:string" nillable="true"/>
+				
+				<xs:element name="cur_code" type="currency" nillable="true"/>
+				
+				<xs:element name="facility_amt" type="amount" nillable="true"/>
+				
+				<xs:element name="utilised_amt" type="amount" nillable="true"/>
+				
+				<xs:element name="outstanding_amt" type="amount" nillable="true"/>
+				
+				<xs:element name="review_date" type="Date" nillable="true"/>
+				
+				<xs:element name="facility_pricing_details" type="TwoHundredFiftyCharacters" nillable="true"/>
+				
+				<xs:element name="bo_reference" type="TwentyCharacters" nillable="true"/>
+				
+				<xs:element name="facility_status" type="OneCharacter" nillable="true"/>
+				
+				<xs:element name="facility_entities" type="facility_entities" nillable="true"/>
+				
+				<xs:element name="limits" type="limits" nillable="true"/>
+				
+				<!-- <xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field"/> -->
+			   </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+	
+</xs:schema>

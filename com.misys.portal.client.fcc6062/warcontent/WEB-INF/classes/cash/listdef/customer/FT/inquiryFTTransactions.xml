@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="FT_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PARENT_REFERENCE_ID" column="CrossReference@ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="center" width="5em" loca_key="ENTITY"/>
+	<column name="sub_product_code" align="center" width="13%" loca_key="PRODUCT_TYPE"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="6em" loca_key="AMOUNT"/>
+	<column name="cust_ref_id" align="left" width="19%" loca_key="CUSTOMER_REFERENCEID"/>
+	<column name="iss_date" align="center" width="12%" loca_key="VALUE_DATE"/>
+	<column name="counterparty_name" align="left" width="19%" loca_key="COUNTERPARTY">
+		<script>
+			if (value.equals(""))
+			{
+				var subProductCode = row.getColumnValue("sub_product_code");
+				if(("BILLP").equals(""+subProductCode+"") || ("BILLS").equals(""+subProductCode+""))
+				{
+					value = row.getColumnValue("ObjectDataString@payee_name");
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="account_name" align="center" width="19%" loca_key="ACCOUNTNUMBER"/>
+	<column name="ObjectDataString@pre_approved_status" align="center" width="8%" loca_key="PRE_APPROVED_STATUS">
+		<script>
+			if (value != null &amp;&amp; !value.equals(""))
+			{
+				value = com.misys.portal.common.localization.Localization.getDecode(language, "N034", value);;
+			}
+			value;
+		</script>
+	</column>
+	<column name="prod_stat_code" align="center" width="10%" loca_key="STATUS" sort="n"/>
+
+	<column name="entity" align="left" loca_key="ENTITY" hidden="y"/>	
+	<column name="ObjectDataString@payee_name" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="bo_ref_id" hidden="y"/>
+	<column name="bulk_ref_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>	
+	<column name="CrossReference@ref_id" hidden="y"/>
+	<column name="appl_date" align="center" width="12%" loca_key="APPL_DATE"/>	
+	
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="34"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="*"/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="PRODUCT_SUBTYPE"
+	    type="AvaliableSubProductType"
+	    input="y"
+	    multiple_values="INT,TPT,MUPS,DOM,MEPS,RTGS,HVPS,HVXB,MT101,MT103,FI103,FI202,IBG,IAFT,MEPS,BILLP,BILLS,DDA,PICO,PIDD,COCQS,CQBKR"/>		    
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="CUSTOMER_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"/>
+	<parameter
+		name="AmountRange"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="AmountFrom"
+		range_to_label="AmountTo"/>
+		<parameter
+		name="create_date"
+		type="range"
+		input="y"
+		range_from_label="APPLICATION_DATE_FROM"
+		range_to_label="APPLICATION_DATE_TO"
+		default="blank"/>
+		<parameter
+		name="counterparty_name"
+		input="y"
+		size="20"
+		max_length="150"
+		loca_key="COUNTERPARTY"/>
+
+	<parameter
+		name="account_no"
+		size="20"
+		max_length="35"
+		loca_key="ACCOUNTNUMBER"
+		input="y"
+		type="AccountNo"
+		productType="FT:INT,FT:TPT,FT:MEPS,FT:RTGS,FT:MUPS,FT:HVPS,FT:HVXB,FT:DOM,FT:MT101,FT:MT103,FT:FI103,FT:FI202,FT:IBG,FT:IAFT,FT:MEPS,FT:BILLP,FT:BILLS,FT:DDA,FT:PICO,FT:PIDD"/>
+
+	<parameter
+		name="prod_stat_code"
+		type="AvaliableProductStatus"
+		loca_key="STATUS"
+		input="y"
+		multiple_values="03,04,07,11,35"/>
+
+
+	<!-- candidates -->	
+	<candidate name="fund_transfer_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					create_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					create_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+				<criteria>
+				<column name="amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+		   		<column name="cust_ref_id"/>
+		   		<operator type="like"/>
+		  		<value type="parameter">
+				   cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+		   		<column name="tnx_stat_code"/>
+		   		<operator type="equal"/>
+		  		<value type="parameter">
+				   tnx_stat_code
+				</value>
+			</criteria>
+			<!-- <criteria>
+			   <column name="bulk_ref_id"/>
+			   <operator type="isNull"/>
+			</criteria> -->
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+			  <column name="sub_product_code"/>
+			  <operator type="like"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="not in"/>
+				<value type="vector">
+					<value type="code">
+						N047_TRADE_INTERNAL_TRANSFER
+					</value>
+					<value type="code">
+						N047_TRADE_OUTGOING_TRANSFER
+					</value>
+					<value type="code">
+						N047_TREASURY_TRANSFER_INTERNAL
+					</value>
+					<value type="code">
+						N047_TREASURY_PAYMENT_EXTERNAL
+					</value>
+					<value type="code">
+						N047_LOAN_FT_LNFP
+					</value>
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<candidate name="secure_email_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					create_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					create_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_no"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+				<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+		   		<column name="cust_ref_id"/>
+		   		<operator type="like"/>
+		  		<value type="parameter">
+				   cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+		   		<column name="tnx_stat_code"/>
+		   		<operator type="equal"/>
+		  		<value type="parameter">
+				   tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+			  <column name="sub_product_code"/>
+			  <operator type="like"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N047_COCQS
+					</value>
+					<value type="code">
+						N047_CQBKR
+					</value>					
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+		 	 <column name="prod_stat_code"/>
+			 	 <operator type="not in"/>
+			 	 <value type="vector">
+						<value type="code">
+							N005_REJECTED
+						</value>
+			  	 		<value type="code">
+			  	 			N005_PENDING
+			  	 		</value>
+			  	 		<value type="code">
+			  	 			N005_PURGED
+			  	 		</value>
+			  	 </value>
+			</criteria>
+   </filter>	
+</listdef>

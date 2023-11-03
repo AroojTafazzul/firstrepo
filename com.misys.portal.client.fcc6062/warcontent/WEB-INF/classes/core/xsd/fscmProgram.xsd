@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for a GTP user. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="fscm_program">
+	    <xs:complexType>
+	        <xs:sequence>
+	        	<xs:element minOccurs="1" ref="program_id">
+					<xs:annotation>
+						<xs:documentation>Program Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="program_code">
+					<xs:annotation>
+						<xs:documentation>Program Code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="program_name">
+					<xs:annotation>
+						<xs:documentation>Program Name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="1" ref="customer_reference">
+					<xs:annotation>
+						<xs:documentation>Customer Reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="company_id" type="positiveInteger" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Company Id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="brch_code">
+					<xs:annotation>
+						<xs:documentation>Brch code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="customer_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Customer Abbv Name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="entity">
+					<xs:annotation>
+						<xs:documentation>Entity.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bank_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Bank Abbv Name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="program_type">
+					<xs:annotation>
+						<xs:documentation>Program Type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="program_sub_type">
+					<xs:annotation>
+						<xs:documentation>Program Sub-Type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="sales_reference">
+					<xs:annotation>
+						<xs:documentation>Sales Reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="status">
+					<xs:annotation>
+						<xs:documentation>Status.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="start_date">
+					<xs:annotation>
+						<xs:documentation>Start Date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="expiry_date">
+					<xs:annotation>
+						<xs:documentation>Expiry Date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="narrative" type="xs:string" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Narrative.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="credit_limit" type="amount">
+					<xs:annotation>
+						<xs:documentation>Credit Limit.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="credit_limit_cur_code" type="currency">
+					<xs:annotation>
+						<xs:documentation>Credit Limit Currency Code.</xs:documentation>
+					</xs:annotation>
+				</xs:element> 
+				<xs:element minOccurs="0" name="available_amt" type="amount">
+					<xs:annotation>
+						<xs:documentation>Available Amount.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="available_amt_cur_code" type="currency">
+					<xs:annotation>
+						<xs:documentation>Available Amount Currency Code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			    <xs:element minOccurs="0" name="customer_role" type="TwoCharacters">
+			  		<xs:annotation>
+						<xs:documentation>Customer Role.</xs:documentation>
+					</xs:annotation>
+				 </xs:element>
+				<xs:element minOccurs="0" name="anchorparty_role" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Anchor Party Role.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			    <xs:element minOccurs="0" name="counterparty_role" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Counter Party Role.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			    <xs:element minOccurs="0" name="invoice_uploaded_by" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Invoice Uploaded By.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="invoice_submitted_by" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Invoice Submitted By.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="finance_requested_by" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Finance Requested By.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="finance_debit_party" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Finance Debit Party.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="finance_credit_party" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Finance Credit Party.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+  				<xs:element minOccurs="0" name="invoice_settled_by" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Invoice Settled By.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="residual_payment_by" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Residual Payment By.</xs:documentation>
+					</xs:annotation>
+  				</xs:element>
+				<xs:element minOccurs="0" name="principal_risk_party" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Principal Risk Party.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="buyer_acceptance_required" type="OneCharacter">
+					<xs:annotation>
+						<xs:documentation>Buyer Acceptance Required.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="multiple_finance_allowed" type="OneCharacter">
+					<xs:annotation>
+						<xs:documentation>Multiple Finance.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="credit_note_submitted_by" type="TwoCharacters">
+					<xs:annotation>
+						<xs:documentation>Credit Note Submitted By.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			    <xs:element minOccurs="0" name="created_dttm" type="DateTime">
+			    	<xs:annotation>
+						<xs:documentation>Created Date Time.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="modified_dttm" type="DateTime">
+			    	<xs:annotation>
+						<xs:documentation>Modified Date Time.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field"/>
+			   </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+</xs:schema>

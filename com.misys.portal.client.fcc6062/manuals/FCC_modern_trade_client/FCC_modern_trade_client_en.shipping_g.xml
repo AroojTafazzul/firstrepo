@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: Shipping Guarantee;PERM=sg_access"
+         id="SG_UX" role="TOPIC">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_Shipping_G"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+  <para role="TEXT">A Shipping Guarantee (SG) is an undertaking by a bank to
+  the shipping owner or agent of a vessel, to release goods to the importer
+  pending receipt of the original Bill of Lading. This helps the importer to
+  clear the purchased goods under a Letter of Credit or a simple documentary
+  collection while waiting for shipping documents to be presented. Hence it
+  can for instance save the client from storage charges levied by the port
+  authorities due to late arrival of the shipping documents or delays in
+  clearance of the goods. Some Letters of Indemnity could also be handled
+  through this module.</para>
+
+  <para role="TEXT">The <xi:include href="../entities_en.xml"
+  xpointer="ent_Shipping_G" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  module of <xi:include href="../entities_en.xml" xpointer="ent_appli"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> enables you, on behalf of your
+  company (which is the importer and applicant) to initiate new Shipping
+  Guarantee requests, send them to your chosen Issuing Bank, and subsequently
+  follow up these transactions by sending and receiving updates on the records
+  to and from the bank.</para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">Within this section of the help guide, the terms
+    "<emphasis role="bold">SG</emphasis>" and <emphasis role="bold">"Shipping
+    Guarantee</emphasis>" are used interchangeably. The terms "<emphasis
+    role="bold">record</emphasis>" and "<emphasis
+    role="bold">transaction</emphasis>" both refer to entries in the system
+    relating to the function being discussed.</para>
+  </section>
+
+  <section condition="TITLE=Shipping Guarantee Landing Page;PERM=sg_access;ACCESS=SG_LP_UX"
+           role="TOPIC">
+    <title>Shipping Guarantee Landing Page</title>
+
+    <para>The Shipping Guarantee Landing page displays a list of SGs that are
+    in various stages of an SG life cycle. The Landing page view is
+    customizable based on your requirement.</para>
+
+    <para>The following image illustrates the Shipping Guarantee landing
+    page:</para>
+
+    <para><graphic fileref="images/shipguarantee1.png" width="165mm"/></para>
+
+    <para>The following button enables you to initiate a new Shipping
+    Guarantee from scratch. <variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Request Shipping
+          Guarantee</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Enter the desired terms of a new Shipping
+            Guarantee and submit them to the Issuing Bank of your
+            choice.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The following ribbon items enable you perform various actions on
+    individual SGs or in bulk, based on the tab you are on. Individual tabs
+    and related functionality are described below: <graphic
+    fileref="images/ribbon_ilc1.gif" width="165mm"/> <note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Draft</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the SGs in draft state and also the
+            transactions that checker has returned for improvement.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Actions</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Shipping Guarantee transactions on
+            which the bank has requested client action.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending
+          Approval</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Shipping Guarantee
+            transactions that are awaiting client approval.<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para>The <emphasis role="bold">Authorise</emphasis>
+                      action item is available only for a checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>A user with batch submission permission can select
+                      multiple transactions to <emphasis
+                      role="bold">Approve</emphasis> or <emphasis
+                      role="bold">Return</emphasis> though the checkbox
+                      provided for every transactions listed in this
+                      tab.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      a transaction.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending at
+          Bank</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Shipping Guarantee that are
+            awaiting bank approval.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Live</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the approved Shipping Guarantee
+            records and the expired Shipping Guarantee records by the
+            bank.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Rejected</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the rejected Letter of Credit records
+            by the bank. The status given to such SGs is "Not
+            Processed".</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Closed</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Shipping Guarantee transactions
+            that have been marked as purged by the Issuing Bank's Trade
+            Services team. You cannot initiate further amendments or messages
+            on such a transaction, and can only use its data for inquiry
+            purposes.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The <guiicon>Advance Filter</guiicon> presents you with various
+    filter options like <emphasis role="bold">Event</emphasis>, <emphasis
+    role="bold">Entity</emphasis>, <emphasis role="bold">Beneficiary
+    Name</emphasis>, <emphasis role="bold">Currency</emphasis> and <emphasis
+    role="bold">Expiry Date</emphasis>. Enter the relevant search criterion
+    and apply the filter to list all the relevant SGs. You can also select the
+    time frame for which data needs to be fetched.</para>
+
+    <para>You can perform the following actions on the listed
+    SGs:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of SGs</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of SGs displayed on the dashboard. Click on the Download icon
+          to list the formats in which the files can be downloaded. You can
+          download Current Data or Full Data.<itemizedlist>
+              <listitem>
+                <para>Current Data: Downloads the transactions displayed on
+                screen.</para>
+              </listitem>
+
+              <listitem>
+                <para>Full Data: Downloads all the transactions available
+                under a particular status tab like Draft, Rejected and
+                more.</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed
+          SGs.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      Shipping Guarantee transactions. The actions are available in relevant
+      tabs based on the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction)</para>
+          </listitem>
+
+          <listitem>
+            <para>If there are multiple actions available for a transaction, a
+            few actions may accessed by clicking on this icon
+            <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/dots_icon.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject>.</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+			
+			<row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clear</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/clear.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to clear the transaction from list. Only
+              amendment / message rejected event can be cleared from the list,
+              however this event will still be available in
+              enquiry.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delete</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to delete the Issuance Request rejected
+              events from the list and it is no longer available in Fusion
+              Corporate Channels.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Customer
+              Instructions</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cust_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Consent Response', 'Customer
+              Instructions' and attach supporting documents if any, to submit
+              the Customer Instructions to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clean Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel>Amendment
+              Response</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amendresp_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Amendment
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Disposal Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/disposal_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to provide the disposal instructions on a
+              discrepant Shipping Guarantee. The available options
+              are:<itemizedlist>
+                  <listitem>
+                    <para>Agree to pay against the document</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Hold the document</para>
+                  </listitem>
+                </itemizedlist></para><para>Fill all the mandatory fields in
+              the General Details section and attach supporting documents if
+              any, to submit the Disposal Instructions to bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Cancel Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cancel_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Cancel
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Authorise</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/authorise.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to authorise the selected transaction.
+              You can either approve or return the transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Approve</emphasis>
+                      or <emphasis role="bold">Return</emphasis> a transaction
+                      is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note> </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amend</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amend_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to amend the selected transaction.<note>
+                  <para>Option to <emphasis role="bold">Amend</emphasis> a
+                  transaction is available only to a maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Request for Settlement</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Correspondence</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/correspondence_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to initiate correspondence with bank for
+              the selected transaction..</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to assign the reference to the
+              transaction for which no customer reference is assigned, this
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to update/assign the entity of
+              transaction. This provision is available under Live Tab. This
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Audit Trail</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/audit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the audit trail of transaction.
+              This option shows all the users associated with the transaction
+              since its initiation.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=sg_access;ACCESS=SG_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking any
+      of the following actions against any given transaction:<itemizedlist>
+          <listitem>
+            <para>Details</para>
+          </listitem>
+
+          <listitem>
+            <para>Return</para>
+          </listitem>
+
+          <listitem>
+            <para>Approve</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details/Return/Approve</guilabel></entry>
+
+              <entry valign="top"><para>Displays the transaction details, all
+              the events of transaction, attachments and charges associated
+              with the transaction. The information is spread over three tabs
+              'Transaction Details', 'Events' and 'Additional Information'.
+              Individual tabs are described below:<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Request Shipping
+                      Guarantee</emphasis> button at the top of <emphasis
+                      role="bold">Details</emphasis> page to navigate back to
+                      Shipping Guarantee Landing page.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Journey</emphasis>
+                      button at the top of <emphasis
+                      role="bold">Details</emphasis> page to view the history
+                      of events that the transaction has gone through.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note><itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Transaction
+                    Details</emphasis>: Displays the details of the
+                    transaction that is opened from the listing page. The tab
+                    lists the fields based on the action you click against the
+                    transaction.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Events</emphasis>: Displays
+                    the history of events that transaction has gone through.
+                    The transactions are either acknowledged by the bank or a
+                    reporting event is initiated by bank that requires an
+                    action to be performed by a corporate user. <note>
+                        <para>In case an action is pending on the corporate
+                        user, a <emphasis role="bold">Respond</emphasis>
+                        button is present against the stated event, that
+                        navigates user to screen to perform the respective
+                        action.</para>
+                      </note></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Attachments' added as
+                    part of this transaction and also displays 'Documents' and
+                    'Fees and Charges' details.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Request Shipping Guarantee;PERM=sg_access;ACCESS=SG_REC_UX"
+           role="TOPIC">
+    <title>Request Shipping Guarantee</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">Request
+    Shipping Guarantee</emphasis> form. The form contains several functions
+    and allows you to initiate various types of Import Letter of Credit
+    request.</para>
+
+    <para role="TEXT">You can view all the sections of SG Initiation form and
+    also navigate to any section from the left pane of <emphasis
+    role="bold">Request Shipping Guarantee</emphasis> form. The sections are
+    marked with a green tick <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/ILC_Generaldetails.gif" width="16mm"/>
+        </imageobject>
+      </inlinemediaobject> when all the mandatory fields of section are filled
+    with valid values.</para>
+
+    <note>
+      <para><itemizedlist>
+          <listitem>
+            <para>The <emphasis role="bold">Request Shipping
+            Guarantee</emphasis> feature is available only for a maker
+            user.</para>
+          </listitem>
+
+          <listitem>
+            <para><xi:include href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/> provides a option to
+            save the transaction each time user clicks on Next or manually
+            saves the transaction.</para>
+          </listitem>
+        </itemizedlist></para>
+    </note>
+
+    <section condition="TITLE=General Details;PERM=sg_access;ACCESS=SG_GD_UX"
+             role="TOPIC">
+      <title>General Details</title>
+
+      <para>This section lists all the fields pertaining to general details
+      section of <emphasis role="bold">Request Shipping Guarantee</emphasis>
+      form.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel role="bold"> Create
+              From</guilabel></entry>
+
+              <entry valign="top"><para role="TEXT">Select the SG type from
+              which you wish to create a new Shipping Guarantee request.
+              Available options are:<itemizedlist>
+                  <listitem>
+                    <para>Copy From SG: Click on this option to open a list of
+                    existing Shipping Guarantee requests. This displays a list
+                    of the previously submitted and approved Shipping
+                    Guarantees, to select from as a base for a new one. You
+                    can use the Advance Filter option to narrow down the
+                    search result based on <guilabel
+                    moreinfo="none">Beneficiary Name</guilabel>, <guilabel
+                    moreinfo="none">Currency</guilabel> or <guilabel
+                    moreinfo="none">Expiry Date</guilabel>.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>From Existing LC: Click on this option to open a
+                    list of existing Issued Letter of Credit. This displays a
+                    list of your company's existing Letters of Credit, to
+                    select from as a base for the Shipping Guarantee request.
+                    You can use the Advance Filter option to narrow down the
+                    search result based on <guilabel
+                    moreinfo="none">Beneficiary Name</guilabel>, <guilabel
+                    moreinfo="none">Currency</guilabel> or <guilabel
+                    moreinfo="none">Expiry Date</guilabel>.</para>
+
+                    <para>Upon selection of an existing Letter of Credit -
+                    Advised by clicking on Browse option. The selected
+                    transaction is displayed in a "<guimenu>Parent Transaction
+                    Information</guimenu>" window. You can click on this icon
+                    <inlinemediaobject>
+                        <imageobject>
+                          <imagedata fileref="images/parent_btb_win.png"
+                                     width="5mm"/>
+                        </imageobject>
+                      </inlinemediaobject> to display complete parent
+                    transaction, from where you can also download the
+                    transaction in PDF format, by clicking on the following
+                    icon <inlinemediaobject>
+                        <imageobject>
+                          <imagedata fileref="images/btb_parent_dwnld.png"
+                                     width="5mm"/>
+                        </imageobject>
+                      </inlinemediaobject>.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Date of expiry of the
+              Shipping Guarantee.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name, for use within your
+              company, for the Shipping Guarantee you are creating. Maximum of
+              16 characters are allowed in the field.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the name for use
+              within your company, for the LC you are creating. The field
+              allows a maximum of 16 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Beneficiary Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter reference
+              information for the beneficiary, if required. The field allows a
+              maximum of 16 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bill of Lading/Airway Bill Number</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the reference number
+              of the Bill of Lading, Air Way Bill, or any such document
+              against which the guarantee is issued. This field allows upto 35
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Mode of Shipment</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Mode of transportation for
+              the goods. The dropdown list shows the possible values, which
+              are:<programlisting>
+Sea
+Air
+Rail
+Truck
+Postage
+Mixed
+Courier
+Local Delivery
+Other</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Shipping Details</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the vessel or
+              cargo or plane on which the goods will be transported. This
+              field allows upto 65 characters.</para><para>If several shippers
+              or (for instance) dates are involved, enter such details in the
+              <guimenu>Description of Goods</guimenu> field.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Description of Goods</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of the goods
+              covered by the counter guarantee. Up to 100 lines of 65
+              characters each. You can use the button at the top right of this
+              field to select predefined phrases to insert in the narrative.
+              Details such as marks, packages descriptions and contents could
+              be provided in this field.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Applicant and Beneficiary Details;PERM=sg_access;ACCESS=SG_AB_UX"
+             id="AB" role="TOPIC">
+      <title>Applicant and Beneficiary Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Applicant</guimenu></para></entry>
+
+              <entry valign="top"><para role="TEXT">Name and address of the
+              applicant and optionally the entity (within the applicant
+              company) raising the application.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel role="bold">
+              Entity</guilabel></entry>
+
+              <entry valign="top">Entity making the application. This field is
+              only present if your company has entities defined and you are
+              attached to one or more entities. If you are attached to more
+              than one, click on the drop down icon to select one. If you are
+              attached to only one, the field is preset to that entity and
+              cannot be changed.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the applicant.
+              This field allows a maximum of 35 characters. Defaults to the
+              name of your company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the applicant.
+              This field allows a maximum of 4 lines of 35 characters each.
+              Defaults to the address of your company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Beneficiary Details (Transportation
+              Company)</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Name and address
+              of the beneficiary (shipper). Click on the 'Name' field drop
+              down to select the associated beneficiary. You may also add a
+              new beneficiary for the applicant, enter the new Name and
+              Address details of the beneficiary and slide the "<guimenu>Save
+              the Beneficiary</guimenu>" button and also enter the abbreviated
+              name for the new beneficiary.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the beneficiary
+              (shipper). Click on the drop down for the list of beneficiaries
+              or enter a new beneficiary name. This field allows a maximum of
+              35 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the beneficiary
+              (shipper). If the beneficiary name is selected from the dropdown
+              this field gets auto-filled, else you must enter the address for
+              the new beneficiary. This field allows a maximum of 3 lines of
+              35 characters each.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Issuing Bank and Amount;PERM=sg_access;ACCESS=SG_IBA_UX"
+             role="TOPIC">
+      <title>Issuing Bank and Amount</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the bank. The
+              dropdown list shows a list of banks that your company has a
+              relationship with.</para><note>
+                  <para role="TEXT">If you select a combination of an
+                  MT798-enabled bank from this dropdown and
+                  <guilabel>SWIFT</guilabel> from the <guilabel>Send LC
+                  by</guilabel> dropdown in the <guilabel>Instructions for the
+                  Bank Only</guilabel> section, the <guilabel>Transport
+                  Mode</guilabel> dropdown appears in the <guilabel>Shipment
+                  Details</guilabel> section and the <guilabel>Send
+                  Attachments by</guilabel> dropdown appears in the
+                  <guilabel>Instructions for the Bank Only</guilabel>
+                  section.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Issuer's Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The reference (multi
+              purpose string that for instance may identify the liability
+              line) under which the transaction should be recorded. The
+              dropdown list shows the references that are defined for the
+              above selected Issuing Bank.</para><note>
+                  <para role="TEXT">The references shown are defined and
+                  maintained by the bank. If the bank does not wish to define
+                  and use references per Bank, a non bank-specific <guilabel
+                  moreinfo="none">Reference</guilabel> field appears in the
+                  <guilabel moreinfo="none">Applicant Details</guilabel>
+                  section instead.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Currency code
+              (three alphabetic characters).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Guarantee Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the amount of
+              Shipping Guarantee. The field allows maximum of 15 characters
+              including delimiters.</para><para>This amount generally
+              represents the approximate value of the goods.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Instructions to Bank;PERM=sg_access;ACCESS=SG_IB_UX"
+             role="TOPIC">
+      <title>Instructions to Bank</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colwidth="249*"/>
+
+          <colspec colwidth="751*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Principal Account</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Account number that you
+              want the Issuing Bank to use to debit any principal amount in
+              the life of the transaction. Click the drop down icon to select
+              the account.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Fee Account</guilabel> </para></entry>
+
+              <entry valign="top">Account number that you want the Issuing
+              Bank to use to debit any charges and commissions related to the
+              transaction. Click the drop down icon to select the
+              account.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Any additional information
+              that would not fit in any of the narratives above. Maximum 100
+              lines of 65 characters. Click the button to the right of this
+              field, to select predefined phrases to insert into this
+              field.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Attachment;PERM=sg_access;ACCESS=SG_AT_UX"
+             role="TOPIC">
+      <title>Attachment</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">File Upload</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT">Upload supporting files
+              either by 'Drag and Drop' method or by 'Browsing' to the file
+              location. You can attach up to 5 the supporting documents of
+              size 1 Mega Byte each. The file types supported are
+              <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+              PDF, GIF, ZIP</emphasis>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Browse</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Browse button and Drag and
+              Drop field, which you can optionally use to attach a file from
+              your local hard disk to give additional details pertaining to
+              this Letter of Credit.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Preview;PERM=sg_access;ACCESS=SG_PV_UX"
+             role="TOPIC">
+      <title>Preview</title>
+
+      <para role="TEXT">This section opens in read only mode and shows all the
+      details that you have filled in the application and also allows you to
+      either Save or Submit the application.</para>
+    </section>
+  </section>
+</section>

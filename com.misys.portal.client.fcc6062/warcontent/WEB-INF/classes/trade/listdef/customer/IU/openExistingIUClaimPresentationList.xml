@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" page="50" default_order="ref_id" js_binding="misys.binding.common.listdef_mc" default_order_type="d">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="IU_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_CLAIM_PROCESSING"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="20%" loca_key="ENTITY_NAME_APPLICANT"/>	
+	<column name="bo_ref_id" align="left" width="15%" loca_key="BO_REFERENCEID"/>	
+	<column name="beneficiary_name" align="left" width="20%" loca_key="BENEFICIARY_NAME"/>	
+	<column name="claim_reference" align="center" width="15%" loca_key="CLAIM_REFERENCE"/>
+	<column name="claim_present_date" align="center" width="6em" loca_key="CLAIM_PRESENT_DATE"/>
+	
+	<column name="Amount" computation="sum" align="center" width="10em" loca_key="CLAIM_AMT">
+		<column name="claim_cur_code"/>
+		<column name="claim_amt"/>
+		<script>
+				var claim_cur_code = row.getColumnValue("claim_cur_code");
+				var claim_amt = row.getColumnValue("claim_amt");
+
+				if(!"".equals(""+claim_cur_code+"") &amp;&amp; !"".equals(""+claim_amt+"")  &amp;&amp; claim_amt !=null)
+				{
+					value = claim_cur_code + " " + com.misys.portal.common.tools.Utils.getFormattedAmount(claim_amt.getValue(),claim_cur_code.toString());
+				}
+				else
+				{
+					value = "-" ;
+				}
+				value;
+		</script>
+	</column>	
+	
+	<column name="exp_date" align="center" width="6em" loca_key="EXP_DATE"/>	
+	<column name="CUBeneProductPartyDetails@name" align="left" width="20%" loca_key="CU_BENEFICIARY_NAME" displayProperty="IS_COUNTER_UNDERTAKING_ENABLED"/>
+	<column name="cu_exp_date" align="center" width="6em" loca_key="CU_EXP_DATE" displayProperty="IS_COUNTER_UNDERTAKING_ENABLED"/>
+	
+	<column name="action_req_code" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="beneficiary_name" hidden="y"/>
+	<column name="claim_cur_code" hidden="y"/>
+	<column name="claim_amt" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="Entity"/>
+	<parameter
+		name="bo_ref_id"
+		loca_key="BO_REFERENCEID"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="claim_reference"
+		input="y"
+		size="35"
+		max_length="35"
+		loca_key="CLAIM_REFERENCE"/>
+	<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CLAIM_CURCODE"
+		type="Currency"/>
+
+	<!-- candidates -->	
+	<candidate name="issued_undertaking">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="claim_reference"/>
+				<operator type="like"/>
+				<value type="parameter">
+					claim_reference
+				</value>
+			</criteria>
+			<criteria>
+				<column name="claim_cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_CLAIM_PRESENTATION
+				</value>
+			</criteria>
+			<criteria>
+				<column name="claim_reference"/>
+				<operator type="isNotNull"/>
+			</criteria>
+			<criteria>
+				<column name="action_req_code"/>
+				<operator type="isNull"/>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N004_CONTROLLED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N004_INCOMPLETE
+				</value>
+			</criteria>
+			<criteria>
+			 	<column name="sub_product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N047_DEMAND_GUARANTEE
+					</value>
+					<value type="code">
+						N047_STANDBY
+					</value>
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

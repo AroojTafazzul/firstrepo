@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xsl:stylesheet [
+  <!ENTITY nbsp "&#160;">
+]>
+<listdef ordered="y" default_order="bo_inp_dttm" default_order_type="d" page="10" js_binding="misys.binding.common.listdef_mc" search_columns="2">
+
+	<column name="ref_id" align="center" width="11em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="8%" loca_key="ENTITY"/>
+
+	<column name="product_code" align="center" width="8%" loca_key="PRODUCT"/>
+	<column name="sub_product_code" align="center" width="10%" loca_key="PRODUCT_SUBTYPE"/>
+
+	<column name="cust_ref_id" align="left" width="10%" loca_key="CUSTOMER_REFERENCEID"/>
+	<column name="value_date" hidden="y" />
+	<column name="maturity_date" align="center" width="6em" loca_key="MATURITYDATEGENERALINQUIRY">
+		<script>	
+				var maturity_date = row.getColumnValue("maturity_date");
+				var productCode = row.getColumnValue("product_code");
+				var value_date = row.getColumnValue("value_date"); ;
+		        if("TD".equals(""+productCode+""))
+		          {
+						if( maturity_date == null  || "".equals(""+maturity_date+""))
+						{
+							value = com.misys.portal.common.tools.ConvertTools.normalizeXML(value_date.getValue(),language);
+						}
+						else
+						{
+							value = maturity_date ;
+						}
+				}
+			 value;
+		</script>
+	</column>
+	<column name="counterparty_name" align="left" width="10%" loca_key="COUNTERPARTY">
+	</column>
+	<column name="bo_deal_name" align="left" width="15%" loca_key="DEAL" columnFilterType="input-multiselect"/>
+	<column name="bo_facility_name" align="left" width="15%" loca_key="FACILITY" columnFilterType="input-multiselect">
+		<script>
+			var productCode = row.getColumnValue("product_code");
+				if(("BK".equals(""+productCode+"")))
+				{   
+						value = row.getColumnValue("ObjectDataString@bulk_facility_name");
+				}
+			value;
+		</script>	
+	</column>
+	<column name="bo_ref_id" align="left" width="15%" loca_key="FACILITY" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>				
+	<column name="tnx_id" hidden="y"/>
+	<column name="entity" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="product_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("product_code");
+			value;
+    </script>		
+	</column>
+	<column name="tnx_type_code" hidden="y" showCode="y"/>
+	<column name="sub_tnx_type_code" hidden="y" showCode="y"/>
+	<column name="ObjectDataNumber@counterparty_nb" hidden="y"/>
+	<column name="counterparty_name" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="ObjectDataString@bulk_facility_name" hidden="y"/>	
+	<column name="tnx_stat_code_val" hidden="y">
+		<script>
+			value = row.getColumnValue("tnx_stat_code");
+			value;
+		</script>
+	</column>
+	<column name="prod_stat_code" hidden="y"/>
+	<column name="prod_stat_code_val" hidden="y">
+		<script>
+			value = row.getColumnValue("prod_stat_code");
+			value;
+		</script>
+	</column>
+	<column name="sub_tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code_val" hidden="y">
+		<script>
+			value = row.getColumnValue("sub_tnx_stat_code");
+			value;
+		</script>
+	</column>
+	<column name="CrossReference@ref_id" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="sub_product_code_val" hidden="y">
+		<script>
+			value = row.getColumnValue("sub_product_code");
+			value;
+		</script>
+	</column>
+	<column name="tnx_type_code_val" hidden="y">
+		<script>
+				value =row.getColumnValue("tnx_type_code");
+				value;
+	    </script>		
+	</column>
+	<column name="sub_tnx_type_code_val" hidden="y">
+		<script>
+				value =row.getColumnValue("sub_tnx_type_code");
+				value;
+	    </script>		
+	</column>		
+	<column name="transaction_type" align="left" width="10%" loca_key="LOAN_TRANSACTION_TYPE" columnFilterType="input-multiselect">
+		<script>
+			var tnxTypeCode = row.getColumnValue("tnx_type_code");
+			var subTnxTypeCode = row.getColumnValue("sub_tnx_type_code");
+			var productCode = row.getColumnValue("product_code");
+			var subProductCode = row.getColumnValue("sub_product_code");			
+						
+			if(!("".equals(""+tnxTypeCode+"")))
+			{
+			  if("01".equals(""+tnxTypeCode+"") &amp;&amp; "97".equals(""+subTnxTypeCode+""))
+				{				
+					if(("BK".equals(""+productCode+""))) {						
+	 					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LOAN_REPRICING_ANGULAR");
+					}else{
+						value= "";
+					}
+				}
+				else if("03".equals(""+tnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LISTDEF_PRODUCT_TYPE_INCREASE");
+				}
+				else if("13".equals(""+tnxTypeCode+"") &amp;&amp; "16".equals(""+subTnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LN_LISTDEF_PRODUCT_TYPE_PAYMENT");
+				}
+				else if("BLFP".equals(""+subProductCode+""))
+				{
+					value = "";
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LOAN_DRAWDOWN");
+				}
+			}
+			
+			value;
+		</script>	
+	</column>			
+	<column name="tnx_cur_code" hidden="y"/>
+	<column name="tnx_amt" hidden="y"/>
+	<column name="bo_inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>
+	<parameter
+		name="entity"
+		size="15"
+		max_length="34"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""
+		search_column="1"/>
+	<parameter
+		name="account_no"
+		size="15"
+		max_length="34"
+		loca_key="ACCOUNTNUMBER"
+		input="y"
+		type="AccountNo"
+		productType="*"
+		search_column="1"/>
+	<parameter
+		name="cust_ref_id"
+		size="15"
+		max_length="35"
+		loca_key="CUSTOMER_REFERENCEID"
+		input="y"
+		default=""
+		search_column="1"/>
+	<parameter
+		name="parameter1"
+		type="AvailableProducts"
+		size=""
+		max_length=""
+		loca_key="PRODUCTCODE"
+		input="y"
+		default=""
+		search_column="1"/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="PRODUCT_SUBTYPE"
+	    type="AvaliableSubProductType"
+	    input="y"
+	    search_column="1"/>
+    <parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"
+		search_column="1"/>
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		default="*"
+		input="y"
+		search_column="2"/>
+    <parameter
+		name="tnx_stat_code"
+		type="AvaliableTransactionStatus"
+		loca_key="TRANSACTION_STATUS"
+		input="y"
+		multiple_values="01,02,03,04,07,09"
+		search_column="2"/>
+	<parameter
+		name="AmountRange"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="AmountFrom"
+		range_to_label="AmountTo"
+		search_column="2"/>
+	<parameter
+		name="counterparty_name"
+		input="y"
+		size="15"
+		max_length="150"
+		loca_key="COUNTERPARTY"
+		search_column="2"/>
+	<parameter
+		name="maturity_date"
+		type="range"
+		input="y"
+		range_from_label="MATURITYDATEFROMGENERALINQUIRY"
+		range_to_label="MATURITYDATETO"
+		default="blank"
+		search_column="2"/>
+	<parameter
+		name="prod_stat_code"
+		type="AvaliableProductStatus"
+		loca_key="STATUS"
+		input="y"
+		multiple_values="01,08"
+		search_column="2"/>
+	<parameter
+		name="bo_inp_dttm"
+		type="range"
+		input="y"
+		range_from_label="MATURITYDATEFROMGENERALINQUIRY"
+		range_to_label="MATURITYDATETO"
+		default="blank"
+		search_column="2"/>
+	
+	<!-- candidates -->	
+	<candidate name="parameter1" >
+    	<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_NEW
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="maturity_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						maturity_date@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="maturity_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						maturity_date@to
+					</value>
+			</criteria>
+			
+			<criteria>
+				<column name="bo_inp_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@from
+					</value>
+			</criteria>
+			
+			<criteria>
+					<column name="bo_inp_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@to
+					</value>
+			</criteria>
+			
+			
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+				<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+		</filter> 
+		
+ 		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_REPRICING
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="maturity_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						maturity_date@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="maturity_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						maturity_date@to
+					</value>
+			</criteria>
+			
+			
+			<criteria>
+				<column name="bo_inp_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@from
+					</value>
+			</criteria>
+			
+			<criteria>
+					<column name="bo_inp_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@to
+					</value>
+			</criteria>
+			
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+				<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_AMEND
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="not in"/>
+				<value type="vector">
+					<value type="code">
+						N001_EL
+					</value>
+					<value type="code">
+						N001_IC
+					</value>
+					<value type="code">
+						N001_SR
+					</value>
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+				</criteria>
+				<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="maturity_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						maturity_date@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="maturity_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						maturity_date@to
+					</value>
+			</criteria>
+			
+			<criteria>
+				<column name="bo_inp_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@from
+					</value>
+			</criteria>
+			
+			<criteria>
+					<column name="bo_inp_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@to
+					</value>
+			</criteria>
+			
+		
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+	</filter>
+	<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_INQUIRE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="not in"/>
+				<value type="vector">
+					<value type="code">
+						N001_FT
+					</value>
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+				</criteria>
+				<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="maturity_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						maturity_date@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="maturity_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						maturity_date@to
+					</value>
+			</criteria>
+		
+		
+		<criteria>
+				<column name="bo_inp_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@from
+					</value>
+			</criteria>
+			
+			<criteria>
+					<column name="bo_inp_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@to
+					</value>
+			</criteria>
+			
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+	</filter> 
+    <filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_PRESENT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="not in"/>
+				<value type="vector">
+					<value type="code">
+						N001_FT
+					</value>	
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+				</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="maturity_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					maturity_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="maturity_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					maturity_date@to
+				</value>
+			</criteria>
+		
+		
+		    <criteria>
+				<column name="bo_inp_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@from
+					</value>
+			</criteria>
+			
+			<criteria>
+					<column name="bo_inp_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@to
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+		</filter>
+		    Fund transfer filters
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N001_FT
+					</value>					
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="maturity_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						maturity_date@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="maturity_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						maturity_date@to
+					</value>
+			</criteria>
+			<criteria>
+				<column name="bo_inp_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@from
+					</value>
+			</criteria>
+			
+			<criteria>
+					<column name="bo_inp_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@to
+					</value>
+			</criteria>
+
+			<criteria>
+		   		<column name="tnx_type_code"/>
+				<operator type="different"/>
+					<value type="code">
+						N002_REPORTING
+					</value> 
+			</criteria>
+	</filter> 
+	<!-- Import Open Account filter -->
+ 	<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N001_IO
+					</value>					
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+		
+			<criteria>
+				<column name="maturity_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						maturity_date@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="maturity_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						maturity_date@to
+					</value>
+			</criteria>
+			<criteria>
+				<column name="bo_inp_dttm"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@from
+					</value>
+			</criteria>
+			
+			<criteria>
+					<column name="bo_inp_dttm"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						bo_inp_dttm@to
+					</value>
+			</criteria>
+	</filter>
+ </candidate>
+  <filter or="y">
+    <criteria>
+   		<column name="prod_stat_code"/>
+		<operator type="in"/>
+		<value type="vector">
+			<value type="code">
+				N005_REJECTED
+			</value>
+			<value type="code">
+				N005_AMENDED
+			</value>
+		</value>
+	</criteria>
+    <criteria>
+   		<column name="tnx_stat_code"/>
+		<operator type="in"/>
+		<value type="vector">
+			
+	    	<value type="code">
+				N004_INCOMPLETE
+			</value> 
+			<value type="code">
+				N004_UNCONTROLLED
+			</value>
+			<value type="code">
+				N004_CONTROLLED
+			</value>
+			<value type="code">
+				N004_ACKNOWLEDGED
+			</value>
+			<value type="code">
+				N004_CANCEL
+			</value>
+			<value type="code">
+				N004_INCOMPLETE_BANK
+			</value>
+			<value type="code">
+				N004_UNCONTROLLED_BANK
+			</value>
+		
+		</value>
+	</criteria>
+ </filter>
+ <filter or ="y">
+    	   <criteria>
+				<column name="sub_tnx_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N015_CUSTOMER_DELETED
+				</value>				
+			</criteria>
+    	<criteria>
+             <column name="sub_tnx_stat_code" />
+             <operator type="isNull" />
+        </criteria>
+    </filter>
+    <filter>
+			<criteria>
+				<column name="sub_tnx_stat_code"/>
+				<operator type="not in"/>
+				<value type="vector">
+					<value type="code">
+						N015_CUSTOMER_DELETED
+					</value>
+					<value type="code">
+						N015_REJECTED_CLEARED
+					</value>
+				</value>
+			</criteria>
+	</filter>
+      <group>
+		<column name='product_code_val'/>		
+	</group>
+	
+</listdef>

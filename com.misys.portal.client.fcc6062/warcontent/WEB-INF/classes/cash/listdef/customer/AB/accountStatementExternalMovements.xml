@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="OpeningBalance@value_date" default_order_type="a" page="50" hideSearch="true">
+    <column name="OpeningBalance@value_date" align="center" width="15%" loca_key="STATEMENT_DATE_HEADER"/>    
+    <column name="OpeningBalance@value_date" align="center" width="15%" loca_key="OPENING_DATE_HEADER"/>    
+	<column name="OpeningBalance@amt" align="right" width="18%" loca_key="OPENING_BALANCE_HEADER"/>
+	<column name="ClosingBalance@value_date" align="center" width="15%" loca_key="CLOSING_DATE_HEADER"/>    
+	<column name="ClosingBalance@amt" align="right" width="18%" loca_key="CLOSING_BALANCE_HEADER"/>	
+	<column name="AvailableBalance@amt" align="right" width="18%" loca_key="AVAILABLE_BALANCE_HEADER"/>
+					
+	<column name="account_id" hidden="y"/>
+	<column name="account@account_no" hidden="y"/>
+	<column name="account@owner_type" hidden="y"/>	
+	<column name="account@iso_code" hidden="y"/>		
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		hidden="true"/>
+	<parameter
+		name="account_id"
+		hidden="true"/>
+	<parameter
+		name="create_date"
+		hidden="true"/>	
+	<parameter
+		name="create_date2"
+		hidden="true"/>	
+	<parameter name="bic_code" hidden="true" />
+		
+	<parameter name='export_list' file='AccountStatement' type='export'
+	file_name='AccountStatement' hidden="true"/>
+
+	<!-- Candidates -->	
+	<candidate name="AccountStatement"> 
+		<filter>
+			<criteria>
+				<column name="EntityAccount@entity@abbv_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account@account_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account@iso_code" />
+				<operator type="equal" />
+				<value type="parameter">
+					bic_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="OpeningBalance@value_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					create_date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="OpeningBalance@value_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					create_date2
+				</value>
+			</criteria>
+		</filter>
+	</candidate>		
+</listdef>

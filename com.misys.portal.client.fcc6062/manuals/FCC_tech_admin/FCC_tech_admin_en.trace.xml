@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Trace Descriptions</title>
+
+  <section>
+    <title>Overview</title>
+
+    <para><xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" /> itself
+    requires very low effort in terms of maintenance, mostly relying on the
+    application server administrative features.</para>
+
+    <para>All application logs are generated in a unique specific output file,
+    conforming to the naming conventions presented here. You may also refer to
+    the annex that lists the errors trapped, together with a set of proposed
+    actions that the system administrator should undertake when encountering
+    them.</para>
+  </section>
+
+  <section>
+    <title>Traces Format</title>
+
+    <para>All messages raised in the log file follow the following
+    format:</para>
+
+    <para><replaceable>[Date]</replaceable> -- ERROR --
+    <replaceable>Module</replaceable> <replaceable> + '</replaceable>
+    <replaceable>-</replaceable> <replaceable>' + </replaceable>
+    <replaceable>Description</replaceable> <replaceable> + </replaceable>
+    <replaceable>Additional</replaceable> error traces eventually
+    concatenated.</para>
+
+    <programlisting format="linespecific">[lun. déc. 02 12:51:51 CET] -- ERROR -- com.neomalogic.gtp.common.localization.Localization - Id is f071ccea-0a0a0a05-01a5ba75-0a302324, message is :ORACLE ERROR 345 Impossible to connect to database.</programlisting>
+  </section>
+
+  <section>
+    <title>Error Number Format</title>
+
+    <para>The Error Number is a unique ID split in 4 sections of 8
+    characters.</para>
+  </section>
+
+  <section>
+    <title>Error Message Display</title>
+
+    <para>When <xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" />
+    encounters an error, an error message with a unique ID is displayed to
+    offer maximum hints about it, so that he can eventually contact to the
+    technical administrator.</para>
+
+    <para>The message format is almost identical to the traces' one, though it
+    is displayed with three lines.</para>
+
+    <note>
+      <para>The first line shows a localised message meaningful to the user,
+      whereas the others lines are understandable to the technical
+      administrator.</para>
+    </note>
+  </section>
+</chapter>

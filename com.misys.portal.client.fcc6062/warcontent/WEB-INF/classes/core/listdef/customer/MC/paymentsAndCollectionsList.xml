@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="account@modified_dttm" default_order_type="d" page="10" data_key="id">
+
+	<column name="account@bank_abbv_name" align="left" width="12%" loca_key="BANK_NAME" columnFilterType="input-multiselect"/>
+	<column name="account@UserAccount@EntityAccount@entity@abbv_name" align="left" width="12%" loca_key="ENTITY" groupedColumn="entity" groupedValues = "y" columnFilterType="input-multiselect"/>
+	<column name="UserAccount@EntityAccount@UserEntity@default_entity" align="left" width="12%"  loca_key="DEFAULT_ENTITY" hidden="y" />
+	<column name="account@acct_name" align="left" width="12%" loca_key="ACCOUNT_NAME"/>
+	<column name="account@account_no" align="left" width="12%" loca_key="ACCOUNT_NO"/>
+	<column name="account_type" align="left" width="12%" loca_key="ACCOUNT_TYPE" columnFilterType="input-multiselect"/>
+    <column name="group_id" hidden="y"/>
+    <column name="account_id" hidden="y"/>
+	<column name="account@cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amount" align="right" width="12%" loca_key="BALANCE">
+         <script showFieldValue="y">
+       			var groupID = row.getColumnValue("group_id");
+       			var accountID = row.getColumnValue("account_id");
+       			var currency = row.getColumnValue("account@cur_code");
+       			if(groupID != null &amp;&amp; accountID != null &amp;&amp; currency != null &amp;&amp; rundata != null)
+       			{
+       				value = com.finastra.openapi.common.OpenAPIUtil.getSumOfAmount(""+groupID+"", ""+accountID+"", ""+currency+"", rundata);
+       			}
+                value;
+         </script>
+    </column>
+	<column name="convertedAmount" align="right" width="12%" paramCur="account_ccy" loca_key="EQUIVALENT_OPENING_BALANCE">
+		<script showFieldValue="y">
+       			var groupID = row.getColumnValue("group_id");
+       			var accountID = row.getColumnValue("account_id");
+       			var currency = row.getColumnValue("account@cur_code");
+       			if(groupID != null &amp;&amp; accountID != null &amp;&amp; currency != null &amp;&amp; rundata != null)
+       			{
+       				value = com.finastra.openapi.common.OpenAPIUtil.getSumOfAmount(""+groupID+"", ""+accountID+"", ""+currency+"", rundata);
+       			}
+                value;
+         </script>
+	</column>
+    <column name="action" align="right" width="10%" loca_key="ACTIONS">
+    <url action="y" actionName="ACTIONS_LIST" actionValue="LIST_ACTIONS_PAYMENTS_AND_COLLECTIONS">
+	   	<parameter name="ACCOUNT_NO" column="account@account_no"/>
+		<parameter name="ENTITY" column="account@UserAccount@EntityAccount@entity@abbv_name"/>
+    </url>
+	</column>
+	<column name="account@modified_dttm" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter name="group_id" hidden="true" />
+	<parameter name="amount_column_value" hidden="true"/>
+	<parameter name="account_ccy" hidden="true"/>
+	<parameter name="post_date" hidden="true"/>
+	<parameter name="actv_flag" hidden="true" />
+
+	<!-- Candidates -->	
+	<candidate name="GroupAccounts">
+		<filter>
+		<criteria>
+			<column name="group_id" />
+			<operator type="equal" />
+			<value type="parameter">
+				group_id
+			</value>
+		</criteria>
+		<criteria>
+				<column name="account@actv_flag"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					actv_flag
+				</value>
+		</criteria>
+		</filter>
+	</candidate>
+</listdef>

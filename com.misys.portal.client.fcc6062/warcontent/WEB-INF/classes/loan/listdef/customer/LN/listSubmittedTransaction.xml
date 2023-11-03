@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc" data_key="ref_id">
+
+	<!-- columns -->
+	<column name="ref_id" align="left" width="15%" loca_key="REFERENCEID"/>
+	<column name="doc_track_id" align="left" width="10%" loca_key="DOCUMENT_ID" columnFilterType="input-multiselect" />
+	<column name="document_type" align="left" width="15%" loca_key="DOCUMENT_TYPE" columnFilterType="input-multiselect" />
+	<column name="document_date" align="left" width="12%" loca_key="DOCUMENT_DATE" columnFilterType="input-multiselect" />
+	<column name="due_date" align="left" width="12%" loca_key="LN_DUE_DATE" columnFilterType="input-multiselect" />
+	<column name="borrower_reference" align="left" width="15%" loca_key="BORROWERREF" columnFilterType="input-multiselect" />	
+	<column name="customer" align="left" width="13%" loca_key="customer" columnFilterType="input-multiselect" />
+	<column name="deal_name" align="left" width="13%" loca_key="boDealName" columnFilterType="input-multiselect" />
+	
+	
+	<column name="inp_dttm" hidden="y" />
+	<column name="tnx_id" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="product_code" hidden="y">
+		<script>
+			 var productCode = row.getColumnValue("product_code");
+			 productCode;		
+		</script>
+	</column>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>		
+	<column name="tnx_type_code" hidden="y"> 
+		<script>
+			 var tnxTypeCode = row.getColumnValue("tnx_type_code");
+			 tnxTypeCode;		
+		</script>
+	</column>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="prod_stat_code" hidden="y"/>
+
+	<column name="action" align="right" width="10%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_CONTROLLED"/>
+			<parameter name="borrower_reference" column="borrower_reference"/>
+			<parameter name="ACTION_FILTER" value="LN_VEAR"/>
+		</url>
+	</column>	
+
+	<!-- parameters -->
+	
+	<parameter
+		name="due_date"
+		type="range"
+		loca_key="LN_DUE_DATE"
+		input="y"
+		default="blank"/>
+			
+	
+	<parameter name="borrower_reference" loca_key="BORROWERREF" type="AvailableCustomerReference"
+		input="y" multiple="y" productCode="LN"/>
+		
+	<parameter name="export_list" file_name="SubmittedtoBankDocumentsList" type="export"/>		
+				
+   <candidate name="secure_email">
+      <filter>
+	       <criteria>
+		      <column name="tnx_stat_code"/>
+		      <operator type="equal"/>
+		      <value type="code">
+		        N004_CONTROLLED
+		      </value>
+		    </criteria>
+		    <criteria>
+		      <column name="sub_product_code"/>
+		      <operator type="equal"/>
+		      <value type="code">
+		        N047_LNCDS
+		      </value>
+		    </criteria>
+			<criteria>
+				<column name="borrower_reference"/>
+				<operator type="in"/>
+				<value type="parameter">
+					borrower_reference
+				</value>
+			</criteria>
+			<criteria>
+				<column name="due_date"/>
+				<operator type="in"/>
+					<value type="parameter">
+						due_date
+					</value>
+			</criteria>		
+			<criteria>
+				<column name="due_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					due_date@from
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="due_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					due_date@to
+				</value>
+			</criteria>    
+		</filter>		    
+    </candidate>
+    
+	    <filter>
+    		<criteria>
+				<column name="borrower_reference"/>
+				<operator type="in"/>
+				<value type="parameter">
+					borrower_reference
+				</value>
+			</criteria>
+			<criteria>
+				<column name="due_date"/>
+				<operator type="in"/>
+					<value type="parameter">
+						due_date
+					</value>
+			</criteria>	
+			<criteria>
+				<column name="due_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					due_date@from
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="due_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					due_date@to
+				</value>
+			</criteria>		
+				    
+    	</filter>
+	
+</listdef>

@@ -1,0 +1,80 @@
+<!--   Release:R2 Date:2001-01-19 Time:12:44:20 -->
+<!-- *********************************************************** -->
+<!--  Copyright Bolero International Limited 2000
+
+Bolero International Limited hereby grants to any person using or
+considering the use of the information in this publication a non-exclusive,
+royalty-free, worldwide, and revocable license (1) to use and implement that
+information, including document type definitions and other specifications,
+and (2) to copy all or part of this publication in any form, provided that
+all such copies clearly retain the foregoing copyright notice.
+
+Bolero International Limited makes no warranty or representation of any kind
+regarding these specifications or the right of any person to implement them
+free of infringement claims by others in accordance with the above licence.
+The above licence shall be void if the licensee alleges against Bolero
+International Limited that the information in this publication infringes a
+patent held or claimed by the licensee or a company controlled by or under
+common control with the licensee. -->
+<!-- *********************************************************** -->
+<!-- *********************************************************** -->
+<!-- Paying Banks Documentary Credit Presentation Instruction 481 V1 R2 P.DTD-P -->
+<!-- *********************************************************** -->
+<!ELEMENT PayingBanksDocumentaryCreditPresentationInstruction (Header,Body)>
+<!ELEMENT Header (cmp:DocumentID,cmp:DocType,cmp:Status)>
+<!ELEMENT cmp:DocumentID (cmp:RID,cmp:GeneralID,cmp:Version?)>
+<!ELEMENT cmp:DocType (cmp:DocTypeCode,cmp:DocTypeDescription?)>
+<!ELEMENT Body (GeneralInformation,Parties,TermsAndConditions,PresentationOfDocuments+,ReimbursementAdvice,AdditionalInformation?)>
+<!ELEMENT GeneralInformation (dateOfIssue,DocumentaryCreditIdentifier)>
+<!ELEMENT DocumentaryCreditIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT Parties (Applicant,IssuingBank,PayingBank,Beneficiary)>
+<!ELEMENT Applicant (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT OrganizationIdentification (organizationReference,organizationReferenceType?)>
+<!ELEMENT AddressInformation (FullAddress?,NormalisedAddress?)>
+<!ELEMENT FullAddress (line+)>
+<!ELEMENT NormalisedAddress (City?,StateOrProvince?,Country?,postalCode?)>
+<!ELEMENT City ((locationCode|locationName))>
+<!ELEMENT StateOrProvince ((stateOrProvinceCode|stateOrProvinceName))>
+<!ELEMENT Country ((countryCode|countryName))>
+<!ELEMENT ContactDetails (personName?,departmentName?,telephoneNumber?,faxNumber?,e-MailAddress?)>
+<!ELEMENT IssuingBank (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT PayingBank (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT Beneficiary (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT TermsAndConditions (termsAndConditionsReference?,clause*)>
+<!ELEMENT PresentationOfDocuments (documentsIncluded,AdditionalDocumentInformation)>
+<!ELEMENT AdditionalDocumentInformation (line+)>
+<!ELEMENT ReimbursementAdvice (line+)>
+<!ELEMENT AdditionalInformation (line+)>
+<!ELEMENT cmp:RID (#PCDATA) >
+<!ELEMENT cmp:GeneralID (#PCDATA) >
+<!ELEMENT cmp:Version (#PCDATA) >
+<!ELEMENT cmp:DocTypeCode (#PCDATA) >
+<!ELEMENT cmp:DocTypeDescription (#PCDATA) >
+<!ELEMENT cmp:Status (#PCDATA) >
+<!ELEMENT dateOfIssue (#PCDATA) >
+<!ELEMENT documentCreatorIdentifier (#PCDATA) >
+<!ELEMENT documentNumber (#PCDATA) >
+<!ELEMENT documentVersion (#PCDATA) >
+<!ELEMENT organizationName (#PCDATA) >
+<!ELEMENT organizationReference (#PCDATA) >
+<!ELEMENT organizationReferenceType (#PCDATA) >
+<!ELEMENT line (#PCDATA) >
+<!ELEMENT locationCode (#PCDATA) >
+<!ELEMENT locationName (#PCDATA) >
+<!ELEMENT stateOrProvinceCode (#PCDATA) >
+<!ELEMENT stateOrProvinceName (#PCDATA) >
+<!ELEMENT countryCode (#PCDATA) >
+<!ELEMENT countryName (#PCDATA) >
+<!ELEMENT postalCode (#PCDATA) >
+<!ELEMENT personName (#PCDATA) >
+<!ELEMENT departmentName (#PCDATA) >
+<!ELEMENT telephoneNumber (#PCDATA) >
+<!ELEMENT faxNumber (#PCDATA) >
+<!ELEMENT e-MailAddress (#PCDATA) >
+<!ELEMENT termsAndConditionsReference (#PCDATA) >
+<!ELEMENT clause (#PCDATA) >
+<!ELEMENT documentsIncluded (#PCDATA) >
+<!ATTLIST Header 
+ xmlns:cmp CDATA #FIXED
+" http://www.bolero.net/io/xmlns/header/1.0" > 
+<!-- End of DTD Paying Banks Documentary Credit Presentation Instruction -->

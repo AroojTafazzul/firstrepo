@@ -1,0 +1,65 @@
+<listdef page="5" source="com.misys.portal.report.ktp.KTPRowsThreshholdInputSource" js_binding="misys.binding.cash.ktp.common.ktp_home_account_balances">                      
+	<name>SPEC_VIEW_ACCBAL</name>  
+	<multiProduct>N</multiProduct>          
+	<report_type>01</report_type>            
+	<product_code>SPEC_VIEW_ACCBAL</product_code>         
+	<equivalentCurrency />          
+	<use_absolute_width>N</use_absolute_width>  
+	<order_list_by_default>N</order_list_by_default>              
+
+	<column name='BANQUE' align="left" width="25%"  abbreviation='N'>           
+		<description locale='en'>Bank</description>
+		<description locale='fr'>Banque</description> 
+		<script>
+			var accountNo = row.getColumnValue("COMPTE").toString();
+			value = com.misys.portal.ktp.utils.Tools.retrieveBankNameFromAccountNo(rundata, accountNo);
+			return value;
+		</script>
+	</column>
+	<column name='ENTITE' align="left" width="25%"  abbreviation='N'>              
+		<description locale='en'>Entity</description>
+		<description locale='fr'>Entité</description>
+		<script>
+			var accountNo = row.getColumnValue("COMPTE").toString();
+			value = com.misys.portal.ktp.utils.Tools.retrieveEntityNameFromAccountNo(rundata, accountNo);
+			return value;
+		</script>
+	</column>
+	<column name='COMPTE' align="left" width="50%"  abbreviation='N'>            
+		<description locale='en'>Account</description>
+		<description locale='fr'>Compte</description>
+		<url>
+			<parameter name="SCREEN" value="CASHINQUIRY_SCREEN"/>
+			<parameter name="OPERATION_CODE" value="KTP_REPORT_2"/>
+			<parameter name="KTP_ACCOUNT_NO" column="COMPTE"/>
+		</url>
+	</column>              
+	<column name='SOLDE' align="right" width="8em" abbreviation='N' paramCur='DEVISE'>
+		<description locale='en'>Outstanding</description>
+		<description locale='fr'>Solde</description>
+	</column>
+	<column name="DEVISE" align="center" width="5em" abbreviation='N'>
+		<description locale='en'>Currency</description>
+		<description locale='fr'>Devise</description>
+	</column>
+	<column name='DATE_OPERATION' align="center" width="8em" abbreviation='N'>
+		<description locale='en'>Balance Date</description>
+		<description locale='fr'>Solde au</description>
+	</column>
+	<parameter input='y' name='TYPE_DATE' mandatory='false' hidden='false' type='com.misys.portal.report.ktp.KTPConstrainedParameter'>
+		<description locale='en'>Outstanding Type</description>
+		<description locale='fr'>Type de Solde</description>
+	</parameter>
+	
+	<candidate name="SPEC_VIEW_ACCBAL"> 
+		<filter>
+			<criteria>
+				<column name='TYPE_DATE'></column>
+				<operator type='equal'></operator>
+				<value type='parameter'>TYPE_DATE</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<executable_flag>Y</executable_flag>                                   
+</listdef>                

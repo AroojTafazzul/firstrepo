@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="10" data_key="tnx_id">
+	
+	<!-- columns -->
+	
+	<column name="ref_id" align="left"  width="15%" loca_key="REFERENCEID" columnFilterType="input-multiselect"/> <!-- Channel Reference -->
+	<column name="tnx_id" align="left"  width="14%" showCode="y" hidden="y"/>
+	<column name="tnx_stat_code" showCode="y" isCodeField="y" codeId="N004" hidden="y"/>
+	<!-- <column name="sub_product_code" showCode="y" isCodeField="y" codeId="N047" hidden="y"/> -->
+	<column name="sub_tnx_stat_code" showCode="y" isCodeField="y" codeId="N015" hidden="y"/>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" columnFilterType="input-multiselect"/> <!-- Customer Reference -->
+	<column name="entity" align="left" width="14%" loca_key="ENTITY_NAME_APPLICANT" columnFilterType="input-multiselect"/> <!-- Applicant Name -->
+	<!-- <column name="product_type" align="center" width="10%" loca_key="PRODUCT_TYPE" columnFilterType="input-multiselect" /> -->
+	<column name="sub_product_code" align="left" width="10%" loca_key="PRODUCT_TYPE" showCode="y" isCodeField="y" codeId="N047"/>
+	<column name="counterparty_name" align="left" width="14%" loca_key="Counter Party" columnFilterType="input-multiselect"/> <!-- Counter Party -->
+	<!-- <column name="beneficiary_name" align="left" loca_key="BENEFICIARY"/>  -->
+	
+	<column alias="event" align="left" width="12%" loca_key="event" columnFilterType="input-multiselect" isColumnSortDisabled="y" isClubbedField="y" clubbedFieldsList="tnx_type_code, sub_tnx_type_code"/>
+	<column name="tnx_type_code" align="left" showCode="y" isColumnSortDisabled="y" width="12%" isCodeField="y" codeId="N002" loca_key="statementType" columnFilterType="input-multiselect"/>
+	<column name="sub_tnx_type_code" showCode="y" isColumnSortDisabled="y" hidden="y" isCodeField="y" codeId="N003"/>
+	
+	
+	<column name="td_type" align="left" width="11%" loca_key="DEPOSIT_TYPE" columnFilterType="input-multiselect"/>    <!-- Deposit Type -->
+	<column name="tenor" align="left" width="6%" loca_key="TENOR" sort="n" clubbed="y" hidden="y" columnFilterType="input-multiselect"/>     <!-- Tenor -->
+	<!-- <column name="tnx_cur_code" align="left" loca_key="CURCODE" width="5%">  Currency
+		<script>
+			value = row.getColumnValue("tnx_cur_code");
+			if("".equals(""+value+""))
+			{
+				value = row.getColumnValue("cur_code");
+			}
+			value;
+		</script>
+	</column>
+	<column name="tnx_amt" align="right" loca_key="AMOUNT"  width="5%">    Amount
+		<script>
+			value = row.getColumnValue("tnx_amt");
+			if("".equals(""+value+""))
+			{
+				value = row.getColumnValue("amt");
+			}
+			value;
+		</script>
+	</column> -->
+	<column name="ObjectDataString@pre_approved_status" align="left" width="16%" loca_key="preApprovedBene" columnFilterType="input-multiselect">
+		<script>
+			if (value != null &amp;&amp; !value.equals(""))
+			{
+				value = com.misys.portal.common.localization.Localization.getDecode(language, "N034", value);;
+			}
+			value;
+		</script>
+	</column>
+	<column name="product_code" align="left" loca_key="PRODUCT_CODE" hidden="y" showCode="y"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="tnx_amt" align="right" width="14%" loca_key="AMOUNT"/>
+	<column name="applicant_act_no" align="left" width="14%" loca_key="DEBIT_ACCOUNT" showAsDefault="n" columnFilterType="input-multiselect"/>
+	<column name="ObjectDataString@credit_act_no" align="left" width="10%" loca_key="CREDIT_ACCOUNT" hidden="y"/>
+	<column name="Counterparty@counterparty_act_no" align="left" width="14%" showAsDefault="n" loca_key="CREDIT_ACCOUNT" columnFilterType="input-multiselect">
+	<script>
+				var creditAct = row.getColumnValue("Counterparty@counterparty_act_no");
+				var creditActTD = row.getColumnValue("ObjectDataString@credit_act_no");
+				var productCode = row.getColumnValue("product_code");
+		        if("TD".equals(""+productCode+""))
+		        {
+						value = creditActTD;
+				}
+				else
+				{
+						value = creditAct;
+				}
+			 value;
+		</script>
+		</column>
+	<column name="value_date" align="left" width="12%" loca_key="VALUE_DATE" showAsDefault="n"/>
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF" showAsDefault="n" columnFilterType="input-multiselect"/>
+	
+	
+	<column name="maturity_date" align="left" width="12%" loca_key="MATURITY_DATE" showAsDefault="n"/> <!-- Maturity Date --> 
+	
+	<column name="amt" align="left" hidden="y"/>
+	
+	<column name="prod_stat_code" align="left" width="14%" loca_key="LABEL_STATUS" showCode="y" isCodeField="y" codeId="N005" sort="n" hidden="y" />
+	<column name="inp_dttm" align="center"  loca_key="INP_DTTM" hidden="y"/>	
+	<column name="CrossReference@ref_id" hidden="y"/>		
+	<column name="NextAuthoriser@role_alias" hidden="y"/>		
+	<column name="child_product_code" hidden="y"/>
+	<column name="fscm_program_code" hidden="y"/>
+	<column name="seller_name" hidden="y"/>
+	<column name="buyer_name" hidden="y"/>
+	<column name="amd_no" hidden="y"/>
+	<column name="bg_type_code" hidden="y" columnFilterType="input-multiselect" showCode="y"/>
+	<column name="sub_tnx_type_code_val" hidden="y">
+		<script>
+			value = row.getColumnValue("sub_tnx_type_code");
+			value;
+		</script>
+	</column>
+	<column name="tnx_type_code_val" hidden="y">
+		<script>
+			value = row.getColumnValue("tnx_type_code");
+			value;
+		</script>
+	</column>
+	<column name="sub_product_code_val" hidden="y">
+		<script>
+			value = row.getColumnValue("sub_product_code");
+			value;
+		</script>
+	</column>
+	<column name="company_name" hidden="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_UNCONTROLLED"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+			<parameter name="ACTION_USER_AUDIT" value="USER_AUDIT"/>
+		</url>
+	</column>
+	<batch type="submit">
+		<parameter name="SCREEN" value="CURRENT"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+
+
+	<!-- parameters -->
+	<parameter
+name="tnx_val_date"
+type="AvailableTimeFrames"
+loca_key="TIME_FRAMES"
+input="y"
+default="blank"/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		default=""
+		input="y"/>
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="20"
+		loca_key="customerRef"
+		default=""
+		input="y"/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="PRODUCT_TYPE"
+	    type="AvaliableSubProductType"
+	    multiple="y"
+	    input="y"/>
+	<parameter
+		name="counterparty_name"
+		size="35"
+		max_length="35"
+		loca_key="Counter Party"
+		input="y"
+		default=""
+		multiple=""
+		type=""/>
+	<parameter
+		name="tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="statementType"
+		input="y"
+		multiple="y"
+		default=""
+		isCodeField="y"
+		codeId="N002"
+		type="Entity"/>
+	<parameter
+		name="sub_tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="SUB_TRANSACTION_TYPE_CODE"
+		input="y"
+		multiple="y"
+		default=""
+		isCodeField="y"
+		codeId="N003"
+		hidden="true"/>
+	<parameter
+		name="event"
+		size="12"
+		max_length="20"
+		loca_key="event"
+		input="y"
+		multiple="y"
+		default=""
+		isClubbed="y"
+		hidden="true"
+		type="TnxTypeSubTnxType"
+		clubbedFieldsList="tnx_type_code,sub_tnx_type_code"/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		multiple="y"
+		default=""
+		type="Entity"/>
+	<parameter
+		name="value_date"
+		type="range"
+		loca_key="VALUE_DATE"
+		input="y"
+		hidden="true"
+		default="blank"/>
+	<parameter
+		name="applicant_act_no"
+		size="20"
+		max_length="20"
+		loca_key="DEBIT_ACCOUNT"
+		default=""
+		hidden="true"
+		input="y"/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="20"
+		loca_key="BO_REF"
+		default=""
+		input="y"/>
+	<parameter
+		name="counterparty_act_no"
+		size="35"
+		max_length="35"
+		loca_key="CREDIT_ACCOUNT"
+		input="y"
+		default=""
+		multiple="y"
+		hidden="true"
+		type="Entity"/>
+	<parameter
+		name="maturity_date"
+		type="range"
+		loca_key="MATURITY_DATE"
+		input="y"
+		hidden="true"
+		default="blank"/>
+	<parameter
+		name="parameter1"
+		type="AvailableProducts"
+		size=""
+		max_length=""
+		loca_key="PRODUCTCODE"
+		hidden="true"
+		input="y"
+		/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		multiple="y"
+		hidden="true"
+		type="Currency"/>
+	<parameter
+		name="export_list"
+		file_name="PendingApprovalCashList"
+		type="export"/> 
+
+	<!-- candidates -->	
+	<candidate name="parameter1">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+			<criteria>
+					<column name="cust_ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						cust_ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="entity"/>
+					<operator type="in"/>
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+				<criteria>
+					<column name="sub_product_code"/>
+					<operator type="in"/>
+					<value type="parameter">
+						sub_product_code
+					</value>
+				</criteria>
+				<criteria>
+					<column name="counterparty_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						counterparty_name
+					</value>
+				</criteria>
+				<criteria>
+				<column name="value_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					value_date@from
+				</value>
+			</criteria>	
+			<criteria>
+					<column name="applicant_act_no"/>
+					<operator type="like"/>
+					<value type="parameter">
+						applicant_act_no
+					</value>
+				</criteria>
+			<criteria>
+					<column name="bo_ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						bo_ref_id
+					</value>
+				</criteria>
+			<criteria>
+					<column name="Counterparty@counterparty_act_no"/>
+					<operator type="like"/>
+					<value type="parameter">
+						counterparty_act_no
+					</value>
+				</criteria>
+				<criteria>
+				<column name="maturity_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					maturity_date@from
+				</value>
+			</criteria>
+				<criteria>
+					<column name="product_code"/>
+					<operator type="not in"/>
+					<value type="vector">
+						<value type="code">
+							N001_FT
+						</value>					
+					</value>
+				</criteria>
+				<criteria>
+					<column name="sub_product_code"/>
+					<operator type="in"/>
+					<value type="parameter">
+						sub_product_code
+					</value>
+				</criteria>
+			</filter>
+			<!-- Fund transfer filters -->
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="entity"/>
+					<operator type="in"/>
+					<value type="parameter">
+						entity
+					</value>
+				</criteria>
+	        <criteria>
+	          <column name="cust_ref_id"/>
+	          <operator type="like"/>
+	          <value type="parameter">
+	            cust_ref_id
+	          </value>
+	        </criteria>
+				<criteria>
+					<column name="cur_code"/>
+					<operator type="in"/>
+					<value type="parameter">
+						cur_code
+					</value>
+				</criteria>
+				<criteria>
+					<column name="counterparty_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						counterparty_name
+					</value>
+				</criteria>
+				<criteria>
+					<column name="product_code"/>
+					<operator type="in"/>
+					<value type="vector">
+						<value type="code">
+							N001_FT
+						</value>					
+					</value>
+				</criteria>
+				<criteria>
+					<column name="sub_product_code"/>
+					<operator type="in"/>
+					<value type="parameter">
+						sub_product_code
+					</value>
+				</criteria>		
+			</filter>		
+	</candidate>
+	
+	<filter>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="in"/>
+			<value type="code">
+				N002_NEW
+			</value>
+			<value type="code">
+				N002_AMEND
+			</value>
+			<value type="code">
+				N002_INQUIRE
+			</value>
+			<value type="code">
+				N002_CANCEL
+			</value>
+			<value type="code">
+				N002_ACCEPT
+			</value>
+			<value type="code">
+				N002_RESUBMIT
+			</value>
+			<value type="code">
+				N002_BASELINE_RESUBMISSION
+			</value>
+			<value type="code">
+				N002_STATUS_CHANGE_REQUEST
+			</value>
+			<value type="code">
+				N002_FINANCE
+			</value>
+		</criteria>
+	</filter>
+		<filter>
+	<criteria>
+		<column name="tnx_type_code"/>
+		<operator type="in"/>
+		<value type="parameter">
+			tnx_type_code
+		</value>
+		</criteria>
+	<criteria>
+		<column name="sub_tnx_type_code"/>
+		<operator type="in"/>
+		<value type="parameter">
+			sub_tnx_type_code
+		</value>
+	</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_UNCONTROLLED
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+	<criteria>
+				<column name="tnx_val_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+				tnx_val_date@from
+				</value>
+				</criteria>
+				<criteria>
+				<column name="tnx_val_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+				tnx_val_date@to
+				</value>
+				</criteria>
+	</filter>
+	<filter or="y">
+		<criteria>
+			<column name="bulk_ref_id"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>	
+</listdef>

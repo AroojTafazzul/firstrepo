@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for an
+			maintain parameters. XML validation
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="maintainParameters">
+		<xs:complexType>
+                 <xs:sequence>
+				<xs:element name="maintainParameter" minOccurs="1"
+					maxOccurs="unbounded" >
+					<xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="company" minOccurs="1" maxOccurs="1">
+                                                                    <xs:complexType>
+                                                                        <xs:annotation>
+                                                                            <xs:documentation>company id for this
+                                                                                parameter</xs:documentation>
+                                                                        </xs:annotation>
+                                                                        <xs:attribute name="column">
+                                                                            <xs:simpleType>
+                                                                                <xs:restriction base="xs:string">
+                                                                                    <xs:enumeration value="COMPANY_ID" />
+                                                                                 </xs:restriction>
+                                                                            </xs:simpleType>
+                                                                        </xs:attribute>
+                                                                        <xs:attribute name="type" type="xs:string" />
+                                                                        <xs:attribute name="code" type="xs:string" >
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:string">
+                                                                                        <xs:enumeration value="USER"/>
+                                                                                        <xs:enumeration value="KEY_WILDCARD"/>
+                                                                                        <xs:enumeration value="BANK"/>
+                                                                                        <xs:enumeration value="BANK_GROUP"/>
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                        </xs:attribute>                                                                             
+                                                                        <xs:attribute name="label" type="xs:string" />
+                                                                        <xs:attribute name="mandatory" type="xs:boolean" />
+                                                                        <xs:attribute name="hidden" type="xs:boolean" />
+                                                                        <xs:attribute name="defaultvalue" type="xs:string" />
+                                                                    </xs:complexType>
+                                    </xs:element>
+									<xs:element name="key" minOccurs="1" maxOccurs="22">
+										<xs:complexType>
+											<xs:annotation>
+												<xs:documentation>Keys needs to be maintained for this
+													parameter</xs:documentation>
+											</xs:annotation>
+											<xs:attribute name="column">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="KEY_1" />
+														<xs:enumeration value="KEY_2" />
+														<xs:enumeration value="KEY_3" />
+														<xs:enumeration value="KEY_4" />
+														<xs:enumeration value="KEY_5" />
+														<xs:enumeration value="KEY_6" />
+														<xs:enumeration value="KEY_7" />
+														<xs:enumeration value="KEY_8" />
+														<xs:enumeration value="KEY_9" />
+														<xs:enumeration value="KEY_10" />
+														<xs:enumeration value="KEY_11" />
+														<xs:enumeration value="KEY_12" />
+														<xs:enumeration value="KEY_13" />
+														<xs:enumeration value="KEY_14" />
+														<xs:enumeration value="KEY_15" />
+														<xs:enumeration value="KEY_16" />
+														<xs:enumeration value="KEY_17" />
+														<xs:enumeration value="KEY_18" />
+														<xs:enumeration value="KEY_19" />
+														<xs:enumeration value="KEY_20" />
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="type" type="xs:string" />
+                                            <xs:attribute name="code" type="xs:string" />
+											<xs:attribute name="label" type="xs:string" />
+											<xs:attribute name="mandatory" type="xs:boolean" />
+                                            <xs:attribute name="hidden" type="xs:boolean" />
+                                            <xs:attribute name="length" type="xs:int" />
+                                            <xs:attribute name="defaultvalue" type="xs:string" />
+                                        </xs:complexType>
+									</xs:element>
+
+									<xs:element name="data" minOccurs="1" maxOccurs="20">
+										<xs:annotation>
+											<xs:documentation>Value needs to be maintained for this
+												parameter. In the case of mode is multiple Data_1 alone is
+												required </xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attribute name="column">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="DATA_1" />
+														<xs:enumeration value="DATA_2" />
+														<xs:enumeration value="DATA_3" />
+														<xs:enumeration value="DATA_4" />
+														<xs:enumeration value="DATA_5" />
+														<xs:enumeration value="DATA_6" />
+														<xs:enumeration value="DATA_7" />
+														<xs:enumeration value="DATA_8" />
+														<xs:enumeration value="DATA_9" />
+														<xs:enumeration value="DATA_10" />
+														<xs:enumeration value="DATA_11" />
+														<xs:enumeration value="DATA_12" />
+														<xs:enumeration value="DATA_13" />
+														<xs:enumeration value="DATA_14" />
+														<xs:enumeration value="DATA_15" />
+														<xs:enumeration value="DATA_16" />
+														<xs:enumeration value="DATA_17" />
+														<xs:enumeration value="DATA_18" />
+														<xs:enumeration value="DATA_19" />
+														<xs:enumeration value="DATA_20" />
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="type" type="xs:string" />
+											<xs:attribute name="label" type="xs:string" />
+											<xs:attribute name="mandatory" type="xs:boolean" />
+											<xs:attribute name="length" type="xs:int" />
+										</xs:complexType>
+									</xs:element>
+
+						</xs:sequence>
+                        <xs:attribute name="name">
+							<xs:annotation>
+								<xs:documentation>Parameter name.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:token">
+									<xs:maxLength value="4" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+                        <xs:attribute name="id">
+							<xs:annotation>
+								<xs:documentation>Parameter Id.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:token">
+									<xs:maxLength value="4" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="mode">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Single" />
+									<xs:enumeration value="Multiple" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+                        <xs:attribute name="readonly" type="xs:boolean" />
+                        <xs:attribute name="label" type="xs:string" />
+                        <xs:attribute name="permission" type="xs:string" />
+
+
+					</xs:complexType>
+				</xs:element>
+
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

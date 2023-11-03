@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listdef ordered="y" default_order="bic" default_order_type="d" page="20">
+
+	<column name="bic" align="left" width="10%" loca_key="BIC_CODE" columnFilterType="input-multiselect">
+	  <js-pass-back keyName="column">
+            <array-element index="0" column="bic"/>
+            <array-element index="1" column="branch"/>
+            <array-element index="2" column="bank_name"/>
+            <array-element index="3" column="name"/>
+            <array-element index="4" column="address"/>
+            <array-element index="5" column="postCode"/>
+            <array-element index="6" column="city"/>
+            <array-element index="7" column="country"/>
+        </js-pass-back>
+    </column>
+	<column name="branch" align="left" width="10%" loca_key="BRANCH_CODE"/>
+	<column name="bank_name" align="left" width="10%" loca_key="BANK_NAME" />
+	<column name="name" align="left" width="10%" loca_key="BRANCH_NAME" hidden="y"/>
+	<column name="address" align="left" width="10%" loca_key="ADDRESS" hidden="y"/>
+	<column name="postCode" align="left" width="10%" loca_key="POST_CODE" hidden="y"/>
+	<column name="city" align="left" width="10%" loca_key="CITY_NAME"/>
+	<column name="country" align="left" width="10%" loca_key="COUNTRY_NAME"/>
+	
+	<parameter
+		name="bic"
+		loca_key="BIC_CODE"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bank_name"
+		loca_key="BANK_NAME"
+		input="y"
+		default=""/>
+	<parameter
+		name="branch"
+		loca_key="BRANCH_CODE"
+		input="y"
+		default=""/>
+
+	<!-- candidates -->
+	<candidate name="bankData">
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="type"/>
+			<operator type="like"/>
+			<value type="string">
+				01
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bic"/>
+			<operator type="equal"/>
+			<value type="parameter">
+				bic
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bank_name"/>
+			<operator type="equal"/>
+			<value type="parameter">
+				bank_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="branch"/>
+			<operator type="equal"/>
+			<value type="parameter">
+				branch
+			</value>
+		</criteria>
+	</filter>
+</listdef>

@@ -1,0 +1,2412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Finastra Trade Portal Interfaces Schema Copyright (c) 2018 Finastra
+	(http://www.finastra.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for IU XML validation </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="bg_tnx_record">
+		<xs:annotation>
+			<xs:documentation>Banker's Guarantee Business Rules</xs:documentation>
+			<xs:appinfo>
+
+				<!-- BG - Check transaction type code -->
+				<sch:pattern 
+					name="BG - Check the transaction type code" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:assert 
+							test="tnx_type_code = '01' or tnx_type_code = '03' or tnx_type_code = '13'">
+							The transaction type code <value-of select="tnx_type_code"/> is not authorised.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+
+				<!-- ********************* -->
+				<!-- BG New Business Rules -->
+				<!-- ********************* -->
+
+				<!-- BG New mandatory fields -->
+				<sch:pattern 
+					name="BG New - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(iss_date_type_code) or iss_date_type_code = '')
+									or (not(exp_date_type_code) or exp_date_type_code = '')
+									or (not(bg_cur_code) or bg_cur_code = '')
+									or (not(bg_amt) or bg_amt = '')
+									or (not(applicant_name) or applicant_name = '')
+									or (not(applicant_address_line_1) or applicant_address_line_1 = '')
+									or (not(beneficiary_name) or beneficiary_name = '')
+									or (not(beneficiary_address_line_1) or beneficiary_address_line_1 = '')
+									or (not(recipient_bank/abbv_name) or recipient_bank/abbv_name = '')
+									or (not(bg_type_code) or bg_type_code = '')
+									or (not(bg_text_type_code) or bg_text_type_code = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- BG New not authorised fields -->
+				<sch:pattern 
+					name="BG New - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(ref_id 
+									or bo_ref_id 
+									or tnx_id 
+									or company_id 
+									or iss_date 
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or bo_comment 
+									or amd_details 
+									or amd_no
+									or amd_date
+									or bg_release_flag
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- BG New - Constraints -->
+				<sch:pattern 
+					name="BG New - If the issue date type is Other, its description is mandatory" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(iss_date_type_code = '99' and (not(iss_date_type_details) or iss_date_type_details = ''))">
+							The issue date type description is mandatory.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG New - If the expiry date type is Estimated or Fixed, the expiry date is mandatory" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(exp_date_type_code != '01' and (not(exp_date) or exp_date = ''))">
+							The expiry date is mandatory.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG New - If the issuing bank is not the same as the recipient bank, its name and address are mandatory" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(issuing_bank_type_code = '02' and 
+									((not(issuing_bank/name) or issuing_bank/name = '') or (not(issuing_bank/name) or issuing_bank/name = '')))">
+							The issuing bank name and address are mandatory.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG New - If the guarantee type is Other, then the type details are mandatory" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(bg_type_code = '99' and (not(bg_type_details) or bg_type_details = ''))">
+							The banker's guarantee type is mandatory.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG New - If the guarantee text type is Same As, a reference must be given" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(bg_text_type_code = '03' and (not(bg_text_type_details) or bg_text_type_details = ''))">
+							The banker's guarantee text type details is mandatory.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG New - The attachment is mandatory if the BG type is Attached" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '01' and
+									(bg_text_type_code = '02' and not(attachments/attachment))">
+							The banker's guarantee text type details is mandatory.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- *********************** -->
+				<!-- BG Amend Business Rules -->
+				<!-- *********************** -->
+
+				<!-- BG Amend mandatory fields -->
+				<sch:pattern 
+					name="BG Amend - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(sub_tnx_type_code) or sub_tnx_type_code = '')
+									or (not(amd_date) or amd_date = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- BG Amend not authorised fields -->
+				<sch:pattern 
+					name="BG Amend - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(template_id
+									or tnx_id
+									or company_id
+									or entity
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or appl_date
+									or iss_date_type_code
+									or iss_date_type_details
+									or iss_date
+									or amd_no
+									or bg_cur_code
+									or bg_amt
+									or bg_liab_amt
+									or bg_available_amt
+									or bg_type_code
+									or bg_type_details
+									or bg_rule
+									or bg_text_type_code
+									or bg_text_type_details
+									or applicant_abbv_name
+									or applicant_name
+									or applicant_address_line_1
+									or applicant_address_line_2
+									or applicant_dom
+									or applicant_address_line_4
+									or applicant_country
+									or applicant_reference
+									or beneficiary_abbv_name
+									or beneficiary_name
+									or beneficiary_address_line_1
+									or beneficiary_address_line_2
+									or beneficiary_dom
+									or beneficiary_address_line_4
+									or beneficiary_country
+									or beneficiary_reference
+									or issuing_bank_type_code
+									or adv_send_mode
+									or contract_ref
+									or contract_narrative
+									or tender_expiry_date
+									or contract_date
+									or contract_amt
+									or contract_cur_code
+									or contract_pct
+									or bo_comment
+									or corr_chrg_brn_by_code
+									or open_chrg_brn_by_code
+									or lead_bank_flag
+									or issuing_bank/abbv_name
+									or issuing_bank/name
+									or issuing_bank/address_line_1
+									or issuing_bank/address_line_2
+									or issuing_bank/dom
+									or issuing_bank/address_line_4
+									or issuing_bank/reference
+									or confirming_bank/abbv_name
+									or confirming_bank/name
+									or confirming_bank/address_line_1
+									or confirming_bank/address_line_2
+									or confirming_bank/dom
+									or confirming_bank/address_line_4
+									or confirming_bank/reference
+									or advising_bank/abbv_name
+									or advising_bank/name
+									or advising_bank/address_line_1
+									or advising_bank/address_line_2
+									or advising_bank/dom
+									or advising_bank/address_line_4
+									or advising_bank/reference
+									or advising_bank/abbv_name
+									or processing_bank/name
+									or processing_bank/address_line_1
+									or processing_bank/address_line_2
+									or processing_bank/dom
+									or processing_bank/address_line_4
+									or processing_bank/reference
+									or processing_bank/iso_code
+									or narrative_additional_instructions
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- BG Amend - Constraints -->
+				<sch:pattern 
+					name="BG Amend - Check the expiry date type and the expiry date are eventually all defined" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(exp_date != '' and (not(exp_date_type_code) or exp_date_type_code = ''))">
+							The expiry date type and the expiry date must be all defined.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG Amend - If there is an increase / decrease of amount, the reason must be specified in the narrative" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(sub_tnx_type_code = '01' or sub_tnx_type_code = '02') and
+									(not(amd_details) or amd_details = '')">
+							When increasing or decreasing the amount of the transaction, the reason for such an amendment must be given in the narrative field.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG Amend - Check the expiry date is defined when the expiry type is None" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(exp_date_type_code != '01' and (not(exp_date) or exp_date = ''))">
+							Check the expiry date is defined when the expiry type is None.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG Amend - Check the amendment date is prior or equal to the new expiry date" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bc_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and exp_date and
+								(number(concat(concat(substring(amd_date,7,4), substring(amd_date,4,2)), substring(amd_date,1,2))) &lt;
+								number(concat(concat(substring(exp_date,7,4), substring(exp_date,4,2)), substring(exp_date,1,2))))">
+							The amendment date must be prior or equal to the new expiry date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<sch:pattern 
+					name="BG Amend - Check that at least one of the field describing the amendment is defined" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '03' and
+									(exp_date_type_code != '01' and (not(exp_date) or exp_date = ''))">
+							Check the expiry date is defined when the expiry type is None.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- ************************* -->
+				<!-- BG Inquire Business Rules -->
+				<!-- ************************* -->
+
+				<!-- BG Inquire mandatory fields -->
+				<sch:pattern 
+					name="BG Inquire - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(free_format_text) or free_format_text = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- BG Inquire not authorised fields -->
+				<sch:pattern 
+					name="BG Inquire - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									(template_id
+									or tnx_id
+									or company_id
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or appl_date
+									or iss_date_type_code
+									or iss_date_type_details
+									or iss_date
+									or exp_date_type_code
+									or exp_date
+									or amd_no
+									or amd_date
+									or tnx_cur_code
+									or tnx_amt
+									or bg_cur_code
+									or bg_amt
+									or bg_liab_amt
+									or bg_available_amt
+									or bg_type_code
+									or bg_type_details
+									or bg_rule
+									or bg_text_type_code
+									or bg_text_type_details
+									or bg_release_flag
+									or applicant_abbv_name
+									or applicant_name
+									or applicant_address_line_1
+									or applicant_address_line_2
+									or applicant_dom
+									or applicant_address_line_4
+									or applicant_country
+									or applicant_reference
+									or beneficiary_abbv_name
+									or beneficiary_name
+									or beneficiary_address_line_1
+									or beneficiary_address_line_2
+									or beneficiary_dom
+									or beneficiary_address_line_4
+									or beneficiary_country
+									or beneficiary_reference
+									or issuing_bank_type_code
+									or adv_send_mode
+									or contract_ref
+									or contarct_narrative
+									or tender_expiry_date
+									or contract_date
+									or contract_amt
+									or contract_cur_code
+									or contract_pct
+									or principal_act_no
+									or fee_act_no
+									or doc_ref_no
+									or amd_details
+									or bg_release_flag
+									or bo_comment
+									or corr_chrg_brn_by_code
+									or open_chrg_brn_by_code
+									or lead_bank_flag
+									or issuing_bank/abbv_name
+									or issuing_bank/name
+									or issuing_bank/address_line_1
+									or issuing_bank/address_line_2
+									or issuing_bank/dom
+									or issuing_bank/address_line_4
+									or issuing_bank/reference
+									or recipient_bank/abbv_name
+									or recipient_bank/name
+									or recipient_bank/address_line_1
+									or recipient_bank/address_line_2
+									or recipient_bank/dom
+									or recipient_bank/address_line_4
+									or recipient_bank/reference
+									or confirming_bank/abbv_name
+									or confirming_bank/name
+									or confirming_bank/address_line_1
+									or confirming_bank/address_line_2
+									or confirming_bank/dom
+									or confirming_bank/address_line_4
+									or confirming_bank/reference
+									or advising_bank/abbv_name
+									or advising_bank/name
+									or advising_bank/address_line_1
+									or advising_bank/address_line_2
+									or advising_bank/dom
+									or advising_bank/address_line_4
+									or advising_bank/reference
+									or processing_bank/name
+									or processing_bank/address_line_1
+									or processing_bank/address_line_2
+									or processing_bank/dom
+									or processing_bank/address_line_4
+									or processing_bank/reference
+									or processing_bank/iso_code
+									or narrative_additional_instructions
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+
+				<!-- BG - Check variation mandatory fields -->
+				<sch:pattern 
+					name="BG - Check Variation mandatory fields" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+									test="(variation/type = '01' and
+										((not(variation/advise_flag) or variation/advise_flag = '')
+										or (not(variation/maximum_nb_days) or variation/maximum_nb_days = '')
+										or (not(variation/frequency) or variation/frequency = '')
+										or (not(variation/period) or variation/period = '')
+										or (not(variation/variation_lines/variation_line_item/sequence) or variation/variation_lines/variation_line_item/sequence = '')
+										or (not(variation/variation_lines/variation_line_item/operation) or variation/variation_lines/variation_line_item/operation = '')
+										or (not(variation/variation_lines/variation_line_item/first_date) or variation/variation_lines/variation_line_item/first_date = '')
+										or (not(variation/variation_lines/variation_line_item/percent) or variation/variation_lines/variation_line_item/percent = '')
+										or (not(variation/variation_lines/variation_line_item/amount) or variation/variation_lines/variation_line_item/amount = '')
+										or (not(variation/variation_lines/variation_line_item/cur_code) or variation/variation_lines/variation_line_item/cur_code = '')))
+										or (variation/type = '02' and
+										((not(variation/variation_lines/variation_line_item/sequence) or variation/variation_lines/variation_line_item/sequence = '')
+										or (not(variation/variation_lines/variation_line_item/operation) or variation/variation_lines/variation_line_item/operation = '')
+										or (not(variation/variation_lines/variation_line_item/first_date) or variation/variation_lines/variation_line_item/first_date = '')
+										or (not(variation/variation_lines/variation_line_item/percent) or variation/variation_lines/variation_line_item/percent = '')
+										or (not(variation/variation_lines/variation_line_item/amount) or variation/variation_lines/variation_line_item/amount = '')
+										or (not(variation/variation_lines/variation_line_item/cur_code) or variation/variation_lines/variation_line_item/cur_code = '')))">
+										The mandatory variation fields are missing.
+						</sch:report>
+					</sch:rule>				</sch:pattern>
+
+				<!-- BG - Check cu_variation mandatory fields -->
+				<sch:pattern 
+					name="BG - Check cu variation mandatory fields" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+									test="(cu_variation/type = '01' and
+										((not(cu_variation/advise_flag) or cu_variation/advise_flag = '')
+										or (not(cu_variation/maximum_nb_days) or cu_variation/maximum_nb_days = '')
+										or (not(cu_variation/frequency) or cu_variation/frequency = '')
+										or (not(cu_variation/period) or cu_variation/period = '')
+										or (not(cu_variation/variation_lines/variation_line_item/sequence) or cu_variation/variation_lines/variation_line_item/sequence = '')
+										or (not(cu_variation/variation_lines/variation_line_item/operation) or cu_variation/variation_lines/variation_line_item/operation = '')
+										or (not(cu_variation/variation_lines/variation_line_item/first_date) or cu_variation/variation_lines/variation_line_item/first_date = '')
+										or (not(cu_variation/variation_lines/variation_line_item/percent) or cu_variation/variation_lines/variation_line_item/percent = '')
+										or (not(cu_variation/variation_lines/variation_line_item/amount) or cu_variation/variation_lines/variation_line_item/amount = '')
+										or (not(cu_variation/variation_lines/variation_line_item/cur_code) or cu_variation/variation_lines/variation_line_item/cur_code = '')))
+										or (cu_variation/type = '02' and
+										((not(cu_variation/variation_lines/variation_line_item/sequence) or cu_variation/variation_lines/variation_line_item/sequence = '')
+										or (not(cu_variation/variation_lines/variation_line_item/operation) or cu_variation/variation_lines/variation_line_item/operation = '')
+										or (not(cu_variation/variation_lines/variation_line_item/first_date) or cu_variation/variation_lines/variation_line_item/first_date = '')
+										or (not(cu_variation/variation_lines/variation_line_item/percent) or cu_variation/variation_lines/variation_line_item/percent = '')
+										or (not(cu_variation/variation_lines/variation_line_item/amount) or cu_variation/variation_lines/variation_line_item/amount = '')
+										or (not(cu_variation/variation_lines/variation_line_item/cur_code) or cu_variation/variation_lines/variation_line_item/cur_code = '')))">
+										The mandatory cu_variation fields are missing.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>	
+				<!-- BG - Check variation advise flag  -->
+				<sch:pattern 
+					name="BG - Check variation advise flag" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bg_tnx_record">
+						<sch:report 
+									test="(variation/advise_flag ='Y' and
+										(not(variation/advise_reduction_days) or variation/advise_reduction_days = '') )or
+										(cu_varaiation/advise_flag ='Y' and
+										(not(cu_variation/advise_reduction_days) or cu_variation/advise_reduction_days = ''))">
+									The advise reduction days are missing.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="brch_code">
+					<xs:annotation>
+						<xs:documentation>Branch code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_ref_id">
+					<xs:annotation>
+						<xs:documentation>Back office attributed reference 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_tnx_id">
+					<xs:annotation>
+						<xs:documentation>Back office transaction id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_inp_user_id">
+					<xs:annotation>
+						<xs:documentation>Back office input user
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_inp_dttm">
+					<xs:annotation>
+						<xs:documentation>Back office input 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element minOccurs="0" ref="company_id">
+					<xs:annotation>
+						<xs:documentation>Id of the company that initiated 
+								the BG.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- minOccurs=0 because the company can possibly be not be provided when bank initiated transaction -->
+				<xs:element minOccurs="0" ref="company_name">
+					<xs:annotation>
+						<xs:documentation>Name of the company that 
+								initiated the BG.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="claim_cur_code">
+					<xs:annotation>
+						<xs:documentation>The currency of Claim</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="claim_amt">
+					<xs:annotation>
+						<xs:documentation>The amount of Claim</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="claim_reference">
+					<xs:annotation>
+						<xs:documentation>Claim 
+								reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="claim_present_date">
+					<xs:annotation>
+						<xs:documentation>Claim Presentation Date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>	
+				<xs:element minOccurs="0" ref="doc_ref_no">
+					<xs:annotation>
+						<xs:documentation>Document Reference Number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="inp_user_id">
+					<xs:annotation>
+						<xs:documentation>Input user 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="inp_dttm">
+					<xs:annotation>
+						<xs:documentation>Input date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_type_code">
+					<xs:annotation>
+						<xs:documentation>In order to identify the type of 
+								transaction applied to one file during a 
+								particular event of its life (and hence 
+								attached to a transaction id), we introduce the 
+								notion of transaction type 
+								code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="sub_tnx_type_code">
+					<xs:annotation>
+						<xs:documentation>In some cases, an additional code 
+								is required to further define the type of the 
+								transaction. This is the case for the amendment 
+								of an Import LC or a Banker's Guarantee where 
+								the transaction type code is AMEND, but where 
+								the system needs to know more precisely the 
+								type of amendment in order to prepare the 
+								display of its details accordingly. It is also 
+								the case for the creation of such an Import LC 
+								if it is initiated through the Upload 
+								feature.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="prod_stat_code">
+					<xs:annotation>
+						<xs:documentation>The product status code is in 
+								charge of indicating which is the functional 
+								status currently born by the transaction file. 
+								Thanks to this code, we can know if the 
+								transaction initiation has been approved by the 
+								bank and into which state the record has been 
+								updated.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_stat_code">
+					<xs:annotation>
+						<xs:documentation>During the course of a 
+								transaction input by the customer, control and 
+								finally submission to the bank for processing, 
+								and subsequently input and eventually control 
+								and release of the reporting by the bank 
+								officer, the transaction record is going 
+								through several stages</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+					<xs:annotation>
+						<xs:documentation>Sub Transaction Status Code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="product_code">
+					<xs:annotation>
+						<xs:documentation>Product code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_val_date">
+					<xs:annotation>
+						<xs:documentation>Transaction value 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_release_flag">
+					<xs:annotation>
+						<xs:documentation>Set to Y when the release 
+								(mainlevée) of the guarantee has been 
+								pronounced.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="ref_id">
+					<xs:annotation>
+						<xs:documentation>Reference id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_id">
+					<xs:annotation>
+						<xs:documentation>Transaction id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="appl_date">
+					<xs:annotation>
+						<xs:documentation>Banker's guarantee application 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="amd_date">
+					<xs:annotation>
+						<xs:documentation>Amendment date.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="amd_no">
+					<xs:annotation>
+						<xs:documentation>Amendment 
+								number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="template_id">
+					<xs:annotation>
+						<xs:documentation>Template id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="cust_ref_id">
+					<xs:annotation>
+						<xs:documentation>Customer attributed reference 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="customer_identifier">
+					<xs:annotation>
+						<xs:documentation>
+								Customer identifier
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="customer_identifier_other">
+					<xs:annotation>
+						<xs:documentation>
+								Customer identifier
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_reference">
+					<xs:annotation>
+						<xs:documentation>Beneficiary 
+								reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="provisional_status">
+					<xs:annotation>
+						<xs:documentation>This field identifies whether the transaction is Provisional.  The value in this column can be either Y or N.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="adv_send_mode" nillable="true">
+					<xs:simpleType>
+						<xs:annotation>
+							<xs:documentation>Send mode. The standard values are 01 for SWIFT,
+			                	02 for Telex, 03 for Courier and 99 for Other.</xs:documentation>
+						</xs:annotation>
+							<xs:restriction base="xs:token">
+								<xs:pattern value=".{0}|01|02|03|99"/>
+							</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element  minOccurs="0" ref="sub_product_code">
+					<xs:annotation>
+						<xs:documentation>Sub Product code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="entity">
+					<xs:annotation>
+						<xs:documentation>Entity</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Applicant abbreviated 
+								name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_name">
+					<xs:annotation>
+						<xs:documentation>Applicant name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_address_line_1">
+					<xs:annotation>
+						<xs:documentation>Applicant first address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_address_line_2">
+					<xs:annotation>
+						<xs:documentation>Applicant second address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_dom">
+					<xs:annotation>
+						<xs:documentation>Applicant 
+								domicile.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_address_line_4">
+					<xs:annotation>
+						<xs:documentation>Applicant fourth address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_country">
+					<xs:annotation>
+						<xs:documentation>Applicant 
+								country.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_reference">
+					<xs:annotation>
+						<xs:documentation>Applicant 
+								reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="for_account">
+					<xs:annotation>
+						<xs:documentation>For account of</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="alt_applicant_name">
+					<xs:annotation>
+						<xs:documentation>Alternate applicant name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="alt_applicant_address_line_1">
+					<xs:annotation>
+						<xs:documentation>Alternate applicant first address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="alt_applicant_address_line_2">
+					<xs:annotation>
+						<xs:documentation>Alternate applicant second address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="alt_applicant_dom">
+					<xs:annotation>
+						<xs:documentation>Alternate applicant 
+								domicile.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="alt_applicant_address_line_4">
+					<xs:annotation>
+						<xs:documentation>Alternate applicant fourth address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="alt_applicant_country">
+					<xs:annotation>
+						<xs:documentation>Alternate applicant 
+								country.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_abbv_name">
+					<xs:annotation>
+						<xs:documentation>Beneficiary abbreviated 
+								name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_name">
+					<xs:annotation>
+						<xs:documentation>Beneficiary 
+								name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_address_line_1">
+					<xs:annotation>
+						<xs:documentation>Beneficiary first address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_address_line_2">
+					<xs:annotation>
+						<xs:documentation>Beneficiary second address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_dom">
+					<xs:annotation>
+						<xs:documentation>Beneficiary 
+								domicile.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_address_line_4">
+					<xs:annotation>
+						<xs:documentation>Beneficiary fourth address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="beneficiary_country">
+					<xs:annotation>
+						<xs:documentation>Beneficiary 
+								country.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_name">
+					<xs:annotation>
+						<xs:documentation>Contact name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_address_line_1">
+					<xs:annotation>
+						<xs:documentation>Contact first address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_address_line_2">
+					<xs:annotation>
+						<xs:documentation>Contact second address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_dom">
+					<xs:annotation>
+						<xs:documentation>Contact 
+								domicile.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_address_line_4">
+					<xs:annotation>
+						<xs:documentation>Contact fourth address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contact_country">
+					<xs:annotation>
+						<xs:documentation>Contact 
+								country.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issuing_bank_type_code">
+					<xs:annotation>
+						<xs:documentation>A code with two possible values 
+								to specify if the guarantee is issued by the 
+								Recipient Bank (element bearing the "recipient 
+								bank" role) or an Other Bank (in which case the 
+								"issuing bank" element contains its 
+								details).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="adv_bank_conf_req">
+					<xs:annotation>
+						<xs:documentation>Advising Bank confirmation required</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_type_code">
+					<xs:annotation>
+						<xs:documentation>A code to qualify the type of the 
+								Undertaking: Bid Bond, Performance Bond, Payment 
+								Guarantee, etc. and Other 
+								(specify)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_type_details">
+					<xs:annotation>
+						<xs:documentation>If the type above is Other, then 
+								the description of the requested Undertaking is 
+								given here.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="iss_date_type_code">
+					<xs:annotation>
+						<xs:documentation>Indicate if the requested start 
+								for the guarantee is the Issuance, the 
+								Signature of the underlying Contract, the Date 
+								of Advanced Payment, etc. or Other 
+								(specify)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="iss_date_type_details">
+					<xs:annotation>
+						<xs:documentation>If the type is Other, the date 
+								can be specified here. Note that it is not a 
+								date field: the user could enter a description 
+								of start date instead.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="iss_date">
+					<xs:annotation>
+						<xs:documentation>Field editable by the bank only 
+								to specify as part of the reporting the actual 
+								start date for the guarantee.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="exp_date_type_code">
+					<xs:annotation>
+						<xs:documentation>Three values possible for this 
+								code: No Date, Fixed, and 
+								Estimated.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="exp_date">
+					<xs:annotation>
+						<xs:documentation>Not editable if No Date is chosen 
+								above.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="exp_event">
+					<xs:annotation>
+						<xs:documentation>Expiry event.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_cur_code">
+					<xs:annotation>
+						<xs:documentation>The currency of the 
+								Undertaking</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_amt">
+					<xs:annotation>
+						<xs:documentation>The amount of the 
+								Undertaking</xs:documentation>
+					</xs:annotation>
+				</xs:element>																														
+				<xs:element minOccurs="0" ref="tnx_cur_code">
+					<xs:annotation>
+						<xs:documentation>Transaction currency 
+								code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_amt">
+					<xs:annotation>
+						<xs:documentation>Transaction 
+								amount.</xs:documentation>
+					</xs:annotation>
+				</xs:element>	
+				<xs:element minOccurs="0" ref="bg_liab_amt">
+					<xs:annotation>
+						<xs:documentation>The current liability amount of the 
+								Undertaking</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="release_amt">
+					<xs:annotation>
+						<xs:documentation>IU Release amount
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- ADD INCOMING V4 -->
+				<xs:element minOccurs="0" ref="bg_outstanding_amt">
+					<xs:annotation>
+						<xs:documentation>The current outstanding amount of the 
+								Undertaking</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_available_amt">
+					<xs:annotation>
+						<xs:documentation>The current available amount of the 
+								Undertaking</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="consortium">
+					<xs:annotation>
+						<xs:documentation>Undertaking with consortium</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="consortium_details">
+					<xs:annotation>
+						<xs:documentation>Consortium Details</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element minOccurs="0" ref="net_exposure_cur_code">
+					<xs:annotation>
+						<xs:documentation>Undertaking net exposure currency code</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element minOccurs="0" ref="net_exposure_amt">
+					<xs:annotation>
+						<xs:documentation>Undertaking net exposure amount</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="open_chrg_brn_by_code" type="chrg_by_code" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Open Charge branch by code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="corr_chrg_brn_by_code" type="chrg_by_code" nillable="true">
+					<xs:annotation>
+						<xs:documentation>Correct Charge branch by code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="renew_flag">
+					<xs:annotation>
+						<xs:documentation>
+								Flag to enable/disable the renewal function.
+								Values 'Y' to enable or 'N' to disable. 
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="renew_on_code">
+					<xs:annotation>
+						<xs:documentation>
+								Flag to define when the renewal will occours.
+								Values '01' to renew on expiry, '02' to a date defined in renewal_calendar_date field and empty when renew_flag value is 'N'. 
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="renewal_calendar_date">
+					<xs:annotation>
+						<xs:documentation>
+								Date defined when the renew_on_code field is set with '02' and empty when renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="renew_for_nb">
+					<xs:annotation>
+						<xs:documentation>
+								Number of periods (renew_for_period field) that the SI will be renewed.
+								Any number between 1 and 999 and empty when renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="renew_for_period">
+					<xs:annotation>
+						<xs:documentation>
+								Period of renew_for_nb do reference.
+								Values are 'D' for days, 'W' for weeks, 'M' for months and 'Y' for years  and empty when renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="advise_renewal_flag">
+					<xs:annotation>
+						<xs:documentation>
+								Flag to define if the renewal should be advised.
+								Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="advise_renewal_days_nb">
+					<xs:annotation>
+						<xs:documentation>
+								The number of days before the renewal to advise.
+								Any number between 1 and 999 and empty when advise_renewal_flag or renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="rolling_renewal_flag">
+					<xs:annotation>
+						<xs:documentation>
+								Flag to define if the renewal can be rolled.
+								Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="rolling_renewal_nb">
+					<xs:annotation>
+						<xs:documentation>
+								The number of times of the renewal can be rolled.
+								Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="rolling_day_in_month"/>
+				<xs:element minOccurs="0" ref="rolling_renew_for_nb"/>
+				<xs:element minOccurs="0" ref="rolling_renew_on_code"/>
+				<xs:element minOccurs="0" ref="rolling_renew_for_period"/>
+				<xs:element minOccurs="0" ref="final_expiry_date">
+					<xs:annotation>
+						<xs:documentation>
+								final expiry date
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element minOccurs="0" ref="renew_amt_code">
+					<xs:annotation>
+						<xs:documentation>
+								The amount of th renewal.
+								Values are '01' to the original amount, '02' to the current amount or empty when renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="rolling_cancellation_days">
+					<xs:annotation>
+						<xs:documentation>
+								The number of days before the cancellation to advise.
+								Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contract_ref">
+					<xs:annotation>
+						<xs:documentation>The reference of the underlying 
+								contract.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contract_narrative">
+					<xs:annotation>
+						<xs:documentation>The narrative of the underlying 
+								contract.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contract_date">
+					<xs:annotation>
+						<xs:documentation>The date born by the 
+								contract.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tender_expiry_date">
+					<xs:annotation>
+						<xs:documentation>The expiry date in case of 
+								Contract of type  
+								Tender.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contract_cur_code">
+					<xs:annotation>
+						<xs:documentation>The currency code of that 
+								contract.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element minOccurs="0" ref="contract_amt">
+					<xs:annotation>
+						<xs:documentation>The amount of that 
+								contract.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="contract_pct">
+					<xs:annotation>
+						<xs:documentation>The percentage of the contract 
+								amount involved in the 
+								undertaking.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_rule">
+					<xs:annotation>
+						<xs:documentation>An optional string for the 
+								description of the rules followed by the 
+								transaction: UCP 500, URCG 325, URDG 458, URCB 
+								524, ISP 98, etc.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_rule_other">
+					<xs:annotation>
+						<xs:documentation>BG Rules Other.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="text_language">
+					<xs:annotation>
+						<xs:documentation>Text Language.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="text_language_other">
+					<xs:annotation>
+						<xs:documentation>Text Language Other.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="bg_text_type_code" type="undertaking_text_type_code" nillable="true">
+					<xs:annotation>
+						<xs:documentation>The customer can specify the type 
+								of the text to use for the resulting guarantee 
+								letter: Standard, Attached (and therefore found 
+								in the attachment), or Same As 
+								(specify).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_text_type_details">
+					<xs:annotation>
+						<xs:documentation>A text field enabled only when 
+								the type above is Same As, and used by the 
+								customer to specify the reference of another 
+								Guarantee whose same text as to be 
+								used.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="principal_act_no">
+					<xs:annotation>
+						<xs:documentation>Principal account 
+								number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="fee_act_no">
+					<xs:annotation>
+						<xs:documentation>Fee account 
+								number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="delivery_to">
+					<xs:annotation>
+						<xs:documentation>Undertaking delivery to type</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element minOccurs="0" ref="delivery_to_other">
+					<xs:annotation>
+						<xs:documentation>Oher type of guarantee delivery to</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="extended_date">
+					<xs:annotation>
+						<xs:documentation>Extended Date</xs:documentation>
+					</xs:annotation>
+				</xs:element>												
+				<xs:element minOccurs="0" ref="additional_cust_ref">
+					<xs:annotation>
+						<xs:documentation>
+								Additional customer reference
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>	
+				<xs:element minOccurs="0" ref="purpose">
+					<xs:annotation>
+						<xs:documentation>
+								Purpose of Undertaking
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_transfer_indicator">
+					<xs:annotation>
+						<xs:documentation>
+								Indicator to dictate whether the transfer is to
+								be made.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_conf_instructions">
+					<xs:annotation>
+						<xs:documentation>
+								IU confirmation instructions
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="approx_expiry_date">
+					<xs:annotation>
+						<xs:documentation>
+								Approximate Expiry Date
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>					
+				<xs:element minOccurs="0" ref="bei_code">
+					<xs:annotation>
+						<xs:documentation>
+								Business identifier code which identifies the
+								Beneficiary/Counterparty by specific number.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_tolerance_positive_pct">
+					<xs:annotation>
+						<xs:documentation>
+								Undertaking positive tolerance value.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_tolerance_negative_pct">
+					<xs:annotation>
+						<xs:documentation>
+								Undertaking negative tolerance value.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" name="conf_chrg_brn_by_code" type="chrg_by_code" nillable="true">
+					<xs:annotation>
+						<xs:documentation>
+								Confirmation charge born by code
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="renewal_type">
+					<xs:annotation>
+						<xs:documentation>
+								Renewal type : Regular(01) and Rolling(02) 
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="cancellation_req_flag">
+					<xs:annotation>
+						<xs:documentation>
+								Flag requested for cancellation.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="reason_reduction_release">
+					<xs:annotation>
+						<xs:documentation>
+								Reason for Reduction Release
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_govern_country">
+					<xs:annotation>
+						<xs:documentation>
+								The govern country for Undertaking
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_govern_text">
+					<xs:annotation>
+						<xs:documentation>
+								Undertaking text of govern.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_demand_indicator">
+					<xs:annotation>
+						<xs:documentation>
+								Indicator to display whether the undertaking
+								includes the demand
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bg_special_terms">
+					<xs:annotation>
+						<xs:documentation>
+								Undertaking special terms
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="adv_send_mode_text">
+					<xs:annotation>
+						<xs:documentation>
+								The send mode which is selected other than the specified ones.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="delv_org_undertaking">
+					<xs:annotation>
+						<xs:documentation>
+								Delivery original undertaking
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="delv_org_undertaking_text">
+					<xs:annotation>
+						<xs:documentation>
+								Text of delivery original undertaking.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="send_attachments_by">
+					<xs:annotation>
+						<xs:documentation>
+								Send mode for the attachments
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="send_attachments_by_other">
+					<xs:annotation>
+						<xs:documentation>
+								Send mode for the attachments
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>	
+				<xs:element minOccurs="0" ref="maturity_date">
+						<xs:annotation>
+							<xs:documentation>Maturity date for acceptance, payment, discrepancies.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="latest_response_date">
+						<xs:annotation>
+							<xs:documentation>Latest response date</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				<xs:element minOccurs="0" ref="cu_sub_product_code">
+					<xs:annotation>
+						<xs:documentation>
+								Counter undertaking sub product code.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="cu_conf_instructions">
+					<xs:annotation>
+						<xs:documentation>
+								Counter undertaking confirmation instructions
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="cu_transfer_indicator">
+					<xs:annotation>
+						<xs:documentation>
+								Counter undertaking transfer indicator.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			<xs:element minOccurs="0" ref="cu_type_code">
+				<xs:annotation>
+					<xs:documentation>
+								Type of undertaking for Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_type_details">
+				<xs:annotation>
+					<xs:documentation>If the type above is Other, then 
+								the description of the requested Undertaking is 
+								given here.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_effective_date_type_code">
+				<xs:annotation>
+					<xs:documentation>
+								The effective date type code for the Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_effective_date_type_details">
+				<xs:annotation>
+					<xs:documentation>
+								Details of effective date for Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_exp_date_type_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking expiry type.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>					
+			<xs:element minOccurs="0" ref="cu_exp_date">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking expiry date.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_approx_expiry_date">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking Approximate Expiry Date
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_exp_event">
+				<xs:annotation>
+					<xs:documentation>
+								Event dictating the expiry of the Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_cur_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking currency code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_amt">
+				<xs:annotation>
+					<xs:documentation>
+								Amount of counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_tnx_amt">
+				<xs:annotation>
+					<xs:documentation>
+								Counter Undertaking transaction amount.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_liab_amt">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking liability amount
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_available_amt">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking available amount.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_tolerance_positive_pct">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking positive tolerance value.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_tolerance_negative_pct">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking negative tolerance value.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_consortium">
+				<xs:annotation>
+					<xs:documentation>
+								Dictates whether the Counter undertaking has consortium.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_consortium_details">
+				<xs:annotation>
+					<xs:documentation>
+								Consortium details for Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_net_exposure_cur_code">
+				<xs:annotation>
+					<xs:documentation>
+								Currency code for exposure amount in Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_net_exposure_amt">
+				<xs:annotation>
+					<xs:documentation>
+								Exposure amount in Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_open_chrg_brn_by_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking open charge borne by code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_corr_chrg_brn_by_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking correspondance charge borne by code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_conf_chrg_brn_by_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking confirmation charge borne by code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_renew_flag">
+				<xs:annotation>
+					<xs:documentation>
+								Dictates whether the renewal is applicable in Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_renewal_type">
+				<xs:annotation>
+					<xs:documentation>
+								Renewal type : Regular(01) and Rolling(02) 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_renew_on_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking renew on code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_renewal_calendar_date">
+				<xs:annotation>
+					<xs:documentation>
+								Renewal calendar date of Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_renew_for_nb">
+				<xs:annotation>
+					<xs:documentation>
+								No. of days/weeks/months for renewal of Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_renew_for_period">
+				<xs:annotation>
+					<xs:documentation>
+								The type of period in D/W/M for Counter undertaking renewal.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_advise_renewal_flag">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking advising renewal flag.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>					
+			<xs:element minOccurs="0" ref="cu_advise_renewal_days_nb">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking advising renewal no. of days.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rolling_renewal_flag">
+				<xs:annotation>
+					<xs:documentation>
+								Flag to define if the renewal can be rolled.
+								Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+			<xs:element minOccurs="0" ref="cu_rolling_renew_on_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking rolling renew on code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rolling_renew_for_nb">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking rolling renewal for number of Daya/weeks/months.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rolling_renew_for_period">
+				<xs:annotation>
+					<xs:documentation>
+								Unit of period of rolling renewal days (D)/weeks(W)/Months(M).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rolling_day_in_month">
+				<xs:annotation>
+					<xs:documentation>
+								No. of rolling days in counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rolling_renewal_nb">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking rolling renewal nb.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_final_expiry_date">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking final expiry date.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_renew_amt_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking renew amount code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rolling_cancellation_days">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking rolling cancellation days.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rule">
+				<xs:annotation>
+					<xs:documentation>
+								Rule applied for Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_rule_other">
+				<xs:annotation>
+					<xs:documentation>
+								Rule applied for Counter undertaking.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_govern_country">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking govern country.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_govern_text">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking governing law.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_demand_indicator">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking demand indicator.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element minOccurs="0" ref="cu_text_type_code">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking text type code.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_text_type_details">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking text type details.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_text_language">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking text language.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_text_language_other">
+				<xs:annotation>
+					<xs:documentation>
+								Counter undertaking text language.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>				
+			<xs:element minOccurs="0" name="cr_avl_by_code" nillable="true">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Credit availibility type code.A code made of two characters with the values. 
+			                	The standard values are 01 - Payment and 06 - On Demand,
+			                	to indicate how the credit is available</xs:documentation>
+						</xs:annotation>
+						<xs:restriction base="xs:token">
+							<xs:pattern value=".{0}|01|06"/>
+						</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" ref="ship_from">
+				<xs:annotation>
+					<xs:documentation>Shipment origin.</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+			<xs:element minOccurs="0" ref="ship_loading">
+				<xs:annotation>
+					<xs:documentation>Shipment Loading</xs:documentation>
+				</xs:annotation>
+			</xs:element>											
+			<xs:element minOccurs="0" ref="ship_discharge">
+				<xs:annotation>
+					<xs:documentation>Shipment Discharge.</xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element minOccurs="0" ref="ship_to">
+				<xs:annotation>
+					<xs:documentation>Shipment destination.</xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element minOccurs="0" ref="part_ship_detl">
+				<xs:annotation>
+					<xs:documentation>Partial shipment detail.</xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element minOccurs="0" ref="tran_ship_detl">
+				<xs:annotation>
+					<xs:documentation>Transhipment detail.</xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element minOccurs="0" ref="last_ship_date">
+				<xs:annotation>
+					<xs:documentation>Last shipment date.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="inco_term_year">
+				<xs:annotation>
+					<xs:documentation>Incoterm Rules</xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element minOccurs="0" ref="inco_term">
+				<xs:annotation>
+					<xs:documentation>Incoterm.</xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element minOccurs="0" ref="inco_place">
+				<xs:annotation>
+					<xs:documentation>Named place for the Incoterm.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="cu_cr_avl_by_code" nillable="true">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Credit availibility type code for counter section.A code made of two characters with the values. 
+			                	The standard values are 01 - Payment and 06 - On Demand,
+			                	to indicate how the credit is available</xs:documentation>
+						</xs:annotation>
+						<xs:restriction base="xs:token">
+							<xs:pattern value=".{0}|01|06"/>
+						</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_beneficiary">
+				<xs:annotation>
+					<xs:documentation>Counter undertaking beneficiary details/ party details.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_contact">
+				<xs:annotation>
+					<xs:documentation>Counter undertaking beneficiary details/ party details.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_variation"/>
+			<xs:element minOccurs="0" ref="variation"/>
+			<xs:element minOccurs="0" ref="recipient_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the recipient 
+								bank information. Note that the recipient bank 
+								is the actually banking party holding the file 
+								within the Global Trade 
+								Portal.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="issuing_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the issuing bank 
+								information. Note that it may or may not be the 
+								same as the recipient bank (depending on the 
+								chosen issuing bank type 
+								code)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="advising_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the advising 
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="advisethru_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the advise through 
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>																
+			<xs:element minOccurs="0" ref="confirming_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the confirming 
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="req_conf_party_flag">
+					<xs:annotation>
+						<xs:documentation>
+								Requested confirmation party
+						</xs:documentation>
+					</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="requested_confirmation_party">
+				<xs:annotation>
+					<xs:documentation>Parent node for the requested confirmation 
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>									
+			<xs:element minOccurs="0" ref="processing_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the processing 
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="credit_available_with_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the credit available with 
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_recipient_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the counter undertaking recipient bank
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="cu_credit_available_with_bank">
+				<xs:annotation>
+					<xs:documentation>Parent node for the Counter Undertaking credit available with 
+								bank information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="bo_comment">
+				<xs:annotation>
+					<xs:documentation>Back office 
+								comment.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="free_format_text">
+				<xs:annotation>
+					<xs:documentation>Used as a zone of communication 
+								between the client and the 
+								bank</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="amd_details">
+				<xs:annotation>
+					<xs:documentation>Used for the amendment narrative 
+								in the BG Amend function.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_additional_instructions">
+				<xs:annotation>
+					<xs:documentation>When additional instructions 
+								pertaining to the undertaking are required, they 
+								go in this field.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_transfer_conditions">
+				<xs:annotation>
+					<xs:documentation>Narrative to add information
+								about transfer conditions.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_additional_amount">
+				<xs:annotation>
+					<xs:documentation>Narrative to add additional information
+								about amount.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_cancellation">
+				<xs:annotation>
+					<xs:documentation>Narrative to add information
+								about cancellation.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_text_undertaking">
+				<xs:annotation>
+					<xs:documentation>Narrative regarding text of undertaking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_underlying_transaction_details">
+				<xs:annotation>
+					<xs:documentation>Narrative to add information
+								about underlying transaction details of undertaking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_presentation_instructions">
+				<xs:annotation>
+					<xs:documentation>Narrative to add information
+								about presentation instructions.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" ref="narrative_transfer_conditions_cu">
+				<xs:annotation>
+					<xs:documentation>Narrative to add information
+								about transfer conditions of counter undertaking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>					
+			<xs:element minOccurs="0" ref="narrative_additional_amount_cu">
+					<xs:annotation>
+						<xs:documentation>Narrative to add additional information
+								about amount of counter undertaking.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="narrative_cancellation_cu">
+					<xs:annotation>
+						<xs:documentation>Narrative to add information
+								about cancellation in Counter Undertaking.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="narrative_undertaking_terms_and_conditions_cu">
+					<xs:annotation>
+						<xs:documentation>Narrative to add information
+								about terms and conditions of counter undertaking.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="narrative_underlying_transaction_details_cu">
+					<xs:annotation>
+						<xs:documentation>Narrative to add information
+								about underlying transaction details of counter undertaking.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="narrative_presentation_instructions_cu">
+					<xs:annotation>
+						<xs:documentation>Narrative to add information
+								about presentation instructions of counter undertaking.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="customer_contact_details">
+					<xs:annotation>
+						<xs:documentation>Text field to add customer contact details.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="amd_details_cu">
+					<xs:annotation>
+						<xs:documentation>Used for the amendment narrative 
+								in the BG Amend function for counter.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="linked_licenses"/>
+				<xs:element minOccurs="0" ref="charges"/>
+				<xs:element minOccurs="0" ref="attachments"/>
+				<xs:sequence minOccurs="0">
+					<xs:element maxOccurs="unbounded" name="additional_field">
+						<xs:complexType mixed="true">
+							<xs:sequence>
+								<xs:element ref="bg_tnx_record" minOccurs="0"/>
+							</xs:sequence>
+							<xs:attribute name="name" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">	
+										<xs:enumeration value="fee_act_cur_code"/>
+										<xs:enumeration value="fee_act_name"/>
+										<xs:enumeration value="fee_act_description"/>
+										<xs:enumeration value="fee_act_pab"/>
+										<xs:enumeration value="document_id"/>
+										<xs:enumeration value="request_date"/>
+										<xs:enumeration value="original_details"/>
+										<xs:enumeration value="releaser_first_name"/>
+										<xs:enumeration value="releaser_last_name"/>
+										<xs:enumeration value="releaser_phone"/>
+										<xs:enumeration value="releaser_email"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="type" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="string"/>
+										<xs:enumeration value="string"/>
+										<xs:enumeration value="string"/>
+										<xs:enumeration value="string"/>
+										<xs:enumeration value="string"/>
+										<xs:enumeration value="date"/>
+										<xs:enumeration value="xml_text"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="scope" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="master"/>
+										<xs:enumeration value="transaction"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>					 
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cu_text_language" type="PullDownList" nillable="false"/>
+	<xs:element name="cu_text_language_other" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cu_recipient_bank" type="bank" nillable="true"/>
+	<xs:element name="cu_beneficiary" type="partyDetails" nillable="true"/>
+	<xs:element name="cu_contact" type="partyDetails" nillable="true"/>
+	<xs:element name="cu_final_expiry_date" type="Date" nillable="true"/>
+	<xs:element name="cu_approx_expiry_date" type="Date" nillable="true"/>
+	<xs:element name="cu_conf_instructions" type="TwoCharacters" nillable="true"/>
+	<xs:element name="cu_govern_country" type="countryCode" nillable="true"/>
+	<xs:element name="cu_govern_text" type="SixtyFiveCharacters" nillable="true"/>
+	<xs:element name="cu_demand_indicator" type="FourCharacters" nillable="true"/>
+	<xs:element name="cu_transfer_indicator" type="YesNo" nillable="true"/>
+		<xs:element name="cu_tnx_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount to indicate the amount specific
+                to the transaction currently reported </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+		<xs:element name="cu_effective_date_type_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Indicate if the requested start for the guarantee
+                	is the Issuance (01) , the Signature of the underlying Contract
+                	(02), the Date of Advanced Payment (03), etc. or Other (99)</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|99"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cu_effective_date_type_details" type="Date" nillable="true"/>
+	<xs:element name="cu_exp_date_type_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Three values possible for this code: No Date 
+					(01), Fixed (02), and Estimated (03).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="cu_exp_date" type="Date" nillable="true"/>
+	<xs:element name="cu_exp_event" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="cu_sub_product_code" type="FiveCharacters"/>
+	<xs:element name="cu_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the LU currency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_net_exposure_cur_code" type="currency" nillable="true"/>
+	<xs:element name="cu_amt" type="amount" nillable="true"/>
+	<xs:element name="cu_liab_amt" type="amount" nillable="true"/>
+	<xs:element name="cu_available_amt" type="amount" nillable="true"/>
+	<xs:element name="cu_tolerance_positive_pct" type="twoDigitInteger" nillable="true"/>
+	<xs:element name="cu_tolerance_negative_pct" type="twoDigitInteger" nillable="true"/>
+	<xs:element name="cu_net_exposure_amt" type="amount" nillable="true"/>
+	<xs:element name="cu_consortium" type="YesNo" nillable="true"/>
+	<xs:element name="cu_consortium_details" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="cu_conf_chrg_brn_by_code" type="chrg_by_code"  nillable="true"/>
+	<xs:element name="cu_corr_chrg_brn_by_code" type="chrg_by_code"  nillable="true"/>
+	<xs:element name="cu_open_chrg_brn_by_code" type="chrg_by_code" nillable="true"/>
+	<xs:element name="cu_renewal_type" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Values are '01' to the regular type, '02' to the rolling type.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cu_renew_flag" type="YesNo" nillable="false">
+		<xs:annotation>
+			<xs:documentation>
+				Flag to enable/disable the renewal function.
+				Values 'Y' to enable or 'N' to disable. 
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_renew_on_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Flag to define when the renewal will occours.
+					Values '01' to renew on expiry, '02' to a date defined in renewal_calendar_date field and empty when renew_flag value is 'N'. 
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cu_renewal_calendar_date" type="Date" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Date defined when the renew_on_code field is set with '02' and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_renew_for_nb" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Number of periods (renew_for_period field) that the SI will be renewed.
+				Any number between 1 and 999 and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_renew_for_period" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Period of renew_for_nb do reference.
+					Values are 'D' for days, 'W' for weeks, 'M' for months and 'Y' for years  and empty when renew_flag value is 'N'.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|D|W|M|Y"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cu_advise_renewal_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Flag to define if the renewal should be advised.
+				Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_advise_renewal_days_nb" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				The number of days before the renewal to advise.
+				Any number between 1 and 999 and empty when advise_renewal_flag or renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_rolling_renewal_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Flag to define if the renewal can be rolled.
+				Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_rolling_renew_on_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Flag to define when the renewal will occours.
+					Values '01' to renew on expiry, '02' to a date defined in renewal_calendar_date field and empty when renew_flag value is 'N'. 
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cu_rolling_renewal_nb" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				The number of times of the renewal can be rolled.
+				Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_rolling_renew_for_period" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Period of renew_for_nb do reference.
+					Values are 'D' for days, 'W' for weeks, 'M' for months and 'Y' for years  and empty when renew_flag value is 'N'.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|D|W|M|Y"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cu_rolling_day_in_month" type="twoDigitInteger" nillable="true"/>
+	<xs:element name="cu_rolling_cancellation_days" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				The number of days before the cancellation to advise.
+				Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cu_renew_amt_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					The amount of th renewal.
+					Values are '01' to the original amount, '02' to the current amount or empty when renew_flag value is 'N'.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cu_type_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="cu_type_details" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="cu_rule" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cu_rule_other" type="ThirtyFiveCharacters" nillable="true"/>	
+	<xs:element name="cu_text_type_code" type="undertaking_text_type_code" nillable="true"/>
+	<xs:element name="cu_text_type_details" type="TwoHundredFiftyFiveCharacters" nillable="true"/>				
+	<xs:element name="cu_rolling_renew_for_nb" type="fourDigitInteger" nillable="true"/>
+	<xs:element name="cu_variation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="type">
+					<xs:simpleType>
+						<xs:annotation>
+							<xs:documentation>
+								Type is defined to hold the variation type. When cu variation type is Regular,
+								 then type is 01 and for variation type as irregular tye is 02
+							</xs:documentation>
+						</xs:annotation>
+						<xs:restriction base="xs:token">
+							<xs:pattern value=".{0}|01|02"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element minOccurs="0" ref="advise_flag"/>			
+				<xs:element minOccurs="0" ref="advise_reduction_days"/>			
+				<xs:element minOccurs="0" ref="maximum_nb_days"/>
+				<xs:element minOccurs="0" ref="frequency"/>
+				<xs:element minOccurs="0" ref="period"/>
+				<xs:element minOccurs="0" ref="day_in_month"/>	
+				<xs:element name="variation_lines" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>					
+							<xs:element minOccurs="0" maxOccurs="unbounded" ref="variation_line_item"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="amd_details_cu" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_cancellation_cu" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_undertaking_terms_and_conditions_cu" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_underlying_transaction_details_cu" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_additional_amount_cu" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_transfer_conditions_cu" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_presentation_instructions_cu" type="xs:string" nillable="true"/>	
+</xs:schema>

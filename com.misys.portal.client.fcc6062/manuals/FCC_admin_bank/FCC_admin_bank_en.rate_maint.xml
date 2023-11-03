@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=System Features: Rate Maintenance:PERM=455;ACCESS=RATE"
+         role="TOPIC">
+  <title><application>Rates Maintenance</application></title>
+
+  <section condition="TITLE=System Features: Rate Maintenance:PERM=455;ACCESS=RATE"
+           role="TOPIC">
+    <title>Overview</title>
+
+    <para role="TEXT">As an administrator at a bank, you use the <application
+    moreinfo="none">Rates Maintenance</application> function to update the
+    exchange rates used for currency conversions and in checking authorisation
+    levels. Both Bank Group administrators and Bank Administrators can access
+    this feature.</para>
+
+    <important>
+      <para role="TEXT">Your technical administrator can select the source of
+      the foreign exchange (FX) rates from Treasury, Cash or Back-office (BO)
+      and import the rates into the <xi:include href="../entities_en.xml"
+      xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      database. This feature is known as Rates Download. The technical
+      administrator has to set the following configuration in <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> to update rates from the
+      incoming rates xml file from the BO:</para>
+
+      <programlisting>#This line defines the bank's abbreviated name related to the middle office to
+# which the rate download is applicable.
+#The below configuration is left empty if the rates are to be maintained for the bank group.
+#The below configuration is updated with the respective bank's abbreviated name for
+# rate maintenance to be maintained at the bank level.
+# For example, if the rate is to be associated with the bank abbreviated name DEMOBANK,
+# the entry is as shown below.
+daemon.ti2mtpjmsinterfacedaemon.interface.banks = DEMOBANK
+
+#This line defines the BO entity in the application. For example, Trade Innovation (TI) here.
+daemon.ti2mtpjmsinterfacedaemon.interface.backoffice = TI
+
+#This line defines the property to select the appropriate FX rate source. 
+#The valid values are: TREASURY, CASH or TI.
+exchange.rate.backoffice.source = TI</programlisting>
+
+      <para role="TEXT">When the rates are downloaded from a BO system to
+      <xi:include href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>, by default, a Bank Group
+      Administrator can login and view it. <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> updates the rates to the
+      existing rate maintenance table rather than delete it and create a new
+      table.</para>
+
+      <para role="TEXT">When currencies are downloaded from the BO source, the
+      GTP_MASTER_CURRENCY table is updated. The currency is also assigned to
+      the respective bank (referred to as the source bank in the property
+      "daemon.ti2mtpjmsinterfacedaemon.interface.banks") in the
+      GTP_BANK_CURRENCY table and mapped to the destination bank's abbreviated
+      name. The destination bank details are available in the configuration of
+      a parameter - P061 (Key_1 = &lt;source bank&gt; / '', Key_2 = '' / 'CCY'
+      and DATA_1 = &lt;destination bank&gt;).</para>
+
+      <para role="TEXT">An entry for parameter P061 is required with respect
+      to the bank's abbreviated name in the GTP_PARAM_DATA table, which
+      determines the source bank's exchange rate and bank currency. The
+      parameter P061 is derived by: KEY_1 = source bank (the bank where the
+      exchange rate and currency is utilised), KEY_2 = '' / 'CCY' / 'XCH'
+      (where 'CCY' denotes that it is for currency specifically, 'XCH' denotes
+      that it is for exchange rate specifically and '' denotes that it for a
+      combination of both), and DATA_1 = destination bank (bank from where the
+      information is derived from). A base entry for KEY_1 = '', KEY_2 = ''
+      and DATA_1 = '*' is required for the default setup, and any additional
+      bank setup can be added to it.</para>
+
+      <para role="TEXT">A sample query is given below. For more details on
+      P061 configuration, refer to the technical administration and technical
+      reference guides.</para>
+
+      <para><programlisting>INSERT INTO gtp_param_data 
+(BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,
+WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,
+DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,
+KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+values ('00001','P061','','DEMOBANK','','','','','','','','','100000000000000000000',
+'DEMOBANK','','','','','','','','','','','','','','','','','','','','','','','',
+'','','','','','','*'); </programlisting></para>
+    </important>
+
+    <para role="TEXT">You can also edit these rates in the <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> database, and the rates,
+    edited or unedited, are applied to calculate the authorisation limits and
+    credit limits across all modules. However, all transactions refer to the
+    rates defined in the source and the rates in the <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> database have no effect on
+    any of these transactions.</para>
+
+    <para role="TEXT">This module consists of one function on the System
+    Features menu, called <emphasis role="bold">Rates</emphasis>.</para>
+
+    <para role="TEXT">When you click this function, you are presented with a
+    list of all the existing rates. You can search the list by entering search
+    criteria in the <guilabel moreinfo="none">Currency</guilabel> and
+    <guilabel moreinfo="none">Name</guilabel> fields at the top of the
+    page.</para>
+
+    <para role="TEXT">The list of existing rates has the following data
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.4*"/>
+
+        <colspec colname="c2" colwidth="7.5*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para><guilabel
+            moreinfo="none">CCY</guilabel></para></entry>
+
+            <entry valign="top"><para>ISO code of the currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel
+            moreinfo="none">Name</guilabel></para></entry>
+
+            <entry valign="top"><para>Full name of the
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry><guilabel moreinfo="none">Rate</guilabel></entry>
+
+            <entry>Exchange rate versus the base currency (the base currency
+            name is displayed in the column header).<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para>If the currency is the base currency, the rate
+                      value is 1 and not editable,</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>If the currency parity is not 1 (100 for
+                      instance), the rate is given according to this
+                      parity,</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>If the currency is an <literal>EURO-IN</literal>
+                      currency, the rate is given against Euro (fixed euro
+                      rate).</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column.</para>
+
+    <para role="TEXT">You cannot add or delete a currency online. This can
+    only be done by the technical administrator.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Rate Maintenance - Rates Form</title>
+
+    <para role="TEXT">When you click <guiicon moreinfo="none">Edit</guiicon>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" width="4mm"/>
+        </imageobject>
+      </inlinemediaobject>, you are presented with the following form. After
+    entering the details, click <emphasis role="bold">Save</emphasis> at the
+    bottom of the form.</para>
+
+    <para role="TEXT">When a rate is modified, the new value is automatically
+    used to check authorisations.</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="3">
+        <colspec colname="c1" colwidth="3.3*"/>
+
+        <colspec colname="c2" colwidth="1.2*"/>
+
+        <colspec colname="c3" colwidth="5.3*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Type</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para><guilabel
+            moreinfo="none">Currency</guilabel></para></entry>
+
+            <entry valign="top"><para> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_info.gif"
+                             role="CHAR_INFO" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para>ISO code of the currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel
+            moreinfo="none">Name</guilabel></para></entry>
+
+            <entry valign="top"><para> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_info.gif"
+                             role="CHAR_INFO" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para>Full name of the
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none">Base
+            Currency</guilabel></para></entry>
+
+            <entry valign="top"><para> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_info.gif"
+                             role="CHAR_INFO" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para>ISO code of the base
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel
+            moreinfo="none">Name</guilabel></para></entry>
+
+            <entry valign="top"><para> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_info.gif"
+                             role="CHAR_INFO" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para>Full name of the base
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none">Buy
+            Rate</guilabel></para></entry>
+
+            <entry valign="top"><para><inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                </imageobject>
+              </inlinemediaobject></para></entry>
+
+            <entry valign="top"><para>Buy rate versus base
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none">Mid
+            Rate</guilabel></para></entry>
+
+            <entry valign="top"><para><inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                </imageobject>
+              </inlinemediaobject></para></entry>
+
+            <entry valign="top"><para>Mid rate versus base
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none">Sell
+            Rate</guilabel></para></entry>
+
+            <entry valign="top"><para><inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                </imageobject>
+              </inlinemediaobject></para></entry>
+
+            <entry valign="top"><para>Sell rate versus base
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel
+            moreinfo="none">Parity</guilabel></para></entry>
+
+            <entry valign="top"><para><inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                </imageobject>
+              </inlinemediaobject></para></entry>
+
+            <entry valign="top">Exchange rate parity.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+</chapter>

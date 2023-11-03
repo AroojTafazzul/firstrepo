@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>About This Manual</title>
+
+  <para role="TEXT">This document describes the usage of Opics Portal R4.x and its modules
+  for users at the client site. Opics Portal provides online access using web
+  interface to asset services available to your organization through your
+  bank.</para>
+
+  <para role="TEXT">It facilitates performing various functions to initiate asset trades,
+  such as Foreign Exchange, Loans, Fund Transfers, etc.</para>
+
+  <para role="TEXT">Opics Portal comprises a set of modules performing a similar set of
+  functions, but for different types of trade. Several other modules provide
+  more general facilities, such as the Foreign Exchange module, which helps
+  you to perform an FX trade.</para>
+
+  <para role="TEXT">This chapter covers the basic concepts and terminology used throughout
+  the portal. The next chapter <emphasis>Getting Started</emphasis> introduces
+  the Opics Portal and helps you to access it using a web interface. The
+  subsequent chapters provide information about specific modules and their
+  respective functions.</para>
+
+  <para role="TEXT">The document also helps you to understand the components of trade
+  calendar used in tracking trade events and describes how to change the
+  profiles of portal users.</para>
+
+  <section role="ITEM">
+    <title>Types of User</title>
+
+    <para role="TEXT">Opics Portal is used by companies that are customers of banks. The
+    terms "customers" and "clients" are used interchangeably in this
+    document.</para>
+
+    <para role="TEXT">The portal is generally used by:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para role="TEXT">User</para>
+
+        <para role="TEXT">A member of the staff of a client who performs trade functions
+        using the portal.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Administrator</para>
+
+        <para role="TEXT">A user with administrative privileges who manages permissions
+        and configurations of the portal.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">The functions available to a user depend on the permissions
+    configured by the administrator.</para>
+
+    <tip>
+      <para role="TEXT">The <emphasis>System Features</emphasis> section contains various
+      fields for administering and configuring the functions of the Opics
+      Portal system. To access this section, click <inlinemediaobject>
+          <imageobject>
+            <imagedata depth="17.25pt"
+                       fileref="../images/icon_systemfeatures.GIF"
+                       width="17.25pt" />
+          </imageobject>
+        </inlinemediaobject> on the toolbar.</para>
+    </tip>
+  </section>
+
+  <section role="ITEM">
+    <title>Intended Audience</title>
+
+    <para role="TEXT">This document provides information to the end-users at client site
+    and describes the functions available in the client user interface.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Overview</title>
+
+    <para role="TEXT">This section introduces the basic terminology used throughout Opics
+    Portal.</para>
+
+    <section role="ITEM">
+      <title>Products and Transactions</title>
+
+      <para role="TEXT">In Misys's Portal systems, the different services that a bank can
+      provide are called "products". Therefore, in Opics Portal documentation,
+      we refer to the different asset trade types as products.</para>
+
+      <para role="TEXT">The communications between a client and the bank about an
+      individual instance of a product typically consist of a sequence of
+      messages from the client to the bank. For example, the communications
+      regarding a forward FX trade consists of the client's initial request to
+      initiate the trade, possibly followed by a request for an update
+      later.</para>
+
+      <para role="TEXT"><emphasis>Note</emphasis>: In Opics Portal, no messages are sent
+      from the bank to the client.</para>
+
+      <para role="TEXT">These individual messages are called "transactions" or
+      "transaction events". The entire set of messages concerning one instance
+      of an individual product is called a "file" (represented by a "file of
+      documents" in the system).</para>
+
+      <para role="TEXT">The initial request from the client is often called the
+      "initiation" of the file.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>System ID</title>
+
+      <para role="TEXT">When a new file is created – for example, a user initiates a new
+      FX request – Opics Portal assigns it a unique reference number called
+      the System ID. This number is used by the portal to identify it.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Workflow</title>
+
+      <para role="TEXT">In a typical workflow, as a user representing your organization,
+      you send a request to the bank to initiate a trade. Besides, you can
+      send additional messages to the bank, amending your original
+      request.</para>
+
+      <para role="TEXT">Each module provides functions that display the list of
+      transactions that helps you to monitor their progress. When you create a
+      transaction, you can save it without sending it to the bank, so that you
+      or another user can review or amend it later. This status is called
+      Draft or Incomplete.</para>
+
+      <para role="TEXT">Nevertheless, while submitting a transaction, if the message is
+      saved but not sent, it indicates that you do not have the designated
+      authority to handle the amount of money involved in the transaction. In
+      such a case, another user, with permissions to perform higher value
+      transactions, can submit it. This status is called Unsigned or
+      Uncontrolled.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Permissions</title>
+
+      <para role="TEXT">For a user, the access rights to individual modules and functions
+      depend on the permissions configured by your organization’s portal
+      administrator. These permissions in turn are granted to your
+      organization by the bank.</para>
+
+      <para role="TEXT">The permissions are often referred to as
+      <emphasis>privileges</emphasis>, <emphasis>authority</emphasis>, or
+      <emphasis>authori</emphasis><emphasis>zat</emphasis><emphasis>ion</emphasis>.
+      These four terms are used interchangeably throughout the
+      document.</para>
+
+      <para role="TEXT"><emphasis>Caution</emphasis>: The terms
+      <emphasis>permissions</emphasis>, <emphasis>privileges</emphasis>,
+      <emphasis>authority</emphasis>, and <emphasis>authorization</emphasis>
+      do not signify <emphasis>authentication</emphasis>, which means the
+      login credentials to access the portal.</para>
+    </section>
+  </section>
+</chapter>

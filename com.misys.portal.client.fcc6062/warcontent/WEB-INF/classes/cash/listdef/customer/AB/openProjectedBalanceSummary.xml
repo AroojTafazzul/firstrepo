@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef viewer="SimpleTable" selection_mode="single" ordered="n" huge="n" help="LIST_HELP_INQUIRY" page="100" 
+		 subscribe_topic="ProjectedBalanceAccounts" source="opics">
+
+	<onSelectionChangedScript>"dojo.publish('ProjectedBalanceSummary', [{ account_id : \"" + parameters.get("account_id").getValue() +
+	"\",branch_no : \"" + parameters.get("branch_no").getValue() +
+	"\",date : \"" + row.getColumnValue("date") +
+	"\",lastRecId : \"" + row.getColumnValue("lastRecId") + "\"}])"</onSelectionChangedScript>
+
+	<!-- columns for display -->
+	<column name="date" align="center" width="10em" loca_key="EFFECTIVE_DATE"/>	
+	<column name="credit" align="right" width="25%" loca_key="DEPOSIT"/>
+	<column name="debit" align="right" width="25%" loca_key="WITHDRAWAL"/>
+	<column name="net" align="right" width="25%" loca_key="NET"/>
+	<column name="balance" align="right" width="25%" loca_key="BALANCE"/>
+	<column name="lastRecId" hidden="y"/>
+<!--
+Required -> <Action>Summary</Action>  
+Required -> <AccountNumber>CNBUSD</AccountNumber>
+Required -> <Branch>01</Branch>
+Required -> <StartDate>2012-03-14T00:00:00<</StartDate>
+Required -> <EndDate>0001-01-01T00:00:00</EndDate>
+Required -> <SearchDate>0001-01-01T00:00:00</SearchDate>
+Required -> <OpenBalance>0</OpenBalance>
+Required -> <LastRecId>0</LastRecId>
+Required -> <IsIncludeBackValue>false</IsIncludeBackValue>
+-->
+	<!-- parameters -->		
+	<parameter
+		name="account_id"
+		input="n"/>
+	<parameter
+		name="branch_no"
+		input="n"/>		
+	<parameter
+		name="account_no"
+		input="n"/>			
+	<parameter
+		name="start_date"
+		input="n"/>
+	<parameter
+		name="end_date"
+		input="n"/>					
+	<parameter
+		name="opicslist"
+		type="hidden"
+		default="PROJECTEDBALANCESUMMARY"/>	
+
+	<!-- candidates -->	
+	<candidate name="account_projected">
+		<filter>
+			<criteria>
+				<column name="Statement@account_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="branch_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					branch_no
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="account_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="start_date"/>
+				<operator type="like"/>
+				<value type="parameter">
+					start_date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="end_date"/>
+				<operator type="like"/>
+				<value type="parameter">
+					end_date
+				</value>
+			</criteria>													
+			<criteria>
+				<column name="opicslist"/>
+				<operator type="like"/>
+				<value type="parameter">
+					opicslist
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+</listdef>

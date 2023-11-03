@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Using Term Deposit module</title>
+
+  <info />
+
+  <para role="TEXT">This chapter describes the functions of Term Deposit module and
+  explains how to request interest rates and perform deposit transactions
+  using Opics Portal.</para>
+
+  <section role="ITEM">
+    <title>About Term Deposits</title>
+
+    <para role="TEXT">The Term Deposit module is a money market trading system that allows
+    you to set up deals, add instructions for settlements, verify deals,
+    generate confirmations, and run position inquiries and reports.</para>
+
+    <para role="TEXT">Using this module, you can process term deposits, fixed deposits,
+    certificates of deposit, corporate deals, federal funds, and discount
+    instruments. You can also handle pricing, position management, profit and
+    loss calculation, exception based workflows, accounting, rate re-fixing,
+    interim and principal payment scheduling, daily accruals calculations,
+    rollovers, early maturities, and unscheduled payments.</para>
+
+    <para role="TEXT">Opics Portal facilitates initiating term deposit transactions,
+    submitting them to the Issuing Bank, transaction reversal, and
+    reverse/rebook.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Term Deposit Deals</title>
+
+    <para role="TEXT">Using Opics Portal, you can request for interest rate of a deposit
+    deal by providing basic transaction details, such as currency, amount,
+    value date, maturity date, etc. The portal forwards the request to Opics
+    Plus, and based on the data associated with your account, the back-end
+    application returns the all-in customer rate for the transaction. The
+    displayed result stands valid for a specific time interval within which
+    you can accept the rate offered by the bank to complete the transaction or
+    reject it.</para>
+
+    <note>
+      <para role="TEXT">: During the time that the offered rate is active, if you make any
+      modification to the deal, the existing rate is cancelled and you must
+      place a fresh request for the deposit deal.</para>
+    </note>
+
+    <para role="TEXT">The subsequent section provides detailed explanation about deposit
+    transactions such as, deal capturing, pricing, position management, and
+    inquiries.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Creating a Term Deposit</title>
+
+    <para role="TEXT">In the portal <emphasis>Home page</emphasis>, click <emphasis>Term
+    Deposit </emphasis>and under <emphasis>TD Initiation</emphasis> select
+    <emphasis>From Scratch</emphasis> to create a new term deposit
+    deal.</para>
+
+    <para role="TEXT">The input form and its respective fields are described in the
+    following tables:</para>
+
+    <section role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">Specify the following under <emphasis>General Details</emphasis>
+      section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Customer Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the counterparty who initiates the deposit
+                trade.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Bank Name</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the bank with whom the customer performs the
+                deposit trade.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Issuer’s Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the issuer who processes the deposit
+                trade.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Request For Deposit</title>
+
+      <para role="TEXT">Specify the following under <emphasis>Request For
+      </emphasis><emphasis>Deposit</emphasis> section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Amount</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the deposit amount in the specified
+                currency.</para>
+
+                <tip>
+                  <para role="TEXT">: Enter this field as a number (e.g.,
+                  9999999999999.99) or as an amount followed by a suffix ('B'
+                  for billions, 'M' for millions, 'T' for thousands). For
+                  example, one million is entered '1000000' or '1M'.</para>
+                </tip>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Value Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the first day of the deal term.</para>
+
+                <note>
+                  <para role="TEXT">: This field must be a valid business day in the deal
+                  currency.</para>
+                </note>
+
+                <para role="TEXT">Valid dates are:</para>
+
+                <itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><emphasis>#D</emphasis><emphasis>ays</emphasis> :
+                    Number of days</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><emphasis>#Weeks</emphasis>: Number of weeks</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><emphasis>#Months</emphasis>: Number of
+                    months</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><emphasis>#Years</emphasis>: Number of years</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><emphasis>SPOT</emphasis>: A two-day delivery
+                    transaction</para>
+                  </listitem>
+                </itemizedlist>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Maturity Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the date the deal matures.</para>
+
+                <tip>
+                  <para role="TEXT">: Enter this field as a term (e.g., 1M) or as a
+                  complete date (e.g., 15 DEC 1992). If you enter this field
+                  value as a term, Opics Plus calculates the maturity
+                  date.</para>
+                </tip>
+
+                <para role="TEXT">Valid terms are:</para>
+
+                <itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><emphasis>#D</emphasis><emphasis>ays</emphasis>:
+                    Number of days</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><emphasis>#Weeks</emphasis>: Number of weeks</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><emphasis>#Months</emphasis>: Number of
+                    months</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><emphasis>#Years</emphasis>: Number of years</para>
+                  </listitem>
+                </itemizedlist>
+
+                <para role="TEXT">This field must be a valid business day in the currency
+                of the deal.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Remarks</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates a free-format text field that contains
+                additional information about the trade request.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Click <emphasis>Request</emphasis> to request for interest rate of
+      the term deposit to the Issuing Bank. To cancel the entry and to refill
+      the above form click <emphasis>Clear</emphasis>.</para>
+
+      <para role="TEXT">The request for rate is submitted to the bank where the back-end
+      calculates and offers the applicable rate for the trade.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Accepting or Rejecting Rate</title>
+
+      <para role="TEXT">On receiving the rate offered by the bank, you can click the
+      following buttons to decide the future of the deposit deal:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para role="TEXT">
+            <guibutton>Accept</guibutton>
+          </para>
+
+          <para role="TEXT">Completes the transaction and provides a visual confirmation
+          of the deal details along with the deal number assigned by the
+          back-end system. You can follow the given link to view or assign
+          standing instructions for the transaction.</para>
+
+          <tip>
+            <para role="TEXT">: Opics Plus can accept a rate or a deal even after the rate
+            has timed out or expired, if the rate proves to be beneficial for
+            the bank.</para>
+          </tip>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">
+            <guibutton>Reject</guibutton>
+          </para>
+
+          <para role="TEXT">Cancels the transaction. You can modify transaction details
+          and resubmit a request. The portal notifies the back-end system that
+          the interest rate is rejected so that it can update the trader’s
+          e-trading blotter.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Sending Message to Bank</title>
+
+    <para role="TEXT">Opics Portal facilitates sending messages to the bank to view and
+    add standing instructions or to modify an existing deposit.</para>
+
+    <section role="ITEM">
+      <title>Viewing Standing Instructions</title>
+
+      <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click <emphasis>Term
+      Deposit</emphasis> and then under <emphasis>Message to Bank</emphasis>,
+      click <emphasis>Standing Instructions</emphasis>. A list of records is
+      displayed for all term deposits. Click the <emphasis>System
+      ID</emphasis> of a deposit transaction to view the details of the
+      deposit.</para>
+
+      <para role="TEXT">The following details are displayed under <emphasis>Customer
+      Payment Instruction</emphasis> section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Currency</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">!!!1. To be added!!!</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Account</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">!!!2. To be added!!!</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Instruction Indicator</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">!!!3. To be added!!!</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Under <emphasis>Bank Payment Instructions</emphasis>, the
+      instruction types are as follows:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para role="TEXT">Bank Instructions</para>
+
+          <para role="TEXT">Indicates the standing instructions assigned by the
+          bank.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Free Format Instructions</para>
+
+          <para role="TEXT">Select this option to add standing instructions if it does not
+          exist or to override instructions for the FX transaction from the
+          portal.</para>
+        </listitem>
+      </itemizedlist>
+
+      <note>
+        <para role="TEXT">: Manually entered instructions require authorization by a bank
+        agent before the payments are generated.</para>
+      </note>
+    </section>
+
+    <section role="ITEM">
+      <title>Adding Standing Instructions</title>
+
+      <para role="TEXT">To add standing instruction using Opics Portal, under
+      <emphasis>Bank Payment Instructions</emphasis> section, select
+      <emphasis>Instructions type</emphasis> as <emphasis>Free Format
+      Instructions</emphasis> and click <emphasis>Ok</emphasis> in the
+      confirmation message-box.</para>
+
+      <para role="TEXT">You can specify <emphasis>Additional Details</emphasis> about the
+      beneficiary, such as payment type (<emphasis>Wire</emphasis> or
+      <emphasis>Draft</emphasis>), beneficiary name, address, account number,
+      beneficiary bank details, etc., and click <emphasis>Submit</emphasis> to
+      add payment instructions for the deposit transaction.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Modifying an Existing Deposit</title>
+
+      <para role="TEXT">Using Opics Portal, you can make the following modifications to an
+      existing deposit transaction:</para>
+
+      <orderedlist>
+        <listitem>
+          <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click <emphasis>Term
+          Deposit</emphasis> and then under <emphasis>Message to
+          Bank</emphasis>, click <emphasis>From Existing</emphasis><emphasis>
+          TD</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+          the deposit that needs to be modified and click
+          <emphasis>Search</emphasis>. A list of records is displayed for all
+          deposit transactions with the specified currency.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Click the <emphasis>System ID</emphasis> of a transaction to
+          open the transaction for modification.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">From the <emphasis>Action Details</emphasis> section, you can
+          select the <emphasis>Rollover</emphasis>,
+          <emphasis>Reverse</emphasis>, or <emphasis>Reverse/Rebook</emphasis>
+          action.</para>
+        </listitem>
+      </orderedlist>
+
+      <section role="ITEM">
+        <title>To Rollover a Deposit</title>
+
+        <para role="TEXT">In <emphasis>Rollover Request</emphasis> section, specify the
+        <emphasis>Rollover Maturity Date</emphasis> from the pop-up calendar.
+        Besides, you can increase or decrease amount from the
+        <emphasis>Original Amount</emphasis>, that is, the principal amount,
+        and also find an option for <emphasis>Interest
+        Capitalization</emphasis>.</para>
+
+        <para role="TEXT">Click <emphasis>Request</emphasis> to submit the rollover
+        request to the bank. The request undergoes automatic or manual pricing
+        and on completion, the rollover is accepted with the specified
+        details.</para>
+
+        <note>
+          <para role="TEXT">: You can perform a rollover only if value date instructions
+          are authorized by the bank.</para>
+        </note>
+      </section>
+
+      <section role="ITEM">
+        <title>To Reverse a Deposit</title>
+
+        <para role="TEXT">In <emphasis>Reverse</emphasis><emphasis> Request</emphasis>
+        section, specify the reason for reversal in <emphasis>Cancel
+        Reason</emphasis> field and click <emphasis>Submit</emphasis> to
+        reverse the term deposit.</para>
+      </section>
+
+      <section role="ITEM">
+        <title>To Reverse/Rebook a Deposit</title>
+
+        <para role="TEXT">In <emphasis>Reverse</emphasis><emphasis /><emphasis>And Rebook
+        </emphasis><emphasis>Request</emphasis> section, specify the reason
+        for reversal in <emphasis>Cancel Reason</emphasis> field. Specify the
+        <emphasis>Amount</emphasis>, <emphasis>Value Date</emphasis>, and
+        <emphasis>Maturity Date</emphasis> of the deal. Optionally, you can
+        add <emphasis>Remarks</emphasis> for additional information about the
+        deal.</para>
+
+        <para role="TEXT">Click <emphasis>Request</emphasis> to reverse the deal and
+        re-submit it as a new deal.</para>
+      </section>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Making a Term Deposit Inquiry</title>
+
+    <para role="TEXT">Opics Portal provides information about the status, the details, and
+    the history of deposits initiated by the user. The list of transactions is
+    confined to those transactions entered on the current processing
+    date.</para>
+
+    <para role="TEXT">You can make inquiries on deposit transactions as follows:</para>
+
+    <orderedlist>
+      <listitem>
+        <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click <emphasis>Term
+        Deposit</emphasis> and then click
+        <emphasis>TD</emphasis><emphasis>Inquiry</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+        the deposit.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Select the <emphasis>Output Format</emphasis> to display on
+        <emphasis>Screen</emphasis>, or save the results in
+        <emphasis>CSV</emphasis> or <emphasis>Spreadsheet</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click <emphasis>Search</emphasis> to retrieve a list of records
+        displaying deposit transactions in the specified currency.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click the <emphasis>System ID</emphasis> of a transaction to
+        view the details of a particular deposit.</para>
+      </listitem>
+    </orderedlist>
+
+    <tip>
+      <para role="TEXT">: You can use wildcards in your search string. For example, type
+      *MYTEXT* to search for the items containing the MYTEXT string.</para>
+    </tip>
+
+    <para role="TEXT">Moreover, you can also filter or sort the information returned from
+    the portal on a multi or single column basis.</para>
+  </section>
+</chapter>

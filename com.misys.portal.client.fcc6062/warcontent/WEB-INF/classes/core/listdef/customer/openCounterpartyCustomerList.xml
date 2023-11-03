@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" page="50" default_order="Company@abbv_name"
+	default_order_type="a" distinct="y" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="Company@abbv_name" width="50%" loca_key="ABBVNAME">
+		<url>
+			<parameter name="SCREEN" value="CSF_SCREEN" />
+			<parameter name="COMPANY" column="Company@abbv_name" />
+			<parameter name="OPTION_CODE" value="FSCM_PROGRAM_MAINTENANCE" />
+		</url>
+	</column>
+	<column name="Company@name" width="50%" loca_key="NAME" />
+
+	<!-- parameters -->
+	<parameter name="abbv_name" loca_key="ABBVNAME" size="16"
+		max_length="35" input="y" />
+	<parameter name="name" loca_key="NAME" size="16" max_length="35"
+		input="y" />
+
+	<!-- candidates -->
+	<candidate name="static_beneficiary">
+		<filter>
+			<criteria>
+				<column name="Company@abbv_name" />
+				<operator type="like" />
+				<value type="parameter">
+					abbv_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="Company@name" />
+				<operator type="like" />
+				<value type="parameter">
+					name
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter or="y">
+		<criteria>
+			<column name="fscm_enabled" />
+			<operator type="equal" />
+			<value type="code">
+				N034_YES
+			</value>
+		</criteria>
+	</filter>
+
+
+</listdef>

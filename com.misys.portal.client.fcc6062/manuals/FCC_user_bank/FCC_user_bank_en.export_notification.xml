@@ -1,0 +1,3048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Middle Office: Export Notification; PERM=tradeadmin_ec_access"
+         id="EL" role="TOPIC">
+  <title>Export Notification</title>
+
+  <para role="TEXT">This module enables a bank user acting on behalf of the
+  Advising Bank, in a Letter of Credit transaction, to create new Export
+  Letter of Credit notifications to the bank's customers (the beneficiaries of
+  the LC). After receiving notification of an Import letter of credit from a
+  third party, a bank user can create an Export Letter of credit, to notify
+  their relevant client of the transaction. <indexterm>
+      <primary>Export Notification</primary>
+    </indexterm></para>
+
+  <section role="ITEM">
+    <title>Export Notification - Navigation</title>
+
+    <para role="TEXT">After selecting the <emphasis role="bold">Trade Middle
+    Office</emphasis> option from the Administrator's list on the home page,
+    the <emphasis role="bold">Export Notification</emphasis> function can be
+    selected from the left side navigation menu.<indexterm>
+        <primary>Export Notification</primary>
+
+        <secondary>Navigation</secondary>
+      </indexterm><indexterm>
+        <primary>Navigation</primary>
+
+        <secondary>Export Notification</secondary>
+      </indexterm><graphic fileref="./images/BUG_MidOff_export_nav.jpg"
+    width="160mm"/></para>
+  </section>
+
+  <section role="ITEM">
+    <title>Export Notification Options</title>
+
+    <para role="TEXT">When the <emphasis role="bold">Export
+    Notification</emphasis> function is selected from the side navigation menu
+    of the Trade Administration module, a number of options are listed.</para>
+
+    <para role="TEXT"><inlinegraphic align="center" contentwidth="50mm"
+    fileref="./images/BUG_MidOff_export_options.jpg" width="100mm"/></para>
+
+    <para role="TEXT">The available options are: <indexterm>
+        <primary>Options</primary>
+
+        <secondary>Export Notification</secondary>
+      </indexterm><indexterm>
+        <primary>Export Notification</primary>
+
+        <secondary>Options</secondary>
+      </indexterm><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Standard</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Create a standard Export Letter of Credit to be
+            created by the bank.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Free Format</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Create an Export Letter of Credit Notification
+            in free format.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Edit
+          Transactions</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Review, complete and submit Export Letter of
+            Credit that you or another user have already created from an
+            existing record and saved.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Retrieve
+          Unsigned</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Review and submit an Export Letter of Credit
+            that you or another user have created but has not been submitted
+            due to lack of authority.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+  </section>
+
+  <section condition="TITLE=Export Notification: Standard;PERM=tradeadmin_el_create_reporting;ACCESS=EL_01"
+           id="EL_Standard" role="ITEM">
+    <title>Export Notification - Standard</title>
+
+    <para role="TEXT">This option is used to Create an Export Letter of Credit
+    notification, from a blank form.</para>
+
+    <para role="TEXT"><graphic
+    fileref="./images/BUG_MidOff_export_standard.jpg" width="160mm"/>Clicking
+    the Export Notification <guisubmenu>Standard</guisubmenu> sub-menu item
+    opens an input form with the following sections.<indexterm>
+        <primary>Standard</primary>
+
+        <secondary>Export Notification</secondary>
+      </indexterm><indexterm>
+        <primary>Export Notification</primary>
+
+        <secondary>Standard</secondary>
+      </indexterm></para>
+
+    <section role="ITEM">
+      <title>Standard form - Transaction Details</title>
+
+      <para role="TEXT">This first section summarises some key information
+      related to the current task:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product Code</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Product code. Always set
+              to <type>Export Letter of Credit</type>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <xi:include
+              href="../entities_en.xml" xpointer="System_ID"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file that
+              you are creating.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Transaction Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this event
+              associated with this transaction. This field is only displayed
+              if the transaction has been actioned previously by the
+              Bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Transaction Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Reminder that this is the
+              inception phase (<type>New</type>) of this
+              notification.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - Reporting Message Details</title>
+
+      <para role="TEXT">This group of sections enables you to add further
+      details to the reporting message, specific to the current event of
+      notification and hence not attached to the master details of the
+      file:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Reference ID assigned by
+              the bank's back office to this Export Letter of Credit
+              notification. Usually referred to as the back-office
+              reference.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Comment</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter text to give any
+              further details. Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases. Maximum 30 lines of 65
+              characters. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - Add Charge</title>
+
+      <para role="TEXT">Clicking the <emphasis role="bold">Add
+      Charge</emphasis> button in this section of the form allows the client
+      to be charged for processing the transaction. The fields on the pop up
+      form are described below:<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Charge</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Type of charge. Select
+                from the drop down list: <type>Issuance Fee</type>,
+                <type>Commission</type>, or <type>Other</type>.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Description of the
+                charge. Click the list <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_list.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon to the right of the field, to
+                select from a list of common phrases.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of the charge.
+                Click the magnifying glass <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_fieldopts.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon to the right of the field, to
+                select the currency.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Status</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Status of the charge.
+                Select from the drop down list: <type>Settled</type>,
+                <type>Waived</type>, or <type>Deferred</type>.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel> Settlement Date</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Date by which the charge must be paid.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - File Upload Details</title>
+
+      <para role="TEXT">Clicking the <emphasis role="bold">Add a
+      File</emphasis> button in this section of the form. Allows files to be
+      uploaded an attached to this transaction (Max 5 files and 1 Mb each). It
+      contains the following fields:<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Optionally, a list of
+                files from your local hard disk giving additional details
+                pertaining to this notification. Click <guibutton>Add a
+                file</guibutton> to display a pop up form to add a
+                file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Title</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Title for the uploaded
+                file. Up to 255 characters. This will appear on the client
+                user's front-end as a link to download the
+                file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text field and
+                <guibutton>Browse</guibutton> button, which you use to attach
+                the file from your local hard disk.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - General Details</title>
+
+      <para role="TEXT">After entering the notification details the Export
+      Letter of Credit details must also be entered. These are described in
+      this and the following sections.<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issuing Bank Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference ID used within
+                your bank to identify this transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date when the Export
+                <glossterm>LC</glossterm> was created (and therefore
+                approved). Default is your current business
+                date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date on or before which
+                the documents for the Letter of Credit must be presented. It
+                must be a valid date after the Issue date and the latest
+                shipment date. This field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Place of Expiry</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Place of expiry for the
+                Letter of Credit. Maximum of 29 characters. Defaults to the
+                string <literal moreinfo="none">In Beneficiary's
+                Country</literal>. This field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guimenu
+                moreinfo="none">Beneficiary Details</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                beneficiary. The individual fields are described below. Click
+                the magnifying glass <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_options.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon at the right of the section title,
+                to set these fields from a Counterparty list maintained by the
+                bank administrator.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel role="bold"> Company
+                ID</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Entity of the beneficiary. This field is
+                only present if the client company has Entities
+                defined.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel role="bold">
+                Recipient</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Abbreviated name of the beneficiary.
+                Non-editable - the name entered using the magnifying glass
+                icon cannot be amended.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the beneficiary.
+                Maximum of 35 characters. This field is
+                mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                beneficiary. Maximum of 3 lines of 35 characters each. This
+                field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Applicant</guimenu> <emphasis role="bold">
+                <guimenu moreinfo="none">Details</guimenu> </emphasis>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                applicant., and optionally the Entity (within the applicant
+                company) making the application. The individual fields are
+                described below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the applicant.
+                Maximum of 35 characters. This field is mandatory. Click the
+                magnifying glass <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_options.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon at the right of the section title,
+                to set these fields from an applicant list maintained by the
+                bank administrator.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                applicant. Maximum of 3 lines of 35 characters each. This
+                field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Multi-purpose string to
+                be used as a reference for the data in this section. Maximum
+                of 34 characters.</para> <note>
+                    <para role="TEXT">This field is only present if the bank
+                    doesn't wish to define and use specific references per
+                    bank. If it does, an <guilabel moreinfo="none">Issuer's
+                    Reference</guilabel> field is present instead, in the
+                    <guilabel moreinfo="none">Issuing Bank</guilabel>
+                    section).</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Issuing Bank</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                beneficiary. The individual fields are described below. Click
+                the magnifying glass <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_options.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon at the right of the section title,
+                to set these fields from a Counterparty list maintained by the
+                bank administrator.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the issuing
+                Bank. This field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the issuing
+                Bank. Maximum of 3 lines of 35 characters each. This field is
+                mandatory.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - Amount Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Form of LC</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Characteristics of this
+              Letter of Credit. The individual fields are described
+              below.</para> <programlisting format="linespecific">Irrevocable - Place a check mark here to make this LC irrevocable. 
+              By default, check mark is present.
+Transferable - Place a check mark here to make this LC transferable. 
+                   By default, check mark is present.                 </programlisting></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Confirmation Instructions</guimenu>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify from the group of
+              option buttons, whether the Advising Bank will be asked to
+              confirm receipt of the Letter of Credit from the Issuing Bank.
+              The individual buttons are described below. </para><para
+              role="TEXT"><programlisting format="linespecific">Confirm - The Advising Bank will be asked to confirm.
+May Add - The Advising Bank and the beneficiary can choose whether to 
+          confirm.  
+Without - No confirmation is required.             </programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Confirmation
+              Instructions</guimenu></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify from the group of
+              option buttons, whether the Requested Confirmation Party will be
+              asked to confirm receipt of the Letter of Credit from the
+              Issuing Bank. The individual buttons are described
+              below.</para><programlisting format="linespecific">Confirm - The Requested Confirmation Party will be asked to confirm.
+May Add - The Requested Confirmation Party and the beneficiary can choose whether to 
+          confirm.  
+Without - No confirmation is required.             </programlisting><note>
+                  <para>This field is applicable only when Swift 2018 feature
+                  is 'On'.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Bank's Confirmation</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify if the Bank has
+              confirmed the <glossterm>LC</glossterm> (Yes or
+              No).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">LC Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Currency code (three
+              alphabetic characters) and amount (maximum 15 characters
+              including delimiters) of the Letter of Credit. Click the
+              magnifying glass <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_fieldopts.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              the currency code.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Outstanding Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the amount
+              outstanding on the LC.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Variation in Drawing</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Amount by which the amount
+              drawn can exceed or fall short of the amount stated in the LC.
+              The individual fields are described below. </para><para
+              role="TEXT"><programlisting format="linespecific"><guilabel
+                    moreinfo="none">Tolerance (+)</guilabel> - Percentage of the LC amount for which an excess in drawing
+                is permitted. Maximum of two digits.
+<guilabel moreinfo="none">Tolerance (-)</guilabel> - Percentage of the LC amount for which a shortfall in 
+                drawing is permitted. Maximum of two digits.           </programlisting></para></entry>
+            </row>
+
+            <!--  <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Max Credit Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Maximum credit term which
+              qualifies the <glossterm>LC</glossterm> amount. The only value
+              allowed in the list box is <type>NOT
+              EXCEEDING</type>.</para><para role="TEXT">The Positive and
+              Negative Tolerance fields are mutually exclusive with the
+              maximum credit term.</para></entry>
+            </row> -->
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Issuing Bank Charges</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify from the options
+              whether the applicant or the beneficiary will bear the issuing
+              bank charges. Defaults to the applicant.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Outside Country Charges</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify from the options
+              whether the applicant or the beneficiary will bear the outside
+              country charges. Defaults to the beneficiary. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Confirmation Charges</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify from the options
+              whether the applicant or the beneficiary will bear the
+              confirmation charges.</para><note>
+                  <para>This field is applicable only when the value of
+                  Confirmation Instructions is either 'Confirm' or 'May
+                  Add'.</para>
+                </note></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - Payment Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Credit Available With</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Bank authorized to pay,
+              accept or negotiate the credit. The individual fields are
+              described below. Click the magnifying glass <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_options.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon at the right of the section title,
+              to set these fields from a list of potential bank counterparties
+              that the bank maintains.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the bank. Maximum
+              of 35 characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the bank.
+              Maximum of 3 lines of a maximum of 35 characters
+              each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Credit Available By</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Specify from the group of
+              option buttons, how the documents will become available to the
+              applicant. The default selection is <literal
+              moreinfo="none">Payment</literal>. The later fields will change
+              or become available according to your selection, as described
+              below: </para> <para role="TEXT"> <programlisting
+              format="linespecific"><guilabel moreinfo="none">Payment          </guilabel>- The Sight payment option is automatically selected.
+<guilabel moreinfo="none">Acceptance       </guilabel>- The Maturity Date and Draft term payment options are available.
+<guilabel moreinfo="none">Negotiation  </guilabel>    - The Maturity Date and Draft term payment options are available. 
+                   The Drawee Details field is defaulted to "Issuing Bank".
+<guilabel moreinfo="none">Deferred Payment </guilabel>- The Maturity Date and Draft term payment options are available.
+<guilabel moreinfo="none">Mixed Payment    </guilabel>- This option is used when the payment is a mix of the various 
+                   methods allowed. It is further described in the following field.  
+</programlisting> </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Payment / Draft At</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Enter the Payment Details.
+              Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Drawee Details</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">This section provides that
+              Drawee's bank details, Click the magnifying glass
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_options.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon at the right of the section title,
+              to set these fields from a list of potential bank drawees that
+              the bank maintains. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Name of the Drawee's bank.
+              Maximum of 35 characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Address of the Drawee's
+              bank. Maximum of 3 lines of a maximum of 35 characters
+              each.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - Shipment Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Shipment From</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Place of original shipment
+              for the goods. Up to 65 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Place of Loading</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Port of loading or
+              departure airport. Up to 65 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Place of Discharge</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Port of discharge or
+              destination airport. Up to 65 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Shipment To</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Place of destination in
+              the shipment of goods. Up to 65 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Partial Shipment</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Shows whether partial
+              shipment of goods is permitted. Select from the drop down list:
+              <type>ALLOWED</type>, or <type>NOT ALLOWED.</type>
+              </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Partial Shipment</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Shows whether partial
+              shipment of goods is permitted. Select from the drop down list:
+              <type>ALLOWED</type>, <type>CONDITIONAL</type> or <type>NOT
+              ALLOWED.</type></para><note>
+                  <para>Upon selection of <type>CONDITIONAL</type> option
+                  ensure to add details in Additional Instructions.</para>
+                </note><note>
+                  <para>This field is applicable when the Swift 2018 feature
+                  is 'On'.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Transshipment</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Shows whether
+              transshipment of goods is permitted. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Transhipment</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Shows whether Transhipment
+              of goods is permitted. Select from the drop down list:
+              <type>ALLOWED</type>, <type>CONDITIONAL</type> or <type>NOT
+              ALLOWED.</type></para><note>
+                  <para>Upon selection of <type>CONDITIONAL</type> option
+                  ensure to add details in Additional Instructions.</para>
+                </note><note>
+                  <para>This field is applicable when the Swift 2018 feature
+                  is 'On'.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Last Shipment Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">This date must be a valid
+              date prior to the expiry date.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Incoterm</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Incoterm describing
+              the responsibilities of the seller and the buyer in the current
+              transaction. The drop down list shows the values (Incoterms
+              2000) available:</para> <programlisting format="linespecific">EXW - EX Works
+FCA - Free Carrier 
+FAS - Free Alongside Ship
+FOB - Free On Board
+CFR - Cost And Freight
+CIF - Cost, Insurance And Freight
+CPT - Carriage Paid to
+CIP - Carriage And Insurance Paid to
+DAT - Delivered At Terminal
+DEP - Delivered EX Place
+DEQ - Delivered EX Quay
+DDU - Delivered Duty Unpaid
+DDP - Delivered Duty Paid</programlisting></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Named Place</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Geographical place known
+              to the trading partners at which risk passes from one Business
+              party to another according to the Incoterm selected above. Up to
+              60 characters.</para><para role="TEXT">Mandatory if an Incoterm
+              has been selected.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - Narrative Details</title>
+
+      <para role="TEXT">You can click the button at the top right of each
+      field to select predefined phrases to insert.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Description of Goods</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of the goods
+              and/or <glossterm>services</glossterm> covered by the Letter of
+              Credit. Up to 300 lines of 65 characters each. Automatically
+              limited to 100 lines if you select the
+              <glossterm>SWIFT</glossterm> send mode. Click the list
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para><para role="TEXT">(SWIFT
+              tag equivalent: 45A)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Documents Required </guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of any
+              Documents that are required to accompany the Letter Of Credit.
+              Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Additional Conditions</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of any further
+              conditions of the Letter of Credit. Up to 300 lines of 65
+              characters each. Automatically limited to 100 lines if you
+              select the <glossterm>SWIFT</glossterm> send mode. Click the
+              list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para><para role="TEXT">(SWIFT
+              tag equivalent: 47A)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Special Payment Conditions for
+              Beneficiary</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of any special
+              conditions on which the payment to beneficiary is based. Up to
+              300 lines of 65 characters each. Automatically limited to 100
+              lines if you select the <glossterm>SWIFT</glossterm> send mode.
+              Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para><para>Valid Character set:
+              a-z A-Z 0-9 . , - ( ) / = ' + : ? ! " % &amp; * &lt; &gt; ; { @
+              # _</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Special Payment Conditions for Receiving
+              Bank</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of any special
+              conditions on which the payment to receiving bank is based. Up
+              to 300 lines of 65 characters each. Automatically limited to 100
+              lines if you select the <glossterm>SWIFT</glossterm> send mode.
+              Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para><para>Valid Character set:
+              a-z A-Z 0-9 . , - ( ) / = ' + : ? ! " % &amp; * &lt; &gt; ; { @
+              # _</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Charges Details</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top">Details of charges related to this Letter Of
+              Credit. Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Period for Presentation</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Number of days after the
+              date of shipment within which the documents must be presented
+              for payment, acceptance or negotiation. Up to 4 lines of 35
+              characters. Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para><para role="TEXT">(SWIFT
+              tag equivalent: 48)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Shipment Period</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Number of days for the
+              shipment to reach. Up to 4 lines of 35 characters. Click the
+              button to the right of this field, to select predefined phrases
+              to insert in this field.</para><para>Valid character set: a-z
+              A-Z 0-9 . , - ( ) / = ' + : ? ! " % &amp; * &lt; &gt; ; { @ #
+              _</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Other Information</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top">Other Relevant information relating to this
+              Letter of Credit. Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Payment Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top">Additional Instructions for Payment. Click
+              the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Additional Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Any additional amounts
+              available to the beneficiary under the terms of the credit, such
+              as insurance, freight, interest, etc. Up to 4 lines of 35
+              characters. Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para><para role="TEXT">(SWIFT
+              tag equivalent: 39C)</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Standard form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the top (and bottom) of each relevant
+      web page. For each of them, a pop up window will appear to confirm the
+      choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1" valign="top"><para
+              role="TEXT">Operation</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Save the transaction
+              details (including the status, possible back-office reference,
+              comment, and all the optional modifications of the transaction
+              details) as a draft. The message remains as a pending record
+              without being sent to the client. No validation of the mandatory
+              fields is performed at this stage.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Submit</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Send the message to the
+              client. Do this when all the requested (and mandatory)
+              transaction details have been entered and the resulting record
+              is ready for submission. </para><para role="TEXT">Depending
+              submitting users jurisdiction profile (in particular, the amount
+              they are authorised to validate without an additional
+              signature), the amendment is either sent to the client or
+              remains in the bank workspace as unsigned. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Leave the current page and
+              return to the <xi:include href="../entities_en.xml"
+              xpointer="ent_Trade_MO"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> main
+              menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Open a pop up window
+              displaying the online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Export Notification: Free Format;PERM:tradeadmin_el_create_reporting;ACCESS=EL_02"
+           id="EL_Free" role="ITEM">
+    <title>Export Notification - Free Format</title>
+
+    <para role="TEXT">This option is used to create an Export Letter of Credit
+    Notification in free format. Since the terms of an Export Letter of Credit
+    received from the Issuing Bank are often expressed as a free text, or in
+    the form of a unstructured letter, the <guisubmenu>Free
+    Format</guisubmenu> option is provided to enable a bank user acting on
+    behalf of the Advising Bank, to notify such free format instructions to
+    the customers.<indexterm>
+        <primary>Free Format</primary>
+
+        <secondary>Export Notification</secondary>
+      </indexterm><indexterm>
+        <primary>Export Notification</primary>
+
+        <secondary>Free Format</secondary>
+      </indexterm></para>
+
+    <para role="TEXT"><graphic fileref="./images/BUG_MidOff_export_free.jpg"
+    width="160mm"/>Since the terms of an Export Letter of Credit received from
+    the Issuing Bank are often expressed as a free text, or in the form of a
+    unstructured letter, the <guisubmenu>Free Format</guisubmenu> option is
+    provided to enable a bank user acting on behalf of the Advising Bank, to
+    notify customers of free format instructions.</para>
+
+    <section role="ITEM">
+      <title>Free Format form - Transaction Details</title>
+
+      <para role="TEXT">This first section summarises some key information
+      related to the current task:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Product Code</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Product code. Always set
+              to <type>Export Letter of Credit</type>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <xi:include
+              href="../entities_en.xml" xpointer="System_ID"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file that
+              you are creating.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Transaction Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this event
+              associated with this transaction. This field is only displayed
+              if the transaction has been actioned previously by the
+              Bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Transaction Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Reminder that we are in
+              the inception phase (<type>New (Free Format) </type>) of this
+              notification.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Free Format form - Reporting Message Details</title>
+
+      <para role="TEXT">This group of sections enables you to add further
+      details to the reporting message, specific to the current event of
+      notification and hence not attached to the master details of the
+      file:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Reference assigned by your
+              bank's back office to this Export Letter of Credit notification.
+              Usually referred to as the back-office reference.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Comment</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Text to give any further
+              details. Click the list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases. Maximum 30 lines of 65
+              characters. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Free Format form - Add Charge details</title>
+
+      <para role="TEXT">Clicking the <emphasis role="bold">Add
+      Charge</emphasis> button in this section of the form allows the client
+      to be charged for processing the transaction. It contains the following
+      fields:<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Charge</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Type of charge. Select
+                from the drop down list: <type>Issuance Fee</type>,
+                <type>Commission</type>, or <type>Other</type>.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Description of the
+                charge. Click the list <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_list.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon to the right of the field, to
+                select from a list of common phrases.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Amount of the charge.
+                Click the magnifying glass <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_fieldopts.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon to the right of the field, to
+                select the currency.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Status</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Status of the charge.
+                Select from the drop down list: <type>Settled</type>,
+                <type>Waived</type>, or <type>Deferred</type>.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel> Settlement Date</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Date by which the charge must be paid.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Free Format form - File Upload Details</title>
+
+      <para role="TEXT">Clicking the <emphasis role="bold">Add a
+      File</emphasis> button in this section of the form. Allows files to be
+      uploaded an attached to this transaction (Max 5 files and 1 Mb each). It
+      contains the following fields:<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Optionally, a list of
+                files from your local hard disk giving additional details
+                pertaining to this notification. Click <guibutton>Add a
+                file</guibutton> to display a pop up form to add a
+                file.</para><note>
+                    <para role="TEXT">By default, the maximum size allowed for
+                    a file attachment is 5Mb. This can be altered by the
+                    bank.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Title</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Title for the uploaded
+                file. Up to 255 characters. This will appear on the client
+                user's front-end as a link to download the
+                file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text field and
+                <guibutton>Browse</guibutton> button, which you use to attach
+                the file from your local hard disk.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Free Format form - General Details</title>
+
+      <para role="TEXT">After entering the notification details the Export
+      Letter of Credit details must also be entered. These are described in
+      this and the following sections.<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issuing Bank Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference ID used within
+                your bank to identify this transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date when the Export
+                <glossterm>LC</glossterm> was created (and therefore
+                approved). Default is your current business
+                date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date on or before which
+                the documents for the Letter of Credit must be presented. It
+                must be a valid date after the Issue date and the latest
+                shipment date. This field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Place of Expiry</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Place of expiry for the
+                Letter of Credit. Maximum of 29 characters. Defaults to the
+                string <literal moreinfo="none">In Beneficiary's
+                Country</literal>. This field is mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guimenu
+                moreinfo="none">Beneficiary Details</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                beneficiary. The individual fields are described below. Click
+                the magnifying glass <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_options.jpg"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> icon at the right of the section title,
+                to set these fields from a Beneficiary list maintained by the
+                bank administrator.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel role="bold"> Company
+                ID</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Entity of the beneficiary. This field is
+                only present if the client company has Entities
+                defined.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel role="bold">
+                Recipient</guilabel></entry>
+
+                <entry valign="top"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry valign="top">Enter the Recipient</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the beneficiary.
+                Maximum of 35 characters. This field is
+                mandatory.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                beneficiary. Maximum of 3 lines of 35 characters each. This
+                field is mandatory.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Free Format form - Amount Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guimenu
+              moreinfo="none">Form of LC</guimenu> </para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_check.gif"
+                               role="CHAR_CHECK" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">Characteristics of this
+              Letter of Credit. (Always Irrevocable).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">LC Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Currency code (three
+              alphabetic characters) and amount (maximum 15 characters
+              including delimiters) of the Letter of Credit. Click the
+              magnifying glass <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_fieldopts.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              the currency code.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Available Amount</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">This field shows the
+              amount available to the beneficiary. This field is a summation
+              of LC Amount, Tolerance and Additional Amount.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Total Liability Amount</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para role="TEXT">This field shows the total
+              amount of liability on beneficiary. This field is a summation of
+              LC Amount, Tolerance and Additional Amount.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Outstanding Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top">Amount of the <glossterm>LC</glossterm> that
+              is still outstanding.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guimenu
+              moreinfo="none">Variation in Drawing</guimenu></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Amount by which the amount drawn can
+              exceed or fall short of the amount stated in the LC. The
+              individual fields are described below: <programlisting><guilabel
+                    moreinfo="none">Tolerance (+)</guilabel> - Percentage of the LC amount for which an excess in drawing is permitted. Maximum of two digits.
+<guilabel moreinfo="none">Tolerance (-)</guilabel> - Percentage of the LC amount for which a shortfall in drawing is permitted. Maximum of two digits.</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Max Credit
+              Amount</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para><para
+              role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Maximum credit term which qualifies
+              the LC amount. The only value allowed in the list box is
+              <type>NOT EXCEEDING</type>.</para><para>The Positive and
+              Negative Tolerance fields are mutually exclusive with the
+              maximum credit term.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Issuing Bank
+              Charges</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Specify from the options whether the
+              applicant or the beneficiary will bear the issuing bank charges.
+              Defaults to the applicant.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Outside
+              Country Charges</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Specify from the options whether the
+              applicant or the beneficiary will bear the outside country
+              charges. Defaults to the beneficiary.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Confirmation
+              Charges</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Specify from the options whether the
+              applicant or the beneficiary will bear the confirmation
+              charges.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Rules
+              Applicable</guilabel></para></entry>
+
+              <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para><para
+              role="TEXT"><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Specify from the options whether the
+              applicant or the beneficiary will bear the confirmation
+              charges.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Free Format form - Narrative Details</title>
+
+      <para role="TEXT">You can click the button at the top right of each
+      field to select predefined phrases to insert.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Type</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Description of Goods</guilabel>
+              (unlabeled)</para></entry>
+
+              <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Description of the goods
+              and/or services covered by the Letter of Credit. Up to 300 lines
+              of 65 characters each. Automatically limited to 100 lines if you
+              select the <glossterm>SWIFT</glossterm> send mode. Click the
+              list <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_list.jpg"
+                               role="ICON_LOCK" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> icon to the right of the field, to select
+              from a list of common phrases.</para><para role="TEXT">(SWIFT
+              tag equivalent: 45A)</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Free Format form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the top (and bottom) of each relevant
+      web page. For each of them, a pop up window will appear to confirm the
+      choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1" valign="top"><para
+              role="TEXT">Operation</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Save the transaction
+              details (including the status, possible back-office reference,
+              comment, and all the optional modifications of the transaction
+              details) as a draft. The message remains as a pending record
+              without being sent to the client. No validation of the mandatory
+              fields is performed at this stage.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Submit</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Send the message to the
+              client. Do this when all the requested (and mandatory)
+              transaction details have been entered and the resulting record
+              is ready for submission. </para><para role="TEXT">Depending
+              submitting users jurisdiction profile (in particular, the amount
+              they are authorised to validate without an additional
+              signature), the amendment is either sent to the client or
+              remains in the bank workspace as unsigned. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Leave the current page and
+              return to the <xi:include href="../entities_en.xml"
+              xpointer="ent_Trade_MO"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> main
+              menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para role="TEXT"> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Open a pop up window
+              displaying the online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Export Notification - Edit Transactions</title>
+
+    <para role="TEXT">This option is used to complete an Export Letter of
+    Credit notification that a user has already started and saved, to be
+    completed at a later stage. When this option is selected, a list is
+    displayed of Export Letter of Credit notifications that have been prepared
+    and saved by users in the bank, but not yet submitted to the clients
+    because the input user either did not try to submit or had insufficient
+    privileges.<indexterm>
+        <primary>Retrieve</primary>
+
+        <secondary>Export Notification Draft</secondary>
+      </indexterm><indexterm>
+        <primary>Edit Transactions</primary>
+
+        <secondary>Export Notification</secondary>
+      </indexterm><indexterm>
+        <primary>Export Notification</primary>
+
+        <secondary>Edit Transactions</secondary>
+      </indexterm></para>
+
+    <para role="TEXT"><graphic fileref="./images/BUG_MidOff_export_edit.jpg"
+    width="160mm"/></para>
+
+    <para role="TEXT">Click the <emphasis role="bold">Search
+    Options</emphasis> link to display the fields that can be used to filter
+    the list. Only complete the fields that are required for the filter. The
+    columns show in the list are the <xi:include href="../entities_en.xml"
+    xpointer="System_ID" xmlns:xi="http://www.w3.org/2001/XInclude"/>,
+    <guilabel moreinfo="none">Company</guilabel>, <guilabel
+    moreinfo="none">Ccy</guilabel>, <guilabel moreinfo="none">Amount, User
+    Name</guilabel> (of the person who originally created the message),
+    <guilabel moreinfo="none">Release Date</guilabel> and <emphasis
+    role="bold">Status</emphasis> of each message.</para>
+
+    <para role="TEXT">Click on the <emphasis role="bold"> <xi:include
+    href="../entities_en.xml" xpointer="System_ID"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/></emphasis> column of the
+    required entry to open it for further editing.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Export Notification - Retrieve Unsigned</title>
+
+    <para role="TEXT">This option is used by an authorised bank user, to
+    submit an Export Letter of Credit notification that a bank user has
+    already started but been unable to submit due to insufficient
+    authority.<indexterm>
+        <primary>Retrieve Unsigned</primary>
+
+        <secondary>Export Notification</secondary>
+      </indexterm><indexterm>
+        <primary>Export Notification</primary>
+
+        <secondary>Retrieve Unsigned</secondary>
+      </indexterm><indexterm>
+        <primary>Retrieve</primary>
+
+        <secondary>Unsigned Export Notification</secondary>
+      </indexterm></para>
+
+    <para role="TEXT">When this option is selected, a list is displayed of
+    Export Letter of Credit Notifications that have been prepared and saved by
+    users in the bank, but have not been successfully submitted to the clients
+    because the user had insufficient privileges. Records that were simply
+    saved with no attempt to submit them are not included.</para>
+
+    <para role="TEXT"><graphic
+    fileref="./images/BUG_MidOff_export_unsigned.jpg" width="160mm"/></para>
+
+    <para role="TEXT">Click the <emphasis role="bold">Search
+    Options</emphasis> link to display the fields that can be used to filter
+    the list. Only complete the fields that are required for the
+    filter.</para>
+
+    <para role="TEXT">Click on the <emphasis role="bold"> <xi:include
+    href="../entities_en.xml" xpointer="System_ID"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/></emphasis> column of the
+    required entry to open it in a non-editable mode, in order to review the
+    data and perform the submission. If sufficient authorisations are
+    allocated in the profile of the authorising user, multiple records can be
+    submitted in a single operation directly from the list. Each record in the
+    list has a check box which must be ticked to select it. A <emphasis
+    role="bold">Submit</emphasis> button at the end of the page, submits all
+    the selected records.</para>
+
+    <para role="TEXT">The result of the action is then returned, with a list
+    of records that have now been successfully sent to the clients, together
+    with a list of records that have again failed validation. The updated list
+    of unsigned records is re-displayed.</para>
+  </section>
+</section>

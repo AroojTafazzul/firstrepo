@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef viewer="SimpleTable" selection_mode="single" ordered="y" huge="n" help="LIST_HELP_INQUIRY" default_order="sub_group_id"  subscribe_topic="BalancingSubGroup" default_order_type="a" page="10" >
+
+	
+	<onSelectionChangedScript>"dojo.publish('AccountSubGroup', [{sub_group_id : \"" + row.getColumnValue("sub_group_id") + "\" }]);"</onSelectionChangedScript>
+	
+	<column name="sub_group_code" align="center" width="12.5%" loca_key="CODE"/>
+	<column name="description" align="center" width="20%" loca_key="DESCRIPTION"/>
+	<column name="subGrpPivot" align="center" width="7.5%" loca_key="PIVOT"/>
+	<column name="subGrpType" align="center" width="15%" loca_key="TYPE">
+	<script>
+			if(value.equals("1"))
+			{
+				value = "Zero Balance";
+			}
+			if(value.equals("2"))
+			{
+			    value = "Target Balance";
+			}
+			if(value.equals("3"))
+			{
+				value = "Fork Balance";
+			}			
+			
+			value;
+		</script>
+	</column>
+	<column name="balance_target" align="right" width="10%" loca_key="BALANCE_TARGET"/>
+	<column name="low_target" align="right" width="15%" loca_key="LOW_TARGET"/>
+	<column name="high_target" align="right" width="15%" loca_key="HIGH_TARGET"/> 
+	<column name="sub_group_id" hidden="y" />
+	
+	<parameter
+		name="group_id"
+		type="hidden"/>
+
+	<!-- candidates -->	
+	<candidate name="BalancingSubGroup">
+		<filter>
+			<criteria>
+				<column name="group_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					group_id
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>
+
+
+

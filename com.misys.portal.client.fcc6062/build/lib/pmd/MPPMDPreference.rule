@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="MisysPortal" xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+   <description>MP preferences rule set</description>
+   <rule ref="category/java/errorprone.xml/ReturnFromFinallyBlock"/>
+   <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally"/>
+   <rule ref="category/java/bestpractices.xml/AvoidUsingHardCodedIP"/>
+   <rule ref="category/java/errorprone.xml/BrokenNullCheck"/>
+   <rule ref="category/java/errorprone.xml/EmptyFinallyBlock"/>
+   <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
+   <rule ref="category/java/errorprone.xml/MisplacedNullCheck"/>
+   <rule ref="category/java/errorprone.xml/ProperLogger"/>
+   <rule ref="category/java/errorprone.xml/UseCorrectExceptionLogging"/>
+   <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace"/>
+   <rule ref="category/java/bestpractices.xml/SystemPrintln"/>
+   <rule ref="category/java/errorprone.xml/CloseResource">
+      <description>Ensure that resources (like Connection, Statement, and PreparedStatement objects) are always closed after use.</description>
+	   <priority>2</priority>
+      <properties>
+         <property name="closeTargets" value="PoolBrokerService.releaseConnection,Torque.closeConnection,com.misys.portal.common.tools.Utils.closeResources,Utils.closeResources,Swift2020MigrationUtils.closeResources,DWEUtiles.closeResources"/>
+		 <property name="types" value="java.sql.Connection,java.sql.Statement,java.sql.ResultSet,java.sql.PreparedStatement"/>	
+		 <property name="closeAsDefaultTarget" value="true" />
+      </properties>
+	  <example/>
+      <example><![CDATA[public class Bar {
+
+ public void foo() {
+
+  Connection con = null; 
+  
+  PreparedStatement stmt = null;
+  ResultSet rset = null;
+  try {
+
+    // do stuff
+    con = PoolBrokerService.getConnection();
+    pstmt = con.prepareStatement(SQL_QUERY);
+    rset = pstmt.executeQuery();
+
+  } catch (SQLException ex) {
+
+    // handle exception
+
+  } finally {
+
+    // oops, should close the connection using 'PoolBrokerService.releaseConnection'!
+
+    // PoolBrokerService.releaseConnection(con);
+    
+    if (pstmt != null)
+	{
+		try
+		{
+			pstmt.close();
+		}
+		catch (Exception ee)
+		{
+			Log.error(GetTokenDetails.class, ee);
+		}
+	}
+
+	try
+	{
+		PoolBrokerService.releaseConnection(con);
+	}
+	catch (Exception e)
+	{
+		Log.error(GetTokenDetails.class, e);
+	}
+
+  }
+
+ }
+
+}
+
+]]></example>
+   </rule>
+   <rule ref="category/java/errorprone.xml/MissingSerialVersionUID"/>
+   <rule ref="category/java/bestpractices.xml/PreserveStackTrace" /> 
+   <rule ref="category/java/errorprone.xml/DontImportSun" /> 
+   <rule ref="category/java/errorprone.xml/UnconditionalIfStatement" />
+   <rule ref="category/java/performance.xml/AddEmptyString" />   
+   <rule ref="category/java/performance.xml/InefficientEmptyStringCheck" />
+   <rule ref="category/java/performance.xml/StringInstantiation" />
+   <rule ref="category/java/performance.xml/StringToString" />
+   <rule ref="category/java/performance.xml/UseArraysAsList" />
+   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals" />
+   <rule ref="category/java/bestpractices.xml/UnusedImports" />  
+   <rule ref="category/java/bestpractices.xml/UnusedLocalVariable" /> 
+   <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod" /> 
+   <rule ref="category/java/bestpractices.xml/UnusedPrivateField" />  
+   <rule ref="category/java/errorprone.xml/UseEqualsToCompareStrings" />    
+</ruleset>

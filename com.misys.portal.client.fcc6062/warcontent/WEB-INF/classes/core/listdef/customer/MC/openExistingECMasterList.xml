@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"  page="50" default_order="ref_id" default_order_type="d" >
+
+	<column name="ref_id" align="left" width="15%" loca_key="REFERENCEID">
+			<!-- JavaScript Pass back -->
+        <js-pass-back keyName="column">
+            <array-element index="0" column="ref_id"/>
+            <array-element index="1" column="drawee_name"/>
+            <array-element index="2" column="tnx_id"/>
+            <array-element index="3" column="ec_type_code"/>
+        </js-pass-back>
+	</column>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="drawee_name" align="left" width="14%" loca_key="DRAWEE_NAME" columnFilterType="input-multiselect"/>
+	<column name="term_code" align="left" width="15%" loca_key="PAYMENT_TERMS" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amt" align="right" width="14%" loca_key="AMOUNT" columnFilterType="input-multiselect"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="ec_type_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		multiple="y"
+		type="Entity"/>
+	<parameter
+		name="drawee_name"
+		loca_key="ENTITY_NAME_DRAWEE"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		multiple="y"
+		type="Drawee"
+		/>
+	<parameter
+		name="term_code"
+		loca_key="PAYMENT_TERMS"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		multiple="y"
+		type="TermCode"
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		type="Currency"
+		loca_key="CURCODE"
+		multiple="y"
+		/>
+	
+	<!-- candidates -->	
+	<candidate name="export_collection_master">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawee_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					drawee_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="term_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					term_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<candidate name="export_collection">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawee_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					drawee_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="term_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					term_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_REJECTED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_NEW
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

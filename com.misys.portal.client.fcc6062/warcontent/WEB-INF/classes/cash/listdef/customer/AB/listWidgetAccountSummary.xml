@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="modified_dttm" default_order_type="d" page="5" js_binding="misys.binding.cash.account_summary" hideSearch="true" permission="ab_access">
+
+	<column name="bank_abbv_name" align="left" width="8em"  loca_key="BANK_NAME"/>
+	<column name="UserAccount@EntityAccount@entity@abbv_name" align="left" width="8em" loca_key="ENTITY" groupedColumn="entity" groupedValues = "y"/>
+	<column name="UserAccount@EntityAccount@UserEntity@default_entity" align="left" width="12%"  loca_key="DEFAULT_ENTITY" hidden="y" />
+	<column name="acct_name" align="left" width="15em" loca_key="ACCOUNT_NAME" showValueWithoutAnchorTag="y">		
+		<script>
+		if(!((value == null) || ("".equals(""+value+""))))
+		{
+			var acctName = row.getColumnValue("acct_name");			
+			value = acctName;
+		}
+		else
+		{
+			var acctNo = row.getColumnValue("account_no");
+			var currCode = row.getColumnValue("cur_code");
+			var desc = row.getColumnValue("description");
+			value = ""+currCode+" "+" "+acctNo+" "+" "+desc+"";
+		}
+		 value;
+		</script> 
+	</column>
+	<column name="account_no" align="left" width="15em" loca_key="ACCOUNT_NO"/>
+	<column name="account_type" align="left" width="16em" loca_key="AB_ACCOUNT_TYPE" showCode="y" showAsDefault="n"/>
+	<column name="cur_code" align="left" width="8em" loca_key="CURCODE"/>
+	<column name="RunningStatement@AvailableBalance@amt" align="right" width="15em" loca_key="BALANCE" maskable="y"/>
+	<column name="RunningStatement@AvailableBalance@convertedAmt" paramCur="account_ccy" align="right" width="22em" loca_key="EQUIVALENT_OPENING_BALANCE" maskable="y" showAbbvAmt="y"/>
+
+	<column name="account_id" hidden="y"/>
+	<column name="description" hidden="y"/>
+	<column name="owner_type" hidden="y"/>
+	<column name="modified_dttm" hidden="y"/>
+	<column name="account_type_code" hidden="y"><script>value = row.getColumnValue("account_type");value;</script></column>
+	<column name="useraccount@favourite" size="2" max_length="2" loca_key="FAVOURITE" hidden="y"/>
+	<column name="actv_flag" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+	<parameter 
+		name="account_type" 
+		size="2" 
+		max_length="2" 
+		input="y" 
+		loca_key="ACCOUNT_TYPE"
+		type="" 
+		multiple="y"
+		hidden="true"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		default=""
+		multiple="y"
+		type="Currency"/>	
+	<parameter
+		name="account_ccy"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="ACCOUNT_CCY"
+		default=""
+		type="Currency"
+		hidden="true"/>
+	<parameter name="favourite" size="2" max_length="2" input="y"  default="" multiple="y" loca_key="FAVOURITE" type="AccountType" />
+	<!-- Candidates -->	
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_type"/>
+				<operator type="in"/>
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+               <column name="useraccount@favourite" />
+               <operator type="in" />
+               <value type="parameter">
+                   favourite
+               </value>
+             </criteria>
+            <criteria>
+                <column name="actv_flag" />
+                <operator type="equal" />
+                <value type="string">
+                Y
+                </value>
+            </criteria>
+		</filter>
+	</candidate>
+
+</listdef>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef page="5" hideSearch="true" source="GenericInputSource" category="fcm"
+	parentNodePath="allTabsList/data" customInterfaceService="paymentsListing" customComponentName="getAllTab"
+	ordered="y" default_order="initiationDate" default_order_type="d" 
+	filterParam="DRAFT,PENDINGMYAPPROVAL,PENDINGAPPROVAL,PENDINGSUBMIT,PENDINGMYVERIFICATION,VERIFIERREJECTED,PENDINGSEND,REJECTED,SENTTOBANK,DEBITED,DEBITFAILED,PAID,RETURNED,STOPPED,REVERSALFORAUTH,DELETED,MIXED,PARTIALLYREJECTED">
+
+	<column name="initiationDate" align="left" width="18%"  loca_key="initiationDate"/>
+	<column alias="client_name"  isClubbedField="y" clubbedFieldsList="debtorName,methodOfPayment"
+      align="left" width="9%" loca_key="client_code/package" separator="ENTER" sortBy="debtorName" columnFilterType="input-multiselect"/>
+	<column alias="controlSum"  isClubbedField="y" clubbedFieldsList="controlSum,controlTotal"
+      align="right" width="5%" loca_key="amount" separator="ENTER" sortBy="controlTotal" columnFilterType="input-multiselect"/>
+	<column name="batchStatus" align="left" width="12%"  loca_key="status" showColorCodeColumn="batchStatus"/>
+	
+	<column name="debtorName" align="left" loca_key="" hidden="y"/>
+	<column name="methodOfPayment" align="left" loca_key="" hidden="y"/>
+	<column name="controlSum" align="right" loca_key="" hidden="y"/>
+	<column name="debtorAccount@currency" align="left" hidden="y"/>
+	<column name="controlTotal" align="right" loca_key="" hidden="y"/>
+	<column name="isBatchPayment" align="left" loca_key="" hidden="y"/>
+	<column name="paymentReferenceNumber" align="left" loca_key="paymentBatchReferenceId" hidden="y"/>
+	
+	<column name="action" align="right" width="5%" loca_key="ACTIONS">
+		<url fcmAction="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_PAYMENTS_STATUS_WIDGET">
+	    	   	<parameter name="PAYMENTS_STATUS" column="batchStatus"/>
+	    	   	<parameter name="PAYMENT_REFERENCE_NUMBER" column="paymentReferenceNumber"/>
+	    </url>
+	</column> 
+</listdef>

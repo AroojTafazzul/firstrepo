@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef ordered="y" default_order="uploadDate" 
+	default_order_type="d" page="10" hideSearch="true" source="GenericInputSource" category="fcm"
+	parentNodePath="payments/data" customInterfaceService="beneficiaryListing" customComponentName="getBeneficiaryBulkUploadListingScreen" 
+	filterParam ="COMPLETED,PARTIAL" defaultDaysCount="yes">
+
+	<column name="initiationDate" align="left" width="15%" isColumnSortDisabled="y" loca_key="initiationDate" />
+	<column name="uploadDate" align="left" width="15%" loca_key="uploadDate" />
+	<column alias="clientName/ID"  isClubbedField="y" clubbedFieldsList="client@clientId,client@name"
+      align="left" width="12%" loca_key="client_id/name" separator="ENTER" columnSeparator="ENTER" sortBy="debtor@debtorIdentification" columnFilterType="input-multiselect"/>
+	<column name="fileReferenceNumber" align="left" isColumnSortDisabled="y" width="12%" loca_key="fileReferenceNumber" columnFilterType="input-multiselect"/>
+	<column name="fileName" align="left" width="15%" isColumnSortDisabled="y" loca_key="fileName" columnFilterType="input-multiselect"/>
+	<column name="status" align="left" width="12%" isColumnSortDisabled="y" loca_key="status" columnFilterType="input-multiselect" showColorCodeColumn="status"/>
+	<column name="client@clientId" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="client@name" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="totalCount" align="left" width="12%" loca_key="" hidden="y"/>
+	<column name="rejectedCount" align="left" width="12%" loca_key="" hidden="y"/>
+	
+	<column name="action" align="right" width="12%" loca_key="ACTIONS">
+	
+    <url fcmAction="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_BENE_BULK_UPLOAD">
+    	   	<parameter name="BULK_PAYMENT_STATUS" column="uploadReferenceNumber"/>
+    </url> 
+	</column>
+	
+	<parameter name="debtor@debtorIdentification"  input="y" loca_key="clientCode" type="Beneficiary" multiple="y" />
+	<parameter name="status"  input="y" loca_key="STATUS" type="Beneficiary" multiple="y" />
+	<parameter name="fileName"  input="y" loca_key="fileName" />
+	<parameter name="fileReferenceNumber"  input="y" loca_key="batchId" />
+	
+	<parameter
+		name="initiationDate"
+		type="range"
+		loca_key="DATE"
+		input="y"
+		default="blank"/>
+		
+	<parameter
+		name="uploadDate"
+		type="range"
+		loca_key="UPLOAD_DATE"
+		input="y"
+		default="blank"/>	
+		
+	<candidate name="fcmpayments">
+		<filter>
+			<criteria>
+				<column name="debtor@debtorIdentification" />
+				<operator type="like" />
+				<value type="parameter">
+					debtor@debtorIdentification
+				</value>
+			</criteria>
+			<criteria>
+				<column name="status" />
+				<operator type="like" />
+				<value type="parameter">
+					status
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="fileName" />
+				<operator type="like" />
+				<value type="parameter">
+					fileName
+				</value>
+			</criteria>
+			
+			<criteria>
+				<column name="fileReferenceNumber" />
+				<operator type="like" />
+				<value type="parameter">
+					fileReferenceNumber
+				</value>
+			</criteria>
+			<criteria>
+			<column name="initiationDate"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				initiationDate@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="initiationDate"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				initiationDate@to
+			</value>
+		</criteria>
+		<criteria>
+			<column name="uploadDate"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				uploadDate@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="uploadDate"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				uploadDate@to
+			</value>
+		</criteria>
+			
+		</filter>
+	</candidate>
+		
+</listdef>

@@ -1,0 +1,16 @@
+<listdef page='25'>
+	<name>Foreign Exchange per Ccy.</name>
+	<description>Foreign Exchange per Ccy.</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='amt' hidden='y'/>
+	<column name='cur_code' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<candidate name='FX'/>
+	<group graph='pie'>
+		<column name='cur_code'/>
+		<aggregate type='sum'>
+			<column name='amt'/>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

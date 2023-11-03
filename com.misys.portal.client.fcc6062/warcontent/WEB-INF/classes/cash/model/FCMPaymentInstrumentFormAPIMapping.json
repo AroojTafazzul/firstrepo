@@ -1,0 +1,160 @@
+{
+	"accountNumber":"accountNumber",
+	"accountType":"type",
+	"addBeneficiaryCheckbox":"addBeneficiaryCheckbox",
+	"addEnrichmentField":"enrichmentField",
+	"additionalInformation":"additionalInformation",
+	"amount":{
+		"write_api_field": "instructedAmountCurrencyOfTransfer2",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "controlSum"
+	    }
+    },
+	"beneficiaryBankIfscCode":"beneficiaryBankIfscCode",
+	"beneficiaryBankIfscCodeIcons":"beneficiaryBankIfscCodeIcons",
+	"beneficiaryNameCode":{
+		"write_api_field": "beneficiaryNameCode",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "creditorName"
+	    }
+    },
+	"clientDetails": {
+		"write_api_field": "debtorIdentification",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "debtorIdentification"
+	    }
+    },
+	"confidentialCheckbox":{
+		"write_api_field": "isConfidentialPayment",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "isConfidentialPayment"
+	    }
+	},
+	"confirmAccountNumber":"confirmAccountNumber",
+	"creditNarration":"creditNarration",
+	"customerReferenceNumber":"customerReferenceNumber",
+    "debitNarration":"debitNarration",
+    "effectiveDate":{
+		"write_api_field": "requestedExecutionDate",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "requestedExecutionDate"
+	    }
+    },
+    "enrichmentDetails": {
+    	"read_api_field": {
+      		"type": "edit-table",
+      		"section": "paymentDetail",
+      		"field": "enrichmentListTable"
+    	}
+  	},
+    "effectiveTime":"requestedExecutionTime",
+    "leiCode":"leiCode",
+    "payFrom":{
+		"write_api_field": "payFrom",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": {
+		        "type": "complex",
+		        "section": "debtorAccount",
+		        "field": {
+		          "type": "complex",
+		          "section": "id",
+		          "field": {
+		            "type": "complex",
+		            "section": "other",
+		            "field": "id"
+		          }
+		        }
+		      }
+	    }
+    },
+	"payTo":{
+		"write_api_field": "payTo",
+	    "read_api_field": {
+	        "type": "array",
+	        "section": "paymentDetail",
+	        "field": {
+				"type" : "complex",
+				"section" : "creditorDetails",
+				"field" : {
+					"type" : "complex",
+					"section" : "account",
+					"field" : {
+						"type" : "complex",
+						"section" : "id",
+						"field" : {
+							"type" : "complex",
+							"section" : "other",
+							"field" : "id"
+						}
+					}
+				}
+			}
+	    }
+    },
+	"paymentPackages": {
+		"write_api_field": "methodOfPayment",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "methodOfPayment"
+	    }
+    },
+    "paymentProductType":{
+		"write_api_field": "paymentbankproduct",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "paymentbankproduct"
+	    }
+    },
+    "paymentType":"paymentType",
+    "receiverType":"creditorType",
+    "legalEntity" : "legalEntity",
+    "productCode" : "productCode",
+    "transactionType" : "transactionType",
+    "beneficiaryName" : {
+		"write_api_field": "beneficiaryName",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "creditorName"
+	    }
+	},
+    "debtorAccountType" : "debtorAccountType",
+    "debtorAccountId" : "debtorAccountId",
+    "debtorCurrency" : "debtorCurrency",
+    "paymentReference":"paymentReference",
+    "creditorCurrency" : "creditorCurrency",
+    "paymentInsturmentNumber":{
+		"write_api_field": "paymentInsturmentNumber",
+	    "read_api_field": {
+	        "type": "complex",
+	        "section": "paymentHeader",
+	        "field": "paymentReferenceNumber"
+	    }
+    },
+    "currency" : {
+		"write_api_field": "currency",
+	    "read_api_field": {
+	        "type": "array",
+	        "section": "paymentDetail",
+	        "field": {
+				"type" : "complex",
+				"section" : "instructedAmountCurrencyOfTransfer2",
+				"field" : "currencyOfTransfer"
+			}
+	    }
+    }
+}

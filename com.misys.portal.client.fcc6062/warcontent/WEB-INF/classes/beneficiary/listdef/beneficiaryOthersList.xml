@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="account@account_no" default_order_type="d" page="20" defaultFlagCol="account@default_flag">
+
+	<column name="account@entity" align="left" width="10%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="account@beneficiary_id" align="left" width="12%" loca_key="beneficiaryId" columnFilterType="input-multiselect"/>
+	<column name= "account@counterparty_name" align="left" width="12%" loca_key="beneficiaryCounterpartyName" columnFilterType="input-multiselect"/>
+	<column name="account@product_type" align="left" width="12%"  loca_key="beneficiaryProductType" columnFilterType="input-multiselect" isColumnSortDisabled="y"/>
+	<column name="account@account_no" align="left" width="12%" loca_key="account_no" columnFilterType="input-multiselect" groupedColumn="beneficiary" groupByCol="account@beneficiary_group_id"/>
+	<column name="account@threshold_cur_code" align="left" width="12%" loca_key="thresholdCurrency"/>
+	<column name="account@threshold_amt" align="right" width="12%" loca_key="thresholdAmt"/>
+	<column name="account@beneficiary_group_id" hidden="y"/>
+	<column name="action" align="right" width="15%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="OPTION" value="BENEFICIARY_MASTER_MAINTENANCE_MC"/>
+			<parameter name="ACTION_FILTER" value="VDED"/>
+		</url>
+	</column>
+
+
+	
+	<!-- Parameters -->
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+		
+	<parameter
+		name="bank_name"
+		size="35"
+		max_length="35"
+		loca_key="bank"
+		hidden="true"
+		input="y"
+		default=""
+		multiple="y"
+		type="EntityBank"/>
+		
+	<parameter
+		name="pre_approved"
+		size="35"
+		max_length="35"
+		loca_key="beneficiaryPreApproved"
+		input="y"
+		default=""
+		multiple="y"
+		type="pre_approved_beneficiary"/>
+		
+	<parameter
+		name="product_type"
+		size="35"
+		max_length="35"
+		loca_key="beneficiaryProductType"
+		input="y"
+		default=""
+		multiple="y"
+		type="product_type"/>
+	
+		
+	<!-- pending files -->
+	<candidate name="StaticBeneficiary">
+			<filter>
+			<criteria>
+				<column name="account@active_flag"/>
+				<operator type="equal"/>
+				<value type="code">
+					N034_NO
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	
+	
+	<filter>
+		<criteria>
+			<column name="account@entity"/>
+			<operator type="in"/>
+			<value type="parameter">
+				entity
+			</value>
+		</criteria>
+		<criteria>
+			<column name="account@bank_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				bank_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="account@pre_approved"/>
+			<operator type="in"/>
+			<value type="parameter">
+				pre_approved
+			</value>
+		</criteria>
+		<criteria>
+			<column name="account@product_type"/>
+			<operator type="in"/>
+			<value type="parameter">
+				product_type
+			</value>
+		</criteria>
+	</filter>
+</listdef>

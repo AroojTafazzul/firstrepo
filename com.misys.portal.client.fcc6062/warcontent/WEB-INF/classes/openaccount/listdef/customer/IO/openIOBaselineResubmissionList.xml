@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="IO_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_BASELINE_RESUBMISSION"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name = "OPTION_CODE" binding_code="OPTION_EXISTING"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="seller_name" align="left" width="40%" loca_key="SELLER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>	
+	<column name="sub_tnx_type_code" align="center" width="20%" loca_key="TYPE"/>
+	<column name="prod_stat_code" align="center" width="13%" loca_key="STATUS" sort="n">
+		<script>
+				var tnxTypeCode = row.getColumnValue("tnx_type_code");
+				var prodStatCode = row.getColumnValue("prod_stat_code");
+				if(("65").equals(""+tnxTypeCode+"")){
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"");
+				}
+				else{				
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"")+")"; 
+				}			
+			value;
+		</script>
+	</column>
+	<column name = "tnx_type_code" hidden = "y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+
+	<!-- Parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="seller_name"
+		loca_key="SELLER_NAME"
+		size="35"
+		max_length="70"
+		input="y"
+		type="SellerName"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+		
+	<!-- Candidates -->	
+	
+
+	<candidate name="import_open_account">
+		<filter>
+			<criteria>
+		      <column name="tnx_stat_code"/>
+		      <operator type="equal"/>
+		      <value type="code">
+		        N004_ACKNOWLEDGED
+		      </value>
+		    </criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter>
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>	
+</listdef>

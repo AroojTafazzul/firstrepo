@@ -1,0 +1,1377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title><xi:include href="../entities_en.xml" xpointer="ent_Fund_T"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> </title>
+
+  <para>In an international trade transaction, you can use this <xi:include
+  href="../entities_en.xml" xpointer="ent_Fund_T"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> (FT) module to request a fund
+  transfer, for which the bank (called the Ordering Bank) can subsequently
+  send an acknowledgement upon successful completion.</para>
+
+  <section>
+    <title>Overview</title>
+
+    <para>The <xi:include href="../entities_en.xml" xpointer="ent_Fund_T"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> module is a simple Cash
+    Management feature. It enables you, on behalf of your company (the
+    applicant) to do two types of transfer: <type>Internal</type>, which you
+    use to transfer funds between two accounts both belonging to your company,
+    and <type>Outgoing</type>, which you use when an external beneficiary is
+    the recipient of the transfer, possibly with another banking institution
+    acting as an intermediary. An outgoing transfer is also called a
+    third-party transfer.</para>
+  </section>
+
+  <section>
+    <title>Functions</title>
+
+    <para>The menu for this module has the following groups of functions. All
+    are basically as described in the chapter
+    <emphasis>Functions</emphasis>.</para>
+
+    <para>However, the <xi:include href="../entities_en.xml"
+    xpointer="ent_Fund_T" xmlns:xi="http://www.w3.org/2001/XInclude"/> module
+    is associated with a single event (the submission of the transfer request
+    and the bank's reply), and therefore there are no functions to send
+    amendments or free-format messages to the bank.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Initiation</guimenuitem></term>
+
+        <listitem>
+          <para>Submit a fund transfer request.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>The <guimenuitem role="bold">Pending FTs</guimenuitem>, <guimenuitem
+    role="bold">FT Inquiry</guimenuitem>, and <guimenuitem role="bold">FT
+    Maintenance</guimenuitem> parts of the menu are as described in chapter
+    <emphasis>Functions</emphasis>.</para>
+  </section>
+
+  <section>
+    <title>FT Initiation</title>
+
+    <para>This section describes the Fund Transfer Initiation function and the
+    forms it uses.</para>
+
+    <section>
+      <title>FT Initiation Functions</title>
+
+      <para>This part of the menu contains several functions, providing
+      different ways to request a Fund Transfer.</para>
+
+      <section>
+        <title>Internal</title>
+
+        <para>Create a Fund Transfer request for a transfer between two
+        accounts both belonging to your company and both at the same
+        bank.</para>
+
+        <para>This function displays a blank form. The electronic form asks
+        for limited information such as the ordering and beneficiary accounts,
+        and the currency and amount of the transfer.</para>
+      </section>
+
+      <section>
+        <title>Outgoing</title>
+
+        <para>Create a Fund Transfer request for a transfer from an accounts
+        belonging to your company to an external beneficiary.</para>
+
+        <para>This function displays a blank form. It is similar to the form
+        for an internal transfer, but contains additional input fields such as
+        details of the beneficiary, the currency of the beneficiary's account,
+        and the financial institution holding the account.</para>
+      </section>
+
+      <section id="FT_from_template">
+        <title>From Template</title>
+
+        <para>Create a Fund Transfer request or template from a template that
+        you have previously created.</para>
+
+        <para>Most of the information for the transaction is defaulted except
+        key data such as the expiry date or the currency and amount of the new
+        Fund Transfer.</para>
+
+        <para>This function displays a list of your existing Fund Transfer
+        templates. You can search the list by entering search criteria in the
+        <guilabel moreinfo="none">Reference</guilabel> and/or <guilabel
+        moreinfo="none">Description</guilabel> fields at the top of the
+        page.</para>
+
+        <para>The columns show the <guilabel
+        moreinfo="none">Reference</guilabel> and <guilabel
+        moreinfo="none">Description</guilabel> of each template. You can
+        modify the description of a template by clicking the <guiicon
+        moreinfo="none">Edit</guiicon> <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                         width="4mm"/>
+            </imageobject>
+          </inlinemediaobject> icon, or delete a template by clicking the
+        <guibutton moreinfo="none">Delete</guibutton> <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                         width="4mm"/>
+            </imageobject>
+          </inlinemediaobject> icon.</para>
+
+        <para>Click in the <guilabel moreinfo="none">Reference</guilabel>
+        column to open a new Fund Transfer form, populated with the details
+        from the selected template. After completing the form you can save it
+        as either a new Fund Transfer or a new template.</para>
+      </section>
+
+      <section id="FT_copy_from_lc">
+        <title>Outgoing From LC</title>
+
+        <para>Create a Fund Transfer request or template from an existing
+        Letter of Credit request. Used in a similar way to <guisubmenu>From
+        Template</guisubmenu>.</para>
+
+        <para>This function displays a list of your existing Letters of Credit
+        - that is, requests that have been acknowledged by the bank. You can
+        search the list by entering search criteria in the <guilabel
+        moreinfo="none">System Id</guilabel>, <guilabel moreinfo="none">Bank
+        Reference</guilabel>, <guilabel moreinfo="none">Beneficiary</guilabel>
+        and/or <guilabel moreinfo="none">Currency</guilabel> fields at the top
+        of the page.</para>
+
+        <para>The columns show the <guilabel moreinfo="none">System
+        Id</guilabel> (assigned by <xi:include href="../entities_en.xml"
+        xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>),
+        <guilabel moreinfo="none">Bank Reference</guilabel>, <guilabel
+        moreinfo="none">Beneficiary</guilabel>, <guilabel
+        moreinfo="none">Currency</guilabel>, <guilabel
+        moreinfo="none">Amount</guilabel>, <guilabel moreinfo="none">Issue
+        Date</guilabel> and <guilabel moreinfo="none">Expiry Date</guilabel>
+        of each Letter of Credit.</para>
+
+        <note>
+          <para>The list also shows records that have been initiated but
+          rejected by the bank. These have <literal>- -Not Processed-
+          -</literal> in the <guilabel>Bank Reference</guilabel>
+          column.</para>
+        </note>
+
+        <para>Click in the <guilabel moreinfo="none">System Id</guilabel>
+        column to open a new Fund Transfer form, populated with the details
+        from the selected existing Letter of Credit. After completing the form
+        you can save it as either a new Fund Transfer or a new
+        template.</para>
+      </section>
+
+      <section>
+        <title>Retrieve Draft</title>
+
+        <para>As described in chapter <emphasis>Functions</emphasis>.</para>
+      </section>
+
+      <section>
+        <title>Retrieve Unsigned</title>
+
+        <para>As described in chapter <emphasis>Functions</emphasis>.</para>
+      </section>
+    </section>
+
+    <section condition="TITLE=Fund Transfer - Initiation;PERM=ft_access;ACCESS=FT_01"
+             role="TOPIC">
+      <title>Initiation Form</title>
+
+      <para>The input form for creating a Fund Transfer request has several
+      sections. There are minor differences in the form, depending on whether
+      the action is an internal transfer or an outgoing transfer. They are
+      described in the appropriate places within this section.</para>
+
+      <section role="ITEM">
+        <title>General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">System
+                Id</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Unique reference number generated by
+                <xi:include href="../entities_en.xml" xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this Fund
+                Transfer.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Template
+                Id</guilabel> </para></entry>
+
+                <entry valign="top"><para>(<inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject>)</para></entry>
+
+                <entry valign="top"><para>Name for the template you are
+                creating. Maximum 20 characters. Mandatory if you click
+                <guibutton>Save as Template</guibutton>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Customer
+                Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Name, for use within your company,
+                for the Fund Transfer you are creating. Maximum 34 characters.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Application Date</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Date when the creation of the Fund
+                Transfer request was started within <xi:include
+                href="../entities_en.xml" xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. Default is your
+                current business date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Execution
+                Date</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Date when you want the transfer to
+                take effect.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Fund
+                Transfer Currency</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Currency in which you want the
+                transfer to take effect.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guimenu moreinfo="none">Applicant
+                Details</guimenu> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Name and address of the applicant.,
+                and optionally the entity (within the applicant company)
+                making the application. The individual fields are described
+                immediately below. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel>Entity</guilabel></entry>
+
+                <entry valign="top"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry valign="top">Entity making the application. This field
+                is only present if your company has entities defined and you
+                are attached to one or more entities. If you are attached to
+                more than one, click the magnifying glass icon to select one.
+                If you are attached to only one, the field is preset to that
+                entity and cannot be changed.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Name of the applicant. Maximum of 35
+                characters for the name. Defaults to the name of your company.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para>Address of the applicant. Maximum of
+                3 lines of 35 characters each. Defaults to the address of your
+                company. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Multi-purpose string to be used as a
+                reference for the data in this section. Maximum of 34
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Ordering
+                Account</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Number of the account from which the
+                funds will be transferred. You can use the button at the top
+                right of this field to select frm a lsit of
+                accounts.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guimenu
+                moreinfo="none">Beneficiary Details</guimenu> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Details of the beneficiary. The
+                content depends on the type of transfer.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+
+        <!-- <para role="TEXT">For the Internal Transfer:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <tbody>
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Beneficiary
+              account</guilabel></para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" role="CHAR_EXCLA" 
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" role="CHAR_ACTION" 
+                               width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The account to be credited must be
+              entered, with the usual popup window capability to inquire the
+              list of predefined accounts.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">And for the Outgoing Transfer:</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="6.0*" />
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" role="CHAR_EXCLA" 
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" role="CHAR_ACTION" 
+                               width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>A maximum of 35 characters for the
+              name of the beneficiary. It can be fetched from the list of
+              predefined customer counterparties of the
+              company.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" role="CHAR_EXCLA" 
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> (line 1)</para></entry>
+
+              <entry valign="top"><para>A maximum of 3 lines of 35 characters
+              each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para>A maximum of 34 characters to attach a
+              multi-purpose string associated with the beneficiary to which
+              the transfer is targeted.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Beneficiary
+              Account</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" role="CHAR_EXCLA" 
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" role="CHAR_ACTION" 
+                               width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The account to be credited must be
+              entered, with the usual popup window inquiry.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Account
+              Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" role="CHAR_EXCLA" 
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" role="CHAR_ACTION" 
+                               width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Then the currency of the account above
+              must be specified with the list of available
+              currencies.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>-->
+      </section>
+
+      <!-- <section role="ITEM">
+      <title>Transfer Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.0*" />
+
+          <colspec colname="c2" colwidth="1.0*" />
+
+          <colspec colname="c3" colwidth="5.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Fund
+              Transfer Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" role="CHAR_EXCLA" 
+                               width="2mm" />
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" role="CHAR_ACTION" 
+                               width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The currency code (three alphabetic
+              characters) and amount (whose length cannot exceed 15 characters
+              including the delimiters) of the requested transfer.
+              </para><para>An action triggered on the usual
+              <guiicon>search</guiicon> icon lets the user search for the
+              currency code.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Forward
+              Contract Number</guilabel> </para></entry>
+
+              <entry valign="top"><para></para></entry>
+
+              <entry valign="top"><para>A maximum of 34 characters for the
+              client to specify the number of a forward contract to use if
+              required by the current transfer.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Charges
+              Borne By</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif" role="CHAR_RADIO"
+                               width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>This field is only available for the
+              outgoing transfers and presents a choice between the applicant
+              and the beneficiary to indicate the party who will bear the fund
+              transfer charges. It is set to the applicant by
+              default.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Message</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" role="CHAR_ACTION" 
+                               width="3mm" />
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>A text area of up to 100 lines of 65
+              characters for any message related to the fund transfer. This
+              could be a message given by the applicant to the beneficiary to
+              describe the payment it is related to.</para><para>The
+              predefined phrases can be called through the dedicated popup
+              window.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>-->
+
+      <!-- Multi beneficiary version-->
+
+      <section role="ITEM">
+        <title>Beneficiary Details</title>
+
+        <para>You can add multiple beneficiaries. Click <guibutton>Add a
+        Beneficiary</guibutton> to open a sub-form to add each one.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry><guilabel moreinfo="none">Beneficiary
+                Account</guilabel></entry>
+
+                <entry><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry>Number of the account to be credited. Use the
+                magnifying glass icon to select from a list of
+                accounts.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para><guilabel
+                moreinfo="none">Beneficiary Name</guilabel></para></entry>
+
+                <entry valign="top"><para><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para>Name of the beneficiary. Maximum of
+                34 characters. Filled in automatically when you use the
+                magnifying glass icon to select the account.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel>Address</guilabel></entry>
+
+                <entry/>
+
+                <entry>(Only present for an outgoing transfer) Address of the
+                beneficiary. Maximum of 3 lines of 35 characters each.</entry>
+              </row>
+
+              <row>
+                <entry><guilabel>Beneficiary Amount</guilabel></entry>
+
+                <entry><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry>Amount to transfer. The currency is filled in
+                automatically when you use the magnifying glass icon to select
+                the account.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para><guilabel moreinfo="none">Transfer
+                Reference</guilabel></para></entry>
+
+                <entry valign="top"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry valign="top"><para>Multi-purpose string to be used as a
+                reference associated with the beneficiary. Maximum of 12
+                characters.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Transfer Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Fund
+                Transfer Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Currency code (three alphabetic
+                characters) and amount (maximum 15 characters including
+                delimiters) of the Fund Transfer. Click the magnifying glass
+                icon to set the currency code.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Forward
+                Contract Number</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Number of a forward contract to use,
+                if required. Maximum of 34 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Charges
+                Borne By</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_radio.gif"
+                                 role="CHAR_RADIO" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>(Only present for an outgoing
+                transfer). Select whether the applicant or the beneficiary
+                will bear the fund transfer charges. Defaults to the
+                applicant.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Message</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Text field, which you can optionally
+                use for any message related to the fund transfer. This could
+                be a message to the beneficiary to describe the payment it is
+                related to. Up to 100 lines of 65 characters
+                each.</para><para>You can use the button at the top right of
+                this field to select predefined phrases to insert in the
+                text.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <!-- End multibeneficiary version -->
+
+      <section role="ITEM">
+        <title>Bank Details</title>
+
+        <para>Internal and outgoing transfers differ in the number of banks
+        that can be selected. For an internal transfer, only the Recipient
+        Bank of the request (also called the Ordering Bank) can be selected.
+        For an outgoing or third party transfer, the Account With Bank and Pay
+        Through Bank can also be specified.</para>
+
+        <para>For an internal transfer, the Ordering Bank details appear in
+        two extra fields within the Transfer Details section, as
+        follows:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Bank
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Ordering Bank, that is, the bank to
+                which you want to send your Fund Transfer request. The
+                dropdown list shows banks that your company has a relationship
+                with.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Issuers
+                Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>The reference (multi purpose string
+                that for instance may identify the liability line) under which
+                the transaction should be recorded. The dropdown list shows
+                the references that are defined for the above selected
+                Ordering Bank.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+
+        <para>For an outgoing transfer, the bank details are in a separate
+        Bank Details section within the form.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guimenu moreinfo="none">Ordering
+                Bank</guimenu> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Bank to which you want to send your
+                Fund Transfer request. The individual fields are described
+                below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Bank
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Name of the bank. The dropdown list
+                shows a list of banks that your company has a relationship
+                with.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Issuers
+                Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>The reference (multi purpose string
+                that for instance may identify the liability line) under which
+                the transaction should be recorded. The dropdown list shows
+                the references that are defined for the above selected
+                Ordering Bank.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guimenu moreinfo="none">Account
+                With Bank</guimenu> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Bank where the beneficiary's account
+                is. The individual fields are described below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Bank
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Name of the bank. Maximum of 35
+                characters. Use the magnifying glass icon to select from a
+                list of potential bank counterparties that your company
+                maintains.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Address of the bank. Up to 3 lines
+                of a maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel moreinfo="none">BIC Code
+                (SWIFT)</guilabel></entry>
+
+                <entry/>
+
+                <entry>BIC code of the bank</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guimenu moreinfo="none">Pay
+                Through Bank</guimenu> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>(Optional) Bank to act as
+                intermediary for the fund transfer. The individual fields are
+                described below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Bank
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Name of the bank. Maximum of 35
+                characters. Use the magnifying glass icon to select from a
+                list of potential bank counterparties that your company
+                maintains.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para/></entry>
+
+                <entry valign="top"><para>Address of the bank. Up to 3 lines
+                of a maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel moreinfo="none">BIC Code
+                (SWIFT)</guilabel></entry>
+
+                <entry/>
+
+                <entry>BIC code of the bank</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Instructions for the Bank</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Send Fund
+                Transfer By</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>(Only for an outgoing transfer)
+                Method you want the Ordering Bank to use to send the FT to the
+                beneficiary's bank. The available methods
+                are:</para><programlisting format="linespecific">SWIFT
+Telex
+Courier
+Registered Post</programlisting></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Fee
+                Account</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Number of the account that you want the
+                Ordering Bank to use to debit any charges and commissions
+                related to the transaction.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Other
+                Information</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Any additional information that
+                would not fit in any of the narratives above. Maximum 100
+                lines of 65 characters each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Optional File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Optional
+                File Upload Details</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Text field and Browse button, which
+                you can optionally use to attach a file from your local hard
+                disk to give additional details pertaining to this Fund
+                Transfer request.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section>
+      <title>Operations</title>
+
+      <para>The operations that you can perform from the Fund Transfer
+      initiation pages are listed below. For each of them, a popup window asks
+      you to confirm your choice.</para>
+
+      <informaltable>
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="1.0*"/>
+
+          <colspec colname="c2" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1"
+              valign="top"><para>Operation</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_save.gif"
+                               role="ICON_SAVE" width="10mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top"><para>Save the transaction details as a
+              draft. The Fund Transfer request remains as a pending record
+              without being sent to the Ordering Bank for now. No validation
+              of the mandatory fields is performed at this
+              stage.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_submit.gif"
+                               role="ICON_SUBMIT" width="10mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Submit</guiicon> </para></entry>
+
+              <entry valign="top"><para>Send the Fund Transfer request to the
+              Ordering Bank. Do this when all the requested (and mandatory)
+              transaction details have been entered and the resulting record
+              is ready for submission.</para><para>Depending on your
+              jurisdiction profile (in particular, the amount you are
+              authorised to validate without an additional signature), the
+              application is either sent to the bank's Trade Services back
+              office or remains in the client workspace as
+              unsigned.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_preview.gif"
+                               role="ICON_PREVIEW" width="10mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Preview</guiicon> </para></entry>
+
+              <entry valign="top"><para>This action is available in
+              non-editable mode only (review of an unsigned record). Open a
+              new popup window with the details of the unsigned record,
+              providing a simple way to print its content.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_template.gif"
+                               role="ICON_TEMPLATE" width="10mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Template</guiicon> </para></entry>
+
+              <entry valign="top"><para>Save the transaction details entered
+              as a template. The name for the template is given in the
+              <guilabel moreinfo="none">Template Id</guilabel> field, which is
+              therefore mandatory. If an existing template already has this
+              name, it is overwritten by the new one. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_cancel.gif"
+                               role="ICON_CANCEL" width="10mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para>Leave the current page and return to
+              the Fund Transfer main menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/icon_help.gif"
+                               role="ICON_HELP" width="10mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para>Open a popup window displaying the
+              online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=Fund Transfer - Inquiry and Maintenance;PERM=ft_access;ACCESS=FT_17"
+           role="TOPIC">
+    <title>Inquiry and Maintenance</title>
+
+    <para>The <guimenuitem role="bold">Pending FTs</guimenuitem>, <guimenuitem
+    role="bold">FT Inquiry</guimenuitem>, and <guimenuitem role="bold">FT
+    Maintenance</guimenuitem> parts of the menu are as described in chapter
+    <emphasis>Functions</emphasis>.</para>
+  </section>
+</chapter>

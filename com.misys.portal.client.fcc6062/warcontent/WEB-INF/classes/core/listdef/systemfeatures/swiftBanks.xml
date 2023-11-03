@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ListDef xml for SwiftBanks Look Up
+		Page size is less than 10 for a dialog so specify the dimensions exactly
+ -->
+<listdef ordered="y" default_order="bic" default_order_type="a" page="5" dialog_type="swift_bic">
+	
+	<column name="bic" align="left" width="15%" loca_key="SWIFT_BIC">
+		<!-- JavaScript Pass back -->
+		<js-pass-back>
+			<array-element index="0" column="bank_name"/>
+			<array-element index="1" column="address"/>
+			<array-element index="2" column="postCode"/>
+			<array-element index="3" column="city"/>
+			<array-element index="4" column="bic"/>
+			<array-element index="5" column="branch"/>
+			<array-element index="6" value=""/>
+			<array-element index="7" value=""/>
+			<array-element index="8" column="country"/>
+		</js-pass-back>
+	</column>
+	<column name="branch" align="left" width="15%" loca_key="SWIFT_BANK_BRANCH"/>
+	<column name="bank_name" align="left" width="20%" loca_key="SWIFT_BANK_NAME"/>
+	<column name="city" align="left" width="15%" loca_key="SWIFT_BANK_CITY"/>
+	<column name="country" align="left" width="10%" loca_key="SWIFT_BANK_COUNTRY"/>
+	
+	<!-- Hidden Fields -->
+	<column name="type" hidden="y"/>
+	<column name="address" hidden="y"/>
+	<column name="postCode" hidden="y"/>
+	<column name="parentId" hidden="y"/>
+	<column name="inst_id_name" hidden="y"/>
+	<column name="inst_id_value" hidden="y"/>
+	<column name="branch" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter name="bic" size="10"	max_length="11" loca_key="SWIFT_BIC" input="y" default=""/>
+	<parameter name="bankName" size="20" max_length="35" loca_key="SWIFT_BANK_NAME" input="y" default=""/>
+	<parameter name="branch" size="5" max_length="35" loca_key="SWIFT_BANK_BRANCH" input="y" default=""/>
+	<parameter name="country" size="3"	max_length="2" loca_key="SWIFT_BANK_COUNTRY" input="y" default="" type="Country"/>
+	
+	<!-- candidates -->
+	<candidate name="bankData">
+		<filter>
+			<criteria>
+				<column name="bic"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bic
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bank_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bankName
+				</value>
+			</criteria>
+			<criteria>
+				<column name="country"/>
+				<operator type="like"/>
+				<value type="parameter">
+					country
+				</value>
+			</criteria>
+			<criteria>
+				<column name="branch"/>
+				<operator type="like"/>
+				<value type="parameter">
+					branch
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="type"/>
+			<operator type="equal"/>
+			<value type="string">
+				01
+			</value>
+		</criteria>
+	</filter>
+</listdef>

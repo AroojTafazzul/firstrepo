@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d"
+	page="50">
+
+	<column name="tnx_id" hidden="y" />
+	<column name="product_code" hidden="y" />
+	<column name="tnx_stat_code" hidden="y" />
+	<column name="tnx_type_code" hidden="y" />
+	<column name="sub_tnx_stat_code" hidden="y" />
+	<column name="sub_product_code" hidden="y" />
+
+	<column name="action" width="2em">
+		<url action="y">
+			<parameter name="SCREEN" column="product_code:sub_product_code:tnx_stat_code"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PARENT_REFERENCE_ID" column="CrossReference@FeesAndBillingMaster@ref_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	
+		<column name="full_type" computation="sum" align="center" width="20%" loca_key="TYPE">
+		<column name="tnx_type_code"/>
+		<script>
+			var tnxTypeCode = row.getColumnValue("tnx_type_code");
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"");
+			value;
+		</script>
+	</column>
+	
+	<column name="status" align="center" width="12%" loca_key="STATUS">
+		<script>
+			if (value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+				
+				if(!("".equals(""+subTnxStatCode+"") || subTnxStatCode == null))
+				{
+					value =	com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")";
+				}
+				else
+				{
+					value =	com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+""); 
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID" />
+	<column name="ft_cur_code" align="center" width="4em" loca_key="CURCODE" />
+	<column name="tnx_amt" align="right" width="8%" loca_key="PMT_AMOUNT" />
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM" />
+
+
+	<column name="CrossReference@FeesAndBillingMaster@ref_id"
+		hidden="y" />
+	<parameter name="referenceid" input="y" />
+	<parameter name="productcode" input="y" />
+
+	<candidate name="fund_transfer">
+		<filter>
+			<criteria>
+				<column name="CrossReference@FeesAndBillingMaster@ref_id" />
+				<operator type="equal" />
+				<value type="parameter">
+					referenceid
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code" />
+				<operator type="equal" />
+				<value type="code">
+					N047_BANKB
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

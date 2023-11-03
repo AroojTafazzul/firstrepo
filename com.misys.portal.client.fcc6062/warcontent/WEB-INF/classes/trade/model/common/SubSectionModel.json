@@ -1,0 +1,2086 @@
+{
+	"applicantModel": {
+		"header": {
+			"name": "Header",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bottom_zero",
+			"styleClass": [
+				"subheader-title"
+			],
+			"groupChildren": [
+				"Entity",
+				"Name",
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"FullAddress",
+				"country"
+			]
+		},
+		"entity": {
+			"name": "Entity",
+			"type": "input-dropdown-filter",
+			"options": {
+				
+			},
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"previewValueAttr": "shortName",
+			"labelClass": "p-col-6",
+			"valueClass": "p-col-6"
+		},
+		"name": {
+			"name": "Name",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address1": {
+			"name": "FirstAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbedHeaderText": "clubbed_address",
+			"clubbedList": [
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"country"
+			],
+			"clubbedDelimiter": ",",
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address2": {
+			"name": "SecondAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address3": {
+			"name": "ThirdAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address4": {
+			"name": "FourthAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"fullAddress": {
+			"name": "FullAddress",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12",
+			"styleClass": "margin-all-side",
+			"maxlength": 1024,
+			"grouphead": "Header",
+			"previousReadOnly": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"country": {
+			"name": "country",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"clubbed": true
+		}
+	},
+	"loanEntityModel": {
+		"header": {
+			"name": "Header",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bottom_zero",
+			"styleClass": [
+				"subheader-title"
+			],
+			"groupChildren": [
+				"Reference",
+				"Entity",
+				"Name",
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"FullAddress",
+				"country"
+			]
+		},
+		"reference": {
+			"name": "Reference",
+			"type": "input-dropdown",
+			"options": {
+				
+			},
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"issuerRef",
+				"margin-all-side"
+			],
+			"grouphead": "Header"
+		},
+		"entity": {
+			"name": "Entity",
+			"dropdownAriaLabel": "entityList",
+			"type": "input-dropdown-filter",
+			"options": {
+				
+			},
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"previewValueAttr": "shortName",
+			"labelClass": "p-col-6",
+			"valueClass": "p-col-6"
+		},
+		"space3": {
+			"noofspacers": "1",
+			"prefix": "three",
+			"sectionType": "spacerModel",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 padding_zero"
+		},
+		"name": {
+			"name": "Name",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header"
+		},
+		"address1": {
+			"name": "FirstAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbedHeaderText": "clubbed_address",
+			"clubbedList": [
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"country"
+			],
+			"clubbedDelimiter": ","
+		},
+		"address2": {
+			"name": "SecondAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"address3": {
+			"name": "ThirdAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"address4": {
+			"name": "FourthAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"fullAddress": {
+			"name": "FullAddress",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12",
+			"styleClass": "margin-all-side",
+			"maxlength": 1024,
+			"grouphead": "Header",
+			"previousReadOnly": true
+		},
+		"country": {
+			"name": "country",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"clubbed": true
+		}
+	},
+	"beneficiaryModel": {
+		"header": {
+			"name": "Header",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bottom_zero",
+			"styleClass": [
+				"subheader-title"
+			],
+			"groupChildren": [			   
+				"Entity",
+				"Name",
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"FullAddress",
+				"country"
+			]
+		},		
+		"entity": {
+			"name": "Entity",
+			"type": "input-auto-comp",
+			"options": {
+				
+			},
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"previewValueAttr": "name",
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"name": {
+			"name": "Name",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address1": {
+			"name": "FirstAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbedHeaderText": "clubbed_address",
+			"clubbedList": [
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"country"
+			],
+			"clubbedDelimiter": ",",
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address2": {
+			"name": "SecondAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address3": {
+			"name": "ThirdAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"address4": {
+			"name": "FourthAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"fullAddress": {
+			"name": "FullAddress",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12",
+			"styleClass": "margin-all-side",
+			"maxlength": 1024,
+			"grouphead": "Header",
+			"previousReadOnly": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"country": {
+			"name": "country",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"clubbed": true
+		}
+	},
+	"beneficiaryTypeModel": {
+		"header": {
+			"name": "Header",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bottom_zero",
+			"styleClass": [
+				"subheader-title"
+			],
+			"groupChildren": [
+			    "Type",
+			    "OtherType",
+				"Entity",
+				"Name",
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"FullAddress",
+				"country"
+			]
+		},
+		"type":{
+	         "name":"Type",
+	         "type":"input-dropdown",
+	         "source":"codeData",
+	         "options":{
+	            "value":[	              
+	               "01",
+	               "02",
+	               "99"
+	            ]
+	         },
+	         "defaultValue":"",
+	         "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+	         "styleClass": [
+                "margin-all-side"
+              ],	         
+			 "grouphead": "Header",
+			 "previewValueAttr": "type",
+			 "clubbedHeaderText": "clubbed_bene_type",
+			 "clubbedList": [
+				"Type",
+				"OtherType"				
+			 ]					 
+	      },
+	     "otherType": {
+			"name": "OtherType",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"rendered": false,
+	        "previewScreen":false,
+	        "clubbed": true		
+	       
+		},
+		"entity": {
+			"name": "Entity",
+			"type": "input-dropdown-filter",
+			"options": {
+				
+			},
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"previewValueAttr": "name"
+		},
+		"name": {
+			"name": "Name",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header"
+		},
+		"address1": {
+			"name": "FirstAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbedHeaderText": "clubbed_address",
+			"clubbedList": [
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"country"
+			],
+			"clubbedDelimiter": ","
+		},
+		"address2": {
+			"name": "SecondAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"address3": {
+			"name": "ThirdAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"address4": {
+			"name": "FourthAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"fullAddress": {
+			"name": "FullAddress",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12",
+			"styleClass": "margin-all-side",
+			"maxlength": 1024,
+			"grouphead": "Header",
+			"previousReadOnly": true
+		},
+		"country": {
+			"name": "country",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"clubbed": true
+		}
+	},
+	"addressLineModel": {
+		"header": {
+			"name": "Header",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bottom_zero",
+			"styleClass": [
+				"subheader-title"
+			],
+			"groupChildren": [
+				"Name",
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"FullAddress",
+				"country",
+				"ContactPerson",
+				"PhoneNumber"
+			]
+		},
+		"name": {
+			"name": "Name",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header"
+		},
+		"address1": {
+			"name": "FirstAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbedHeaderText": "clubbed_address",
+			"clubbedList": [
+				"FirstAddress",
+				"SecondAddress",
+				"ThirdAddress",
+				"FourthAddress",
+				"country"
+			],
+			"clubbedDelimiter": ","
+		},
+		"address2": {
+			"name": "SecondAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"address3": {
+			"name": "ThirdAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"address4": {
+			"name": "FourthAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"fullAddress": {
+			"name": "FullAddress",
+			"type": "input-text",
+			"layoutClass": "p_col_12",
+			"styleClass": "margin-all-side",
+			"maxlength": 1024,
+			"grouphead": "Header",
+			"previousReadOnly": true
+		},
+		"country": {
+			"name": "country",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"grouphead": "Header",
+			"clubbed": true
+		},
+		"contactPerson": {
+			"name": "ContactPerson",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header"
+		},
+		"phoneNumber": {
+			"name": "PhoneNumber",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"grouphead": "Header"
+		}
+	},
+	"prevNextModel": {
+		"previous": {
+			"name": "previous",
+			"label": "previous",
+			"type": "button-div",
+			"displayKey": "previousDisplay",
+			"displayValue": true
+		},
+		"next": {
+			"name": "next",
+			"label": "next",
+			"type": "button-div",
+			"displayKey": "nextDisplay",
+			"displayValue": true
+		},
+		"save": {
+			"name": "save",
+			"label": "save",
+			"type": "button-div",
+			"displayKey": "saveDisplay",
+			"displayValue": true
+		}
+	},
+	"spacerModel": {
+		"Space": {
+			"name": "Space",
+			"type": "spacer"
+		}
+	},
+	"shipmentModel": {
+		"shipmentForm": {
+			"name": "Form",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"shipmentForm"
+			],
+			"maxlength": 65,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"shipmentTo": {
+			"name": "To",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"shipmentTo"
+			],
+			"maxlength": 65,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"placeOfLoading": {
+			"name": "PlaceOfLoading",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"placeOfLoading"
+			],
+			"maxlength": 65,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"placeOfDischarge": {
+			"name": "PlaceOfDischarge",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+			"styleClass": [
+				"placeOfDischarge"
+			],
+			"maxlength": 65,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		},
+		"lastShipmentDate": {
+			"name": "LastDate",
+			"type": "input-date",
+			"maxlength": 10,
+			"disableMinDate": true,
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"lastShipmentDate"
+			], 
+			"displayPreview": true
+		},
+		"shipmentPeriodText": {
+			"name": "PeriodText",
+			"type": "highlight-texteditor",
+      		"typeOfRegex": "X",
+			"rendered": true,
+			"swift": false,
+			"fieldSize": 65,
+			"maxRowCount": 6,
+			"enteredCharCount": 0,
+			"rowCount": 0,
+			"rows": 1,
+			"cols": 65,
+			"allowedCharCount": 390,
+			"maxlength": 390,
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"shipmentPeriodText"
+			],
+			"displayPreview": true,
+			"applicableValidation": [
+		      {
+		        "characterValidation": "Swift_X",
+		        "messageKey": "invalidSwiftRegex",
+				"applicableProducts": ["LC","SI","BG","FT"]
+		      }
+      		]
+		}
+	},
+	"fileUploadDialogModel": {
+		"fileUploadTitle": {
+			"name": "fileUploadTitle",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-xl-12",
+			"styleClass": "fileUploadTitle",
+			"required": true,
+			"maxlength": 35
+		},
+		"filebrowseButton": {
+			"name": "filebrowseButton",
+			"type": "fileUpload",
+			"layoutClass": "p-col-12 p-xl-12",
+			"styleClass": "UploadButton",
+			"uploadLabel": "uploadLabel",
+			"chooseLabel": "chooseLabel",
+			"cancelLabel": "cancelLabel"
+		},
+		"fileUploadError": {
+			"name": "fileUploadError",
+			"type": "text",
+			"layoutClass": "p-col-12 p-xl-12",
+			"styleClass": "fileUploadError",
+			"rendered": false
+		}
+	},
+	"filterDialogModel": {
+	"space1": {
+		"name": "space1",
+		"type": "spacer",
+		"layoutClass": "p-col-12",
+		"rendered": true
+	},
+	"cancelBtn": {
+			"name": "cancelBtn",
+			"label": "cancelBtn",
+			"type": "button-div",
+			"displayKey": "cancelDisplay",
+			"layoutClass": "button-filter-width-8",
+			"displayValue": true,
+			"parentStyleClass": "filterButtonPosition",
+			"styleClass": "secondaryButton",
+			"isActive": false,
+			"hidden": "false"
+		},
+	"resetBtn": {
+			"name": "resetBtn",
+			"label": "resetBtn",
+			"type": "button-div",
+			"displayKey": "resetDisplay",
+			"layoutClass": "button-filter-width-2",
+			"displayValue": true,
+			"parentStyleClass": "filterButtonPosition",
+			"styleClass": "secondaryButton",
+			"isActive": false,
+			"hidden": "false"
+		},
+	"applyBtn": {
+			"name": "applyBtn",
+			"label": "applyBtn",
+			"type": "button-div",
+			"displayKey": "submitDisplay",
+			"layoutClass": "button-filter-width-2",
+			"displayValue": true,
+			"parentStyleClass": "filterButtonPosition",
+			"styleClass": "primaryButton",
+			"isActive": false,
+			"hidden": "false"
+		}
+	},
+	"reAuthDialogModel": {
+		"optMessage": {
+			"name": "otpMessage",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": [
+				"subheader-title"
+			]
+		},
+		"reAuthKey": {
+			"name": "reAuthKey",
+			"type": "input-password",
+			"layoutClass": "p-col-6",
+			"styleClass": "fileUploadTitle",
+			"required": true
+		},
+		"reauthTimer": {
+			"name": "reauthTimer",
+			"type": "timer",
+			"layoutClass": "p-col-1",
+			"required": true
+		},
+		"resendOTP": {
+			"name": "resendOTP",
+			"type": "button",
+			"styleClass": [
+				"tertiaryButton"
+			],
+			"layoutClass": "p-col-12"
+		},
+		"errorMsg": {
+			"name": "errorMsg",
+			"type": "view-mode",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": "fileUploadError",
+			"rendered": false
+		},
+		"validateBtn": {
+			"name": "validateBtn",
+			"type": "button",
+			"styleClass": [
+				"ui-button-rounded"
+			],
+			"layoutClass": "p-col-12"
+		}
+	},
+	"interestDetailsModel": {
+		"interestCycleFrequency": {
+			"name": "interestCycleFrequency",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"labelStyleClass": [
+				"padding_zero"
+			],
+			"rendered": true,
+			"showLabel": true,
+			"previewScreen": false
+		},
+		"base_rate": {
+			"name": "base_rate",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"labelStyleClass": [
+				"padding_zero"
+			],
+			"rendered": true,
+			"showLabel": true,
+			"previewScreen": false
+		},
+		"totalInterestDueAsPer": {
+			"name": "totalInterestDueAsPer",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"labelStyleClass": [
+				"padding_zero"
+			],
+			"rendered": true,
+			"showLabel": true,
+			"previewScreen": false
+		},
+		"all_in_rate": {
+			"name": "all_in_rate",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"labelStyleClass": [
+				"padding_zero"
+			],
+			"rendered": true,
+			"showLabel": true,
+			"previewScreen": false
+		},
+		"spread": {
+			"name": "spread",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"labelStyleClass": [
+				"padding_zero"
+			],
+			"rendered": true,
+			"showLabel": true,
+			"previewScreen": false
+		},
+		"spread_adjustment": {
+			"name": "spread_adjustment",
+			"type": "view-mode",
+			"labelStyleClass": [
+				"padding_zero"
+			],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"rendered": true,
+			"showLabel": true,
+			"previewScreen": false
+		},
+		"interestScheduleTableHeader": {
+			"name": "interestScheduleTableHeader",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12",
+			"tabIndex": "0",
+			"styleClass": [
+				"table-header",
+				"padding_vertical_zero"
+			],
+			"previewScreen": false,
+			"rendered": true
+		},
+		 "InterestSchedule": {
+	        "name": "InterestSchedule",
+	        "type": "form-table",
+	        "layoutClass": "p-col-12 candyStriped",
+	        "data": [],
+	        "columns": [
+	            {
+	                "header": "interest_cycle",
+	                "width": "15%"
+	            },
+	            {
+	                "header": "start_date",
+	                "width": "15%"
+	            },
+	            {
+	                "header": "end_date",
+	                "width": "15%"
+	            },
+	            {
+	                "header": "adjusted_due_date",
+	                "width": "15%"
+	            },
+	            {
+	                "header": "accrued_toDate_amt",
+	                "width": "15%"
+	            },
+	            {
+	                "header": "paid_toDate_amt",
+	                "width": "15%"
+	            },
+	            {
+	                "header": "billed_interest_amt",
+	                "width": "15%"
+	            }
+	        ],
+	        "actions": [],
+	        "hasActions": false,
+	        "options": [],
+	        "previewScreen": false,
+	        "rendered": true
+	    }
+	},
+	"createLoanDialogModel": {
+		"uiCreateLoanDialogHeader": {
+              "name": "uiCreateLoanDialogHeader",
+              "type": "text",
+              "styleClass": "fcc-dialog-header"
+         },
+		"loanDetails": {
+			"name": "loanDetails",
+			"type": "card-view",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero"
+		},
+		"createdLoanTable": {
+			"name": "createdLoanTable",
+			"columns": [],
+			"label": "hideControl",
+			"type": "input-table",
+			"rendered": true,
+			"data": [],
+			"styleClass": [
+				"fileUploadTable"
+			],
+			"layoutClass": "p-col-12 candyStriped",
+			"noDownload": true,
+			"showLabelView": true
+		},
+		"currency": {
+			"name": "currency",
+			"type": "input-dropdown-filter",
+			"dropdownAriaLabel": "currencyList",
+			"options": {},
+			"mode": "edit",
+			"layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 widthForCur chargeAmt",
+			"styleClass": [
+				"no-margin-multiselect"
+			]
+		},
+		"amount": {
+			"name": "amount",
+			"type": "input-text",
+			"required": true,
+			"maxlength": 15,
+			"layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur",
+			"styleClass": [
+				"amt"
+			]
+		},
+		"repricingdateValidation": {
+			"name": "repricingdateValidation",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+			"hidden": true,
+			"previewScreen": false
+		},
+		"riskType": {
+			"name": "riskType",
+			"type": "input-dropdown",
+			"codeID": "C032",
+			"options": {},
+			"defaultValue": "",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero riskTypeMargin",
+			"styleClass": [
+				""
+			],
+			"required": true
+		},
+		"pricingOptions": {
+			"name": "pricingOptions",
+			"type": "input-dropdown",
+			"codeID": "C032",
+			"options": {},
+			"defaultValue": "",
+			"required": true,
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero"
+		},
+		"customerReference": {
+			"name": "customerReference",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side"
+			],
+			"maxlength": 34
+		},
+		"loanEffectiveDate": {
+			"name": "loanEffectiveDate",
+			"type": "input-date",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"dateStyle"
+			]
+		},
+		"loanMaturityDate": {
+			"name": "loanMaturityDate",
+			"type": "input-date",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"dateStyle"
+			],
+			"required": true
+		},
+		"rollOverFrequency": {
+			"name": "rollOverFrequency",
+			"type": "input-dropdown",
+			"options": {},
+			"defaultValue": "",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				""
+			],
+			"required": true,
+			"source": "codeData"
+		},
+		"rollOverDate": {
+			"name": "rollOverDate",
+			"type": "input-date",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"dateStyle"
+			]
+		},
+		"createAnotherLoan": {
+			"name": "createAnotherLoan",
+			"type": "checkbox",
+			"layoutClass": "p-col-12 create-new-loan-Checkbox"
+		},
+		"cancel": {
+			"name": "cancel",
+			"label": "cancel",
+			"type": "button-div",
+			"displayKey": "cancelDisplay",
+			"layoutClass": "p-col-11 ",
+			"displayValue": true,
+			"parentStyleClass": "createButton-Parent cancelRight",
+			"styleClass": "secondaryButton"
+		},
+		"create": {
+			"name": "create",
+			"label": "create",
+			"type": "button-div",
+			"displayKey": "submitDisplay",
+			"layoutClass": "p-col-1 ",
+			"parentStyleClass": "createButton-Parent createRight",
+			"displayValue": true,
+			"styleClass": "primaryButton"
+		}
+	},
+	"taskDialogModel": {
+		"assigneOptions": {
+			"name": "assigneOptions",
+			"source": "codeData",
+			"options": [
+				{
+					"value": "01",
+					"valueStyleClass": "p-col-3",
+					"permission": [
+						"collaboration_add_private_task"
+					],
+					"displayAriaLabel": true
+				},
+				{
+					"value": "02",
+					"valueStyleClass": "p-col-3",
+					"permission": [
+						"collaboration_add_public_task",
+						"collaboration_add_public_task_for_other_user"
+					],
+					"displayAriaLabel": true
+				},
+				{
+					"value": "03",
+					"valueStyleClass": "p-col-3",
+					"permission": [
+						"collaboration_add_public_task",
+						"collaboration_add_public_task_for_other_user"
+					],
+					"displayAriaLabel": true
+				}
+			],
+			"defautValue": "01",
+			"type": "select-button",
+			"layoutClass": "p-col-8 task-padding"
+		},
+		"titleOfTask": {
+			"name": "titleOfTask",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero task-padding",
+			"maxlength": 29
+		},
+		"space1": {
+			"name": "space1",
+			"type": "spacer",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 padding_zero",
+			"rendered": true
+		},
+		"mailBoxFirst": {
+			"name": "mailBoxFirst",
+			"type": "checkbox",
+			"layoutClass": "p-col-12 task-paddingCheckbox",
+			"rendered": false
+		},
+		"mailIdFirst": {
+			"name": "mailIdFirst",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero task-padding",
+			"maxlength": 50,
+			"rendered": false
+		},
+		"space": {
+			"name": "space",
+			"type": "spacer",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 padding_zero",
+			"rendered": false
+		},
+		"descriptionOfTask": {
+			"name": "descriptionOfTask",
+			"type": "narrative-textarea",
+			"rendered": true,
+			"fieldSize": 50,
+			"rows": 4,
+			"maxRowCount": 4,
+			"enteredCharCount": 0,
+			"rowCount": 0,
+			"cols": 50,
+			"allowedCharCount": 200,
+			"maxlength": 200,
+			"layoutClass": "p-col-6 task-padding",
+			"required": true,
+			"styleClass": [
+				"taskDescription"
+			]
+		},
+		"space2": {
+			"name": "space2",
+			"type": "spacer",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 padding_zero",
+			"rendered": true
+		},
+		"entity": {
+			"name": "entity",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-col-6 task-padding",
+			"maxlength": 29,
+			"rendered": false,
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"labelClass": "p-col-6",
+			"valueClass": "p-col-6"
+		},
+		"userOptions": {
+			"name": "userOptions",
+			"type": "input-switch",
+			"defaultValue": "N",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"rendered": false
+		},
+		"assignees": {
+			"name": "assignees",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-col-6 leftwrapper task-padding ",
+			"maxlength": 29,
+			"rendered": false,
+			"dropdownAriaLabel": "assigneeList",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			]
+		},
+		"mailBoxSecond": {
+			"name": "mailBoxSecond",
+			"type": "checkbox",
+			"layoutClass": "p-col-12 task-paddingCheckbox",
+			"rendered": false
+		},
+		"mailIdSecond": {
+			"name": "mailIdSecond",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero task-padding",
+			"maxlength": 50,
+			"rendered": false
+		},
+		"cancel": {
+			"name": "cancel",
+			"label": "cancel",
+			"type": "button-div",
+			"displayKey": "cancelDisplay",
+			"layoutClass": "p-col-11 taskLayout",
+			"displayValue": true,
+			"parentStyleClass": "createButton-Parent cancelRight",
+			"styleClass": "secondaryButton"
+		},
+		"create": {
+			"name": "create",
+			"label": "create",
+			"type": "button-div",
+			"displayKey": "submitDisplay",
+			"layoutClass": "p-col-1 taskLayout",
+			"parentStyleClass": "createButton-Parent createRight",
+			"displayValue": true,
+			"styleClass": "primaryButton"
+		}
+	},
+	"setEntityNavModel": {
+		"status": {
+			"name": "status",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"statusVal": {
+			"name": "statusVal",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"channelReference": {
+			"name": "channelReference",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"channelRefValue": {
+			"name": "channelRefValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"bankReference": {
+			"name": "bankReference",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"bankRefValue": {
+			"name": "bankRefValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"customerReference": {
+			"name": "customerReference",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav",
+			"rendered": false
+		},
+		"customerRefValue": {
+			"name": "customerRefValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav",
+			"rendered": false
+		},
+		"currentEntity": {
+			"name": "currentEntity",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"currentEntityValue": {
+			"name": "currentEntityValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"address": {
+			"name": "address",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"addressValue": {
+			"name": "addressValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"entity": {
+			"name": "entity",
+			"type": "input-dropdown-filter",
+			"options": {
+				
+			},
+			"layoutClass": "p-md-10 p-lg-10 p-sm-10 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class set-entity-nav-class"
+			],
+			"grouphead": "Header",
+			"previewValueAttr": "shortName",
+			"required": true
+		},
+		"submit": {
+			"name": "submit",
+			"type": "button",
+			"styleClass": [
+				"ui-button-rounded",
+				"primaryButton",
+				"setEntityBtn"
+			],
+			"layoutClass": "p-col-3"
+		}
+	},
+	"setReferenceNavModel": {
+		"status": {
+			"name": "status",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"statusVal": {
+			"name": "statusVal",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"channelReference": {
+			"name": "channelReference",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"channelRefValue": {
+			"name": "channelRefValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"bankReference": {
+			"name": "bankReference",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"bankRefValue": {
+			"name": "bankRefValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"entity": {
+			"name": "entity",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"currentEntityValue": {
+			"name": "currentEntityValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"address": {
+			"name": "address",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelHeaderNav",
+			"parentStyleClass": "labelHeaderNav"
+		},
+		"addressValue": {
+			"name": "addressValue",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "labelValueNav",
+			"parentStyleClass": "labelValueNav"
+		},
+		"reference": {
+			"name": "reference",
+			"type": "input-text",
+			"layoutClass": "p-col-9 p-md-9 p-lg-9 p-sm-12 leftwrapper padding_zero",
+			"styleClass": [
+				"margin-side setRefInput"
+			],
+			"maxlength": 16,
+			"rendered": true,
+			"required": true
+		},
+		"submit": {
+			"name": "submit",
+			"type": "button",
+			"styleClass": [
+				"ui-button-rounded",
+				"primaryButton",
+				"setEntityBtn"
+			],
+			"layoutClass": "p-col-4"
+		}
+	},
+	"phraseModel": {
+		"createPhrase": {
+			"name": "createPhrase",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": "phraseHeader"
+		},
+		"phraseEntity": {
+			"name": "phraseEntity",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-md-8 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"rendered": true,
+			"required": true,
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"labelClass": "p-col-6",
+			"valueClass": "p-col-6"
+		},
+		"phraseAbbvName": {
+			"name": "phraseAbbvName",
+			"type": "input-text",
+			"layoutClass": "p-md-8 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 35,
+			"required": true,
+			"rendered": true
+		},
+		"phraseType": {
+			"name": "phraseType",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"rendered": false,
+			"styleClass": [
+				"applicant_bene_entity_class"
+			]
+		},
+		"phraseProduct": {
+			"name": "phraseProduct",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper filter_dropdown_msg",
+			"rendered": false,
+			"styleClass": [
+				"applicant_bene_entity_class"
+			]
+		},
+		"phraseCategory": {
+			"name": "phraseCategory",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"rendered": false,
+			"styleClass": [
+				"applicant_bene_entity_class"
+			]
+		},
+		"phraseDescription": {
+			"name": "phraseDescription",
+			"type": "input-text",
+			"layoutClass": "p-md-8 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"maxlength": 100,
+			"required": true,
+			"rendered": true
+		},
+		"phraseContentHeader": {
+			"name": "phraseContentHeader",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper",
+			"styleClass": [
+					"purchaseTerms"
+			]
+		},
+		"dynamicPhraseColumns": {
+			"name": "dynamicPhraseColumns",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 filter_dropdown_msg dynamicColPadding",
+			"rendered": false,
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"dropdownFilterClass": "phraseColumnClass"
+		},
+		"phraseContentStatic": {
+			"name": "phraseContentStatic",
+			"type": "narrative-textarea",
+			"rendered": true,
+			"fieldSize": 65,
+			"rows": 1,
+            "maxRowCount": 1000,
+            "enteredCharCount": 0,
+            "rowCount": 0,
+            "cols": 65,
+			"allowedCharCount": 65000,
+			"maxlength": 65000,
+			"required": false,
+			"showLabel": false,
+			"layoutClass": "p-col-12",
+			"styleClass": [
+				"taskDescription"
+			]
+		},
+		"phraseContentDynamic": {
+			"name": "phraseContentDynamic",
+			"type": "editor",
+			"rendered": false,
+			"fieldSize": 65,
+			"rows": 1,
+            "maxRowCount": 1000,
+            "enteredCharCount": 0,
+            "rowCount": 0,
+            "cols": 65,
+			"allowedCharCount": 65000,
+			"maxlength": 65000,
+			"required": false,
+			"layoutClass": "p-col-12 editorPadding",
+			"styleClass": [
+				"taskDescription"
+			]
+		},
+		"phraseContentTip": {
+			"name": "phraseContentTip",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": [
+				"licenseUploadError"
+			],
+			"rendered": true,
+			"previewScreen": false
+		},
+		"space2": {
+			"name": "space2",
+			"type": "spacer",
+			"layoutClass": "p-col-8",
+			"rendered": true
+		},
+		"phraseCancel": {
+			"name": "phraseCancel",
+			"label": "phraseCancel",
+			"type": "button-div",
+			"displayKey": "cancelDisplay",
+			"layoutClass": "p-col-11 taskLayout",
+			"displayValue": true,
+			"parentStyleClass": "createButton-Parent cancelRight",
+			"styleClass": "secondaryButton"
+		},
+		"save": {
+			"name": "save",
+			"label": "save",
+			"type": "button-div",
+			"displayKey": "submitDisplay",
+			"layoutClass": "p-col-1 taskLayout",
+			"parentStyleClass": "createButton-Parent createRight",
+			"displayValue": true,
+			"styleClass": "primaryButton"
+		}
+	},
+	"billDetailsModel": {
+		"billID": {
+			"name": "billID",
+			"type": "view-mode",
+			"layoutClass": "p-col-12 billIdLayoutClass leftwrapper padding_zero",
+			"labelStyleClass": [
+				"padding_zero"
+			],
+			"rendered": true,
+			"showLabel": true
+		},
+		"billContentHeader": {
+			"name": "billContentHeader",
+			"type": "text",
+			"layoutClass": "p-col-12 billContentHeaderLayoutClass",
+			"styleClass": "label-header",
+			"rendered": true
+		},
+		"billContent": {
+			"name": "billContent",
+			"type": "text",
+			"layoutClass": "p-col-12 billContentLayoutClass",
+			"styleClass": "billContentStyleClass",
+			"rendered": false
+		}
+	},
+	"bankModel": {
+		"createBank": {
+			"name": "createBank",
+			"type": "text",
+			"layoutClass": "p-col-12",
+			"styleClass": [
+				"bankheader"
+			]
+		},
+		"mainDetails": {
+			"name": "mainDetails",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bottom_zero",
+			"styleClass": [
+				"subheader-title"
+			],
+			"groupChildren": [
+				"bankEntity",
+				"bankAbbvName",
+				"name"
+			]
+		},
+		"bankEntity": {
+			"name": "bankEntity",
+			"options": [],
+			"type": "input-dropdown-filter",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"rendered": true,
+			"required": true,
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"labelClass": "p-col-6",
+			"valueClass": "p-col-6",
+			"grouphead": "mainDetails"
+		},
+		"bankAbbvName": {
+			"name": "bankAbbvName",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"required": true,
+			"rendered": true,
+			"grouphead": "mainDetails"
+		},
+		"bankFullname": {
+			"name": "bankFullName",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"required": true,
+			"rendered": true,
+			"grouphead": "mainDetails"
+		},
+		"space1": {
+			"name": "space1",
+			"type": "spacer",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 padding_zero",
+			"rendered": true
+		},
+		"addressDetailsType": {
+      		"name": "addressDetailsType",
+      		"options": [],
+      		"type": "select-button",
+      		"styleClass": [
+        		"bank-select"
+      		],
+      		"previewScreen": false,
+      		"layoutClass": "p-col-12"
+    	},
+    	"swiftAddress": {
+      		"name": "swiftAddress",
+      		"type": "text",
+      		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      		"styleClass": [
+        		"subheader-title"
+      		],
+      		"previewScreen": false
+    	},
+		"swiftAddress1": {
+			"name": "swiftAddress1",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"rendered": true,
+			"required": true
+		},
+		"swiftAddress2": {
+			"name": "swiftAddress2",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"rendered": true
+		},
+		"swiftAddress3": {
+			"name": "swiftAddress3",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"rendered": true
+			},
+		"space2": {
+			"name": "space2",
+			"type": "spacer",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 padding_zero",
+			"rendered": true
+		},	
+		"postalAddress": {
+      		"name": "postalAddress",
+      		"type": "text",
+      		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      		"styleClass": [
+        		"subheader-title"
+      		],
+      		"previewScreen": false
+    	},
+		"postalAddress1": {
+			"name": "postalAddress1",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": "margin-all-side",
+			"rendered": true
+		},
+		"postalAddress2": {
+			"name": "postalAddress2",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 rightwrapper applicant_bene_add2_style",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"rendered": true
+		},
+		"postalAddress3": {
+			"name": "postalAddress3",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"rendered": true
+			},
+		"postalAddress4": {
+			"name": "postalAddress4",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"rendered": true
+		},
+		"country": {
+			"name": "country",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"required": true
+		},
+		"otherDetails": {
+			"name": "otherDetails",
+			"type": "text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bottom_zero",
+			"styleClass": [
+				"subheader-title"
+			],
+			"groupChildren": [
+				"contactName",
+				"contactNumber",
+				"fax",
+				"telex",
+				"bicCode",
+				"email",
+				"webAddress"
+			]
+		},
+		"contactName": {
+			"name": "contactName",
+			"type": "input-text",
+			"required": false,
+			"rendered": true,
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"grouphead": "otherDetails"
+		},
+		"contactNumber": {
+			"name": "contactNumber",
+			"type": "input-text",
+			"required": false,
+			"rendered": true,
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"grouphead": "otherDetails"
+		},
+		"fax": {
+			"name": "fax",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"required": false,
+			"rendered": true,
+			"grouphead": "otherDetails"
+		},
+		"telex": {
+			"name": "telex",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"required": false,
+			"rendered": true,
+			"grouphead": "otherDetails"
+		},
+		"bicCode": {
+			"name": "bicCode",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"required": false,
+			"rendered": true,
+			"maxlength": 11,
+			"grouphead": "otherDetails"
+		},
+		"email": {
+			"name": "email",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"required": true,
+			"rendered": true,
+			"grouphead": "otherDetails"
+		},
+		"webAddress": {
+			"name": "webAddress",
+			"type": "input-text",
+			"layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+			"styleClass": [
+				"margin-all-side"
+			],
+			"required": false,
+			"rendered": true,
+			"maxlength": 40,
+			"grouphead": "otherDetails"
+		},
+		"bankCancel": {
+			"name": "bankCancel",
+			"label": "bankCancel",
+			"type": "button-div",
+			"displayKey": "cancelDisplay",
+			"layoutClass": "p-col-11 taskLayout",
+			"displayValue": true,
+			"parentStyleClass": "createButton-Parent cancelRight",
+			"styleClass": "secondaryButton"
+		},
+		"save": {
+			"name": "save",
+			"label": "save",
+			"type": "button-div",
+			"displayKey": "submitDisplay",
+			"layoutClass": "p-col-1 taskLayout",
+			"parentStyleClass": "createButton-Parent createRight",
+			"displayValue": true,
+			"styleClass": "primaryButton"
+		}
+	}
+}

@@ -1,0 +1,20 @@
+<listdef page='25'>
+	<name>Payments per Type</name>
+	<description>Payments per type</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='amt' hidden='y'/>
+	<column name='cur_code' hidden='y'/>
+	<column name='liab_amt' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<column name='ft_type' hidden='y'/>
+	<candidate name='FT'/>
+	<group graph='pie'>
+		<column name='ft_type'/>
+		<aggregate type='count'>
+			<column name='ft_type'/>
+			<description locale='en'>Nb.</description>
+			<description locale='fr'>Nb.</description>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

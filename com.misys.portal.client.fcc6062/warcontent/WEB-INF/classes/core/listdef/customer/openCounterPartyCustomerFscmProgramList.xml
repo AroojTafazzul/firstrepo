@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="n" page="50" default_order="program_code" default_order_type="d" distinct="y" js_binding="misys.binding.common.listdef_mc">
+	
+	<column name="CounterPartyProgram@fscm_prog@program_code" width="50%" loca_key="PROGRAM_CODE">
+	<url>
+			<parameter name="SCREEN" value="CSF_SCREEN"/>
+			<parameter name="PROGRAM_ID" column="CounterPartyProgram@fscm_prog@program_id"/>
+			<parameter name="OPTION_CODE" binding_code="DISPLAY_CPTY_FSCMPROG"/>
+	</url>
+	</column>
+	<column name="CounterPartyProgram@fscm_prog@program_name" align="left" width="30%" loca_key="PROGRAM_NAME"/>
+	
+	<column name="CounterPartyProgram@fscm_prog@program_id" width="30%" loca_key="PROGRAM_ID"/>
+	<column name="CounterPartyProgram@fscm_prog@program_type" width="30%" loca_key="PROGRAM_TYPE"/>
+	<column name="CounterPartyProgram@fscm_prog@program_sub_type" width="30%" loca_key="PROGRAM_SUB_TYPE"/>
+	<column name="CounterPartyProgram@fscm_prog@status" width="30%" loca_key="STATUS">
+	<script>
+		var status = row.getColumnValue("CounterPartyProgram@fscm_prog@status");
+		value = com.misys.portal.common.localization.Localization.getDecode(language,"N020",""+status+"");
+		value;
+	</script> 
+	</column>
+	<column name="CounterPartyProgram@fscm_prog@is_proxy" hidden='y'/>
+
+<!-- 	parameters -->
+	<parameter
+		name="program_code"
+		loca_key="PROGRAM_CODE"
+		size="16"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="program_name"
+		loca_key="PROGRAM_NAME"
+		size="16"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="status"
+		type="AvailableUserStatusFlag"
+		size="1"
+		max_length=""
+		loca_key="STATUS"
+		input="y"
+		default=""
+		multiple_values="A,I"/>
+<!-- 	Define as hidden parameter, to use the "company" parameter value, passed from the company list. 	 -->
+	<parameter
+		name="company"
+		input="n"/>
+
+	<!-- candidates	 -->
+	<candidate name="Company">
+		<filter>
+			<criteria>
+				<column name="CounterPartyProgram@fscm_prog@program_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					program_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="CounterPartyProgram@fscm_prog@program_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					program_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="status"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					status
+				</value>
+			</criteria>
+			<criteria>
+				<column name="CounterPartyProgram@fscm_prog@program_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					program_name
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	
+	<filter>
+		<criteria>
+			<column name="CounterPartyProgram@fscm_prog@is_proxy"/>
+			<operator type="equal"/>
+			<value type="code">
+				N034_YES
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="CounterPartyProgram@fscm_prog@status"/>
+			<operator type="different"/>
+			<value type="code">
+				N020_DELETED
+			</value>
+		</criteria>
+	</filter>
+	
+	
+	<filter>
+		<criteria>
+			<column name="CounterPartyProgram@bo_status"/>
+			<operator type="equal"/>
+			<value type="code">
+				N219_APPROVED
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="CounterPartyProgram@prog_cpty_assn_status"/>
+			<operator type="equal"/>
+			<value type="code">
+				N020_ACTIVE
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="abbv_name"/>
+			<operator type="equal"/>
+			<value type="parameter">
+					company
+			</value>
+		</criteria>
+	</filter>
+</listdef>

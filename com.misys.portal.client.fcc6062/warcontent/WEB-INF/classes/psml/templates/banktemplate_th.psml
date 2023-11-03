@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><portlets user="default">
+	<controller name="com.misys.portal.core.portal.controllers.CardPortletController">
+		<parameter name="parameter" value="pane"/>
+	</controller>
+	<portlets>
+		<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController">
+			<parameter name="sizes" value="250,*"/>
+			<parameter name="mode" value="row"/>
+		</controller>
+		<layout position="0"/>
+		<metainfo>
+			<title>Home Page</title>
+		</metainfo>
+		<portlets>
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+			<layout position="1"/>
+			<entry type="ref" parent="WelcomeAdmin_th">
+				<control name="com.misys.portal.core.portal.controls.BorderPortletControl"/>
+				<layout position="0"/>
+				<parameter name="menu" value="true"/>
+			</entry>
+			<entry type="ref" parent="TradeApplicationsAdminPortlet">
+				<layout position="1"/>
+				<parameter name="menu" value="true"/>
+			</entry>
+		</portlets>
+		<portlets>
+			<controller name="com.misys.portal.core.portal.controllers.RowColumnPortletController"/>
+			<layout position="2"/>
+			<entry type="ref" parent="BankOngoingTasksList">
+				<layout position="0"/>
+			</entry>
+			<entry type="ref" parent="TradeRecentApps">
+				<parameter name="max_apps" value="10" type="int"/>
+				<layout position="1"/>
+			</entry>
+			<entry type="ref" parent="TradeRecentRequests">
+				<parameter name="max_requests" value="10" type="int"/>
+				<layout position="2"/>
+			</entry>
+			<entry parent="BankDefaultContent" type="ref">
+				<layout position="4" size="NORMAL" />
+			</entry>
+			<entry parent="BankInternalNewsPortlet" type="ref">
+				<layout position="5" size="NORMAL" />
+			</entry>
+		</portlets>
+	</portlets>
+</portlets>

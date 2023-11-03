@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="a" js_binding="misys.binding.openaccount.listdef_ip_financerepayment_request" page="50">	
+	 <column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="IP_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_IP_FINANCE_REPAYMENT_REQUEST"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	 <column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	 <column name="buyer_name" align="left" width="30%" loca_key="ENTITY_NAME_BUYER"/>
+	 <column name="seller_name" align="left" width="30%" loca_key="SELLER_NAME"/>
+	 <column name="fscm_prog@program_name" align="center" width="20%" loca_key="PROGRAM_NAME"/>	
+	 <column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>	 
+	 <column name="finance_amt" align="right" width="10em" loca_key="FINANCED_AMNT"/>
+	 <column name="outstanding_repayment_amt" align="right" width="10em" loca_key="OUTSTANDING_REPAY_AMT"/>	
+	 <column name="fin_date" align="center" width="6em" loca_key="FINANCE_ISSUE_DATE"/>
+	 <column name="fin_due_date" align="center" width="6em" loca_key="FINANCE_DUE_DATE"/>
+	 <column name="status" align="center" width="10%" loca_key="STATUS">
+		<script>
+		if(value.equals(""))
+		{
+			var prodStatCode = row.getColumnValue("prod_stat_code");
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N005",prodStatCode.toString());
+		}
+		value;
+		</script>
+	</column>
+
+	<column name="prod_stat_code" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>	
+	<column name="fscm_prog@invoice_settled_by" hidden="y"/>
+	<column name="fscm_prog@customer_role" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="16"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>	
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter 
+		name="buyer_name" 
+		loca_key="ENTITY_NAME_BUYER" 
+		size="35" 
+		max_length="35" 
+		input="y" />
+	<parameter
+		name="seller_name"
+		size="35"
+		max_length="35"
+		loca_key="SELLER_NAME"
+		input="y"
+		default=""/>
+	<parameter 
+		name="program_name" 
+		loca_key="PROGRAM_NAME" 
+		size="35" 
+		max_length="35" 
+		input="y" />
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"/>
+	<parameter name="AmountRange"
+			   type="AmountRange"
+			   input="y"
+		       default="blank"
+		       range_from_label="FinAmountFrom"
+		       range_to_label="FinAmountTo"/>
+	<parameter name="AmountOutstandingRange"
+			   type="AmountRange"
+			   input="y"
+		       default="blank"
+		       range_from_label="OutstandingRepayAmountFrom"
+		       range_to_label="OutstandingRepayAmountTo"/>			       
+	<parameter
+			name="fin_date"
+			type="range"
+			input="y"
+			range_from_label="FINANCE_ISSUE_DATE_FROM"
+			range_to_label="FINANCE_ISSUE_DATE_TO"
+			default="blank"/>			
+	<parameter
+			name="fin_due_date"
+			type="range"
+			input="y"
+			range_from_label="FINANCE_DUE_DATE_FROM"
+			range_to_label="FINANCE_DUE_DATE_TO"
+			default="blank"/>
+
+	<candidate name="invoice_payable_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">entity</value>
+			</criteria>
+			<criteria>
+				<column name="buyer_name"/>
+				<operator type="like"/>
+				<value type="parameter">buyer_name</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">seller_name</value>
+			</criteria>
+<!-- 			<criteria> -->
+<!-- 				<column name="fscm_programme_code"/> -->
+<!-- 				<operator type="like"/> -->
+<!-- 				<value type="parameter">fscm_programme_code</value> -->
+<!-- 			</criteria>			 -->
+			<criteria>
+				<column name="fscm_prog@program_name"/>
+				<operator type="like"/>
+				<value type="parameter">program_name</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">cur_code</value>
+			</criteria>	
+			<criteria>
+				<column name="finance_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="finance_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="outstanding_repayment_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountOutstandingRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="outstanding_repayment_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountOutstandingRange@toAmount
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="fin_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">fin_date@from</value>
+			</criteria>
+			<criteria>
+				<column name="fin_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">fin_date@to</value>
+			</criteria>
+			<criteria>
+				<column name="fin_due_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">fin_due_date@from</value>
+			</criteria>
+			<criteria>
+				<column name="fin_due_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">fin_due_date@to</value>
+			</criteria>
+			<criteria>
+				<column name="fscm_prog@invoice_settled_by"/>
+				<operator type="equal"/>
+				<value type="code">
+					N226_ISSUER_TYPE_BUYER
+				</value>
+			</criteria>
+			<criteria>
+				<column name="fscm_prog@customer_role"/>
+				<operator type="equal"/>
+				<value type="code">
+					N226_ISSUER_TYPE_BUYER
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter or="y">
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">N005_ACCEPTED</value>
+		</criteria>
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">N005_FINANCING_REPAY_ACCEPTED</value>
+		</criteria>	
+	</filter>
+	<filter>
+		<criteria>
+			<column name="outstanding_repayment_amt"/>
+			<operator type="isNotNull"/>			
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="finance_repayment_eligible"/>
+			<operator type="equal"/>
+			<value type="code">N034_YES</value>
+		</criteria>
+	</filter>
+</listdef> 

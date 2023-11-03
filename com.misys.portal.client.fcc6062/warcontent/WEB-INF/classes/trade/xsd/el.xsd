@@ -1,0 +1,1244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for EL. XML validation 
+			Copyright (c) 2000-2004 NEOMAlogic (http://www.neomalogic.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="el_tnx_record">
+		<xs:annotation>
+			<xs:documentation>Export Letter of Credit Business Rules</xs:documentation>
+			<xs:appinfo>
+
+				<!-- EL - Check transaction type code -->
+				<sch:pattern 
+					name="EL - Check the transaction type code" 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/el_tnx_record">
+						<sch:assert 
+							test="tnx_type_code = '13'">
+							The transaction type code <value-of select="tnx_type_code"/> is not authorised.
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern> 
+
+				<!-- ************************* -->
+				<!-- EL Inquire Business Rules -->
+				<!-- ************************* -->
+
+				<!-- EL Inquire mandatory fields -->
+				<sch:pattern 
+					name="EL Inquire - Mandatory fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/el_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(free_format_text) or free_format_text = ''))">
+							Some mandatory elements are missing. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				
+				<!-- EL Inquire not authorised fields -->
+				<sch:pattern 
+					name="EL Inquire - Not authorised fields " 
+					xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/el_tnx_record">
+						<sch:report 
+							test="tnx_type_code = '13' and
+									(tnx_id
+									or company_id
+									or tnx_id
+									or imp_bill_ref_id
+									or entity
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or bo_comment
+									or adv_send_mode
+									or lc_ref_id
+									or sub_tnx_type_code
+									or appl_date
+									or iss_date
+									or exp_date
+									or amd_date
+									or amd_no
+									or last_ship_date
+									or tnx_cur_code
+									or tnx_amt
+									or lc_cur_code
+									or lc_amt
+									or lc_liab_amt
+									or lc_available_amt
+									or lc_type
+									or applicant_abbv_name
+									or applicant_name
+									or applicant_address_line_1
+									or applicant_address_line_2
+									or applicant_dom
+									or applicant_address_line_4
+									or applicant_country
+									or applicant_reference
+									or beneficiary_abbv_name
+									or beneficiary_name
+									or beneficiary_address_line_1
+									or beneficiary_address_line_2
+									or beneficiary_dom
+									or beneficiary_address_line_4
+									or beneficiary_country
+									or beneficiary_reference
+									or sec_beneficiary_name
+									or sec_beneficiary_address_line_1
+									or sec_beneficiary_address_line_2
+									or sec_beneficiary_dom
+									or sec_beneficiary_address_line_4
+									or sec_beneficiary_country
+									or sec_beneficiary_reference
+									or assignee_name
+									or assignee_address_line_1
+									or assignee_address_line_2
+									or assignee_dom
+									or assignee_address_line_4
+									or assignee_country
+									or assignee_reference
+									or notify_amendment_flag
+									or substitute_invoice_flag
+									or advise_mode_code
+									or expiry_place
+									or inco_term
+									or part_ship_detl
+									or tran_ship_detl
+									or ship_from
+									or ship_loading
+									or ship_discharge
+									or ship_to
+									or draft_term 				      
+									or cty_of_dest 			      
+									or rvlv_lc_type_code       
+									or max_no_of_rvlv 		      
+									or neg_tol_pct 			      
+									or pstv_tol_pct 			      
+									or max_cr_desc_code 	      
+									or cr_avl_by_code 		      
+									or dir_reim_flag 		      
+									or irv_flag 					      
+									or ntrf_flag 				      
+									or stnd_by_lc_flag 	      
+									or cfm_inst_code 		      
+									or cfm_flag 					      
+									or cfm_chrg_brn_by_code    
+									or corr_chrg_brn_by_code   
+									or open_chrg_brn_by_code   
+									or principal_act_no        
+									or fee_act_no  
+									or doc_ref_no            
+									or eucp_flag               
+									or eucp_version   	        
+									or eucp_presentation_place 
+									or period_presentation_days
+									or inco_place
+									or issuing_bank/abbv_name
+									or issuing_bank/name
+									or issuing_bank/address_line_1
+									or issuing_bank/address_line_2
+									or issuing_bank/dom
+									or issuing_bank/address_line_4
+									or issuing_bank/reference
+									or credit_available_with_bank/abbv_name
+									or credit_available_with_bank/name
+									or credit_available_with_bank/address_line_1
+									or credit_available_with_bank/address_line_2
+									or credit_available_with_bank/dom
+									or credit_available_with_bank/address_line_4
+									or credit_available_with_bank/reference
+									or drawee_details_bank/abbv_name
+									or drawee_details_bank/name
+									or drawee_details_bank/address_line_1
+									or drawee_details_bank/address_line_2
+									or drawee_details_bank/dom
+									or drawee_details_bank/address_line_4
+									or drawee_details_bank/reference
+									or advise_thru_bank/abbv_name
+									or advise_thru_bank/name
+									or advise_thru_bank/address_line_1
+									or advise_thru_bank/address_line_2
+									or advise_thru_bank/dom
+									or advise_thru_bank/address_line_4
+									or advise_thru_bank/reference
+									or first_advising_bank/abbv_name
+									or first_advising_bank/name
+									or first_advising_bank/address_line_1
+									or first_advising_bank/address_line_2
+									or first_advising_bank/dom
+									or first_advising_bank/address_line_4
+									or narrative_description_goods
+									or narrative_documents_required
+									or narrative_additional_instructions
+									or narrative_charges
+									or narrative_additional_amount
+									or narrative_payment_instructions
+									or narrative_period_presentation
+									or narrative_special_beneficiary
+									or narrative_special_recvbank
+									or narrative_shipment_period
+									or narrative_sender_to_receiver
+									or narrative_full_details
+									or charges)">
+							A not authorised element is defined. 
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element minOccurs="0" ref="brch_code">
+						<xs:annotation>
+							<xs:documentation>Branch code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ref_id">
+						<xs:annotation>
+							<xs:documentation>Export letter of credit reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="template_id">
+						<xs:annotation>
+							<xs:documentation>Template id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="lc_ref_id">
+						<xs:annotation>
+							<xs:documentation>Reference id given by the issuing 
+								bank to the LC.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Back office attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					
+					<xs:element minOccurs="0" ref="cust_ref_id">
+						<xs:annotation>
+							<xs:documentation>Customer attributed reference 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_id">
+						<xs:annotation>
+							<xs:documentation>Transaction id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_tnx_id"/>
+					<xs:element minOccurs="0" ref="company_id">
+						<xs:annotation>
+							<xs:documentation>Id of the company that initiated 
+								the export letter of credit.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- minOccurs=0 because the company can possibly be not be provided when bank initiated transaction -->
+					<xs:element minOccurs="0" ref="company_name">
+						<xs:annotation>
+							<xs:documentation>Name of the company that 
+								represents the beneficiary of the export letter 
+								of credit.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="imp_bill_ref_id">
+						<xs:annotation>
+							<xs:documentation>Reserved for future 
+								use.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="entity">
+						<xs:annotation>
+							<xs:documentation>Entity</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="adv_send_mode"/>
+					<xs:element minOccurs="0" ref="tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>Transaction type 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>Transaction sub type 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="prod_stat_code">
+						<xs:annotation>
+							<xs:documentation>Product status 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Transaction status 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Sub Transaction Status Code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="product_code">
+						<xs:annotation>
+							<xs:documentation>Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="sub_product_code" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Sub Product code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Inputter user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Input date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Controller user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Control date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_user_id">
+						<xs:annotation>
+							<xs:documentation>Releaser user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="release_dttm">
+						<xs:annotation>
+							<xs:documentation>Release date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office inputter 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office input 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office controller 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office control 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office release user 
+								id.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office release 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_val_date">
+						<xs:annotation>
+							<xs:documentation>Transaction value 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="appl_date">
+						<xs:annotation>
+							<xs:documentation>Application 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="iss_date">
+						<xs:annotation>
+							<xs:documentation>Issue date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="exp_date">
+						<xs:annotation>
+							<xs:documentation>Expiry date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_date">
+						<xs:annotation>
+							<xs:documentation>Amendment date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_no">
+						<xs:annotation>
+							<xs:documentation>Amendment 
+								number.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="last_ship_date">
+						<xs:annotation>
+							<xs:documentation>Last shipment 
+								date.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_amt">
+						<xs:annotation>
+							<xs:documentation>Transaction 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="lc_cur_code">
+						<xs:annotation>
+							<xs:documentation>Letter of credit currency 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="lc_amt">
+						<xs:annotation>
+							<xs:documentation>Letter of credit 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="lc_liab_amt">
+						<xs:annotation>
+							<xs:documentation>Letter of credit liability 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- ADD INCOMING V4 -->
+					<xs:element minOccurs="0" ref="lc_outstanding_amt">
+						<xs:annotation>
+							<xs:documentation>Letter of credit outstanding 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="lc_available_amt">
+						<xs:annotation>
+							<xs:documentation>Letter of credit available 
+								amount.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- END ADD INCOMING V4 -->
+					<xs:element minOccurs="0" ref="lc_type">
+						<xs:annotation>
+							<xs:documentation>Letter of credit type 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Beneficiary abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_name">
+						<xs:annotation>
+							<xs:documentation>Beneficiary 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_address_line_1">
+						<xs:annotation>
+							<xs:documentation>Beneficiary first address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_address_line_2">
+						<xs:annotation>
+							<xs:documentation>Beneficiary second address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_dom">
+						<xs:annotation>
+							<xs:documentation>Beneficiary 
+								domicile.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_address_line_4">
+						<xs:annotation>
+							<xs:documentation>Beneficiary fourth address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_country">
+						<xs:annotation>
+							<xs:documentation>Beneficiary 
+								country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="beneficiary_reference">
+						<xs:annotation>
+							<xs:documentation>Beneficiary 
+								reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_name">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								name (Transfer).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_address_line_1">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary first address 
+								line (Transfer).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_address_line_2">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary second address 
+								line (Transfer).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_dom">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								domicile (Transfer).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_address_line_4">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary fourth address 
+								line (Transfer).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_country">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								Country (Transfer).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sec_beneficiary_reference">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								reference (Transfer).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				
+					<xs:element minOccurs="0" ref="assignee_name">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								name (Assignee).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element minOccurs="0" ref="assignee_address_line_1">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary first address 
+								line (Assignee).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="assignee_address_line_2">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary second address 
+								line (Assignee).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="assignee_dom">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								domicile (Assignee).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="assignee_address_line_4">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary fourth address 
+								line (Assignee).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="assignee_country">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								country (Assignee).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="assignee_reference">
+						<xs:annotation>
+							<xs:documentation>Second Beneficiary 
+								reference (Assignee).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element minOccurs="0" ref="applicant_abbv_name">
+						<xs:annotation>
+							<xs:documentation>Applicant abbreviated 
+								name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_name">
+						<xs:annotation>
+							<xs:documentation>Applicant name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_address_line_1">
+						<xs:annotation>
+							<xs:documentation>Applicant first address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_address_line_2">
+						<xs:annotation>
+							<xs:documentation>Applicant second address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_dom">
+						<xs:annotation>
+							<xs:documentation>Applicant 
+								domicile.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_address_line_4">
+						<xs:annotation>
+							<xs:documentation>Applicant fourth address 
+								line.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_country">
+						<xs:annotation>
+							<xs:documentation>Applicant 
+								country.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicant_reference">
+						<xs:annotation>
+							<xs:documentation>Applicant 
+								reference.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element minOccurs="0" ref="notify_amendment_flag">
+						<xs:annotation>
+							<xs:documentation>Notify Amendment Flag.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+		
+					<xs:element minOccurs="0" ref="substitute_invoice_flag">
+						<xs:annotation>
+							<xs:documentation>Substitute Invoice Flag.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="advise_mode_code">
+						<xs:annotation>
+							<xs:documentation>Advise Mode Code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element minOccurs="0" ref="expiry_place">
+						<xs:annotation>
+							<xs:documentation>Expiry place.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inco_term">
+						<xs:annotation>
+							<xs:documentation>Incoterm.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inco_place">
+						<xs:annotation>
+							<xs:documentation>Named place for the 
+								Incoterm.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="part_ship_detl">
+						<xs:annotation>
+							<xs:documentation>Partial shipment 
+								detail.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tran_ship_detl">
+						<xs:annotation>
+							<xs:documentation>Transshipment 
+								detail.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_from">
+						<xs:annotation>
+							<xs:documentation>Shipment 
+								origin.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- SWIFT 2006 -->
+					<xs:element minOccurs="0" ref="ship_loading">
+						<xs:annotation>
+							<xs:documentation>Shipment 
+								loading.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ship_discharge">
+						<xs:annotation>
+							<xs:documentation>Shipment 
+								discharge.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- SWIFT 2006 -->
+					<xs:element minOccurs="0" ref="ship_to">
+						<xs:annotation>
+							<xs:documentation>Shipment 
+								destination.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="draft_term">
+						<xs:annotation>
+							<xs:documentation>Draft term.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cty_of_dest">
+						<xs:annotation>
+							<xs:documentation>Country of 
+								destination.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rvlv_lc_type_code">
+						<xs:annotation>
+							<xs:documentation>Letter of credit revolution type 
+								code (in case of a revolving 
+								LC).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="max_no_of_rvlv">
+						<xs:annotation>
+							<xs:documentation>Maximum number of revolutions (in 
+								case of a revolving LC).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="neg_tol_pct">
+						<xs:annotation>
+							<xs:documentation>Negative tolerance 
+								percentage.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="pstv_tol_pct">
+						<xs:annotation>
+							<xs:documentation>Positive tolerance 
+								percentage.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="max_cr_desc_code">
+						<xs:annotation>
+							<xs:documentation>Maximum credit description 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cr_avl_by_code">
+						<xs:annotation>
+							<xs:documentation>Credit availibility type 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="dir_reim_flag">
+						<xs:annotation>
+							<xs:documentation>Direct reimbursement 
+								flag.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="irv_flag">
+						<xs:annotation>
+							<xs:documentation>Irrevocability 
+								flag.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ntrf_flag">
+						<xs:annotation>
+							<xs:documentation>Non transferability 
+								flag.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="stnd_by_lc_flag">
+						<xs:annotation>
+							<xs:documentation>Stand by LC 
+								flag.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cfm_inst_code">
+						<xs:annotation>
+							<xs:documentation>Confirmation instructions 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cfm_flag">
+						<xs:annotation>
+							<xs:documentation>Confirmation 
+								flag.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cfm_chrg_brn_by_code"/>
+					<xs:element minOccurs="0" ref="corr_chrg_brn_by_code">
+						<xs:annotation>
+							<xs:documentation>Correspondant charges bearer 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="open_chrg_brn_by_code">
+						<xs:annotation>
+							<xs:documentation>Opening charges bearer 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- ADD INCOMING V4 -->
+					<xs:element minOccurs="0" ref="renew_flag">
+						<xs:annotation>
+							<xs:documentation>
+								Flag to enable/disable the renewal function.
+								Values 'Y' to enable or 'N' to disable. 
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="renew_on_code">
+						<xs:annotation>
+							<xs:documentation>
+								Flag to define when the renewal will occours.
+								Values '01' to renew on expiry, '02' to a date defined in renewal_calendar_date field and empty when renew_flag value is 'N'. 
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="renewal_calendar_date">
+						<xs:annotation>
+							<xs:documentation>
+								Date defined when the renew_on_code field is set with '02' and empty when renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="renew_for_nb">
+						<xs:annotation>
+							<xs:documentation>
+								Number of periods (renew_for_period field) that the SI will be renewed.
+								Any number between 1 and 999 and empty when renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="renew_for_period">
+						<xs:annotation>
+							<xs:documentation>
+								Period of renew_for_nb do reference.
+								Values are 'D' for days, 'W' for weeks, 'M' for months and 'Y' for years  and empty when renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="advise_renewal_flag">
+						<xs:annotation>
+							<xs:documentation>
+								Flag to define if the renewal should be advised.
+								Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="advise_renewal_days_nb">
+						<xs:annotation>
+							<xs:documentation>
+								The number of days before the renewal to advise.
+								Any number between 1 and 999 and empty when advise_renewal_flag or renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rolling_renewal_flag">
+						<xs:annotation>
+							<xs:documentation>
+								Flag to define if the renewal can be rolled.
+								Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="req_conf_party_flag">
+						<xs:annotation>
+							<xs:documentation>
+								Contracting Party requested to provide confirmation.
+								Max. 35 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="proactive_amd">
+						<xs:annotation>
+							<xs:documentation>
+								Pro Active Amend flag
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_chrg_brn_by_code">
+						<xs:annotation>
+							<xs:documentation>Amendment charges bearer 
+								code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="period_presentation_days">
+						<xs:annotation>
+							<xs:documentation>Period of Presentation in days</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rolling_renew_on_code">
+						<xs:annotation>
+							<xs:documentation>
+								It defines when the rolling renewal will occur. It can be 01 if the renewal will happen on the Expiry or 02,
+								when the rolling renewal frequency and period is defined.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rolling_renew_for_nb">
+						<xs:annotation>
+							<xs:documentation>
+								Rolling Renew Nb
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					
+					<xs:element minOccurs="0" ref="rolling_renew_for_period">
+						<xs:annotation>
+							<xs:documentation>
+								Rolling Renew for period
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rolling_renewal_nb">
+						<xs:annotation>
+							<xs:documentation>
+								The number of times of the renewal can be rolled.
+								Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rolling_day_in_month">
+						<xs:annotation>
+							<xs:documentation>
+								Rolling day in month
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="rolling_cancellation_days">
+						<xs:annotation>
+							<xs:documentation>
+								The number of days before the cancellation to advise.
+								Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="renew_amt_code">
+						<xs:annotation>
+							<xs:documentation>
+								The amount of th renewal.
+								Values are '01' to the original amount, '02' to the current amount or empty when renew_flag value is 'N'.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- END ADD INCOMING V4 -->
+					<xs:element minOccurs="0" ref="principal_act_no">
+						<xs:annotation>
+							<xs:documentation>Principal account 
+								number.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="fee_act_no">
+						<xs:annotation>
+							<xs:documentation>Fee account 
+								number.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="doc_ref_no">
+						<xs:annotation>
+							<xs:documentation>Document Reference Number.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="eucp_flag"/>
+					<xs:element minOccurs="0" ref="eucp_version"/>
+					<xs:element minOccurs="0" ref="eucp_presentation_place"/>
+					<xs:element minOccurs="0" ref="maturity_date">
+						<xs:annotation>
+							<xs:documentation>Maturity date for acceptation, paiement, discrepancies.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicable_rules">
+						<xs:annotation>
+							<xs:documentation>SWIFT 2006 rules.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="applicable_rules_text">
+						<xs:annotation>
+							<xs:documentation>SWIFT 2006 rules.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="issuing_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the issuing bank 
+								information</xs:documentation>
+						</xs:annotation>
+					</xs:element>									
+					<xs:element minOccurs="0" ref="advising_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the advising bank 
+								information</xs:documentation>
+						</xs:annotation>
+					</xs:element>								
+					<xs:element minOccurs="0" ref="credit_available_with_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the credit 
+								available with bank</xs:documentation>
+						</xs:annotation>
+					</xs:element>							
+					<xs:element minOccurs="0" ref="drawee_details_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the drawee 
+								details bank information</xs:documentation>
+						</xs:annotation>
+					</xs:element>									
+					<xs:element minOccurs="0" ref="advise_thru_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the advise 
+								thru bank information</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="first_advising_bank">
+						<xs:annotation>
+							<xs:documentation>Parent node for the first advising 
+								bank information</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="documents"/>
+					<xs:element minOccurs="0" ref="linked_licenses"/>							
+					<xs:element minOccurs="0" 
+						ref="narrative_description_goods">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>							
+					<xs:element minOccurs="0" 
+						ref="narrative_documents_required">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>								
+					<xs:element minOccurs="0" 
+						ref="narrative_additional_instructions">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_master_description_goods">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_master_documents_required">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_master_additional_instructions">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="requested_confirmation_party">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_special_beneficiary">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_special_recvbank">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" 
+						ref="narrative_master_special_beneficiary">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_master_special_recvbank">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_amend_charges_other">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_legacy_partial_shipment">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_legacy_tran_shipment">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_legacy_period_of_presentation">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" 
+						ref="narrative_legacy_max_credit_amount">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="narrative_charges">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>								
+					<xs:element minOccurs="0" 
+						ref="narrative_additional_amount">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" 
+						ref="narrative_payment_instructions">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>								
+					<xs:element minOccurs="0" 
+						ref="narrative_period_presentation">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="narrative_shipment_period">
+						<xs:annotation>
+							<xs:documentation>Same as the related SWIFT 
+								narrative tag (MT700)</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" 
+						ref="narrative_sender_to_receiver">
+						<xs:annotation>
+							<xs:documentation>Not shown on the client side, 
+								hence not currently populated</xs:documentation>
+						</xs:annotation>
+					</xs:element>						
+					<xs:element minOccurs="0" ref="narrative_full_details">
+						<xs:annotation>
+							<xs:documentation>When the LC is opened from the 
+								free format option, the form contains this 
+								large narrative to receive the client 
+								instructions.</xs:documentation>
+						</xs:annotation>
+					</xs:element>	
+					<xs:element minOccurs="0" ref="bo_comment">
+						<xs:annotation>
+							<xs:documentation>Back office 
+								comment.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="free_format_text">
+						<xs:annotation>
+							<xs:documentation>Used as a zone of communication 
+								between the client and the 
+								bank.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_details">
+						<xs:annotation>
+							<xs:documentation>Amendment 
+								details.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="delivery_channel">
+						<xs:annotation>
+							<xs:documentation>This field identifies the type of delivery channel (MT798 tag 23X)</xs:documentation>
+						</xs:annotation>
+					</xs:element>					
+					<xs:element minOccurs="0" ref="charges"/>
+					<xs:element minOccurs="0" ref="attachments"/>
+					<xs:element minOccurs="0" ref="cross_references"/>
+					<xs:element minOccurs="0" maxOccurs="unbounded"  ref="additional_field"/>
+					<xs:element minOccurs="0" ref="action_req_code"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

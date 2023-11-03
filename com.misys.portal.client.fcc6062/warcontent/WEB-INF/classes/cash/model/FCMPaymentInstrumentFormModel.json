@@ -1,0 +1,682 @@
+{
+	"screen": "CustomerSystemFeaturesScreen",
+	"isAccordionView": "true",
+	"instrumentGeneralDetails": {
+		"payerText": {
+				"name": "payerText",
+				"type": "text",
+				"rendered": true,
+				"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 p-xs-12 padding_zero",
+				"styleClass": [
+					"mainSubHeader"
+				],
+				"groupChildren": [
+					"clientDetails",
+					"clientName",
+					"paymentPackages",
+					"paymentType",
+					"paymentRefNumber"
+				]
+		},
+		"clientDetails": {
+			"name": "clientDetails",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"required": true,
+			"previewValueAttr": "shortName",
+			"dropdownFilterClass": "dropdownFilterStyleClass",
+			"grouphead": "payerText"
+		},
+		"clientName": {
+			"name": "clientName",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": true,
+			"grouphead": "payerText"
+		},
+		"productCode": {
+			"name": "productCode",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"defautValue": "IN",
+			"hidden" : true
+		},
+		"paymentInsturmentNumber": {
+			"name": "paymentInsturmentNumber",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"legalEntity": {
+			"name": "legalEntity",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"defautValue": "IN",
+			"hidden" : true
+		},
+		"packageType": {
+			"name": "packageType",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"defautValue": "DEFAULT",
+			"hidden" : true
+		},
+		"beneficiaryStatus": {
+			"name": "beneficiaryStatus",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"defautValue": "SUBMITTED",
+			"hidden" : true
+		},
+		"defaultAccountFlag": {
+			"name": "defaultAccountFlag",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"defautValue": "Y",
+			"hidden" : true
+		},
+		"identifierType": {
+			"name": "identifierType",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"defautValue": "IFSC",
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"transactionType": {
+			"name": "transactionType",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"defautValue": "CREDIT",
+			"hidden" : true
+		},
+		"effectiveTime": {
+			"name": "effectiveTime",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": true,
+			"hidden" : true
+		},
+		"beneficiaryName": {
+			"name": "beneficiaryName",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": true,
+			"hidden" : true
+		},
+		"BeneficiaryName": {
+			"name": "BeneficiaryName",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": true,
+			"hidden" : true
+		},
+		"adhocFlag":{
+			"name": "adhocFlag",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"debtorCurrency": {
+			"name": "debtorCurrency",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"creditorCurrency" : {
+			"name": "creditorCurrency",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"debtorAccountType": {
+			"name": "debtorAccountType",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"debtorName": {
+			"name": "debtorName",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"debtorAccountId": {
+			"name": "debtorAccountId",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"paymentReference" : {
+			"name": "paymentReference",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"defautValue": "12345",
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"paymentPackages": {
+			"name": "paymentPackages",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"rendered": true,
+			"required": true,
+			"previewValueAttr": "shortName",
+			"dropdownFilterClass": "dropdownFilterStyleClass",
+			"grouphead": "payerText"
+		},
+		"paymentType": {
+			"name": "paymentType",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": true,
+			"grouphead": "payerText"
+		},
+		"paymentRefNumber": {
+			"name": "paymentRefNumber",
+			"type": "view-mode",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": true,
+			"grouphead": "payerText"
+		},
+		"paymentTypeId": {
+			"name": "paymentTypeId",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"paymentProductId": {
+			"name": "paymentProductId",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"paymentDetailsText": {
+			"name": "paymentDetailsText",
+			"type": "text",
+			"rendered": false,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 p-xs-12 padding_zero",
+			"styleClass": [
+				"mainSubHeader"
+			],
+			"groupChildren": [
+				"payFrom",
+				"paymentProductType",
+				"beneficiaryNameCode",
+				"accountType",
+				"accountNumber",
+				"beneficiaryBankIfscCode",
+				"payTo",
+				"currency",
+				"amount",
+				"effectiveDate",
+				"addBeneficiaryCheckbox",
+				"confidentialCheckbox"
+			]
+		},
+		"payFrom": {
+			"name": "payFrom",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"rendered": false,
+			"required": true,
+			"previewValueAttr": "shortName",
+			"grouphead": "paymentDetailsText",
+			"dropdownFilterClass": "dropdownFilterStyleClass"
+		},
+		"paymentProductType": {
+			"name": "paymentProductType",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"rendered": false,
+			"required": true,
+			"previewValueAttr": "shortName",
+			"grouphead": "paymentDetailsText",
+			"dropdownFilterClass": "dropdownFilterStyleClass"
+		},
+		"beneficiaryNameCode": {
+			"name": "beneficiaryNameCode",
+			"type": "input-auto-comp",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"rendered": false,
+			"required": true,
+			"maxlength":800,
+			"previewValueAttr": "shortName",
+			"grouphead": "paymentDetailsText",
+			"dropdownFilterClass": "dropdownFilterStyleClass"
+		},
+		"payTo": {
+			"name": "payTo",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"rendered": false,
+			"required": true,
+			"previewValueAttr": "shortName",
+			"grouphead": "paymentDetailsText",
+			"dropdownFilterClass": "dropdownFilterStyleClass"
+		},
+		"adhocFlag":{
+			"name": "adhocFlag",
+			"type": "input-text",
+			"rendered": false,
+			"showLabel": true,
+			"previewScreen": false,
+			"hidden" : true
+		},
+		"accountType": {
+			"name": "accountType",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"previewValueAttr": "shortName",
+			"rendered": false,
+			"previewScreen": true,
+			"grouphead": "paymentDetailsText",
+			"dropdownFilterClass": "dropdownFilterStyleClass"
+		},
+		"accountNumber": {
+			"name": "accountNumber",
+			"type": "input-text",
+			"maxlength":35,
+			"rendered": false,
+			"previewScreen": true,
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+			"grouphead": "paymentDetailsText",
+			"enableMask":true,
+			"blockCopyPaste": true
+		},
+		"confirmAccountNumber": {
+			"name": "confirmAccountNumber",
+			"type": "input-text",
+			"maxlength":35,
+			"rendered": false,
+			"previewScreen": false,
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+			"blockCopyPaste": true
+		},
+		"beneficiaryBankIfscCode": {
+			"name": "beneficiaryBankIfscCode",
+			"type": "input-dropdown-filter",
+			"options": [],
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+                "applicant_bene_entity_class"
+              ],
+            "rendered": false,
+			"grouphead": "paymentDetailsText",
+			"previewScreen": true,
+			"dropdownFilterClass": "dropdownFilterStyleClass",
+			"shortDescription":""
+		},
+		"beneficiaryBankBranch": {
+			"name": "beneficiaryBankBranch",
+			"type": "input-text",
+			"hidden": true,
+			"rendered": false
+		},
+		"beneficiaryBankIfscCodeIcons": {
+			"name": "beneficiaryBankIfscCodeIcons",
+			"type": "icon",
+			"rendered": false,
+			"iconName": "search",
+			"layoutClass": "layoutIcon",
+			"styleClass": "iconStyle",
+			"parentStyleClass": "iconStyle",
+			"previewScreen": false
+		},
+		"currency": {
+	      "name": "currency",
+	      "type": "input-dropdown-filter",
+	      "options": {},
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper chargeAmt",
+	      "styleClass": [
+	        "no-margin-multiselect"
+	      ],
+	      "previewValueAttr": "shortName",
+		  "rendered": false,
+		  "required": true,
+		  "previewScreen": true,
+		  "grouphead": "paymentDetailsText",
+		  "dropdownFilterClass": "dropdownFilterStyleClass"
+	    },
+		"amount": {
+			"name": "amount",
+			"type": "input-text",
+			"rendered": false,
+			"maxlength":15,
+			"required": true,
+			"clubbed": true,
+			"previewScreen": true,
+			"grouphead": "paymentDetailsText",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero"
+		},
+		"effectiveDate": {
+	      "name": "effectiveDate",
+	      "type": "input-date",
+	      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+	      "styleClass": [
+	        "margin-side"
+	      ],
+	      "rendered": false,
+	      "required": true,
+	      "maxlength": 10,
+	      "grouphead": "paymentDetailsText"
+	    },
+	    "addBeneficiaryCheckbox": {
+	      "name": "addBeneficiaryCheckbox",
+	      "grouphead": "paymentDetailsText",
+	      "defaultValue": "N",
+	      "type": "checkbox",
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-xl-12 p-sm-12 p-xs-12 padding_zero",
+	      "styleClass": "",
+	      "rendered": false,
+	      "previewScreen": true
+	    },
+	   "beneficiaryCode": {
+			"name": "beneficiaryCode",
+			"required": false,
+			"type": "input-text",
+			"infoIcon":true,
+			"rendered": false,
+			"disableStaticInfoLabel":true,
+			"staticInfoMsg":"invalidBeneCode",
+			"addHyperlinkWithInput": true,
+			"switchHyperlinkAndImg": false,
+			"switchImgPath": false,
+			"successImgPath":"/content/FCCUI/assets/icons/successicon-saved-bene.svg",
+			"failureImgPath": "/content/FCCUI/assets/icons/icon-failed.svg",
+			"maxlength":50,
+			"styleClass": "beneficiaryCodeStyle",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero"
+		},
+	    "confidentialCheckbox": {
+	      "name": "confidentialCheckbox",
+	      "grouphead": "paymentDetailsText",
+	      "defaultValue": "N",
+	      "mapBooleanValue": true,
+	      "type": "checkbox",
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-xl-12 p-sm-12 p-xs-12 padding_zero",
+	      "styleClass": "",
+	      "previewScreen": true,
+	      "rendered": false
+	    },
+		"addEnrichmentField": {
+			"name": "addEnrichmentField", 
+			"type": "rounded-button",
+			"styleClass": [
+				"browseButton"
+			],
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-xl-12 p-sm-12 p-xs-12 margin-left-radio",
+			"btndisable": false,
+			"rendered": false,
+			"previewScreen": false
+		},
+		"enrichmentFieldsHeader": {
+			"name": "enrichmentFieldsHeader",
+			"type": "text",
+			"rendered": false,
+			"previewScreen": false,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 p-xs-12 padding_zero",
+			"styleClass": [
+				"mainSubHeader"
+			],
+			"groupChildren": ["enrichmentListTable"]
+		},
+		"buttonGroup": {
+			"name": "buttonGroup",
+			"type": "text",
+			"rendered": true,
+			"showLabel": false,
+			"previewScreen": false,
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 p-xs-12 padding_zero height_zero",
+			"styleClass": [
+				"mainSubHeader"
+			],
+			"groupChildren": ["saveAndAddNew","addNew","save","update","cancel"]
+		},
+		"saveAndAddNew": {
+			"name": "saveAndAddNew", 
+			"type": "rounded-button",
+			"styleClass": [
+				"browseButton","width-auto"
+			],
+			"layoutClass": "width-auto",
+			"btndisable": false,
+			"tableHeader": "enrichmentFieldsHeader",
+			"rendered": false,
+			"previewScreen": false
+		},
+		"addNew": {
+			"name": "addNew", 
+			"type": "rounded-button",
+			"styleClass": [
+				"browseButton","width-auto"
+			],
+			"layoutClass": "width-auto",
+			"btndisable": false,
+			"tableHeader": "enrichmentFieldsHeader",
+			"rendered": false,
+			"previewScreen": false
+		},
+		"cancel": {
+			"name": "cancel", 
+			"type": "rounded-button",
+			"styleClass": [
+				"browseButton","width-auto"
+			],
+			"layoutClass": "width-auto",
+			"btndisable": false,
+			"rendered": false,
+			"tableHeader": "enrichmentFieldsHeader",
+			"previewScreen": false
+		},
+		"save": {
+			"name": "save", 
+			"type": "rounded-button",
+			"styleClass": [
+				"browseButton","width-auto", "primaryButton"
+			],
+			"layoutClass": "width-auto",
+			"btndisable": false,
+			"tableHeader": "enrichmentFieldsHeader",
+			"rendered": false,
+			"previewScreen": false
+		},
+		"update": {
+			"name": "update", 
+			"type": "rounded-button",
+			"styleClass": [
+				"browseButton","width-auto", "primaryButton"
+			],
+			"layoutClass": "width-auto",
+			"btndisable": false,
+			"rendered": false,
+	        "tableHeader": "enrichmentFieldsHeader",
+			"previewScreen": false
+		},
+		"enrichmentListTable": {
+			  "name": "enrichmentListTable",
+			  "columns": [],
+			  "label": "hideControl",
+			  "type": "edit-table",
+	          "tableHeader": "enrichmentFieldsHeader",
+			  "rendered": false,
+			  "data": [],
+			  "styleClass": [
+			    "accountListTable"
+			  ],
+			  "layoutClass": "p-col-12 p-xl-12"
+		},
+	    "additionalInformation": {
+			"name": "additionalInformation",
+			"type": "input-switch",
+			"defaultValue": "N",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-xl-12 p-sm-12 p-xs-12 padding_zero",
+			"styleClass": [
+				"appl-detail-header"
+			],
+			"groupChildren": [
+				"customerReferenceNumber",
+				"receiverType"
+			],
+			"previewScreen": true,
+			"rendered": false
+		},
+		"customerReferenceNumber": {
+			"name": "customerReferenceNumber",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+			"rendered": false,
+			"previewScreen": true,
+			"maxlength":20,
+			"grouphead": "additionalInformation"
+		},
+		"receiverType": {
+			"name": "receiverType",
+			"type": "input-dropdown",
+			"options": {
+				"value": [
+					"INDIVIDUAL",
+		            "CORPORATE"
+		        ]
+		    },
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [],
+			"rendered": false,
+			"previewValueAttr": "shortName",
+			"previewScreen": true,
+			"grouphead": "additionalInformation",
+			"dropdownFilterClass": "dropdownFilterStyleClass"
+		},
+		"leiCode": {
+			"name": "leiCode",
+			"type": "input-text",
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero",
+			"rendered": false,
+			"maxlength": 50,
+			"previewScreen": true
+		},
+		"emailID": {
+			"name": "emailID",
+			"type": "input-text",
+			"rendered": false,
+			"maxlength":255,
+			"previewScreen": true,
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 p-xs-12 leftwrapper padding_zero"
+		},
+		"debitNarration": {
+			"name": "debitNarration",
+			"type": "narrative-textarea",
+      		"swift": false,
+      		"fieldSize": 35,
+      		"maxRowCount": 4,
+      		"enteredCharCount": 0,
+      		"rowCount": 0,
+      		"rows": 1,
+      		"cols": 25,
+      		"allowedCharCount": 100,
+      		"maxlength": 100,
+      		"phraseEnabled": false,
+      		"fullWidthView": true,
+      		"previewScreen": true,
+      		"disableNextLineCharCount": "true",
+      		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-xl-12 p-sm-12 p-xs-12 padding_zero narrative-textarea-in",
+      		"styleClass": [
+        			"indented-text-area-field-35"
+      			],
+      		"rendered": false
+		},
+		"creditNarration": {
+			"name": "creditNarration",
+			"type": "narrative-textarea",
+      		"swift": false,
+      		"fieldSize": 35,
+      		"maxRowCount": 4,
+      		"enteredCharCount": 0,
+      		"rowCount": 0,
+      		"rows": 1,
+      		"cols": 25,
+      		"allowedCharCount": 100,
+      		"maxlength": 100,
+      		"phraseEnabled": false,
+      		"fullWidthView": true,
+      		"previewScreen": true,
+      		"disableNextLineCharCount": "true",
+      		"layoutClass": "p-col-12 p-md-12 p-lg-12 p-xl-12 p-sm-12 p-xs-12 padding_zero narrative-textarea-in",
+      		"styleClass": [
+        			"indented-text-area-field-35"
+      			],
+      		"rendered": false
+		},
+		"id": "InstrumentGeneralDetailsComponent",
+		"helpId": "GD"
+	}
+}

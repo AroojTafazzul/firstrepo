@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="a" page="50">
+
+	<column name="transaction_detail_view" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="FT_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_BULK_TRANSACTION_DETAILS"/>
+		</url>
+	</column>
+	
+	<column name="action" width="3em">
+		<url bulkAction="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SCREEN" column="product_code"/>
+			<parameter name="MODE_CODE" binding_code="BULK"/>
+			<parameter name="CALLBACK" value="misys.editOrRemove"/>
+		</url>
+	</column>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="tnx_id" align="center" width="10em" loca_key="TRANSACTIONID"/>
+
+	<column name="Counterparty@counterparty_act_no" align="right" width="10em" loca_key="ACCOUNT_NO"/>
+	<column name="Counterparty@counterparty_name" align="right" width="10em" loca_key="ACCOUNT_NAME"/>
+	<column name="Counterparty@cpty_bank_code" align="right" width="10em" loca_key="BANK_CODE"/>
+	<column name="Counterparty@cpty_branch_code" align="right" width="10em" loca_key="BRANCH_CODE"/>
+	<column name="Counterparty@cpty_bank_swift_bic_code" align="right" width="10em" loca_key="IFSC_CODE"/>
+	<column name="Counterparty@counterparty_amt" align="right" width="10em" loca_key="AMOUNT">
+		<script>
+		if(com.misys.portal.security.GTPSecurity.isCustomer(rundata))
+		{
+			if (!value.equals(""))
+			{
+				var bulkType = parameters.get("bk_type");
+				if("PAYRL".equals(""+bulkType+""))
+				{
+					var payrollType = parameters.get("payroll_type");
+					var permission = "bk_payrl_amount_access_"+payrollType;
+					var entity = row.getColumnValue("entity")+"";
+					var company_id = row.getColumnValue("company_id")+"";
+					if( !com.misys.portal.common.security.GTPSecurityCheck.hasPermission(rundata, permission.toLowerCase(), entity, company_id))
+					{
+					  value = "";
+					}
+				}
+			}
+		}
+			value;
+		</script>
+	</column>
+		<column name="ft_cur_code" align="right" width="10em" loca_key="CURCODE">
+		<script>
+		if(com.misys.portal.security.GTPSecurity.isCustomer(rundata))
+		{
+			if (!value.equals(""))
+			{
+				var bulkType = parameters.get("bk_type");
+				if("PAYRL".equals(""+bulkType+""))
+				{
+					var payrollType = parameters.get("payroll_type");
+					var permission = "bk_payrl_amount_access_"+payrollType;
+					var entity = row.getColumnValue("entity")+"";
+					var company_id =row.getColumnValue("company_id")+"";
+					if( !com.misys.portal.common.security.GTPSecurityCheck.hasPermission(rundata, permission.toLowerCase(), entity, company_id))
+					{
+					  value = "";
+					}
+				}
+			}
+		}
+			value;
+		</script>
+	</column>
+	<column name="ft_amt" align="right" width="10em" loca_key="AMOUNT">
+		<script>
+		if(com.misys.portal.security.GTPSecurity.isCustomer(rundata))
+		{
+			if (!value.equals(""))
+			{
+				var bulkType = parameters.get("bk_type");
+				if("PAYRL".equals(""+bulkType+""))
+				{
+					var payrollType = parameters.get("payroll_type");
+					var permission = "bk_payrl_amount_access_"+payrollType;
+					var entity = row.getColumnValue("entity")+"";
+					var company_id =row.getColumnValue("company_id")+"";
+					if( !com.misys.portal.common.security.GTPSecurityCheck.hasPermission(rundata, permission.toLowerCase(), entity, company_id))
+					{
+					  value = "";
+					}
+				}
+			}
+		}
+			value;
+		</script>
+	</column>
+	<!-- Transactions in the bulk will have one the status, show a meaning full status rather than tnx_stat_code 
+	     because a transaction in bulk may not mean anything having status like incomplete,acknowledged. Mainly useful when 
+	     Bulk from Upload is accessed to view transactions in the bulk, in that case bulk may have error transactions -->
+	
+	 <column name="status" align="center" width="13%" loca_key="STATUS" sort="n">
+		<script>
+		if(value.equals(""))
+		{
+			var tnxStatCode = row.getColumnValue("tnx_stat_code");
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",tnxStatCode.toString());
+		}
+		value;
+		</script>
+	</column> 
+
+    <column name="prod_stat_code" align="center" width="13%" loca_key="PRODUCT_STATUS" sort="n">
+		<script>
+		if(value.equals(""))
+		{
+			var prodStatCode = row.getColumnValue("prod_stat_code");
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N005",prodStatCode.toString());
+		}
+		value;
+		</script>
+	</column>
+
+	<column name="entity" hidden="y"/>
+	<column name="company_id" hidden="y"/>
+	<column name="bulk_ref_id" hidden="y"/>
+	<column name="bulk_tnx_id" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	 <column name="prod_stat_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter name="search_ref_id"/>
+	<parameter name="bank_code" />
+	<parameter name="branch_code" />
+	<parameter name="ifsc_code" />
+	<parameter name="ben_account_no" />
+	<parameter name="ben_account_name" />
+	<parameter name="bulk_ref_id" />
+	<parameter name="bulk_tnx_id" />
+	<parameter name="tnx_stat_code" />
+	<parameter name="bk_type" />
+	<parameter name="payroll_type" />
+	<parameter name="entity" />
+	<parameter name="company_id" />
+
+	<candidate name="fundtransfer_in_bulk">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">search_ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="Counterparty@cpty_bank_code"/>
+				<operator type="like"/>
+				<value type="parameter">bank_code</value>
+			</criteria>
+			<criteria>
+				<column name="Counterparty@cpty_branch_code"/>
+				<operator type="like"/>
+				<value type="parameter">branch_code</value>
+			</criteria>
+			<criteria>
+				<column name="Counterparty@cpty_bank_swift_bic_code"/>
+				<operator type="like"/>
+				<value type="parameter">ifsc_code</value>
+			</criteria>
+			<criteria>
+				<column name="Counterparty@counterparty_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">ben_account_no</value>
+			</criteria>
+			<criteria>
+				<column name="Counterparty@counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">ben_account_name</value>
+			</criteria>
+			<criteria>
+				<column name="bulk_ref_id"/>
+				<operator type="equal"/>
+				<value type="parameter">bulk_ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">tnx_stat_code</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

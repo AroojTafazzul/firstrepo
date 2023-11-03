@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Scheduler</title>
+
+  <section>
+    <title>Overview</title>
+
+    <para><xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" /> can be
+    configured to run some scheduled tasks:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Enhanced alert features relying on the batch tasks triggered at
+        a regular basis.</para>
+      </listitem>
+
+      <listitem>
+        <para>Generation and sending of batch reports that the bank and
+        customer administrators can schedule at their convenience.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Milestones Alerts</title>
+
+    <para><xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" /> lets
+    the bank or customer administrators define alerts on milestone dates. A
+    dedicated scheduler regularly executes the
+    <literal>MilestoneScheduleTask</literal>.</para>
+
+    <para>This task scans the product files key dates according to customer
+    and bank's alerts setup. All milestone dates falling between the last
+    processing date and the current date are processed. Depending on the bank
+    or customer company setup some alerts are sent to the given emails
+    adresses. The last processing date is stored into
+    <database>GTP_PARAM_DATA</database> table with the following keys and data
+    :</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><database>parm_id</database> = P600</para>
+      </listitem>
+
+      <listitem>
+        <para><database>company_id</database>=2 (bankgroup Id)</para>
+      </listitem>
+
+      <listitem>
+        <para><database>key_1</database>=1 (MilestonesScheduler task Id from
+        gtp_scheduled_job)</para>
+      </listitem>
+
+      <listitem>
+        <para><database>key_2</database>=MilestoneScheduler (task's
+        name)</para>
+      </listitem>
+
+      <listitem>
+        <para><database>data_1</database>=last treatment date (format :
+        <replaceable>DD/MM/YYYY</replaceable>)</para>
+      </listitem>
+    </itemizedlist>
+
+    <note>
+      <para>If there is no last processing date defined yet, the scheduler
+      uses the current date.</para>
+
+      <para>The technical administrator may update the last processing date in
+      order to re-process some alerts.</para>
+    </note>
+
+    <para>The Milestone Alert Task is setup into the <xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" />
+    database by inserting a row into the table
+    <database>GTP_SCHEDULED_JOB</database> as below :</para>
+
+    <programlisting format="linespecific">insert into gtp_scheduled_job (job_id, second, minute, hour, week_day, day_of_month, task) values ('1','0','0','12','-1','-1','MilestonesScheduler');</programlisting>
+
+    <para>This default configuration launchs the task every 12 hours. This
+    frequency may be adjusted by the technical administrator.</para>
+
+    <para>The alerts are sent by email, according to the <xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" />
+    interfaces setup (the interface name is found in the column
+    <database>KEY_10</database> of the table
+    <database>GTP_LARGE_PARAM_KEY</database> for the parameter
+    <database>PARM_ID</database>=P201). The technical administrator must
+    configure the alert parameters in the Interfaces properties file.</para>
+
+    <note>
+      <para>The technical administrator must validate the volume of emails
+      that may be triggered bearing in mind that an email could potentially be
+      sent for each Milestone date.</para>
+    </note>
+  </section>
+
+  <section>
+    <title>Scheduled Reports</title>
+
+    <para><xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" /> lets
+    administrators (banks or customers) define scheduled reports.</para>
+
+    <para>For every report scheduled, a new task named
+    <literal>ReportsScheduler</literal> is created into <xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" />. This
+    task is launched according to the frequency chosen by the user
+    (<type>daily</type>, <type>weekly</type>, <type>monthly</type>). The
+    report is then generated and sent to the user.</para>
+
+    <note>
+      <para>All tasks scheduled on a given day are triggered at the same hour
+      and time that may be changed if required (contact us for assistance - or
+      see <filename>/content/xsl/sy_scheduled_report.xsl</filename> file). The
+      application server must be therefore running at this time. There is no
+      simple recovery process.</para>
+    </note>
+
+    <para>The generated reports are sent by email as attachments according to
+    the <xi:include
+    href="../entities_en.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xpointer="ent_appli" />
+    interfaces setup (the interface name can be found in <database>the column
+    KEY_7</database> of the table <database>GTP_LARGE_PARAM_KEY</database> for
+    the parameter <database>PARM_ID</database>=P202). The technical
+    administrator must configure the alert parameters in the interfaces
+    properties file and validate the volume of emails that may be
+    triggered.</para>
+  </section>
+</chapter>

@@ -1,0 +1,164 @@
+<!--   Release:R3 Date:2001-01-19 Time:12:41:35 -->
+<!-- *********************************************************** -->
+<!--  Copyright Bolero International Limited 2000
+
+Bolero International Limited hereby grants to any person using or
+considering the use of the information in this publication a non-exclusive,
+royalty-free, worldwide, and revocable license (1) to use and implement that
+information, including document type definitions and other specifications,
+and (2) to copy all or part of this publication in any form, provided that
+all such copies clearly retain the foregoing copyright notice.
+
+Bolero International Limited makes no warranty or representation of any kind
+regarding these specifications or the right of any person to implement them
+free of infringement claims by others in accordance with the above licence.
+The above licence shall be void if the licensee alleges against Bolero
+International Limited that the information in this publication infringes a
+patent held or claimed by the licensee or a company controlled by or under
+common control with the licensee. -->
+<!-- *********************************************************** -->
+<!-- *********************************************************** -->
+<!-- Import Declaration 941 V1 R3 P.DTD-P -->
+<!-- *********************************************************** -->
+<!ELEMENT ImportDeclaration (Header,Body)>
+<!ELEMENT Header (cmp:DocumentID,cmp:DocType,cmp:Status)>
+<!ELEMENT cmp:DocumentID (cmp:RID,cmp:GeneralID,cmp:Version?)>
+<!ELEMENT cmp:DocType (cmp:DocTypeCode,cmp:DocTypeDescription?)>
+<!ELEMENT Body (GeneralInformation,Parties,RoutingSummary,ConsignmentDetail,DutyOrTaxCharges,TransactionInformation?,AdditionalInformation?)>
+<!ELEMENT GeneralInformation (dateOfIssue,goodsDeclarationAcceptanceDate?,previousCustomsProcedure?,customsProcedure,uniqueConsignmentReferenceNo?,customsReferenceNumber?,tradersReference?,PreviousCustomsDocument?,TransportDocumentReference?,AdditionalDocumentReference*)>
+<!ELEMENT PreviousCustomsDocument ((TransitDocumentIdentifier|ImportDeclarationIdentifier))>
+<!ELEMENT TransitDocumentIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT ImportDeclarationIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT TransportDocumentReference ((BillOfLadingIdentifier|SeaWaybillIdentifier|ForwardersCargoReceiptID|ForwardersHousebillIdentifier|AirWaybillIdentifier))>
+<!ELEMENT BillOfLadingIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT SeaWaybillIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT ForwardersCargoReceiptID (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT ForwardersHousebillIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT AirWaybillIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT AdditionalDocumentReference ((ImportLicenceIdentifier|CertificateOfOriginIdentifier|PackingListIdentifier))>
+<!ELEMENT ImportLicenceIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT CertificateOfOriginIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT PackingListIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT Parties (Exporter?,Importer,Consignee?,DeclaringAgent?)>
+<!ELEMENT Exporter (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT OrganizationIdentification (organizationReference,organizationReferenceType?)>
+<!ELEMENT AddressInformation (FullAddress?,NormalisedAddress?)>
+<!ELEMENT FullAddress (line+)>
+<!ELEMENT NormalisedAddress (City?,StateOrProvince?,Country?,postalCode?)>
+<!ELEMENT City ((locationCode|locationName))>
+<!ELEMENT StateOrProvince ((stateOrProvinceCode|stateOrProvinceName))>
+<!ELEMENT Country ((countryCode|countryName))>
+<!ELEMENT ContactDetails (personName?,departmentName?,telephoneNumber?,faxNumber?,e-MailAddress?)>
+<!ELEMENT Importer (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT Consignee (organizationName,OrganizationIdentification*,AddressInformation?,ContactDetails?)>
+<!ELEMENT DeclaringAgent (organizationName,OrganizationIdentification*,declaringAgentsRole?,AddressInformation?,ContactDetails?)>
+<!ELEMENT RoutingSummary (CountryOfOrigin?,CountryOfDespatch?,CustomsOfficeOfDeclaration?,LocationOfGoods?,warehouseCode?,PlaceOfLoading?,PlaceOfDischarge?,TransportAtBorder?,TransportAtArrival?)>
+<!ELEMENT CountryOfOrigin ((countryCode|countryName))>
+<!ELEMENT CountryOfDespatch ((countryCode|countryName))>
+<!ELEMENT CustomsOfficeOfDeclaration ((locationCode|locationName))>
+<!ELEMENT LocationOfGoods ((locationCode|locationName))>
+<!ELEMENT PlaceOfLoading ((locationCode|locationName))>
+<!ELEMENT PlaceOfDischarge ((locationCode|locationName))>
+<!ELEMENT TransportAtBorder (transportModeCode?,MeansOfTransport?)>
+<!ELEMENT MeansOfTransport ((SeaTransportIdentification|FlightDetails|RoadTransportIdentification|RailTransportIdentification))>
+<!ELEMENT SeaTransportIdentification (Vessel,VoyageDetail)>
+<!ELEMENT Vessel (vesselName)>
+<!ELEMENT VoyageDetail (voyageNumber?,departureDate?)>
+<!ELEMENT FlightDetails (flightNumber)>
+<!ELEMENT RoadTransportIdentification (licencePlateIdentification)>
+<!ELEMENT RailTransportIdentification (locomotiveNumber,railCarNumber)>
+<!ELEMENT TransportAtArrival (transportModeCode?)>
+<!ELEMENT ConsignmentDetail (Commodity+)>
+<!ELEMENT Commodity (CommodityDescription,tariffCodeNumber?,TariffQuantity,GrossWeight?,PackageSummary?,Container*)>
+<!ELEMENT CommodityDescription (line+)>
+<!ELEMENT TariffQuantity (ProductQuantity+)>
+<!ELEMENT ProductQuantity (value,unitOfMeasureCode)>
+<!ELEMENT GrossWeight (value,weightUnitCode)>
+<!ELEMENT PackageSummary (PackageCount+,marksAndNumbers*)>
+<!ELEMENT PackageCount (numberOfPackages,typeOfPackage)>
+<!ELEMENT Container (containerIdentifier?,containerDescription?)>
+<!ELEMENT DutyOrTaxCharges (typeOfDutyRegime?,paymentReference?,securityDetails?,ChargeDetail*)>
+<!ELEMENT ChargeDetail ((UnitBasedCharge|PercentageBasedCharge|LumpSumCharge))>
+<!ELEMENT UnitBasedCharge (chargeType,UnitCharge,unitBasisType,chargeBasisQuantity,ChargeAmount,paymentMethod?)>
+<!ELEMENT UnitCharge (value,currencyCode)>
+<!ELEMENT ChargeAmount (value,currencyCode)>
+<!ELEMENT PercentageBasedCharge (chargeType,percentage,ChargeBasisAmount,ChargeAmount,paymentMethod?)>
+<!ELEMENT ChargeBasisAmount (value,currencyCode)>
+<!ELEMENT LumpSumCharge (chargeType,ChargeAmount,paymentMethod?)>
+<!ELEMENT TransactionInformation (DeclaredValueForCustoms?,StatisticalValue?,TotalFreight?,partiesRelationship?,CommercialInvoiceInformation?)>
+<!ELEMENT DeclaredValueForCustoms (value,currencyCode)>
+<!ELEMENT StatisticalValue (value,currencyCode)>
+<!ELEMENT TotalFreight (value,currencyCode)>
+<!ELEMENT CommercialInvoiceInformation (CommercialInvoiceIdentifier,TotalLineItemsAmount?,LineItemDetails*)>
+<!ELEMENT CommercialInvoiceIdentifier (documentCreatorIdentifier?,documentNumber,documentVersion?)>
+<!ELEMENT TotalLineItemsAmount (MultiCurrency+)>
+<!ELEMENT MultiCurrency (value,currencyCode)>
+<!ELEMENT LineItemDetails (lineItemNumber,LineItemPrice)>
+<!ELEMENT LineItemPrice (MultiCurrency+)>
+<!ELEMENT AdditionalInformation (line+)>
+<!ELEMENT cmp:RID (#PCDATA) >
+<!ELEMENT cmp:GeneralID (#PCDATA) >
+<!ELEMENT cmp:Version (#PCDATA) >
+<!ELEMENT cmp:DocTypeCode (#PCDATA) >
+<!ELEMENT cmp:DocTypeDescription (#PCDATA) >
+<!ELEMENT cmp:Status (#PCDATA) >
+<!ELEMENT dateOfIssue (#PCDATA) >
+<!ELEMENT goodsDeclarationAcceptanceDate (#PCDATA) >
+<!ELEMENT previousCustomsProcedure (#PCDATA) >
+<!ELEMENT customsProcedure (#PCDATA) >
+<!ELEMENT uniqueConsignmentReferenceNo (#PCDATA) >
+<!ELEMENT customsReferenceNumber (#PCDATA) >
+<!ELEMENT tradersReference (#PCDATA) >
+<!ELEMENT documentCreatorIdentifier (#PCDATA) >
+<!ELEMENT documentNumber (#PCDATA) >
+<!ELEMENT documentVersion (#PCDATA) >
+<!ELEMENT organizationName (#PCDATA) >
+<!ELEMENT organizationReference (#PCDATA) >
+<!ELEMENT organizationReferenceType (#PCDATA) >
+<!ELEMENT line (#PCDATA) >
+<!ELEMENT locationCode (#PCDATA) >
+<!ELEMENT locationName (#PCDATA) >
+<!ELEMENT stateOrProvinceCode (#PCDATA) >
+<!ELEMENT stateOrProvinceName (#PCDATA) >
+<!ELEMENT countryCode (#PCDATA) >
+<!ELEMENT countryName (#PCDATA) >
+<!ELEMENT postalCode (#PCDATA) >
+<!ELEMENT personName (#PCDATA) >
+<!ELEMENT departmentName (#PCDATA) >
+<!ELEMENT telephoneNumber (#PCDATA) >
+<!ELEMENT faxNumber (#PCDATA) >
+<!ELEMENT e-MailAddress (#PCDATA) >
+<!ELEMENT declaringAgentsRole (#PCDATA) >
+<!ELEMENT warehouseCode (#PCDATA) >
+<!ELEMENT transportModeCode (#PCDATA) >
+<!ELEMENT vesselName (#PCDATA) >
+<!ELEMENT voyageNumber (#PCDATA) >
+<!ELEMENT departureDate (#PCDATA) >
+<!ELEMENT flightNumber (#PCDATA) >
+<!ELEMENT licencePlateIdentification (#PCDATA) >
+<!ELEMENT locomotiveNumber (#PCDATA) >
+<!ELEMENT railCarNumber (#PCDATA) >
+<!ELEMENT tariffCodeNumber (#PCDATA) >
+<!ELEMENT value (#PCDATA) >
+<!ELEMENT unitOfMeasureCode (#PCDATA) >
+<!ELEMENT weightUnitCode (#PCDATA) >
+<!ELEMENT numberOfPackages (#PCDATA) >
+<!ELEMENT typeOfPackage (#PCDATA) >
+<!ELEMENT marksAndNumbers (#PCDATA) >
+<!ELEMENT containerIdentifier (#PCDATA) >
+<!ELEMENT containerDescription (#PCDATA) >
+<!ELEMENT typeOfDutyRegime (#PCDATA) >
+<!ELEMENT paymentReference (#PCDATA) >
+<!ELEMENT securityDetails (#PCDATA) >
+<!ELEMENT chargeType (#PCDATA) >
+<!ELEMENT currencyCode (#PCDATA) >
+<!ELEMENT unitBasisType (#PCDATA) >
+<!ELEMENT chargeBasisQuantity (#PCDATA) >
+<!ELEMENT paymentMethod (#PCDATA) >
+<!ELEMENT percentage (#PCDATA) >
+<!ELEMENT partiesRelationship (#PCDATA) >
+<!ELEMENT lineItemNumber (#PCDATA) >
+<!ATTLIST Header 
+ xmlns:cmp CDATA #FIXED
+" http://www.bolero.net/io/xmlns/header/1.0" > 
+<!-- End of DTD Import Declaration -->

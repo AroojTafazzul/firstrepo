@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="customer" scope="product">
+	<name>module_bill</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<bindingParam>tnxtype</bindingParam>
+	<bindingParam>mode</bindingParam>
+	<bindingParam>subproductcode</bindingParam>
+	<bindingParam>productcode</bindingParam>
+	<methodParam>referenceid</methodParam>
+	<methodParam>tnxid</methodParam>
+	<staticParam>menuaction</staticParam>
+
+	<!-- Access to Bill module -->
+	<action>
+		<actionCode>OpenGeneralBL</actionCode>
+		<class>LoanPortlet</class>
+		<method>openGeneralModule</method>
+		<permission>ln_bill_access</permission>
+		<operation>-</operation>
+		<option>-</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>-</referenceid>
+		<tnxtype>-</tnxtype>
+		<menuaction>-</menuaction>
+		<psml>module_ln_dashboard</psml>
+	</action>
+	<!-- List of Bills -->
+	<action>
+		<actionCode>OpenBillSubmissionList</actionCode>
+		<class>LoanListPortlet</class>
+		<method>listOfBills</method>
+		<permission>ln_bill_access</permission>
+		<mode>-</mode>	
+		<operation>-</operation>
+		<tnxid>-</tnxid>
+		<option>BL</option>
+		<referenceid>-</referenceid>
+		<tnxtype>01</tnxtype>
+		<menuaction>OpenBillSubmissionList</menuaction>
+		<bookmarkable>true</bookmarkable>
+		<favourite>true</favourite>
+	</action>
+	
+	<!-- Loan Bill Details -->
+	<action>
+		<actionCode>OpenBillDetails</actionCode>
+		<class>LoanPortlet</class>
+		<method>billDetails</method>
+		<permission>ln_bill_access</permission>
+		<mode>-</mode>	
+		<operation>DETAILS</operation>
+		<tnxid>-</tnxid>
+		<option>BL</option>
+		<referenceid>-</referenceid>
+		<tnxtype>01</tnxtype>
+		<menuaction>OpenBillSubmissionList</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>InquiryLNBillDetails</actionCode>
+		<class>LoanPortlet</class>
+		<method>-</method>
+		<permission>ln_bill_access</permission>
+		<mode>-</mode>	
+		<operation>InquiryLNBillDetails</operation>
+		<tnxid>-</tnxid>
+		<option>BL</option>
+		<referenceid>-</referenceid>
+		<tnxtype>-</tnxtype>
+		<productcode>LN</productcode>
+		<menuaction>-</menuaction>
+	</action>
+	
+	<action>
+		<actionCode>OpenBillDetails</actionCode>
+		<class>LoanPortlet</class>
+		<method>getPDFBillContent</method>
+		<permission>ln_bill_access</permission>
+		<option>EXPORT_PDF</option>
+		<psml>reporting_popup</psml>
+	</action>
+	<action>
+		<actionCode>loanBorrowerBillsListing</actionCode>
+		<class>LoanPortlet</class>
+		<method>-</method>
+		<permission>ln_bill_access</permission>
+		<mode>-</mode>	
+		<operation>LoanBorrowerBillsListing</operation>
+		<tnxid>-</tnxid>
+		<option>BL</option>
+		<referenceid>-</referenceid>
+		<tnxtype>-</tnxtype>
+		<productcode>LN</productcode>
+		<menuaction>-</menuaction>
+	</action>
+</module>

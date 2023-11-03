@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="bank" scope="system_features">
+	<name>module_BSFProfile</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<staticParam>menuaction</staticParam>
+	<action>
+		<actionCode>OpenGeneralBSF</actionCode>
+		<class>BankSystemFeaturesPortlet</class>
+		<method>openGeneralModule</method>
+		<permission>bank_sy_access</permission>
+		<operation>-</operation>
+		<option>-</option>
+		<menuaction>-</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenSaveProfileBSF</actionCode>
+		<class>BankSystemFeaturesPortlet</class>
+		<method>saveProfile</method>
+		<permission>no_permission</permission>
+		<operation>SAVE_PROFILE</operation>
+		<option>PROFILE_MAINTENANCE</option>
+		<menuaction>OpenChangeProfileBSF</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenChangeProfileBSF</actionCode>
+		<class>BankSystemFeaturesPortlet</class>
+		<method>changeProfile</method>
+		<permission>no_permission</permission>
+		<operation>-</operation>
+		<option>PROFILE_MAINTENANCE</option>
+		<menuaction>OpenChangeProfileBSF</menuaction>
+	</action>
+</module>

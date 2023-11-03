@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=System Features - Schedule Report;PERM=sy_cust_report_schedule;ACCESS=SY_BTC_RD"
+         role="TOPIC">
+  <title>Schedule Report Module</title>
+
+  <para role="TEXT">As an administrator at a bank, you use the Schedule Report
+  module to schedule reports to be executed automatically at a given
+  frequency, with the results sent to a specified recipient via email. There
+  is no need for any user to actually be connected to <xi:include
+  href="../entities_en.xml" xpointer="ent_appli"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> while a scheduled report is
+  running. The report is executed as if it was being run by a user with access
+  to the bank's full jurisdiction (that is, with access to all available
+  permissions given to the bank and all its entities). You can select the
+  format (<type>CSV</type>, <type>Spreadsheet</type> or <type>PDF</type>) of
+  the results sent as an email attachment and the language in which the report
+  is generated.</para>
+
+  <para>You cannot customise the actual time of day when a scheduled report is
+  executed. This is configured in the technical properties of the MP
+  application and defined by the Bank technical administrator.</para>
+
+  <section role="ITEM" condition="TITLE=System Features - Schedule Report;PERM=sy_cust_report_schedule;ACCESS=SY_BTC_RD" >
+    <title>Schedule Function</title>
+
+    <para>This module consists of one function called <emphasis
+    role="bold">Schedule</emphasis>, which is in the <emphasis
+    role="bold">Report Designer</emphasis> part of the System Features
+    menu.</para>
+
+    <para>When you click this function, you are presented with a list of all
+    the existing scheduled reports. You can search the list by entering search
+    criteria in the <guilabel moreinfo="none">Report Name</guilabel> and/or
+    <guilabel moreinfo="none">Frequency</guilabel> fields at the top of the
+    page.</para>
+
+    <para>The list of scheduled reports has the following columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none">Report
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Report Name</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel
+            moreinfo="none">Frequency</guilabel> </para></entry>
+
+            <entry valign="top"><para>Batch Frequency (<type>Daily</type>,
+            <type>Weekly</type> or <type>Monthly</type>). Depending on the
+            frequency, additional information is provided:</para><itemizedlist>
+                <listitem>
+                  <para><type>Weekly</type>: the abbreviated name for the
+                  chosen day of the week.</para>
+                </listitem>
+
+                <listitem>
+                  <para><type>Monthly</type>: the day of the month (as a
+                  number).</para>
+                </listitem>
+              </itemizedlist></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none">Output
+            Format</guilabel> </para></entry>
+
+            <entry valign="top"><para>Chosen Output format
+            :</para><itemizedlist>
+                <listitem>
+                  <para><type>CSV</type>: Comma Separated Value.</para>
+                </listitem>
+
+                <listitem>
+                  <para><type>Spreadsheet</type>: format compatible with
+                  <productname class="trade">Microsoft
+                  Excel</productname>.</para>
+                </listitem>
+
+                <listitem>
+                  <para><type>PDF</type>: <productname class="trade">Adobe
+                  Acrobat</productname> format.</para>
+                </listitem>
+              </itemizedlist></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none">Next
+            Batch</guilabel> </para></entry>
+
+            <entry valign="top"><para>For information, the date of the next
+            report execution is indicated.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify an entry by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or delete it by
+    clicking the <guibutton moreinfo="none">Delete</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add</guibutton>
+    button at the bottom of the list to add an report to the schedule.</para>
+
+    <section role="ITEM">
+      <title>Schedule Report Form</title>
+
+      <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+      moreinfo="none">Add</guibutton> display the same form, but in the case
+      of <guibutton moreinfo="none">Add</guibutton> it is blank and in the
+      case of <guibutton moreinfo="none">Edit</guibutton> it is preset with
+      the existing details of the schedule for the report. After entering the
+      details, click <emphasis role="bold">Save</emphasis> at the bottom of
+      the form.</para>
+
+      <para>The form is as follows:</para>
+
+      <para><informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="5.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para><guilabel moreinfo="none">Report
+                Name</guilabel></para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Selection of the
+                report</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para><guilabel
+                moreinfo="none">Frequency</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_radio.gif"
+                                 role="CHAR_RADIO" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Three choices are
+                available:</para><itemizedlist>
+                    <listitem>
+                      <para><type>Daily</type></para>
+                    </listitem>
+
+                    <listitem>
+                      <para><type>Weekly</type>: the user has to choose the
+                      day of the week.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><type>Monthly</type>: the user has to select the
+                      day of the month</para>
+                    </listitem>
+                  </itemizedlist></entry>
+              </row>
+
+              <row>
+                <entry><guilabel>Output Format</guilabel></entry>
+
+                <entry><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry><para>The format of the attachment containing the
+                results of the report and which is going to be included in the
+                email sent upon the scheduled date is defined
+                here:</para><itemizedlist>
+                    <listitem>
+                      <para><type>CSV</type> for a Comma Separated Value
+                      file,</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><type>Spreadsheet</type> for a format compatible
+                      with <productname class="trade">Microsoft
+                      Excel</productname>,</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><type>PDF</type> <productname class="trade">for
+                      the Adobe Acrobat</productname> format.</para>
+                    </listitem>
+                  </itemizedlist></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para><guilabel moreinfo="none">Language /
+                Locale</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Select box with all available
+                languages. This choice will determine in which language the
+                report will be executed and therefore the language of the
+                results. It is also used to set the language of the actual
+                email message.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para><guilabel moreinfo="none">Email
+                Address</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>The email address of the recipient
+                (40 characters maximum). </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+  </section>
+</chapter>

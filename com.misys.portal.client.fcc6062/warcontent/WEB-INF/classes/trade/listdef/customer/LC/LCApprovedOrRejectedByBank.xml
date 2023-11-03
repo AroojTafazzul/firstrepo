@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bo_release_dttm" default_order_type="d" page="50">
+
+	<column name="ref_id" align="center"/>
+	<column name="tnx_id" align="center"/>
+	<column name="bo_release_dttm" align="left"/>
+	<column name="tnx_type_code" align="left">
+		<script>
+			value = row.getColumnValue("tnx_type_code"); 
+		</script>
+	</column>
+	<column name="sub_tnx_type_code" align="left">
+		<script>
+			value = row.getColumnValue("sub_tnx_type_code"); 
+		</script>
+	</column>
+	<column name="tnx_stat_code" align="left">
+		<script>
+			value = row.getColumnValue("tnx_stat_code"); 
+		</script>
+	</column>
+	<column name="amd_no" align="left" />
+	<column name="tnx_cur_code" align="left" />
+	<column name="tnx_amt" align="left" />
+	<column name="product_code" align="center">
+		<script>
+			value =row.getColumnValue("product_code"); 
+		</script>
+	</column>
+	<column name="sub_product_code" align="left" >
+		<script>
+			value = row.getColumnValue("sub_product_code"); 
+		</script>
+	</column>
+	<column name="prod_stat_code" align="center" sort="n">
+		<script>
+			value = row.getColumnValue("prod_stat_code"); 
+		</script>
+	</column>
+	<column name="action_req_code">
+		<script>
+			value = row.getColumnValue("action_req_code"); 
+		</script>
+	</column>
+	<column name="CrossReference@child_tnx_id"/>
+	<column name="bo_tnx_id"/>
+	
+	<!--<batch type="zip">
+		<parameter name="SCREEN" value="CURRENT"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_ZIP"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		 In Zip Case the transaction id must be *  to get all the folder  
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+
+	--><!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="prod_stat_code"
+		size="35"
+		max_length="35"
+		loca_key="STATUS"
+		input="y"
+		default=""/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="PRODUCT_SUBTYPE"
+	    type="AvaliableSubProductType"
+	    input="y"
+	    multiple_values="LCSTD"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="Currency"/>
+	
+
+	<!-- candidates -->	
+	<candidate name="letter_of_credit">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>			
+
+			
+		</filter>	
+		
+		
+		
+	</candidate>
+	<filter or="y">
+		<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ERROR
+				</value>
+			</criteria>
+	</filter>
+	
+	<filter or="y">		
+		<criteria>
+			<column name="action_req_code"/>
+			<operator type="isNotNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@child_tnx_id"/>
+			<operator type="isNull"/>
+		</criteria>
+		<criteria>
+			<column name="CrossReference@type_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N043_ACTION_REQUIRED
+			</value>
+		</criteria>
+		<criteria>
+      		<column name="tnx_stat_code"/>
+      		<operator type="different"/>
+      		<value type="code">
+        		N004_CONTROLLED
+      		</value>
+    	</criteria>
+     	<criteria>
+      		<column name="tnx_stat_code"/>
+      		<operator type="different"/>
+      		<value type="code">
+        		N004_UNCONTROLLED
+      		</value>
+    	</criteria>
+	</filter>
+</listdef>

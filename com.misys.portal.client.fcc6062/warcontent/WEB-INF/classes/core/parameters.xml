@@ -1,0 +1,5378 @@
+
+<parameters>
+  <languages default="en">
+    <language>en</language>
+
+    <language>fr</language>
+
+    <language>br</language>
+
+    <language>de</language>
+
+    <language>zh</language>
+
+    <language>th</language>
+  </languages>
+
+  <!--DM Module -->
+
+  <parameter name="P049">
+    <key>DOCUMENT_DEFINITION</key>
+
+    <usage>[DEPRECATED] Used to configure the document management folder path based on
+    document code, format, type like Generate or Upload.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    document code KEY_2 - document format KEY_3 - screen from KEY_4 - document
+    type DATA_2 - edit mode stylesheet DATA_3 - DM folder url DATA_4 -
+    unsigned mode stylesheet DATA_5 - document folder url DATA_7 - template
+    flag </description>
+
+    <values>
+      <value>
+        <code>P049</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Document transformation parameters -->
+
+  <parameter name="P050">
+    <key>DOCUMENT_TRANSFORMATION</key>
+
+    <usage>Used to configure document transformation information like
+    transformation code, documentFormat, document code.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id DATA_1 -
+    transformation code option DATA_2 - document format DATA_3 - document code
+    </description>
+
+    <values>
+      <value>
+        <code>P050</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P051">
+    <key>LICENSE_TYPE_PRODUCT_MAPPING</key>
+
+    <usage>Used to associate the license types to various product codes.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - License Type Code, DATA_1 - Product Code </description>
+
+    <values>
+      <value>
+        <code>P051</code>
+      </value>
+    </values>
+  </parameter>
+  
+    <parameter name="P706">
+	    <key>BENEFICIARY_PRODUCT_MAPPING</key>
+	
+	    <usage>Used to associating beneficiary to various Sub products of Fund Transfer.</usage>
+	
+	    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+	
+	    <description language="en">Below are required key and data columns for configuring this parameter,
+			GTP_LARGE_PARAM_KEY
+				PARAM_ID - unique parameter id generated for a company and user.
+				COMPANY_ID - *
+				KEY_1 - * (bank_abbv_name)
+				KEY_2 - productCode/'*'
+				KEY_3 - subProductCode/'*'
+				KEY_4 - en (Language)
+				KEY_5-KEY-19 - **
+				PARM_ID - P706
+			GTP_LARGE_PARAM_DATA
+				PARAM_ID - 	unique parameter id generated for a company and user.
+				DATA_1 - MT103 (subProductCode)
+				DATA_2 - MT 103 Telegraphic Transfer (Sub Product description)
+				DATA_3 - ft_mt103_access (permission)
+				DATA_5 - **		
+		</description>
+	
+	    <values>
+	      <value>
+	        <code>P706</code>
+	      </value>
+	    </values>
+  </parameter>
+
+  <!-- Document transformation parameters -->
+
+  <parameter name="P060">
+    <key>REPORT_PARAMETER</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store the logo details which are used while
+    generating the documents by including those logo text.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id DATA_1 - logo
+    id DATA_3 - footer text DATA_4 - header text line1 DATA_5 - header text
+    line2 DATA_6 - header text line3 </description>
+
+    <values>
+      <value>
+        <code>P060</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Xch Rates Configuration -->  
+   <parameter name="P061">
+    <key>XCH_RATES_PARAMETER</key>
+    <usage>Parameter Configuration as per bank, where parameter setup will determine 
+    which bank's exchange. rate to pick we have  Source Bank Abbv Name 
+    and to take the rates of Destination Bank Abbv Name </usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en"> DATA_1 - Destination Bank Abbv Name  KEY_1 - Source Bank Abbv Name 
+    KEY_2 - parameter for ('CCY' for currency only, 'XCH' for exchange rate only, '*' for both)</description>
+    <values>
+      <value>
+        <code>P061</code>
+      </value>
+    </values>
+  </parameter>
+
+
+<!-- Portal Downtime -->
+
+  <parameter name="P108">
+    <key>PORTAL_DOWNTIME</key>
+
+    <usage>Used to store the downtime configuration created through
+    online parameters maintenance for portal.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - bank_abbv_name KEY_6 - downtime label
+   
+    DATA_1 -START_BUSINESS_HOUR DATA_2 - END_BUSINESS_HOUR  DATA_3 -HOLIDAY1 DATA_4 -HOLIDAY2</description>
+    <values>
+      <value>
+        <code>P108</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Financial holidays -->
+
+  <parameter name="P109">
+    <key>FINANCIAL_HOLIDAYS</key>
+
+    <usage>Used to store the financial holidays configuration created through
+    online parameters maintenance for portal. Client may use scripts to
+    maintain the values.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - bank_abbv_name/country name KEY_2 -
+    productCode/'*' KEY_3 - subProductCode/'*' KEY_8,KEY_9,KEY_10 - Weekly
+    Holidays/'**' DATA_1 - dd/mm/yyyy </description>
+
+    <values>
+      <value>
+        <code>P109</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Financial CutOff Time -->
+
+  <parameter name="P110">
+    <key>FINANCIAL_CUTOFF_TIME</key>
+
+    <usage>Used to store the Financial CutOff time configuration created
+    through online parameters maintenance for portal. Client may use scripts
+    to maintain the values.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - bank_abbv_name KEY_2 - productCode
+    KEY_3 - subProductCode/'**' KEY_4 - SUBSCRIPTION_CODE KEY_5 - AMOUNT_LIMIT
+    KEY_6 - COUNTRY  KEY_8 - CURRENCY  KEY_10 - CLEARING CODE
+    KEY_11 = Indicator that cut off was created when maker checker is off.
+    DATA_1 - HOUR DATA_2 - MINUTES DATA_3 - OFFSET DATA_4 - TIME ZONE
+    </description>
+
+    <values>
+      <value>
+        <code>P110</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Configuring custom sub product codes. -->
+
+  <parameter name="P111">
+    <key>SUBPRODUCT</key>
+
+    <usage>Used to configure the custom sub products for any product.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - product code DATA_1 - sub product
+    code. </description>
+
+    <values>
+      <value>
+        <code>P111</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- FACT and OPINION Question and Answers -->
+
+  <parameter name="P112">
+    <key>QUESTION_ANSWER</key>
+
+    <usage>Used to configure fact and opinion questions,option, answers
+    associated with the question. These are used for password reset using
+    question answers and presently not supported in 5.0</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - FA KEY_2 - question
+    number DATA_1 - question DATA_2 - option A DATA_3 - option B DATA_4 -
+    option C DATA_5 - correct answer </description>
+
+    <values>
+      <value>
+        <code>P112</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P113">
+    <key>COMPANY_PASSWORY_VALIDITY</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P113</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Value added services -->
+
+  <parameter name="P114">
+    <key>VALUE_ADDED_SERVICE</key>
+
+    <usage>Used to configure value added services.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - service serial no KEY_2
+    - service_name KEY_3 - bank_abbv_name DATA_1 - standard currency DATA_2 -
+    standard charge </description>
+
+    <values>
+      <value>
+        <code>P114</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Beneficiary Advice Template -->
+
+  <parameter name="P115">
+    <key>BENEFICIARY_ADVICE_TEMPLATE</key>
+
+    <usage>Used to configure Beneficiary Advice Templates.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - maintaining bank's id KEY_1 -
+    Template_ID KEY_2 - Template Description KEY_3 - flag to indicate if
+    associated customers are all (Y/N) DATA_1 - Column Label DATA_2 - Column
+    Data Type DATA_3 - Column Alignment DATA_4 - Column Width </description>
+
+    <values>
+      <value>
+        <code>P115</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Beneficiary Advice Associated Customers -->
+
+  <parameter name="P116">
+    <key>BENEFICIARY_ADVICE_ASSOCIATED_CUSTOMERS</key>
+
+    <usage>Used to configure Beneficiary Advice customers associated.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - maintaining bank's id KEY_1 -
+    Template_ID KEY_2 - Company Abbv Name KEY_3 - Entity Abbv Name
+    </description>
+
+    <values>
+      <value>
+        <code>P116</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Charges to apply to a transaction -->
+
+  <parameter name="P117">
+    <key>TRANSACTION_CHARGES</key>
+
+    <usage>Used to configure charges applicable for a transaction.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - Main bank abbreviation name KEY_1
+    - Subscription Package or * KEY_2 - Product Code or * KEY_3 - Sub Product
+    Code or * DATA_1 - Standard Charge Currency DATA_2 - Standard Charge
+    Amount DATA_3 - Special Charge Currency DATA_4 - Special Charge Amount
+    DATA_5 - Special Charge Expiry (DD/MM/YYYY) DATA_6 - Waiver (Y or N)
+    DATA_7 - Waiver Expiry (DD/MM/YYYY) </description>
+
+    <values>
+      <value>
+        <code>P117</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Beneficiary Advice Template Properties-->
+
+  <parameter name="P118">
+    <key>BENEFICIARY_ADVICE_TEMPLATE_PROPERTIES</key>
+
+    <usage>Used to configure Beneficiary Advice Product Specific Template
+    Properties.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - '*' KEY_1 - Product (FT , TD , BK
+    etc.) KEY_2 - Product Type (INT, TPT, DOM, MT103 etc) DATA_1 - Beneficiary
+    Advice Enabled (Y/N) DATA_2 - Email 1 (Y/N) DATA_3 - Email 2 (Y/N) DATA_4
+    - Phone (Y/N) DATA_5 - Fax (Y/N) DATA_6 - Mail (Y/N) DATA_7 - Print (Y/N)
+    DATA_8 - IVR (Y/N) DATA_9 - Delivery Method Multi Selection (Y/N) DATA_10
+    - Max No. of rows allowed for Bene Adv Table DATA_11 - Free Format Message
+    Length DATA_12 - Free format Message Width </description>
+
+    <values>
+      <value>
+        <code>P118</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- File types for bulk file upload with permissions -->
+
+  <parameter name="P119">
+    <key>BULK_FILE_UPLOAD_TYPE</key>
+
+    <usage>Used to configure File types for bulk file upload with
+    permissions.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Bank Abbv Name -
+    Determines Whether particular file type can be uploaded for the bank KEY_2
+    - Product Type - For Portal sub product code of FT (INT, DOM etc). 
+    This should be set as "*" for FLEXI mode. DATA_2 -
+    Email 1 (Y/N) KEY_3 - Product Group - For portal sub product code for BK
+    (COLLE - collections,PAYMT- Payments KEY_4 - Map Code - Actual Name of
+    Map_ to be sent to Data mapper (nothing but FT),PAYRL - Payroll) DATA_4 -
+    Phone (Y/N) DATA_1 - File Type - Type of the file to be uploaded. This is
+    displayed for the customer based on permission (Payroll-INT
+    Standard,payroll - INT Special etc) DATA_2 - Permission Name - Permission
+    to display file type (ft_bulk_bp_ibg_std_upload etc) DATA_3 - Format Name
+    in file system (SG_INT_PAY_COLL,SG_INT&lt;PAY_WITH_Advice) DATA_5 - Format
+    Type - Fixed or CSV will be passed to DataMapper (Fixed,CSV) DATA_6 -
+    Header Account Level Flag (Y/N) - Field to specify whether account is
+    mandatory while uploading DATA_7 - Header Value date Level flag (Y/N) -
+    Field to specify whether value date is mandatory while uploading DATA_8 -
+    Amendable (Y/N) DATA_9 - Multi Product Group (Y/N) DATA_10 - Multi Entity
+    allowed (Y/N) N for Singapore DATA_11 - File Encrypted (Y/N) - File being
+    uploaded in encrypted. DATA_12 - Payroll Type (Employee, Executive etc)
+    DATA_12 - Compressed File Type DATA_13 - Fixed table for advise DATA_14 -
+    Override Duplicate Customer Reference Check (Y/N) DATA_15 - Restrict from
+    Merge. </description>
+
+    <values>
+      <value>
+        <code>P119</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P420">
+    <key>SYSTEM_PARAMETERS</key>
+
+    <usage>Not being used</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P420</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Product permission -->
+
+  <parameter name="P120">
+    <key>PRODUCT_PERMISSION</key>
+
+    <usage>Used to configure Permission associated to product codes and sub
+    product codes.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Product code KEY_2 -
+    Sub Product Code Product - '**' for product code permission DATA_1 -
+    Permission name </description>
+
+    <values>
+      <value>
+        <code>P120</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P121">
+    <key>LARGE_SYSTEM_PARAMETERS_1</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P121</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P122">
+    <key>LARGE_SYSTEM_PARAMETERS_2</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P122</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P123">
+    <key>LARGE_SYSTEM_PARAMETERS_3</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P123</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P124">
+    <key>LARGE_SYSTEM_PARAMETERS_4</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P124</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P125">
+    <key>LARGE_SYSTEM_PARAMETERS_5</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P125</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P126">
+    <key>LARGE_SYSTEM_PARAMETERS_6</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P126</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P127">
+    <key>LARGE_SYSTEM_PARAMETERS_7</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P127</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P128">
+    <key>LARGE_SYSTEM_PARAMETERS_8</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P128</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P129">
+    <key>LARGE_SYSTEM_PARAMETERS_9</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P129</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P130">
+    <key>ACCOUNT_TYPE</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P130</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Permissions association with product code and sub product code. -->
+
+  <parameter name="P131">
+    <key>RESOURCE_KEY</key>
+
+    <usage>Permission associated to product codes and sub product
+    codes.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> key_1 - Resource key data_1 - Resource name
+    </description>
+
+    <values>
+      <value>
+        <code>P131</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- Regional Account View. Balance Type Definition -->
+
+  <parameter name="P132">
+    <key>REGIONAL_ACCOUNT_VIEW_KEY</key>
+
+    <usage>Balance Type defined for Regional Account View</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * Representing configuration for all banks DATA_1 - Balance Type - 05,03
+    </description>
+
+    <values>
+      <value>
+        <code>P132</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P150">
+    <key>LIABILITY_LIMIT</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P150</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Charges to apply to a transaction -->
+
+  <parameter name="P200">
+    <key>SUBMISSION_ALERT</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store submission alerts configured information
+    through System Features.</usage>
+
+    <tablename>GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    alertType KEY_2 - productCode KEY_3 - date_code || tnx_type_code KEY_4 -
+    issuer_abbv_name KEY_5 - alertLanguage KEY_6 - entity KEY_9 - abbvName
+    KEY_10 - address KEY_11 - customer_abbv_name KEY_12 - tnx_amount_sign
+    KEY_13 - tnx_currency KEY_14 - tnx_amount KEY_15 - prod_stat_code DATA_1 -
+    issuer_abbv_name || address </description>
+
+    <values>
+      <value>
+        <code>P200</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Calendar alerts creation information -->
+
+  <parameter name="P201">
+    <key>CALENDAR_ALERT</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store the Calendar alerts configured information
+    through System Features.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    alertType KEY_2 - productCode KEY_3 - date_code || tnx_type_code KEY_4 -
+    issuer_abbv_name KEY_5 - alertLanguage KEY_6 - entity KEY_7 - offset KEY_8
+    - offsetSign KEY_9 - abbvName KEY_10 - address DATA_1 - issuer_abbv_name
+    || address </description>
+
+    <values>
+      <value>
+        <code>P201</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Scheduled Report creation information -->
+
+  <parameter name="P202">
+    <key>REPORT_SCHEDULER</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store the scheduled reports creation
+    information.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id 
+	KEY_1 - report id KEY_2 - report abbv name KEY_3 - job id 
+	KEY_4 - frequency KEY_5 - viewer type like CSV, pdf 
+	KEY_6 - language KEY_7 - interface target name reportemailjob 
+	KEY_9 - Bank Abbreviation Name KEY_10 - Bank TimeZone.
+	</description>
+
+
+    <values>
+      <value>
+        <code>P202</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P203">
+    <key>ERROR_ALERT</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P203</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. Cash balance alert information -->
+
+  <parameter name="P204">
+    <key>BALANCE_ALERT</key>
+
+    <usage>At present not being used. This parameter is not intended to
+    manually configure. Used by Portal application to store the cash balance
+    alert creation information. Not being used in V5.0</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 - alert
+    type KEY_3 - tnx type code or date code or * KEY_4 - bank abbv name KEY_5
+    - alert language KEY_6 - entity abbv name KEY_7 - abbv name KEY_8 -
+    address KEY_9 - customer abbv name KEY_10 - account number KEY_11 -
+    threshold currency KEY_12 - threshold amount KEY_13 - threshold sign
+    KEY_14 - credit currecny KEY_15 - credit amount KEY_16 - debit currency
+    KEY_17 - debit amount DATA_1 - account number </description>
+
+    <values>
+      <value>
+        <code>P204</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. Cash transaction alert information -->
+
+  <parameter name="P205">
+    <key>TRANSACTION_ALERT</key>
+
+    <usage>At present not being used. This parameter is not intended to
+    manually configure. Used by Portal application to store the cash
+    transaction alert creation information. Not being used in V5.0</usage>
+
+    <tablename>GRP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 - alert
+    type KEY_3 - tnx type code or date code or * KEY_4 - bank abbv name KEY_5
+    - alert language KEY_6 - entity abbv name KEY_7 - abbv name KEY_8 -
+    address KEY_9 - customer abbv name KEY_10 - account number KEY_11 -
+    threshold currency KEY_12 - threshold amount KEY_13 - threshold sign
+    KEY_14 - credit currecny KEY_15 - credit amount KEY_16 - debit currency
+    KEY_17 - debit amount DATA_1 - account number </description>
+
+    <values>
+      <value>
+        <code>P205</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Grouping rule configuration -->
+
+  <parameter name="P210">
+    <key>GROUPING_RULE</key>
+
+    <usage>Used to confugre the fields to be presented to user for defining
+    the grouping rule for Purchase Order or Invoice Payable.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P210</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- TODO Need to find real uasge. Authentication modes for bank -->
+
+  <parameter name="P211">
+    <key>AUTHENTICATION_MODE_BANK</key>
+
+    <usage>Used to configure the authentication modes applicable for
+    customer.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> GTP_LARGE_PARAM_KEY PARAM_ID - unique id KEY_1
+    - group abbv name KEY_2 - bank abbv name GTP_LARGE_PARAM_DATA PARAM_ID -
+    unique id DATA_1 - authenication mode </description>
+
+    <values>
+      <value>
+        <code>P211</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- TODO Need to find real uasge. Authentication modes for customer -->
+
+  <parameter name="P212">
+    <key>AUTHENTICATION_MODE_CUSTOMER</key>
+
+    <usage>Used to configure the authentication modes applicable for
+    customer.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> GTP_LARGE_PARAM_KEY PARAM_ID - unique id KEY_1
+    - bank abbv name KEY_2 - company abbv name GTP_LARGE_PARAM_DATA PARAM_ID -
+    unique id DATA_1 - authenication mode </description>
+
+    <values>
+      <value>
+        <code>P212</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- CASH Collaboration -->
+  <parameter name="P216">
+    <key>COLLABORATION</key>
+
+    <usage>Used to configure Collaboration for both Cash and Trade products</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		KEY_1 - product code 
+    		KEY_2 - sub-product code 
+    		DATA_1 - boolean flag whether collaboration is enabled for this product/subproduct (Y/N)
+    		DATA_2 - boolean flag whether user-to-bank collaboration is enabled (Y/N)
+    </description>
+
+    <values>
+      <value>
+        <code>P216</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+
+  <parameter name="P217">
+    <key>CURRENCY_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <values>
+      <value>
+        <code>P217</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+
+  <parameter name="P218">
+    <key>INDICES_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P218</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+
+  <parameter name="P219">
+    <key>CALENDAR_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P219</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+  
+  <parameter name="P220">
+    <key>BOOKMARKS</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+		    Portal application to store the bookmark creation
+		    information.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en">Below are required key and data columns for configuring this parameter,
+    	GTP_LARGE_PARAM_KEY 
+    		PARM_ID - P220
+    		KEY_1 - userId
+    		PARAM_ID - unique parameter id generated for a company and user.
+    	GTP_LARGE_PARAM_DATA
+    		PARAM_ID - 	unique parameter id generated for a company and user.
+    		DATA_1 - actionCode
+    		DATA_2 - Bookmark description
+    		DATA_3 - source of bookmark (eg. Cash, Trade etc.)
+    		DATA_4 - unique bookmark id generated for each bookmark
+    		DATA_5 - Bookmark Url
+    </description>
+
+    <values>
+      <value>
+        <code>P220</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+
+  <parameter name="P221">
+    <key>PORTFOLIO_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P221</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+
+  <parameter name="P222">
+    <key>CUSTOMER_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P222</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+
+  <parameter name="P223">
+    <key>SECURITY_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P223</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit related At present not being used. -->
+
+  <parameter name="P224">
+    <key>STOCK_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P224</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- BO Reference information -->
+
+  <parameter name="P225">
+    <key>BOREFERENCE</key>
+
+    <usage>This parameter is used to generated the preallocated references
+    (bo_ref_id). Can be done on bank side or through interfaces. Later will be
+    also available on bankgroup side.</usage>
+
+    <tablename />
+
+    <description language="en"> BRANCH_CODE COMPANY_ID - customer id PARAM_ID
+    - id generated PARM_ID - P225 KEY_1 - Bank Abbv Name KEY_2 - Before was
+    used for entity abbv name but now we put '**' KEY_3 - Product code KEY_4 -
+    From. Through interfaces value equals to '**'. KEY_5 - To. Through
+    interfaces value equals to '**'. KEY_6 - To indicate the type of
+    preallocated reference: Multiple or Unique. Through interfaces value
+    equals to '**'. KEY_7 - Title. Through interfaces value equals to '**'.
+    KEY_8 - Customer Input Center. Through interfaces value equals to '**'.
+    KEY_9 - Customer Reference KEY_10 - Bank Office 1 = TI Mnemonic KEY_11 -
+    Sub Product Code. Through interfaces value equals to '**'. From KEY_12 to
+    KEY_ 20: Not used, put '**'. DATA_1 - Preallocated Reference = bo_ref_id
+    DATA_2 - Boolean to indicate if the preallocated reference is used or not.
+    Can be 'Y' or 'N'. Through interfaces value equals to 'N'. This is the
+    initialized value. </description>
+
+    <values>
+      <value>
+        <code>P225</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Guarantee creation details -->
+
+  <parameter name="P226">
+    <key>GTEE_DOCUMENT</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store guarantee creation details
+    information.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    Guarantee name DATA_1 - Guarantee type DATA_2 - Guarantee type description
+    DATA_3 - is guarantee activated DATA_4 - is Specimen selected DATA_6 -
+    guarantee is standard or WYSIWYG Editor DATA_7 - guarantee text id DATA_8
+    - Specimen name DATA_9 - document id DATA_11 - fo stylesheet name
+    DATA_12 - Sub product code for Undertaking Issued
+    </description>
+
+    <values>
+      <value>
+        <code>P226</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Guarantee creation details assigned customer details -->
+
+  <parameter name="P227">
+    <key>GTEE_DOCUMENT_CUSTOMER</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store guarantee assinged customer, entity details
+    information.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    guarantee name KEY_2 - Customer abbv name KEY_3 - entity abbv name or *
+    </description>
+
+    <values>
+      <value>
+        <code>P227</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P228">
+    <key>CREDIT_ENTITIES_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P228</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P229">
+    <key>SENIORITY_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P229</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P230">
+    <key>DOCUMENT_CLAUSE_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P230</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P231">
+    <key>CREDIT_INDICES_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P231</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P232">
+    <key>MATURITIES_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P232</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P233">
+    <key>TRANCHES_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P233</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P234">
+    <key>CURRENCY_PAIRS_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P234</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P235">
+    <key>CONTRACT_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P235</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Summit Related. At present not being used. -->
+
+  <parameter name="P236">
+    <key>BROKER_PARAMETER</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P236</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Bulk Payroll type -->
+
+  <parameter name="P237">
+    <key>PAYROLL_TYPE</key>
+
+    <usage>Used to configure Bulk Payroll Types.</usage>
+
+    <tablename>GTP_PARAM_DATA, GTP_LARGE_PARAM_KEY AND
+    GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank abbv Name KEY_2 -
+    bulk product code (bk) KEY_3 - sub product code(payrol) KEY_4 - payroll
+    type DATA_1 - payroll type description DATA_2 - permission Largeparam key-
+    sub product's applicable for payroll type per bank COMPANY_ID - * KEY_1 -
+    bank abbv Name KEY_2 - bulk product code (bk) KEY_3 - sub product
+    code(payrol) KEY_4 - payroll type param_id Largeparam data- sub product's
+    applicable for payroll type per bank param_id : DATA_1 -child product code
+    DATA_2 -child product type DATA_3 - child sub product code </description>
+
+    <values>
+      <value>
+        <code>P237</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- IU bank template -->
+  <parameter name="P238">
+    <key>UNDERTAKING_DOCUMENT</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store guarantee creation details
+    information.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    Guarantee name DATA_1 - Guarantee type DATA_2 - Guarantee type description
+    DATA_3 - is guarantee activated DATA_4 - is Specimen selected DATA_6 -
+    guarantee is standard or WYSIWYG Editor DATA_7 - guarantee text id DATA_8
+    - Specimen name DATA_9 - document id DATA_11 - fo stylesheet name
+    </description>
+
+    <values>
+      <value>
+        <code>P238</code>
+      </value>
+    </values>
+  </parameter>
+  
+
+  <!-- Custom CSS Theme configuration-->
+
+  <parameter name="P240">
+    <key>CSS_THEME</key>
+
+    <usage>Used to configure custom CSS theme details.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - customer type KEY_2 -
+    customer user company abbv name or * KEY_3 - customer name KEY_4 - DashBoard Name
+    DATA_1 - CSS  theme name  DATA_2 - Enable Mutiple Logo (Y/N)</description>
+
+    <values>
+      <value>
+        <code>P240</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Customer PSML template name -->
+    
+  <parameter name="P241">
+    <key>CUSTOMER_PSML_TEMPLATE</key>
+
+    <usage>Used to configure the custom psml file name for each type of
+    bankgroup/bank/customer/counterparty under the Owner company.
+    </usage>
+
+   <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    COMPANY_ID - *
+    KEY_1 - company type 
+    KEY_2 - owner abbv name 
+    DATA_1 - psml template name 
+    </description>
+
+    <values>
+      <value>
+        <code>P241</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!--  Velocity Templates (top & bottom) -->
+
+  <parameter name="P242">
+    <key>NAVIGATION_TEMPLATE_VELOCITY</key>
+
+    <usage>Used to configure velocity template navigation files for
+    branding.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - customer type KEY_2 -
+    customer user company abbv name or * KEY_3 - customer name  KEY_4 - DashBoard Name
+    DATA_1 - top vm file name DATA_2 - bottom vm file name </description>
+
+    <values>
+      <value>
+        <code>P242</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Auto Generated Documents -->
+
+  <parameter name="P243">
+    <key>AUTO_GENERATED_DOCS</key>
+
+    <usage>Used to configure Auto Generated Documents information XSL file
+    Name, Output file name, Output file title, Output file type, Output file
+    Type code "N107", Language to use for XSL transformation.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - prod code KEY_2 - main
+    bank abbv name KEY_3 - tnx stat code KEY_4 - tnx type code KEY_5 - prod
+    stat code KEY_6 - user type KEY_7 - user language KEY_8 - There are more
+    parameters created per product in
+    TransactionProductFile.getListOfParameters() which is redefined in the
+    product KEY_9 will contain the name/code of the type of domestic guarantee. 
+    DATA_1 - style sheet file name DATA_2 - generated file name DATA_3
+    - attachment title DATA_4 - content type as defined by N033 DATA_5 -
+    auto-gerated document code N107 DATA_6 - language DATA_7(For Bank/Bank Group)- Y/N
+    While processing incoming file(transaction coming from Back Office) if customer wants 
+    to generate cover letter  or not.</description>
+
+    <values>
+      <value>
+        <code>P243</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Counterparty creation and products assignment -->
+
+  <parameter name="P250">
+    <key>COUNTERPARTY_PRODUCTS</key>
+
+    <usage>Used to create counterparty and configure products to
+    counterparty.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> company-id - Company id of the owner of the
+    counterparty KEY_1 - counterpartyAbbvName KEY_2 - counterpartyId KEY_3 -
+    beneficiary name KEY_4 - customer abbreviation name KEY_5 - customer id
+    DATA1 - DATA20 - product name </description>
+
+    <values>
+      <value>
+        <code>P250</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P994">
+    <key>LANDING_PAGE_URL</key>
+
+    <usage>Used to configure the URLs and logos applicable for customer for landing page.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> GTP_LARGE_PARAM_KEY PARAM_ID - unique id COMPANY_ID - company_id 
+    KEY_1 - bank abbv name  GTP_LARGE_PARAM_DATA PARAM_ID - unique id 
+    DATA_1 - External URL path DATA_2 - Title DATA_3 - Logo image path DATA_4 - Description DATA_6 - ALT TEXT for IMAGES- Reference of GTP_CODE_DATA (C102) added DATA_5 - IDENTIFIER(PATH - Youtube videos, LINK - Support Urls, ICON - icons) </description>
+
+    <values>
+      <value>
+        <code>P994</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P720">
+    <key>COUNTERPARTY_NOTIFICATION</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>720</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P251">
+    <key>COUNTERPARTY_ALERT</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P251</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Stylesheet configure for news. -->
+
+  <parameter name="P252">
+    <key>CHOSEN_NEWS_STYLESHEETS</key>
+
+    <usage>Used to configure style sheet per channel and customer.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - news channel company id KEY_1 -
+    specify the channel_id is this style sheet associated to. KEY_2 - * |
+    value, to say if this style sheet is common to all users or specific one.
+    DATA_1 - style sheet file name </description>
+
+    <values>
+      <value>
+        <code>P252</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Internal Content Provider info storing -->
+
+  <parameter name="P253">
+    <key>NEWS_COMPANY_CHANNELS</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store internal content provider, syndicated news
+    feed information as part of the customer profile creation.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id DATA_1 -
+    channle id assigned to customer </description>
+
+    <values>
+      <value>
+        <code>P253</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Configure default StyleSheet -->
+
+  <parameter name="P254">
+    <key>NEWS_STYLESHEETS_LIST</key>
+
+    <usage>Used to configure news deafult styleSheet for displaying the new to
+    cusutomer.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - specify '*' if style sheet is
+    common or specific for a bank company id KEY_1 - specify the stylesheet
+    name(display-news-default.xsl) DATA_1 - specify the style sheet name which
+    is a localization key(NEWS_STYLE_SHEET_DEFAULT) </description>
+
+    <values>
+      <value>
+        <code>P254</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P260">
+    <key>TOLERANCE</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P260</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="P261">
+    <key>RMGROUP</key>
+
+    <usage>Used to configure Relation Ship Manager Group.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 - iso 2
+    character country code KEY_2 - iso 3 character currency code KEY_3 -
+    clearing code acronym KEY_4 - clearing code prefix DATA_1 - clearing code
+    description DATA_2 - mandatory indicator DATA_3 - validation rule desc
+    (format) DATA_4 - validation reg exp </description>
+
+    <values>
+      <value>
+        <code>P261</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Clearing codes -->
+
+  <parameter name="P300">
+    <key>CLEARING_CODE</key>
+
+    <usage>Used to configure Clearing Codes.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 - iso 2
+    character country code KEY_2 - iso 3 character currency code KEY_3 -
+    clearing code acronym KEY_4 - clearing code prefix DATA_1 - clearing code
+    description DATA_2 - mandatory indicator DATA_3 - validation rule desc
+    (format) DATA_4 - validation reg exp </description>
+
+    <values>
+      <value>
+        <code>P300</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Liquidity Branch Reference -->
+  <parameter name="P327">
+    <key>LIQUIDITY_BRANCH_REFERENCE</key>
+    <usage>To retrieve Liquidity Branch Reference dropdown list.</usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en">
+    COMPANY_ID - customer company id KEY_1 - Seller Code 
+    DATA_1 - Description DATA_2 - ISO ALPHA -2 code 
+    DATA_3 - ISO ALPHA -3 code
+    </description>
+    <values>
+      <value>
+        <code>P327</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- IBAN Codes -->
+
+  <parameter name="P301">
+    <key>IBAN</key>
+
+    <usage>IBAN codes - Used to configure IBAN character country codes and
+    character currency code.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 - iso 2
+    character country code KEY_2 - iso 3 character currency code DATA_1 -
+    mandatory indicator </description>
+
+    <values>
+      <value>
+        <code>P301</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Biller catagory -->
+
+  <parameter name="P304">
+    <key>PAYEE_CATEGORY</key>
+
+    <usage>Biller category. Used to configure Biller category code and
+    description.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> Brch_code = 00001 ompany_id - * KEY_1 - Biller category code
+     KEY_2 - bank abbv name -todo - if not specified then *
+    DATA_1 - Biller category description DATA_2 - Biller registration required
+    </description>
+
+
+    <values>
+      <value>
+        <code>P304</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P305">
+    <key>USER_PROFILE</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P305</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Provisional status applicability check -->
+  <parameter name="P306">
+	<key>PROVISIONAL</key>
+
+	<usage>Used to configure for which all products and guarantee type is
+		Provisional status applicable
+	</usage>
+
+	<tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+	<description language="en"> Brch_code = 00001 ompany_id - *
+		KEY_1 - bank
+		abbv name -todo - if not specified then * KEY_2 - Product
+		Code KEY_3 - Sub Product Code
+		KEY_4 - Trasaction type code DATA_1 -
+		Guarantee type DATA_2 - Y/N
+	</description>
+
+	<values>
+		<value>
+			<code>P306</code>
+		</value>
+	</values>
+</parameter>
+
+  <!-- Biller reference options -->
+
+  <parameter name="P307">
+    <key>PAYEE_REFERENCE_OPTION</key>
+
+    <usage>Used to configure Biller reference options.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> Brch_code - 00001 KEY_1 - bank abbv name -todo
+    - if not specified then * KEY_2 - payee code KEY_3 - reference id DATA_1 -
+    option code DATA_2 - option value </description>
+
+    <values>
+      <value>
+        <code>P307</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Reporting options -->
+
+  <parameter name="P308">
+    <key>REPORTING_OPTION</key>
+
+    <usage>Used to configure Reporting options.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> Brch_code - 00001 KEY_1 - Product Code
+    KEY_2 - Sub Product Code KEY_3 - Tnx Type Code KEY_4 - Prod Status Code DATA_1 -
+    option code(DATA_1 option is used for "Review transaction details popup") 
+    DATA_2 - option code(DATA_2 option is used for "View details popup")
+    Data_1 can be SUMMARY or FULL and Data_2 can either be SUMMARY, FULL or UPDATED </description>
+
+    <values>
+      <value>
+        <code>P308</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Account type mapping -->
+
+  <parameter name="P311">
+    <key>ACCOUNT_TYPE_MAPPING</key>
+
+    <usage>Account Type description. Used to configure the account product
+    types supporting in portal and their description.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Bank Account Type KEY_2
+    - Bank Account Product Type DATA_1 - Portal Account Type (N068) DATA_2 -
+    Description DATA_3 - Reserved Balance Display indicator(Y/N)</description>
+
+    <values>
+      <value>
+        <code>P311</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Account Assignment to Products -->
+
+  <parameter name="P312">
+    <key>ACCOUNT_PRODUCT_TYPE_MAPPING</key>
+
+    <usage>Parameters related to account assignment to products in association
+    with sub product, sql script will differ from datbase to database. For
+    account assignment to products in association with sub product below are
+    the parameters configured by bank.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Account Type KEY_2 -
+    Account Product Type KEY_3 - Customer Account Type KEY_4 - Currency KEY_5
+    - Internal/External/Treasury Account(01/05/10) DATA_1 - Sub Product Code (e.g. INT,
+    DOM, MEPS, MT101, ... IF there is not Sub Product code add **) DATA_2 -
+    Debit (Y/N) DATA_3 - Credit (Y/N) DATA_4 - Product Specific code (e.g.
+    FIXED_DEPOSIT for TD) DATA_5 - Product Code (FT, TD, ...) Ex: For LC the
+    DATA_1 will be ** and DATA_5 will be LC</description>
+
+    <values>
+      <value>
+        <code>P312</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P315">
+    <key>BANK_CURRENCY</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P315</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- FX configuration -->
+
+  <parameter name="P316">
+    <key>FX</key>
+
+    <usage>FX parameters setup. Used to configure whether fx enabled for a
+    product in association with sub product, what are currency supporting for
+    board rate and contract options, if supporting what are minimum and
+    maximum amounts, number of contracts supporting, whether amount utilize
+    indicator is enabled, whether tolerance enabled, if enabled what is the
+    tolerance percentage.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> FX related bank level parameters COMPANY_ID -
+    bank company id KEY_1 -
+    FX_ASSIGN_PRODUCTS/FX_BOARD_RATE/FX_CONTRACT_OPT/FX_NBR_CONTRACT/FX_TOLERANCE_RATE
+    KEY_1 - FX_ASSIGN_PRODUCTS KEY_2 - Product Code KEY_3 - Sub Product Code DATA_1 - is FX enabled(Y/N) 
+    KEY_1 - FX_BOARD_RATE KEY_2 - Currency DATA_1 - Minimum Amount Value DATA_2 - Maximum Amount value DATA_3 - is BoardRate Option enabled for currency(Y/N) 
+    KEY_1 - FX_CONTRACT_OPT KEY_2 - Currency DATA_1 - Minimum Amount Value DATA_2 - Maximum Amount value(Y/N) DATA_3 - is Contracts Option enabled for currency(Y/N) 
+    KEY_1 - FX_NBR_CONTRACT KEY_2 - Product Code KEY_3 - Sub Product Code DATA_1 - Number of Contracts DATA_2 - Amount Utilize display indicator(Y/N) 
+    KEY_1 - FX_TOLERANCE_RATE KEY_2 - Product Code KEY_3 - Sub Product Code DATA_1 - Tolerance display indicator(Y/N) DATA_2 - Tolerance percentage </description>
+
+    <values>
+      <value>
+        <code>P316</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Contact Helpdesk. -->
+
+  <parameter name="P320">
+    <key>CONTACT_HELPDESK</key>
+
+    <usage>Contact help desk related email setup. Used to configure recipient
+    email address, topic description and language.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    topic_id KEY_2 - bank_abbv_name DATA_1 - email address(recipient) DATA_2 -
+    topic description DATA_3 - language </description>
+
+    <values>
+      <value>
+        <code>P320</code>
+      </value>
+    </values>
+  </parameter>
+  
+    <!-- Secure Email (Non standard Request). -->
+
+  <parameter name="P321">
+    <key>SECURE_EMAIL_TOPICS</key>
+
+    <usage>Secure Eamil (Non standard Request) related email setup. Used to configure recipient
+    email address, topic description and language.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    topic_id KEY_2 - bank_abbv_name DATA_1 - email address(recipient) DATA_2 -
+    topic description DATA_3 - language </description>
+
+    <values>
+      <value>
+        <code>P321</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Bulk Transaction Code description -->
+
+  <parameter name="P330">
+    <key>BULK_TRANSACTION_CODE</key>
+
+    <usage>Used to confgiure Bulk transaction code description based on
+    transaction code, product group and product type.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - transaction code id
+    KEY_2 - bank_abbv_name KEY_3 - product group KEY_4 - product type DATA_1 -
+    transaction code description </description>
+
+    <values>
+      <value>
+        <code>P330</code>
+      </value>
+    </values>
+  </parameter>
+  
+  
+  
+
+  <!-- Bulk Mapper -->
+
+  <parameter name="P340">
+    <key>BULK_MAPPER</key>
+
+    <usage>Bulk Mapper. Used to configure whether bulk transaction is manual
+    or upload, bulk type, payroll type, ft type, description.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - company abbv name KEY_2
+    - manual/upload KEY_3 - bulk type KEY_4 - payroll type KEY_5 - ft type
+    DATA_1 - sub product code DATA_2 - default description </description>
+
+    <values>
+      <value>
+        <code>P340</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- FLEXI format Bulk Upload file definition-->
+  <parameter name="P341">
+    <key>BULK_UPLOAD_FLEXI_CONFIG</key>
+
+    <usage>Defines the columns in an uploaded file for Flexi format for Bulk upload</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    	COMPANY_ID - * 
+    	KEY_1 - File format (FLEXI)
+    	KEY_2 - Company abbreviated name (e.g. DEMOBANK) 
+    	DATA_1 - Sequence (Integer starting from and including zero)
+    	DATA_2 - Property to which this field is mapped for the Bean in context (e.g. sub_product_code)
+    	DATA_3 - Bean context (BULK|FT|BULKFILE|FTFILE)
+    	DATA_4 - Mandatory (Y|N)
+    </description>
+    <values>
+      <value>
+        <code>P341</code>
+      </value>
+    </values>
+  </parameter>
+ 
+  <!--Retrive Bundle based on Product code and Sub product code -->
+  <parameter name="P342">
+    <key>RETRIVE_BUNDLE_NAME</key>
+
+    <usage>To Retrive the Bundle name based on product code and subproduct code</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    	COMPANY_ID - * 
+    	KEY_1 - Product code
+    	KEY_2 - Subproduct code 
+    	DATA_1 - Bundle Name
+    	DATA_2 - Second Bundle Name(in case if another bundle has to be trigger after triggering the first bundle)
+    </description>
+    <values>
+      <value>
+        <code>P342</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- At present not being used. -->
+
+  <parameter name="P500">
+    <key>SGI_BBAN</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en" />
+
+    <values>
+      <value>
+        <code>P500</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P502">
+    <key>CORRESPONDENT_BANK</key>
+
+    <usage>Used to save currencies(ISO code and description) assigned to static banks.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - Bank or Bank Group Company Id. 
+    KEY_1 - Static bank Id. 
+    KEY_2 - Currency ISO Code. 
+    DATA_1 - Currency Description.</description>
+
+    <values>
+      <value>
+        <code>P502</code>
+      </value>
+    </values>
+  </parameter>
+  
+    <parameter name="P513">
+    <key>TNX_REMARK_PAY_NARRATIVE_MANDATORY</key>
+
+    <usage>Used to configure whether payment narrative / transaction remark should be mandatory or not based on </usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Sub product Code
+    KEY_3 - Debit Ccy
+    KEY_4 - Credit Ccy
+    DATA_1 - Mandatory Indicator (Y/N).</description>
+
+    <values>
+      <value>
+        <code>P513</code>
+      </value>
+    </values>
+  </parameter>
+ 
+     <parameter name="P514">
+    <key>INTERMEDIARY_BANK_DETAILS</key>
+
+    <usage>Used to configure whether Intermediary Bank Details should be mandatory or not based on </usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Transaction Currency.</description>
+
+    <values>
+      <value>
+        <code>P514</code>
+      </value>
+    </values>
+  </parameter> 
+ 
+      <parameter name="P515">
+    <key>VALID_COUNTRY_TRANSACTION_CURRENCY</key>
+
+    <usage>Used to configure whether Valid Country Transaction Currency should be mandatory or not based on </usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Currency.
+    DATA_1 - Country Codes</description>
+
+    <values>
+      <value>
+        <code>P515</code>
+      </value>
+    </values>
+  </parameter>  
+
+      <parameter name="P516">
+    <key>INTERMEDIARY_DETAIL_VALIDATION_EXCLUDED_CCY</key>
+
+    <usage>Used to configure for the Remittance Currencies which will be excluded from intermediary bank country code check</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Transaction Currency</description>
+
+    <values>
+      <value>
+        <code>P516</code>
+      </value>
+    </values>
+  </parameter>
+ 
+    <parameter name="P517">
+    <key>REMITTANCE_REASON_PARM_ID</key>
+
+    <usage>Used to configure for whether remittance reason should be mandatory or not</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Beneficiary Currency
+    DATA_1 - Mandatory Indicator (Y/N)</description>
+
+    <values>
+      <value>
+        <code>P517</code>
+      </value>
+    </values>
+  </parameter>
+     
+   <parameter name="P313">
+    <key>PARAMETER_ID_CURRENCY_PRODUCT_TYPE_MAPPING</key>
+
+    <usage>Used to configure allowed list of currencies per product, sub product</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en">
+    KEY_1 - Bank Abbv Name 
+    KEY_2 - Product Code.
+    KEY_3 - Sub Product Code
+    KEY_4 - product type currency enabled (e.g. Y or N)
+    DATA_1 - Transaction Currency</description>
+
+    <values>
+      <value>
+        <code>P313</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- This parameter is used by Integrated Data Visualization Dashboards to fetch the specific details based on the role . -->
+  
+  <parameter name="P314">
+    <key>PARAMTER_POWER_BI_REPORTS</key>
+
+    <usage>Used to configure allowed list of personas for corporate and bank facing dashboards</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en">
+    KEY_1 - Bank/company Abbv Name 
+    KEY_2 - Persona.
+    DATA_1 - reportId
+    DATA_2 - groupId
+    DATA_3 -dataSet
+    DATA_4 - embedTokenUrl
+    DATA_5 - embedUrl
+    DATA_6 - dv_role
+    DATA_7 -rlsFilter
+    DATA_8 -persona
+    DATA_9	-filterPaneEnabled
+	DATA_10 -navigationPaneEnabled
+</description>
+
+    <values>
+      <value>
+        <code>P314</code>
+      </value>
+    </values>
+  </parameter> 
+
+  <!-- This parameter is used by the Calendar Alert Scheduler . -->
+
+  <parameter name="P600">
+    <key>SCHEDULER_LAST_TREAMENT_DATE</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+	
+    <description language="en"> COMPANY_ID - 2 KEY_1 - 1 (MilestonesScheduler task Id from gtp_scheduled_job)
+    KEY_2 - MilestoneScheduler (task's name) DATA_1 - last treatment date (format : DD/MM/YYYY) </description>
+    
+
+    <values>
+      <value>
+        <code>P600</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- PO/IP products sections display or hide -->
+
+  <parameter name="P650">
+    <key>FORM_HIDDEN_SECTIONS</key>
+
+    <usage>Used to configure a group sections of Purchase Order, Invoice
+    Payable whether to display or hide.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> customer_id - customer company id KEY_1 -
+    company abbv name KEY_2 - product code DATA_1 - section name which to
+    shown or not on screen DATA_2 - Y/N which represents display or hide
+    </description>
+
+    <values>
+      <value>
+        <code>P650</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Generic File Upload. -->
+
+  <parameter name="P651">
+    <key>GENERIC_FILE_UPLOAD</key>
+
+    <usage>Used to configure the file description, permission and other
+    details for file upload.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    file type (The file type specified here will be displayed to the customer
+    user in a drop down and must be selected prior to uploading the file to
+    the system) DATA_1 - description DATA_2 - permission (This field will
+    contain the name of the permission to be assigned to gain access to upload
+    the particular file type) DATA_3 - name in file system ( Contains the
+    actual name of the file to be sent to the back office. This name is not
+    required for the customer but will be the name used when passing to the
+    back office. ) DATA_4 - account level flag ( This field will specify
+    whether it is a mandatory requirement that the user selects an account to
+    be used for the specified file type. ) DATA_5 - decryption required flag (
+    This field will specify whether files uploaded by the customer for this
+    file type should be decrypted. ) </description>
+
+    <values>
+      <value>
+        <code>P651</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Generic File Download -->
+
+  <parameter name="P652">
+    <key>GENERIC_FILE_DOWNLOAD</key>
+
+    <usage>Used to configure the report type, sub type description, permission
+    and other details for file download.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    report type KEY_3 - report sub type DATA_1 - report type description
+    DATA_2 - report sub type description DATA_3 - permission DATA_4 - name in
+    file system DATA_5 - generate PDF DATA_6 - archiving period DATA_7 -
+    creation Date DATA_8 - report name </description>
+
+    <values>
+      <value>
+        <code>P652</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Term Deposit Types. -->
+
+  <parameter name="P653">
+    <key>DEPOSIT_TYPE</key>
+
+    <usage>Term Deposit Types. Used to configure Term Deposit types for a
+    particular bank.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank abbv name DATA_1 -
+    Deposit Type DATA_2 - TD Account Type DATA_3 - TD Product Type DATA_4 -
+    Tenor number DATA_5 - Tenor code ( ex: M (Monthly), (D)Daily, (W) Weekly
+    DATA_6 - Currency </description>
+
+    <values>
+      <value>
+        <code>P653</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- TD Maturity Instructions -->
+
+  <parameter name="P654">
+    <key>MATURITY_TYPE</key>
+
+    <usage>TD Maturity Instructions. Used to configure Term Deposit Maturity
+    Instructions for a particular bank in association with deposit
+    type.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank_abbv_name KEY_2 -
+    unique_id (as KEY_1 is bank_abbv_name same for all records,to represent
+    each row as unique) DATA_1 - deposit_type (all characters in capital
+    letters and each word concatenating with '_' and for default type it
+    should be '*') DATA_2 - product_type (eg: 'GT' or 'FP') DATA_3 -
+    maturity_instruction_description DATA_4 - maturity_instruction_code (1
+    Character) DATA_5 - indicates whether credit A/c for TD should be
+    mandatory or not for corresponding maturity instruction(Y/N)
+    </description>
+
+    <values>
+      <value>
+        <code>P654</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. Product Category for Client Account Validation -->
+
+  <parameter name="P655">
+    <key>PROD_CATEGORY_CODES</key>
+
+    <usage>At present not being used.</usage>
+
+    <tablename />
+
+    <description language="en"> KEY_1 - Application Code DATA_1 - Product
+    Category Name DATA_2 - Product Category Code DATA_3 - Account Type DATA_4
+    - Application Type </description>
+
+    <values>
+      <value>
+        <code>P655</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Postal code length country wise -->
+
+  <parameter name="P656">
+    <key>POSTAL_CODE_LENGTH</key>
+
+    <usage>Used to configure postal code length per Country.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - Country Code DATA_1 - Length of the
+    postal code </description>
+
+    <values>
+      <value>
+        <code>P656</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- TD No.of days before Maturity -->
+
+  <parameter name="P657">
+    <key>TD_SUBMIT_BEFORE_NO_OF_DAYS</key>
+
+    <usage>TD No.of days before Maturity. Used to configure the number of day
+    before maturity an TD Update/ Withdrwal is valid to perform.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Bank abbv name KEY_2 -
+    Product code i.e TD DATA_1 - Y/N (Whether before no.of days configured for
+    TD Update or not.) DATA_2 - No.of days (TD Update should be submitted
+    no.of days before the maturity date) DATA_3 - Y/N (Whether before no.of
+    days configured for TD Withdrawal or not.) DATA_4 - No.of days (TD
+    Withdrawal should be submitted no.of days before the maturity date)
+    </description>
+
+    <values>
+      <value>
+        <code>P657</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Set start date of recurring payment -->
+
+  <parameter name="P658">
+    <key>SO_START_DATE</key>
+
+    <usage>Recurring start date configuration. Used to configure minmum and
+    maximum offset for start date.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    product code KEY_3 - sub product code DATA_1 - minimum offset (in days)
+    DATA_2 - maximum offset (in days) </description>
+
+    <values>
+      <value>
+        <code>P658</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Recurring payment product assignment -->
+
+  <parameter name="P659">
+    <key>SO_RECURRING_PAYMENT</key>
+
+    <usage>Recurring payment enablement. Used to configure the products with
+    sub product code to enable the recurring payment.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank abbv name KEY_2 -
+    product code KEY_3 - sub product code DATA_1 - Y/N (Recurring Flag)
+    </description>
+
+    <values>
+      <value>
+        <code>P659</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Set frequency, transfer limit for the recurring payment -->
+
+  <parameter name="P660">
+    <key>SO_FREQUENCY</key>
+
+    <usage>Recurring frequency. Used to configure recurring frequency details
+    like daily, weekly, monthly, exact, last day of the month or both,
+    transfer limit.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - bank abbv name DATA_1 -
+    01 (daily) DATA_2 - 02 (weekly) DATA_3 - 03 (monthly) DATA_4 - 01,02,03
+    (01 - Exact , 02 - last day of the month, 03 - both) DATA_5 - number (No.
+    of transfer limit) </description>
+
+    <values>
+      <value>
+        <code>P660</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Transaction confirmation details -->
+
+  <parameter name="P690">
+    <key>TRANSACTION_CONFIRMATION_DETAILS</key>
+
+    <usage>Used to configure whether confirmation details need to be displayed
+    based on the product, sub product and mode.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Product Code(FT) KEY_2
+    - Sub Product Code(INT/TPT) DATA_1 - (Y or N) For Scratch DATA_2 - (Y or
+    N) For Draft DATA_3 - (Y or N) For Unsigned </description>
+
+    <values>
+      <value>
+        <code>P690</code>
+      </value>
+    </values>
+  </parameter>
+	
+	<!-- Facility and Limit Validation -->
+	
+  <parameter name="P750">
+    <key>LIMIT_AMOUNT_VALIDATION</key>
+
+    <usage>Used to configure Limit screen Product type code, Product Template.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 - Company Abbv Name  DATA_1 - LC/BG Type(Y or N) DATA_2 - BG Template(Y or N) DATA_3 - Benificiary and Country(Y or N)
+    </description>
+
+    <values>
+      <value>
+        <code>P750</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="P751">
+    <key>LIMIT_VALID_PRODUCTS</key>
+
+    <usage>Used to configure Products Applicable for Facility and Limit.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 - Product Code  KEY_3 - Sub Product Code DATA_1 = true/false (If data_1 = true then Facility/Limit details section is displayed else it will not be displayed.)
+    </description>
+
+    <values>
+      <value>
+        <code>P751</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Stop Over transaction -->
+
+  <parameter name="P777">
+    <key>STOP_OVER_TRANSACTION</key>
+
+    <usage>Used to configure stop over transactions based on the product and
+    sub product.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 -
+    Product Code(FT) KEY_3 - Sub Product Code(INT/TPT) DATA_1 - (Y or N)
+    </description>
+
+    <values>
+      <value>
+        <code>P777</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="P778">
+    <key>LOAN_STOP_OVER_TRANSACTION</key>
+
+    <usage>Used to configure stop over transactions based on the product and
+    sub product.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - Bank Abbv Name KEY_2 -
+    Product Code(FT) KEY_3 - Sub Product Code(INT/TPT) KEY_4 -  BorrowerId KEY_5 - DealId DATA_1 - TransactionAmt
+    </description>
+
+    <values>
+      <value>
+        <code>P778</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Future FT release time -->
+  
+	<parameter name="P803">
+	    <key>PARAMETER_ID_FT_CUT_OFF_FUTURE_PAY</key>
+	
+	    <usage>Used for Fund Transfer Cut off time for Future Payments</usage>
+	
+	    <tablename>GTP_PARAM_DATA</tablename>
+	
+	    <description language="en"> COMPANY_ID: If '*' is mentioned, all banks will inherit the same cut-off time.
+
+			KEY_1: Abbv name of the bank, '*' for all banks.
+			
+			KEY_2: Product code, FT for Fund transfers.    
+			
+			KEY_3: FT Type Code (Internal/Domestic/Bill, etc) If '*', then the limits apply for all types.
+			
+			DATA_1: The release hour (0-23)
+			
+			DATA_2: The release minute (0-59)
+			
+			DATA_3: The timezone of the indicated time.
+	    </description>
+	
+	    <values>
+	      <value>
+	        <code>P803</code>
+	      </value>
+	    </values>
+	</parameter>
+	
+  <!--TIME_RECURRENCE-->
+  
+	<parameter name="P805">
+		<key>TIME_RECURRENCE</key>
+		<usage>Used for manually setting time for recurring payments.</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en"> 
+			COMPANY_ID: If '*' is mentioned, all banks will inherit the same cut-off time.
+			KEY_1: Abbv name of the bank, '*' for all banks.
+			DATA_1: The release hour (0-23)
+			DATA_2: The release minute (0-59)
+		</description>
+	
+		<values>
+			<value>
+				<code>P805</code>
+			</value>
+		</values>
+	</parameter>
+	
+	<!-- Audit SDK parameter -->
+  
+	<parameter name="P804">
+	    <key>AUDIT_EXTERNAL_MAPPING</key>
+	
+	    <usage>Used for SDK data entry for audit</usage>
+	
+	    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+	    <description language="en"> COMPANY_ID - * 
+	    KEY_1 - Application Name(FCM))
+	    KEY_2 - PRODUCT/ACTIONCODE(Identifier)
+	    DATA_1 - Product Module
+	    </description>
+	
+	    <values>
+	      <value>
+	        <code>P804</code>
+	      </value>
+	    </values>
+	</parameter>
+  
+  <!-- Narrative field size-->
+	
+	  <parameter name="P940">
+	    <key>NARRATIVE_FIELD_SIZE</key>
+	
+	    <usage>This parameter is used to define the maximum lines limit of 
+	    narrative fields when overriding the swift standard.</usage>
+	
+	    <tablename>GTP_PARAM_DATA</tablename>
+	
+	    <description language="en"> COMPANY_ID - * KEY_1 - Product code
+	     DATA_1 -Field Size DATA_2 - Field Name</description>
+
+	    <values>
+	      <value>
+	        <code>P940</code>
+	      </value>
+	    </values>
+	  </parameter>
+	  
+  <!-- customer profile details -->
+
+  <parameter name="P951">
+    <key>CUSTOMER_PROFILE_DETAILS</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store customer profile details as part of the
+    customer profile creation.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> customer_id - customer company id DATA_4 -
+    Dual control DATA_7 - Company status DATA_8 - Company password
+    validity(company password expiry) DATA_9 - ATTACHMENT_MAX_UPLOAD_SIZE
+    DATA_10 - RETENTION_PERIOD DATA_11 - BEI DATA_12 - STREET_NAME DATA_13 -
+    POST_CODE DATA_14 - TOWN_NAME DATA_15 - COUNTRY_SUB_DIV DATA_16 -
+    CRM_EMAIL DATA_17 - fscm.company.parameter.01.conditions DATA_18 -
+    fscm.company.parameter.02.conditions DATA_19 -
+    fscm.company.parameter.03.conditions </description>
+
+    <values>
+      <value>
+        <code>P951</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Bank profile details -->
+
+  <parameter name="P952">
+    <key>BANK_PROFILE_DETAILS</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store bank profile details as part of the bank
+    profile creation.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> In case of bank: customer_id - customer
+    company id DATA_12 - STREET_NAME DATA_13 - POST_CODE DATA_14 - TOWN_NAME
+    DATA_15 - COUNTRY_SUB_DIV DATA_16 - CRM_EMAIL </description>
+
+    <values>
+      <value>
+        <code>P952</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Customer profile details -->
+
+  <parameter name="P953">
+    <key>CUSTOMER_PROFILE_DETAILS_2</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store customer profile details as part of the
+    customer profile creation. Note - data_16, data_17, data_18 used for
+    client SHB(JIRA ID - MPS-21213) </usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> customer_id - customer company id DATA_1 -
+    legal id type DATA_2 - legal id number DATA_3 - Country legal id DATA_4 -
+    authorize own transaction DATA_5 - bulk authorize limit DATA_6 - auto
+    forward date DATA_7 - check file hash value DATA_8 - check duplicate file
+    DATA_9 - check duplicate customer reference DATA_10 - file encryption
+    method DATA_11 - reject file on error DATA_12 - merge demerge allowed
+    DATA_13 - bulk draft on error DATA_14 - County DATA_15 - Country Name
+    DATA_16 - Chambers of commerce Id DATA_17 - Region DATA_18 - Bank user
+    Id/Administrator </description>
+
+    <values>
+      <value>
+        <code>P953</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Event Occurrence -->
+
+  <parameter name="P954">
+    <key>EVENT_OCCURRENCE</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store the Customer User events creation informtaion
+    like event date, Recurring events details, title, type and
+    description.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> customer_id - customer company id KEY_1 -
+    event_type (N016 : private, public) KEY_2 - user_id (owner_id) KEY_3 -
+    occurrence_id DATA_1 - start_date DATA_2 - end_date DATA_3 -
+    date_recursive_type (N904) DATA_4 - day_of_week (N905) DATA_5 -
+    day_of_month DATA_6 - DATA_type (N903) DATA_7 - title DATA_9 -
+    evt_description </description>
+
+    <values>
+      <value>
+        <code>P954</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P995">
+    <key>GENERIC_HTML</key>
+
+    <usage>This parameter is used to render html content from the sever based on class configured</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> customer_id - customer company id KEY_1 -
+    widget_name DATA_1 - className DATA_2 - relative path of a file DATA_3 - relative path of file</description>
+
+    <values>
+      <value>
+        <code>P995</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Cheque number range -->
+
+  <parameter name="P996">
+    <key>CHEQUE_NUMBER_RANGE</key>
+
+    <usage>Cheque number range. Used to configure cheque number range of any
+    non zero positive number</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * DATA_1 - cheque number range.
+    </description>
+
+    <values>
+      <value>
+        <code>P996</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Cheque Book Request Limit -->
+
+  <parameter name="P997">
+    <key>CHEQUE_BOOK_REQUEST_LIMIT</key>
+
+    <usage>Cheque book request. - Used to configure Number of Cheque Books
+    Request Minimum, Maximum configuration.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * DATA_1 - mimimum number of
+    cheque books DATA_2 - maximum number of cheque books </description>
+
+    <values>
+      <value>
+        <code>P997</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- At present not being used. -->
+
+  <parameter name="P998">
+    <key>REAUTH_CONFIG</key>
+
+    <usage>Used to configure reauthentication type per product code and sub
+    product code.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 - product code KEY_2 -
+    sub product code KEY_3 - transaction type code DATA_1 - reauthentication
+    type </description>
+
+    <values>
+      <value>
+        <code>P998</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Delivery Modes -->
+
+  <parameter name="P999">
+    <key>FT_PI_DELIVERY_MODE</key>
+
+    <usage>Delivery Modes For Cashier Order, Demand Draft, Cheque Book. Used
+    to configure delivery modes options per product in association with sub
+    product code.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * DATA_1 - Y/N (Mail to
+    Applicant) - CO/DD DATA_2 - Y/N (Mail to Beneficiary) - CO/DD DATA_3 - Y/N
+    (Collect from Branch) - CO/DD DATA_11 - Y/N (Normal Mail To Applicant) -
+    Cheque Book DATA_12 - Y/N (Registered Mail To Applicant) - Cheque Book
+    </description>
+
+    <values>
+      <value>
+        <code>P999</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Stop cheque reason reserved by SHB Project (JIRA ID - MPS-21213)  -->
+
+  <parameter name="P700">
+    <key>STOP_CHEQUE_REASON</key>
+
+    <usage>To configure possible reasons for stopping cheaque specific to
+    client SHB.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY</tablename>
+
+    <description language="en"> COMPANY_ID - * KEY_1 -Bank Name, KEY_2- product code, KEY_3 - sub product code,
+    DATA_1 - Reason for stop cheque </description>
+
+    <values>
+      <value>
+        <code>P700</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P701">
+    <key>IFSC_CODE_MUPS</key>
+
+    <usage>To configure possible reasons for getting IFSC codes</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">COMPANY_ID - Bank Company Id KEY_1 -IFSC Code, KEY_2- NEFT, KEY_3 - RTGS,
+    DATA_1 - Bank Name, DATA_2 - Bank Address  , DATA_3 - City, DATA_4 - Address Line1 , DATA_5 - Address Line2
+    </description>
+
+    <values>
+      <value>
+        <code>P701</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P702">
+    <key>AMOUNT_FORMAT_ABBREVIATION</key>
+
+    <usage>To configure abbreviation for amount format</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY</tablename>
+
+    <description language="en"> COMPANY_ID - *, KEY_4 - User language,
+    DATA_1 -  Amount Format e.g. MILLION, BILLION, DATA_2 - Preferred abbreviation name for formated amount </description>
+
+    <values>
+      <value>
+        <code>P702</code>
+      </value>
+    </values>
+  </parameter>
+
+  <parameter name="P703">
+    <key>MEPS_BIC_CODE</key>
+
+    <usage>To configure possible reasons for getting Singapore Transfer BIC codes</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">COMPANY_ID - Bank Company Id, KEY_1 -Bank BIC code,
+  	  DATA_1 - Name, DATA_2 - Bank name, DATA_3 - Bank Address line 1  , DATA_4 - Post Code, DATA_5 - City ,
+  	  DATA_6 - Country, DATA_7 - Branch, DATA_8 - Required Intermediary Bank(Y/N) </description>
+    <values>
+      <value>
+        <code>P703</code>
+      </value>
+    </values>
+  </parameter>
+
+
+  <!-- Remittance description for product MT103 and MT202  -->
+
+  <parameter name="C007">
+    <key>FI_REMITTANCE_DESCRIPTION</key>
+
+    <usage>To retrieve remittance description for product MT103 and MT202
+    .</usage>
+
+    <tablename>GTP_CODE_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * </description>
+
+    <values>
+      <value>
+        <code>C007</code>
+      </value>
+    </values>
+  </parameter>
+  <!-- Transfer Purpose Dropdown  -->
+
+  <parameter name="C008">
+    <key>TRANSFER_PURPOSE</key>
+    <usage>To retrieve TRANSFER PURPOSE dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C008</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Standby LC Type Dropdown  -->
+
+  <parameter name="C010">
+    <key>STAND_BY_LC_TYPE</key>
+    <usage>To retrieve Standby LC Type dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C010</code>
+      </value>
+    </values>
+  </parameter>
+  
+	<!-- Guarantee Type Dropdown  -->
+
+  <parameter name="C011">
+    <key>PRODUCT_TYPE_CODE</key>
+    <usage>To retrieve Product Type dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * 
+    LONG_DESC - * is also included
+    PRODUCT_CODE - For Bg and *
+    SHORT_DESC - * is also included 
+    </description>
+    <values>
+      <value>
+        <code>C011</code>
+      </value>
+    </values>
+  </parameter>
+  
+  
+  	<!-- Guarantee Type Dropdown for SWIFT2020  -->
+
+  <parameter name="C082">
+    <key>SWIFT_2019_PRODUCT_TYPE_CODE</key>
+    <usage>To retrieve Product Type dropdown list for SWIFT2020.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * 
+    LONG_DESC - * is also included
+    PRODUCT_CODE - For Bg and *
+    SHORT_DESC - * is also included 
+    </description>
+    <values>
+      <value>
+        <code>C082</code>
+      </value>
+    </values>
+  </parameter>
+	
+	<!-- Tenor Type Dropdown  -->
+
+  <parameter name="C015">
+    <key>TENOR_TYPE</key>
+    <usage>To retrieve Tenor Type dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - *
+    LONG_DESC - Upto 1 year (Start and end dates are included)
+    CODE_VAL - 01 to 04(including * also)
+    PRODUCT_CODE - For Bg and * 
+    SHORT_DESC - (0-365)(start date and end date)</description>
+    <values>
+      <value>
+        <code>C015</code>
+      </value>
+    </values>
+  </parameter>
+  
+ <!-- Standby LC Rules Applicable dropdown -->
+  
+  <parameter name="C012">
+    <key>STAND_BY_LC_RULES</key>
+    <usage>To retrieve Standby LC Rules Applicable dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C012</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Beneficiary File Upload Product Type -->
+   <parameter name="P955">
+    <key>BENE_UPLOAD_PRODUCT_TYPE</key>
+    <usage>To populate product type</usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en"> COMPANY_ID - * DATA_1 - product_type</description>
+    <values>
+      <value>
+        <code>P955</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="P798">
+    <key>CUSTOMER_MT798_MODE</key>
+    <usage>
+	    MT798 or Online interfacing Modes For Customers per attached Bank. 
+	    Used to configure MT798 mode option per Customer in association with Bank.
+    </usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en"> 
+	    COMPANY_ID - company_id 
+	    KEY_1 - attached bank_id 
+	    KEY_2 - product_code
+	    KEY_3 - sub_product_code (* incase there is no subproductcode) 
+	    DATA_1 - Y/N (MT798)
+    </description>
+    <values>
+      <value>
+        <code>P798</code>
+      </value>
+    </values>
+  </parameter>
+  
+  
+  <!-- Standby Letter of Credit template creation details -->
+
+  <parameter name="P799">
+    <key>SBLC_DOCUMENT</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store Standby Letter of Credit template creation details
+    information.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    Standby Letter of Credit name DATA_1 - Standby Letter of Credit type DATA_2 - Standby Letter of Credit type description
+    DATA_3 - is Standby Letter of Credit activated DATA_4 - is Specimen selected DATA_6 -
+    Standby Letter of Credit is standard or WYSIWYG Editor DATA_7 - Standby Letter of Credit text id DATA_8
+    - Specimen name DATA_9 - document id DATA_11 - fo stylesheet name
+    </description>
+
+    <values>
+      <value>
+        <code>P799</code>
+      </value>
+    </values>
+  </parameter>
+
+  <!-- Standby Letter of Credit template creation details assigned customer details -->
+
+  <parameter name="P800">
+    <key>SBLC_DOCUMENT_CUSTOMER</key>
+
+    <usage>This parameter is not intended to manually configure. Used by
+    Portal application to store Standby Letter of Credit assinged customer, entity details
+    information.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    Standby Letter of Credit name KEY_2 - Customer abbv name KEY_3 - entity abbv name or *
+    </description>
+
+    <values>
+      <value>
+        <code>P800</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- This parameter used to configure the valid the sub_tnx_type_code with the combination of  tnx_type_code and product_code-->
+
+  <parameter name="P801">
+    <key>AUTHORISATION_MATRIX_SUB_TNX_TYPE_CODES</key>
+
+    <usage>This parameter used to configure list of the valid the sub_tnx_type_code values which 
+    are applicable for the combination of  tnx_type_code and product_code</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    COMPANY_ID - customer company id(default value *)
+    KEY_1 - product code (Example : BG or SI etc)
+    KEY_2 - sub transaction type code (Example : 05 - 'Release' etc which represents business code N003 )
+    DATA_1 - sub transaction type code (Example : 05 - 'Release' etc which represents business code N003 )
+    DATA_2 - transaction type code (Ex: '01'/'03'/'13' - means 'New' or 'Amend' etc which represents business code C071)
+    </description>
+
+    <values>
+      <value>
+        <code>P801</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P802">
+    <key>INCO_TERM_MAPPING</key>
+
+    <usage>Used to associate the Inco terms specified by the Banks.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - Bank NAme, Key 2= year ,Key 3 =Y/N DATA_1 - inco term DATA_2 = Y/N </description>
+
+    <values>
+      <value>
+        <code>P802</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P806">
+  	 <key>DELIVERY_TO_MAPPING</key>
+
+    <usage>Used to associate the delivery to specified by the Banks.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+    
+    <description language="en"> KEY_1 - Bank NAme, Key 2= product code, Key_4 = language, DATA_1 - Delivery to, DATA_2 = Y/N, DATA_3 = codes </description>
+  	
+  	<values>
+      <value>
+        <code>P806</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P807">
+    <key>DEMAND_INDICATOR_MAPPING</key>
+
+    <usage>Used to associate the demand indicators specified by the Banks.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - Bank Name, Key 2= product, DATA_1 - demand indicator, DATA_2 = Y/N, DATA_3 = codes </description>
+
+    <values>
+      <value>
+        <code>P807</code>
+      </value>
+    </values>
+  </parameter>
+	<!-- Future FT release time -->
+	<parameter name="P803">
+		<key>FT_RELEASE_TIME_FOR_FUTURE_PAYMENTS</key>
+		<usage>Used for Fund Transfer Cut-off-time/Release-time for Future Payments.</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en"> 
+			COMPANY_ID: If '*' is mentioned, all banks will inherit the same cut-off time.
+			KEY_1: Abbv name of the bank, '*' for all banks.
+			KEY_2: Product code, FT for Fund transfers.
+			KEY_3: FT Type Code (Internal/Domestic/Bill, etc) If '*', then the limits apply for all types.
+			DATA_1: The release hour (0-23)
+			DATA_2: The release minute (0-59)
+			DATA_3: The time-zone of the indicated time.
+		</description>
+	
+		<values>
+			<value>
+				<code>P803</code>
+			</value>
+		</values>
+	</parameter>
+  
+  
+   <!-- This parameter used to store and retrieve entities for the report -->
+
+  <parameter name="P310">
+    <key>REPORT_ENTITES</key>
+
+    <usage>This parameter used to save and retrieve entities for the Report</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    COMPANY_ID - customer company id(default value *)
+    KEY_1 - reportID
+    KEY_2 - reportName
+    KEY_3 - entities
+    </description>
+
+    <values>
+      <value>
+        <code>P310</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="P767">
+    <key>EXTERNAL_REPORT</key>
+
+    <usage>This parameter used to create report using data stored outside portal</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    COMPANY_ID - customer company id(default value *)
+    KEY_1 - Company abbv name
+    KEY_2 - Single Product Code
+    Data_1 - Input Source Classname
+    </description>
+
+    <values>
+      <value>
+        <code>P767</code>
+      </value>
+    </values>
+  </parameter>  
+  
+    <!-- BG Rules Applicable dropdown -->
+  
+  <parameter name="C013">
+    <key>BG_RULES</key>
+    <usage>To retrieve BG Rules Applicable dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C013</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- LI Transportation Doc Type dropdown -->
+  
+  <parameter name="C014">
+    <key>TRANSPORT_DOC_TYPE</key>
+    <usage>To retrieve Transportation Doc Type dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C014</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Beneficiary Master - Sub Products Drop Down List -->
+  <parameter name="C016">
+    <key>BENE_MASTER_PRODUCT_TYPE</key>
+    <usage>To retrieve Beneficiary Master - Sub Products Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C016</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Beneficiary Master Upload- Sub Products Drop Down List -->
+  <parameter name="C017">
+    <key>BENE_MASTER_UPLOAD_PRODUCT_TYPE</key>
+    <usage>To retrieve Beneficiary Master Upload - Sub Products Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C017</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- Charges Payer - Payer Drop Down List -->
+  <parameter name="C018">
+    <key>CHARGES_PAYER_TYPE</key>
+    <usage>To retrieve Charges Payer - Payer Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C018</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- Charges Payee - Payee Drop Down List -->
+  <parameter name="C019">
+    <key>CHARGES_PAYEE_TYPE</key>
+    <usage>To retrieve Charges Payee - Payee Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C019</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Payment Code - Payment Code Drop Down List -->
+  <parameter name="C020">
+    <key>PAYMENT_CODE</key>
+    <usage>To retrieve Payment Code - Payment Code Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C020</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Certificate Type - Certificate Type Drop Down List -->
+  <parameter name="C021">
+    <key>CERTIFICATE_TYPE</key>
+    <usage>To retrieve Certificate Type - Certificate Type Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C021</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Clauses Required - Clauses Required Drop Down List -->
+  <parameter name="C022">
+    <key>CLAUSES_REQUIRED</key>
+    <usage>To retrieve Clauses Required - Clauses Required Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C022</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- Match Assured Party - Match Assured Party Drop Down List -->
+  <parameter name="C023">
+    <key>MATCH_ASSURED_PARTY</key>
+    <usage>To retrieve Match Assured Party - Match Assured Party Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C023</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Other Certificate Type - Other Certificate Dataset Type Drop Down List -->
+  <parameter name="C024">
+    <key>OTHER_CERTIFICATE_TYPE</key>
+    <usage>To retrieve Other Certificate Type - Other Certificate Dataset Type Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C024</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Account Identification Type - Account Identification Type Drop Down List -->
+  <parameter name="C025">
+    <key>ACCOUNT_IDENTIFICATION_TYPE</key>
+    <usage>To retrieve Account Identification Type - Account Identification Type Drop Down List.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C025</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- License Types Applicable dropdown -->
+  
+  <parameter name="C026">
+    <key>LICENSE_TYPES</key>
+    <usage>Contains the License Types that are applicable to define a License Template by the Bank.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - *  
+    Default Values - Export License/FX License/Import License
+    </description>
+    <values>
+      <value>
+        <code>C026</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- License Non Principal Default dropdown -->
+  
+  <parameter name="C028">
+    <key>LICENSE_NON_PRINCIPAL_DEFAULT</key>
+    <usage>To retrieve Non principal default types from dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * 
+    Default Values - Any Non-Principal/Non-Principal Only/Non-Principal in country
+    </description>
+    <values>
+      <value>
+        <code>C028</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Treasury Branch Reference dropdown -->
+  <parameter name="C027">
+    <key>TREASURY_BRANCH_REFERENCES</key>
+    <usage>To retrieve Treasury Branch Reference dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+    COMPANY_ID - * 
+    LONG_DESC - Treasury Branch Name
+    CODE_VAL - Treasury Branch Code
+    PRODUCT_CODE - *
+    SUB_PRODUCT_CODE - *
+    </description>
+    <values>
+      <value>
+        <code>C027</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C029">
+		<key>TIME_PERIOD</key>
+		<usage>To retrieve the time periods as Days/Weeks/Months/Years</usage>
+		<tablename>GTP_CODE_DATA</tablename>
+		<description language="en">
+		COMPANY_ID - * 
+		LONG_DESC - Time Periods
+		CODE_VAL - Time Periods
+		PRODUCT_CODE - *
+		SUB_PRODUCT_CODE - *
+		</description>
+		<values>
+		<value>
+		<code>C029</code>
+		</value>
+		</values>
+  </parameter>
+  <!-- Pricing Option -->
+  <parameter name="C030">
+  	<key>PRICING_OPTION</key>
+  	<usage>To retrieve various Loan Pricing Options</usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Pricing option ,
+  		CODE_VAL - Code Value for Pricing option,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C030</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <!-- Repricing frequency  -->
+  <parameter name="C031">
+  	<key>REPRICING_FREQUENCY</key>
+	<usage>To retrieve various Loan Repricing frequency from LoanIQ.</usage>
+	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Repricing Frequency,
+  		CODE_VAL - Code Value for Repricing Frequency,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C031</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <!-- Risk Types -->
+  <parameter name="C032">
+  	<key>RISK_TYPE</key>
+  	<usage>To retrieve various Loan Risk Types from LoanIQ. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Risk Type ,
+  		CODE_VAL - Code Value for Risk Type,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C032</code>
+  		</value>
+  	</values>
+  </parameter> 
+   
+    <parameter name="C098">
+  	<key>BANK_TYPE</key>
+  	<usage>To display types of bank. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Bank Type ,
+  		CODE_VAL - Code Value for Bank Type,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C098</code>
+  		</value>
+  	</values>
+  </parameter>
+  <parameter name="C099">
+  	<key>LINE_OF_BUSINESS</key>
+  	<usage>To display different Line of Businesses. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Line of Business types ,
+  		CODE_VAL - Code Value for Line of Business types,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C099</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C100">
+  	<key>NO_OF_CHEQUES</key>
+  	<usage>To display number of cheques. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for number of cheques ,
+  		CODE_VAL - Code Value for number of cheques,
+  		PRODUCT_CODE - Product code,
+  		SUB_PRODUCT_CODE -sub product code
+  	</description>
+  	<values>
+  		<value>
+  			<code>C100</code>
+  		</value>
+  	</values>
+  </parameter>
+   
+	<!-- retrieve the address for a particular product -->
+	<parameter name="P347">
+		<key>ADDRESS_TYPE</key>
+		<usage>To retrieve the address for a particular product.</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en"> 
+			COMPANY_ID - * 
+			Key_1 - Product Type
+			Key_2 - Sub Product
+	    	Data_1 - Address Type ( Address Type can be PA - Postal Address , SA - SWIFT Address
+	    			 or CA - Charge Accout Address)
+	    	NOTE-  Entity doesn't have a SWIFT Adress, so the alternative address is taken as the SWIFT Address.
+	    	For FSCM products Postal Address is taken.
+			Sub Product has to be specified only when the Product Type is FT, else its **.
+		</description>
+		<values>
+			<value>
+				<code>P347</code>
+			</value>
+		</values>
+	</parameter>
+	
+<!-- Mail format template selection -->
+
+  <parameter name="P760">
+    <key>MAIL_FORMAT</key>
+
+    <usage>This parameter is for configuring mail subject and body template.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - bank_id KEY_1 -
+    bank name KEY_2 - type of alert  KEY_3 - product_code KEY_4 -
+    sub_product_code KEY_5 - tnx_type KEY_6 - product_status KEY_7 - recipient KEY_8 - Destination Customer -00 Bank -01
+     DATA_1 - subject_key DATA_2 - body_key Data3 - Folder Name Data4 - Send Attachment (Y/N)
+    || address </description>
+
+    <values>
+      <value>
+        <code>P760</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <!-- Source configuration for Web Services -->
+  
+  <parameter name="P761">
+  	<key>INPUT_SOURCE</key>
+  	<usage>This parameter is used for configuring the type of input source for the web service. The source can be ERP,SSO etc. This parameter enables client to control the
+  	usage of web service for specific users or actions.</usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en">
+  			COMPANY_ID - company_id 
+    		KEY_1 - Bank/BankGroup/Customer
+    		KEY_2 - Web Service name
+    		KEY_3 - Actioncode
+    		KEY_4 - source
+    		DATA_1 - Y/N
+  	</description>
+  	<values>
+      <value>
+        <code>P761</code>
+      </value>
+    </values>
+  </parameter>
+
+ <parameter name="P762">
+  	<key>SOURCE_FILE_MAPPING</key>
+  	<usage>This parameter is used for configuring indirect reference to Listdef xml file for the Listdef web service. There is no initial script for this
+  	parameter. Client should configure manually if ListDefwebservice is used.</usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en"> 
+  			COMPANY_ID -  company_id 
+    		    KEY_1 -  userid
+			    KEY_2 -  bank abbv name
+			    KEY_3 - source logical name
+			    KEY_4 - source context from which source     		
+    		DATA_1 - ListDef file path.
+  	</description>
+  	<values>
+      <value>
+        <code>P762</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P753">
+  	<key>AUTO_SAVE_MANUAL_SAVE_CONFIG</key>
+  	<usage>This parameter is used for configuring auto save or manual save. There is no initial script for this
+  	parameter. Client should configure manually to use this feature.</usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en"> 
+  			COMPANY_ID - company_id 
+    		    KEY_1 - user_id
+				KEY_2 - bank_abbv_name
+				KEY_3 - product_code
+				KEY_4 - sub_product_code
+				KEY_5 - tnx_type_code
+				KEY_6 - sub_tnx_type_code
+    		DATA_1 - A/M/AM (A for Auto-save | M for Manual save | AM for Auto and Manual save) flag tells
+    			whether auto save configuration is enabled for this product/sub-product. Example : M
+    			Only one of the three specified values should be used.
+    		DATA_2 - Scheduled time period interval in milliseconds for auto save. Example: 300
+    		DATA_3 - Maximum time period in days to delete draft/unwanted auto saved data. Example: 5
+  	</description>
+  	<values>
+      <value>
+        <code>P753</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P754">
+  	<key>ENABLE_FEEDBACK_OPTION_CONFIG</key>
+  	<usage>This parameter is used for configuring feedback option after n number of days. There is no initial script for this
+  	parameter. Client should configure manually to use this feature.</usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en"> 
+  			COMPANY_ID - company_id 
+			KEY_1 - BANK_ABBV_NAME for bank specific or default '*' to apply same to all banks
+			KEY_2 - user_id
+			KEY_3 - product_code
+			KEY_4 - sub_product_code
+			KEY_5 - tnx_type_code
+    		DATA_1 - Scheduled time interval in days for enabling feedback option. Example: 5
+  	</description>
+  	<values>
+      <value>
+        <code>P754</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P752">
+  	<key>STATUS_COLOR_MAPPING</key>
+  	<usage>This parameter is used for configuring status color code reference to Listdef xml file for the Listdef web service. There is no initial script for this
+  	parameter. Client should configure manually if ListDefwebservice is used.</usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en"> 
+  			COMPANY_ID -  company_id 
+    		    KEY_1 -  bank abbv name
+			    KEY_2 -  status_color  		
+    		DATA_1 - Status Color JSON file path.
+  	</description>
+  	<values>
+      <value>
+        <code>P752</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P763">
+  	<key>TMA_MESSAGE_SEQUENCE</key>
+  	<usage>This parameter is used for configuring the message sequence of incoming TMA messages to process it. From KEY_3 on wards the message types should be configured, along with unique identifier in DATA_3 on wards respectively
+  	Note that message types should be configured in asc order. If there is a event submitted from the Portal and it required some set of messages as response, we need to configure
+  	the pending message as well in the sequnece of parameter. DATA_2 should be Y for cases when there is action pending from the customer for an event.
+  	For example: An Initialbaselinesubmission(019) event submitted from FBCC requires 3 messages 001, 018, 010 from TMA
+  	 hence in the parameter configuration requires 019 as well as one of the key.</usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en"> 
+  			COMPANY_ID -  company_id 
+			    KEY_1 -  product code
+			    KEY_2 -	Event type
+			    KEY_3 - message type    		
+    		DATA_1 - actual message sequence to be processed as per the ISO standared, separated by delimiter ":"
+    		DATA_2 - Y/N - Whether this event requires any action(like accept/reject) from the portal side, based on which event in progress flad is set to "Y".
+    		eg: For a TMA initiated IO amendment, the buyer has to accept/reject the amendment, no other event should be allowed till this action is completed.
+    		The values is set as "Y", based on this condition, the TM master will be updated with event in progress flag.
+    		DATA_3 - Unique identifier for the message type in KEY_3 
+    		eg: 
+    		1. If message 015 has this as the identifier value "//SubmitrPropsdBaselnRef/Submitr/BIC_//SellrBk/BIC", both are xpaths in the xml message, and their values have to be same.
+    		2. If message 011 has this as the identifier value "//RptTp/Tp_CURR://EstblishdBaselnId/AmdmntSeqNb_*", we have two conditions to validate, which are separated by a ":"
+    		 	a) value at xpath location //RptTp/Tp, in the message, should be equal to "CURR",
+    		 	b) value at xpath location //EstblishdBaselnId/AmdmntSeqNb, in the message, should not be null/empty.
+  	</description>
+  	<values>
+      <value>
+        <code>P763</code>
+      </value>
+    </values>
+  </parameter>
+
+   <parameter name="P764">
+  	<key>REPORT_SCHEDULE_HOURS</key>
+  	<usage>
+			This parameter used to configure the hours in report scheduling. If this parameter is configured it will enable to configure report at a 
+			particular hour and minute. Infact, it supports the configuration of maximum number of reports that a company can schedule as well number of records
+			that a report can fetch from database. 
+    </usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en"> 
+  			COMPANY_ID -  company id of customer/bank/bank group to which the Report parameter is configured.
+		    KEY_1 -  owner abbv name
+ 			DATA_1 - Maximum number of reports that can configured for report scheduling(* - means no limit for the report scheduling)
+ 			DATA_2 - Maximum number of records to be fetched from the report (*- means all records to be fetched from the report)
+ 			DATA_3 - hours in 24 hours format separated by delimiter : in ascending order
+ 			DATA_4 - Default hour.Warning - to be configured from one of the value in DATA_3 only
+  	</description>
+  	<values>
+      <value>
+        <code>P764</code>
+      </value>
+    </values>
+  </parameter>
+  
+    <!-- Error Floating window configuration per product -->
+  <parameter name="P765">
+    <key>ERROR_FLOATING_WINDOW</key>
+    <usage>Used to configure Error Floating window configuration per product.</usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		COMPANY_ID -  company id of to which the error floating window is configured. ex: customer/bank/bank group.
+    		KEY_1 - product code 
+    		KEY_2 - sub-product code 
+    		DATA_1 - Y/N flag tells whether error floating window is enabled for this product/subproduct (Y/N)
+    </description>
+    <values>
+      <value>
+        <code>P765</code>
+      </value>
+    </values>
+  </parameter>
+  
+  
+  <parameter name="C033">
+  	<key>FREIGHT_CHARGE_TYPE</key>
+  	<usage>To retrieve various Freight Charge types used by TMA. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Freight Charge Type,
+  		CODE_VAL - Code Value for Freight Charge Type,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C033</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C034">
+  	<key>INCOTERMS_CODE</key>
+  	<usage>To retrieve various Incoterms codes used by TMA. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Incoterm Code,
+  		CODE_VAL - Code Value for Incoterm Code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C034</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+   <parameter name="C035">
+  	<key>FX_SPOT_VALUE_DATE</key>
+  	<usage>To retrieve various Value Date's used by FX SPOT. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Spot Value Date,
+  		CODE_VAL - Code Value for Spot Value Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C035</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+   <parameter name="C036">
+  	<key>FX_FORWARD_VALUE_DATE</key>
+  	<usage>To retrieve various Value Date's used by FX FORWARD. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Forward Value Date,
+  		CODE_VAL - Code Value for Forward Value Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C036</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C037">
+  	<key>FX_WINDOW_FORWARD_OPTION_DATE</key>
+  	<usage>To retrieve various Option Date's used by FX WINDOW FORWARD. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Window Forward Option Date,
+  		CODE_VAL - Code Value for Window Forward Option Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C037</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C038">
+  	<key>FX_WINDOW_FORWARD_VALUE_DATE</key>
+  	<usage>To retrieve various Value Date's used by FX WINDOW FORWARD. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Forward Value Date,
+  		CODE_VAL - Code Value for Forward Value Date,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C038</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C039">
+  	<key>FX_PAYMENT_SPLIT_ACTION</key>
+  	<usage>To retrieve various Actions used by Payment Split. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Payment Split Drop Down,
+  		CODE_VAL - Code Value for Actions used by Payment Split,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C039</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C040">
+  	<key>FX_DRAWDOWN_ACTION</key>
+  	<usage>To retrieve various Actions used by Drawdown. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Payment Drawdown Drop Down,
+  		CODE_VAL - Code Value for Actions Drawdown,
+  		PRODUCT_CODE - FX,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C040</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C041">
+  	<key>FT_REQUEST_DATE_TERM_OPTIONS</key>
+  	<usage>To retrieve various Request date used by Treasury Term Options FT. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Request date used by FT Drop Down,
+  		CODE_VAL - Code Value for Request date used by by FT Drop Down,
+  		PRODUCT_CODE - FT,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C041</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C042">
+  	<key>FT_REQUEST_DATE_STATIC_OPTIONS</key>
+  	<usage>To retrieve various Request date used by Treasury Static Options FT. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Request date used by FT Drop Down,
+  		CODE_VAL - Code Value for Request date used by by FT Drop Down,
+  		PRODUCT_CODE - FT,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C042</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C043">
+  	<key>TD_STRAT_DATE</key>
+  	<usage>To retrieve various Start Date's used by Treasury TD. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Start Date,
+  		CODE_VAL - Code Value for Start Date,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C043</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C044">
+  	<key>TD_START_DATE_STATIC_OPTION</key>
+  	<usage>To retrieve  Actions used by TD. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Start Date,
+  		CODE_VAL - Code Value for Start Date,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C044</code>
+  		</value>
+  	</values>
+  </parameter>
+    
+  <parameter name="C045">
+  	<key>TD_MATURITY_DATE</key>
+  	<usage>To retrieve various Maturity Date's used by Treasury TD. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Maturity Date,
+  		CODE_VAL - Code Value for Maturity Date,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C045</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C046">
+  	<key>TD_ACTION_DETAILS</key>
+  	<usage>To retrieve various Action Details used by Treasury Certificate of Deposit Contract. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Action Details,
+  		CODE_VAL - Code Value for Action Details,
+  		PRODUCT_CODE - TD,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C046</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C047">
+  	<key>PHRASE_TYPE</key>
+  	<usage>To retrieve various Phrase types. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Phrase type,
+  		CODE_VAL - Code Value for Phrase type ,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C047</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C048">
+  	<key>PHRASE_CATEGORY</key>
+  	<usage>To retrieve various Narrative Categories where phrases are applicable. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Narrative Category,
+  		CODE_VAL - Code Value for Narrative Category ,
+  		PRODUCT_CODE - LC/BG/SI/*,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C048</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C049">
+  	<key>REVOLVING_TIME_PERIOD</key>
+  	<usage>To retrieve the time periods as Days/Months</usage>
+	<tablename>GTP_CODE_DATA</tablename>
+	<description language="en">
+	COMPANY_ID - * 
+	LONG_DESC - Time Periods
+	CODE_VAL - Time Periods
+	PRODUCT_CODE - LC
+	SUB_PRODUCT_CODE - *
+	</description>
+	<values>
+		<value>
+			<code>C049</code>
+		</value>
+	</values>
+  </parameter>
+  
+  <parameter name="C050">
+  	<key>REVOLVING_CHARGE_UPTO</key>
+  	<usage>To retrieve the charge upto dropdown for revolving LC.</usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for charge upto,
+  		CODE_VAL - Code Value for charge upto,
+  		PRODUCT_CODE - LC
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C050</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C051">
+  	<key>GUARANTEE_REFERENCE</key>
+  	<usage>To retrieve various Guarantee references</usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Guarantee reference,
+  		CODE_VAL - Code Value for Guarantee reference ,
+  		PRODUCT_CODE - BG,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C051</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C052">
+  	<key>TENOR_PERIOD_DETAILS</key>
+  	<usage>To retrieve tenor period details</usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for tenor period,
+  		CODE_VAL - Code Value for tenor period,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C052</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+   <parameter name="C053">
+  	<key>TENOR_DAYS_TYPE</key>
+  	<usage>To retrieve tenor days type</usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for tenor days type,
+  		CODE_VAL - Code Value for tenor days type,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C053</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  
+   <parameter name="C054">
+    <key>LIQUIDITY_FREQUENCY</key>
+
+    <usage>To retrieve the options of liquidity frequency for the user .</usage>
+
+    <tablename>GTP_CODE_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * </description>
+
+    <values>
+      <value>
+        <code>C054</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C055">
+    <key>LIQUIDITY_SUB_GROUP_TYPE</key>
+
+    <usage>To retrieve the options of liquidity sub group types for the user .</usage>
+
+    <tablename>GTP_CODE_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * </description>
+
+    <values>
+      <value>
+        <code>C055</code>
+      </value>
+    </values>
+  </parameter>
+  
+  
+   <parameter name="C056">
+    <key>LC_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C056</code>
+      </value>
+    </values>
+  </parameter>
+    
+   <parameter name="C057">
+    <key>SI_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C057</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C058">
+    <key>FT_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C058</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C059">
+    <key>BG_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C059</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C060">
+    <key>EA_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C060</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C061">
+    <key>BR_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C061</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C062">
+    <key>EL_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C062</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C063">
+    <key>EC_DELIVERY_MODE</key>
+    <usage>To retrieve the options of delivery mode for the user .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * </description>
+    <values>
+      <value>
+        <code>C063</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C064">
+    <key>EC_DOCUMENT_TYPE_CODE</key>
+    <usage>To retrieve the document types.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> 
+    	COMPANY_ID - * 
+    	LONG_DESC - Long Description for document type,
+  		CODE_VAL - FBCC document type code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - FBTI document type code,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+    </description>
+    <values>
+      <value>
+        <code>C064</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P052">
+    <key>PHRASE_TYPE_PRODUCT_MAPPING</key>
+
+    <usage>Used to associate the phrase types to various product codes.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - Phrase Type Code, DATA_1 - Product Code </description>
+
+    <values>
+      <value>
+        <code>P052</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P371">
+    <key>PARAMETER_ID_SHOWN_ACCOUNT_SUMMARY</key>
+
+    <usage>USed to Configure the account types shown in account summary automatically without going
+    through user account set-up in customer side.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - customer company id KEY_1 -
+    Account_type ( Refer BusinessCodes for account type)
+    Sample Script for account LA(Loan Account,account type='05') to be shown automatically in account summary:
+    Insert into gtp_param_data (brch_code,parm_id,company_id,key_1,key_2,key_3,key_4,key_5,key_6,key_7,key_8,key_9,
+    key_10,key_11,key_12,key_13,key_14,key_15,key_16,key_17,key_18,key_19,key_20,wild_card_ind,data_1,data_2,data_3,
+    data_4,data_5,data_6,data_7,data_8,data_9,data_10,data_11,data_12,data_13,data_14,data_15,data_16,data_17,
+    data_18,data_19,data_20) values ('00001','P371','*','**','05','**','**','**','**','**','**','**','**','**',
+    '**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**',
+    '**','**','**','**','**','**','**','**','**');
+      </description>
+
+    <values>
+      <value>
+        <code>P371</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C071">
+    <key>TRANSACTION_TYPE_CODES</key>
+    <usage>To retrieve TRANSACTION_TYPE_CODES in the Authorisation Matrix screen dropdown list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en"> COMPANY_ID - * CODE_VAL - tnx_type_code</description>
+    <values>
+      <value>
+        <code>C071</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C072">
+    <key>LIQUIDITY_BALANCE_TYPE</key>
+
+    <usage>To retrieve the balance type options of liquidity  user .</usage>
+
+    <tablename>GTP_CODE_DATA</tablename>
+
+    <description language="en"> COMPANY_ID - * </description>
+
+    <values>
+      <value>
+        <code>C072</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C073">
+    <key>FSCM_PROGRAM_TYPE</key>
+    <usage>To define the fscm program types .</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for fscm program type,
+  		CODE_VAL - FSCM program type code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - Short Description FSCM program type code,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</description>
+    <values>
+      <value>
+        <code>C073</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C074">
+    <key>FSCM_PROGRAM_SUBTYPE_CATEGORY</key>
+    <usage>To define the fscm program sub-type category.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for fscm program type,
+  		CODE_VAL - FSCM program sub-type category code,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - Short Description FSCM program sub-type category code,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</description>
+    <values>
+      <value>
+        <code>C074</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C075">
+    <key>LIQ_REPRICING_OPTION</key>
+    <usage>To define the repricing option</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for repricing option label,
+  		CODE_VAL - repricing option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - repricing option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</description>
+    <values>
+      <value>
+        <code>C075</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C076">
+    <key>LIQ_REPRICING_NEW_LOAN_OPTIONS</key>
+    <usage>To define the repricing new loan options</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for repricing new loan label,
+  		CODE_VAL - repricing new loan value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - repricing new loan value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</description>
+    <values>
+      <value>
+        <code>C076</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C077">
+    <key>LIQ_REPRICING_ADJUST_REMAINING_AMOUNT_OPTIONS</key>
+    <usage>To define the repricing adjust remaining amount options</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for adjust remaining amount option label,
+  		CODE_VAL - adjust remaining amount option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - adjust remaining amount option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</description>
+    <values>
+      <value>
+        <code>C077</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C078">
+    <key>FSCM_FIN_REP_OPTIONS</key>
+    <usage>To define finance repayment options</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for adjust remaining amount option label,
+  		CODE_VAL - adjust remaining amount option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - adjust remaining amount option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</description>
+    <values>
+      <value>
+        <code>C078</code>
+      </value>
+    </values>
+  </parameter> 
+  
+   <!--  Fees and Billing Fee Product Code  -->
+  
+    <parameter name="C079">
+    <key>FB_FEE_PRODUCT_OPTIONS</key>
+    <usage>To define fee product options</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+				
+		COMPANY_ID - *, The customer company for whom the program type is applicable. 
+    	LONG_DESC - Long Description for adjust remaining amount option label,
+  		CODE_VAL - adjust remaining amount option value,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*,
+  		SHORT_DESC - adjust remaining amount option value,
+  		PREFERRED_ORDER - the order in which the list to be fetched
+	</description>
+    <values>
+      <value>
+        <code>C079</code>
+      </value>
+    </values>
+  </parameter>  
+  
+   <!-- Every Parameter added related to customization will be prefixed by "PC" instead of "P" -->
+   <!--  Following is the configuration reserved for Barclays MTP005 implementation. -->
+ 	 	 
+   <!--  <parameter name="PC01">
+ 	 	 <key>CHECKER_ALERT_MAPPING</key>
+ 	 	 
+ 	 	  <usage>Parameters related with checker users having configuration to send transaction notification.</usage>
+ 	 	
+ 	 	  <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+ 	 		
+ 	 	  <description language="en"> COMPANY_ID - COMPANY_ID KEY_1 - Account Type KEY_3 -
+ 	 	  User Login Id KEY_4 - Instant notification flag KEY_5 - Custom Time KEY_6
+ 	 	  - Fixed Time (Hour) KEY_7 - Fixed Time (Minute) KEY_7 - Reminder Frequency DATA_1 - User Login Id
+ 	 	   </description>
+ 	 	 
+ 	 	  <values>
+ 	 	  <value>
+ 	 	     <code>PC01</code>
+ 	 	  </value>
+ 	 	  </values>
+ 	 	  </parameter>
+   -->  
+  
+  <parameter name="P766">
+    <key>ALERT_PRODUCT_REFERENCE</key>
+    <usage>Used to configure the table name and reference column for the product/transaction element product.</usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		COMPANY_ID -  company id
+    		KEY_1 - product/transaction element product 
+    		DATA_1 - master table name
+    		DATA_2 - master table reference column
+    		DATA_3 - transaction table name
+    		DATA_4 - transaction table reference column
+    		DATA_5 - transaction table reference column
+    </description>
+    <values>
+      <value>
+        <code>P766</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P767">
+    <key>FSCM_PROGRAM_SUB_TYPE</key>
+    <usage>Used to configure the different fscm program sub-types </usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en"> 
+    	GTP_PARAM_DATA 
+    		PARAM_ID - unique id
+    		COMPANY_ID -  company id
+    		KEY_1 - Bank
+    		KEY_2 - fscm program sub-type
+    		KEY_3 - sub-type category
+    		DATA_1 - description
+    		DATA_2 - Multiple Finance
+    		DATA_3 - Anchorparty
+    		DATA_4 - Counterparty
+    		DATA_5 - Invoice uploaded by
+    		DATA_6 - Invoice submitted by
+    		DATA_7 - Buyer acceptance required
+    		DATA_8 - Finance Request By
+    		DATA_9 - Finance Debit Party
+    		DATA_10 - Finance Credit Party
+    		DATA_11 - Finance Settled By
+    		DATA_12 - Residual Payment By
+    		DATA_13 - Principal Risk Party
+    		DATA_14 - Multiple Finance Allowed
+    </description>
+    <values>
+      <value>
+        <code>P767</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P048">
+    <key>INVOICE_PAYMENT_CREDIT_ACCOUNT</key>
+
+    <usage>Used to configure the credit account per bank for fees and charges- invoice payment.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">
+    	PARAM_ID - unique id
+    	COMPANY_ID - customer company id
+    	KEY_1 - bank abbv name
+    	DATA_1 - credit account number
+    	DATA_2 - credit account currency
+     </description>
+
+    <values>
+      <value>
+        <code>P048</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P343">
+    <key>RETRIEVE_BACKOFFICE</key>
+
+    <usage>To Retrieve the back office based on product code and subproduct code and operation</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+    	COMPANY_ID - * 
+    	KEY_1 - Product code
+    	KEY_2 - Subproduct code
+    	KEY_3 - Operation type 
+    	DATA_1 - BackOffice name
+    	DATA_2 - Synchronous or Asynchronous 
+    </description>
+    <values>
+      <value>
+        <code>P343</code>
+      </value>
+    </values>
+  </parameter>
+
+    <parameter name="P768">
+    <key>LEGAL_TEXT_SETUP</key>
+
+    <usage>Used to configure Legal Text for a bank. This legal text is used in Lending Portal</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+	    COMPANY_ID - * 
+	    KEY_1 - BANK_ABBV_NAME for bank specific or '*' to apply same legal text for all banks 
+	    KEY_2 - FACILITY_TYPE eg:Use REV for REVOLVER type and TERM for TERM Facility type
+	    KEY_3 - TRANSACTION_TYPE eg:DRAWDOWN,REPRICING etc. 
+	    DATA_1 - Localization Key to be used for picking legal text value, this key should be available in loan_*.properties file 
+    </description>
+
+    <values>
+      <value>
+        <code>P768</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P372">
+    <key>REPORT_SCHEDULER_PAYROLL_ALLOWED</key>
+
+    <usage>Used to store the Bank Specific Payroll configuration created for Scheduled Reports. Client may use scripts
+    to maintain the values.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+	    Below are required key and data columns for configuring this parameter,
+			KEY_1 - bank_abbv_name 
+    		DATA_1 - Y/N 
+    </description>
+
+    <values>
+      <value>
+        <code>P372</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P264">
+  	<key>CROSS_CURRENCY</key>
+  	<usage>
+			This parameter used to configure the cross currency for standard payment. If this parameter is configured it will enable to configure cross currency per branch/bank.
+    </usage>
+  	<tablename>GTP_PARAM_DATA</tablename>
+  	<description language="en"> 
+  			COMPANY_ID -  company id of customer/bank/bank group to which the Cross Currency parameter is configured.
+		    KEY_1 -  owner abbv name
+ 			DATA_1 - Y/N(indicates enabled or disabled)
+ 	</description>
+  	<values>
+      <value>
+        <code>P264</code>
+      </value>
+    </values>
+  </parameter>
+ 
+    <parameter name="P911">
+    <key>DEACTIVE_USER_EMAIL</key>
+    <usage>Deactivate user profile Schedular</usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en">
+				
+		COMPANY_ID - * 
+    	KEY_1 - Category(for Bank: BK ,for client: CL)
+    	KEY_2 - Bank Name
+    	KEY_3 - Operation type 
+    	DATA_1 - Number of days of inactivity
+    	DATA_2 - Email id mail to be send 
+	</description>
+    <values>
+      <value>
+        <code>P911</code>
+      </value>
+    </values>
+  </parameter> 
+ 
+     <parameter name="P912">
+    <key>ROLE_UPDATION_EMAIL</key>
+    <usage>Role Update Alert</usage>
+    <tablename>GTP_PARAM_DATA</tablename>
+    <description language="en">
+				
+		COMPANY_ID - * 
+    	KEY_1 - Bank Name
+    	KEY_2 - Category(for Bank: BK ,for client: CL)
+    	KEY_3 - Operation type (R - Role Changes, P - Permission Changes) 
+    	DATA_1 - Email id mail to be send 
+	</description>
+    <values>
+      <value>
+        <code>P912</code>
+      </value>
+    </values>
+  </parameter> 
+  
+   <parameter name="P704">
+    <key>HK_RTGS_BIC_CODE</key>
+
+    <usage>To configure possible reasons for getting HK RTGS Bank List</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en">
+    	 COMPANY_ID - Company Id, 
+    	KEY_1 -Bank BIC code,
+    	DATA_1 - Name,       
+    	DATA_2 - Bank Name, 
+    	DATA_3 - Bank Address Line1  , 
+    	DATA_4 - Address Line2 Post Code, 
+    	DATA_5 - Address Line3 City,
+  	  	DATA_6 - Address Line3 Branch, 
+  	  	DATA_7 - Country , 
+  	  	DATA_8 - Required Intermediary Bank(Y/N) </description>
+    <values>
+      <value>
+        <code>P704</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P769">
+    <key>GETFEE_REFERENCE</key>
+
+    <usage>Used to configure getFee Calculation-Parameterization</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+	    COMPANY_ID - default * 
+	    KEY_1 - BANK_ABBV_NAME for bank specific or default '*' to apply same to all banks 
+	    KEY_2 - PRODUCT_CODE
+	    KEY_3 - SUBPRODUCT_CODE
+	    KEY_4 - Payment System (defined in portal.properties)
+	    DATA_1 - CURRENCY
+	    DATA_2 - AMOUNT(threshold value above which service will be called))
+    </description>
+
+    <values>
+      <value>
+        <code>P769</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="P770">
+  <key>CONFIDENTIAL_PAYMENTS</key>
+		<usage>Configuration to get confidential payments encrypted code</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en">
+		    KEY_1 -
+			BANK_ABBV_NAME for bank specific or default '*' to apply same to all
+			banks
+			KEY_2  - CONFIDENTIAL_PAYMENTS
+			DATA_1 - Encrypted format
+    </description>
+		<values>
+			<value>
+				<code>P770</code>
+			</value>
+		</values>
+  </parameter>
+  
+  <parameter name="P705">
+    <key>PROPERTY_CONFIGURATION_CONTROLLER</key>
+
+    <usage>Used to read values of the Configuration</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> 
+	    COMPANY_ID - default * 
+	    KEY_1 - BANK_ABBV_NAME for bank specific or default '*' to apply same to all banks 
+	    KEY_2 - PROPERTY
+	    DATA_1 - Y/N
+    </description>
+
+    <values>
+      <value>
+        <code>P705</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <!-- Configuring custom FCC widgets. -->
+
+  <parameter name="P900">
+    <key>WIDGETS</key>
+
+    <usage>Used to configure the custom widget for any dashboardType.</usage>
+
+    <tablename>GTP_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - dashboardType (global_dashboard, cash_dashboard, trade_dashboard, loan_dashboard, fscm_dashboard) DATA_1 - widget name(role name). </description>
+
+    <values>
+      <value>
+        <code>P900</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C090">
+    <key>EVENT_TYPES</key>
+    <usage>To retrieve Event types list.</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+    COMPANY_ID - * 
+    LONG_DESC - Events Description (Ex: Issuance, Amendment, Message)
+    SHORT_DESC - Events Short Description (Ex: ISSU, AMD, MSG)
+    CODE_VAL - Transaction Type Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </description>
+    <values>
+      <value>
+        <code>C090</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C091">
+    <key>CLEARING_CODES_TRSRY</key>
+    <usage>To retrieve clearing code list for treasury-instructions</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+    COMPANY_ID 	- * 
+    LONG_DESC 	- Clearing code description(Used for treasury-instructions)
+    SHORT_DESC 	- Clearing code Abbreviation
+    CODE_VAL 	- Code for clearing code.
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </description>
+    <values>
+      <value>
+        <code>C091</code>
+      </value>
+    </values>
+  </parameter>
+  
+  <parameter name="C092">
+    <key>TIME_FRAME_LIST</key>
+    <usage>To retrieve time frame list for listdef</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+    COMPANY_ID 	- * 
+    LONG_DESC 	- Time frame description(eg. DAYS)
+    SHORT_DESC 	- Time frame Abbreviation(eg. D/M/Y)
+    CODE_VAL 	- Number of days/month/year.
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </description>
+    <values>
+      <value>
+        <code>C092</code>
+      </value>
+    </values>
+  </parameter>
+
+    <parameter name="P780">
+    
+    <key>ALLOWED_PAYMENT_METHODS</key>
+
+    <usage>List of Payment Methods methods used for filtering out remittance instructions in Drawdown, Repricing and Increase Screens. </usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+
+    <description language="en"> KEY_1 - bank_abbv_name, DATA_1 - Allowed Payment Method</description>
+
+    <values>
+      <value>
+        <code>P780</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C093">
+    <key>EVENT_PRODUCT_STAT_TYPES</key>
+    <usage>To retrieve Event types list for Product Code</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+    COMPANY_ID - *
+    LONG_DESC - Events Description (Ex: Issuance, Amendment, Message)
+    SHORT_DESC - Events Short Description (Ex: ISSU, AMD, MSG)
+    CODE_VAL - Product Status Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </description>
+    <values>
+      <value>
+        <code>C093</code>
+      </value>
+    </values>
+  </parameter>
+  
+   <parameter name="C094">
+    <key>ACTION_REQUIRED_CODE_TYPES</key>
+    <usage>To retrieve types for Action Required List</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+    COMPANY_ID - *
+    LONG_DESC - Action Required Types Description (Ex: Consent Response etc)
+    SHORT_DESC - Types Short Description (Ex: CONTRESP, AMDRESP etc)
+    CODE_VAL - Action Type Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </description>
+    <values>
+      <value>
+        <code>C094</code>
+      </value>
+    </values>
+  </parameter>
+  
+     <parameter name="C095">
+    <key>TENOR_TYPES</key>
+    <usage>To retrieve types for Tenor Types List</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+    COMPANY_ID - *
+    LONG_DESC - Tenor Types Description (Ex: Sight etc)
+    SHORT_DESC - Types Short Description (Ex: SIGHT, ACCPT etc)
+    CODE_VAL - Tenor Type Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </description>
+    <values>
+      <value>
+        <code>C095</code>
+      </value>
+    </values>
+  </parameter>
+  
+     <parameter name="C096">
+    <key>FINANCING_TYPES</key>
+    <usage>To retrieve sub product codes list for Product Code</usage>
+    <tablename>GTP_CODE_DATA</tablename>
+    <description language="en">
+     COMPANY_ID - *
+    LONG_DESC - Sub product codes Description (Ex: Trust Receipts, Import Loan Collection etc.)
+    SHORT_DESC - Sub product codes Short Description (Ex: ITRPT, IBCLC etc.)
+    CODE_VAL - Sub Product Code
+    PRODUCT_CODE - Product Code
+    SUB_PRODUCT_CODE - Sub Product Code
+    </description>
+    <values>
+      <value>
+        <code>C096</code>
+      </value>
+    </values>
+  </parameter>
+
+	<parameter name="P707">
+		<key>MODEL_KEY_REFERENCE</key>
+		<usage>configure product models for UX screens</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en">
+			COMPANY_ID - default *
+			KEY_1 -
+			BANK_ABBV_NAME for bank specific or default '*' to apply same to all
+			banks
+			KEY_2 - model type(FORM, SUBMIT, ENQUIRY, EVENT-DETAILS, API-MAPPING, SUBSECTION, HEADER)
+			KEY_3 - PRODUCT CODE
+			KEY_4 - SUBPRODUCT CODE
+			KEY_5 - Transaction type code
+			KEY_6 - subtransaction type code
+			KEY_7 - option
+			KEY_8 - operation
+			KEY_9 - mode
+			KEY_10 - category
+			DATA_1 - resource
+			DATA_2 - action code
+			DATA_3 - permission
+		</description>
+		<values>
+			<value>
+				<code>P707</code>
+			</value>
+		</values>
+	</parameter>
+	
+	<parameter name="C097">
+		<key>TERM_CODES</key>
+		<usage>To retrieve types for Term Codes List</usage>
+		<tablename>GTP_CODE_DATA</tablename>
+		<description language="en">
+		    COMPANY_ID - *
+		    LONG_DESC - Term Codes Description (Ex: Sight / Document Against Payment etc)
+		    SHORT_DESC - Term Codes Short Description (Ex: SIGHT, ACCPT etc)
+		    CODE_VAL - Term Codes Code
+		    PRODUCT_CODE - Product Code
+		    SUB_PRODUCT_CODE - Sub Product Code
+		</description>
+		<values>
+			<value>
+				<code>C097</code>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="P708">
+		<key>CUSTOM_TENOR</key>
+		<usage>To retrieve custom tenor details for Term Deposit</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en">
+		    KEY_1 -
+			BANK_ABBV_NAME for bank specific or default '*' to apply same to all
+			banks
+			KEY_2 - CUSTOM_TENOR_TD_APPLICABLE
+			DATA_1 - Is custom tenor applicable(Y/N)
+			DATA_2 - No of days for a month
+			DATA_3 - No of days for a year
+			DATA_4 - Min number of tenor days 
+			DATA_5 - Max number of tenor days
+			DATA_6 - Max number of years
+			DATA_7 - additional days considering 30/31days permonth (Ex:if data_2 is 30 then 5 additional days 
+			would be considered , if data_2 is 31 days then -7 should be considered) 
+			
+		</description>
+		<values>
+			<value>
+				<code>P708</code>
+			</value>
+		</values>
+	</parameter>
+	  <parameter name="C065">
+  	<key>FAVOURITE</key>
+  	<usage>To display favourite selected or not. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for Favourite ,
+  		CODE_VAL - Code Value for Favourite,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C065</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+  <parameter name="C066">
+  	<key>PREAPPROVED</key>
+  	<usage>To display pre approved beneficiary or not. </usage>
+  	<tablename>GTP_CODE_DATA</tablename>
+  	<description language="en">
+  		COMPANY_ID - *,
+  		LONG_DESC - Long Desc for pre approved ,
+  		CODE_VAL - Code Value for pre approved,
+  		PRODUCT_CODE - *,
+  		SUB_PRODUCT_CODE -*
+  	</description>
+  	<values>
+  		<value>
+  			<code>C066</code>
+  		</value>
+  	</values>
+  </parameter>
+  
+   <parameter name="P709">
+    <key>CHEQUE_NUMBER_SEQUENCE</key>
+
+    <usage>Configurtion for cheque number sequence field length.</usage>
+
+    <tablename>GTP_LARGE_PARAM_KEY</tablename>
+
+     <description language="en"> COMPANY_ID - * DATA_2 - maximum number of cheques </description>
+
+    <values>
+      <value>
+        <code>P709</code>
+      </value>
+    </values>
+  </parameter>
+  <parameter name="P710">
+		<key>DEEP_LINKING</key>
+		<usage>Deep Linking</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en">
+			COMPANY_ID - default *
+			KEY_1 - Product Processor (Ex: FCC / EBanking / Net Banking etc)
+			DATA_1 - urlKey
+			DATA_2 - urlType (Ex: Internal / External)
+			DATA_3 - url (Ex: www.host.com/xyz/abc)
+			DATA_4 - securityType (Ex: SSO/ OIDC)
+			DATA_5 - httpMethod (Ex: GET / POST)
+			DATA_6 - headerParameters (Ex: $Language, $CorpID, $UserID etc)
+			DATA_7 - bodyParameters (Ex: $Language, $CorpID, $UserID etc)
+			DATA_8 - target (Ex: IFrame/ Tab/ Window)
+			DATA_9 - permission (Ex: abc_access)
+		</description>
+		<values>
+			<value>
+				<code>P710</code>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="P711">
+		<key>DEFAULT_ENTITY_MANDATORY</key>
+		<usage>Configuration to make user entity madatory</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en">
+		    KEY_1 -
+			BANK_ABBV_NAME for bank specific or default '*' to apply same to all
+			banks
+			KEY_2  - default entity mandatory
+			DATA_1 - Is default entity mandatory(Y/N)
+    </description>
+		<values>
+			<value>
+				<code>P711</code>
+			</value>
+		</values>
+	</parameter>
+  
+	<parameter name="P712">
+		<key>LOAN_REQUEST_TYPE_MAPPING</key>
+		<usage>Facility details API to filter config params based on selected Loan type (Configurable feature).</usage>
+		<tablename>GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</tablename>
+		<description language="en"> 
+			KEY_1 - Loan Request Type For Facility, 
+			DATA_1 - Pricing Option,
+			DATA_2 - Risk Type, 
+			DATA_3 - Rollover Frequency, 
+			DATA_5 - Loan Types, 
+		</description>
+		<values>
+			<value>
+				<code>P712</code>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="N117">
+		<key>PRODUCT_TYPE</key>
+		<usage>To display product types. </usage>
+		<tablename>GTP_CODE_DATA</tablename>
+		<description language="en">
+			COMPANY_ID - *,
+			LONG_DESC - Long Desc for number of product types ,
+			CODE_VAL - Code Value for number of product types,
+			PRODUCT_CODE - Product code,
+			SUB_PRODUCT_CODE -sub product code
+		</description>
+		<values>
+			<value>
+				<code>N117</code>
+			</value>
+		</values>
+	</parameter>  
+	<parameter name="P713">
+		<key>MENU_NAVIGATION</key>
+		<usage>Configuration to make user entity madatory</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en">
+		    KEY_1 -
+			BANK_ABBV_NAME for bank specific or default '*' to apply same to all
+			banks
+			KEY_2  - MENU_NAVIGATION
+			DATA_1 - Is Menu navigation configured for DB
+    </description>
+		<values>
+			<value>
+				<code>P713</code>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="P714">
+		<key>COLUMN_CUSTOMIZATION_POPUP</key>
+		<usage>Configuration to enable column customization popup</usage>
+		<tablename>GTP_PARAM_DATA</tablename>
+		<description language="en">
+			KEY_1 -
+			BANK_ABBV_NAME for bank specific or default '*' to apply same to all
+			banks
+			KEY_2 - COLUMN_CUSTOMIZATION_POPUP
+			DATA_1 - Is popup enabled (Y/N)
+    </description>
+		<values>
+			<value>
+				<code>P714</code>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="P808">
+	    <key>AMOUNT_FORMAT</key>
+	
+	    <usage>Used to get system wide and bank/currency level amount formatting</usage>
+	
+	    <tablename>GTP_PARAM_DATA</tablename>
+	
+	    <description language="en">Below are required key and data columns for configuring this parameter,
+	    	GTP_PARAM_DATA
+				PARM_ID - unique parameter id generated for a company and user.
+				COMPANY_ID - *
+				KEY_1 - * (bank_abbv_name)
+				KEY_2 -  * (currency codes- INR, USD)
+				KEY_3-KEY-19 - **
+				PARM_ID - P808
+				DATA_1 - Default amount format (Allowed values are Y/N. Here Y is for lakhs/crores and N for millions/billions)
+		</description>
+	
+	    <values>
+	      <value>
+	        <code>P808</code>
+	      </value>
+	    </values>
+ 	 </parameter>
+ 	 <parameter name="P809">
+	    <key>CURRENCY_SUPPORT_CONFIGURATION</key>
+	
+	    <usage>Used to configure the currency symbol or ISO code</usage>
+	
+	    <tablename>GTP_PARAM_DATA</tablename>
+	
+	    <description language="en">Below are required key and data columns for configuring this parameter,
+			GTP_PARAM_DATA
+				PARM_ID - unique parameter id generated for a company and user.
+				COMPANY_ID - *
+				KEY_1 - * (bank_abbv_name)
+				KEY_2-KEY-19 - **
+				PARM_ID - P809
+				DATA_1 - 'y' means currency symbol and 'n' means currency ISO code.
+		</description>
+	
+	    <values>
+	      <value>
+	        <code>P809</code>
+	      </value>
+	    </values>
+ 	 </parameter>
+</parameters>

@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Using Foreign Exchange module</title>
+
+  <info />
+
+  <para role="TEXT">This chapter describes the functions of the Foreign Exchange (FX) module
+  and explains how to perform FX transactions using Opics Portal.</para>
+
+  <section >
+    <title>About Foreign Exchange (FX)</title>
+
+    <para role="TEXT">The Foreign Exchange module performs front and back office
+    processing including deal entry, position management, profit &amp; loss,
+    back office controls, confirmations, payment messages, accounting, and
+    interfaces.</para>
+
+    <para role="TEXT">Opics Portal facilitates initiating FX contracts and submitting them
+    to the Issuing Bank for the following instruments:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para role="TEXT">Spot</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Forward</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Swaps</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Delivery Options</para>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">It also processes flexible transaction types like splits, options
+    (takedowns, uptakes, and extends) and non-delivery forwards (NDFs) to
+    support the demands of both interbank and corporate trading
+    activities.</para>
+
+    <para role="TEXT">The subsequent sections provides detailed explanation about FX
+    transactions such as, deal capturing, pricing, position management,
+    confirmations, accounting, and interfaces.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>FX Deals</title>
+
+    <para role="TEXT">Using Opics Portal, you can request for price of an FX deal by
+    providing basic transaction details. The portal forwards the request to
+    Opics Plus and, based on the data associated with your account, the
+    back-end application returns the all-in customer price for the
+    transaction. The displayed result stands valid for a specific time
+    interval within which you can accept the price offered by the bank to
+    complete the transaction or reject it.</para>
+
+    <note>
+      <para role="TEXT">During the time that a price is active, if you make any
+      modification to the deal, the existing offered price is cancelled and
+      you must place a fresh request for the FX deal.</para>
+    </note>
+
+    <para role="TEXT">The process of creating FX deals is similar for all FX instruments
+    mentioned above. In the portal <emphasis>Home page</emphasis>, click
+    <emphasis>Foreign Exchange</emphasis> and select the required instrument
+    type, for example <emphasis>Spot</emphasis>.</para>
+  </section>
+
+  <section condition="TITLE=Foreign Exchange (FX);PERM=fx_access;ACCESS=FX_01"
+             id="FX_initiation_form" role="TOPIC">
+    <title>Creating an FX Deal (Spot)</title>
+
+    <para role="TEXT">The input form and its respective fields are described in the
+    following tables.</para>
+
+    <section role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">Specify the following under <emphasis>General Details</emphasis>
+      section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Customer Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the counterparty who initiates the FX
+                trade.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Bank Name</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the bank with whom the customer performs the
+                FX trade.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Issuer’s Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the issuer who processes the FX trade.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Request For Quote</title>
+
+      <para role="TEXT">Specify the following under <emphasis>Request For Quote</emphasis>
+      section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Contract Type</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Displays the type of FX transaction, in this case,
+                <emphasis>Spot</emphasis>.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Purchase/Sale</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the trade request as a purchase or a sale of
+                the CCY amount.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Counter Currency</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the counter FX trade's currency.</para>
+
+                <para role="TEXT">You can click the magnifying glass icon to select the
+                counter currency from the existing list.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Currency Amount</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the trade amount which is denominated in the
+                specified currency.</para>
+
+                <para role="TEXT">Amount is entered as a number (e.g.,
+                999999999999999.9999) or as an amount followed by a suffix
+                ('B' for billions, 'M' for millions or 'T' for thousands). For
+                example, one million is entered as '1000000' or as
+                '1M'.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Remarks</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates a free-format text field that contains
+                additional information about the trade request.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Click <emphasis>Request</emphasis> to request for price of the FX
+      Spot deal to the Issuing Bank. To cancel the entry and to refill the
+      above form click <emphasis>Clear</emphasis>.</para>
+
+      <para role="TEXT">The request for price is submitted to the bank where the back-end
+      would calculate and offer you with the applicable rate for the
+      trade.</para>
+
+      <para role="TEXT">Other types of FX transactions display additional fields depending
+      on the type of FX transaction selected in the portal.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>FX Deal (Forward) Field Description</title>
+
+      <para role="TEXT">The <emphasis>Request For Quote</emphasis> section contains
+      additional field as described below.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Value Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the trade request settlement date. This field
+                must be a valid business day for the entered currency. It can
+                be entered in date format or as a pre-defined period (e.g.,
+                spot, 1M, 2M).</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>FX Deal (Swap) Field Descriptions</title>
+
+      <para role="TEXT">The <emphasis>Request For Quote</emphasis> section contain
+      additional fields as described below.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Near Value Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the FX Swap deal near leg settlement
+                date.</para>
+
+                <tip>
+                  <para role="TEXT">: Enter this field as a date (e.g., 02 May 1996) or as
+                  a pre-defined period (e.g., Tom, 1M, 1Y).</para>
+                </tip>
+
+                <para role="TEXT">This date must be less than the far value date.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Far Value Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the FX Swap deal far leg settlement
+                date.</para>
+
+                <tip>
+                  <para role="TEXT">: Enter this field as a date (e.g., 02 May 1996) or as
+                  a pre-defined period (e.g., Tom, 1M, 1Y).</para>
+                </tip>
+
+                <para role="TEXT">This date must be greater than the near value
+                date.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Near Currency Amount</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the near leg’s deal amount designated in the
+                specified currency.</para>
+
+                <tip>
+                  <para role="TEXT">: Enter this field as a number 999999999999.99 or as
+                  an amount followed by a suffix ('B' for billions, 'M' for
+                  millions or 'T' for thousands). For example, one million is
+                  entered as '1000000' or as '1M'.</para>
+                </tip>
+
+                <para role="TEXT">This value can be different from the far amount.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Far Currency Amount</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the far leg deal amount in the specified
+                currency.</para>
+
+                <para role="TEXT">This field can be different from the near currency
+                amount and defaults to the near amount if the far amount is
+                blank and the 'Request' button has been selected.</para>
+
+                <tip>
+                  <para role="TEXT">: Enter this field as a number 999999999999.99 or as
+                  an amount followed by a suffix ('B' for billions, 'M' for
+                  millions or 'T' for thousands). For example, one million is
+                  entered as '1000000' or as '1M'.</para>
+                </tip>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>FX Deal (Delivery Option) Field Description</title>
+
+      <para role="TEXT">The <emphasis>Request For Quote</emphasis> section contains
+      additional field as described below.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Option Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the option start date of the deal.</para>
+
+                <tip>
+                  <para role="TEXT">: Enter this field for forward deals only. Its value
+                  must be greater than or equal to the deal date and less than
+                  the value date.</para>
+                </tip>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Value Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the trade request settlement date. This field
+                must be a valid business day for the entered currency. It can
+                be entered in date format or as a pre-defined period (e.g.,
+                spot, 1M, 2M).</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Accepting or Rejecting Price</title>
+
+      <para role="TEXT">On receiving the rate offered by the bank, you can click the
+      following buttons to decide the future of the FX transaction:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para role="TEXT"><guibutton>Accept : </guibutton>Completes the transaction and
+          provides a visual confirmation of the deal details along with the
+          deal number assigned by the back-end system. You can follow the
+          given link to view or assign standing instructions for the
+          transaction.</para>
+
+          <tip>
+            <para role="TEXT">: Opics Plus can accept a price or a deal even after the
+            price has timed out or expired, if the price proves to be
+            beneficial for the bank</para>
+          </tip>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT"><guibutton>Reject : </guibutton>Cancels the transaction. You
+          can modify transaction details and resubmit a request. The portal
+          notifies the back-end system that the price is rejected so that it
+          can update the trader’s e-trading blotter.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Types of Pricing</title>
+
+    <para role="TEXT">Opics Plus supports two types of pricing mechanism for a
+    trade–<emphasis>Manual</emphasis> and
+    <emphasis>Automated</emphasis>.</para>
+
+    <section role="ITEM">
+      <title>Automated Pricing</title>
+
+      <para role="TEXT">If the customer is configured for automated pricing and the deal
+      is within specified limits, Opics Plus prices the transaction from real
+      time market data feed, without manual intervention and provides it to
+      the customer.</para>
+
+      <para role="TEXT">However, if the transaction falls outside certain pre-determined
+      parameters (for example, the amount specified in the request exceeds the
+      limit) it is sent to the bank’s traders for manual pricing. This leads
+      to delay in returning the price to the user.</para>
+
+      <para role="TEXT">The portal displays a message if manual pricing is taking place or
+      if the pricing request expires. In both cases, you can choose to
+      continue waiting or stop the request. If you stop the request, Opics
+      Portal sends a message to the back-end system indicating that the
+      request is cancelled.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Manual Pricing</title>
+
+      <para role="TEXT">In manual pricing, the price for a trade is not derived from
+      market data. The back-end system calculates the applicable price and
+      provides it to the customer.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=Foreign Exchange - From Existing(FX);PERM=fx_access;ACCESS=FX_02"
+             id="FX_from_existing_form" role="TOPIC">
+    <title>Sending Message to Bank</title>
+
+    <para role="TEXT">Opics Portal facilitates sending messages to the bank to view and
+    add standing instructions or to modify an existing transaction.</para>
+
+    <section role="ITEM">
+      <title>Viewing Standing Instructions</title>
+
+      <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click <emphasis>Foreign
+      Exchange</emphasis> and then under <emphasis>Message to Bank</emphasis>,
+      click <emphasis>Standing Instructions</emphasis>. A list of records is
+      displayed for all FX transactions. Click the <emphasis>System
+      ID</emphasis> of a transaction to view the details of the
+      transaction.</para>
+
+      <para role="TEXT">The following details are displayed under <emphasis>Customer
+      Payment Instruction</emphasis> section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Currency</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">!!!1. To be added!!!</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Account</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">!!!2. To be added!!!</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Instruction Indicator</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">!!!3. To be added!!!</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Under <emphasis>Bank Payment Instructions</emphasis>, the
+      instruction types are as follows.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para role="TEXT"><guibutton>Bank Instructions</guibutton> : Indicates the
+          standing instructions assigned by the bank.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT"><guibutton>Free Format Instructions</guibutton> : Select this
+          option to add standing instructions if it does not exist or to
+          override instructions for the FX transaction from the portal.</para>
+        </listitem>
+      </itemizedlist>
+
+      <note>
+        <para role="TEXT">: Manually entered instructions require authorization by a bank
+        agent before the payments are generated.</para>
+      </note>
+    </section>
+
+    <section role="ITEM">
+      <title>Adding Standing Instructions</title>
+
+      <para role="TEXT">To add standing instruction using Opics Portal, under
+      <emphasis>Bank Payment Instructions</emphasis> section, select
+      <emphasis>Instructions type</emphasis> as <emphasis>Free Format
+      Instructions</emphasis> and click <emphasis>Ok</emphasis> in the
+      confirmation message-box.</para>
+
+      <para role="TEXT">You can specify Additional Details about the beneficiary, such as
+      payment type (<emphasis>Wire</emphasis> or <emphasis>Draft</emphasis>),
+      beneficiary name, address, account number, beneficiary bank details,
+      etc., and click <emphasis>Submit</emphasis> to add payment instructions
+      for the FX transaction.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Modifying an Existing FX Transaction</title>
+
+      <para role="TEXT">Using Opics Portal, you can make certain modifications to an
+      existing FX transaction based on the type of transaction.</para>
+
+      <orderedlist>
+        <listitem>
+          <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click
+          <emphasis>Foreign Exchange</emphasis> and then under
+          <emphasis>Message to Bank</emphasis>, click <emphasis>From Existing
+          FX</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+          the FX transaction that needs to be modified and click
+          <emphasis>Search</emphasis>. A list of records is displayed for all
+          FX transactions with the specified currency.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Click the <emphasis>System ID</emphasis> of a transaction to
+          open the transaction for modification.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Select appropriate <emphasis>Actions</emphasis> from the
+          <emphasis>Action Details</emphasis> section.</para>
+
+          <para role="TEXT">For a Spot and Forward FX Transaction, you can perform the
+          following actions:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para role="TEXT"><guibutton>Split</guibutton> : Divides the currency amount
+              or the counter currency amount into two parts.</para>
+            </listitem>
+
+            <listitem>
+              <para role="TEXT"><guibutton>Extend</guibutton> : Extends the value date of
+              the transaction to a future date.</para>
+            </listitem>
+
+            <listitem>
+              <para role="TEXT"><guibutton>Uptake</guibutton>: Shortens the value date of
+              the transaction to a closer date.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para role="TEXT">For a Delivery Option FX Transaction, you can perform the
+          following action:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para role="TEXT"><guibutton>Takedown</guibutton> : Modifies the amount
+              involved in the deal.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para role="TEXT">For Swap FX transactions, <emphasis>No Possible
+        Action</emphasis> can be taken as these transactions cannot be
+        modified from the portal.</para>
+      </note>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Performing an FX Inquiry</title>
+
+    <para role="TEXT">Opics Portal provides information about the status, the details, and
+    the history of transactions initiated by the user. The list of
+    transactions is confined to those transactions entered on the current
+    processing date.</para>
+
+    <para role="TEXT">You can perform inquiries on Spot/Forward, Swap, Delivery Options,
+    or all FX transactions as follows:</para>
+
+    <orderedlist>
+      <listitem>
+        <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click <emphasis>Foreign
+        Exchange</emphasis> and then under <emphasis>FX Inquiry</emphasis>,
+        click the required transaction type.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+        the FX transaction.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Select the <emphasis>Output Format</emphasis> to display on
+        <emphasis>Screen</emphasis>, or save the results in
+        <emphasis>CSV</emphasis> or <emphasis>Spreadsheet</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click <emphasis>Search</emphasis> to display the list of records
+        of FX transactions with the specified currency.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click the <emphasis>System ID</emphasis> of a transaction to
+        view the details of a particular transaction.</para>
+      </listitem>
+    </orderedlist>
+
+    <tip>
+      <para role="TEXT">: You can use wildcards in your search string. For example, type
+      *MYTEXT* to search for the items containing the MYTEXT string. Moreover,
+      you can also filter or sort the information returned from the portal on
+      a multi or single column basis.</para>
+    </tip>
+  </section>
+</chapter>

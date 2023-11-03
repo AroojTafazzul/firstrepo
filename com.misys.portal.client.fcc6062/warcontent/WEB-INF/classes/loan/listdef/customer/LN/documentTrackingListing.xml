@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef  ordered="y" huge="N" forceDisplaySearch='y' default_order="document_id"
+	help="LIST_HELP_INQUIRY" page="20" source="loaniq_document_tracking" data_key="document_id">
+	
+	<column name="document_id" align="left" width="14%" loca_key="DOCUMENT_ID" columnFilterType="input-multiselect" />
+	<column name="document_type" align="left" width="14%" loca_key="DOCUMENT_TYPE" columnFilterType="input-multiselect" />
+	<column name="docDate" align="left" width="12%" loca_key="DOCUMENT_DATE" columnFilterType="input-multiselect" />
+	<column name="docDueDate" align="left" width="12%" loca_key="LN_DUE_DATE" columnFilterType="input-multiselect" />
+	<column name="custReference" align="left" width="20%" loca_key="BORROWERREF" columnFilterType="input-multiselect" />
+	<column name="customer" align="left" width="14%" loca_key="customer" columnFilterType="input-multiselect" />
+	<column name="deal/name" align="left" width="15%" loca_key="boDealName" columnFilterType="input-multiselect" />
+	<column name="action" align="right" width="10%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE" value="INITIATE"/>
+			<parameter name="DOC_EDIT_ACTION_NAME" value="DOC_EDIT"/>
+		</url>
+	</column>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="document_date" hidden="y" />
+	<column name="due_date" hidden="y" />
+	<parameter
+		name="due_date"
+		type="range" 
+		input="y"
+		loca_key="LN_DUE_DATE"
+		default="blank" />
+	
+	<parameter name="borrowerRef" loca_key="borrowerRef" type="AvailableCustomerReference"
+		input="y" productCode="LN"/>
+		
+	<parameter name="export_list" file_name="RequestedFromBankDocumentsList" type="export"/>
+	<candidate name="document_tracking"/>
+</listdef>

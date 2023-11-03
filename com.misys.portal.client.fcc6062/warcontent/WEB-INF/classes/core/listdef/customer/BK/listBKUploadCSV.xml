@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="line_number" default_order_type="d" page="50" hideSearch="true">
+
+	
+	<column name="ref_id" align="center" width="10em" loca_key="FILE_REF_ID">
+	</column>
+	<column name="entity" align="left" width="10%" loca_key="ENTITY"/>
+	<column name="ObjectDataString@file_type" align="center" width="10%" loca_key="FILE_TYPE"/>
+	<column name="ObjectDataString@product_group" width="10%" loca_key="PRODUCT_GROUP"/>
+	<column name="ObjectDataString@product_type" width="10%" loca_key="PRODUCT_TYPE"/>
+	<column name="ObjectDataString@file_name" width="10%" loca_key="FILE_NAME"/>
+	<column name="inp_dttm" align="center" width="10%" loca_key="UPLOAD_DATE"/>
+	<column name="ProductError@ref_id" align="center" width="10%" loca_key="REF_ID"/>
+	<column name="ErrorType" align="center" width="10%" loca_key="ERROR_TYPE">
+		<script>
+		if (value.equals(""))
+		{
+			var errorLevel = row.getColumnValue("ProductError@error_level");
+			if(("V").equalsIgnoreCase(""+errorLevel+""))
+			{
+				value = com.misys.portal.common.localization.Localization.getString(language,"VALIDATION_LEVEL_ERROR");
+			}
+			else if(("B").equalsIgnoreCase(""+errorLevel+""))
+			{
+				value = com.misys.portal.common.localization.Localization.getString(language,"BATCH_LEVEL_ERROR");
+			}else if(("F").equalsIgnoreCase(""+errorLevel+""))
+		    {
+		     	value = com.misys.portal.common.localization.Localization.getString(language,"FILE_LEVEL_ERROR");
+		    }else if(("T").equalsIgnoreCase(""+errorLevel+""))
+		    {
+		     	value = com.misys.portal.common.localization.Localization.getString(language,"TRANSACTION_LEVEL_ERROR");
+		    }
+		}
+		value;
+		</script>
+	</column>
+	<column name="error_description" align="center" width="10%" loca_key="ERROR_DESCRIPTION">
+	  <script>
+	  if (value.equals(""))
+	  {
+			var errorArgs = row.getColumnValue("ProductError@error_args");
+			var errorCode = row.getColumnValue("ProductError@error_code");
+			var errorValue = row.getColumnValue("ProductError@error_value");
+			if(!("").equals(""+errorCode+""))
+		    {
+		    	if(!("").equals(""+errorArgs+""))
+		    	{
+		    	var msgArgs= org.apache.commons.lang.StringUtils.split(""+errorArgs+"",",");
+		    	value= com.misys.portal.common.localization.Localization.getFormattedString(language, ""+errorCode+"",msgArgs);
+		    	
+		    	}
+		    	else{
+		    	value = com.misys.portal.common.localization.Localization.getString(language,""+errorCode+"") +""+errorValue+"";
+		    	} 
+		    }else{
+		       value = row.getColumnValue("ProductError@error_value");
+		    }
+	  }
+	  value;
+	  </script>
+	</column>
+	<column name="ProductError@line_number" align="center" width="10%" loca_key="LINE_NUMBER"/>
+	<column name="ProductError@column_number" align="center" width="10%" loca_key="COLUMN_NUMBER"/>
+	<column name="SecureBulk@ref_id" align="center" width="10%" loca_key="BULK_REF_ID"/>
+	<column name="SecureBulk@FundTransfer@ref_id" align="center" width="10%" loca_key="XSL_HEADER_FUND_TRANSFER_REFERNCE"/>
+	<column name="ProductError@error_level" hidden="y"/>
+	<column name="ProductError@error_code" hidden="y"/>
+	<column name="ProductError@error_value" hidden="y"/>
+	<column name="ProductError@error_args" hidden="y"/>
+	<parameter name="ref_id" />
+	<parameter name="tnx_id" />
+	<candidate name="secure_email">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="equal"/>
+				<value type="parameter">ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_id"/>
+				<operator type="equal"/>
+				<value type="parameter">tnx_id</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

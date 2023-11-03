@@ -1,0 +1,99 @@
+{
+	"productcode": "N001_SG",
+	"buttons": [
+		{
+			"buttonName": "initiateSGButton",
+			"permission": "sg_save",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=SG&tnxTypeCode=01&mode=INITIATE"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "live",
+			"listdefName": "/trade/listdef/customer/SG/customerLiveSGList",
+			"permission": "sg_access",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "draft",
+			"listdefName": "/trade/listdef/customer/SG/customerDraftSGList",
+			"permission": "sg_save",
+			"index": 1,
+			"selected": ""
+		},
+		{
+			"tabName": "uaPendingActions",
+			"listdefName": "/trade/listdef/customer/SG/openPendingActionSGList",
+			"permission": "sg_save",
+			"index": 2,
+			"selected": ""
+		},
+		{
+			"tabName": "uaPendingApproval",
+			"listdefName": "/trade/listdef/customer/SG/customerPendingClientSGList",
+			"permission": "sg_approve",
+			"index": 3,
+			"selected": "true",
+			"severalSubmit": "sg_approve",
+			"commentsRequired": "true",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "uaPendingBankApproval",
+			"listdefName": "/trade/listdef/customer/SG/customerPendingBankSGList",
+			"permission": "sg_access",
+			"index": 4,
+			"selected": ""
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/trade/listdef/customer/SG/customerRejectedSGList",
+			"permission": "sg_access",
+			"index": 5,
+			"selected": "false",
+			"severalSubmit": "sg_rejected_maintain",
+			"commentsRequired": "false",
+
+			"buttonList": [
+				{
+			        "name": "deleteClear",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "deleteClear"
+		      	}
+			]
+		},
+		{
+			"tabName": "closed",
+			"listdefName": "/trade/listdef/customer/SG/customerOthersSGList",
+			"permission": "sg_access",
+			"index": 6,
+			"selected": "",
+			"severalSubmit": "sg_purged_maintain",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "delete",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "delete"
+		      	}
+			]
+		}
+	]
+}

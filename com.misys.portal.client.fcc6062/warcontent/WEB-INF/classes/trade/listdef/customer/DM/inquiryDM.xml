@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="200">
+
+	<column name="action" width="1%">
+		<url action="y">
+			<parameter name="SCREEN" value="DM_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+	
+	<column name="ref_id" align="center" width="5%" loca_key="REFERENCEID"/>
+	<column name="cust_ref_id" align="left" width="25%" loca_key="REFERENCE"/>
+	<column name="entity" align="left" width="10%" loca_key="ENTITY"/>
+	<column name="counterparty_name" align="left" width="30%" loca_key="CONSIGNEE"/>
+	<column name="cur_code" align="center" width="1%" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="15%" loca_key="AMOUNT"/>
+	<column name="appl_date" align="center" width="5%" loca_key="APPL_DATE"/>
+
+	<column name="product_code" hidden="y"/>
+
+	<!--<batch type="zip">
+		<parameter name="SCREEN" value="CURRENT"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_ZIP"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		 In Zip Case the transaction id must be *  to get all the folder  
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	
+	--><!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="12"
+		max_length="35"
+		loca_key="REFERENCE"
+		input="y"
+		default=""/>	
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="counterparty_name"
+		loca_key="CONSIGNEE"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+	<parameter
+		name="export_list"
+		file_name="inquiryDM"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->	
+	<candidate name="document_management_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PENDING
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

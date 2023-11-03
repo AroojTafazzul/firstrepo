@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="100" js_binding="misys.binding.common.listdef_mc">
+	<script>
+		return com.misys.portal.report.tools.Tools.checkBulkFileTypePermission(runData, row);
+	</script>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="FILE_REF_ID"/>
+	<column name="entity" align="left" width="6%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="10%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="ObjectDataString@file_type" align="center" width="6%" loca_key="FILE_TYPE">
+	   <script>
+	   
+	   		if (value.equals("PAYMT"))
+			{
+				value = com.misys.portal.common.localization.Localization.getDecode(language, "P119","PAYMT");
+			}
+			else if(value.equals("PAYRL_EMPL"))
+			{
+				value = com.misys.portal.common.localization.Localization.getDecode(language,"P119","PAYRL_EMPL");
+			}
+			else if(value.equals("PAYRL_EXEC"))
+			{
+			   value = com.misys.portal.common.localization.Localization.getDecode(language,"P119","PAYRL_EXEC");
+			}
+			value;
+		</script>
+	</column>
+	<!-- column name="ObjectDataString@file_name" width="10%" loca_key="FILE_NAME"/-->
+	<column name="Attachment@file_name" width="25%" loca_key="FILE_NAME"/>
+	<column name="inp_dttm" align="center" width="8%" loca_key="UPLOAD_DATE"/>
+	<column name="full name" computation="sum" align="left" width="15%" loca_key="USER_NAME">
+		<column name="Inputter@first_name"/>	
+		<column name="Inputter@last_name"/>
+	</column>
+	<!--<column name="ObjectDataString@upload_time" width="7%" loca_key="UPLOAD_TIME"/>
+	--><column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<column name="prod_stat_code" hidden="y"/>	
+	<column name="status" align="center" width="8%" loca_key="STATUS" sort="n">
+		<script>
+			if(value.equals(""))
+			{
+				var prodStatCode = row.getColumnValue("prod_stat_code");
+				if(("01").equals(""+prodStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getString(language,"FILE_PROCESS_FAILED");
+				}
+				else if(("02").equals(""+prodStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getString(language,"FILE_PROCESS_PROGRESS");
+				}
+				else if(("25").equals(""+prodStatCode+""))
+				{
+			      value = com.misys.portal.common.localization.Localization.getString(language,"FILE_PROCESS_PARTIAL");   
+			    }
+			    else if(("03").equals(""+prodStatCode+""))
+			   	{
+			   	   value = com.misys.portal.common.localization.Localization.getString(language,"FILE_PROCESS_SUCCESS");   
+			  	}
+			}
+			value;
+		</script>
+	</column>
+	<column name="bulk_upload" width="7em" loca_key="BULK_UPLOAD">
+		<url bulkUploadAction="y" >
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SCREEN" value="BK_SCREEN"/>
+			<parameter name="MODE_CODE" binding_code="UPLOAD"/>
+			<parameter name="ATTACHMENT_ID" column="attachment_id"/>
+			<parameter name="OPTION" column="attachment_id"/>
+		</url>
+	</column>
+	<column name="tnx_id" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="ObjectDataString@file_type_permission" hidden="y"/>
+	<column name="Attachment@attachment_id" hidden="y"/>
+	<!-- Parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="*">
+	</parameter>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="applicant_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="file_type"
+		size="20"
+		max_length="35"
+		loca_key="FILE_TYPE"
+		type="FileTypeBulkUpload"
+		input="y"
+		default=""/>
+	<parameter
+		name="file_name"
+		size="20"
+		max_length="35"
+		loca_key="FILE_NAME"
+		input="y"
+		default=""/>
+   <parameter
+		name="upload_date"
+		type="range"
+		input="y"
+		range_from_label="UPLOAD_DATE_FROM"
+		range_to_label="UPLOAD_DATE_TO"
+		default="blank"/>
+		
+	
+
+	<!-- Candidates -->	
+	
+	<!-- Common filters -->
+	<candidate name="secure_email">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_BKUPL
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@file_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					file_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@product_group"/>
+				<operator type="like"/>
+				<value type="parameter">
+					product_group
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@product_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					product_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@file_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					file_name
+				</value>
+			</criteria>
+			<criteria>
+			    <column name="inp_dttm"/>
+			    <operator type="supOrEqual"/>
+			    <value type="parameter">
+				   upload_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+				   upload_date@to
+				</value>
+			</criteria>
+		</filter>
+		<filter or="y">
+		<criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N005_REJECTED
+			</value>
+		</criteria>
+	    <criteria>
+			<column name="prod_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N005_PENDING
+			</value>
+		</criteria>
+	</filter>
+	</candidate>
+	<filter or="y">
+		<criteria>
+			<column name="Attachment@status"/>
+			<operator type="different"/>
+			<value type="string">
+				02
+			</value>
+		</criteria>
+		<criteria>
+			<column name="Attachment@status"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>
+</listdef>

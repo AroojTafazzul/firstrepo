@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="50">
+
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="EC_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+	<column name="ref_id" align="center" width="11em" loca_key="REFERENCEID"/>
+	<column name="drawer_name" align="left" width="20%" loca_key="ENTITY_NAME_DRAWER"/>
+	<column name="bo_ref_id" align="left" width="20%" loca_key="BO_REFERENCEID"/>
+	<column name="cust_ref_id" align="left" width="25%" loca_key="CUST_REFERENCEID"/>
+	<column name="drawee_name" align="left" width="35%" loca_key="DRAWEE_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="appl_date" align="center" width="6em" loca_key="APPL_DATE"/>
+	<column name="prod_stat_code" align="center" width="20%" loca_key="STATUS" sort="n"/>
+	<column name="ec_outstanding_amt" hidden="y"/>
+	<column name="ec_type_code" hidden="y"/>
+	<column name="entity" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	
+	<!--<batch type="zip">
+		<parameter name="SCREEN" value="CURRENT"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_ZIP"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		 In Zip Case the transaction id must be *  to get all the folder  
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	--><!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="drawer_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_DRAWER"
+		input="y"
+		default=""
+		config_maxLength=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="CUST_REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="drawee_name"
+		loca_key="DRAWEE_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+	<parameter
+		name="prod_stat_code"
+		max_length="3" 
+		type=""/>
+	<parameter
+		name="export_list"
+		file_name="inquiryEC"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->	
+	<candidate name="export_collection_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawer_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					drawer_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawee_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					drawee_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PENDING
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

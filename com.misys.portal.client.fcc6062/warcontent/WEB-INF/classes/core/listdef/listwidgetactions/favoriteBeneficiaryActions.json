@@ -1,0 +1,80 @@
+{
+  "common": [
+    {
+      "actionName": "VIEW_BENEFICIARY",
+      "permissions": [
+        "fcm_viewer_customer_beneficiary_mc"
+      ],
+      "permissionSuffix": [],
+      "url": "",
+      "urlScreenType": "",
+      "urlType": "",
+      "urlLoadType": "",
+      "imagePath": ""
+    },
+    {
+      "actionName": "MAKE_PAYMENT",
+      "permissions": [
+        "fcm_modify_customer_beneficiary_mc"
+      ],
+      "permissionSuffix": [],
+      "url": "#/commonProductScreen?option=PAYMENTS&operation=ADD_FEATURES&category=FCM",
+      "urlScreenType": "ANGULAR",
+      "urlType": "Internal",
+      "urlLoadType": "",
+      "imagePath": "/content/FCCUI/assets/icons/view.svg"
+    },
+    {
+		"actionName": "EDIT_BENEFICIARY",
+		"permissions": ["fcm_modify_customer_beneficiary_mc"],
+		"permissionSuffix": [],
+		"url": "#/commonProductScreen",
+		"urlQueryParams":	
+		{
+			"option": "BENEFICIARY_MASTER_MAINTENANCE_MC",
+			"operation": "UPDATE_FEATURES",               
+			"category": "FCM",
+			"associationId": 
+			{
+				"readFromTransaction": true,
+				"field": "ASSOCIATION_ID"    
+			}
+		},
+		"urlScreenType": "ANGULAR",
+		"urlType": "Internal",
+		"urlLoadType": "",
+		"imagePath": "/content/FCCUI/assets/icons/view.svg"
+	},
+    {
+      "actionName": "ENABLE_BENEFICIARY",
+      "permissions": [
+        "fcm_active_inactive_customer_beneficiary_mc"
+      ],
+      "permissionSuffix": [],
+      "url": "",
+      "urlScreenType": "ANGULAR",
+      "urlType": "Internal",
+      "urlLoadType": "",
+      "imagePath": "/content/FCCUI/assets/icons/view.svg",
+      "beneficiaryStatus": [
+			{
+				"operation": "IS",
+				"applicableValues": ["FCMBS_SUSPENDED"]
+			}
+		]
+    },
+    {
+      "actionName": "SUSPEND_BENEFICIARY",
+      "permissions": [
+        "fcm_active_inactive_customer_beneficiary_mc"
+      ],
+      "permissionSuffix": [],
+      "url": "",
+      "urlScreenType": "ANGULAR",
+      "urlType": "Internal",
+      "urlLoadType": "",
+      "isBeneSuspended": "Suspended",
+      "imagePath": "/content/FCCUI/assets/icons/view.svg"
+    }
+  ]
+}

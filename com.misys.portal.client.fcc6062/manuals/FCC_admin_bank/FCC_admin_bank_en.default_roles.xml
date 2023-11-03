@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Admin and Default Roles</title>
+
+  <para>Some default roles are set up in the system when it is initially
+  installed. They should match most of a bank's needs, and serve as sample
+  roles.</para>
+
+  <section>
+    <title>Admin Roles</title>
+
+    <para>Three default roles are supplied and are automatically granted to
+    administrators, as follows. These roles should never be deleted.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><literal moreinfo="none">sy_admin_user</literal> is granted to
+        the customer administrator when a customer is created.</para>
+
+        <para>In the default set-up, this role is initially granted only the
+        right to set for himself any of the roles given by the bank
+        administrator who created the company. As a first step, and before
+        being able for instance to create his colleagues, this user would
+        typically need to grant his own profile the right to create
+        users.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal moreinfo="none">sy_bank_admin_user</literal> is granted
+        to the bank administrator when a bank is created.</para>
+
+        <para>The same as above apply for this user in the sense that it can
+        initially only manipulate his own permissions. In a classical set-up
+        this user would then receive all required permissions to create users
+        for the bank middle office, even also customers, and to grant them
+        permissions.</para>
+      </listitem>
+
+      <listitem>
+        <para><literal moreinfo="none">sy_bank_group_admin_user</literal> is
+        granted to the bank group administrator when <xi:include
+        href="../entities_en.xml" xpointer="ent_appli"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> is installed.</para>
+
+        <para>The same as above applies for his initial minimal permission. On
+        top of the common bank administration permissions, he will typically
+        grant himself the permission to create subsidiary banks. Note that
+        this very specific role should not be granted to any other
+        user.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Default Roles</title>
+
+    <para>Refer to the Roles topic in the Technical Administration Guide for
+    default role definitions.</para>
+  </section>
+
+
+</chapter>

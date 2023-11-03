@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="ref_id" js_binding="misys.binding.openaccount.listdef_bk_fscm_inquiry" default_order_type="d" page="50">
+
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="IP_SCREEN"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="CHILD_PRODUCT_CODE" column="child_product_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/> 
+	<column name="bk_cur_code" align="center" width="4em" loca_key="BULK_BASE_CUR_CODE"/>	
+	<column name="amt" align="right" width="10em" loca_key="BULK_TOTAL_AMT"/>
+	<column name="bk_fin_amt" align="right" width="10em" loca_key="BULK_FIN_AMT"/>
+	<column name="prod_stat_code" align="center" width="12%" loca_key="STATUS"/>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="child_product_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="*"/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="bk_cur_code"
+		loca_key="BULK_BASE_CUR_CODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"/>		
+	<parameter
+		name="AmountRange"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="BulkTotalAmountFrom"
+		range_to_label="BulkTotalAmountTo"/>
+	<parameter
+		name="BulkFinAmountRange"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="BulkFinAmountFrom"
+		range_to_label="BullFinAmountTo"/>				
+	<parameter
+		name="prod_stat_code"
+		type="AvaliableProductStatus"
+		loca_key="STATUS"
+		input="y"
+		multiple_values="04,D6,D5"/>
+	<parameter
+		name="export_list"
+		file_name="inquiryBulkIP"
+		type="export">
+	</parameter>
+
+	<!-- candidates -->	
+	<candidate name="bulk_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bk_cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">bk_cur_code</value>
+			</criteria>				
+			<criteria>
+				<column name="amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bk_fin_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					BulkFinAmountRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bk_fin_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					BulkFinAmountRange@toAmount
+				</value>
+			</criteria>				
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>	
+		</filter>	
+	</candidate>  
+	
+	<filter and="y">
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="in"/>
+			<value type="vector">
+				<value type="code">
+					N047_IP_BULK_FINANCING
+				</value>		
+			</value>
+		</criteria>
+	</filter>
+			
+</listdef>

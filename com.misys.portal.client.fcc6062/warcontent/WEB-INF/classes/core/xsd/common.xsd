@@ -1,0 +1,3130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Portal Interfaces Schema Copyright (c) 2000-2011 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Schema W3C contains all shared data
+            types and elements used in different other Schema W3C for validating
+            GTP products XML Files. Copyright (c) 2000-2011 Misys
+            (http://www.misys.com), All Rights Reserved.</xs:documentation>
+	</xs:annotation>
+
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/collaboration/xsd/todolist.xsd"/>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/collaboration/xsd/task.xsd"/>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/collaboration/xsd/comment.xsd"/>
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Elements : </xs:documentation>
+	</xs:annotation>
+	<xs:element name="tnx_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="topic" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="brch_code" type="FiveCharacters" nillable="true"/>
+	<xs:element name="ref_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="template_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="bo_ref_id" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="fin_bo_ref_id" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="doc_ref_no" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="related_ref" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="bo_tnx_id" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="related_ref_id" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="cust_ref_id" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="auth_reference" type="ThirtyFourCharacters" nillable="true"/>
+	<xs:element name="company_id" type="twentyTwoDigitInteger" nillable="true"/>
+	<xs:element name="company_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="entity" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="tnx_type_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="priority" type="positiveInteger" nillable="true"/>
+	<xs:element name="sub_tnx_type_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="prod_stat_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="se_type" type="positiveInteger" nillable="true"/>
+	<xs:element name="issuer_type" type="positiveInteger" nillable="true"/>
+	<xs:element name="contact_type" type="positiveInteger" nillable="true"/>
+	<xs:element name="req_read_receipt" type="positiveInteger" nillable="true"/>
+	<xs:element name="tnx_stat_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="sub_tnx_stat_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="inp_user_id" type="tenDigitInteger" nillable="true"/>
+	<xs:element name="inp_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="ctl_user_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="ctl_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="release_user_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="release_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="calculation_method" type="FourCharacters" nillable="true"/>
+	<xs:element name="exception_method" type="FourCharacters" nillable="true"/>
+	<xs:element name="waive_type" type="FourCharacters" nillable="true"/>
+	<xs:element name="waive_basis" type="FourCharacters" nillable="true"/>
+	<xs:element name="reporting_method" type="FourCharacters" nillable="true"/>
+	<xs:element name="exception_code" type="FourCharacters" nillable="true"/>
+	<xs:element name="euc_type" type="ThreeCharacters" nillable="true"/>
+	<xs:element name="assignment" type="OneCharacter" nillable="true"/>
+	<xs:element name="refinance" type="OneCharacter" nillable="true"/>
+	<xs:element name="refinance_number" type="OneCharacter" nillable="true"/>
+	<xs:element name="bulk_ref_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="bulk_tnx_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="lc_ref_id" nillable="true" type="TwentyCharacters"/>
+	<xs:element name="issuing_bank_reference" nillable="true" type="SixteenCharacters"/>	
+	<xs:element name="bo_inp_user_id" type="tenDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 20 characters if the bank wants to keep track
+                internally in the Global Trade Portal of the back-office input
+                user in charge of the transaction event. To simply indicate that
+                the transaction event comes from the interface, the usage of a
+                key word such as 'BATCH' is advised. This data will not be shown
+                to the client. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="bo_ctl_user_id" type="TwentyCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Same as bo_inp_user_id but for a controller. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="bo_release_user_id" type="TwentyCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Same as bo_inp_user_id but for a so-called
+                releaser. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="bo_inp_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="bo_ctl_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="bo_release_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="appl_date" type="Date" nillable="true"/>
+	<xs:element name="exception_date" type="Date" nillable="true"/>
+	<xs:element name="eoc_ddlpi" type="Date" nillable="true"/>
+	<xs:element name="eom_ddlpi" type="Date" nillable="true"/>
+	<xs:element name="period_start_date" type="Date" nillable="true"/>
+	<xs:element name="period_end_date" type="Date" nillable="true"/>
+	<xs:element name="exec_date" type="Date" nillable="true"/>
+	<xs:element name="read_dttm" type="Date" nillable="true"/>
+	<xs:element name="tnx_val_date" type="Date" nillable="true"/>
+	<xs:element name="iss_date_type_code" type="positiveInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Indicate if the requested start for the guarantee
+                is the Issuance (01) , the Signature of the underlying Contract
+                (02), the Date of Advanced Payment (03), etc. or Other (99)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="iss_date_type_details" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="iss_date" type="Date" nillable="true"/>
+	<xs:element name="due_date" type="Date" nillable="true"/>
+	<xs:element name="post_date" type="DateTime" nillable="true"/>
+	<xs:element name="fscm_programme_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="eligibility_flag" type="OneCharacter" nillable="true"/>
+	<xs:element name="finance_requested_flag" type="OneCharacter" nillable="true"/>
+	<xs:element name="finance_offer_flag" type="OneCharacter" nillable="true"/>
+	<xs:element name="value_date" type="Date" nillable="true"/>
+	<xs:element name="exp_date" type="Date" nillable="true"/>
+	<xs:element name="advise_date" type="Date" nillable="true"/>	
+	<xs:element name="exp_event" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="maturity_date" type="Date" nillable="true"/>
+	<xs:element name="trade_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="amd_no" type="tenDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Numeric characters only for the amendment number</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="grace_period" type="positiveInteger" nillable="true"/>
+	<xs:element name="period_over" type="positiveInteger" nillable="true"/>
+	<xs:element name="period_left" type="positiveInteger" nillable="true"/>
+	<xs:element name="investor_percent" type="positiveInteger" nillable="true"/>
+	<xs:element name="all_in_rate" type="DecimalNumber" nillable="true"/>
+	<xs:element name="net_rate" type="DecimalNumber" nillable="true"/>
+	<xs:element name="factor" type="DecimalNumber" nillable="true"/>
+	<xs:element name="investment_rate" type="DecimalNumber" nillable="true"/>
+	<xs:element name="min_premium" type="DecimalNumber" nillable="true"/>
+	<xs:element name="amd_date" type="Date" nillable="true"/>
+	<xs:element name="tnx_cur_code" type="currency">
+		<xs:annotation>
+			<xs:documentation>The 3-characters long ISO code of the currency
+                attached to an amount.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="tnx_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount to indicate the amount specific
+                to the transaction currently reported </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="se_amt" type="amount" nillable="true">
+	</xs:element>
+	<xs:element name="applicant_abbv_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the abbreviated name of the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fwd_contract_no" type="ThirtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 34 characters for the forward contract number</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicant_name" type="TwoHundredCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 200 characters for the name of the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicant_address_line_1" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the first line of address
+                of the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicant_address_line_2" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the second line of address
+                of the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicant_dom" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the third line of address
+                of the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicant_address_line_4" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the fourth line of address
+                of the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicant_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicant_reference" type="SixtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 64 characters for this additional reference
+                identifying the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="alt_applicant_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the name of the alternate applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="alt_applicant_address_line_1" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the first line of address
+                of the alternate applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="alt_applicant_address_line_2" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the second line of address
+                of the alternate applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="alt_applicant_dom" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the third line of address
+                of the alternate applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="alt_applicant_address_line_4" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the fourth line of address
+                of the alternate applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="alt_applicant_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the alternate applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_abbv_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the abbreviated name of the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_address_line_1" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the first line of address
+                of the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_address_line_2" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the second line of address
+                of the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_dom" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the third line of address
+                of the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_address_line_4" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the fourth line of address
+                of the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the name of the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_reference" type="SixtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 64 characters for this additional reference
+                identifying the beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_abbv_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the abbreviated name of the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the name of the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_address_line_1" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the first line of address
+                of the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_address_line_2" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the second line of address
+                of the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_dom" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the third line of address
+                of the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_address_line_4" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the fourth line of address
+                of the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="sec_beneficiary_reference" type="SixtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 64 characters for this additional reference
+                identifying the second beneficiary</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="contact_address_line_1" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the first line of address
+                of the contact</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="contact_address_line_2" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the second line of address
+                of the contact</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="contact_dom" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the third line of address
+                of the contact</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="contact_address_line_4" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the fourth line of address
+                of the contact</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="contact_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the contact</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- ADD INCOMING V4 -->
+	<xs:element name="assignee_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for details_bank_assignee_name in collaboration </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="assignee_address_line_1" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="assignee_address_line_2" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="assignee_dom" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="assignee_address_line_4" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="assignee_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="assignee_reference" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="notify_amendment_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+			Flag to define if the notify_amendment_flag .
+			Values are 'Y' for yes and 'N' for no and empty when notify_amendment_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="substitute_invoice_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+			Flag to define if the substitute_invoice_flag .
+			Values are 'Y' for yes and 'N' for no and empty when substitute_invoice_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="advise_mode_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Advise Mode Code.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="customer_reference" type="SixtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 64 characters for this additional reference
+                identifying the customer</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="customer_ref" type="ThirtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 34 characters for this additional reference
+                identifying the customer</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- END ADD INCOMING V4 -->
+	<xs:element name="adv_send_mode" type="sendMode" nillable="true"/>
+	<xs:element name="contract_ref" type="FourCharacters" nillable="true"/>
+	<xs:element name="contract_narrative" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="tender_expiry_date" type="Date" nillable="true"/>
+	<xs:element name="contract_date" type="Date" nillable="true"/>
+	<xs:element name="contract_amt" type="amount" nillable="true"/>
+	<xs:element name="interest_amt" type="amount" nillable="true"/>
+	<xs:element name="late_fee_amt" type="amount" nillable="true"/>
+	<xs:element name="past_interest_amt" type="amount" nillable="true"/>
+	<xs:element name="non_cash_amt" type="amount" nillable="true"/>
+	<xs:element name="additional_amt" type="amount" nillable="true"/>
+	<xs:element name="exception_interest_amt" type="amount" nillable="true"/>
+	<xs:element name="premium_amt" type="amount" nillable="true"/>
+	<xs:element name="fault_interest_amt" type="amount" nillable="true"/>
+	<xs:element name="min_premium_amt" type="amount" nillable="true"/>
+	<xs:element name="total_premium_amt" type="amount" nillable="true"/>
+	<xs:element name="waive_amt" type="amount" nillable="true"/>
+	<xs:element name="client_premium_amt" type="amount" nillable="true"/>
+	<xs:element name="seller_premium_amt" type="amount" nillable="true"/>
+	<xs:element name="investor_amt" type="amount" nillable="true"/>
+	<xs:element name="min_use_fee_amt" type="amount" nillable="true"/>
+	<xs:element name="unused_fee_amt" type="amount" nillable="true"/>
+	<xs:element name="breakage_fee_amt" type="amount" nillable="true"/>
+	<xs:element name="contract_cur_code" type="currency" nillable="true"/>
+	<xs:element name="interest_cur_code" type="currency" nillable="true"/>
+	<xs:element name="late_fee_cur_code" type="currency" nillable="true"/>
+	<xs:element name="past_interest_cur_code" type="currency" nillable="true"/>
+	<xs:element name="non_cash_cur_code" type="currency" nillable="true"/>
+	<xs:element name="additional_cur_code" type="currency" nillable="true"/>
+	<xs:element name="exception_interest_cur_code" type="currency" nillable="true"/>
+	<xs:element name="premium_cur_code" type="currency" nillable="true"/>
+	<xs:element name="fault_interest_cur_code" type="currency" nillable="true"/>
+	<xs:element name="min_use_fee_cur_code" type="currency" nillable="true"/>
+	<xs:element name="unused_fee_cur_code" type="currency" nillable="true"/>
+	<xs:element name="breakage_fee_cur_code" type="currency" nillable="true"/>
+	<xs:element name="waive_cur_code" type="currency" nillable="true"/>
+	<xs:element name="client_premium_cur_code" type="currency" nillable="true"/>
+	<xs:element name="seller_premium_cur_code" type="currency" nillable="true"/>
+	<xs:element name="total_premium_cur_code" type="currency" nillable="true"/>
+	<xs:element name="min_premium_cur_code" type="currency" nillable="true"/>
+	<xs:element name="investor_cur_code" type="currency" nillable="true"/>
+	<xs:element name="contract_pct" type="threeDigitInteger" nillable="true"/>
+	<xs:element name="principal_act_no" type="ThirtyFourCharacters" nillable="true">
+	<xs:annotation>
+			<xs:documentation>Max. 34 characters for the principal account
+                specified by the client.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="extended_date" type="Date" nillable="true"/>
+	<xs:element name="fee_act_no" type="ThirtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 34 characters .</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="transfer_purpose" type="ThirtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 34 characters .</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="PullDownList">
+		<xs:annotation>
+			<xs:documentation>Pull Down List. Standard values are ' ', 'fr', 'en', 'es' and '*'.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern 
+			value="|fr|en|es|\*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="text_language" type="PullDownList" nillable="false"/>
+	<xs:element name="text_language_other" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="bg_text_details_code" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="bg_code" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="amd_details" type="xs:string" nillable="true"/>
+	<xs:element name="upload_id" type="xs:string" nillable="true"/>
+	<xs:element name="bg_document" type="xs:string" nillable="true"/>
+	<xs:element name="text_type_code" type="xs:string" nillable="true"/>
+	<xs:element name="for_account" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Y' or 'N' to indicate if the guarantee is opened in the account of.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="adv_bank_conf_req" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Y' or 'N' to indicate if the advising bank confirmation is required in a guarantee.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reduction_authorised" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Y' or 'N' to indicate if a guarantee reduction is authorized.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reduction_clause" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>A code with two possible values to specify the 
+					reduction clause of a guarantee (01 - Deliveries,
+					02 - Realisation, 03 - Other).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="reduction_clause_other" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="character_commitment" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Character of the commitment in a guarantee
+					(01 - Conditional, 02 - Demand).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="delivery_to" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Deliver to in guarantee
+					(01 - Ourselves, 02 - party, 03 - Beneficiary, 04 - Other).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="delivery_to_other" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="bg_tolerance_positive_pct" type="twoDigitInteger" nillable="true"/>
+	<xs:element name="bg_tolerance_negative_pct" type="twoDigitInteger" nillable="true"/>
+	<xs:element name="consortium" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Y' or 'N' to indicate if there si a consortium in a guarantee.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="consortium_details" type="TwoHundredFiftyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Consortium details.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="net_exposure_cur_code" type="currency">
+		<xs:annotation>
+			<xs:documentation>The 3-characters long ISO code of the currency
+                attached to an amount.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="net_exposure_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount to indicate the amount specific
+                to the transaction currently reported </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="guarantee_type_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="guarantee_type_company_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="bo_comment" type="xs:string" nillable="true"/>
+	<xs:element name="free_format_text" type="xs:string" nillable="true"/>
+	<xs:element name="drawdown_rrid" type="xs:string" nillable="true"/>
+	<xs:element name="loan_repricing_trans_rid" type="xs:string" nillable="true"/>
+	<xs:element name="abbv_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for an abbreviated name
+                (usually unique and maintained solely by the Global Trade Portal)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="name" type="TwoHundredCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 200 characters for a name.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="address_line_1" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for a first line of address</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="address_line_2" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for a second line of address</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="dom" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the third line of address</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="address_line_4" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for a fourth line of address</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reference" type="SixtyFourCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 64 characters for an additional reference
+                attached to some parties in the transaction</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="period_presentation_days" type="ThreeCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Period of time after the date of shipment within which the documents must be presented for payment, acceptance or negotiation.
+				Any number between 1 and 999 or empty.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="req_conf_party_flag" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Contracting Party requested to provide confirmation.
+				Max. 35 characters.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="proactive_amd" type="YesNo" nillable="false">
+		<xs:annotation>
+			<xs:documentation>
+				Flag to enable/disable the renewal function.
+				Values 'Y' to enable or 'N' to disable. 
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cancellation_req_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Cancellation request flag Y or N
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="issuing_bank" type="bank" nillable="true"/>
+	<xs:element name="confirming_bank" type="bank" nillable="true"/>
+	<xs:element name="recipient_bank" type="bank" nillable="true"/>
+	<xs:element name="advising_bank" type="bank" nillable="true"/>
+	<xs:element name="advisethru_bank" type="bank" nillable="true"/>
+	<xs:element name="processing_bank" type="bank" nillable="true"/>
+	<xs:element name="drawee_details_bank" type="bank" nillable="true"/>
+	<xs:element name="advise_thru_bank" type="bank" nillable="true"/>
+	<xs:element name="credit_available_with_bank" type="bank" nillable="true"/>
+	<xs:element name="remitting_bank" type="bank" nillable="true"/>
+	<xs:element name="collecting_bank" type="bank" nillable="true"/>
+	<xs:element name="presenting_bank" type="bank" nillable="true"/>
+	<xs:element name="correspondent_bank" type="bank" nillable="true"/>
+	<xs:element name="account_with_bank" type="bank" nillable="true"/>
+	<xs:element name="pay_through_bank" type="bank" nillable="true"/>
+	<xs:element name="buyer_bank" type="bank" nillable="true"/>
+	<xs:element name="seller_bank" type="bank" nillable="true"/>
+	<xs:element name="first_advising_bank" type="bank" nillable="true"/>
+	<xs:element name="requested_confirmation_party" type="bank" nillable="true"/>
+	<xs:element name="cu_credit_available_with_bank" type="bank" nillable="true"/>
+		
+	<!-- START - Swift 2018 narrative amendment -->
+	<xs:complexType name="swift2018_narrative" mixed="true">
+		<xs:annotation>
+			<xs:documentation>
+	    		This is applicable only for LC, EL, SI and SR products.
+	       		This element definition will support below data:
+				a) simple text <!-- i.e. 1234 --> -- Valid data for FCC and will be processed correctly.
+				b) complex type <!-- i.e. <operation>add</operation><text>1234</text> --> -- Valid data for FCC and will be processed correctly.
+				c) mix text <!-- i.e. abcd<operation>add</operation><text>1234</text> --> -- this is invalid data for FCC.
+				As part of XSD validation these validation are not performed due to technical limitation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="amend">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="operation">
+							<xs:simpleType>
+								<xs:restriction base="xs:token">
+									<xs:pattern value="ADD|DELETE|REPALL"/>
+								</xs:restriction>			
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="text" type="xs:string" nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="narrative_additional_instructions" type="swift2018_narrative"/>
+	<xs:element name="narrative_master_description_goods" type="swift2018_narrative"/>
+	<xs:element name="narrative_master_documents_required" type="swift2018_narrative"/>
+	<xs:element name="narrative_master_additional_instructions" type="swift2018_narrative"/>
+	<xs:element name="narrative_master_special_beneficiary" type="swift2018_narrative"/>
+	<xs:element name="narrative_master_special_recvbank" type="swift2018_narrative"/>
+	<xs:element name="narrative_additional_amount" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_charges" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_description_goods" type="swift2018_narrative"/>
+	<xs:element name="narrative_documents_required" type="swift2018_narrative"/>
+	<xs:element name="narrative_payment_instructions" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_period_presentation" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_amend_charges_other" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_legacy_partial_shipment" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_legacy_tran_shipment" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_legacy_period_of_presentation" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_legacy_max_credit_amount" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_special_beneficiary" type="swift2018_narrative"/>
+	<xs:element name="narrative_special_recvbank" type="swift2018_narrative"/>
+	<xs:element name="narrative_sender_to_receiver" type="swift2018_narrative"/>
+	<xs:element name="narrative_shipment_period" type="swift2018_narrative"/>
+	<xs:element name="narrative_full_details" type="swift2018_narrative"/>
+	<xs:element name="narrative_delivery_to" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_cancellation" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_transfer_conditions" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_underlying_transaction_details" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_presentation_instructions" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_undertaking_terms_and_conditions" type="xs:string" nillable="true"/>
+	<xs:element name="narrative_text_undertaking" type="xs:string" nillable="true"/>
+	<xs:element name="customer_contact_details" type="xs:string" nillable="true"/>
+	<xs:element name="attachments" type="attachments" nillable="true"/>
+	<xs:element name="attachment" type="attachment" nillable="true"/>
+	<xs:element name="attachment_id" type="xs:string" nillable="true"/>
+	<xs:element name="doc_id" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="dms_id" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="cross_references" type="cross_references" nillable="true"/>
+	<xs:element name="cross_reference" type="cross_reference" nillable="true"/>
+	<xs:element name="cross_reference_id" type="xs:string" nillable="true"/>
+	<xs:element name="product_code" type="product_code"/>
+	<xs:simpleType name="product_code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LC"/>
+			<xs:enumeration value="SE"/>
+			<xs:enumeration value="EL"/>
+			<xs:enumeration value="BG"/>
+			<xs:enumeration value="BR"/>
+			<xs:enumeration value="EC"/>
+			<xs:enumeration value="IC"/>
+			<xs:enumeration value="IR"/>
+			<xs:enumeration value="TF"/>
+			<xs:enumeration value="SG"/>
+			<xs:enumeration value="FT"/>
+			<xs:enumeration value="SI"/>
+			<xs:enumeration value="SR"/>
+			<xs:enumeration value="PO"/>
+			<xs:enumeration value="SO"/>
+			<xs:enumeration value="IN"/>
+			<xs:enumeration value="DM"/>
+			<xs:enumeration value="LT"/>
+			<xs:enumeration value="FO"/>
+			<xs:enumeration value="TU"/>
+			<xs:enumeration value="BN"/>
+			<xs:enumeration value="LN"/>
+			<xs:enumeration value="XO"/>
+			<xs:enumeration value="LI"/>
+			<xs:enumeration value="FA"/>
+			<xs:enumeration value="BK"/>
+			<xs:enumeration value="CN"/>
+			<xs:enumeration value="LS"/>
+			<xs:enumeration value="FB"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="sub_product_code" type="FiveCharacters"/>
+	<xs:element name="child_product_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="child_ref_id" type="TwentyCharacters"/>
+	<xs:element name="child_tnx_id" type="TwentyCharacters"/>
+	<xs:element name="type_code" type="TwoCharacters"/>
+	<xs:element name="description" type="TwoThousandCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2000 characters to provide more details on an
+                attachment (Not Used)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="file_name" type="TwoHundredFiftyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 255 characters for the name of an attached
+                file (without the path). This is the way the file will be
+                proposed to the user during a download.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="title" type="TwoHundredFiftyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 255 characters for the title of an attached
+                file. In the reporting screen of the client, this text is what
+                will be shown to the user as the hyperlink triggering the
+                download of the file.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="type" type="TwoCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A code of 2 characters to indicate the type of an
+                attached file, whether originating from the client (01) or sent
+                by the bank (02)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="exported_file_path" type="xs:string" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A code of 2 characters to indicate the type of an
+                attached file, whether originating from the client (01) or sent
+                by the bank (02)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="mime_type" type="xs:string" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A mime type as described by the IANA organization
+			(http://www.iana.org/assignments/media-types)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="file_attachment" type="xs:string" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A Base64 string representing a binary file</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="auto_gen_doc_code" type="xs:string" nillable="true"/>
+	<xs:element name="charges" type="charges" nillable="true"/>
+	<xs:element name="customer_references" type="customer_references" nillable="true"/>
+	<xs:element name="reference_record" type="reference_record" nillable="true"/>
+	<xs:element name="roles" type="roles" nillable="true"/>
+	<xs:element name="user_roles" type="user_roles" nillable="true"/>
+	<xs:element name="group_set" type="groupSetType" nillable="true"/>
+	<xs:element name="user_entities" type="user_entities" nillable="true"/>
+	<xs:element name="entity_set" type="userEntitySetType" nillable="true"/>
+	<xs:element name="company_role" type="roleType" nillable="true"/>
+	<xs:element name="user_role" type="userRoleType" nillable="true"/>
+	<xs:element name="entity_role" type="roleType" nillable="true"/>
+	<xs:element name="charge" type="charge" nillable="true"/>
+	<xs:element name="counterparties" type="counterparties" nillable="true"/>
+	<xs:element name="counterparty" type="counterparty" nillable="true"/>
+	<xs:element name="chrg_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="chrg_code" type="xs:string" nillable="true"/>
+	<xs:element name="amt" type="amount" nillable="true"/>
+	<xs:element name="cur_code" type="currency" nillable="true"/>
+	<xs:element name="status" type="TwoCharacters" nillable="true"/>
+	<xs:element name="bearer_role_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="eqv_amt" type="amount" nillable="true"/>
+	<xs:element name="eqv_cur_code" type="currency" nillable="true"/>
+	<xs:element name="inception_date" type="Date" nillable="true"/>
+	<xs:element name="latest_answer_date" type="Date" nillable="true"/>
+	<xs:element name="settlement_date" type="Date" nillable="true"/>
+	<xs:element name="additional_comment" type="xs:string" nillable="true"/>
+	<xs:element name="created_in_session" type="YesNo" nillable="true"/>
+	<xs:element name="chrg_type" type="TwoCharacters" nillable="true"/>
+	<xs:element name="counterparty_id" type="xs:string" nillable="true"/>
+	<xs:element name="counterparty_abbv_name" type="xs:string" nillable="true"/>
+	<xs:element name="counterparty_name" type="xs:string" nillable="true"/>
+	<xs:element name="counterparty_address_line_1" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="counterparty_address_line_2" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="counterparty_dom" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="counterparty_address_line_4" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="counterparty_country" type="countryCode" nillable="true"/>
+	<xs:element name="cpty_bene_details_clrc" type="TwoCharacters" nillable="true"/>
+	<xs:element name="counterparty_cur_code" type="currency" nillable="true"/>
+	<xs:element name="counterparty_amt" type="amount" nillable="true"/>
+	<xs:element name="counterparty_label" type="xs:string" nillable="true"/>
+	<xs:element name="counterparty_act_no" type="xs:string" nillable="true"/>
+	<xs:element name="counterparty_act_iso_code" type="xs:string" nillable="true"/>
+	<xs:element name="counterparty_reference" type="xs:string" nillable="true"/>
+	<xs:element name="counterparty_type" type="TwoCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_name" type="OneTwentyCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_code" type="FiveCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_swift_bic_code" type="ElevenCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_address_line_1" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_address_line_2" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_dom" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_address_line_4" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cpty_bank_country" type="countryCode" nillable="true"/>
+	<xs:element name="cpty_beneficiary_bank_clrc" type="TwoCharacters" nillable="true"/>
+	<xs:element name="cpty_branch_name" type="OneTwentyCharacters" nillable="true"/>
+	<xs:element name="cpty_branch_code" type="FiveCharacters" nillable="true"/>
+	<xs:element name="cpty_branch_address_line_1" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cpty_branch_address_line_2" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cpty_branch_dom" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cpty_branch_address_line_4" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="eucp_flag" type="xs:string" nillable="true"/>
+	<xs:element name="eucp_presentation_place" type="xs:string" nillable="true"/>
+	<xs:element name="eucp_version" type="xs:string" nillable="true"/>
+	<xs:element name="eucp_reference" type="xs:string" nillable="true"/>
+	<xs:element name="usual_id" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_instruction_indicator" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_benif_institution" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_benif_account" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_account_institution" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_benif_bank_routing_no" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_inter_swift_bic_code" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_inter_bank_name" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_inter_bank_addr" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_inter_bank_addr_2" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_inter_city_state" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_inter_country" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_inter_bank_clrc" type="TwoCharacters" nillable="true"/>
+	<xs:element name="cpty_inter_routing_no" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_special_routing_1" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_special_routing_2" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_special_routing_3" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_special_routing_4" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_special_routing_5" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_special_routing_6" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_payment_detail_1" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_payment_detail_2" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_payment_detail_3" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_payment_detail_4" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_order_cust_name" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_order_account_no" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_order_cust_addr" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_order_cust_addr_2" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_order_cust_city" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_order_cust_country" type="xs:string" nillable="true"/>
+	<xs:element name="cpty_order_details_clrc" type="TwoCharacters" nillable="true"/>
+	<xs:element name="cpty_swift_charges_paid" type="xs:string" nillable="true"/>
+	<xs:element name="settlement_account" type="xs:string" nillable="true"/>
+	<xs:element name="settlement_mean" type="xs:string" nillable="true"/>
+	<xs:element name="ship_from" type="SixtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 65 characters for the place of original
+                shipment for the goods involved in the LC.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- SWIFT 2006 -->
+	<xs:element name="ship_loading" type="SixtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 65 characters for the port of loading
+                or airport of departure for the goods involved in the LC.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ship_discharge" type="SixtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 65 characters for the port of discharge
+                or airport of arrival for the goods involved in the LC.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicable_rules" type="ThirtyCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 30 characters for the applicable rules.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="applicable_rules_text" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the applicable rules test.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="advising_bank_lc_ref_id" type="xs:string" nillable="true"/>
+	<xs:element name="tenor_type" type="xs:string" nillable="true"/>
+	<xs:element name="tenor_days" type="positiveInteger" nillable="true"/>
+	<xs:element name="tenor_period" type="xs:string" nillable="true"/>
+	<xs:element name="tenor_from_after" type="xs:string" nillable="true"/>
+	<xs:element name="tenor_days_type" type="xs:string" nillable="true"/>
+	<xs:element name="tenor_type_details" type="xs:string" nillable="true"/>
+	<xs:element name="needs_refer_to" type="xs:string" nillable="true"/>
+	<xs:element name="needs_instr_by_code" type="xs:string" nillable="true"/>
+	<xs:element name="debit_amt" type="amount">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="transport_mode" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="delivery_channel" type="SixtyFiveCharacters" nillable="true"/>
+	<xs:element name="stand_by_lc_code" type="FourtyCharacters" nillable="true"/>
+	<!-- SWIFT 2006 -->
+	<xs:element name="ship_to" type="SixtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 65 characters for the place of destination in
+                the shipment of goods involved in the LC.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="drawee_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawee_address_line_1" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawee_address_line_2" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawee_dom" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawee_address_line_4" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawee_country" type="countryCode" nillable="true"/>
+	<xs:element name="drawee_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawee_reference" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="drawer_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawer_address_line_1" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawer_address_line_2" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawer_dom" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawer_address_line_4" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawer_country" type="countryCode" nillable="true"/>
+	<xs:element name="drawer_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="drawer_reference" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="inco_term_year" type="TenCharacters" nillable="true"/>
+	<xs:element name="inco_term" type="incotermsCode" nillable="true"/>
+	<xs:element name="inco_place" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the named place associated
+                with the incoterm</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="expiry_place" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the expiry place of the credit</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="imp_bill_ref_id" type="TwentyCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 20 characters for the optional reference of
+                an import bill drawn under the current letter of credit. This is
+                field is useful when reporting a drawdown / utilisation. </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="irv_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>'Y' or 'N' to indicate if the LC is irrevocable or not</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="corr_chrg_brn_by_code" nillable="true">
+		<!--xs:documentation>Indicates the party bearing the correspondent 
+					charges, 01 for the applicant, 02 for the 
+					beneficiary, 03 for drawee, 04 for drawer and 08 for charge-split.</xs:documentation-->
+		<xs:simpleType>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|08"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="open_chrg_brn_by_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Indicates the party bearing the issuing bank 
+					charges, 01 for the applicant, 02 for the 
+					beneficiary, 03 for drawee, 04 for drawer and 08 for charge-split.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|08"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="renew_flag" type="YesNo" nillable="false">
+		<xs:annotation>
+			<xs:documentation>
+				Flag to enable/disable the renewal function.
+				Values 'Y' to enable or 'N' to disable. 
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="renew_on_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Flag to define when the renewal will occours.
+					Values '01' to renew on expiry, '02' to a date defined in renewal_calendar_date field and empty when renew_flag value is 'N'. 
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="renewal_calendar_date" type="Date" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Date defined when the renew_on_code field is set with '02' and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="renew_for_nb" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Number of periods (renew_for_period field) that the SI will be renewed.
+				Any number between 1 and 999 and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="renew_for_period" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Period of renew_for_nb do reference.
+					Values are 'D' for days, 'W' for weeks, 'M' for months and 'Y' for years  and empty when renew_flag value is 'N'.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|D|W|M|Y"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="advise_renewal_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Flag to define if the renewal should be advised.
+				Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="advise_renewal_days_nb" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				The number of days before the renewal to advise.
+				Any number between 1 and 999 and empty when advise_renewal_flag or renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="rolling_renewal_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				Flag to define if the renewal can be rolled.
+				Values are 'Y' for yes and 'N' for no and empty when renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="rolling_renewal_nb" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				The number of times of the renewal can be rolled.
+				Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="rolling_cancellation_days" type="threeDigitInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>
+				The number of days before the cancellation to advise.
+				Any number between 1 and 999 and empty when rolling_renewal_flag or renew_flag value is 'N'.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="renew_amt_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					The amount of th renewal.
+					Values are '01' to the original amount, '02' to the current amount or empty when renew_flag value is 'N'.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="renewal_type" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Values are '01' to the regular type, '02' to the rolling type.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="product_type_code" type="positiveInteger" nillable="true"/>
+	<xs:element name="product_type_details" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="standby_rule_code" type="positiveInteger" nillable="true"/>
+	<xs:element name="standby_rule_other" type="xs:string" nillable="true"/>
+	<xs:element name="final_expiry_date" type="Date" nillable="true"/>
+	<xs:element name="additional_cust_ref" type="SixteenCharacters" nillable="true"/>
+	<xs:element name="purpose" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Purpose of Undertaking
+					(01 - PURPOSE UNDERTAKING, 02 - PURPOSE COUNTER AND LOCAL UNDERTAKING, 03 - PURPOSE COUNTER COUNTER AND OUNTER UNDERTAKING, 04 - PURPOSE ADVICE, 05 - PURPOSE ADVICE CONFIRM).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|05"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="approx_expiry_date" type="Date" nillable="true"/>
+	<xs:element name="stnd_by_lc_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Y' or 'N' to indicate if the LC is a Stand-By or 
+				not</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="reason_reduction_release" type="FourCharacters" nillable="true"/>
+	<xs:element name="bei_code" type="BICIdentifier" nillable="true"/>
+	<xs:element name="bg_conf_instructions" type="TwoCharacters" nillable="true"/>
+	<xs:element name="bg_govern_country" type="countryCode" nillable="true"/>
+	<xs:element name="bg_govern_text" type="SixtyFiveCharacters" nillable="true"/>
+	<xs:element name="tolerance_positive_pct" type="positiveInteger" nillable="true"/>
+	<xs:element name="tolerance_negative_pct" type="positiveInteger" nillable="true"/>
+	<xs:element name="customer_identifier" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="customer_identifier_other" type="HundredFourtyCharacters" nillable="true"/>
+	<xs:element name="bg_demand_indicator" type="FourCharacters" nillable="true"/>
+	<xs:element name="bg_transfer_indicator" type="YesNo" nillable="true"/>
+	<xs:element name="bg_special_terms" type="FourCharacters" nillable="true"/>
+	<xs:element name="adv_send_mode_text" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="delv_org_undertaking" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="delv_org_undertaking_text" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="send_attachments_by" type="SixtyFiveCharacters" nillable="true"/>
+	<xs:element name="send_attachments_by_other" type="SixtyFiveCharacters" nillable="true"/>
+	<xs:element name="conf_chrg_brn_by_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Indicates the party bearing the issuing bank 
+					charges, 01 for the applicant, 02 for the 
+					beneficiary, 03 for drawee, 04 for drawer and 08 for charge-split.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|08"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="lc_type" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="last_ship_date" type="Date" nillable="true"/>
+	<xs:element name="lc_amt" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the letter of credit (up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="open_chrg_applicant" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted split amount of the applicant bearing the issuing bank charges(up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="open_chrg_beneficiary" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted split amount of the beneficiary bearing the issuing bank charges(up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="corr_chrg_applicant" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted split amount of the applicant bearing the correspondent charges(up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="corr_chrg_beneficiary" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted split amount of the beneficiary bearing the correspondent charges(up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cfm_chrg_applicant" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted split amount of the applicant bearing the eventual confirmation charges(up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cfm_chrg_beneficiary" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted split amount of the beneficiary bearing the eventual confirmation charges(up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+
+	<xs:element name="lc_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the LC currency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lc_liab_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current liability amount
+                of the LC. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="release_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Request release amount for the liability amount
+                of the SI,BG.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- For the License Product -->
+	<xs:element name="ls_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the LS currency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ls_amt" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the license (up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ls_type" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="ls_def_id" nillable="true" type="TwentyCharacters"/>
+	<xs:element name="ls_name" type="ThreeCharacters" nillable="true"/>
+	<xs:element name="ls_outstanding_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current outstanding amount
+                of the LS. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ls_settlement_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current settlement amount
+                of the LS. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="add_settlement_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current additional settlement amount
+                of the LS. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ls_clear" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Checkbox determining whether the License tnx is cleared or not.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ls_liab_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current liability amount
+                of the LS. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="further_identification" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="origin_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the contact</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="supply_country" type="countryCode" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the contact</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="latest_payment_date" type="Date" nillable="true"/>
+	<xs:element name="total_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current total amount
+                of the LS. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="valid_for_nb" type="positiveInteger" nillable="true"/>
+	<xs:element name="valid_for_period" type="positiveInteger" nillable="true"/>
+	<xs:element name="valid_from_date" type="Date" nillable="true"/>
+	<xs:element name="valid_to_date" type="Date" nillable="true"/>
+	<xs:element name="allow_multi_cur" type="YesNo" nillable="true"/>
+	<xs:element name="reg_date" type="Date" nillable="true"/>
+
+	<!-- License Product Ends -->
+	<xs:element name="se_liab_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current liability amount
+                of the SE. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lc_release_flag" type="YesNo" nillable="true"/>
+	<!-- ADD INCOMING V4 -->
+	<xs:element name="lc_outstanding_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current outstanding amount
+                of the LC. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lc_available_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current available amount
+                of the LC. This will typically be modified when reporting a drawing.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- END ADD INCOMING V4 -->
+	<xs:element name="exp_date_type_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Three values possible for this code: No Date 
+					(01), Fixed (02), and Estimated (03).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="bg_cur_code" type="currency" nillable="true"/>
+	<xs:element name="bg_amt" type="amount" nillable="true"/>
+	<xs:element name="bg_liab_amt" type="amount" nillable="true"/>
+	<!-- ADD INCOMING V4 -->
+	<xs:element name="bg_outstanding_amt" type="amount" nillable="true"/>
+	<xs:element name="bg_available_amt" type="amount" nillable="true"/>
+	<!-- END ADD INCOMING V4 -->
+	<xs:element name="bg_type_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="bg_type_details" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="bg_rule" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="bg_rule_other" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="bg_text_type_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>The customer can specify the type of the text 
+					to use for the resulting guarantee letter: Standard (01), 
+					Attached (and therefore found in the attachment - 02), or 
+					Same As (03).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|B1|B2|B3|B4|B5|R1|R2|C1|C2|C3|C4|C5|C6|C7|D1|D2|D3|D4|F1|F2|F3|F4|F5|F6|T1|T2|T3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="bg_text_type_details" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+
+
+	<xs:element name="bg_release_flag" type="YesNo" nillable="true"/>
+	<xs:element name="fx_cur_code" type="currency" nillable="true"/>
+	<xs:element name="fx_amt" type="amount" nillable="true"/>
+	<xs:element name="fx_liab_amt" type="amount" nillable="true"/>
+	<xs:element name="fx_type" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="original_cur_code" type="currency" nillable="true"/>
+	<xs:element name="original_amt" type="amount" nillable="true"/>
+	<xs:element name="original_counter_cur_code" type="currency" nillable="true"/>
+	<xs:element name="original_counter_amt" type="amount" nillable="true"/>
+	<xs:element name="liquidation_cur_code" type="currency" nillable="true"/>
+	<xs:element name="liquidation_amt" type="amount" nillable="true"/>
+	<xs:element name="liquidation_date" type="Date" nillable="true"/>
+	<xs:element name="liquidation_profit_loss" type="xs:string" nillable="true"/>
+	<xs:element name="expiration_code" type="xs:string" nillable="true"/>
+	<xs:element name="expiration_date" type="Date" nillable="true"/>
+	<xs:element name="expiration_date_term_number" type="xs:string" nillable="true"/>
+	<xs:element name="expiration_date_code" type="xs:string" nillable="true"/>
+	<xs:element name="expiration_time" type="DateTime" nillable="true"/>
+	<xs:element name="issuing_bank_type_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>A code with two possible values to specify if 
+					the guarantee is issued by the Recipient Bank (01 - element 
+					bearing the "recipient bank" role) or an Other Bank (02 - 
+					in which case the "issuing bank" element contains its 
+					details).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="max_no_of_rvlv" type="xs:string" nillable="true"/>
+	<xs:element name="neg_tol_pct" type="positiveInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Numeric characters to specify the negative
+                tolerance in a variation in drawing</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ntrf_flag" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Y' or 'N' to indicate if the LC is Non
+                Transferable or not.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="part_ship_detl" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="cfm_flag" type="YesNo">
+		<xs:annotation>
+			<xs:documentation>'Y' or 'N' to indicate if Yes or No the
+                confirmation has been added by the export side on this letter of credit.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="dir_reim_flag" type="TwoCharacters" nillable="true"/>
+	<xs:element name="draft_term" type="HundredFourtyThreeCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Contains whether the draft details (when the
+                credit is available by acceptance or negotiation), or the
+                payment details (when the credit is available by differed or
+                mixed payment). Max. 140 characters.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="tran_ship_detl" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="rvlv_lc_type_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="cty_of_dest" type="TwoCharacters" nillable="true"/>
+	<xs:element name="pstv_tol_pct" type="positiveInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Numeric characters to specify the positive
+                tolerance in a variation in drawing</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="documents" type="documents" nillable="true"/>
+	<xs:element name="document" type="document" nillable="true"/>
+	<xs:element name="document_id" type="xs:string" nillable="true"/>
+	<xs:element name="first_mail" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="second_mail" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="total" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="mapped_attachment_name" type="TwoHundredFiftyFiveCharacters" nillable="true"/>	
+	<xs:element name="mapped_attachment_id" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="doc_no" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="doc_date" type="Date" nillable="true"/>
+	<xs:element name="accpt_adv_send_mode" type="sendMode" nillable="true"/>
+	<xs:element name="accpt_defd_flag" type="YesNo" nillable="true"/>
+	<xs:element name="bol_number" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="waive_chrg_flag" type="YesNo" nillable="true"/>
+	<xs:element name="tenor_event" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="tenor_desc" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="tenor_maturity_date" type="Date" nillable="true"/>
+	<xs:element name="tenor_start_date" type="Date" nillable="true"/>
+	<xs:element name="term_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="tenor_base_date" type="Date" nillable="true"/>
+	<xs:element name="protest_adv_send_mode" type="sendMode" nillable="true"/>
+	<xs:element name="protest_non_accpt" type="YesNo" nillable="true"/>
+	<xs:element name="protest_non_paymt" type="YesNo" nillable="true"/>
+	<xs:element name="shipping_by" type="SixtyFiveCharacters" nillable="true"/>
+	<xs:element name="shipping_mode" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="store_goods_flag" type="YesNo" nillable="true"/>
+	<xs:element name="tenor" type="positiveInteger" nillable="true"/>
+	<xs:element name="insr_req_flag" type="YesNo" nillable="true"/>
+	<xs:element name="int_maturity_date" type="Date" nillable="true"/>
+	<xs:element name="int_rate" type="xs:string" nillable="true"/>
+	<xs:element name="int_start_date" type="Date" nillable="true"/>
+	<xs:element name="paymt_adv_send_mode" type="sendMode" nillable="true"/>
+	<xs:element name="goods_desc" type="xs:string" nillable="true"/>
+	<xs:element name="cfm_inst_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>A code made of two characters with the values
+                    01 - Confirm, 02 - May Add, 03 - Without, for the
+                    confirmation instructions</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cfm_chrg_brn_by_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Indicates the party bearing the eventual
+                    confirmation charges, 01 for the applicant, 02 for the beneficiary and 08 for charge-split.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|07|08"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="amd_chrg_brn_by_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Indicates the party bearing the eventual
+                    amendment charges, 01 for the applicant, 02 for the beneficiary,07 for other.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|07"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cr_avl_by_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>A code made of two characters with the values
+                    01 - Payment, 02 - Acceptance, 03 - Negotiation, 04 -
+                    Deferred Payment, 05 - Mixed Payment, 06 - On Demand, to indicate how the
+                    credit is available</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|05|06"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="tenor_unit" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>The unit for the tenor, 'D' if the tenor value
+                    is a number of days, 'M' for a number of months.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|D|M"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="max_cr_desc_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation> The code specifying the maximum credit amount
+                    in a variation in drawing. Only one code available when this
+                    field is used: 3 - Not Exceeding.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="dir_coll_letter_flag" type="YesNo" nillable="true"/>
+	<xs:element name="boe_flag" type="YesNo" nillable="true"/>
+	<xs:element name="docs_send_mode" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|03|04"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ec_amt" type="amount" nillable="true"/>
+	<xs:element name="ec_cur_code" type="currency" nillable="true"/>
+	<xs:element name="ec_liab_amt" type="amount" nillable="true"/>
+	<!-- ADD INCOMING V4 -->
+	<xs:element name="ec_outstanding_amt" type="amount" nillable="true"/>
+	<!-- END ADD INCOMING V4 -->
+	<xs:element name="ec_type_code" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="sg_amt" type="amount" nillable="true"/>
+	<xs:element name="sg_cur_code" type="currency" nillable="true"/>
+	<xs:element name="sg_liab_amt" type="amount" nillable="true"/>
+	<!-- ADD INCOMING V4 -->
+	<xs:element name="sg_outstanding_amt" type="amount" nillable="true"/>
+	<xs:element name="ir_outstanding_amt" type="amount" nillable="true"/>
+	<xs:element name="ir_amt" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the inward remittance (up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ir_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the IR currency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="se_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the SE currency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- END ADD INCOMING V4 -->
+	<xs:element name="fin_amt" type="amount" nillable="true"/>
+	<xs:element name="fin_cur_code" type="currency" nillable="true"/>
+	<xs:element name="fin_liab_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the current liability amount 
+				of the Financing. This will typically be modified when 
+				reporting a partial or full settlement of this loan / discount 
+				/ trust receipt.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- ADD INCOMING V4 -->
+	<xs:element name="fin_outstanding_amt" type="amount" nillable="true"/>
+	<!-- END ADD INCOMING V4 -->
+	<xs:element name="fin_type" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Max. 2 characters for the type of the current 
+					financing. This is a code that can take any of the 
+					following values: 01 - Trust Receipt, 02 - Import Loan 
+					(LC), 03 - Import Loan (Collection), 20 - Export Bill 
+					Purchase (LC), 21 - Export Discounting (LC), 22 - Export 
+					Bill Purchase (Collection), 23 - Export Discounting 
+					(Collection), 24 - Packing Credit, 99 - Other / 
+					Misc.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|20|21|22|23|24|99"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ft_cur_code" type="currency" nillable="true"/>
+	<xs:element name="ft_amt" type="amount" nillable="true"/>
+	<xs:element name="ft_type" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>The type of the fund transfer, whether 
+					Internal (01) or Outgoing (02).</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|05|06|07|08|09|10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ic_amt" type="amount" nillable="true"/>
+	<xs:element name="ic_cur_code" type="currency" nillable="true"/>
+	<xs:element name="ic_liab_amt" type="amount" nillable="true"/>
+	<!-- ADD INCOMING V4 -->
+	<xs:element name="ic_outstanding_amt" type="amount" nillable="true"/>
+	<!-- END ADD INCOMING V4 -->
+	<xs:element name="ic_type_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>The type of the collection: 01 - Regular or 
+					02 - Direct. It is currently not shown to the 
+					drawee.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<!--xs:element name="beneficiary_act_no" type="ThirtyFourCharacters" nillable="true"/>
+	<xs:element name="beneficiary_cur_code" type="currency" nillable="true"/-->
+	<xs:element name="applicant_act_no" type="ThirtyFourCharacters" nillable="true"/>
+	<xs:element name="applicant_act_name" type="NintyNineCharacters" nillable="true"/>
+	<xs:element name="applicant_act_cur_code" type="currency"/>
+	<xs:element name="applicant_act_description" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:simpleType name="AdditionalFieldScopeType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="transaction"/>
+			<xs:enumeration value="master"/>
+			<xs:enumeration value="none"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AdditionalFieldType" mixed="true">
+		<xs:attribute name="name" use="required"/>
+		<xs:attribute name="type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="string"/>
+					<xs:enumeration value="amount"/>
+					<xs:enumeration value="decimal"/>
+					<xs:enumeration value="integer"/>
+					<xs:enumeration value="id"/>
+					<xs:enumeration value="date"/>
+					<xs:enumeration value="time"/>
+					<xs:enumeration value="text"/>
+					<xs:enumeration value="raw_text"/>
+					<xs:enumeration value="xml_text"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="scope" use="required" type="AdditionalFieldScopeType" />
+		<xs:attribute name="currency"/>
+	</xs:complexType>
+	<xs:element name="additional_field" type="AdditionalFieldType" nillable="true"/>
+	<xs:element name="code" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+			</xs:restriction>
+			<!--xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|05|06|07|08|09|96|97|98|99"/>
+            </xs:restriction-->
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="parity" type="positiveInteger" nillable="true"/>
+	<xs:element name="exchange_rate" type="rate" nillable="true"/>
+	<xs:element name="decimal_number" type="positiveInteger" nillable="true"/>
+	<xs:element name="round_code" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Rounding code. The is currently no value.</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="parm_id" type="FourCharacters" nillable="true"/>
+	<xs:element name="key_1" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_2" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_3" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_4" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_5" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_6" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_7" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_8" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_9" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="key_10" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="data_1" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_2" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_3" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_4" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_5" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_6" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_7" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_8" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_9" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_10" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_11" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_12" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_13" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_14" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_15" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_16" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_17" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_18" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_19" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="data_20" type="FourtyCharacters" nillable="true"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Simple Types : </xs:documentation>
+	</xs:annotation>
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation> the date has to be compliant to the pattern: dd/mm/yyyy if the
+                date field is filled</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]{2}/[0-9]{2}/[0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateYYYY-MM-DD">
+		<xs:annotation>
+			<xs:documentation> the date has to be compliant to the pattern: yyyy/mm/dd if the
+                date field is filled</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateTime">
+		<xs:annotation>
+			<xs:documentation> the date time has to be compliant to the pattern: dd/mm/yyyy 00:00:00 if the
+                date time field is filled</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".{0}|[0-9]{2}/[0-9]{2}/[0-9]{4} [012][0-9]:[0-6][0-9]:[0-6][0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="amount">
+		<xs:annotation>
+			<xs:documentation>The amount can have the four possible forms:
+            1- 1,2 or 3 numbers followed by '.' 1, 2 or 3 numbers .
+            2- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by '.' 1,2 or 3 numbers.
+            3- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by '.' and 1,2 or 3 numbers.
+            4- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by ',' followed by 3 numbers followed by '.' and 1,2 or 3 numbers.
+			5- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by ',' followed by 3 numbers followed by '.' and 1,2 or 3 numbers.
+			Note: each case is duplicated to manage amount without decimal separator.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]{1,3}|[0-9]{1,3}[.][0-9]{1,3}|[0-9]{1,3}[,][0-9]{3}|[0-9]{1,3}[,][0-9]{3}[.][0-9]{1,3}|[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}|[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[.][0-9]{1,3}|[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}|[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}[.][0-9]{1,3}|[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}[.][0-9]{1,3}"/>
+			<xs:maxLength value="23"/>            
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PstvNegAmount">
+		<xs:annotation>
+			<xs:documentation>The amount can have the four possible forms:
+            1- 1,2 or 3 numbers followed by '.' 1, 2 or 3 numbers .
+            2- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by '.' 1,2 or 3 numbers.
+            3- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by '.' and 1,2 or 3 numbers.
+            4- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by ',' followed by 3 numbers followed by '.' and 1,2 or 3 numbers.
+			5- 1,2 or 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by ','  followed by 3 numbers followed by ',' followed by 3 numbers followed by '.' and 1,2 or 3 numbers.
+			Note: each case is duplicated to manage amount without decimal separator.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="-?.{0}|-?[0-9]{1,3}|-?[0-9]{1,3}[.][0-9]{1,3}|-?[0-9]{1,3}[,][0-9]{3}|-?[0-9]{1,3}[,][0-9]{3}[.][0-9]{1,3}|-?[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}|-?[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[.][0-9]{1,3}|-?[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}|-?[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}[.][0-9]{1,3}|-?[0-9]{1,3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}[,][0-9]{3}[.][0-9]{1,3}"/>
+			<xs:maxLength value="23"/>            
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="rate">
+		<xs:annotation>
+			<xs:documentation>Exchange rate : 12 + 15 decimal</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|-?[0-9]{0,12}[.][0-9]{1,15}|-?[0-9]{0,12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="liquidation_rate">
+		<xs:annotation>
+			<xs:documentation>Exchange rate : 12 + 15 decimal</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|-?[0-9]{0,12}[.][0-9]{1,15}|-?[0-9]{0,12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="positiveInteger">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="currency">
+		<xs:restriction base="xs:token">
+			<xs:pattern 
+				value=".{0}|ADP|AED|AFA|AFN|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGL|BGN|BHD|BIF|BMD|BND|BOB|BRL|BSD|BTN|BWP|BYR|BZD|CAD|CDF|CHF|CLP|CNY|COP|CRC|CUC|CUP|CVE|CZK|DJF|DKK|DOP|DZD|EGP|ERN|ETB|EUR|FJD|FKP|GBP|GEL|GHS|GIP|GMD|GNF|GTQ|GWP|GYD|HKD|HNL|HRK|HTG|HUF|IDR|ILS|INR|IQD|IRR|ISK|JEP|JMD|JOD|JPY|KES|KGS|KHR|KMF|KPW|KRW|KWD|KYD|KZT|LAK|LBP|LKR|LRD|LSL|LTL|LVL|LYD|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MRO|MTL|MUR|MVR|MWK|MXN|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RUR|RWF|SAR|SBD|SCR|SDG|SEK|SGD|SHP|SLL|SOS|SRD|STD|SVC|SYP|SZL|THB|TJS|TMT|TND|TOP|TPE|TRY|TTD|TWD|TZS|UAH|UGX|USD|UYU|UZS|VEF|VND|VUV|WST|XAF|XCD|XDR|XOF|XPF|YER|ZAR|ZMW|ZWD|DEM|IMP|CNH|MTP|PLZ|BYB|CYP|DDM|ECS|EEK|GHC|MGF|MZM|ROL|SDD|SIT|SKK|SRG|TMM|TRL|VEB|YUM|ZMK"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TwoThousandCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TwoHundredFiftyFiveCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TwoHundredTenCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="210"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FiveHundredCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TwoHundredFiftySixCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HundredFourtyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="140"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HundredFourtyThreeCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="143"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HundredFiveCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="105"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SixtyFiveCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="65"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SixtyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ThirtyFiveCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SixtyFourCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OneTwentyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="120"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ThirtyFourCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="34"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ThirtyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ThirtyTwoCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TwentyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FiftyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NintyNineCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OneHundredCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SeventeenCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ElevenCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="YesNo">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|Y|N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FiveCharacters">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FourCharacters">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OneCharacter">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TwoCharacters">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TwoHundredCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FourtyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ThreeCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SixteenCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	<xs:simpleType name="SeventyCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="70"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SixCharacters">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NineCharacters">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TenCharacters">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="incotermsCode">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|EXW|FCA|FAS|FOB|CFR|CIF|CPT|CIP|DAF|DES|DEQ|DDU|DDP|DAT|DAP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sendMode">
+		<xs:annotation>
+			<xs:documentation>Send mode. The standard values are 01 for SWIFT,
+                02 for Telex, 03 for Courier and 04 for Registered Post, 05 for Mail,
+                06 for Mail to Applicant, 07 for Mail to Beneficiary , 08 for Collect from Branch, 
+                09 for Mail to Others, 98 for Dont Send.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|01|02|03|04|05|06|07|08|09|98"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Complex Types : </xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="bank">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="abbv_name"/>
+			<xs:element minOccurs="0" ref="name"/>
+			<xs:element minOccurs="0" ref="address_line_1"/>
+			<xs:element minOccurs="0" ref="address_line_2"/>
+			<xs:element minOccurs="0" ref="dom"/>
+			<xs:element minOccurs="0" ref="address_line_4"/>
+			<xs:element minOccurs="0" ref="reference"/>
+			<xs:element minOccurs="0" ref="country"/>
+			<xs:element minOccurs="0" ref="iso_code"/>
+			<xs:element minOccurs="0" ref="contact_name"/>
+			<xs:element minOccurs="0" ref="phone"/>
+			<xs:element minOccurs="0" ref="fax"/>
+			<xs:element minOccurs="0" ref="telex"/>
+			<xs:element minOccurs="0" ref="email"/>
+			<xs:element minOccurs="0" ref="web_address"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="partyDetails">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="type_code" type="partyDetails_type_code"/>
+			<xs:element minOccurs="0" ref="abbv_name"/>
+			<xs:element minOccurs="0" ref="name"/>
+			<xs:element minOccurs="0" ref="address_line_1"/>
+			<xs:element minOccurs="0" ref="address_line_2"/>
+			<xs:element minOccurs="0" ref="dom"/>
+			<xs:element minOccurs="0" ref="address_line_4"/>
+			<xs:element minOccurs="0" ref="country"/>
+			<xs:element minOccurs="0" ref="bei_code"/>
+			<xs:element minOccurs="0" ref="reference"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="additional_field" mixed="true">
+		<xs:attribute name="name" use="required"/>
+		<xs:attribute name="type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="string"/>
+					<xs:enumeration value="big_decimal"/>
+					<xs:enumeration value="number"/>
+					<xs:enumeration value="time_stamp"/>
+					<xs:enumeration value="datetime"/>
+					<xs:enumeration value="clob"/>
+					<xs:enumeration value="not_interpreted_xml_clob"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="transaction" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="transaction"/>
+					<xs:enumeration value="master"/>
+					<xs:enumeration value="none"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="currency"/>
+	</xs:complexType>
+	<xs:complexType name="attachments">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="attachment"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="attachment">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="attachment_id"/>
+			<xs:element minOccurs="0" ref="description"/>
+			<xs:element ref="file_name"/>
+			<xs:element ref="title"/>
+			<xs:element minOccurs="0" ref="type"/>
+			<xs:element minOccurs="0" ref="exported_file_path"/>
+			<xs:element minOccurs="0" ref="mime_type"/>
+			<xs:element minOccurs="0" ref="file_attachment"/>
+			<xs:element minOccurs="0" ref="auto_gen_doc_code"/>
+			<xs:element minOccurs="0" ref="doc_id"/>
+			<xs:element minOccurs="0" ref="dms_id"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="cross_references">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="cross_reference"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="cross_reference">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="brch_code"/>
+			<xs:element minOccurs="0" ref="ref_id"/>
+			<xs:element minOccurs="0" ref="tnx_id"/>
+			<xs:element minOccurs="0" ref="cross_reference_id"/>
+			<xs:element minOccurs="0" ref="product_code"/>
+			<xs:element minOccurs="0" ref="child_product_code"/>
+			<xs:element minOccurs="0" ref="child_ref_id"/>
+			<xs:element minOccurs="0" ref="child_tnx_id"/>
+			<xs:element minOccurs="0" ref="type_code"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="charges">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="charge"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="charge">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="chrg_id"/>
+			<xs:element ref="chrg_code"/>
+			<xs:element ref="amt"/>
+			<xs:element ref="cur_code"/>
+			<xs:element ref="status"/>
+			<xs:element minOccurs="0" ref="bearer_role_code"/>
+			<xs:element minOccurs="0" ref="exchange_rate"/>
+			<xs:element minOccurs="0" ref="eqv_amt"/>
+			<xs:element minOccurs="0" ref="eqv_cur_code"/>
+			<xs:element minOccurs="0" ref="inception_date"/>
+			<xs:element minOccurs="0" ref="settlement_date"/>
+			<xs:element minOccurs="0" ref="additional_comment"/>
+			<xs:element ref="created_in_session"/>
+			<xs:element minOccurs="0" ref="chrg_type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="counterparties">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="counterparty"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="counterparty">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="counterparty_id"/>
+			<xs:element minOccurs="0" ref="counterparty_abbv_name"/>
+			<xs:element ref="counterparty_name"/>
+			<xs:element minOccurs="0" ref="counterparty_address_line_1"/>
+			<xs:element minOccurs="0" ref="counterparty_address_line_2"/>
+			<xs:element minOccurs="0" ref="counterparty_dom"/>
+			<xs:element minOccurs="0" ref="counterparty_address_line_4"/>
+			<xs:element minOccurs="0" ref="counterparty_country"/>
+			<xs:element minOccurs="0" ref="cpty_bene_details_clrc"/>
+			<xs:element minOccurs="0" ref="counterparty_cur_code"/>
+			<xs:element minOccurs="0" ref="counterparty_amt"/>
+			<xs:element minOccurs="0" ref="counterparty_label"/>
+			<xs:element minOccurs="0" ref="counterparty_act_no"/>
+			<xs:element minOccurs="0" ref="counterparty_act_iso_code"/>
+			<xs:element minOccurs="0" ref="counterparty_reference"/>
+			<xs:element minOccurs="0" ref="counterparty_type"/>
+			<xs:element minOccurs="0" ref="cpty_bank_name"/>
+			<xs:element minOccurs="0" ref="cpty_bank_swift_bic_code"/>
+			<xs:element minOccurs="0" ref="cpty_bank_code"/>
+			<xs:element minOccurs="0" ref="cpty_bank_address_line_1"/>
+			<xs:element minOccurs="0" ref="cpty_bank_address_line_2"/>
+			<xs:element minOccurs="0" ref="cpty_bank_dom"/>
+			<xs:element minOccurs="0" ref="cpty_bank_address_line_4"/>
+			<xs:element minOccurs="0" ref="cpty_bank_country"/>
+			<xs:element minOccurs="0" ref="cpty_beneficiary_bank_clrc"/>
+			<xs:element minOccurs="0" ref="cpty_branch_name"/>
+			<xs:element minOccurs="0" ref="cpty_branch_code"/>
+			<xs:element minOccurs="0" ref="cpty_branch_address_line_1"/>
+			<xs:element minOccurs="0" ref="cpty_branch_address_line_2"/>
+			<xs:element minOccurs="0" ref="cpty_branch_dom"/>
+			<xs:element minOccurs="0" ref="cpty_branch_address_line_4"/>
+			<xs:element minOccurs="0" ref="usual_id"/>
+			<xs:element minOccurs="0" ref="cpty_instruction_indicator"/>
+			<xs:element minOccurs="0" ref="cpty_benif_institution"/>
+			<xs:element minOccurs="0" ref="cpty_benif_account"/>
+			<xs:element minOccurs="0" ref="cpty_account_institution"/>
+			<xs:element minOccurs="0" ref="cpty_benif_bank_routing_no"/>
+			<xs:element minOccurs="0" ref="cpty_inter_swift_bic_code"/>
+			<xs:element minOccurs="0" ref="cpty_inter_bank_name"/>
+			<xs:element minOccurs="0" ref="cpty_inter_bank_addr"/>
+			<xs:element minOccurs="0" ref="cpty_inter_bank_addr_2"/>
+			<xs:element minOccurs="0" ref="cpty_inter_city_state"/>
+			<xs:element minOccurs="0" ref="cpty_inter_country"/>
+			<xs:element minOccurs="0" ref="cpty_inter_bank_clrc"/>
+			<xs:element minOccurs="0" ref="cpty_inter_routing_no"/>
+			<xs:element minOccurs="0" ref="cpty_special_routing_1"/>
+			<xs:element minOccurs="0" ref="cpty_special_routing_2"/>
+			<xs:element minOccurs="0" ref="cpty_special_routing_3"/>
+			<xs:element minOccurs="0" ref="cpty_special_routing_4"/>
+			<xs:element minOccurs="0" ref="cpty_special_routing_5"/>
+			<xs:element minOccurs="0" ref="cpty_special_routing_6"/>
+			<xs:element minOccurs="0" ref="cpty_payment_detail_1"/>
+			<xs:element minOccurs="0" ref="cpty_payment_detail_2"/>
+			<xs:element minOccurs="0" ref="cpty_payment_detail_3"/>
+			<xs:element minOccurs="0" ref="cpty_payment_detail_4"/>
+			<xs:element minOccurs="0" ref="cpty_order_cust_name"/>
+			<xs:element minOccurs="0" ref="cpty_order_account_no"/>
+			<xs:element minOccurs="0" ref="cpty_order_cust_addr"/>
+			<xs:element minOccurs="0" ref="cpty_order_cust_addr_2"/>
+			<xs:element minOccurs="0" ref="cpty_order_cust_city"/>
+			<xs:element minOccurs="0" ref="cpty_order_cust_country"/>
+			<xs:element minOccurs="0" ref="cpty_order_details_clrc"/>
+			<xs:element minOccurs="0" ref="cpty_swift_charges_paid"/>
+			<xs:element minOccurs="0" ref="settlement_account"/>
+			<xs:element minOccurs="0" ref="settlement_mean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="roles">
+		<xs:sequence>
+			<xs:element ref="company_role" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="user_roles">
+		<xs:sequence>
+			<xs:element ref="group_set" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="user_entities">
+		<xs:sequence>
+			<xs:element ref="entity_set" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="roleType">
+		<xs:sequence>
+			<xs:element ref="rolename"/>
+			<xs:element ref="roledest"/>
+			<xs:element ref="roletype"/>
+			<xs:element ref="role_id" minOccurs="0"/>
+			<xs:element ref="owner_id" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="groupSetType">
+		<xs:sequence>
+			<xs:element name="group_abbv_name" minOccurs="1" maxOccurs="1" type="xs:string"/>
+			<xs:element ref="user_role" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="userEntitySetType">
+		<xs:sequence>
+			<xs:element name="entity_name" minOccurs="1" maxOccurs="1" type="xs:string"/>
+			<xs:element ref="entity_role" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="userRoleType">
+		<xs:sequence>
+			<xs:element ref="rolename"/>
+			<xs:element ref="roledest"/>
+			<xs:element ref="roletype"/>
+			<xs:element ref="role_id" minOccurs="0"/>
+			<xs:element ref="owner_id" minOccurs="0"/>
+			<xs:element name="limit_cur_code" minOccurs="0" type="xs:string"/>
+			<xs:element name="limit_amt" minOccurs="0" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documents">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="document"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="document">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="document_id"/>
+			<xs:element ref="code"/>
+			<xs:element minOccurs="0" name="name" type="TwoHundredFiftyFiveCharacters"/>
+			<xs:element minOccurs="0" ref="first_mail"/>
+			<xs:element minOccurs="0" ref="second_mail"/>
+			<xs:element minOccurs="0" ref="total"/>            
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="attached_banks" type="attached_banks" nillable="true"/>
+	<xs:complexType name="attached_banks">
+		<xs:sequence>
+			<xs:element ref="bank_abbv_name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="customer_references">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="reference_record"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="reference_record">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="brch_code"/> 
+			<xs:element minOccurs="0" ref="customer_id"/>
+			<xs:element minOccurs="0" ref="bank_id"/>
+			<xs:element minOccurs="0" ref="customer_abbv_name"/>
+			<xs:element minOccurs="0" ref="bank_abbv_name"/> 
+			<xs:element ref="reference"/>
+			<xs:element ref="description"/>
+			<xs:element minOccurs="0" ref="back_office_1"/>
+			<xs:element minOccurs="0" ref="back_office_2"/>
+			<xs:element minOccurs="0" ref="back_office_3"/>
+			<xs:element minOccurs="0" ref="back_office_4"/>
+			<xs:element minOccurs="0" ref="back_office_5"/>
+			<xs:element minOccurs="0" ref="back_office_6"/>
+			<xs:element minOccurs="0" ref="back_office_7"/>
+			<xs:element minOccurs="0" ref="back_office_8"/>
+			<xs:element minOccurs="0" ref="back_office_9"/>
+			<xs:element minOccurs="0" ref="default_reference"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="company_group" type="positiveInteger" nillable="true"/>
+	<xs:element name="country" type="countryCode" nillable="true"/>
+	<xs:element name="contact_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="phone" type="ThirtyTwoCharacters" nillable="true"/>
+	<xs:element name="fax" type="ThirtyTwoCharacters" nillable="true"/>
+	<xs:element name="telex" type="ThirtyTwoCharacters" nillable="true"/>
+	<xs:element name="iso_code" type="ElevenCharacters" nillable="true"/>
+	<xs:element name="email" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="web_address" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="company_type" type="companyType" nillable="true"/>
+	<xs:simpleType name="companyType">
+		<xs:annotation>
+			<xs:documentation>Company Type. Standard values are 00 for the root company, 01 for a bankgroup, 02 for a bank, 03 for a customer.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern 
+				value=".{0}|00|01|02|03"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="owner_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="language" type="TwoCharacters" nillable="true"/>
+	<xs:element name="correspondence_language" type="TwoCharacters" nillable="true"/>
+	<xs:element name="base_cur_code" type="currency" nillable="true"/>
+	<xs:simpleType name="countryCode">
+		<xs:restriction base="xs:token">
+			<xs:pattern 
+				value=".{0}|AD|AE|AF|AG|AI|AL|AM|AN|AO|AQ|AR|AR|PA|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BV|BW|BY|BZ|CA|CC|CF|CD|CG|CH|CI|CK|CL|CM|CN|CO|CR|CS|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|EH|ER|ES|ET|FI|FJ|FK|FM|FO|FR|FX|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HM|HN|HR|HT|HU|ID|IE|IL|IN|IO|IQ|IR|IS|IT|JE|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NT|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PN|PR|PS|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SJ|SK|SL|SM|SN|SO|SR|ST|SU|SV|SY|SZ|TC|TD|TF|TG|TH|TJ|TK|TM|TN|TO|TP|TR|TT|TV|TW|TZ|UA|UG|UK|UM|US|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|XA|XC|XD|XO|XP|YE|YT|YU|ZA|ZM|ZR|ZW"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="user_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="login_id" type="ThirtyTwoCharacters" nillable="true"/>
+	<xs:element name="password_value" type="ThirtyTwoCharacters" nillable="true"/>
+	<xs:element name="md5_sum" type="hex128bit" nillable="true"/>
+	<xs:simpleType name="hex128bit">
+		<xs:restriction base="xs:hexBinary">
+			<xs:length value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="first_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="last_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="company_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="time_zone" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="actv_flag" type="OneCharacter"/>
+	<xs:element name="task_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="email_notification" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>'Y' or 'N' to indicate the notification by e-mail.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="comment_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="issue_user_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="issue_user_login_id" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="issue_user_first_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="issue_user_last_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="issue_company_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="issue_company_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="issue_date" type="DateTime" nillable="true"/>
+	<xs:element name="dest_user_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="dest_user_login_id" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="dest_user_first_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="dest_user_last_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="dest_company_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="dest_company_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="dest_user_email_notif" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>'Y' or 'N' to indicate the notification by e-mail to the assignee.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="dest_user_email" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="dest_company_email_notif" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>'Y' or 'N' to indicate the notification by e-mail to the assignee.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="dest_company_email" type="FourtyCharacters" nillable="true"/>
+	<xs:simpleType name="taskType">
+		<xs:annotation>
+			<xs:documentation>Task Type. Standard values are 01 for a private task, 02 for a public task, 03 for an assigned task.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern 
+				value=".{0}|01|02|03"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="assigneeType">
+		<xs:annotation>
+			<xs:documentation>Assignee Type. Standard values are 01 for a user, 02 for a bank, 03 for a counterparty.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern 
+				value=".{0}|01|02|03"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="performed" type="YesNo" nillable="true">
+		<xs:annotation>
+			<xs:documentation>'Y' or 'N' to indicate the performance of a task.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="todo_list_id" type="positiveInteger" nillable="true"/>
+	<xs:simpleType name="todolistType">
+		<xs:annotation>
+			<xs:documentation>Todo list Type. Standard values are 01 for a private todo list, 02 for a public todo list.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern 
+				value=".{0}|01|02"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ir_sub_type_code">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>Currently not used</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="remitter_address_line_1" type="ThirtyFiveCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the first line of address
+                of the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remitter_address_line_2" type="ThirtyFiveCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the second line of address
+                of the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remitter_dom" type="ThirtyFiveCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the third line of address
+                of the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remitter_address_line_4" type="ThirtyFiveCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the fourth line of address
+                of the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remitter_name" type="ThirtyFiveCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the name of the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remitter_abbv_name" type="ThirtyFiveCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the abbreviated name of the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remitter_country" type="countryCode">
+		<xs:annotation>
+			<xs:documentation>Max. 2 characters for the country
+                of the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remitter_reference" type="SixtyFourCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 64 characters for this additional reference
+                identifying the remitter</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="remittance_date" type="Date"/>
+	<xs:element name="act_no" type="ThirtyFourCharacters">
+		<xs:annotation>
+			<xs:documentation>Max. 34 characters for the account</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="instructions_required" type="YesNo">
+		<xs:annotation>
+			<xs:documentation>'Y' or 'N' to indicate if instructions are required or not from the customer.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="link_tnx_id" type="TwentyCharacters"/>
+	<xs:element name="narrative_payment_details" type="HundredFourtyCharacters">
+		<xs:annotation>
+			<xs:documentation>Details of the payment. Max. 140 characters.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="BICIdentifier">
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value=".{0}|[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DecimalNumber">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="17"/>
+			<xs:totalDigits value="18"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PercentageRate">
+		<!--xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="10"/>
+			<xs:totalDigits value="11"/>
+		</xs:restriction-->
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]{0,10}[.][0-9]{1,11}|[0-9]{0,10}"/>           
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Bulk">
+		<xs:sequence>
+			<xs:element minOccurs="0"  ref="brch_code"/>
+			<xs:element minOccurs="0" ref="company_id"/>
+			<xs:element minOccurs="0" ref="ref_id"/>
+			<xs:element minOccurs="0" ref="tnx_id"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- *** -->
+	<!-- TSU -->
+	<!-- *** -->
+	<xs:element name="narrative_xml" type="xs:string"/>
+	<xs:element name="narrative_baseline" type="xs:string"/>
+	<xs:element name="creation_date" type="DateTime"/>
+	<xs:element name="tid" type="FourtyCharacters"/>
+	<xs:element name="po_ref_id" type="ThirtyFourCharacters" nillable="true"/>
+	<xs:element name="po_issue_date" type="Date" nillable="true"/>
+	<xs:element name="cpty_ref_id" type="ThirtyFourCharacters"/>
+	<xs:element name="cpty_bank" type="TwentyCharacters"/>
+	<xs:element name="role" type="FourCharacters"/>
+	<xs:element name="ordered_amt" type="amount"/>
+	<xs:element name="accepted_amt" type="amount"/>
+	<xs:element name="buyer_name" type="FourtyCharacters"/>
+	<xs:element name="seller_name" type="FourtyCharacters"/>
+	<xs:element name="message_type" type="ThreeCharacters"/>
+	<xs:element name="baseline_stat_code" type="FourCharacters"/>
+	<xs:element name="baseline_ref_id" type="TwentyCharacters"/>
+	<xs:element name="request_for_action" type="FourCharacters"/>
+	<xs:element name="link_ref_id" type="TwentyCharacters"/>
+	<xs:element name="rate" type="rate" nillable="true"/>
+	<!--  LI -->
+	<xs:element name="bol_date" type="DateTime" nillable="true"/>
+	<xs:element name="li_cur_code" type="currency" nillable="true"/>
+	<xs:element name="li_amt" type="amount" nillable="true"/>
+	<xs:element name="li_liab_amt" type="amount" nillable="true"/>
+	<xs:element name="bene_type_code" nillable="true"/>
+	<xs:element name="bene_type_other" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="countersign_flag" type="YesNo" nillable="true"/>
+	<xs:element name="alt_lc_ref_id" nillable="true"/>
+	<xs:element name="deal_ref_id" nillable="true"/>
+	<xs:element name="narrative_goods" type="xs:string" nillable="true"/>
+	<!-- PO -->
+	<xs:element name="total_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the PO total</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="face_total_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the PO total goods amount</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="last_match_date" type="Date" nillable="true"/>
+	<xs:element name="total_net_amt" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the PO (up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- ****** -->
+	<!-- Summit -->
+	<!-- ****** -->
+	<xs:element name="start_date" type="DateTime" nillable="true"/>
+	<xs:element name="end_date" type="DateTime" nillable="true"/>
+	<xs:element name="end_days" type="positiveInteger" nillable="true"/>
+	<xs:element name="pay_leg_notional_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="pay_leg_notional_cur_code" type="currency"/>
+	<xs:element name="pay_leg_interest_term_days" type="positiveInteger" nillable="true"/>
+	<xs:element name="pay_leg_interest_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="pay_leg_interest_spread" type="positiveInteger" nillable="true"/>
+	<xs:element name="pay_leg_stub_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="pay_leg_stub_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="pay_leg_stub_initial_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="pay_leg_amort_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="pay_leg_amort_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="pay_leg_amort_amt_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="receive_leg_notional_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="receive_leg_notional_cur_code" type="currency"/>
+	<xs:element name="receive_leg_interest_term_days" type="positiveInteger" nillable="true"/>
+	<xs:element name="receive_leg_interest_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="receive_leg_interest_spread" type="positiveInteger" nillable="true"/>
+	<xs:element name="receive_leg_stub_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="receive_leg_stub_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="receive_leg_stub_initial_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="receive_leg_amort_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="receive_leg_amort_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="receive_leg_amort_amt_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="rec_leg_notional_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="rec_leg_notional_cur_code" type="currency"/>
+	<xs:element name="rec_leg_interest_term_days" type="positiveInteger" nillable="true"/>
+	<xs:element name="rec_leg_interest_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="rec_leg_interest_spread" type="positiveInteger" nillable="true"/>
+	<xs:element name="rec_leg_stub_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="rec_leg_stub_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="rec_leg_stub_initial_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="rec_leg_amort_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="rec_leg_amort_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="rec_leg_amort_amt_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="trade_date" type="DateTime" nillable="true"/>
+	<xs:element name="effective_date" type="DateTime" nillable="true"/>
+	<xs:element name="notional_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="notional_cur_code" type="currency"/>
+	<xs:element name="expiry_date" type="DateTime" nillable="true"/>
+	<xs:element name="rebate_cur_code" type="currency"/>
+	<xs:element name="rebate_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="upfront_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="spread" type="positiveInteger" nillable="true"/>
+	<xs:element name="interest_spread" type="positiveInteger" nillable="true"/>
+	<xs:element name="strike" type="positiveInteger" nillable="true"/>
+	<xs:element name="strike_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="put_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="call_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="premium_percent" type="positiveInteger" nillable="true"/>
+	<xs:element name="premium_date" type="DateTime" nillable="true"/>
+	<xs:element name="delivery_date" type="DateTime" nillable="true"/>
+	<xs:element name="lower_rebate_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="lower_rebate_cur_code" type="currency"/>
+	<xs:element name="upper_rebate_amt" type="positiveInteger" nillable="true"/>
+	<xs:element name="upper_rebate_cur_code" type="currency"/>
+	<xs:element name="interest_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="quantity" type="positiveInteger" nillable="true"/>
+	<xs:element name="fund_leg_stub_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="fund_leg_stub_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="fund_leg_stub_initial_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="return_leg_stub_start_date" type="DateTime" nillable="true"/>
+	<xs:element name="return_leg_stub_end_date" type="DateTime" nillable="true"/>
+	<xs:element name="return_leg_stub_initial_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="clearing_commission_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="executing_commission_rate" type="positiveInteger" nillable="true"/>
+	<xs:element name="premium_payment_date" type="DateTime" nillable="true"/>
+	<xs:element name="reset_price" type="positiveInteger" nillable="true"/>
+	<xs:element name="action_req_code" type="xs:string" nillable="true"/>
+	<xs:element name="invoice-items" type="invoice-items" nillable="true"/>
+	<xs:element name="invoice" type="invoice" nillable="true"/>
+	<xs:element name="invoice_ref_id" type="xs:string" nillable="true"/>
+	<xs:element name="invoice_reference" type="xs:string" nillable="true"/>
+	<xs:element name="invoice_currency" type="currency" nillable="true"/>
+	<xs:element name="invoice_amount" type="amount" nillable="true"/>
+	<xs:element name="invoice_settlement_amt" type="amount" nillable="true"/>
+	<xs:complexType name="invoice-items">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="invoice"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="invoice">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="invoice_ref_id"/>
+			<xs:element minOccurs="0" ref="invoice_reference"/>
+			<xs:element minOccurs="0" ref="invoice_currency"/>
+			<xs:element minOccurs="0" ref="invoice_amount"/>
+			<xs:element minOccurs="0" ref="invoice_settlement_amt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="linked_licenses" type="linked_licenses" nillable="true"/>
+	<xs:element name="license" type="license" nillable="true"/>
+	<xs:element name="ls_ref_id" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="ls_number" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="ls_allocated_amt" type="amount" nillable="true"/>
+	<!-- <xs:element name="ls_allocated_add_amt" type="amount" nillable="true"/> -->
+	<xs:complexType name="linked_licenses">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="license"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TODO : Refactor the minoccurs of the license complextType -->
+	<xs:complexType name="license">
+		<xs:sequence>
+			<xs:element minOccurs="0" ref="ls_ref_id"/>
+			<xs:element ref="bo_ref_id"/>
+			<xs:element minOccurs="0" ref="ls_number"/>
+			<xs:element minOccurs="0" ref="ls_allocated_amt"/>
+			<!-- <xs:element minOccurs="0" ref="ls_allocated_add_amt"/> -->
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="cn_cur_code" type="currency" nillable="true">
+		<xs:annotation>
+			<xs:documentation>3 characters to specify the ISO code of the CN currency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="cn_amt" type="amount">
+		<xs:annotation>
+			<xs:documentation>Formatted amount of the credit note (up to 17 positions)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="fscm_program_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="claim_cur_code" type="currency">
+		<xs:annotation>
+			<xs:documentation>The 3-characters long ISO code of the currency
+                attached to an amount.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="claim_amt" type="amount" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Formatted amount to indicate the amount specific
+                to the transaction currently reported </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="claim_reference" type="SixteenCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 16 characters for this additional reference
+                identifying the applicant</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="claim_present_date" type="Date" nillable="true"/>
+	<xs:element name="cn_reference" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="rolling_renew_on_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="rolling_renew_for_nb" type="fourDigitInteger" nillable="true"/>
+	<xs:element name="rolling_renew_for_period" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Period of renew_for_nb do reference.
+					Values are 'D' for days, 'W' for weeks, 'M' for months and 'Y' for years  and empty when renew_flag value is 'N'.
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|D|W|M|Y"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="rolling_day_in_month" type="twoDigitInteger" nillable="true"/>
+	<xs:element name="projected_expiry_date" type="Date" nillable="true"/>
+	<xs:element name="bank_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="customer_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="customer_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="bank_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_1" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_2" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_3" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_4" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_5" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_6" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_7" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_8" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="back_office_9" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="default_reference" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="rolename" type="NintyNineCharacters" nillable="false"/>
+	<xs:element name="roledest" type="TwoCharacters" nillable="false"/>
+	<xs:element name="roletype" type="TwoCharacters" nillable="false"/>
+	<xs:element name="role_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="charge_account_address_line_1" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="charge_account_address_line_2" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="charge_account_address_line_3" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="charge_account_address_line_4" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="charge_account" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="bei" type="ElevenCharacters" nillable="true"/>
+	<xs:element name="street_name" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="post_code" type="SixteenCharacters" nillable="true"/>
+	<xs:element name="town_name" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="country_sub_div" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="crm_email" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="county" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="country_name" type="FourtyCharacters" nillable="true"/>
+	<xs:element name="dual_control" type="TwoCharacters" nillable="true"/>
+	<xs:element name="dashboard_screen_type" type="TwoCharacters" nillable="true"/>
+	<xs:element name="password_expiry" type="positiveInteger" nillable="true"/>
+	<xs:element name="attachment_max_upload_size" type="positiveInteger" nillable="true"/>
+	<xs:element name="retention_period" type="positiveInteger" nillable="true"/>
+	<xs:element name="authorize_own_transaction" type="OneCharacter" nillable="true"/>
+	<xs:element name="bulk_authorize_limit" type="OneCharacter" nillable="true"/>
+	<xs:element name="auto_fwd_date" type="OneCharacter" nillable="true"/>
+	<xs:element name="legal_id_type" type="FiveCharacters" nillable="true"/>
+	<xs:element name="legal_id_no" type="ThirtyCharacters" nillable="true"/>
+	<xs:element name="country_legalid" type="TwoCharacters" nillable="true"/>
+	<xs:element name="check_file_hash_value" type="OneCharacter" nillable="true"/>
+	<xs:element name="check_duplicate_file" type="OneCharacter" nillable="true"/>
+	<xs:element name="check_duplicate_cust_ref" type="OneCharacter" nillable="true"/>
+	<xs:element name="file_encryption_method" type="TwentyCharacters" nillable="true"/>
+	<xs:element name="reject_file_on_error" type="TwoCharacters" nillable="true"/>
+	<xs:element name="merge_demerge_allowed" type="OneCharacter" nillable="true"/>
+	<xs:element name="bulk_draft_on_error" type="TwoCharacters" nillable="true"/>
+	<xs:element name="modified" type="DateTime" nillable="true"/>
+	<xs:element name="created" type="DateTime" nillable="true"/>
+	<xs:element name="deleted" type="DateTime" nillable="true"/>
+	<xs:element name="lastlogin" type="DateTime" nillable="true"/>
+	<xs:element name="org_login_id" type="ThirtyTwoCharacters" nillable="true"/>
+	<xs:element name="pending_trans_notify" type="YesNo" nillable="true"/>
+	<xs:element name="access_counter" type="positiveInteger" nillable="true"/>
+	<xs:element name="creator_company" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="creator_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="creator_login" type="ThirtyTwoCharacters" nillable="true"/>
+	<xs:element name="employee_department" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="employee_no" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="legal_country" type="TwoCharacters" nillable="true"/>
+	<xs:element name="legal_no" type="ThirtyCharacters" nillable="true"/>
+	<xs:element name="legal_type" type="TenCharacters" nillable="true"/>
+	<xs:element name="locked_time" type="DateTime" nillable="true"/>
+	<xs:element name="login_attempts" type="positiveInteger" nillable="true"/>
+	<xs:element name="one_fa_last_login" type="DateTime" nillable="true"/>
+	<xs:element name="password_migrated" type="OneCharacter" nillable="true"/>
+	<xs:element name="reauth_mode" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="terms_conds_accept_date" type="DateTime" nillable="true"/>
+	<xs:element name="company_default_user" type="OneCharacter" nillable="true"/>
+	<xs:element name="treasury_branch_reference" type="TwoCharacters" nillable="true"/>
+	<xs:element name="psml_template" type="xs:string" nillable="true"/>
+	<xs:element name="internal_channel" type="positiveInteger" nillable="true"/>
+	<xs:element name="owner_abbv_name" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="maker_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="checker_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="maker_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="checker_dttm" type="DateTime" nillable="true"/>
+	<xs:element name="return_comments" type="xs:string" nillable="true"/>
+	<xs:element name="beneficiary_id" type="positiveInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Beneficiary Id.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="liquidity_frequency" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="liquidity_balance_type" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="liquidity_ccy_cur_code" type="ThreeCharacters" nillable="true"/>	
+	<xs:element name="access_opened" type="OneCharacter" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Access Opened indication flag.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="prtry_id_type" type="TwoHundredFiftyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>TMA Proprietary Id and Type. Expected values in the FORMAT of {ProprietaryId}{configured separator}{ProprietaryType}.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="notification_enabled" type="OneCharacter" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Notification enabled indication flag.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="beneficiary_company_abbv_name" type="ThirtyFiveCharacters"
+		nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the abbreviated name of the
+				Beneficiary Company.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lead_bank_flag" type="OneCharacter" nillable="true"/>
+	<!-- Collaboration elements -->
+	<xs:element name="todo_lists" type="todo_lists" nillable="true"/>
+	<xs:element name="todo_list" type="todo_list" nillable="true"/>
+	<xs:element name="tasks" type="tasks" nillable="true"/>
+	<xs:element name="task" type="task" nillable="true"/>
+	<xs:complexType name="todo_lists">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="todo_list"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="todo_list">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="todolist"/>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="tasks"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tasks">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="task"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="task">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="todotask"/>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="comments"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="dest_user_email_sent" type="YesNo" nillable="true"/>
+	<xs:element name="dest_company_email_sent" type="YesNo" nillable="true"/>
+	<xs:element name="frozen" type="YesNo" nillable="true"/>
+	<xs:element name="comments" type="comments" nillable="true"/>
+	<xs:element name="comment" type="comment" nillable="true"/>
+	<xs:complexType name="comments">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="comment"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="comment">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="todo_comment"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Collaboration elements -->
+	<xs:element name="revolving_flag" type="YesNo" nillable="true"/>
+	<xs:element name="revolve_period" type="FiveCharacters" nillable="true"/>
+	<xs:element name="revolve_frequency" type="OneCharacter" nillable="true"/>
+	<xs:element name="revolve_time_no" type="NineCharacters" nillable="true"/>
+	<xs:element name="cumulative_flag" type="YesNo" nillable="true"/>
+	<xs:element name="next_revolve_date" type="Date" nillable="true"/>
+	<xs:element name="notice_days" type="NineCharacters" nillable="true"/>
+	<xs:element name="charge_upto" type="OneCharacter" nillable="true"/>
+	<xs:element name="provisional_status" type="YesNo" nillable="true"/>
+
+	<xs:element name="for_account_flag" type="YesNo" nillable="true"/>
+	<xs:element name="alt_applicant_cust_ref" type="SixtyFourCharacters" nillable="true"/>
+	<xs:element name="req_pct" type="positiveInteger" nillable="true"/>
+	<xs:element name="req_amt" type="amount" nillable="true"/>
+	<xs:element name="req_cur_code" type="currency" nillable="true"/>
+
+	<!-- FSCM Program Elements -->
+	<xs:element name="program_id" type="positiveInteger" nillable="true"/>
+	<xs:element name="program_code" type="ThirtyFiveCharacters" nillable="false"/>
+	<xs:element name="program_name" type="SixtyCharacters" nillable="false"/>
+	<xs:element name="program_type" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="program_sub_type" type="ThirtyFiveCharacters" nillable="true"/>
+
+	<!-- Fees And Billing Elements -->
+	<xs:element name="fb_amt" type="amount" nillable="true"/>
+	<xs:element name="fb_cur_code" type="currency" nillable="true"/>
+	<xs:element name="inv_due_date" type="Date" nillable="true"/>
+	<xs:element name="inv_tax_amt" type="amount" nillable="true"/>
+	<xs:element name="inv_amt" type="amount" nillable="true"/>
+	<xs:element name="bill_ccy" type="currency" nillable="true"/>
+	<xs:element name="bill_amt" type="amount" nillable="true"/>
+	<xs:element name="recd_amt" type="amount" nillable="true"/>
+	<xs:element name="inv_loc" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for the Invoice location</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="payment_status" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for Payment Status</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="group_no" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for Group Number</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="parent_group_no" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for Parent Group Number</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lob_code" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for Lob Code</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lob_name" type="ThirtyFiveCharacters" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Max. 35 characters for Lob Name</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="lc_govern_country" type="TwoCharacters" nillable="true"/>
+	<xs:element name="lc_govern_text" type="TwoHundredFiftyFiveCharacters" nillable="true"/>
+	<xs:element name="delv_org" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="delv_org_text" type="ThirtyFiveCharacters" nillable="true"/>
+	<xs:element name="lc_exp_date_type_code" type="TwoCharacters" nillable="true"/>
+	<xs:element name="applicant_contact_number" type="xs:string" nillable="true"/>
+	<xs:element name="applicant_email" type="xs:string" nillable="true"/>
+	<!-- <xs:element name="purpose" type="FourCharacters" nillable="true"/> -->
+	<xs:element name="demand_indicator" type="FourCharacters" nillable="true"/> 
+
+	<xs:element name="variation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="type">
+					<xs:simpleType>
+						<xs:annotation>
+							<xs:documentation>
+								Type is defined to hold the variation type. When variation type is Regular,
+								 then type is 01 and for variation type as irregular tye is 02
+							</xs:documentation>
+						</xs:annotation>
+						<xs:restriction base="xs:token">
+							<xs:pattern value=".{0}|01|02"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element minOccurs="0" ref="type"/>				
+				<xs:element minOccurs="0" ref="advise_flag"/>			
+				<xs:element minOccurs="0" ref="advise_reduction_days"/>			
+				<xs:element minOccurs="0" ref="maximum_nb_days"/>
+				<xs:element minOccurs="0" ref="frequency"/>
+				<xs:element minOccurs="0" ref="period"/>
+				<xs:element minOccurs="0" ref="day_in_month"/>	
+				<xs:element name="variation_lines" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>					
+							<xs:element minOccurs="0" maxOccurs="unbounded" ref="variation_line_item"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="advise_flag" type="YesNo" nillable="true"/>
+	<xs:element name="advise_reduction_days" type="threeDigitInteger"  nillable="true"/>
+	<xs:element name="maximum_nb_days" type="threeDigitInteger" nillable="true"/>
+	<xs:element name="frequency" type="threeDigitInteger"  nillable="true"/>
+	<xs:element name="period" nillable="true">
+		<xs:simpleType>	
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|D|W|M|Y"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>			
+	<xs:element name="day_in_month"  type="twoDigitInteger" nillable="true"/>
+	<xs:element name="variation_line_item">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="sequence"/>
+				<xs:element minOccurs="0" ref="operation"/>
+				<xs:element minOccurs="0" ref="first_date"/>
+				<xs:element minOccurs="0" ref="percent"/>
+				<xs:element minOccurs="0" name="amount" type="amount"/>
+				<xs:element minOccurs="0" ref="cur_code"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sequence" type="twoDigitInteger" nillable="true"/>	
+
+	<xs:element name="operation" nillable="true">
+		<xs:simpleType>
+			<xs:annotation>
+				<xs:documentation>
+					Operation hold 01 for increase operation and 02 for decrease operation
+				</xs:documentation>
+			</xs:annotation>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>	
+	<xs:element name="first_date" type="Date" nillable="true"/>
+	<xs:element name="percent" nillable="true">
+		<xs:simpleType>	
+			<xs:restriction base="xs:decimal">
+				<xs:fractionDigits value="3"/>
+				<xs:totalDigits value="18"/>
+			</xs:restriction>
+		</xs:simpleType>	
+	</xs:element>
+	<xs:simpleType name="twoDigitInteger">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]+"/>
+			<xs:maxLength value="2"/>            
+		</xs:restriction>
+	</xs:simpleType> 	
+	<xs:simpleType name="threeDigitInteger">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]+"/>
+			<xs:maxLength value="3"/>            
+		</xs:restriction>
+	</xs:simpleType> 
+	<xs:simpleType name="fourDigitInteger">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]+"/>
+			<xs:maxLength value="4"/>            
+		</xs:restriction>
+	</xs:simpleType> 			 		
+	<xs:simpleType name="tenDigitInteger">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]+"/>
+			<xs:maxLength value="10"/>            
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="twentyTwoDigitInteger">
+		<xs:restriction base="xs:token">
+			<xs:pattern value=".{0}|[0-9]+"/>
+			<xs:maxLength value="22"/>            
+		</xs:restriction>
+	</xs:simpleType>	
+	<xs:simpleType name="chrg_by_code">
+		<xs:annotation>
+			<xs:documentation>Indicates the party bearing the issuing bank 
+				charges, 01 for the applicant, 02 for the 
+				beneficiary</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02"/>
+		</xs:restriction>
+	</xs:simpleType> 
+	<xs:simpleType name="undertaking_text_type_code">
+		<xs:annotation>
+			<xs:documentation>The customer can specify the type 
+				of the text, 01 for Bank Standard, 02 for Beneficiary?s wording as attached,
+				03 for Our wording as attached and 04 for Same As 
+				(specify).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="partyDetails_type_code">
+		<xs:annotation>
+			<xs:documentation>Indicates the product party details type code, 01 for applicant,
+			02 for Beneficiary, 03 for Contact, 04 for Alternate Applicant, 05 for Counter Beneficiary
+			and 06 for Counter Contact</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|01|02|03|04|05|06"/>
+		</xs:restriction>
+	</xs:simpleType>	
+</xs:schema>

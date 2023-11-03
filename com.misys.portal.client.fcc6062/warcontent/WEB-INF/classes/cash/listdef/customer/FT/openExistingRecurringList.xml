@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url candidate="fund_transfer_master">
+			<parameter name="SCREEN" value="FT_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_CANCEL"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_ACTION_REQUIRED"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="MODE_CODE" binding_code="OPTION_TERMINATE"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="20%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="bo_ref_id" align="left" width="20%" loca_key="BO_REFERENCEID"/>
+	<column name="Counterparty@counterparty_name" align="left" width="20%" loca_key="BENEFICIARY_NAME"/>		
+	<column name="sub_product_code" align="center" width="10%" loca_key="XSL_PARA_COL_PRODUCT_TYPE"/>		
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="ObjectDataString@pre_approved_status" align="center" width="5em" loca_key="PRE_APPROVED_STATUS">
+		<script>
+			value = com.misys.portal.common.localization.Localization.getDecode(language, "N034", value);
+		</script>
+	</column>
+	<column name="iss_date" align="center" width="6em" loca_key="TRANSFER_DATE"/>	
+	<column name="ObjectDataString@recurring_payment_enabled" align="center" width="10%" loca_key="XSL_RECURRING_PAYMENT">
+	<script>
+			if (value.equals("N"))
+			{
+				value = com.misys.portal.common.localization.Localization.getDecode(language, "N034","N");
+			}
+			else if(value.equals("Y"))
+			{
+				value = com.misys.portal.common.localization.Localization.getDecode(language, "N034","Y");
+			}
+			else
+			{
+			   value = "";  
+			}
+			value;
+		</script>
+	</column>
+	
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		default="*"
+		input="y"/>		
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="applicant_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		loca_key="BO_REFERENCEID"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="20"
+		max_length="150"
+		input="y"/>	
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+
+	<!-- candidates -->	
+	<candidate name="fund_transfer_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>			
+		</filter>
+		
+	</candidate>
+	<filter or="y">
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_INTERNAL_TRANSFER
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_THIRD_PARTY_TRANSFER
+				</value>
+			</criteria>		
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_BILLP
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_BILLS
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_MT101
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_MT103
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_PICO
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_PIDD
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_DDA
+				</value>
+			</criteria>	
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_FI103
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_FI202
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_HVPS
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_HVXB
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_DOMESTIC_TRANSFER
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_INDIA_DOMESTIC_TRANSFER
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_SINGAPORE_DOMESTIC_TRANSFER
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N047_HK_RTGS
+				</value>
+			</criteria>				
+		</filter>
+		<filter>
+			<criteria>
+				<column name="ObjectDataString@recurring_payment_enabled"/>
+				<operator type="equal"/>
+				<value type="code">N034_YES</value>
+			</criteria>		
+		</filter>
+		<filter or="y">
+			<criteria>
+				<column name="ObjectDataString@terminate_recurring_payment_requested"/>
+					<operator type="equal"/>
+					<value type="code">N034_NO</value>
+				</criteria>	
+				<criteria>
+					<column name="ObjectDataString@terminate_recurring_payment_requested"/>
+					<operator type="isNull"/>
+				</criteria>	
+		</filter>
+		<filter or="y">
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_RECURRING_PENDING
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_RECURRING_TRANSFER
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_RECURRING_NOT_LAST_TRANSFER_REJECTED
+				</value>
+			</criteria>
+				<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_POSTDATED_RECURRING_INPROGRESS
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_NEW
+				</value>
+			</criteria>
+		</filter>	
+		<filter>
+		<businesscriteria type="hasNoCancelledRecurringTransactions"></businesscriteria>
+	</filter>	
+</listdef>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50">
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="upload_file_id" align="center" width="10em" loca_key="FILE_REF_ID"/>
+	<column name="cust_ref_id" align="right" width="10em" loca_key="HEADER_BULK_CUST_REFERENCE"/>
+	<column name="value_date" align="right" width="10em" loca_key="INP_DTTM"/>
+	<column name="bulk_ref_id" hidden="y"/>
+	<column name="bulk_tnx_id" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+
+	<parameter name="search_ref_id"/>
+	<parameter name="upload_file_id" />
+	<parameter name="bulk_reference"/>
+	<parameter name="value_date"/>
+	<parameter name="applicant_account_name"/>
+	<parameter name="bulk_description"/>
+	<parameter name="bk_type" />
+	<parameter name="payroll_type" />
+	<parameter name="child_sub_product_code"/>
+	<parameter name="applicant_act_no"/>
+	<parameter name="current_bulk_ref_id"/>
+
+	<candidate name="bulk">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">search_ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="upload_file_id"/>
+				<operator type="like"/>
+				<value type="parameter">upload_file_id</value>
+			</criteria>
+			<criteria>
+				<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">bulk_reference</value>
+			</criteria>
+			<criteria>
+				<column name="value_date"/>
+				<operator type="equal"/>
+				<value type="parameter">value_date</value>
+			</criteria>
+			<criteria>
+				<column name="bk_type"/>
+				<operator type="equal"/>
+				<value type="parameter">bk_type</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_name"/>
+				<operator type="equal"/>
+				<value type="parameter">applicant_account_name</value>
+			</criteria>
+			<criteria>
+				<column name="child_sub_product_code"/>
+				<operator type="equal"/>
+				<value type="parameter">child_sub_product_code</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_no"/>
+				<operator type="equal"/>
+				<value type="parameter">applicant_act_no</value>
+			</criteria>
+			<criteria>
+			   <column name="ref_id"/>
+			   <operator type="different"/>
+			   <value type="parameter">current_bulk_ref_id</value>
+			</criteria>
+			<criteria>
+			   <column name="value_date"/>
+			   <operator type="equal"/>
+			   <value type="parameter">search_input_value_date</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+	    <criteria>
+	      <column name="tnx_stat_code"/>
+	      <operator type="equal"/>
+	      <value type="code">
+	        N004_INCOMPLETE
+	      </value>
+	    </criteria>
+ 	</filter>
+	
+</listdef>

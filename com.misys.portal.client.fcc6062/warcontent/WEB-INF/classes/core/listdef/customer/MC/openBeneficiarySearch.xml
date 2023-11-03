@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ListDef xml for beneficiary details Look Up -->
+<listdef ordered="y" default_order="beneficiary_name" page="11">
+
+    <column name="beneficiary_name" />
+    <column name="beneficiary_abbv_name" />
+    <column name="address_line_1" />
+    <column name="address_line_2" />
+    <column name="account_no" />
+    <column name="entity" />
+    <column name="country" />
+    <column name="dom" />
+    <column name="email" />
+    <column name="phone" />
+    <column name="account_id" />
+
+	<parameter name="beneficiary_name" default="*" input="y"/>
+	<parameter name="beneficiary_abbv_name" default="*" input="y"/>
+	
+	<!-- candidates -->
+	<candidate name="StaticBeneficiary"></candidate>
+	<candidate name="StaticAccountMaster"></candidate>
+	<filter or="y">
+		<criteria>
+			<column name="beneficiary_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				beneficiary_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="beneficiary_abbv_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				beneficiary_abbv_name
+			</value>
+		</criteria>
+	</filter>
+</listdef>

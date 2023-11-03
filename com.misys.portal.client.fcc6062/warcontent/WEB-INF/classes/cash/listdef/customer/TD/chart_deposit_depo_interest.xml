@@ -1,0 +1,20 @@
+<listdef page='25'>
+	<name>Deposit per Date</name>
+	<description>Deposit per Date</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='amt' hidden='y'/>
+	<column name='cur_code' hidden='y'/>
+	<column name='interest' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<column name='maturity_date' hidden='y'/>
+	<candidate name='TD'/>
+	<group graph='bar'>
+		<column name='maturity_date' hierarchy='years'></column>
+		<aggregate type='sum' cur='EUR'>
+			<column name='amt'></column>
+			<description locale='en'>Amount (EUR)</description>
+			<description locale='fr'>Montant (EUR)</description>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

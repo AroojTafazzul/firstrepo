@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="50" default_order="ref_id" huge="y" forceDisplaySearch="y" default_order_type="d" js_binding="misys.binding.common.listdef_mc">
+	<!-- columns -->
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" column="product_code"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_CONTROLLED"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	
+	<column name="ref_id" align="center" width="15%" loca_key="REFERENCEID"/>
+	<column name="entity" align="center" width="15%" loca_key="ENTITY"/>
+	<column name="se_type" align="center" width="10%" loca_key="SE_ADVICES_TYPE"/>
+	<column name="applicant_act_no" align="center" width="15%" loca_key="SE_ACCOUNT_NO"/>
+	<column name="topic" align="center" width="15%" loca_key="TOPIC"/>
+	<column name="bo_ref_id" align="left" width="15%" loca_key="BO_REFERENCEID"/>
+	<column name="appl_date" align="center" width="10%" loca_key="SE_DATE"/>
+	<column name="prod_stat_code" align="center" width="15%" loca_key="STATUS" sort="n"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="15"
+		max_length="34"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="advice_se_type"
+		type="SEAdvicesType"
+		loca_key="SE_ADVICES_TYPE"
+		input="y"
+		multiple_values="10"/>
+	<parameter
+		name="applicant_act_no"
+		size="15"
+		max_length="35"
+		loca_key="SE_ACCOUNT_NO"
+		input="y"
+		default=""
+		type="AccountNo"
+		productType="SE:ADVNO"/>
+	<parameter
+		name="se_bank_reference"
+		size="15"
+		max_length="35"
+		loca_key="SE_BANK_REF"
+		input="y"
+		default=""/>
+    <parameter
+		name="last_modified_date"
+		type="range"
+		range_from_label="LAST_MODIFY_DATE_FROM"
+		range_to_label="LAST_MODIFY_DATE_TO"
+		default="blank"
+		input="y"/>
+	<parameter file_name="reviewRecords" name="export_list" type="export"/> 
+		
+	
+	<!-- candidates -->	
+	<candidate name="secure_email_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="se_type"/>
+				<operator type="like"/>
+				<value type="parameter">
+					advice_se_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="priority"/>
+				<operator type="like"/>
+				<value type="parameter">
+					priority
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="like"/>
+				<value type="string">
+					ADVNO
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_act_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					se_bank_reference
+				</value>
+			</criteria>
+			<criteria>
+					<column name="appl_date"/>
+					<operator type="supOrEqual"/>
+					<value type="parameter">
+						last_modified_date@from
+					</value>
+			</criteria>
+			<criteria>
+					<column name="appl_date"/>
+					<operator type="infOrEqual"/>
+					<value type="parameter">
+						last_modified_date@to
+					</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

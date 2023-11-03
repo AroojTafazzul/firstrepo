@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="release_dttm"  js_binding="misys.binding.common.listdef_mc" default_order_type="d" page="200" huge="y" >
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="amd_no" hidden="y"/>
+    <column name="sub_product_code" hidden="y"/> 
+    
+	<!-- columns -->
+	<column name="ref_id" align="center" width="20em" loca_key="REFERENCEID" hidden="n">
+		<url>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_SCRATCH"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPERATION_CODE" binding_code="OPERATION_CREATE_REPORTING"/>
+			<parameter name="SCREEN" value="TRADEADMIN_SCREEN"/>
+		</url>
+	</column>
+	<column name="company_name" align="left" width="35%" loca_key="COMPANY"/>
+	
+	<column name="full_type" align="center" width="20%" loca_key="TYPE">
+		<script>
+			if(value.equals(""))
+			{
+				var tnxTypeCode = row.getColumnValue("tnx_type_code");
+				var subTnxTypeCode = row.getColumnValue("sub_tnx_type_code");
+				if(!"".equals(""+subTnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+com.misys.portal.common.localization.Localization.getDecode(language,"N003",""+subTnxTypeCode+"")+ ")";
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"");
+				}
+			}
+			value;
+		</script>
+	</column>
+
+	<column name="cur_code" align="center" width="5em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="release_dttm" align="center" width="10em" loca_key="RELEASE_DTTM"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="*"/>
+	<parameter
+		name="company"
+		loca_key="COMPANY"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="parameter1"
+		type="AvailableProducts"
+		size=""
+		max_length=""
+		loca_key="PRODUCTCODE"
+		input="y"
+		default=""/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="PRODUCT_SUBTYPE"
+	    type="AvaliableSubProductType"
+	    input="y"/>
+	<parameter
+		name="export_list"
+		file_name="pendingRecords"
+		type="export"/>
+
+	<!-- candidates -->	
+	<candidate name="parameter1">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="like"/>
+					<value type="parameter">
+						ref_id
+					</value>
+				</criteria>
+				<criteria>
+					<column name="company_name"/>
+					<operator type="like"/>
+					<value type="parameter">
+						company
+					</value>
+				</criteria>
+			    <criteria>
+					<column name="sub_product_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						sub_product_code
+					</value>
+				</criteria>  
+				<!--criteria>
+					<column name="tnx_stat_code"/>
+					<operator type="equal"/>
+					<value type="code">
+						N004_CONTROLLED
+					</value>
+				</criteria-->
+				<!--criteria>
+					<column name="prod_stat_code"/>
+					<operator type="equal"/>
+					<value type="code">
+						N005_PENDING
+					</value>
+				</criteria-->
+			</filter>
+	</candidate>
+
+	<filter or="y">
+		<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_CONTROLLED
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_ERROR
+			</value>
+		</criteria>
+	</filter>
+	<filter or="y">
+		<criteria>
+			<column name="sub_tnx_stat_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N015_STOPOVER
+			</value>
+		</criteria>
+		<criteria>
+			<column name="sub_tnx_stat_code"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="product_code" />
+			<operator type="different"/>
+			<value type="code">
+				N001_LN
+			</value>
+		</criteria>
+	</filter>
+	<filter or="y">
+		<criteria>
+			<column name="sub_product_code" />
+			<operator type="different"/>
+			<value type="code">
+				N047_BK_LOAN_REPRICING
+			</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code" />
+			<operator type="isNull"/>
+		</criteria>
+	</filter>
+	<!-- <filter>
+		<criteria >
+			<column name="bulk_ref_id"/>
+			<operator type="isNull"/>
+		</criteria>
+	</filter> -->
+</listdef>

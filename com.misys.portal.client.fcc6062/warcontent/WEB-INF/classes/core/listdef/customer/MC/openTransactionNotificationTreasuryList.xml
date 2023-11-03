@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bo_release_dttm" default_order_type="d" page="10" data_key="ref_id">
+
+	<column name="ref_id" align="left"  width="15%" loca_key="REFERENCEID" columnFilterType="input-multiselect"/>
+	<column name="bo_ref_id" align="left" width="14%" loca_key="bo_ref_id" columnFilterType="input-multiselect"/>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" columnFilterType="input-multiselect"/>
+	<column name="entity" align="left" width="14%" loca_key="ENTITY_NAME_APPLICANT" columnFilterType="input-multiselect"/>  <!-- Applicant Name -->
+	<column name="applicant_act_no" align="left" width="14%" loca_key="DEBIT_ACCOUNT" columnFilterType="input-multiselect"/>
+	<column name="counterparty_name" align="left" width="14%" loca_key="BeneficiaryName" columnFilterType="input-multiselect"/>
+	<column name="counterparty_act_no" align="left" width="15%" loca_key="BENEFICIARY_ACCOUNT" columnFilterType="input-multiselect"/>
+	<column name="tnx_type_code" showCode="y" isColumnSortDisabled="y" hidden="y" width="10em" isCodeField="y" codeId="N002" columnFilterType="input-multiselect"/>
+	<column name="sub_tnx_type_code" showCode="y" isColumnSortDisabled="y" hidden="y" isCodeField="y" codeId="N003"/>
+	<column name="tnx_id" align="left"  width="14%" showCode="y" hidden="y"/>
+	<column name="tnx_stat_code" showCode="y" isCodeField="y" codeId="N004" hidden="y"/>
+	<column name="sub_tnx_stat_code" showCode="y" isCodeField="y" codeId="N015" hidden="y"/>
+	<column name="product_type" align="left" width="12%" loca_key="PRODUCT_TYPE" sort="n" showAsDefault="n" showCode="y" columnFilterType="input-multiselect"/>
+	<column name="prod_stat_code" align="left" width="14%" loca_key="LABEL_STATUS" sort="n" hidden="y" isCodeField="y" codeId="N005" showCode="y"/>
+		
+	<column name="tnx_cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect" />
+	<column name="tnx_amt" align="right" width="14%" loca_key="AMOUNT"/>
+	
+	<column name="sub_product_code" align="left" width="11%" loca_key="DEAL_TYPE" showCode="y" isCodeField="y" codeId="N047" columnFilterType="input-multiselect"/>
+	<column name="inp_dttm" align="left" width="12%" loca_key="INP_DTTM"/>
+	<column name="tnx_val_date" align="left" width="12%" loca_key="VALUE_DATE" />
+	<column name ="value_date" hidden="y"/>
+	
+	<column name="bo_release_dttm" align="left" width="5%" loca_key="RELEASE_DTTM" hidden="y"/>
+	<column name="status" align="center" width="15%" loca_key="STATUS" hidden="y">
+	<script>
+			var tnxStatCode = row.getColumnValue("tnx_stat_code");
+			var prodStatCode = row.getColumnValue("prod_stat_code");
+			var productCode = row.getColumnValue("product_code");
+			var subProductCode = row.getColumnValue("sub_product_code");
+			var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+			var productCode = row.getColumnValue("product_code");
+			var statusColumn = row.getColumnValue("status");
+			    
+			    //loan specific status codes and values
+			if(("LN".equals(""+productCode+""))|| (("BK".equals(""+productCode+"")) &amp;&amp; ("LNRPN".equals(""+subProductCode+"")) ))
+			{
+			      if(("BK").equals(""+productCode+"") &amp;&amp; ("LNRPN").equals(""+subProductCode+""))
+			      {
+			          productCode= productCode+"_"+subProductCode;
+			      }
+				
+					if(("04").equals(""+tnxStatCode+"") &amp;&amp; ("03").equals(""+prodStatCode+""))
+					{
+					    value = com.misys.portal.common.localization.Localization.getGTPString(language, "STATUS_CODE_LOAN_ACTIVE_IN_PORTAL");
+					
+					}
+					else if(("01").equals(""+prodStatCode+"")  &amp;&amp; "04".equals(""+tnxStatCode+"")  &amp;&amp; "20".equals(""+subTnxStatCode+"") )
+					{						
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+""); 
+					}
+					else if(("01").equals(""+prodStatCode+"")  &amp;&amp; "04".equals(""+tnxStatCode+"")  &amp;&amp; ("05".equals(""+subTnxStatCode+"") || "".equals(""+subTnxStatCode+"")|| "17".equals(""+subTnxStatCode+"")   ))
+					{						
+					   value = com.misys.portal.common.localization.Localization.getGTPString(language,"STATUS_CODE_LOAN_CANCELLED");
+					}
+					else if(("04").equals(""+tnxStatCode+"") &amp;&amp; ("01").equals(""+prodStatCode+""))
+					{
+					   value = com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"",""+productCode+"");
+					
+					}
+					else if(("04").equals(""+tnxStatCode+"") &amp;&amp; (("10").equals(""+subTnxStatCode+"")||("05").equals(""+subTnxStatCode+"")))
+					{
+					    value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","04",""+productCode+"");
+					}
+					else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"",""+productCode+"");
+					}
+					else
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"",""+productCode+""); 
+					}
+				}
+				else if(("I").equals(""+statusColumn+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "STATUS_CODE_LOAN_INACTIVE_IN_PORTAL"); 
+				}
+			
+			else 
+			{
+			   if (value.equals("") || ("FB").equals(""+productCode+""))
+			   {
+					if(("04").equals(""+tnxStatCode+"") &amp;&amp; !("").equals(""+prodStatCode+""))
+					{
+					  	value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"")+")";
+					}
+					else if(("IO").equals(""+productCode+"") &amp;&amp; !("").equals(""+prodStatCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"")+")";
+					}
+					else if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015","05")+")";
+					}
+					else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+					{
+					  	value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+""); 
+					}
+					else
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")"; 
+					}
+				}
+			}
+			value;
+	</script>
+	</column>
+	<column name="product_code" hidden="y"/>
+	<column name="ObjectDataNumber@counterparty_nb" hidden="y"/>
+	<column name="amd_no" hidden="y"/>
+	
+	<column name="company_name" hidden="y"/>
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+		</url>
+	</column>
+	
+	<!-- parameters -->
+	<parameter
+        name="tnx_val_date"
+        type="AvailableTimeFrames"
+        loca_key="TIME_FRAMES"
+        input="y"
+        default="blank"/>
+	<parameter name="prod_stat_code"
+		loca_key="STATUS"
+		input="y"
+		isNegation="y"
+		value="01"
+		isCodeField="y"
+		codeId="N005"
+		type="NegateParamValue"/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="bo_ref_id"
+		input="y"/>	
+	<parameter
+		name="cust_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="customerRef"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		multiple="y"
+		default=""
+		type="Entity"/>
+	
+	<parameter 
+		name="applicant_act_no" 
+		loca_key="DEBIT_ACCOUNT" 
+		size="20"
+		max_length="65" 
+		input="y"
+		default="" />
+	<parameter
+		name="counterparty_name"
+		size="20"
+		max_length="20"
+		loca_key="BeneficiaryName"
+		default=""
+		input="y"/>
+	<parameter
+		name="counterparty_act_no"
+		size="20"
+		max_length="20"
+		loca_key="BENEFICIARY_ACCOUNT"
+		default=""
+		input="y"/>
+	<parameter
+	    name="sub_product_code"
+	    loca_key="DEAL_TYPE"
+	    type="AvaliableSubProductType"
+	    input="y"/>
+	
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"/>
+	<parameter
+		name="tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="TRANSACTION_TYPE_CODE"
+		input="y"
+		multiple="y"
+		default=""
+		hidden="true"
+		isCodeField="y"
+		codeId="N002"/>
+	<parameter
+		name="sub_tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="SUB_TRANSACTION_TYPE_CODE"
+		input="y"
+		multiple="y"
+		default=""
+		isCodeField="y"
+		codeId="N003"
+		hidden="true"/>
+	<parameter
+		name="event"
+		size="12"
+		max_length="20"
+		loca_key="event"
+		input="y"
+		multiple="y"
+		default=""
+		isClubbed="y"
+		type="TnxTypeSubTnxType"
+		clubbedFieldsList="tnx_type_code,sub_tnx_type_code"/>
+	<parameter
+		name="inp_dttm"
+		type="range"
+		loca_key="INP_DTTM"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="tnx_stat_code"
+		type="AvaliableTransactionStatus"
+		loca_key="STATUS"
+		input="y"
+		multiple="y"
+		hidden="true"
+		multiple_values="01,02,03,04,07,09"/>
+	<parameter
+		name="range"
+		type="range"
+		range_from_label="RELEASEDATEFROM"
+		range_to_label="RELEASEDATETO"
+		hidden="true"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="parameter1"
+		type="AvailableProducts"
+		size=""
+		max_length=""
+		loca_key="PRODUCTCODE"
+		hidden="true"
+		input="y"
+		default=""/>
+		
+		
+	<parameter
+		name="export_list"
+		file_name="transactionNotificationTreasuryList"
+		type="export"
+		batch="y"/>
+
+	<!-- candidates -->	
+	<candidate name="parameter1">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_release_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					range@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_release_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					range@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N002_BACKOFFICE_UPDATE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="not in"/>
+				<value type="vector">
+					<value type="code">
+						N001_FT
+					</value>					
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+		         <column name="cust_ref_id"/>
+		         <operator type="like"/>
+		         <value type="parameter">
+		         	cust_ref_id
+		         </value>
+	        </criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tnx_type_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					sub_tnx_type_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 applicant_act_no
+				</value>
+		   </criteria>
+		   <criteria>
+				<column name="counterparty_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 counterparty_act_no
+				</value>
+		   </criteria>	
+		</filter>
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+		         <column name="cust_ref_id"/>
+		         <operator type="like"/>
+		         <value type="parameter">
+		         	cust_ref_id
+		         </value>
+	        </criteria>
+	        <criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_release_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					range@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_release_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					range@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="product_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N001_FT
+					</value>					
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="status"/>
+				<operator type="like"/>
+				<value type="parameter">
+					status
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N002_BACKOFFICE_UPDATE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tnx_type_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					sub_tnx_type_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 applicant_act_no
+				</value>
+		   </criteria>
+		   <criteria>
+				<column name="counterparty_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 counterparty_act_no
+				</value>
+		   </criteria>			
+		</filter>
+	</candidate>
+	  <!-- <candidate name="bulk_loan">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="counterparty_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					counterparty_name
+				</value>
+			</criteria>
+			<criteria>
+		         <column name="cust_ref_id"/>
+		         <operator type="like"/>
+		         <value type="parameter">
+		         	cust_ref_id
+		         </value>
+	        </criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">entity</value>
+			</criteria>
+			<criteria>
+				<column name="bo_deal_name"/>
+				<operator type="like"/>
+				<value type="parameter">bo_deal_name</value>
+			</criteria>
+  			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="child_product_code"/>
+				<operator type="equal"/>
+				<value type="code">N001_LN</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="parameter">tnx_type_code_parameter</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="parameter">sub_tnx_type_code_parameter</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="different"/>
+				<value type="parameter">sub_product_code_parameter</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="in"/>
+				<value type="parameter">tnx_stat_code_parameter</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="parameter">sub_tnx_stat_code_parameter</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@bulk_facility_name"/>
+				<operator type="like"/>
+				<value type="parameter">bo_facility_name</value>
+			</criteria>
+			<criteria>
+				<column name="ObjectDataString@original_ccy"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tnx_stat_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					tnx_type_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					sub_tnx_type_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 applicant_act_no
+				</value>
+		   </criteria>
+		   <criteria>
+				<column name="counterparty_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 counterparty_act_no
+				</value>
+		   </criteria>
+		</filter>
+	</candidate> -->
+	<filter>
+	<criteria>
+		<column name="tnx_val_date"/>
+		<operator type="supOrEqual"/>
+		<value type="parameter">
+            tnx_val_date@from         
+		</value>
+	</criteria>
+	<criteria>
+		<column name="tnx_val_date"/>
+		<operator type="infOrEqual"/>
+		<value type="parameter">
+            tnx_val_date@to                                                
+		</value>
+	</criteria>
+	<criteria>
+		<column name="prod_stat_code"/>
+		<operator type="equal"/>
+		<value type="parameter">
+			prod_stat_code
+		</value>
+	</criteria>
+	</filter>
+	 <filter or ="y">
+    	   <criteria>
+				<column name="sub_tnx_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N015_CUSTOMER_DELETED
+				</value>				
+			</criteria>
+    	<criteria>
+             <column name="sub_tnx_stat_code" />
+             <operator type="isNull" />
+        </criteria>
+    </filter>	
+</listdef>

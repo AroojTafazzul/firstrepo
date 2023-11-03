@@ -1,0 +1,74 @@
+{
+	"productcode" : "N001_IR",
+	"tabs": [
+		{
+			"tabName": "active",
+			"listdefName": "/trade/listdef/customer/IR/customerActiveIRList",
+			"permission": "ir_access",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "draft",
+			"listdefName": "/trade/listdef/customer/IR/customerDraftIRList",
+			"permission": "ir_save",
+			"index": 1,
+			"selected": "true"
+		},
+		{
+			"tabName": "uaPendingApproval",
+			"listdefName": "/trade/listdef/customer/IR/customerPendingClientIRList",
+			"permission": "ir_access",
+			"index": 2,
+			"selected": "true",
+			"severalSubmit": "ir_approve",
+			"commentsRequired": "true",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "uaPendingBankApproval",
+			"listdefName": "/trade/listdef/customer/IR/customerPendingBankIRList",
+			"permission": "ir_access",
+			"index": 3,
+			"selected": ""
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/trade/listdef/customer/IR/customerRejectedIRList",
+			"permission": "ir_access",
+			"index": 4,
+			"selected": ""
+		},
+		{
+			"tabName": "closed",
+			"listdefName": "/trade/listdef/customer/IR/customerOtherIRList",
+			"permission": "ir_access",
+			"index": 5,
+			"selected": "",
+			"severalSubmit": "ir_purged_maintain",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "delete",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "delete"
+		      	}
+			]
+			
+		}
+	]
+}

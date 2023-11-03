@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: Undertaking Advised;PERM=BR_access"
+         id="RU_UX" role="TOPIC">
+  <title><xi:include href="../entities_en.xml"
+  xpointer="ent_Received_undertaking"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+  <para role="TEXT">The <xi:include href="../entities_en.xml"
+  xpointer="ent_Received_undertaking"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> module enables you, on behalf
+  of your company (the beneficiary) to receive notification of <xi:include
+  href="../entities_en.xml" xpointer="ent_Received_undertaking"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/>, and subsequent updates, from
+  the Advising Bank. You can also send messages back to the bank for events
+  that require your approval or acceptance in the ongoing transaction
+  flow.</para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">Within this section of the help guide, "<emphasis
+    role="bold">UA</emphasis>" and "<xi:include href="../entities_en.xml"
+    xpointer="ent_Received_undertaking"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>" are used interchangeably.
+    The terms "<emphasis role="bold">record</emphasis>" and "<emphasis
+    role="bold">transaction</emphasis>" both refer to entries in the system
+    relating to the function being discussed.</para>
+  </section>
+
+  <section condition="TITLE=Undertaking Advised Landing Page;PERM=br_access;ACCESS=BR_LP_UX"
+           role="TOPIC">
+    <title>Undertaking Advised Landing Page</title>
+
+    <para role="TEXT">The Undertaking Advised Landing page displays a list of
+    UAs based on the transaction status. The Landing page view is customizable
+    based on your requirement. <note>
+        <para>You can customise the list of columns displayed through
+        SDK.</para>
+      </note></para>
+
+    <para>The following image illustrates the Undertaking Advised landing
+    page:</para>
+
+    <para><graphic fileref="images/UALandingpage1.png" width="165mm"/></para>
+
+    <para>The Undertaking dashboard segregates transactions based on their
+    current status like draft, awaiting authorization, awaiting response from
+    client or bank rejected or purged from bank.The following ribbon items
+    enable you to perform various actions on individual UAs or in bulk, based
+    on the tab you are on. Individual tabs and related functionality are
+    described below: <graphic fileref="images/ribbon_UAL1.png"
+    width="165mm"/><note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Advised</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Undertaking Advised
+            transactions.<note>
+                <para>This tab is available only to a maker user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Draft</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the UAs in draft state and also the
+            transactions that checker has returned for improvement.<note>
+                <para>This tab is available only to a maker user.</para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Actions</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Undertaking Advised transactions
+            on which the bank has requested action from client maker user.
+            <note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para><guimenuitem moreinfo="none">Actions</guimenuitem>
+                      tab is available only to maker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Action will be based on the transaction status.
+                      This will list down transactions that is awaiting action
+                      from corporate user.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending
+          Approval</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Undertaking Advised
+            transactions that are awaiting client approval from a second user
+            within the corporate.<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para>The <emphasis role="bold">Authorise</emphasis>
+                      action item is available only for a checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>A user with batch submission permission can select
+                      multiple transactions to <emphasis
+                      role="bold">Approve</emphasis> or <emphasis
+                      role="bold">Return</emphasis> though the checkbox
+                      provided for every transactions listed in this
+                      tab.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      a transaction.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending at Bank
+          </guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Undertaking Advised
+            transactions that are awaiting bank approval.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Closed</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Undertaking Advised transactions
+            that have been marked as purged by the Issuing Bank's Trade
+            Services team. You cannot initiate further amendments or messages
+            on such a transaction, and can only use its data for inquiry
+            purposes.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Rejected</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the rejected Undertaking Advised
+            records by the bank. The status given to such UAs is "Not
+            Processed".</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The <guiicon>Advance Filter</guiicon> presents you with various
+    filter options like <emphasis role="bold">Channel Reference</emphasis>,
+    <emphasis role="bold">Bank Reference</emphasis>, <emphasis
+    role="bold">Event</emphasis>, <emphasis role="bold">Entity</emphasis>,
+    <emphasis role="bold">Applicant Name</emphasis>, <emphasis
+    role="bold">Beneficiary</emphasis>, <emphasis
+    role="bold">Currency</emphasis> and <emphasis role="bold">Expiry
+    Date</emphasis>. Enter the relevant search criterion and apply the filter
+    to list all the relevant Undertaking Advised transactions. You can also
+    select the time frame for which data needs to be fetched.</para>
+
+    <para>You can perform the following actions on the listed
+    transactions:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of UA transactions.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of UAs displayed on the dashboard. Click on the Download icon
+          to list the formats in which the files can be downloaded. You can
+          download Current Data or Full Data.<itemizedlist>
+              <listitem>
+                <para>Current Data: Downloads the transactions displayed on
+                screen.</para>
+              </listitem>
+
+              <listitem>
+                <para>Full Data: Downloads all the transactions available
+                under a particular status tab like Draft, Rejected and
+                more.</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed UA
+          transactions.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      Undertaking Advised transactions. The actions are available in relevant
+      tabs based on the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction)</para>
+          </listitem>
+
+          <listitem>
+            <para>If there are multiple actions available for a transaction, a
+            few actions may accessed by clicking on this icon
+            <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/dots_icon.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject>.</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+			
+			<row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clear</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/clear.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to clear the transaction from list. Only
+              amendment / message rejected event can be cleared from the list,
+              however this event will still be available in
+              enquiry.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delete</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to delete the Issuance Request rejected
+              events from the list and it is no longer available in Fusion
+              Corporate Channels.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Customer
+              Instructions</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cust_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Consent Response', 'Customer
+              Instructions' and attach supporting documents if any, to submit
+              the Customer Instructions to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clean Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel>Amendment
+              Response</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amendresp_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Amendment
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Disposal Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/disposal_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to provide the disposal instructions on a
+              discrepant Undertaking Advised. The available options
+              are:<itemizedlist>
+                  <listitem>
+                    <para>Agree to pay against the document</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Hold the document</para>
+                  </listitem>
+                </itemizedlist></para><para>Fill all the mandatory fields in
+              the General Details section and attach supporting documents if
+              any, to submit the Disposal Instructions to bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Cancel Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cancel_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Cancel
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Approve</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/approve_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to approve the selected transaction.
+              <note>
+                  <para>Option to <emphasis role="bold">Approve</emphasis> a
+                  transaction is available only to checker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Return</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/return_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to return the selected transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Return</emphasis>
+                      a transaction is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amend</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amend_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to amend the selected transaction.<note>
+                  <para>Option to <emphasis role="bold">Amend</emphasis> a
+                  transaction is available only to a maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Request for Settlement</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Correspondence</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/correspondence_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to initiate correspondence with bank for
+              the selected transaction..</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to assign the reference to the
+              transaction for which no customer reference is assigned, this
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to update/assign the entity of
+              transaction. This provision is available under Live Tab. This
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Audit Trail</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/audit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the audit trail of transaction.
+              This option shows all the users associated with the transaction
+              since its initiation.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=br_access;ACCESS=BR_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking any
+      of the following actions against any given transaction:<itemizedlist>
+          <listitem>
+            <para>Details</para>
+          </listitem>
+
+          <listitem>
+            <para>Return</para>
+          </listitem>
+
+          <listitem>
+            <para>Approve</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details/Return/Approve</guilabel></entry>
+
+              <entry valign="top"><para>Displays the transaction details, all
+              the events of transaction, attachments and charges associated
+              with the transaction. The information is spread over three tabs
+              'Transaction Details', 'Events' and 'Additional Information'.
+              Individual tabs are described below:<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Undertaking Advised
+                      Landing</emphasis> button at the top of <emphasis
+                      role="bold">Details</emphasis> page to navigate back to
+                      Undertaking Issued Landing page.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Journey</emphasis>
+                      button at the top of <emphasis
+                      role="bold">Details</emphasis> page to view the history
+                      of events that the transaction has gone through.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note><itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Transaction
+                    Details</emphasis>: Displays the details of the
+                    transaction that is opened from the listing page. The tab
+                    lists the fields based on the action you click against the
+                    transaction.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Events</emphasis>: Displays
+                    the history of events that transaction has gone through.
+                    The transactions are either acknowledged by the bank or a
+                    reporting event is initiated by bank that requires an
+                    action to be performed by a corporate user. <note>
+                        <para>In case an action is pending on the corporate
+                        user, a <emphasis role="bold">Respond</emphasis>
+                        button is present against the stated event, that
+                        navigates user to screen to perform the respective
+                        action.</para>
+                      </note></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Attachments' added as
+                    part of this transaction and also displays 'Documents' and
+                    'Fees and Charges' details.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section condition="TITLE=General Details;PERM=br_access;ACCESS=BR_GD_UX"
+           role="TOPIC">
+    <title>General Details</title>
+
+    <para>This section lists all the fields pertaining to general details
+    section of <emphasis role="bold">Request For Settlement </emphasis>
+    form.</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c3" colwidth="6.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Field</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Channel
+            Reference</guilabel></entry>
+
+            <entry valign="top">Unique reference number generated by
+            <guimenu>Fusion Corporate Channels</guimenu> for this
+            License.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Beneficiary
+            Reference</guilabel></entry>
+
+            <entry valign="top"><para role="TEXT">Reference information for
+            the beneficiary. </para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Applicant
+            Reference</guilabel></entry>
+
+            <entry valign="top"><para role="TEXT">Reference information for
+            the applicant.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Additional Customer
+            Reference</guilabel></entry>
+
+            <entry valign="top"><para role="TEXT">Additional name for use
+            within your company.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Bank
+            Reference</guilabel></entry>
+
+            <entry valign="top">Issuing Bank's internal reference number
+            generated by the back office for this Undertaking.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Advise
+            Date</guilabel></entry>
+
+            <entry valign="top">Displays the date of Advise for
+            Undertaking</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Issuing Bank
+            Reference</guilabel></entry>
+
+            <entry valign="top">Issuing Bank's reference number for this
+            Undertaking.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Issue
+            Date</guilabel></entry>
+
+            <entry valign="top">The issue date of the undertaking as sent by
+            Bank during advising of the undertaking transaction. This is
+            displayed based on the format selected by the user (dd/mm/yyyy or
+            mm/dd/yyyy).</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Company
+            Name</guilabel></entry>
+
+            <entry valign="top">Name of the company for which transaction
+            belongs is displayed.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel
+            moreinfo="none">Entity</guilabel></entry>
+
+            <entry valign="top">Entity to which transaction belongs to is
+            displayed.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Beneficiary
+            Name</guilabel></entry>
+
+            <entry valign="top">Displays the Beneficiary Name.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Form of
+            Undertaking</guilabel></entry>
+
+            <entry valign="top">The type of trade product that the Undertaking
+            has been issued for.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Applicant
+            Name</guilabel></entry>
+
+            <entry valign="top">Displays alternate applicant name.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Expiry
+            Date</guilabel></entry>
+
+            <entry valign="top">Displays the Expiry Date of the
+            Undertaking.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Expiry
+            Type</guilabel></entry>
+
+            <entry valign="top">Specifies the type of Expiry associated with
+            Undertaking.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><guilabel moreinfo="none">Customer
+            Instructions</guilabel></entry>
+
+            <entry valign="top">Enter the instructions for the bank.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section condition="TITLE=Attachment;PERM=br_access;ACCESS=BR_AT_UX"
+           role="TOPIC">
+    <title>Attachment</title>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c3" colwidth="6.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Field</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"><guilabel
+            moreinfo="none">File Upload</guilabel></para></entry>
+
+            <entry valign="top"><para role="TEXT">Upload supporting files
+            either by 'Drag and Drop' method or by 'Browsing' to the file
+            location. You can attach up to 5 the supporting documents of size
+            1 Mega Byte each. The file types supported are <emphasis>PNG,
+            JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC, PDF, GIF,
+            ZIP</emphasis>.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <guilabel
+            moreinfo="none">Browse</guilabel> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Browse button and Drag and
+            Drop field, which you can optionally use to attach a file from
+            your local hard disk to give additional details pertaining to this
+            Undertaking.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section condition="TITLE=Preview;PERM=br_access;ACCESS=BR_PV_UX"
+           role="Topic">
+    <title>Preview</title>
+
+    <para role="TEXT">This section opens in read only mode and shows all the
+    details that you have filled in the application and also allows you to
+    either Save or Submit the application.</para>
+  </section>
+</section>

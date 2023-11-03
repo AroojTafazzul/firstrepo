@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"  huge="N" source="loaniq_facilitiesFee" default_order="serialNo" default_order_type="d" page="100">	
+
+	<column name='serialNo' width="8%" align="left" loca_key="LN_FACILITY_SERIAL_NO" />
+	<column name='description' width="16%" align="left" loca_key="LN_FACILITY_FEE_TYPE" />
+	<column name='currency' width="16%" align="left" loca_key="LN_FACILITY_CURRENCY" />	
+	<column name='feeRID'  loca_key="LN_FACILITY_FEE_ID" hidden="y" />
+	<column name='type'  loca_key="LN_FACILITY_FEE_TYPE_SHORT_NAME" hidden="y" />
+	<column name='effectiveDate' width="16%" align="left" loca_key="LN_FACILITY_EFFECTIVE_DATE">
+		<script>
+			var effectiveDate = row.getColumnValue("effectiveDate");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+effectiveDate+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name='actualDueDate' width="8%" align="left" loca_key="LN_FACILITY_DUE_DATE">
+		<script>
+			var actualDueDate = row.getColumnValue("actualDueDate");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+actualDueDate+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name='actualExpiryDate'  loca_key="LN_FACILITY_CURRENT_DATE" hidden="y"/>
+	<column name='adjustedDueDate'  loca_key="LN_FACILITY_DUE_DATE" hidden="y"/>	
+	<column name="rate" width="16%" align="right" loca_key="LN_FACILITY_RATE">
+		<script>
+			var rate = row.getColumnValue("rate");			
+			var currency = row.getColumnValue("currency");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.formatRateValues(""+rate+"",""+currency+"",""+language+"")+"%";	
+			value;
+		</script>
+	</column>	
+	<column name="dueAmount" width="16%" align="right" loca_key="LN_FACILITY_FEE_DUE" >
+		<script>
+			var dueAmount = row.getColumnValue("dueAmount");
+			var currency = row.getColumnValue("currency");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+dueAmount+"",""+currency+"",""+language+"");
+			value;
+		</script>
+	</column>	
+</listdef>	

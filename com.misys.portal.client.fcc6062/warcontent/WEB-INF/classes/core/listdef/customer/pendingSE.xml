@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="10">
+	
+	<!-- columns -->
+	<column name="action" width="4em">
+		<url action="y">
+			<parameter name="SCREEN" column="product_code:sub_product_code"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="SUB_TRANSACTION_TYPE_CODE" column="sub_tnx_type_code"/>
+		</url>
+	</column>
+
+	<column name="full_type" computation="sum" align="center" width="20%" loca_key="TYPE">
+		<column name="tnx_type_code"/>
+		<column name="sub_tnx_type_code"/>
+		<script>
+			var tnxTypeCode = row.getColumnValue("tnx_type_code");
+			var productCode = row.getColumnValue("product_code");
+			var subTnxTypeCode = row.getColumnValue("sub_tnx_type_code");
+			var amdNo = row.getColumnValue("amd_no");
+			var messageType = row.getColumnValue("message_type");
+			
+			// Product specific type aliases, which should reflect in Preview and PDFs also
+			if(!"".equals(""+tnxTypeCode+""))
+			{
+				if("LN".equals(""+productCode+""))
+				{
+					if("03".equals(""+tnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getGTPString(language, "LISTDEF_PRODUCT_TYPE_INCREASE");
+					}
+					else if("13".equals(""+tnxTypeCode+"") &amp;&amp; "16".equals(""+subTnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getGTPString(language, "LISTDEF_PRODUCT_TYPE_PAYMENT");
+					}
+					else if("01".equals(""+tnxTypeCode+"") &amp;&amp; "97".equals(""+subTnxTypeCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N003",""+subTnxTypeCode+"")+")"; 
+					}
+				}
+				else if("TM".equals(""+productCode+""))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N300",""+messageType+"");
+					
+					}
+				else if(!((subTnxTypeCode == null) || ("".equals(""+subTnxTypeCode+""))))
+				{
+					if(!"0".equals(""+amdNo+"") &amp;&amp; ( "03".equals(""+tnxTypeCode+"")))
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+com.misys.portal.common.localization.Localization.getDecode(language,"N003",""+subTnxTypeCode+"") + ") " +com.misys.portal.common.tools.Utils.formatAmdNo(""+amdNo+"");
+					}
+					else
+					{
+						value = com.misys.portal.common.localization.Localization.getDecode(language,"N002",""+tnxTypeCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N003",""+subTnxTypeCode+"")+")";
+					}
+				}
+			}
+			
+			value;
+		</script>
+	</column>
+	<column name="status" align="center" width="20%" loca_key="STATUS">
+		<script>
+			var tnxStatCode = row.getColumnValue("tnx_stat_code");
+			var prodStatCode = row.getColumnValue("prod_stat_code");
+			var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+			if(!"".equals(""+tnxStatCode+""))
+			{
+				if("04".equals(""+tnxStatCode+"") &amp;&amp; !"".equals(""+prodStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N005",""+prodStatCode+"")+")";
+				}
+				else if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015","05")+")";
+				}
+				else if(!"".equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")";
+				}
+				else if(("99".equals(""+subTnxStatCode+"")) || ("".equals(""+subTnxStatCode+"")))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+				}
+			}
+			
+			value;
+		</script>
+	</column>
+	<column name="bo_tnx_id" align="left" width="15%" loca_key="XSL_EVENT_REF"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>
+
+	<column name="ref_id" hidden="y"/>
+	<column name="entity" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y" />
+	<column name="sub_tnx_stat_code" hidden="y" />
+	<column name="amd_no" hidden="y" />
+	<column name="message_type" hidden="y" />
+
+	<!-- parameters -->
+	<parameter name="referenceid" input="y"/>	
+	<parameter name="productcode" input="y"/>
+	<parameter
+		name="parameter1"
+		type="AvailableProducts"
+		size=""
+		max_length=""
+		loca_key="PRODUCTCODE"
+		input="y"
+		default=""/>
+
+	<!-- candidates -->	
+	<candidate name="parameter1">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="equal"/>
+					<value type="parameter">
+						referenceid
+					</value>
+				</criteria>
+				<criteria>
+					<column name="product_code"/>
+					<operator type="equal"/>
+					<value type="parameter">
+						productcode
+					</value>
+				</criteria>
+			</filter>
+	</candidate>
+		
+  <filter or="y">
+    <criteria>
+      <column name="tnx_stat_code"/>
+      <operator type="different"/>
+      <value type="code">
+        N004_ACKNOWLEDGED
+      </value>
+    </criteria>
+    <criteria>
+      <column name="prod_stat_code"/>
+      <operator type="equal"/>
+      <value type="code">
+        N005_INPROGRESS
+      </value>
+    </criteria>
+  </filter>
+  <filter and="y">
+  	<criteria>
+      <column name="tnx_stat_code"/>
+      <operator type="different"/>
+      <value type="code">
+        N004_REVISE
+      </value>
+    </criteria>
+  </filter>
+ 
+</listdef>

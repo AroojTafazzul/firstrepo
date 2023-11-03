@@ -1,0 +1,518 @@
+{
+   "screen":"FinancingRequestScreen",
+   "isAccordionView": "true",
+   "tfRepay":{
+   	"requestOptions": {
+      "name": "requestOptionsTF",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "01",
+          "02",
+          "03"
+        ],
+        "icon": "fa fa-check-circle fa-2x",
+        "matIcon": "check_circle"
+      },
+      "defaultValue": "01",
+      "type": "select-button",
+      "styleClass": [
+        "transmission"
+      ],
+      "layoutClass": "p-grid p-col-12",
+      "previewScreen": false,
+      "rendered": false
+    },
+      "customerRef":{
+         "name":"customerRef",
+         "type":"text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "bankReference"
+         ],
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+               "layout":"p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+            }
+         ]
+      },
+      "bankReference":{
+         "name":"bankReference",
+         "type":"text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "bankReference"
+         ],
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+               "layout":"p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+            }
+         ]
+      },
+      "requestedIssueDate":{
+         "name":"requestedIssueDate",
+         "type":"text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "bankReference"
+         ],
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+               "layout":"p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+            }
+         ]
+      },
+      "tenureDays":{
+         "name":"tenureDays",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+         "styleClass":[
+            "margin-side"
+         ],
+         "maxlength":29,
+         "required":true,
+         "type":"text",
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+               "layout":"p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+            }
+         ]
+      },
+      "maturityDate":{
+         "name":"maturityDate",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "expiryDateStyle"
+         ],
+         "required":true,
+         "type":"text",
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+               "layout":"p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+            }
+         ]
+      },
+      "outstandingAmountTF":{
+         "name":"outstandingAmountTF",
+         "type":"text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+               "layout":"p-col-6 p-md-6 p-lg-6 p-sm-12 viewModeMargin"
+            }
+         ]
+      },      
+      "OutstandingAmount":{
+         "name":"OutstandingAmount",
+         "type":"input-text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "margin-all-side"
+         ],
+		"hidden": true
+      },
+      "OutstandingCurrCode":{
+         "name":"OutstandingCurrCode",
+         "type":"input-text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "margin-all-side"
+         ],
+		 "hidden": true
+      },
+      "repayFinAmount": {
+	      "name": "repayFinAmount",
+	      "type": "text",
+	      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+	      "styleClass": [
+	        "billAmountValueTitle"
+	      ],
+	      "rendered": false,
+	      "previewScreen": false
+	  },
+      "standingAmount":{
+         "name":"standingAmount",
+         "type":"text",
+         "rendered":false,
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "hidden": true
+      },
+	   "repaymentInstructions": {
+	      "name": "repaymentInstructions",
+	      "type": "text",
+      	   "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+	      "styleClass": [
+	        "subheader-title"
+	      ],
+	      "groupHeaderText": "repaymentInstructions",
+	      "groupChildren": [
+	      "requestTypeOptions",
+	      "partialPayOptions",
+	      "currency",
+	      "repayAmt",
+	      "InterestAmnt",
+	      "settleMode",
+	      "principalAct",
+	      "feeAct",
+	      "customerInstructions"
+	      ]
+	  },      
+      "requestTypeTF":{
+         "name":"requestTypeTF",
+         "type":"text",
+         "rendered":true,
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "previewScreen":false
+      },
+      "requestTypeOptions":{
+         "name":"requestTypeOptions",
+         "type":"input-radio",
+         "source": "codeData",
+         "rendered":true,
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "options":[
+            {
+               "value":"fullFinalPayment",
+               "valueStyleClass":"p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+            },
+            {
+               "value":"partialPayment",
+               "valueStyleClass":"p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+            }
+         ],
+         "defautValue":"fullFinalPayment",
+         "grouphead": "repaymentInstructions",
+         "clubbedHeaderText":"requestTypeTF",
+         "clubbedList":[
+            "requestTypeOptions"
+         ]
+      },
+      "repayMode":{
+         "name":"repayMode",
+         "type":"text",
+         "rendered":true,
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "previewScreen":false
+      },
+      "partialPayOptions":{
+         "name":"partialPayOptions",
+         "type":"input-radio",
+         "source": "codeData",
+         "rendered": true,
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "options":[
+            {
+               "value":"01",
+               "valueStyleClass":"p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+            },
+            {
+               "value":"02",
+               "valueStyleClass":"p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+            }
+         ],
+         "defautValue":"01",
+          "grouphead": "repaymentInstructions",        
+         "clubbedHeaderText":"repayMode",
+         "clubbedList":[
+            "partialPayOptions"
+         ]
+      },
+      "currency":{
+         "name":"currency",
+         "type":"text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "styleClass":[
+            "bankReference"
+         ],
+         "rendered":true,
+         "grouphead": "repaymentInstructions",
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+         	   "showLabel": false,   
+         	   "showViewModeLabel": false,        		                     
+               "layout":"p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView"
+            }
+         ]
+      },
+      "repayAmt":{
+         "name":"repayAmt",
+         "type":"input-text",
+         "layoutClass":"p-col-5 p-md-5 p-lg-5 p-sm-12 Amt",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "rendered":true,
+         "clubbedHeaderText":"repayAmt",
+         "clubbedList":[
+            "currency",
+            "repayAmt"
+         ],
+         "readonly": "true",
+         "grouphead": "repaymentInstructions",
+         "required":true
+      },
+      "repaymentCurrency": {
+         "name":"repaymentCurrency",
+         "type":"input-text",
+         "layoutClass":"p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+         "rendered": false,
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "rendered":false
+      },
+      "interestCurrency": {
+         "name":"interestCurrency",
+         "type":"input-text",
+         "layoutClass":"p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView",
+         "rendered": false,
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "rendered":false,
+         "clubbed": true,
+         "showLabel": false,
+         "applicableScreens":[
+            {
+               "tnxTypeCode":"13",
+               "mode":"view",
+               "fieldValueType":"view-mode",
+	           "showLabel": false,       
+	           "showViewModeLabel": false,                     
+               "layout":"p-col-1 p-lg-1 p-md-1 p-sm-12 currencyView"
+            }
+         ]
+      },
+      "InterestAmnt":{
+         "name":"InterestAmnt",
+         "type":"input-text",
+         "layoutClass":"p-col-5 p-md-5 p-lg-5 p-sm-12 Amt",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "rendered":true,
+         "clubbedHeaderText":"InterestAmnt",
+         "clubbedList":[
+            "interestCurrency",
+            "InterestAmnt"
+         ],
+         "grouphead": "repaymentInstructions",        
+         "readonly": true
+      },
+      "settleMode":{
+         "name":"settleMode",
+         "type":"input-dropdown",
+         "source":"codeData",
+         "options":{
+            "value":[
+               "01",
+               "02",
+               "03"
+            ]
+         },
+         "defaultValue":"",
+         "grouphead": "repaymentInstructions",         
+         "layoutClass":"p-md-6 p-lg-6 p-sm-12 leftwrapper",
+         "styleClass":"feeAct",
+         "rendered":true,
+         "required":true
+      },
+      "principalAct":{
+         "name":"principalAct",
+         "type":"input-dropdown",
+         "options":[
+            
+         ],
+         "defaultValue":"",
+         "grouphead": "repaymentInstructions",                 
+         "layoutClass":"p-md-6 p-lg-6 p-sm-12 leftwrapper",
+         "styleClass":"feeAct",
+         "rendered":true
+      },
+      "feeAct":{
+         "name":"feeAct",
+         "type":"input-dropdown",
+         "options":[
+            
+         ],
+         "defaultValue":"",
+         "grouphead": "repaymentInstructions",                 
+         "layoutClass":"p-md-6 p-lg-6 p-sm-12 leftwrapper",
+         "styleClass":"feeAct",
+         "rendered":true,
+         "required":true
+      },
+      "freeFormatMessage":{
+         "name":"freeFormatMessage",
+         "type":"text",
+         "rendered":true,
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "margin-all-side"
+         ],
+         "previewScreen":false
+      },
+      "customerInstructions":{
+         "name":"customerInstructions",
+         "type":"narrative-textarea",
+         "fieldSize":50,
+         "swift":false,
+         "rows":5,
+         "cols":65,
+         "maxRowCount":12,
+         "enteredCharCount":0,
+         "rowCount":0,
+         "allowedCharCount":780,
+         "maxlength":780,
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "required":true,
+         "styleClass":"messageStyle",
+         "phraseEnabled":true,
+         "directive":true,
+         "grouphead": "repaymentInstructions"         
+      },
+      "subTnxTypeCode":{
+         "name":"subTnxTypeCode",
+         "type":"input-text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":"subTnxTypeCode",
+         "hidden":true
+      },
+      "parentTnxIdRepay":{
+         "name":"parentTnxId",
+         "type":"input-text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":"subTnxTypeCode",
+         "hidden":true
+      },
+      "finTypeRepay":{
+         "name":"finType",
+         "type":"input-text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":"subTnxTypeCode",
+         "hidden":true
+      },
+      "id":"tfRepay",
+      "helpId": "GD"
+   },
+   "tfRepayAttachmentDetails":{
+      "space3":{
+         "noofspacers":"2",
+         "prefix":"one",
+         "sectionType":"spacerModel",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+      },
+      "fileMaxLimits":{
+         "name":"fileMaxLimits",
+         "type":"text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "fileMaxLimits"
+         ],
+         "previewScreen":false
+      },
+      "fileExtnText":{
+         "name":"fileExtnText",
+         "type":"text",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "fileMaxLimits"
+         ],
+         "previewScreen":false
+      },
+      "fileDragDrop":{
+         "name":"fileUploadDragDrop",
+         "type":"fileUpload-dragdrop",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+         "styleClass":[
+            "DragDropArea"
+         ],
+         "previewScreen":false
+      },
+      "browseButton":{
+         "name":"browseButton",
+         "type":"rounded-button",
+         "styleClass":[
+            "browseButton"
+         ],
+         "layoutClass":"p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+         "btndisable":true,
+         "previewScreen":false
+      },
+      "fileUploadTable":{
+         "name":"fileUploadTable",
+         "columns":[
+            
+         ],
+         "label":"hideControl",
+         "defaultValue":"specialPayment",
+         "type":"input-table",
+         "rendered":true,
+         "data":[
+            
+         ],
+         "styleClass":[
+            "fileUploadTable"
+         ],
+         "layoutClass":"p-col-12"
+      },
+      "attachments":{
+         "name":"attachments",
+         "rendered":false,
+         "type":"json-obj",
+         "previewScreen":false
+      },
+      "space1":{
+         "noofspacers":"2",
+         "prefix":"one",
+         "sectionType":"spacerModel",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+      },
+      "space2":{
+         "noofspacers":"1",
+         "prefix":"two",
+         "sectionType":"spacerModel",
+         "layoutClass":"p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+      },
+      "id":"TfRepaymentAttachmentDetailsComponent",
+      "helpId": "AT"
+   }
+}

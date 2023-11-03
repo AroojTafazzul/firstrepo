@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="guaranteeId" page="50" source="undertakingTemplate">
+
+	<column name="companyid" loca_key="COMPANY_ID" hidden="y"/>
+	<column name="featureid" loca_key="FEATURE_ID" align="left" width="15%"/>
+	<column name="guaranteeId" align="center" width="11em" loca_key="UNDERTAKINGID" hidden="y">
+		<!-- <url>
+			<parameter name="SCREEN" value="SI_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="COMPANY_ID" column="companyid"/>
+			<parameter name="FEATURE_ID" column="featureid"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_SCRATCH"/>
+		</url> -->
+		<js-pass-back keyName="column">
+            <array-element index="0" column="companyid"/>
+            <array-element index="1" column="featureid"/>
+            <array-element index="2" column="doc_id"/>
+        </js-pass-back>
+	</column>
+	<column name="entity_name_applicant" align="left" width="15%"
+        loca_key="entity_name_applicant" columnFilterType="input-multiselect" />
+    <column name="bank" loca_key="BANK" hidden="y" />
+    <column name="entity" loca_key="ENTITY" columnFilterType="input-multiselect" align="left" width="12%"/>
+    <column name="description" loca_key="DESCRIPTION" align="left" width="20%"/>
+	<column name="guarantee_type" loca_key="GUARANTEE_TYPE" showCode="y" isColumnSortDisabled="y"
+	isCodeField="y" codeId="C082" columnFilterType="input-multiselect" align="left" width="12%"/>
+	<column name="doc_id" loca_key="DOC_ID" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="guaranteeId"
+		size="20"
+		max_length="20"
+		loca_key="UNDERTAKINGID"
+		input="y"
+		default=""/>	
+	<parameter
+		name="entity"
+		size="20"
+		max_size="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="Entity"
+		multiple="y"/>
+    <parameter
+		name="description"
+		size="20"
+		max_length="20"
+		loca_key="DESCRIPTION"
+		input="y"
+		default=""/>	
+	<parameter
+		name="guarantee_type"
+		size="35"
+		max_length="35"
+		loca_key="GUARANTEE_TYPE"
+		input="y"
+		default=""
+		multiple="y"
+		isCodeField="y" 
+		codeId="C082"/>
+	<!-- candidates -->	
+	<candidate name="UndertakingTemplate">
+	<filter>	
+            <criteria>
+				<column name="guaranteeId"/>
+				<operator type="like"/>
+				<value type="parameter">
+					guaranteeId
+				</value>
+			</criteria>
+            <criteria>
+                <column name="entity" />
+                <operator type="in" />
+				<value type="parameter">
+                    entity
+                </value>
+            </criteria>
+            <criteria>
+				<column name="description"/>
+				<operator type="like"/>
+				<value type="parameter">
+					description
+				</value>
+			</criteria>
+			<criteria>
+				<column name="guarantee_type"/>
+				<operator type="in"/>
+				<value type="parameter">				
+					guarantee_type
+				</value>
+			</criteria>
+        </filter>
+	</candidate>
+</listdef>

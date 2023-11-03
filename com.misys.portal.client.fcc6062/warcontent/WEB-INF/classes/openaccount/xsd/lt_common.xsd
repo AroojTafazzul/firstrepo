@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Schema W3C contains data
+            types and elements used in line item Schema W3C for validating
+            GTP Line Item XML Files. Copyright (c) 2000-2006 NEOMAlogic
+            (http://www.neomalogic.com), All Rights Reserved. </xs:documentation>
+    </xs:annotation>
+   	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	
+    <xs:element name="line_item_number" type="ThirtyFiveCharacters" nillable="true"/>
+    <xs:element name="po_tnx_id" type="TwentyCharacters" nillable="true"/>
+    
+    <xs:element name="qty_unit_measr_code" type="UnitOfMeasure3Code" nillable="true"/>
+    <xs:element name="qty_other_unit_measr" type="ThirtyFiveCharacters" />
+    <xs:element name="qty_val" type="DecimalNumber" nillable="true"/>
+    <xs:element name="qty_factor" type="Max15NumericText" nillable="true"/>
+    <xs:element name="qty_tol_pstv_pct" type="PercentageRate" nillable="true"/>
+    <xs:element name="qty_tol_neg_pct" type="PercentageRate" nillable="true"/>
+    <xs:element name="accpt_qty_unit_measr_code" type="UnitOfMeasure3Code" nillable="true"/>
+    <xs:element name="accpt_qty_other_unit_measr" type="ThirtyFiveCharacters" />
+    <xs:element name="accpt_qty_val" type="DecimalNumber" nillable="true"/>
+    <xs:element name="accpt_qty_factor" type="Max15NumericText" nillable="true"/>
+    <xs:element name="outsdng_qty_unit_measr_code" type="UnitOfMeasure3Code" nillable="true"/>
+    <xs:element name="outsdng_qty_other_unit_measr" type="ThirtyFiveCharacters" />
+    <xs:element name="outsdng_qty_val" type="DecimalNumber" nillable="true"/>
+    <xs:element name="outsdng_qty_factor" type="Max15NumericText" nillable="true"/>
+    <xs:element name="pdg_qty_unit_measr_code" type="UnitOfMeasure3Code" nillable="true"/>
+    <xs:element name="pdg_qty_other_unit_measr" type="ThirtyFiveCharacters" />
+    <xs:element name="pdg_qty_val" type="DecimalNumber" nillable="true"/>
+    <xs:element name="pdg_qty_factor" type="Max15NumericText" nillable="true"/>
+    <xs:element name="price_unit_measr_code" type="UnitOfMeasure3Code" nillable="true"/>
+    <xs:element name="price_other_unit_measr" type="ThirtyFiveCharacters" nillable="true"/>
+    <xs:element name="price_amt" type="amount" nillable="true">
+        <xs:annotation>
+            <xs:documentation>Price amount.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="price_cur_code" type="currency" nillable="true">
+        <xs:annotation>
+            <xs:documentation>The 3-characters long ISO code of the currency
+                attached to the price amount.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="price_factor" type="Max15NumericText" nillable="true"/>
+    <xs:element name="price_tol_pstv_pct" type="PercentageRate" nillable="true"/>
+    <xs:element name="price_tol_neg_pct" type="PercentageRate" nillable="true"/>
+    <xs:element name="product_orgn" type="countryCode" nillable="true"/>	
+    <xs:element name="product_name" type="ThirtyFiveCharacters" nillable="true"/>
+    <xs:element name="product_identifiers" type="product_identifiers" nillable="true"/>
+    <xs:element name="product_categories" type="product_categories" nillable="true"/>	
+    <xs:element name="product_characteristics" type="product_characteristics" nillable="true"/>
+    
+    
+    <xs:complexType name="product_identifiers">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="product_identifier"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="product_identifier" type="goods"/>
+  
+    <xs:complexType name="product_categories">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="product_category"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="product_category" type="goods"/>
+  
+    <xs:complexType name="product_characteristics">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="product_characteristic"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="product_characteristic" type="goods"/>
+    
+    <xs:complexType name="goods">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="brch_code"/>
+            <xs:element minOccurs="0" ref="company_id"/>
+            <xs:element minOccurs="0" ref="ref_id"/>
+            <xs:element minOccurs="0" ref="tnx_id"/>
+            <xs:element minOccurs="0" ref="goods_id"/>
+            <xs:element minOccurs="0" ref="goods_type"/>
+            <xs:element minOccurs="0" ref="goods_sub_type"/>
+            <xs:element minOccurs="0" name="type" type="FourCharacters"/>
+            <xs:element minOccurs="0" ref="other_type"/>
+            <xs:element minOccurs="0" ref="identifier"/>
+            <xs:element minOccurs="0" ref="characteristic"/>
+            <xs:element minOccurs="0" ref="category"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="goods_id" type="xs:string" nillable="true"/>
+    <xs:element name="goods_type" type="TwoCharacters" nillable="true"/>
+    <xs:element name="goods_sub_type" type="TwoCharacters" nillable="true"/>
+    <!--xs:element name="type" type="FourCharacters" nillable="true"/-->
+    <xs:element name="other_type" type="ThirtyFiveCharacters" nillable="true"/>
+    <xs:element name="identifier" type="TwentyCharacters" nillable="true"/>
+    <xs:element name="characteristic" type="ThirtyFiveCharacters" nillable="true"/>
+    <xs:element name="category" type="ThirtyFiveCharacters" nillable="true"/>
+    
+    <!--xs:simpleType name="DecimalNumber">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="17"/>
+			<xs:totalDigits value="18"/>
+		</xs:restriction>
+	</xs:simpleType-->
+	
+	<xs:simpleType name="Max15NumericText">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{0,15}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <xs:simpleType name="UnitOfMeasure3Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="KGM"/>
+			<xs:enumeration value="EA"/>
+			<xs:enumeration value="LTN"/>
+			<xs:enumeration value="MTR"/>
+			<xs:enumeration value="INH"/>
+			<xs:enumeration value="LY"/>
+			<xs:enumeration value="GLI"/>
+			<xs:enumeration value="GRM"/>
+			<xs:enumeration value="CMT"/>
+			<xs:enumeration value="MTK"/>
+			<xs:enumeration value="FOT"/>
+			<xs:enumeration value="1A"/>
+			<xs:enumeration value="INK"/>
+			<xs:enumeration value="FTK"/>
+			<xs:enumeration value="MIK"/>
+			<xs:enumeration value="ONZ"/>
+			<xs:enumeration value="PTI"/>
+			<xs:enumeration value="PT"/>
+			<xs:enumeration value="QTI"/>
+			<xs:enumeration value="QT"/>
+			<xs:enumeration value="GLL"/>
+			<xs:enumeration value="MMT"/>
+			<xs:enumeration value="KTM"/>
+			<xs:enumeration value="YDK"/>
+			<xs:enumeration value="MMK"/>
+			<xs:enumeration value="CMK"/>
+			<xs:enumeration value="KMK"/>
+			<xs:enumeration value="MMQ"/>
+			<xs:enumeration value="CLT"/>
+			<xs:enumeration value="LTR"/>
+			<xs:enumeration value="LBR"/>
+			<xs:enumeration value="STN"/>
+			<xs:enumeration value="BLL"/>
+			<xs:enumeration value="BX"/>
+			<xs:enumeration value="BO"/>
+			<xs:enumeration value="CT"/>
+			<xs:enumeration value="CH"/>
+			<xs:enumeration value="CR"/>
+			<xs:enumeration value="INQ"/>
+			<xs:enumeration value="MTQ"/>
+			<xs:enumeration value="OZI"/>
+			<xs:enumeration value="OZA"/>
+			<xs:enumeration value="BG"/>
+			<xs:enumeration value="BL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ProductCategory1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="HRTR"/>
+			<xs:enumeration value="QOTA"/>
+			<xs:enumeration value="PRGP"/>
+			<xs:enumeration value="LOBU"/>
+			<xs:enumeration value="GNDR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ProductIdentifier2Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="BINR"/>
+			<xs:enumeration value="COMD"/>
+			<xs:enumeration value="EANC"/>
+			<xs:enumeration value="HRTR"/>
+			<xs:enumeration value="MANI"/>
+			<xs:enumeration value="MODL"/>
+			<xs:enumeration value="PART"/>
+			<xs:enumeration value="QOTA"/>
+			<xs:enumeration value="STYL"/>
+			<xs:enumeration value="SUPI"/>
+			<xs:enumeration value="UPCC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ProductCharacteristics1Code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="BISP"/>
+			<xs:enumeration value="CHNR"/>
+			<xs:enumeration value="CLOR"/>
+			<xs:enumeration value="EDSP"/>
+			<xs:enumeration value="ENNR"/>
+			<xs:enumeration value="OPTN"/>
+			<xs:enumeration value="ORCR"/>
+			<xs:enumeration value="PCTV"/>
+			<xs:enumeration value="SISP"/>
+			<xs:enumeration value="SIZE"/>
+			<xs:enumeration value="SZRG"/>
+			<xs:enumeration value="SPRM"/>
+			<xs:enumeration value="STOR"/>
+			<xs:enumeration value="VINR"/>
+		</xs:restriction>
+	</xs:simpleType>					  	
+</xs:schema>

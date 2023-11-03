@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="template_id"
+	default_order_type="d" page="50">
+
+	<column name="template_id" align="left" width="30%" loca_key="REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="FT_SCREEN" />
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW" />
+			<parameter name="OPTION_CODE" binding_code="OPTION_TEMPLATE" />
+			<parameter name="TEMPLATE_ID" column="template_id" />
+			<parameter name="PRODUCT_CODE" column="product_code" />
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code" />
+		</url>
+	</column>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY" />
+	<column name="sub_product_code" width="20%" loca_key="SUBPRODUCTCODE">
+		<script>
+			var subproductCode = row.getColumnValue("sub_product_code");
+			value =
+			com.misys.portal.common.localization.Localization.getDecode(language,"N047",""+subproductCode+"");
+			value;
+		</script>
+	</column>
+	<column name="template_description" align="left" width="40%"
+		loca_key="DESCRIPTION" />
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="SCREEN" value="FT_SCREEN" />
+			<parameter name="TEMPLATE_ID" column="template_id" />
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code" />
+		</url>
+	</column>
+	<column name="product_code" hidden="y" />
+	<column name="sub_product_code" hidden="y" />
+
+	<!-- parameters -->
+	<parameter name="template_id" size="20" max_length="20"
+		loca_key="REFERENCE" input="y" default="" />
+	<parameter name="entity" size="20" loca_key="ENTITY" input="y"
+		default="" type="entity">
+	</parameter>
+
+	<parameter name="template_description" loca_key="DESCRIPTION"
+		size="20" max_length="200" input="y" />
+	<parameter name="sub_product_code" loca_key="PRODUCT_SUBTYPE"
+		type="AvaliableSubProductType" input="y" multiple_values="INT,TPT,DOM,MUPS,MEPS,RTGS,HVPS,HVXB" />
+	<!-- candidates -->
+	<!-- only DOMESTIC_TRANSFER, INTERNAL_TRANSFER,THIRD_PARTY_TRANSFER files -->
+
+
+	<filter or="y">
+		<criteria>
+			<column name="sub_product_code" />
+			<operator type="equal" />
+			<value type="code">N047_INTERNAL_TRANSFER</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code" />
+			<operator type="equal" />
+			<value type="code">N047_DOMESTIC_TRANSFER</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code" />
+			<operator type="equal" />
+			<value type="code">N047_THIRD_PARTY_TRANSFER</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="equal"/>
+			<value type="code">N047_INDIA_DOMESTIC_TRANSFER</value>
+		</criteria>
+    	<criteria>
+			<column name="sub_product_code" />
+			<operator type="equal" />
+			<value type="code">N047_HVPS</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="equal"/>
+			<value type="code">N047_HVXB</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="equal"/>
+			<value type="code">N047_SINGAPORE_DOMESTIC_TRANSFER</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="equal"/>
+			<value type="code">N047_HK_RTGS</value>
+		</criteria>		
+	</filter>
+
+	<!-- candidates -->
+	<candidate name="template_fund_transfer">
+		<filter>
+			<criteria>
+				<column name="template_id" />
+				<operator type="like" />
+				<value type="parameter">
+					template_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity" />
+				<operator type="like" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code" />
+				<operator type="like" />
+				<value type="parameter">
+					sub_product_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="template_description" />
+				<operator type="like" />
+				<value type="parameter">
+					template_description
+				</value>
+			</criteria>
+			<criteria>
+             <column name="bulk_template_id" />
+             <operator type="isNull" />
+        </criteria>
+		</filter>
+	</candidate>
+</listdef>

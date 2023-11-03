@@ -1,0 +1,1436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: Received Standby LC;PERM=sr_access"
+         id="SR_UX" role="TOPIC">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_Received_S_L_C"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> Module</title>
+
+  <para role="TEXT">Just as the <xi:include href="../entities_en.xml"
+  xpointer="ent_Export_LC" xmlns:xi="http://www.w3.org/2001/XInclude"/> is the
+  beneficiary's view of the Letter of Credit, this <xi:include
+  href="../entities_en.xml" xpointer="ent_Received_S_L_C"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/> (SR) module is the
+  beneficiary's view of the Standby LC.</para>
+
+  <para role="TEXT">Whereas the <xi:include href="../entities_en.xml"
+  xpointer="ent_Issued_S_LC" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  module is for use by the applicant, this module provides the beneficiary
+  with a notification of the terms issued in his favour, and a way to send
+  further transactional messages to his advising banks on those
+  records.</para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">Within this section of the help guide, the terms
+    "<emphasis role="bold">SR</emphasis>", "<emphasis role="bold">Received
+    Standby Letter Of Credit</emphasis>" and "<emphasis role="bold">Received
+    Standby LC</emphasis>" are used interchangeably.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Overview</title>
+
+    <para role="TEXT">This <xi:include href="../entities_en.xml"
+    xpointer="ent_Received_S_L_C" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    module enables you, on behalf of your company (the beneficiary), to
+    receive notification of Standby Letters of Credit, and subsequent
+    amendments or updates, from the Advising Bank. You can also send messages
+    back to the bank for events that require your approval in the ongoing
+    transaction flow, or to initiate a transfer.</para>
+  </section>
+
+  <section condition="TITLE=Received Standby Letter of Credit Landing Page;PERM=sr_access;ACCESS=SR_LP_UX"
+           role="TOPIC">
+    <title>Received Standby Letter of Credit Landing Page</title>
+
+    <para>The Received Standby Letter of Credit Landing page displays a list
+    of SR transactions that are in various stages of an SR life cycle. The
+    Landing page view is customizable based on your requirement.</para>
+
+    <note>
+      <para>You can customise the list of columns displayed through
+      SDK.</para>
+    </note>
+
+    <para>The following image illustrates the Received Standby Letter of
+    Credit landing page:</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/SRLanding1.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject><note>
+        <para>Lists of columns displayed are customizable through SDK.</para>
+      </note></para>
+
+    <para>The following ribbon items enable you perform various actions on
+    individual SR transactions or in bulk, based on the tab you are on.
+    Individual tabs and related functionality are described below:
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="images/ribbon_elc1.png" width="165mm"/>
+        </imageobject>
+      </inlinemediaobject><note>
+        <para>Refer section <emphasis role="bold">Information on
+        Action</emphasis> for details on actions available on each of the
+        listed ribbon items.</para>
+      </note><variablelist role="TEXT">
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Live</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the approved Received Standby Letter
+            of Credit records and the expired Received Standby Letter of
+            Credit records by the bank.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Draft</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all SR transactions in draft state. You
+            can <emphasis role="bold">Edit</emphasis>, <emphasis
+            role="bold">View</emphasis>, <emphasis
+            role="bold">Discard</emphasis> or view the history of events that
+            Received Standby Letter of Credit has gone through, through
+            <emphasis role="bold">Details</emphasis> action.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Actions</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Received Standby Letters of Credit
+            transactions on which the bank has requested client action.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending
+          Approval</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Received Standby Letters of
+            Credit transactions that are awaiting client approval.<note>
+                <para><itemizedlist>
+                    <listitem>
+                      <para>The <emphasis role="bold">Authorise</emphasis>
+                      action item is available only for a checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>A user with batch submission permission can select
+                      multiple transactions to <emphasis
+                      role="bold">Approve</emphasis> or <emphasis
+                      role="bold">Return</emphasis> though the checkbox
+                      provided for every transactions listed in this
+                      tab.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      a transaction.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </note></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Pending at
+          Bank</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all existing Received Standby Letters of
+            Credit transactions that are awaiting bank approval.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Rejected</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the rejected Received Standby Letter
+            of Credit records by the bank. The status given to such ELs is
+            "Not Processed".</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guimenuitem moreinfo="none">Closed</guimenuitem></term>
+
+          <listitem>
+            <para role="TEXT">Lists all the Received Standby Letters of Credit
+            transactions that have been marked as purged by the Remitting
+            Bank's Trade Services team. You cannot initiate further amendments
+            or messages on such a transaction, and can only use its data for
+            inquiry purposes.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+
+    <para>The <guiicon>Advance Filter</guiicon> presents you with various
+    filter options like <emphasis role="bold">Event</emphasis>, <emphasis
+    role="bold">Entity</emphasis>, <emphasis role="bold">Applicant</emphasis>,
+    <emphasis role="bold">Currency</emphasis> and <emphasis role="bold">Expiry
+    Date</emphasis>. Enter the relevant search criterion and apply the filter
+    to list all the relevant SR transactions. You can also select the time
+    frame for which data needs to be fetched.</para>
+
+    <para>You can perform the following actions on the listed SR
+    transactions:<itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Search</emphasis>: Enter any of the
+          <guiicon>Advance Filter</guiicon> search criterion in the search box
+          to display the required list of LCs</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">CSV Download</emphasis>: Download the
+          list of LCs displayed on the dashboard. Click on the Download icon
+          to list the formats in which the files can be downloaded. You can
+          download Current Data or Full Data.<itemizedlist>
+              <listitem>
+                <para>Current Data: Downloads the transactions displayed on
+                screen.</para>
+              </listitem>
+
+              <listitem>
+                <para>Full Data: Downloads all the transactions available
+                under a particular status tab like Draft, Rejected and
+                more.</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Column Filter</emphasis>: Add the column
+          filter value to narrow down the search criterion for the listed
+          LCs.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <section role="TEXT">
+      <title>Information on Actions</title>
+
+      <para>This section describes all the actions that you can perform on
+      Received Standby LC transactions. The actions are available in relevant
+      tabs based on the ribbon you are on.</para>
+
+      <note>
+        <itemizedlist>
+          <listitem>
+            <para>Actions are based on the user persona, like a maker user
+            will have the action <guilabel moreinfo="none">Edit</guilabel>
+            (update an existing transaction), <guilabel
+            role="bold">View</guilabel> (view the details of the individual
+            transactions), <guilabel role="bold">Details</guilabel> (view the
+            full details of the transactions), <guilabel
+            role="bold">Discard</guilabel> (delete an existing draft
+            transaction)</para>
+          </listitem>
+
+          <listitem>
+            <para>If there are multiple actions available for a transaction, a
+            few actions may accessed by clicking on this icon
+            <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="images/dots_icon.png" width="5mm"/>
+                </imageobject>
+              </inlinemediaobject>.</para>
+          </listitem>
+        </itemizedlist>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Edit</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/edit_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to edit the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              role="bold">View</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/view_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to view the detail of individual
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/details_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to see the details of the selected
+              transaction. For detailed information refer section Transaction
+              Details.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Discard</guilabel></entry>
+
+              <entry valign="top"><para>Click on the vertical three dots icon
+              <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> followed by <emphasis
+              role="bold">Discard</emphasis> to discard the selected
+              transaction.</para></entry>
+            </row>
+			
+			<row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clear</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/clear.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to clear the transaction from list. Only
+              amendment / message rejected event can be cleared from the list,
+              however this event will still be available in
+              enquiry.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Delete</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/discard_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to delete the Issuance Request rejected
+              events from the list and it is no longer available in Fusion
+              Corporate Channels.</para><note>
+                  <para>You can select and clear or delete multiple
+                  transactions in a single click, using the icon
+                  <inlinemediaobject>
+                      <imageobject>
+                        <imagedata fileref="images/clear_delete_action.png"
+                                   width="15mm"/>
+                      </imageobject>
+                    </inlinemediaobject>. The transaction is cleared or
+                  deleted based on the transaction type.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Customer
+              Instructions</guilabel></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cust_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Consent Response', 'Customer
+              Instructions' and attach supporting documents if any, to submit
+              the Customer Instructions to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Clean Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel>Amendment
+              Response</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amendresp_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Amendment
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Disposal Instructions</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/disposal_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to provide the disposal instructions on a
+              discrepant Received Standby LC. The available options
+              are:<itemizedlist>
+                  <listitem>
+                    <para>Agree to pay against the document</para>
+                  </listitem>
+
+                  <listitem>
+                    <para>Hold the document</para>
+                  </listitem>
+                </itemizedlist></para><para>Fill all the mandatory fields in
+              the General Details section and attach supporting documents if
+              any, to submit the Disposal Instructions to bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Cancel Response</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cancel_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to input 'Customer Instructions' and
+              attach supporting documents if any, to submit the Cancel
+              Response to bank</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"><guilabel
+              moreinfo="none">Authorise</guilabel></para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/authorise.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to authorise the selected transaction.
+              You can either approve or return the transaction.<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Option to <emphasis role="bold">Approve</emphasis>
+                      or <emphasis role="bold">Return</emphasis> a transaction
+                      is available only to checker user.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>It is mandatory to provide the comments to return
+                      the transaction.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note> </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amend</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/amend_action.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to amend the selected transaction.<note>
+                  <para>Option to <emphasis role="bold">Amend</emphasis> a
+                  transaction is available only to a maker user.</para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Request for Settlement</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/cleansettle_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to make a request for settlement for the
+              selected transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Correspondence</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/correspondence_action.png"
+                               width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to initiate correspondence with bank for
+              the selected transaction..</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to assign the reference to the
+              transaction for which no customer reference is assigned, this
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Set Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/set_entity.png" width="5mm"/>
+                  </imageobject>
+                </inlinemediaobject> to update/assign the entity of
+              transaction. This provision is available under Live Tab. This
+              option is available only when you have required
+              permission.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Transfer</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/transfer_action.png"
+                               width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> to transfer the selected SR. Only those
+              SR transactions that are marked as 'Transferable' will be
+              available for transfer. <note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Individual fields of Assignment are described
+                      under 'Transfer and Assignment' details section.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Transfer and Assignment amount are mutually
+                      exclusive.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Assignment</guilabel> </para></entry>
+
+              <entry valign="top"><para>Click on this icon <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/assignment_action.png"
+                               width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> to amend the selected SR.<note>
+                  <para>Individual fields of Assignment are described under
+                  'Transfer and Assignment' details section.</para>
+                </note></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transaction Details;PERM=sr_access;ACCESS=SR_DETAIL_UX"
+             role="Topic">
+      <title>Transaction Details</title>
+
+      <para>This section describes the information presented on clicking any
+      of the following actions against any given transaction:<itemizedlist>
+          <listitem>
+            <para>Details</para>
+          </listitem>
+
+          <listitem>
+            <para>Return</para>
+          </listitem>
+
+          <listitem>
+            <para>Approve</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><guilabel
+              role="bold">Details/Return/Approve</guilabel></entry>
+
+              <entry valign="top"><para>Displays the transaction details, all
+              the events of transaction, attachments and charges associated
+              with the transaction. The information is spread over three tabs
+              'Transaction Details', 'Events' and 'Additional Information'.
+              Individual tabs are described below:<note>
+                  <itemizedlist>
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Received Standby LC
+                      Landing</emphasis> button at the top of <emphasis
+                      role="bold">Details</emphasis> page to navigate back to
+                      Received Standby LC Landing page.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Click on <emphasis role="bold">Journey</emphasis>
+                      button at the top of <emphasis
+                      role="bold">Details</emphasis> page to view the history
+                      of events that the transaction has gone through.</para>
+                    </listitem>
+                  </itemizedlist>
+                </note><itemizedlist>
+                  <listitem>
+                    <para><emphasis role="bold">Transaction
+                    Details</emphasis>: Displays the details of the
+                    transaction that is opened from the listing page. The tab
+                    lists the fields based on the action you click against the
+                    transaction.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Events</emphasis>: Displays
+                    the history of events that transaction has gone through.
+                    The transactions are either acknowledged by the bank or a
+                    reporting event is initiated by bank that requires an
+                    action to be performed by a corporate user. <note>
+                        <para>In case an action is pending on the corporate
+                        user, a <emphasis role="bold">Respond</emphasis>
+                        button is present against the stated event, that
+                        navigates user to screen to perform the respective
+                        action.</para>
+                      </note></para>
+
+                    <para>If you are viewing the transaction details of an
+                    amended transaction, you can use the <emphasis
+                    role="bold">Compare</emphasis> button to see a comparative
+                    view of amended transaction (N) and transaction on which
+                    amendment was made (N-1).</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><emphasis role="bold">Additional
+                    Information</emphasis>: Lists the 'Attachments' added as
+                    part of this transaction and also displays 'Documents' and
+                    'Fees and Charges' details.</para>
+                  </listitem>
+                </itemizedlist></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section condition="TITLE=Transfer;PERM=SR_access;ACCESS=SR_TR_UX"
+             role="Topic">
+      <title>Transfer</title>
+
+      <para role="TEXT">This section describes the
+      <guimenuitem>Transfer</guimenuitem> action and the forms it uses.</para>
+
+      <para role="TEXT">This can only be done for a Letter of Credit that your
+      company (the main beneficiary) has received notification of, from the
+      Advising Bank. Therefore, this function displays a list of such existing
+      Received Standy Letters of Credit that have not been purged and are
+      transferable. The second beneficiary is guaranteed to receive payment
+      provided he satisfies the terms laid down in the transfer credit,
+      irrespective of the actions of your own company, the main beneficiary.
+      This action sends a message to the Advising Bank, telling them of the
+      transfer.</para>
+
+      <section condition="TITLE=General Details;PERM=SR_transfer;ACCESS=SR_GD_UX"
+               role="Topic">
+        <title>General Details</title>
+
+        <para role="TEXT">The input form for transferring an Received Standy
+        Letter of Credit is as follows:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">View</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button on the right
+                side of the title line.) Opens a popup window to show the full
+                details of the current Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Channel Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by the system for this Letter of Credit, when
+                notified by the Advising Bank.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Advising Bank's internal
+                reference number generated by the back office for this
+                Received Standby Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Issue Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Issue date of the
+                Transferable Received Standby Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Expiry date of the
+                Transferable Received Standby Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Type</guilabel></para></entry>
+
+                <entry valign="top"><para>Select the type of expiry for the
+                instrument: Specific, Conditional or Unlimited.</para><note>
+                    <para>This field is available when Swift 2021 feature is
+                    enabled.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Free Format Message</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Send a free-format
+                message through Customer Instructions.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Customer
+                Instructions</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank. Click the button to the right of this field, to
+                select predefined phrases to insert into this message. The
+                size depends on the back office ,As per swift standard ,if the
+                transaction is discrepant it will take Up to 6 lines of 35
+                characters otherwise 35 lines of 50 characters each and for
+                other back office it can take 149 lines of 65
+                characters.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Transfer Conditions;PERM=SRSR_access;ACCESS=SR_TC_UX"
+               role="Topic">
+        <title>Transfer Conditions</title>
+
+        <para role="TEXT">This form lists transfer conditions that can be
+        placed for the Received Standby Letter of Credit.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guimenu
+                moreinfo="none">Second Beneficiary
+                Details</guimenu></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                beneficiary. Click on the 'Name' field drop down to select the
+                associated beneficiary. You may also add a new beneficiary,
+                enter the new Name and Address details of the beneficiary and
+                slide the "<guimenu>Save the Beneficiary</guimenu>" button and
+                also enter the abbreviated name for the new
+                beneficiary.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Recipient</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the second
+                beneficiary. Click on the drop down for the list of
+                beneficiaries or enter a new beneficiary name. This field
+                allows a maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Address</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the second
+                beneficiary. If the beneficiary name is selected from the
+                dropdown this field gets auto-filled, else you must enter the
+                address for the new beneficiary. This field allows a maximum
+                of 3 lines of 35 characters each.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Transfer Conditions</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the applicable
+                transfer conditions of SR. Available values
+                are:<programlisting>Substitute Invoice
+Notify Amendments</programlisting> </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Advise Mode</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the Advise mode
+                of SR from the dropdown. Available values are:<programlisting>Direct
+Through Bank</programlisting><note>
+                    <para>Upon selection of Advise Mode as 'Through Bank',
+                    'BIC Code' and 'Bank Name' are mandatory fields that you
+                    need to fill.</para>
+                  </note> </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">BIC Code</guilabel></para></entry>
+
+                <entry valign="top"><para>Enter the BIC Code of the Advise
+                through bank. Use the magnifying glass to select from a list
+                of banks.</para><note>
+                    <para>This field is available only when 'Advise Mode' is
+                    selected as 'Through Bank'.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the Advise Thru
+                Bank name.<note>
+                    <para>This field is available only when 'Advise Mode' is
+                    selected as 'Through Bank'.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Address</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of second
+                beneficiary. Maximum of 3 lines of 35 characters each.<note>
+                    <para>This field is available only when 'Advise Mode' is
+                    selected as 'Through Bank'.</para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Original LC Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Original LC
+                Amount, this is a view only field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Available Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Available
+                Amount, this is a view only field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Full Transfer</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Slide the 'Full
+                Transfer' button to indicate a full transfer, or leave it
+                unmarked to indicate a partial transfer. In the latter case
+                you must enter the amount to transfer in the next field. It
+                must be less than the original amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Transfer Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the amount to
+                transfer. Manual entry in this field is allowed only when you
+                have not enabled 'Full Transfer' in the above field. The
+                currency code cannot be updated. If you have ticked 'Full
+                Transfer', this field is automatically set to the original
+                amount.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Delivery Instructions;PERM=SR_access;ACCESS=SR_DI_UX"
+               role="Topic">
+        <title>Delivery Instructions</title>
+
+        <para role="TEXT">This form shows shipment and narrative details for
+        the transfer of Letter of Credit.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Delivery Mode</guilabel></para></entry>
+
+                <entry valign="top">Select the delivery Mode from the dropdown
+                menu for Received Standby LC. Valid Options
+                are:<programlisting>By Collection
+By Courier
+By Mail
+By Messenger - hand-deliver
+By registered mail or airmail
+Other</programlisting><note>
+                    <itemizedlist>
+                      <listitem>
+                        <para>A text box under 'Delivery Mode' gets enabled
+                        upon selection of the value 'Other'.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>This field is available when Swift 2021 feature
+                        is enabled.</para>
+                      </listitem>
+                    </itemizedlist>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Delivery to/Collection
+                by</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Instruction to deliver
+                the document to select from the available list<programlisting>Ourselves
+Agent
+Representative
+Beneficiary</programlisting>Click the List of Phrases button to the right of
+                this field, to select predefined phrases to insert in the
+                description.</para><note>
+                    <para>This field is available when Swift 2021 feature is
+                    enabled.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=SR_access;ACCESS=SR_AT_UX"
+               role="Topic">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">You can attach up to 5
+                the supporting documents of size 1 Mega Byte each. The file
+                types supported are <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS,
+                XLSX, DOCX, TXT, DOC, PDF, GIF,
+                ZIP.</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this Letter of Credit.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section condition="TITLE=Assignment;PERM=SR_access;ACCESS=SR_AS_UX"
+             role="TOPIC">
+      <title>Assignment</title>
+
+      <para role="TEXT">This section describes the
+      <guimenuitem>Assignment</guimenuitem> action and the forms it
+      uses.</para>
+
+      <para role="TEXT">This can only be done for a Received Standby Letter of
+      Credit that your company (the main beneficiary) has received
+      notification of from the Advising Bank. Therefore, this function
+      displays a list of such existing Received Standy Letters of Credit that
+      have not been not purged and are transferable. The second beneficiary is
+      guaranteed to receive payment provided he satisfies the terms laid down
+      in the transfer credit, irrespective of the actions of your own company,
+      the main beneficiary. This action sends a message to the Advising Bank,
+      telling them of the transfer.</para>
+
+      <para role="TEXT">Once complete, you can assign part of the proceeds
+      that you expect to receive under an existing Letter of Credit to a
+      second beneficiary. This can only be done for a Letter of Credit that
+      your company (the main beneficiary) has received notification of from
+      the Advising Bank. Therefore, this function displays a list of such
+      existing Received Standy Letters of Credit that have not been not purged
+      and are transferable. The second beneficiary is only paid when your
+      company, the main beneficiary, receives funds under the Letter of
+      Credit. This action sends a message to the Advising Bank, telling them
+      of the assignment.</para>
+
+      <section condition="TITLE=General Details;PERM=SR_access;ACCESS=SR_GD_UX"
+               role="TOPIC">
+        <title>General Details</title>
+
+        <para role="TEXT">The input form for assigning an Received Standy
+        Letter of Credit is as follows:</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">View</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button on the right
+                side of the title line.) Opens a popup window to show the full
+                details of the current Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Channel Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by the system for this Letter of Credit, when
+                notified by the Advising Bank.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Bank Reference</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Advising Bank's internal
+                reference number generated by the back office for this
+                Received Standy Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Issue Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Issue date of the
+                Transferable Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Expiry Date</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Expiry date of the
+                Transferable Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Free Format Message</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Send a free-format
+                message through Customer Instructions.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Customer
+                Instructions</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank. Click the button to the right of this field, to
+                select predefined phrases to insert into this message. The
+                size depends on the back office ,As per swift standard ,if the
+                transaction is discrepant it will take Up to 6 lines of 35
+                characters otherwise 35 lines of 50 characters each and for
+                other back office it can take 149 lines of 65
+                characters.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Assignment Conditions;PERM=SR_access;ACCESS=SR_AC_UX"
+               role="TOPIC">
+        <title>Assignment Conditions</title>
+
+        <para role="TEXT">For an assignment, you enter the details of Assignee
+        instead of the second beneficiary.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guimenu
+                moreinfo="none">Assignee</guimenu></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                assignee. You can select the assignee from Name field dropdown
+                which lists all customers list that your company maintains.
+                Individual fields are described below. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Name</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the assignee.
+                Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Address</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the assignee.
+                Maximum of 4 lines of 35 characters each.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Customer
+                Instructions</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">You must enter a message
+                to the Advising Bank.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Original LC Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Original LC
+                Amount, this is a view only field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Available Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Displays the Available
+                Amount, this is a view only field.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Full Assignment</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Slide the 'Full
+                Assignment' button to indicate a full assignment, or leave it
+                unmarked to indicate a partial assignment. In the latter case
+                you must enter the amount to assign in the next field. It must
+                be less than the original amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Assignment Amount</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the assignment
+                amount. Manual entry in this field is allowed only when you
+                have not enabled 'Full Assignment' in the above field. The
+                currency code cannot be updated. If you have ticked 'Full
+                Assignment', this field is automatically set to the original
+                amount.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Applicable Rules</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the rules
+                applicable from this dropdown. Available options
+                are:<programlisting>EUCP LATEST VERSION
+EUCPURR LATEST VERSION
+ISP LATEST VERSION
+UCP LATEST VERSION
+UCPURR LATEST VERSION
+NONE
+OTHER</programlisting></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Delivery Instructions;PERM=SR_access;ACCESS=SR_DI_UX"
+               role="Topic">
+        <title>Delivery Instructions</title>
+
+        <para role="TEXT">This form shows shipment and narrative details for
+        the transfer of Letter of Credit.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Delivery Mode</guilabel></para></entry>
+
+                <entry valign="top">Select the delivery Mode from the dropdown
+                menu for Received Standby LC. Valid Options
+                are:<programlisting>By Collection
+By Courier
+By Mail
+By Messenger - hand-deliver
+By registered mail or airmail
+Other</programlisting><note>
+                    <itemizedlist>
+                      <listitem>
+                        <para>A text box under 'Delivery Mode' gets enabled
+                        upon selection of the value 'Other'.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>This field is available when Swift 2021 feature
+                        is enabled.</para>
+                      </listitem>
+                    </itemizedlist>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">Delivery to/Collection
+                by</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Instruction to deliver
+                the document to select from the available list<programlisting>Ourselves
+Agent
+Representative
+Beneficiary</programlisting>Click the List of Phrases button to the right of
+                this field, to select predefined phrases to insert in the
+                description.</para><note>
+                    <para>This field is available when Swift 2021 feature is
+                    enabled.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Attachment;PERM=SR_access;ACCESS=SR_AT_UX"
+               role="TOPIC">
+        <title>Attachment</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none">File Upload</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT">Upload supporting files
+                either by 'Drag and Drop' method or by 'Browsing' to the file
+                location. You can attach up to 5 the supporting documents of
+                size 1 Mega Byte each. The file types supported are
+                <emphasis>PNG, JPEG, JPG, RTF, CSV, XLS, XLSX, DOCX, TXT, DOC,
+                PDF, GIF, ZIP.</emphasis>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Browse</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Browse button and Drag
+                and Drop field, which you can optionally use to attach a file
+                from your local hard disk to give additional details
+                pertaining to this Letter of Credit.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section condition="TITLE=Preview;PERM=SR_access;ACCESS=SR_PV_UX"
+               role="TOPIC">
+        <title>Preview</title>
+
+        <para role="TEXT">This section opens in read only mode and shows all
+        the details that you have filled in the application and also allows
+        you to either Save or Submit the application.</para>
+      </section>
+    </section>
+  </section>
+</section>

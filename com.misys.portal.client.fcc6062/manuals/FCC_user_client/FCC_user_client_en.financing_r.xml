@@ -1,0 +1,2333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=Trade Services: Financing Request;PERM=tf_access"
+         id="TF" role="TOPIC">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_Financing_R"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+  <para role="TEXT">A Financing Request or Trade Financing (TF) is a
+  transaction issued in the <xi:include href="../entities_en.xml"
+  xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> by the
+  client and sent to a designated bank (the lender, also called Issuing Bank
+  of the loan in the rest of this document) whereby that import or export
+  customer requests some form of financing for an International Trade
+  transaction.</para>
+
+  <para role="TEXT">The use of the <application moreinfo="none">Financing
+  Requests</application> module is quite generic in the sense that it aims at
+  providing transaction handling capabilities for various types of financing
+  such as Import Loans, Export Discounts on a presentation of documents by an
+  exporter, as well as Trust Receipts or for instance Export
+  Pre-Financing.</para>
+
+  <para role="TEXT">To illustrate a possible use of this module, take the
+  example of a Trust Receipt where the customer/importer is unable to pay for
+  the cost of goods imported according to the terms of a Documentary
+  Collection or even a Letter of Credit, and it is necessary for him to sell
+  the goods first.</para>
+
+  <para role="TEXT">In such a case, the <xi:include href="../entities_en.xml"
+  xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <application moreinfo="none">Financing Requests</application> module would
+  be used by the customer to submit his request by specifying the expected
+  maturity date, the amount of the sale and the schedule of the goods whose
+  possession is held by the bank under this Trust Receipt agreement.</para>
+
+  <para role="TEXT">For an Export Pre-Financing or a Packing Credit, an
+  exporter could typically use the module to submit his request for financing
+  and specify its maturity date, amount and typically the details of the
+  invoices to finance.</para>
+
+  <para role="TEXT">This module enables you, on behalf of your company, to
+  initiate new requests, send them to your chosen Issuing Bank, and
+  subsequently follow up these transactions by sending and receiving updates
+  on the records to and from the bank.</para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">Within this section of the help guide, the terms
+    "<emphasis role="bold">TF</emphasis>" and "<emphasis role="bold">Financing
+    Request</emphasis>" are used interchangeably. Also "<emphasis
+    role="bold">LC</emphasis>" and <emphasis role="bold">"Letter of
+    Credit</emphasis>" are used interchangeably. The terms "<emphasis
+    role="bold">record</emphasis>" and "<emphasis
+    role="bold">transaction</emphasis>" both refer to entries in the system
+    relating to the function being discussed.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Financing Request - Navigation</title>
+
+    <para role="TEXT">To navigate to the Financing Request function, from the
+    toolbar, select <emphasis>Trade Services</emphasis> &gt;
+    <emphasis>Financing Request</emphasis>.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Financing Request Functions</title>
+
+    <para role="TEXT">The menu for this module has the following groups of
+    functions. All are basically as described in the chapter
+    <emphasis>Functions</emphasis>, but <guimenuitem>TF Initiate</guimenuitem>
+    and <guimenuitem>Update TF</guimenuitem> differ in some ways from the
+    <guimenuitem>Initiate</guimenuitem> and
+    <guimenuitem>Amendment</guimenuitem> described in that chapter. There is
+    no <guimenuitem>Message to Bank</guimenuitem> - you use
+    <guimenuitem>Update TF</guimenuitem> to send a free-format message to the
+    bank.</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">TF General</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Enter the details of a new Financing Request and
+          submit them to the Issuing Bank of your choice.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">TF Import
+        Initiation</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Enter the details of a new Financing Request
+          linking it to an existing Letter of Credit, and submit them to the
+          Issuing Bank of your choice.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">TF Export
+        Initiation</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Enter the details of a new Financing Request,
+          optionally linking it to an existing Letter of Credit, and submit
+          them to the Issuing Bank of your choice.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Update TF</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">View all existing Financing Request records, that
+          are not yet complete.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Pending TFs</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Update the details of an existing Financing
+          Request, for example to request an extension of the original
+          maturity date, and submit it to the Issuing Bank.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">TF Inquiry</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Display lists of existing Financing Request
+          records, according to specific search criteria.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">TF Maintenance</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Maintain Unsigned, Purged and Rejected Financing
+          Request records.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section condition="TITLE=TF Initiation;PERM=tf_access;ACCESS=TF_01"
+           role="TOPIC">
+    <title>TF General</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">TF
+    Initiation</emphasis> part of the menu and the forms it uses.</para>
+
+    <section role="ITEM">
+      <title>TF General Options</title>
+
+      <para role="TEXT">This part of the menu contains several options,
+      providing different ways to initiate a Financing Request.<variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From
+            Scratch</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a new Financing Request from
+              scratch.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit Financing Request
+              records that you or another user have already created and saved,
+              but not submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit Financing Request records
+              that you or another user have created, but have not been
+              submitted due to lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF General - From Scratch</title>
+
+      <para role="TEXT">When this options is selected, the financing type must
+      be entered from the dropdown menu.</para>
+
+      <section role="ITEM">
+        <title>From Scratch Form - General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this
+                Financing Request.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">A maximum of 34
+                characters to let the client specify the reference which
+                identifies the current Financing Request within his
+                company.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Application Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date when the creation
+                of the Financing Request was started within <xi:include
+                href="../entities_en.xml" xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. Default is your
+                current business date.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Requested Issue Date</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Date you want the lender
+                / Issuing Bank to issue the financing (typically the start
+                date of an import loan or export discount). Default is your
+                current business date. Must be a valid date after the
+                application date. If the tenor is already set when you enter
+                the issue date, the maturity date is recomputed
+                accordingly.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Tenor (days)</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The tenor period of the
+                financing</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Maturity Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The maturity date of the
+                finance request</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Financing Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>This field is non-editable and the
+                default value is "Other".</para><!--</para><para role="TEXT">Select the
+                appropriate Financing Type from the list provided in the
+                dropdown menu:</para><para role="TEXT"><programlisting
+                format="linespecific">Trust Receipt
+Import Invoice Financing
+Other Import Financing
+</programlisting>Click OK to display the appropriate Financing
+                form.--></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Related Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Multi-purpose string to
+                be used as a reference for the data in this section. Maximum
+                of 34 characters.</para><note>
+                    <para role="TEXT">This field is only present if the bank
+                    doesn't wish to define and use specific references per
+                    bank. If it does, an <guilabel moreinfo="none">Issuer's
+                    Reference</guilabel> field is present instead, under the
+                    <guilabel moreinfo="none">Financing Bank</guilabel>
+                    field).</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Bill
+                Amount</guilabel></entry>
+
+                <entry valign="top"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry valign="top">Displays the bill amount.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description of Goods</guilabel></para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Describe the goods the finance request is
+                related to. Click the button to the right of this field, to
+                select predefined phrases for goods.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel
+                moreinfo="none">Provisional</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Select this to mark the
+                transaction status as <type>Provisional</type>. The
+                transaction will remain provisional till further discussions
+                with the Bank leads to this transaction to be moved to
+                <type>Approved</type> or <type>Rejected</type>
+                status.</para><tip>
+                    <para role="TEXT">To view a provisional TF transaction, go
+                    to <guisubmenu>Update TF &gt; Action Required</guisubmenu>
+                    or <guisubmenu>TF Inquiry</guisubmenu>. To delete a
+                    financing request rejected by the Bank, select
+                    <guisubmenu>TF Maintenance &gt; Rejected TFs</guisubmenu>
+                    and delete the rejected transactions.</para>
+                  </tip></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Applicant Details</guilabel> </para></entry>
+
+                <entry valign="top"/>
+
+                <entry valign="top">This section provides the details of the
+                request applicant.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel role="bold">
+                Entity</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Entity making the application. This field
+                is only present if your company has entities defined and you
+                are attached to one or more entities. If you are attached to
+                more than one, click the magnifying glass icon to select one.
+                If you are attached to only one, the field is preset to that
+                entity and cannot be changed.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the applicant.
+                Maximum of 35 characters for the name. Defaults to the name of
+                your company. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of the
+                applicant. Maximum of 3 lines of 35 characters each. Defaults
+                to the address of your company. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Financing Bank</guilabel> </para></entry>
+
+                <entry valign="top"/>
+
+                <entry valign="top">This section defines the financing bank
+                details.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Bank Name</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Bank to which you want
+                to send your Financing Request. Also called the lender. The
+                dropdown list shows a list of banks that your company is a
+                client of.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issuer's Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The reference (multi
+                purpose string that for instance may identify the liability
+                line) under which the transaction should be recorded. The
+                dropdown list shows the references that are defined for the
+                above selected Issuing Bank.</para><note>
+                    <para role="TEXT">The references shown are defined by the
+                    bank. If the bank doesn't wish to define and use
+                    references per Bank, a non bank-specific <guilabel
+                    moreinfo="none">Reference</guilabel> field appears in the
+                    <guilabel moreinfo="none">Applicant Details</guilabel>
+                    section instead.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Amount Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Financing Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Enter currency and amount of the required
+                financing. Click the magnifying glass icon to set the
+                Currency.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Additional Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Additional details</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Enter any additional details that may be
+                required. Click the button to the right of this field, to
+                select predefined phrases to insert in the details.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Instructions for Bank Only</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Principal Account</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Number of the account
+                the Issuing Bank will debit upon maturity for the settlement
+                of the financing. Click the magnifying glass icon to select
+                the account.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Fee Account</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Number of the account
+                the Issuing Bank will debit for any charges and commissions
+                related to the transaction. (To be collected either in advance
+                or in arrears, depending on the conditions offered by the bank
+                to the client.). Click the magnifying glass icon to select the
+                account.</para><para role="TEXT">The precise use of these two
+                accounts fields can be modified by the Issuing Bank according
+                to its needs. The bank should instruct your company (its
+                client) accordingly.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Other Information</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Any additional
+                information that would not fit in any of the narratives above.
+                Maximum 100 lines of 65 characters each. Click the button to
+                the right of this field, to select predefined phrases to
+                insert into this field.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text field and Browse
+                button, which optionally can be used to attach a file from a
+                local hard disk to give additional details pertaining to this
+                Shipping Guarantee request.</para> <para role="TEXT">A typical
+                example could be a scanned image of the invoice to
+                finance.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Title</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Title for the uploaded
+                file. Up to 255 characters. (displayed when <emphasis
+                role="bold">Add a File</emphasis> is clicked)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text field and
+                <guibutton>Browse</guibutton> button, to attach the file from
+                the local hard disk. (displayed when <emphasis role="bold">Add
+                a File</emphasis> is clicked)</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>TF General - Edit Transactions</title>
+
+      <para role="TEXT">This option allows Financing Request records that you
+      or another user have already started and saved, to be completed.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Financing Request records that have been prepared and saved by users in
+      your bank, but not yet submitted to the clients because the input user
+      either did not try to submit or had insufficient privileges.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF General - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option allows a Financing Request record that you
+      or another user have already started but been unable to submit, to be
+      submitted by an authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Financing Request records that have been prepared and saved by users in
+      your bank, but have not been successfully submitted to the clients
+      because the user had insufficient privileges. Records that were simply
+      saved with no attempt to submit them are not included.</para>
+
+      <para role="TEXT">Click in the <guilabel moreinfo="none">System
+      Id</guilabel><guilabel moreinfo="none"> </guilabel>column to open the
+      record in a non-editable mode, in order to review the data and perform
+      the submission.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected
+      records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is then also displayed.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=TF Import Initiation;PERM=tf_access;ACCESS=TF_IMP"
+           role="TOPIC">
+    <title>TF Import Initiation</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">TF
+    Initiation</emphasis> part of the menu and the forms it uses.</para>
+
+    <section role="ITEM">
+      <title>TF Import Initiation Options</title>
+
+      <para role="TEXT">This part of the menu contains several options,
+      providing different ways to initiate a Financing Request.<variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Import
+            LC</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a new Financing Request from an
+              accepted Letter of Credit.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Import
+            Collection</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a new Financing Request from an
+              accepted Import Collection.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit Financing Request
+              records that you or another user have already created and saved,
+              but not submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit Financing Request records
+              that you or another user have created, but have not been
+              submitted due to lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Import Initiation - From Import LC</title>
+
+      <para role="TEXT">This function displays a list of your company's
+      existing Letters of Credit. A typical example could be when the
+      applicant of the original LC is unable to pay for the goods upon
+      presentation of the documents for a sight bill and hence requests some
+      financing options.</para>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Import Letter of Credit transactions is displayed. The list can be
+      searched by entering search criteria in the <guilabel
+      moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity</emphasis>, <guilabel moreinfo="none">Bank Reference,
+      Beneficiary</guilabel> or <guilabel moreinfo="none">Currency</guilabel>
+      field. The list is not displayed until you have entered search criteria
+      and clicked <emphasis role="bold">Search</emphasis>. To display all
+      records, enter an asterisk in any of the criteria fields.</para>
+
+      <para role="TEXT">The columns returned in the list of existing Letter of
+      Credit transactions, are the following:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity associated
+                with the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref.</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Beneficiary</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Beneficiary of the
+                LC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">CCY</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                LC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the
+                LC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Release</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Release date of the
+                LC.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click in the <guilabel moreinfo="none">System
+      Id</guilabel> column to open a new Financing Request form, populated
+      with the details from the selected Letter of Credit. Some of the
+      information for the transaction is defaulted, including the Issuing Bank
+      name, the currency and the amount of the underlying Letter of Credit. A
+      link is created between this Financing Request and the original LC,
+      hence improving the reporting and inquiry features available.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Import Initiation - From Import Collection</title>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Import Collections transactions is displayed.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity</emphasis>, <guilabel moreinfo="none">Bank Reference,
+      Drawer</guilabel> or <guilabel moreinfo="none">Currency</guilabel>
+      field.</para>
+
+      <para role="TEXT">The list is not displayed until you have entered
+      search criteria and clicked <emphasis role="bold">Search</emphasis>. To
+      display all records, enter an asterisk in any of the criteria
+      fields.</para>
+
+      <para role="TEXT">The columns returned in the list of 2 column
+      description are the following:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity associated
+                with the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref.</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Drawer</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Drawer of the
+                IC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">CCY</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                IC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the
+                IC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Creation</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Creation date of the
+                IC.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click on the System ID field to select the required
+      entry. When an entry is selected, the finance type is requested and the
+      same for as was used for a new finance request displayed, with all
+      relevant fields pre-populated.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Import Initiation - Edit Transactions</title>
+
+      <para role="TEXT">This option allows Financing Request records that you
+      or another user have already started and saved, to be completed.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Financing Request records that have been prepared and saved by users in
+      your bank, but not yet submitted to the clients because the input user
+      either did not try to submit or had insufficient privileges.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Import Initiation - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option allows a Financing Request record that you
+      or another user have already started but been unable to submit, to be
+      submitted by an authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Financing Request records that have been prepared and saved by users in
+      your bank, but have not been successfully submitted to the clients
+      because the user had insufficient privileges. Records that were simply
+      saved with no attempt to submit them are not included.</para>
+
+      <para role="TEXT">Click in the <guilabel moreinfo="none">System
+      Id</guilabel><guilabel moreinfo="none"> </guilabel>column to open the
+      record in a non-editable mode, in order to review the data and perform
+      the submission.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected
+      records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is then also displayed.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=TF Export Initiation;PERM=tf_access;ACCESS=TF_EXP"
+           role="TOPIC">
+    <title>TF Export Initiation</title>
+
+    <para role="TEXT">The input form for creating a Financing Request has
+    several sections:</para>
+
+    <section role="ITEM">
+      <title>TF Export Initiation Options</title>
+
+      <para role="TEXT">This part of the menu contains several options,
+      providing different ways to send an update message regarding an existing
+      Financing Request to the Issuing Bank.</para>
+
+      <para role="TEXT">A typical use of this function could be to ask the
+      lending / Issuing Bank to extend the maturity date of the
+      financing.<variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Export
+            LC</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit records that you
+              or another user have already created and saved, but not
+              submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Export
+            Collection</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit records that you or another
+              user have created, but have not been submitted due to lack of
+              authority.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit Financing Request
+              records that you or another user have already created and saved,
+              but not submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit Financing Request records
+              that you or another user have created, but have not been
+              submitted due to lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Export Initiation - From Export LC Form</title>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Export Letter of Credit transactions is displayed.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity</emphasis>, <guilabel moreinfo="none">Bank Reference,
+      Beneficiary</guilabel> or <guilabel moreinfo="none">Currency</guilabel>
+      field.</para>
+
+      <para role="TEXT">The list is not displayed until you have entered
+      search criteria and clicked <emphasis role="bold">Search</emphasis>. To
+      display all records, enter an asterisk in any of the criteria
+      fields.</para>
+
+      <para role="TEXT">The columns returned in the list of 2 column
+      description are the following:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref.</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity associated
+                with the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Beneficiary Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Beneficiary of the
+                EL.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">CCY</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                EL.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the
+                EL.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date the EL was
+                Issued.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Expiry date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date the EL
+                expires.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click on the System ID field to select the required
+      entry. When an entry is selected, the finance type is requested and the
+      same form as was used for a new finance request displayed, with all
+      relevant fields pre-populated.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Export Initiation - From Export Collection Form</title>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Export Collections transactions is displayed.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+      role="bold">Entity</emphasis>, <guilabel moreinfo="none">Bank Reference,
+      Drawer</guilabel> or <guilabel moreinfo="none">Currency</guilabel>
+      field.</para>
+
+      <para role="TEXT">The list is not displayed until you have entered
+      search criteria and clicked <emphasis role="bold">Search</emphasis>. To
+      display all records, enter an asterisk in any of the criteria
+      fields.</para>
+
+      <para role="TEXT">The columns returned in the list of 2 column
+      description are the following:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity associated
+                with the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref.</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Drawer</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Drawer of the
+                IC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">CCY</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                IC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the
+                IC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Creation</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Creation date of the
+                IC.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click on the System ID field to select the required
+      entry. When an entry is selected, the finance type is requested and the
+      same form as was used for a new finance request displayed, with all
+      relevant fields pre-populated.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Export Initiation - Edit Transactions</title>
+
+      <para role="TEXT">This option allows Financing Request records that you
+      or another user have already started and saved, to be completed.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Financing Request records that have been prepared and saved by users in
+      your bank, but not yet submitted to the clients because the input user
+      either did not try to submit or had insufficient privileges.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Export Initiation - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option allows a Financing Request record that you
+      or another user have already started but been unable to submit, to be
+      submitted by an authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      Financing Request records that have been prepared and saved by users in
+      your bank, but have not been successfully submitted to the clients
+      because the user had insufficient privileges. Records that were simply
+      saved with no attempt to submit them are not included.</para>
+
+      <para role="TEXT">Click in the <guilabel moreinfo="none">System
+      Id</guilabel><guilabel moreinfo="none"> </guilabel>column to open the
+      record in a non-editable mode, in order to review the data and perform
+      the submission.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected
+      records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is then also displayed.</para>
+    </section>
+  </section>
+
+  <section condition="TITLE=Update TF;PERM=tf_access;ACCESS=TF_02"
+           role="TOPIC">
+    <title>Update TF</title>
+
+    <para role="TEXT">This section describes the <emphasis role="bold">Update
+    TF</emphasis> part of the menu and the forms it uses. It is used to create
+    an update message from a Financing Request that you or another user at
+    your company have previously sent and whose initiation has already been
+    acknowledged by the bank.</para>
+
+    <para role="TEXT">This function displays a list of existing Financing
+    Requests - that is, Financing Request s that have been acknowledged by the
+    Issuing Bank.</para>
+
+    <section role="ITEM">
+      <title>Update TF Options</title>
+
+      <para role="TEXT">This part of the menu contains several options,
+      providing different ways to send and maintain update messages regarding
+      an existing Financing Request to the Issuing Bank.</para>
+
+      <para role="TEXT">A typical use of this function could be to ask the
+      lending / Issuing Bank to extend the maturity date of the
+      financing.<variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Existing
+            TF</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Update an existing Financing Request.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit updated Financing
+              Request records that you or another user have already created
+              and saved, but not submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit updated Financing Request
+              records that you or another user have created, but have not been
+              submitted due to lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Update TF - From Existing TF Form</title>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Finance Request transactions is displayed.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">System Id</guilabel>, <guilabel
+      moreinfo="none">Bank Reference, Entity</guilabel> or <guilabel
+      moreinfo="none">CCY</guilabel> field.</para>
+
+      <para role="TEXT">The list is not displayed until you have entered
+      search criteria and clicked <emphasis role="bold">Search</emphasis>. To
+      display all records, enter an asterisk in any of the criteria
+      fields.</para>
+
+      <para role="TEXT">The columns returned in the list of 2 column
+      description are the following:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity associated
+                with the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref.</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Related Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The reference ID of any
+                related Transactions (e.g.Letter of Credit, Export
+                Collections, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">CCY</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                TF.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"><guilabel
+                moreinfo="none"> Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date the TF was
+                Issued.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Maturity date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date the TC
+                Matures.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click on the System ID field to select the required
+      entry. When an entry is selected, the finance type is requested and the
+      same form as was used for a new finance request displayed, with all
+      relevant fields pre-populated.</para>
+
+      <para role="TEXT">The input form for you to enter the details of the
+      free-format message is as follows. It is very similar to the
+      <guimenuitem moreinfo="none">Message to Bank</guimenuitem> form in the
+      <xi:include href="../entities_en.xml" xpointer="ent_Import_LC"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> module.</para>
+
+      <section role="ITEM">
+        <title>From Existing TF Form - General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Full Transaction Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button at the
+                right-hand side of the General Details title line.) Open a
+                popup window to show the full details of the current Financing
+                Request.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                that was generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this
+                Financing Request when it was created.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name, for use within
+                your company, created by the user who created this Financing
+                Request.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this Financing Request when
+                the bank acknowledged the original request for the
+                TF.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Requested Issue Date</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Start date of the
+                Financing.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Maturity Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Maturity date of the
+                financing.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel> Message Type</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Select from the dropdown list:
+                <literal>Correspondence</literal> or <literal>Request for
+                Settlement</literal>. If you select <literal>Request for
+                Settlement</literal>, the fields <guilabel>Settlement
+                Amount</guilabel> and <guilabel>Forward Contract</guilabel>,
+                described below, become available.</entry>
+              </row>
+
+              <row>
+                <entry><guilabel>Settlement Amount</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Amount required for settlement. Only available if you
+                select <literal>Request for Settlement</literal> in the
+                <guilabel>Message Type</guilabel> field above.</entry>
+              </row>
+
+              <row>
+                <entry><guilabel> Forward Contract</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry>Only available if you select <literal>Request for
+                Settlement</literal> in the <guilabel>Message Type</guilabel>
+                field above.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing TF Form - Free Format Message</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Free Format Message</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank. Click the button to the right of this field, to
+                select predefined phrases to insert into this field. Up to 100
+                lines of 65 characters each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing TF Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Add a File</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text field and Browse
+                button, which you can optionally use to attach a file from
+                your local hard disk to give additional details pertaining to
+                this transfer request.</para> <note>
+                    <para role="TEXT">The maximum size allowed for each file
+                    attachment is defined in a properties file of the
+                    system.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>Update TF - Edit Transactions</title>
+
+      <para role="TEXT">This option allows updated Financing Request records
+      that you or another user have already started and saved, to be
+      completed.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      updated Financing Request records that have been prepared and saved by
+      users in your bank, but not yet submitted to the clients because the
+      input user either did not try to submit or had insufficient
+      privileges.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Update TF - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option allows a updated Financing Request record
+      that you or another user have already started but been unable to submit,
+      to be submitted by an authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      updated Financing Request records that have been prepared and saved by
+      users in your bank, but have not been successfully submitted to the
+      clients because the user had insufficient privileges. Records that were
+      simply saved with no attempt to submit them are not included.</para>
+
+      <para role="TEXT">Click in the <guilabel moreinfo="none">System
+      Id</guilabel><guilabel moreinfo="none"> </guilabel>column to open the
+      record in a non-editable mode, in order to review the data and perform
+      the submission.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected
+      records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is then also displayed.</para>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Pending TFs</title>
+
+    <para role="TEXT">This function will display a list of all Financing
+    Request records that have not been approved by the bank. These can be
+    edited or submitted as required by any user with the appropriate
+    authorities.</para>
+
+    <para role="TEXT">The list can be searched by entering search criteria in
+    the <emphasis role="bold">Entity, System Id, Status, Customer Reference,
+    CCY, Minimum and Maximum Amounts, Last Modified Dates </emphasis>or
+    <guilabel moreinfo="none">Maturity Dates</guilabel> fields.</para>
+
+    <para role="TEXT">To display all records, enter an asterisk in any of the
+    criteria fields.</para>
+
+    <para role="TEXT">The columns returned in the list of Fixed deposits are
+    the following:</para>
+
+    <para role="TEXT"><informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The type of record. (New,
+              etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">CCY</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Currency of the
+              LC.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              LC.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The unique number used by
+              the Customer for this LC.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Last Modified date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the LC was last
+              modified.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Maturity Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the BG
+              Matures.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the LC.
+              (Incomplete, Draft, Etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">User Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The name of the User who
+              created the LC.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Users</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Associated users
+              (approvers, submitters, etc.)</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>To edit the record, click on the edit button on the left
+    of the list. <emphasis>Submitted</emphasis> Entries can only be
+    viewed.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>TF Inquiry</title>
+
+    <para role="TEXT">The function will display a list of all Financing
+    Request records that have been approved by the bank. These can be view or
+    printed as required.</para>
+
+    <important>
+      <para>Any further amendment to the TF, regardless of Approved or
+      Rejected from the BO/MO, can be tracked though TF Inquiry option.</para>
+    </important>
+
+    <para role="TEXT">The list can be searched by entering search criteria in
+    the <emphasis role="bold">Entity, System Id, Bank Ref., Status, Customer
+    Reference, CCY, Minimum and Maximum Amounts, Last Modified Dates
+    </emphasis>or <guilabel moreinfo="none">Maturity Dates</guilabel>
+    fields.</para>
+
+    <para role="TEXT">The list is not displayed until you have entered search
+    criteria and clicked <emphasis role="bold">Search</emphasis>. To display
+    all records, enter an asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">The columns returned in the list of Fixed deposits are
+    the following:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Entity associated with
+              the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Bank Ref.</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The type of record. (New,
+              etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The unique number used by
+              the Customer for this TF.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the TF.
+              (Incomplete, Draft, Etc.).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">CCY</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Currency of the
+              TF.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount From</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              TF.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Last Modified Date From</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the TF was last
+              modified.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Maturity Date From</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the TF
+              Matures</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+  </section>
+
+  <section condition="TITLE=TF Maintenance;PERM=tf_access;ACCESS=TF_17"
+           role="TOPIC">
+    <title>TF Maintenance</title>
+
+    <para role="TEXT">This function is user to maintain Financing Request
+    records that were created, but are no longer required in the
+    system.</para>
+
+    <section role="ITEM">
+      <title>TF Maintenance - Set Entity</title>
+
+      <para role="TEXT">List all Financing Request transactions and associate
+      an Entity. Click the <emphasis role="bold">Search Options</emphasis>
+      link to display the fields that can be used to filter the list. Only
+      complete the fields that are required for the filter.</para>
+
+      <para role="TEXT">Click <guimenu>Set Entity</guimenu> and then select
+      <guilabel>System ID</guilabel>. You can now set an entity for the
+      Financing Request transactions by clicking the search icon
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_glass.gif"/>
+          </imageobject>
+        </inlinemediaobject> from the Entity field. Click the
+      <guibutton>Submit</guibutton> button to complete the changes.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Maintenance - Set Reference</title>
+
+      <para role="TEXT">Assign a customer reference to a Financing Request
+      transaction that currently has none.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of records that have no reference assigned. Click in the <emphasis
+      role="bold">System Id</emphasis> column to open a form where you can
+      assign a reference to the record.</para>
+
+      <para role="TEXT"><note>
+          <para role="TEXT">This action is not validated against the
+          Jurisdiction matrix. All transactions of the current files are
+          updated.</para>
+        </note></para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Maintenance - Unsigned TFs</title>
+
+      <para role="TEXT">List and optionally delete unsigned (unauthorised)
+      Financing Request transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of records that are unsigned (unauthorised). You cannot initiate
+      further amendments or messages on such a transaction, and can only use
+      its data for inquiry purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Maintenance - Purged TFs</title>
+
+      <para role="TEXT">List and optionally delete Financing Request
+      transactions that have been marked as <type>Purged</type> by the Issuing
+      Bank's Trade Services team. You cannot initiate further amendments or
+      messages on such a transaction, and can only use its data for inquiry
+      purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>TF Maintenance - Rejected TFs</title>
+
+      <para role="TEXT">List and optionally delete Rejected
+      transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of Financing Request records that were submitted, but rejected by
+      the bank and have a status of "Not Processed". You cannot initiate
+      further amendments or messages on such a transaction, and can only use
+      its data for inquiry purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+  </section>
+</section>

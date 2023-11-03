@@ -1,0 +1,110 @@
+## Sample.
+
+#set ($BottomLogoFile = $config.getConfiguration().getString("site.footer.logo"))
+#if($config.getConfiguration().getString("session.idle.timeout"))
+#set ($idleSessionTimeOut = $config.getConfiguration().getString("session.idle.timeout"))
+#end
+#if($config.getConfiguration().getString("session.max.duration"))
+#set ($sessionMaxDuration = $config.getConfiguration().getString("session.max.duration"))
+#set ($sessionMaxDurationAlert = $config.getConfiguration().getString("session.max.duration.alert"))
+#end
+#set ($LogoutScreen = $config.getConfiguration().getString("action.logout"))
+#set ($LoginScreen = $config.getConfiguration().getString("screen.login"))
+#set ($contextPath = $gtpapp.getContextPath())
+#set ($servletPath = $gtpapp.getServletPath())
+#set ($language = $gtpapp.getLanguage())
+#set ($continue = $l10n.getGTPString($language,"XSL_ACTION_CONTINUE"))
+#set ($logout = $l10n.getGTPString($language,"LOGOUT"))
+#set ($ok = $l10n.getGTPString($language,"OK"))
+#set ($cancel = $l10n.getGTPString($language,"CANCEL"))
+#set ($idleSessionTimeoutHeading = $l10n.getGTPString($language,"IDLE_SESSION_DIALOG_HEADING"))
+#set ($backToHome = $l10n.getGTPString($language,"XSL_GO_TO_HOME_PAGE_BUTTON"))
+#set ($cancel = $l10n.getGTPString($language,"CANCEL"))
+#set ($durationSessionTimeoutHeading = $l10n.getGTPString($language,"DURATION_SESSION_DIALOG_HEADING"))
+#set ($ssessionOverDialogHeading = $l10n.getGTPString($language,"SESSION_OVER_DIALOG_HEADING"))
+#set ($sessionMaxDurationOverDialogHeading = $l10n.getGTPString($language,"SESSION_MAX_DURATION_OVER_DIALOG_HEADING"))
+
+##Timers for Session handling
+#if ($data.User.hasLoggedIn())
+#if($idleSessionTimeOut)
+#if($idleSessionTimeOut)
+	<input type="hidden" id="idleSessionTimeOutIndicator"></input>
+#end
+#if($sessionMaxDuration)
+	<input type="hidden" id="sessionMaxDurationIndicator"></input>
+#end
+#set ($presentTime = $gtpapp.getPresentTime())
+#set ($loginTime = $data.User.getLastLogin().getTime())
+	<input type="hidden" id="logoutAction" value='$contextPath$servletPath/action/$LogoutScreen'></input>
+		<input type="hidden" id="loginAction" value='$contextPath$servletPath/screen/$LoginScreen'></input>
+	<div class="widgetContainer">
+		<div class="hide" id="idleSessionDialogContainer">
+				<div id="idleSessionDialog" dojoType="misys.widget.Dialog" closeable="false">
+				<div id="idleSessionDialogContent" >
+					<b>$idleSessionTimeoutHeading</b></br>
+					<div id="idleSessionDialogButtons" style="text-align:center;">
+						<button id="sessionContinueButton" dojoType="dijit.form.Button">$continue</button>
+						<button id="sessionlogButton" dojoType="dijit.form.Button">$logout</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="hide" id="durationSessionDialogContainer">
+			<div id="durationSessionDialog" dojoType="misys.widget.Dialog">
+				<div id="durationSessionDialogContent">
+					<b>$durationSessionTimeoutHeading</b>
+					<div id="durationSessionDialogButtons" style="text-align:center;">
+						<button id="OkSessionButton" dojoType="dijit.form.Button">$ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			<div class="hide" id="sessionOverDialogContainer">
+				<div id="sessionOverDialog" dojoType="misys.widget.Dialog">
+					<div id="sessionOverDialogContent">
+						<b>$ssessionOverDialogHeading</b>
+						<div id="sessionOverDialogButtons" style="text-align:center;">
+							<button id="sessionOverButton" dojoType="dijit.form.Button">$backToHome</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="hide" id="sessionMaxDurationOverDialogContainer">
+				<div id="sessionMaxDurationOverDialog" dojoType="misys.widget.Dialog">
+					<div id="sessionMaxDurationOverDialogContent">
+						<b>$sessionMaxDurationOverDialogHeading</b>
+						<div id="sessionMaxDurationOverDialogButtons" style="text-align:center;">
+							<button id="sessionMaxDurationOverButton" dojoType="dijit.form.Button">$backToHome</button>
+						</div>
+					</div>
+				</div>
+	</div>
+			
+		</div>
+	<script>
+		dojo.subscribe('ready',function(){
+		misys._config = misys._config || {};
+		dojo.mixin(misys._config,{
+		#if($idleSessionTimeOut)
+			idleSessionTimeOutTime : $idleSessionTimeOut,
+		#end
+		#if($sessionMaxDuration)
+			sessionMaxDurationTime : $sessionMaxDuration,
+					sessionMaxDurationTimeAlert : $sessionMaxDurationAlert,
+					stopIdleSessionTimer : false,
+		#end
+					loginTime : $loginTime,
+					presentTime : $presentTime
+		});
+		misys.idleSessionTimer(0);
+		misys.durationSessionTimer(0);
+});
+	</script>
+#end
+#end
+<div class="footer inside">
+ <img src="$contextPath$BottomLogoFile" alt="" width="1" height="1">
+</div>

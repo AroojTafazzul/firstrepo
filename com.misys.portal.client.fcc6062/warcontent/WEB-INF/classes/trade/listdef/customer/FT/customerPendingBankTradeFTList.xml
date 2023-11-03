@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="20" data_key="tnx_id">
+
+	<column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE"/>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" />	
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="applicant_name" align="left" width="12%" loca_key="applicant" columnFilterType="input-multiselect" hidden="y"/>
+	<column name="beneficiary_name" align="left" width="14%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect"/>
+	
+	<column name="applicant_act_no" align="left" width="13%" loca_key="DEBIT_ACCOUNT" columnFilterType="input-multiselect"/>
+	<column name="Counterparty@counterparty_act_no" align="left" width="13%" loca_key="CREDIT_ACCOUNT" columnFilterType="input-multiselect"/>
+	<column name="ft_cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="ft_amt" align="right" width="12%" loca_key="AMOUNT" />
+	<column name="ft_type" align="left" width="12%" loca_key="FUND_TRANSFER_TYPE" columnFilterType="input-multiselect" showCode="y" isCodeField="y" codeId="N029"/>
+	<column name="inp_dttm" align="left" width="10%" loca_key="LAST_MODIFY_DATE" hidden="y"/>
+	<column name="status" align="left" width="14%" loca_key="STATUS" sort="n" columnFilterType="input-multiselect" hidden="y">
+		<script>
+			if (value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+				
+				if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015","05")+")";
+				}
+				else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+				}
+				else
+				{
+					var localizedkey = com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"");
+				    
+				    if (!localizedkey.equals("null")) {
+					
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")"; 	    				   	
+				    
+				    } else {
+					
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+""); 
+				    
+				    } 
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_CONTROLLED"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+			<parameter name="ACTION_USER_AUDIT" value="USER_AUDIT"/>
+		</url>
+	</column>
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y" isCodeField="y" codeId="N001"/>
+	<column name="sub_product_code" hidden="y" showCode="y"/>
+	<column name="inp_dttm" align="center" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y" showCode="y"/>
+	<column name="sub_tnx_type_code" hidden="y" showCode="y" isCodeField="y" codeId="N003"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="beneficiary_name" hidden="y"/>
+	<column name="tnx_type_code" hidden="y" showCode="y" isCodeField="y" codeId="N004"/>
+	
+
+	<!-- parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="ref_id"
+		size="16"
+		max_length="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+		<parameter
+		name="applicant_name"
+		loca_key="applicant"
+		size="35"
+		max_length="35"
+		hidden="true"
+		input="y"
+		config_maxLength=""
+		/>
+		<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength="" />
+		
+	<parameter 
+		name="applicant_act_no" 
+		loca_key="DEBIT_ACCOUNT" 
+		size="20"
+		max_length="65" 
+		input="y"
+		default="" />
+	<parameter 
+		name="counterparty_act_no" 
+		loca_key="CREDIT_ACCOUNT" 
+		size="20"
+		max_length="65" 
+		input="y"
+		default="" />	
+	
+	<parameter
+		name="ft_cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		default=""
+		type="Currency"/>
+	<parameter
+		name="ft_type"
+		loca_key="FUND_TRANSFER_TYPE"
+		size="20"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		multiple="y"
+		isCodeField="y" codeId="N029"/>
+	<parameter
+		name="inp_dttm"
+		type="range"
+		loca_key="LAST_MODIFY_DATE"
+		input="y"
+		hidden="true"
+		default="blank"/>
+	
+	<parameter
+		name="export_list"
+		file_name="pendingBankTradeFTList"
+		type="export">
+	</parameter>
+		
+	<!-- candidates -->	
+	<candidate name="fund_transfer">
+		<filter>
+		   <criteria>
+				<column name="ft_type"/>
+				<operator type="in"/>
+				<value type="parameter">
+					ft_type
+				</value>
+		   </criteria>
+		   <criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+		   </criteria>
+		  	<criteria>
+			<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+		   <criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					 entity
+				</value>
+		   </criteria>
+		 
+		   		   <criteria>
+				<column name="applicant_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 applicant_act_no
+				</value>
+		   </criteria>
+		   		   <criteria>
+				<column name="Counterparty@counterparty_act_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					 counterparty_act_no
+				</value>
+		   </criteria>
+		   <criteria>
+				<column name="ref_id" />
+				<operator type="like" />
+				<value type="parameter">
+					ref_id
+				</value>
+		   </criteria>
+			<criteria>
+				<column name="ft_cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					ft_cur_code
+				</value>
+			</criteria>
+			<criteria>
+			<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+		   <criteria>
+				<column name="tnx_val_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					tnx_val_date@from
+				</value>
+		   </criteria>
+		   <criteria>
+				<column name="tnx_val_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					tnx_val_date@to
+				</value>
+		   </criteria>
+		   <criteria>
+				<column name="sub_product_code"/>
+				<operator type="in"/>
+                <value type="vector">
+                    <value type="code">
+                        N047_TRADE_OUTGOING_TRANSFER
+                    </value>
+                    <value type="code">
+                        N047_TRADE_INTERNAL_TRANSFER
+                    </value>
+                </value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter or="y">
+		<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_CONTROLLED
+			</value>
+		</criteria>
+		    		<criteria>
+	      <column name="tnx_stat_code"/>
+	      <operator type="equal"/>
+	      <value type="code">
+	        N004_INCOMPLETE_BANK
+	      </value>
+	    </criteria>
+	    <criteria>
+	      <column name="tnx_stat_code"/>
+	      <operator type="equal"/>
+	      <value type="code">
+	        N004_UNCONTROLLED_BANK
+	      </value>
+   		 </criteria>   
+	</filter>
+</listdef>

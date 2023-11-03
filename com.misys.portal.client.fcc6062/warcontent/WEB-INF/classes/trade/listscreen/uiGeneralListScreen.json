@@ -1,0 +1,96 @@
+{
+	"productcode": "N001_IU",
+	"buttons": [
+		{
+			"buttonName" : "templateButton",
+			"permission": "bg_save",
+			"buttonClass": "secondaryButton",
+			"routerLink": "productListing?productCode=BG&option=TEMPLATE"
+		},
+		{
+			"buttonName": "initiateIUButton",
+			"permission": "bg_save",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=BG&tnxTypeCode=01&mode=INITIATE"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "live",
+			"listdefName": "/trade/listdef/customer/UI/customerLiveUIList",
+			"permission": "bg_access",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "draft",
+			"listdefName": "/trade/listdef/customer/UI/customerDraftUIList",
+			"permission": "bg_save",
+			"index": 1,
+			"selected": ""
+		},
+		{
+			"tabName": "uiactions",
+			"listdefName": "/trade/listdef/customer/UI/customerPendingActionUIList",
+			"permission": "bg_save",
+			"index": 2,
+			"selected": ""
+		},
+		{
+			"tabName": "uiPendingApproval",
+			"listdefName": "/trade/listdef/customer/UI/customerPendingClientUIList",
+			"permission": "bg_access",
+			"index": 3,
+			"selected": "true",
+			"severalSubmit": "bg_approve",
+			"commentsRequired": "true",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "uiPendingBankApproval",
+			"listdefName": "/trade/listdef/customer/UI/customerPendingBankUIList",
+			"permission": "bg_access",
+			"index": 4,
+			"selected": ""
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/trade/listdef/customer/UI/customerRejectedUIList",
+			"permission": "bg_access",
+			"index": 5,
+			"selected": "",
+			"severalSubmit": "bg_rejected_maintain",
+			"commentsRequired": "false",
+
+			"buttonList": [
+				{
+			        "name": "deleteClear",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "deleteClear"
+		      	}
+			]
+		},
+		{
+			"tabName": "closed",
+			"listdefName": "/trade/listdef/customer/UI/customerOthersUIList",
+			"permission": "bg_access",
+			"index": 6,
+			"selected": "",
+			"severalSubmit": "bg_purged_maintain"
+		}
+	]
+}

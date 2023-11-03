@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xcl name="tsu2openaccount">
+	<target>
+	
+		<!-- ********************************************** -->
+		<!-- Build a Map do retrieve stylesheet(s) to apply -->
+		<!-- ********************************************** -->
+
+		<setVariable name="mapping"><map/></setVariable>
+		
+		<!-- 001 - Acknowledgement -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.001.001.02</const></name>
+			<value>
+				<array><const>Acknowledgement-PO.xsl</const></array>
+				<array><const>Acknowledgement-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 010 - BaselineMatchReport -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.010.001.02</const></name>
+			<value>
+				<array><const>BaselineMatchReport.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 011 - BaselineReport -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.011.001.02</const></name>
+			<value>
+				<array><const>BaselineReport.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 013 - DataSetMatchReport -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.013.001.02</const></name>
+			<value>
+				<array><const>DataSetMatchReport-PO.xsl</const></array>
+				<array><const>DataSetMatchReport-SO.xsl</const></array>
+				<array><const>DataSetMatchReport-IN.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 017 - Forward DataSet Submission Report  -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.017.001.02</const></name>
+			<value>
+				<array><const>ForwardDataSetSubmissionReport-PO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 018 - Full Push Through Report  -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.018.001.02</const></name>
+			<value>
+				<array><const>FullPushThroughReport-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 021 - MisMatch Acceptance Report  -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.021.001.02</const></name>
+			<value>
+				<array><const>MisMatchAcceptanceNotification-IN.xsl</const></array>
+				<array><const>MisMatchAcceptanceNotification-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 023 - MisMatch Rejection Report  -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.023.001.02</const></name>
+			<value>
+				<array><const>MisMatchRejectionNotification-IN.xsl</const></array>
+				<array><const>MisMatchRejectionNotification-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 025 - Status Change Notification  -->
+		<put>
+			<name><const>urn:swift:xsd:$tsmt.025.001.02</const></name>
+			<value>
+				<array><const>StatusChangeNotification-PO.xsl</const></array>
+				<array><const>StatusChangeNotification-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- Extract xml namesapce to drive transformations -->
+		<!-- TSU message type (+ submission_type ?) -->
+		<setVariable name="namespace"><xpath path="namespace-uri(/Doc:Document)"/></setVariable>
+
+		<!-- Process input -->
+		<string>
+			<call><name><getVariable name="namespace"/></name></call>
+		</string>
+	</target>
+
+	<!-- 001 - Acknowledgement -->
+	<rule name="urn:swift:xsd:$tsmt.001.001.02">
+		<call name="transform"/>
+	</rule>
+	
+	<!-- 010 - BaselineMatchReport -->
+	<rule name="urn:swift:xsd:$tsmt.010.001.02">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 011 - BaselineReport -->
+	<rule name="urn:swift:xsd:$tsmt.011.001.02">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 013 - DataSetMatchReport -->
+	<rule name="urn:swift:xsd:$tsmt.013.001.02">
+		<call name="transform"/>
+	</rule>
+	
+	<!-- 017 - Forward DataSet Submission Report  -->
+	<rule name="urn:swift:xsd:$tsmt.017.001.02">
+		<call name="transform"/>
+	</rule>
+	
+	<!-- 018 - Full Push Through Report  -->
+	<rule name="urn:swift:xsd:$tsmt.018.001.02">
+		<call name="transform"/>
+	</rule>
+	
+	<!-- 021 - MisMatch Acceptance Report  -->
+	<rule name="urn:swift:xsd:$tsmt.021.001.02">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 023 - MisMatch Rejection Report  -->
+	<rule name="urn:swift:xsd:$tsmt.023.001.02">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 025 - Status Change Notification  -->
+	<rule name="urn:swift:xsd:$tsmt.025.001.02">
+		<call name="transform"/>
+	</rule>
+
+	<rule name="transform">
+		<call name="applyXSLs">
+			<get>
+				<name><getVariable name="namespace"/></name>
+				<value><getVariable name="mapping"/></value>
+			</get>
+		</call>
+	</rule>
+	
+	<!-- Apply an XSLT stylesheet -->
+	<rule name="applyXSLs">
+		<test>
+			<predicate><equals><const>0</const><length><sourceValue/></length></equals></predicate>
+			<else>
+				<call name="setXSL"><sourceValue/></call>
+				<dump/>
+			</else>
+		</test>
+	</rule>
+	
+	<!-- Set xsl property in the interfaces environment-->
+	<rule name="setXSL">
+		<java><const>environment.setEntry("xslname", "/config/swift/OpenAccount/</const><sourceValue/><const>")</const></java>
+	</rule>
+</xcl>

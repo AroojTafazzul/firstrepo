@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bo_release_dttm" default_order_type="d" page="10" >
+
+
+	<column name="product_code" align="left" loca_key="PRODUCT_CODE" showCode="y" isCodeField="y" codeId="N001" />
+	<column name="tnx_type_code" align="left" loca_key="EVENT"  showCode="y" isCodeField="y" codeId="N002" />
+	<column name="entity" align="left" loca_key="ENTITY"/>
+	<column name="beneficiary_name" align="left" loca_key="BENEFICIARY"/>
+	<column name="tnx_cur_code" width="5%" align="left" loca_key="CURCODE" />
+	<column name="tnx_amt" width="12%" align="right" loca_key="AMOUNT"/>
+	<column name="ref_id" align="right" width="13%"  loca_key="REFERENCEID">
+		<!-- JavaScript Pass back -->
+		<js-pass-back keyName="column">
+			<array-element index="0" column="ref_id"/>
+			<array-element index="1" column="tnx_id"/>
+			<array-element index="2" name="tnx_type_code" constant="13"/>
+			<array-element index="3" name="option" binding_code="OPTION_ACTION_REQUIRED"/>
+			<array-element index="4" column="product_code"/>
+		</js-pass-back>
+	</column>
+	
+	<column name="applicant_name" align="left" width="15%"  loca_key="ENTITY_NAME_APPLICANT" hidden="y"/>
+	<column name="bo_ref_id" align="left" width="15%" loca_key="BO_REFERENCEID" hidden="y"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE" hidden="y"/>
+	<column name="action_req_code" align="left" width="15%" loca_key="TYPE"  hidden="y">
+		<script>
+			value = value = row.getColumnValue("action_req_code"); 
+		</script>
+	</column>
+	<column name="prod_stat_code" align="left" width="12%" loca_key="LABEL_STATUS" sort="n" hidden="y" >
+		<script>
+			value = value = row.getColumnValue("prod_stat_code");
+		</script>
+	</column>
+	<column name="tnx_id" hidden="y"/>
+	
+		
+	<column name="inp_dttm" loca_key="INP_DTTM" hidden="y" />
+	<column name="sub_tnx_stat_code" hidden="y" >
+		<script>
+			value = value = row.getColumnValue("sub_tnx_stat_code"); 
+		</script>
+	</column>
+	<column name="tnx_id" hidden="y" />
+ 	<column name="sub_product_code" hidden="y" >
+ 		<script>
+			value = value = row.getColumnValue("sub_product_code");
+		</script>
+	</column>
+	<column name="sub_tnx_type_code" hidden="y" >
+		<script>
+			value = value = row.getColumnValue("sub_tnx_type_code"); 
+		</script>
+	</column>
+	<column name="tnx_stat_code" hidden="y" >
+		<script>
+			value = value = row.getColumnValue("tnx_stat_code"); 
+		</script>
+	</column>
+	<column name="bo_release_dttm" hidden="y" />
+	<column name="company_name" hidden="y" />
+	
+	<!-- parameters -->
+	<parameter name="ref_id" size="14" max_length="20" loca_key="REFERENCEID" input="y" default="" />
+	<parameter name="entity" size="35" max_length="35" loca_key="ENTITY" input="y" default="" type="entity" />
+	<parameter name="applicant_name" size="35" max_length="35" loca_key="ENTITY_NAME_APPLICANT" input="y" default="" config_maxLength="" />
+	<parameter name="bo_ref_id" loca_key="BO_REFERENCEID" size="20" max_length="35" input="y"/>
+	<parameter name="beneficiary_name" loca_key="BENEFICIARY" size="35" max_length="35" input="y" config_maxLength="" />
+	<parameter name="cur_code" input="y" size="3" max_length="3" loca_key="CURCODE" type="currency"/>
+	<parameter name="parameter1" type="AvailableProducts" size="" max_length="" loca_key="PRODUCTCODE" input="y" default="*"/>
+	<parameter name="sub_product_code" loca_key="PRODUCT_SUBTYPE" type="AvaliableSubProductType" input="y" />
+	<parameter name="product_code" size="" max_length="3" input="y" type="" />
+
+	<!-- candidates -->
+	<candidate name="parameter1">
+		<filter>
+			<criteria>
+				<column name="product_code" />
+				<operator type="in" />
+				<value type="vector">
+					<value type="code">
+						N001_LC
+					</value>
+					<value type="code">
+						N001_SI
+					</value>
+				</value>
+			</criteria>
+			<criteria>
+				<column name="CrossReference@child_tnx_id" />
+				<operator type="isNull" />
+			</criteria>
+			<criteria>
+				<column name="CrossReference@type_code" />
+				<operator type="equal" />
+				<value type="code">
+					N043_ACTION_REQUIRED
+				</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="product_code" />
+				<operator type="not in" />
+				<value type="vector">
+					<value type="code">
+						N001_LC
+					</value>
+					<value type="code">
+						N001_SI
+					</value>
+				</value>
+			</criteria>
+			<criteria>
+				<column name="action_req_code" />
+				<operator type="isNotNull" />
+			</criteria>
+			<criteria>
+				<column name="CrossReference@child_tnx_id" />
+				<operator type="isNull" />
+			</criteria>
+			<criteria>
+				<column name="CrossReference@type_code" />
+				<operator type="equal" />
+				<value type="code">
+					N043_ACTION_REQUIRED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="product_code" />
+			<operator type="not in" />
+			<value type="vector">
+				<value type="code">
+					N001_FX
+				</value>
+			</value>
+		</criteria>
+	</filter>
+
+</listdef>

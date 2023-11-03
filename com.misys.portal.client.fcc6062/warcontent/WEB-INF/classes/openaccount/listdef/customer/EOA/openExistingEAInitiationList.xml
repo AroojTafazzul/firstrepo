@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef resizable="y" ordered="y" huge="y" page="50" default_order="ref_id" default_order_type="d" resize="y" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url candidate="export_open_account_master">
+			<parameter name="SCREEN" value="EA_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_EXISTING"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+		</url>
+		<url candidate="export_open_account">
+			<parameter name="SCREEN" value="EA_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_REJECTED"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>				
+		</url>
+	</column>
+	<column name="entity" align="left" width="40%" loca_key="ENTITY"/>
+	<column name="buyer_name" align="left" width="60%" loca_key="BUYER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="iss_date" align="center" width="6em" loca_key="ISS_DATE"/>
+	
+	<column name="tnx_id" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<!-- <parameter
+		name="entity"
+		size="20"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+    multiple="y">
+    </parameter>-->
+	<parameter
+		name="buyer_name"
+		loca_key="BUYER_NAME"
+		size="20"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+
+	<!-- candidates -->	
+	<candidate name="export_open_account_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="buyer_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					buyer_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<candidate name="export_open_account">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="buyer_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					buyer_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_REJECTED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_NEW
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

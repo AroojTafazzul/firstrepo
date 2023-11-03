@@ -1,0 +1,2459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section condition="TITLE=FSCM Services: Credit Note Counterparty;PERM=cr_access"
+         id="CR" role="TOPIC">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_credit_note_cp"
+  xmlns:xi="http://www.w3.org/2001/XInclude"/></title>
+
+  <para role="TEXT">The <xi:include href="../entities_en.xml"
+  xpointer="ent_credit_note_cp" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  module enables you, on behalf of your company, to create credit notes from
+  your seller.</para>
+
+  <para role="TEXT">In this chapter, we use the terms importer and buyer
+  interchangeably, and we use the terms exporter and seller
+  interchangeably,</para>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">Within this section of the help guide, the terms
+    "<emphasis role="bold">CR</emphasis>" and "<emphasis role="bold">Credit
+    Note</emphasis>" are used interchangeably. The terms "<emphasis
+    role="bold">record</emphasis>" and "<emphasis
+    role="bold">transaction</emphasis>" both refer to entries in the system
+    relating to the function being discussed.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Counterparty Access</title>
+
+    <para role="TEXT">If your company (the Buyer) is not an existing user of
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, your Seller can arrange for
+    you to have limited access to <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> to use
+    the <xi:include href="../entities_en.xml" xpointer="ent_credit_note_cp"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> modules.</para>
+
+    <para role="TEXT">When your Seller arranges for you to have access to
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, they should let you know the
+    credentials (user ID, password, and abbreviated name for your company) you
+    can use to log on.</para>
+
+    <para role="TEXT">Where a function may not be present if you have limited
+    counterparty access, this chapter says so.</para>
+  </section>
+
+  <section role="ITEM">
+    <title><xi:include href="../entities_en.xml" xpointer="ent_credit_note_cp"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> Functions</title>
+
+    <para role="TEXT">In this module you can do the following:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">CR Initiation</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Enter the details of a <xi:include
+          href="../entities_en.xml" xpointer="ent_credit_note_cp"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/>, validate these
+          details, and send the CR to the Bank. This function may not be
+          present if you have limited counterparty access.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Pending CRs</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Display a list of all <xi:include
+          href="../entities_en.xml" xpointer="ent_credit_note_cp"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that are
+          still pending, which means <xi:include href="../entities_en.xml"
+          xpointer="ent_credit_note_cp"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that have
+          been initiated but not yet internally approved.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Rejected CRs</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Display a list of all <xi:include
+          href="../entities_en.xml" xpointer="ent_credit_note_cp"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that are
+          still pending, which means <xi:include href="../entities_en.xml"
+          xpointer="ent_credit_note_cp"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that have
+          been initiated but not yet internally
+          approved.[][][][][][][][</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">CR Inquiry</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Browse through all your company's existing
+          <xi:include href="../entities_en.xml" xpointer="ent_credit_note_cp"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions to review
+          their details or history, and optionally print a hard copy of their
+          transaction data.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">CR Maintenance</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Delete <xi:include href="../entities_en.xml"
+          xpointer="ent_credit_note_cp"
+          xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions to clean
+          up your workspace of outdated or incomplete transactions. This
+          function may not be present if you have limited counterparty
+          access.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Parameters</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Define the sections to be included in the CR
+          Initiation form, and the formats available for the files you will
+          upload in the <emphasis role="bold">Upload</emphasis> function. This
+          function may not be present if you have limited counterparty
+          access.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section condition="Credit Note Counterparty Initiation;PERM=cr_access;ACCESS=CR_01"
+           id="CR_IN" role="TOPIC">
+    <title>CR Initiation</title>
+
+    <para role="TEXT">This section describes the <emphasis
+    role="bold">Initiate</emphasis> function and the forms it uses. This
+    function may not be present if you have limited counterparty
+    access.</para>
+
+    <section role="ITEM">
+      <title>CR Initiation Options</title>
+
+      <para role="TEXT">This action has several sub-menu items, providing
+      different ways to create a <xi:include href="../entities_en.xml"
+      xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>.<variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From
+            Scratch</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a new <xi:include
+              href="../entities_en.xml" xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction from
+              scratch.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From
+            Template</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a new <xi:include
+              href="../entities_en.xml" xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction from an
+              existing template.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Copy From
+            CR</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a new <xi:include
+              href="../entities_en.xml" xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction by
+              copying an existing <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Upload CR</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Upload a <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> to <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit <xi:include
+              href="../entities_en.xml" xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> records that you or
+              another user have already created and saved, but not
+              submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit <xi:include
+              href="../entities_en.xml" xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> records that you or
+              another user have created, but have not been submitted due to
+              lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>CR - From Scratch</title>
+
+      <para role="TEXT">The form for creating a <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> is as follows. This form is
+      normally used by the seller to enter an amount that is a credit given to
+      the buyer for the same amount as the invoice or lower than it. However
+      in <xi:include href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>, even buyers can enter
+      details of a <xi:include href="../entities_en.xml"
+      xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> that was received outside
+      the software system.</para>
+
+      <section role="ITEM">
+        <title>From Scratch form - General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> for this
+                <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Template Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Name for the template
+                you wish to create. Maximum 20 characters. Mandatory if you
+                click <emphasis role="bold">Template</emphasis>
+                button.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Customer Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter a reference ID for
+                the customer for this <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Credit Note Reference</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter an identification
+                code or name as a reference for this <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">SCF Programme</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select the SCF programme
+                applicable from the dropdown. </para><note>
+                    <para role="TEXT">This field is enabled only if the
+                    company administrator has selected a SCF programme or a
+                    combination of from: Early Payment, and Dealer Financing,
+                    Invoice Financing, Approved Payable Financing, Approved
+                    Payable Financing - Seller Uploads or Approved Payable
+                    Financing - Buyer Uploads while adding counterparties from
+                    the Data Maintenance - Counterparties form.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Application Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Read-only) Date when
+                the <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> was created in
+                your company.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Seller Details</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                seller. The individual fields are described
+                below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the name of the
+                seller. Click the magnifying glass icon to select from a list
+                of sellers that your company maintains. Maximum of 35
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel
+                role="bold">Entity</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Entity creating the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. This field is
+                only present if your company has entities defined and you are
+                attached to one or more entities. If you are attached to more
+                than one, click the magnifying glass icon to select one. If
+                you are attached to only one, the field is preset to that
+                entity and cannot be changed.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">BEI</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">BEI (Business Entity
+                Identifier) of the seller, if the company has been provided
+                with such an ID. Maximum of 11 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Street Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Street name of the
+                seller. Maximum 70 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Town</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Town of the seller.
+                Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country Sub Division</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">For example, state or
+                county. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Post Code</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Post code of the seller.
+                Maximum of 16 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Country code (ISO 3166)
+                of the seller. Maximum of 2 characters. Click the magnifying
+                glass icon for a list of country codes.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Buyer Details</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"/></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address details
+                of the Buyer. The individual fields are described
+                below.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel
+                role="bold">Entity</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top">Entity creating the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. This field is
+                only present if your company has entities defined and you are
+                attached to one or more entities. If you are attached to more
+                than one, click the magnifying glass icon to select one. If
+                you are attached to only one, the field is preset to that
+                entity and cannot be changed.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the name of the
+                buyer. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">BEI</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the BEI (Business
+                Entity Identifier) of the buyer, if the company has been
+                provided with such an ID. Maximum of 11
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Street Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the street name of
+                the buyer. Maximum 70 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Town</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the town of the
+                buyer. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country Sub Division</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the Country Sub
+                Division. For example, state or county. Maximum of 35
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Post Code</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the post code of
+                the buyer. Maximum of 16 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Country</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Enter the Country code
+                (ISO 3166) of the buyer. Maximum of 2 characters. Click the
+                magnifying glass icon for a list of country
+                codes.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch form - Bank Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Bank that your company
+                is dealing with; typically this bank will receive the
+                <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. Select from the
+                dropdown list; this displays only the banks that your company
+                has a relationship with.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issuer's Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference (multi-purpose
+                string that, for instance, may identify the liability line)
+                under which the transaction should be recorded. Select from
+                the dropdown list; this displays references defined for the
+                selected Issuing Bank.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Amount Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Credit Note Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Currency code (three
+                alphabetic characters) and amount of the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. Click the
+                magnifying glass icon to set the currency code.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch Form - Invoice Items</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add Invoice Item</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                link an invoice to the credit note from the list of invoices
+                in the system. It will open the List of Invoices popup. You
+                can search by System ID and Invoice Reference. Select the
+                relevant invoices and click OK and associate invoices with the
+                <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+                <para><note>
+                     The attachment of an invoice is not mandatory. 
+                  </note></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch form - Free Format Message</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Free Format Message</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank. Click the button to the right of this field, to
+                select predefined phrases to insert into this message.
+                </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> (File Format
+                Icons)</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column doesn't have a header and
+                displays icons for the type of file. This button is displayed
+                once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Title</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the title of all
+                documents that have been uploaded for the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> File
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the file names of all
+                documents that have been uploaded with the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_downloadfile.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                download the file to the local system. This button is
+                displayed once you have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_trash.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                delete the uploaded file. This button is displayed once you
+                have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                attach a file from your local system to give additional
+                details pertaining to this <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction. It
+                will open the File Details popup. Enter the title for the file
+                upload and browse to the location of the file, and select the
+                file to upload.</para><note>
+                    <para role="TEXT">The maximum size allowed for each file
+                    attachment is defined in a properties file of the
+                    system.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Scratch form - Actions</title>
+
+        <para role="TEXT">The operations that you can perform from the CR
+        initiation pages are listed below. For each of them, a popup window
+        asks you to confirm your choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Name</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Save</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Click this button to save the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction. The
+                request will be saved with a status of "Draft" and can be
+                updated and finalised at a later time.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Submit</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This option will submit the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction for
+                submission to the bank. If further Authorisations are
+                required, it will be held back with a status of "Unsigned"
+                until submitted by an Authorizing user.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Cancel</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                cancel the creation of the current <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction and
+                to clear any details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Help</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">This button displays an
+                online help facility that describes the fields associated with
+                the <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>
+                transaction.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section condition="TITLE=CR Initiation - From Template;PERM=cr_access;ACCESS=CR_02"
+             role="TOPIC">
+      <title>CR Initiation - From Template</title>
+
+      <para role="TEXT">The "From Template" option allows a previously created
+      template to be used as a basis for a new <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>. To create a template,
+      either enter the known details into a scratch form, or use the "Copy
+      from CR" option to create a new one, and remove the fields that are
+      likely to change each time the template is used.</para>
+
+      <para role="TEXT">Enter the name of the template in the
+      <emphasis>Template ID</emphasis> field, and click on the <emphasis
+      role="bold">Template</emphasis> button at the top (or bottom) of the
+      screen).</para>
+
+      <para role="TEXT">To use the template, select this option and a list of
+      existing templates will be displayed.</para>
+
+      <para role="TEXT">The list can be searched by entering search criteria
+      in the <guilabel moreinfo="none">Reference</guilabel>, <emphasis
+      role="bold">Entity</emphasis> or <guilabel
+      moreinfo="none">Description</guilabel> field. To display all templates,
+      enter an asterisk in any of the criteria fields.</para>
+
+      <para role="TEXT">The columns returned in the list of templates are
+      described as follows:<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="8.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Template
+                name</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Entity the template is
+                associated with.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">A description of the
+                template</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">You can modify a template, by clicking the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon in the right-hand column, or delete it by
+      clicking the <guibutton moreinfo="none">Delete</guibutton>
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon.</para>
+
+      <para role="TEXT">Select a template by clicking on the Reference field
+      of the required entry.</para>
+
+      <para role="TEXT">Complete or change the required fields in the rest of
+      the form and click the <emphasis role="bold">Submit</emphasis> button at
+      the top (or bottom) of the screen when ready.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>CR Initiation - Copy From CR</title>
+
+      <para role="TEXT">Select this option to create a new <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>, using an existing one as a
+      model. The standard <xi:include href="../entities_en.xml"
+      xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> form will be displayed,
+      with most fields populated with values from the original CR form.</para>
+
+      <para role="TEXT">Click on the <emphasis role="bold">Search
+      Options</emphasis> link to display a list of search criteria fields that
+      can be used to filter. These are <emphasis role="bold">System
+      Id</emphasis>, <emphasis role="bold">Entity</emphasis>, <emphasis
+      role="bold">Credit Note Reference</emphasis>, <guilabel>Seller
+      Name</guilabel> or <guilabel moreinfo="none">Ccy</guilabel> field. To
+      display all templates, enter an asterisk in any of the criteria
+      fields.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open an existing <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> for further editing. The
+      standard <xi:include href="../entities_en.xml"
+      xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> form will be displayed,
+      with most fields populated with values from the original <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> record. Complete or change
+      the required fields in the form and click the <emphasis
+      role="bold">Submit</emphasis> button at the top (or bottom) of the
+      screen when complete.</para>
+    </section>
+
+    <section condition="TITLE=CR Initiation - Upload;PERM=cr_access;ACCESS=CR_01_UPL"
+             role="TOPIC">
+      <title>CR Initiation - Upload CR</title>
+
+      <para role="TEXT">External CRs can be uploaded into <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> using this option. It
+      allows <xi:include href="../entities_en.xml"
+      xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions to be analysed
+      and broken down according to templates created in the <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/>: Parameters function. Refer
+      to the Parameters section in this topic for more information.</para>
+
+      <section role="ITEM">
+        <title>Upload Form - General Details</title>
+
+        <para role="TEXT">The input form for you to upload a file containing
+        <xi:include href="../entities_en.xml" xpointer="ent_credit_note_cp"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> details is as
+        follows.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Application Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Read-only) Date when
+                the <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> was created in
+                your company.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Upload Form - Template Details</title>
+
+        <para role="TEXT">This section defines the template to be used when
+        uploading <xi:include href="../entities_en.xml"
+        xpointer="ent_credit_note_cp"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> files.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Credit Note Upload Template</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Specify the Upload
+                template to be used for these <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions.
+                Templates are created using the "Credit Note - Parameters"
+                function.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Submit</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Check this box to submit
+                <xi:include href="../entities_en.xml"
+                xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that
+                the system can prepare from the file. <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that
+                cannot be submitted can be retrieved and edited using the
+                "Retrieve Draft" function.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Overwrite Line Items</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_radio.gif"
+                                 role="CHAR_RADIO" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Override line items
+                before submission.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add Line items</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_radio.gif"
+                                 role="CHAR_RADIO" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Add line items before
+                submission.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Upload Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> (File Format
+                Icons)</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column doesn't have a header and
+                displays icons for the type of file. This button is displayed
+                once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Title</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the title of all
+                documents that have been uploaded for the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> File
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the file names of all
+                documents that have been uploaded with the <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_downloadfile.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                download the file to the local system. This button is
+                displayed once you have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_trash.gif"
+                                 role="ICON_LOCK" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                delete the uploaded file. This button is displayed once you
+                have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+
+                <entry valign="top"/>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                attach a file from your local system to give additional
+                details pertaining to this <xi:include
+                href="../entities_en.xml" xpointer="ent_credit_note_cp"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> request. It will
+                open the File Details popup. Enter the title for the file
+                upload and browse to the location of the file, and select the
+                file to upload.</para><note>
+                    <para role="TEXT">The maximum size allowed for each file
+                    attachment is defined in a properties file of the
+                    system.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="ITEM">
+      <title>CR Initiation - Edit Transactions</title>
+
+      <para role="TEXT">This option allows <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> records that you or another
+      user have already started and saved, to be completed.</para>
+
+      <para role="TEXT">When selected, this option will present a list of
+      <xi:include href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> records that have been
+      prepared and saved by users in your bank, but not yet submitted to the
+      clients because the input user either did not try to submit or had
+      insufficient privileges.</para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>CR Initiation - Retrieve Unsigned</title>
+
+      <para role="TEXT">This option allows <xi:include
+      href="../entities_en.xml" xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> records that you or another
+      user have already started but been unable to submit, to be submitted by
+      an authorised user.</para>
+
+      <para role="TEXT">When selected, this option will present a list of CR
+      records that have been prepared and saved by users in your bank, but
+      have not been successfully submitted to the clients because the user had
+      insufficient privileges. Records that were simply saved with no attempt
+      to submit them are not included.</para>
+
+      <para role="TEXT">Click in the <guilabel moreinfo="none">System
+      Id</guilabel> column to open the record in a non-editable mode, in order
+      to review the data and perform the submission.</para>
+
+      <para role="TEXT">If you have sufficient authorisation in your profile,
+      you can submit multiple records in a single operation directly from the
+      list. Each record in the list has a check box which you tick to select
+      it. A button at the end of the page submits all the selected
+      records.</para>
+
+      <para role="TEXT">The result of the action is then returned, with a list
+      of records that have now been successfully sent to the clients, together
+      with a list of records that have again failed validation. The updated
+      list of unsigned records is then also displayed.</para>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Pending CRs</title>
+
+    <para role="TEXT">Display a list of your company's <xi:include
+    href="../entities_en.xml" xpointer="ent_credit_note_cp"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> transactions that are
+    pending. This is typically used by a manager to monitor the consolidated
+    list of <xi:include href="../entities_en.xml"
+    xpointer="ent_credit_note_cp" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    transactions received but not yet submitted. It also gives quick access to
+    the actions required to interact with a given transaction record.
+    Therefore, depending on the state of the record, you can open the record
+    either in edit mode or in review/signature mode (only if it has been
+    submitted before but is still pending for additional credentials).</para>
+
+    <para role="TEXT">The transaction statuses are:</para>
+
+    <itemizedlist role="TEXT">
+      <listitem>
+        <para role="TEXT"><literal>Incomplete</literal> (the input user saved
+        it as a draft, using <guibutton>Save</guibutton>; it could be
+        retrieved using the <guisubmenu>Retrieve Draft</guisubmenu> menu
+        item)</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT"><literal>Uncontrolled</literal> (the input user
+        tried to submit it, using <guibutton>Submit</guibutton>, but did not
+        have sufficient privilege; it could be retrieved using the
+        <guisubmenu>Retrieve Unsigned</guisubmenu> menu item)</para>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">This list can be searched by entering search criteria in
+    the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+    role="bold">Entity</emphasis>, <emphasis role="bold">Credit Note
+    Reference</emphasis>,<guilabel moreinfo="none"> Seller Name </guilabel>or
+    <guilabel moreinfo="none">CCY</guilabel> field. To display all records,
+    enter an asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">There is also a field where you can select an <guilabel
+    moreinfo="none">Output Format</guilabel> for the results:</para>
+
+    <itemizedlist role="TEXT">
+      <listitem>
+        <para role="TEXT"><type>CSV</type> downloads the report to your
+        machine as Comma-Separated Values file.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT"><type>Spreadsheet</type> downloads the report to
+        your machine as a <productname class="trade">Microsoft
+        Excel</productname> compatible file.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">You would typically use the <guilabel>CSV</guilabel> or
+    <guilabel>SpreadSheet</guilabel> option if you want to export the list as
+    a report to use it or customize it further in your office productivity
+    tools. When the browser displays the <literal moreinfo="none">File
+    Download</literal> prompt, you can choose to save the file (whose default
+    name is <filename moreinfo="none">pendingCR.xxx</filename>) or directly
+    open it which will launch <productname>Excel</productname> if it is
+    available on your workstation.</para>
+
+    <para role="TEXT">The columns returned in the list are the
+    following:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Entity associated with
+              the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Credit Note Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The reference number for
+              the <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The type of record. For
+              example, New.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> record. For
+              example, Incomplete, Draft, and so on.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Seller Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The seller name as
+              identified on the <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ccy</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Currency of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Input</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the record was
+              created in the system.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">Each record is shown with one or two action icons,
+    depending on its status:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Symbol</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/icon_edit.gif"
+                             role="ICON_EDIT" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Open the record in edit mode
+            in order to change its details (same as selecting a record in
+            <guimenuitem moreinfo="none">Draft
+            Presentation</guimenuitem>).</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/icon_lock.gif"
+                             role="ICON_LOCK" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Open the record in
+            non-editable mode.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section role="ITEM">
+    <title>Rejected CRs</title>
+
+    <para role="TEXT">Display a list of your company's <xi:include
+    href="../entities_en.xml" xpointer="ent_credit_note_cp"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> transaction that were
+    rejected by the Customer.</para>
+
+    <para role="TEXT">This list can be searched by entering search criteria in
+    the <guilabel moreinfo="none">System Id</guilabel>, <emphasis
+    role="bold">Entity</emphasis>, <emphasis role="bold">Credit Note
+    Reference</emphasis>,<guilabel moreinfo="none"> Seller Name </guilabel>or
+    <guilabel moreinfo="none">CCY</guilabel> field. To display all records,
+    enter an asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">The columns returned in the list are the
+    following:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Entity associated with
+              the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Credit Note Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The reference number for
+              the <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>
+              transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The type of record. For
+              example, New.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> record. For
+              example, Incomplete, Draft, and so on.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Seller Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The seller name as
+              identified on the <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Ccy</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Currency of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Input Date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the record was
+              created in the system.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">Each record is shown with one or two action icons,
+    depending on its status:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Symbol</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/icon_edit.gif"
+                             role="ICON_EDIT" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Open the record in edit mode
+            in order to change its details (same as selecting a record in
+            <guimenuitem moreinfo="none">Draft
+            Presentation</guimenuitem>).</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/icon_lock.gif"
+                             role="ICON_LOCK" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Open the record in
+            non-editable mode.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section role="ITEM">
+    <title>CR Inquiry</title>
+
+    <para role="TEXT">Display a list of <xi:include href="../entities_en.xml"
+    xpointer="ent_credit_note_cp" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    transaction that your company has received from the seller (counterparty),
+    so that you can check their status or anything related to their details or
+    history.</para>
+
+    <para role="TEXT">The list is not displayed until you have entered search
+    criteria and clicked <emphasis role="bold">Search</emphasis>. To display
+    all records, enter an asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">This list can be searched by entering search criteria in
+    the <guilabel moreinfo="none">System Id</guilabel>, <guilabel
+    moreinfo="none">Entity</guilabel>, <guilabel moreinfo="none">Credit Note
+    Reference</guilabel>, <guilabel>Seller Name</guilabel> and <guilabel
+    moreinfo="none">Ccy</guilabel> fields. To display all records, enter an
+    asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">The <guilabel role="bold">Status</guilabel> column shows
+    the current state of the transaction and can have the following
+    values:</para>
+
+    <itemizedlist role="TEXT">
+      <listitem>
+        <para role="TEXT"><literal>Accepted</literal></para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT"><literal>Not Processed</literal></para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT"><literal>Presented</literal></para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT"><literal>Rejected</literal></para>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">There is also a field where you can select an <guilabel
+    moreinfo="none">Output Format</guilabel> for the results:</para>
+
+    <itemizedlist role="TEXT">
+      <listitem>
+        <para role="TEXT"><type>CSV</type> downloads the report to your
+        machine as Comma-Separated Values file.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT"><type>Spreadsheet</type> downloads the report to
+        your machine as a <productname class="trade">Microsoft
+        Excel</productname> compatible file.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">You would typically use the <guilabel>CSV</guilabel> or
+    <guilabel>SpreadSheet</guilabel> option if you want to export the list as
+    a report to use it or customize it further in your office productivity
+    tools. When the browser displays the <literal moreinfo="none">File
+    Download</literal> prompt, you can choose to save the file (whose default
+    name is <filename moreinfo="none">pendingCR.xxx</filename>) or directly
+    open it which will launch <productname>Excel</productname> if it is
+    available on your workstation.</para>
+
+    <para role="TEXT">The columns returned in the list of stuff are the
+    following:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System Id</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> for this file, when
+              it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Entity associated with
+              the transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Credit Note Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Reference Id of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Seller Name</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The seller name as
+              identified on the <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">CCY</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The Currency of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Amount</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The amount of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the
+              <xi:include href="../entities_en.xml"
+              xpointer="ent_credit_note_cp"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> record.
+              (Incomplete, Draft, and so on.)</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">Each record is shown with two action icons:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para role="TEXT">Visual</para></entry>
+
+            <entry valign="top"><para role="TEXT">Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/icon_popup.gif"
+                             role="ICON_POPUP" width="4.5mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para role="TEXT">Open a popup window
+            displaying the current master details of the
+            record.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                <imageobject>
+                  <imagedata fileref="../images/icon_file.gif"
+                             role="ICON_FOLDER" width="4mm"/>
+                </imageobject>
+              </inlinemediaobject> </para></entry>
+
+            <entry valign="top"><para role="TEXT">(History) Display a list of
+            all events for the record, detailing the complete history of the
+            file. For each event in the life of the file, the list shows the
+            <guilabel moreinfo="none">Release Date</guilabel>, the <guilabel
+            moreinfo="none">Type</guilabel> of the event, the <guilabel
+            moreinfo="none">Status</guilabel>, the <guilabel
+            moreinfo="none">Currency</guilabel> and transaction <guilabel
+            moreinfo="none">Amount</guilabel> (for example, the transaction
+            amount), and the identities of the input and supervising
+            users.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">On the History page, you can click in the <guilabel
+    role="bold">Release</guilabel> column to open a popup window showing full
+    details of each event. Within the popup, the <guilabel
+    moreinfo="none">Event Details</guilabel> section shows the key details of
+    the event. It shows any additional instructions and attachment provided by
+    the customer as well as the bank's comment and attachments given as part
+    of the reporting.</para>
+
+    <para role="TEXT">If the <guilabel moreinfo="none">Event
+    Details</guilabel> header in the popup window shows a <guilabel
+    moreinfo="none">Release Date/Time</guilabel>, it means the time the
+    validated transaction event was released by the buyer to the seller.<note>
+        <para>The timestamp is shown in user timezone by default. However, it
+        can be changed by setting the property
+        <property>display.datetime.in.user.timezone</property> to 'False'
+        which shows the bank timezone. Banks which want to retain the earlier
+        configuration need to set the listed property to 'False' as
+        well.</para>
+      </note>.</para>
+
+    <para role="TEXT">The <guilabel moreinfo="none">Date/Time</guilabel> field
+    that accompanies a <guilabel moreinfo="none">Message</guilabel> header
+    means the time the reporting message was released by the seller to the
+    buyer.<note>
+        <para>The timestamp is shown in user timezone by default. However, it
+        can be changed by setting the property
+        <property>display.datetime.in.user.timezone</property> to 'False'
+        which shows the bank timezone. Banks which want to retain the earlier
+        configuration need to set the listed property to 'False' as
+        well.</para>
+      </note></para>
+
+    <para role="TEXT">You can also export the history report as an external
+    file in <type>CSV</type> format, by choosing <emphasis
+    role="bold"><literal><literal>CSV</literal> </literal></emphasis>in the
+    <guilabel moreinfo="none">Output Format</guilabel> list box and clicking
+    the icon <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_end.gif" role="ICON_END"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> . The name of the file downloaded is the
+    <literal>System Id</literal> of the transaction together with a
+    <filename>.csv</filename> extension - for example, if the CR has the
+    system identifier CR0110001008., the filename is <filename
+    moreinfo="none">CR0110001008.csv</filename>.</para>
+  </section>
+
+  <section condition="TITLE=CR Maintenance;PERM=cr_access;ACCESS=CR_17"
+           role="TOPIC">
+    <title>CR Maintenance</title>
+
+    <para role="TEXT">This function may not be present if you have limited
+    counterparty access.</para>
+
+    <para role="TEXT">Perform maintenance tasks on CR records handled by your
+    company. You can assign an entity to a record, and you can delete from the
+    system outdated transaction records or records whose status has been
+    marked as <type>Purged</type>.</para>
+
+    <note role="TEXT">
+      <para role="TEXT">Deleted records are physically removed from the
+      system. This task should therefore be conducted with great care!</para>
+    </note>
+
+    <section role="ITEM">
+      <title>CR Maintenance - Rejected CRs</title>
+
+      <para role="TEXT">List and optionally delete Rejected
+      transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of <xi:include href="../entities_en.xml"
+      xpointer="ent_credit_note_cp"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> records that were
+      submitted, but rejected by the bank and have a status of "Not
+      Processed". You cannot initiate further amendments or messages on such a
+      transaction, and can only use its data for inquiry purposes.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Parameters</title>
+
+    <para role="TEXT">Set up parameters to be used by other functions on this
+    menu.</para>
+
+    <section role="ITEM">
+      <title>Parameters - Upload</title>
+
+      <para role="TEXT">List and maintain CR Upload Templates. Define the
+      format to be used in the files used in the <guibutton>CR Initiation &gt;
+      Upload CR</guibutton> function. When this option is selected, a list of
+      templates is displayed. This list can be searched for a specific
+      Template. Click on the template name to review its layout.</para>
+
+      <para role="TEXT">Alternatively, the Add Template button can be used to
+      create a new template. When an existing or new template is selected, the
+      following form appears.</para>
+
+      <section role="ITEM">
+        <title>Upload template form - General Details</title>
+
+        <para role="TEXT">This section is a reminder of your company's name
+        and address as they will appear in your forms. These details cannot be
+        changed here.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of the Upload
+                Template.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Description</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Description and use of
+                the template.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Column Mapping</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_radio.gif"
+                                 role="CHAR_RADIO" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Select one of the
+                following:<programlisting format="linespecific"><guilabel
+                      moreinfo="none">Fixed Size</guilabel> - Each column will be a fixed size defined when columns are added
+<guilabel moreinfo="none">Delimited</guilabel> - If selected, the delimiter characted must also be specified from the dropdown menu.           </programlisting></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Released</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Check this box if the
+                template is to be released.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Upload form - Mapped Columns</title>
+
+        <para role="TEXT">This section defines the mapping for each column of
+        the upload template. Add each column in the order they appear in the
+        uploaded file. All highlighted columns must be included.</para>
+
+        <para role="TEXT">Click on each added column and add the format of
+        each field, and if "Fixed Size", the start position and length, in the
+        boxes displayed at the bottom of the list.</para>
+      </section>
+    </section>
+  </section>
+</section>

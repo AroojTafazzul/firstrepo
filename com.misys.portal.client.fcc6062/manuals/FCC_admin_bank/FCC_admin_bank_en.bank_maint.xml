@@ -1,0 +1,2671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter condition="TITLE=System Features: Bank Maintenance" role="TOPIC">
+  <title>Bank Maintenance</title>
+
+  <section condition="TITLE=System Features: Bank Maintenance;ACCESS=BGM_01" role="ITEM">
+    <title>Overview</title>
+
+    <para role="TEXT">This <application moreinfo="none">Bank
+    Maintenance</application> module is available to Bank Group administrators
+    only. Only Bank Groups can create and manage subsidiary banks.</para>
+
+    <para role="TEXT"><xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> is
+    initially delivered and set up with a single Bank Group and its bank
+    administrator (the <literal moreinfo="none">bankadmin</literal> user).
+    Starting from this Bank Group, it is then possible to define all necessary
+    banks. They will in turn be responsible for creating their own customer
+    companies.</para>
+
+    <para role="TEXT">As the bank group administrator, you use this
+    <application moreinfo="none">Bank Maintenance</application> module to
+    create, modify or delete subsidiary banks in the system, to define the
+    default roles these banks are allowed to use, and if required, to reset
+    the passwords of bank administrators.</para>
+
+    <para role="TEXT">Subsidiary banks are often called branches. Where it
+    does not cause ambiguity, they are often called simply banks. We use these
+    three terms interchangeably throughout this chapter.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Bank Maintenance Options</title>
+
+    <para role="TEXT">The Bank Maintenance options are part of the System
+    Features menu. Click on System Features from the home page and then click
+    on Bank Alerts from the left menu. The following options are
+    available:</para>
+
+    <variablelist role="TEXT">
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Profiles</guimenuitem></term>
+
+        <listitem>
+          <para>Manage your subsidiary banks. You can create new branches,
+          update existing branches, and delete existing branches. When you
+          create a new branch, a default <literal
+          moreinfo="none">bankadmin</literal> user is also created, and
+          granted all required permissions to manage the bank. When you create
+          a new branch, you are then shown a link to set up the roles that the
+          branch will by default have access to.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Permissions</guimenuitem></term>
+
+        <listitem>
+          <para>Manage a branch's permissions. This basically consists of
+          selecting a set of roles the branch will be initially allowed to
+          use. Note that this is merely a default set-up, since the branches
+          will be most likely authorised to set up roles themselves.
+          Nevertheless, this Role preparation at the Bank Group level can
+          simplify and standardise the Role definitions among the
+          Group.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Bank Alerts</guimenuitem></term>
+
+        <listitem>
+          <para>Manage a bank's alerts configurations. You can add required
+          alerts to the bank using this function.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">User Profile</guimenuitem></term>
+
+        <listitem>
+          <para>Reset the main administrator password of a subsidiary
+          bank.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">User
+        Authentication</guimenuitem></term>
+
+        <listitem>
+          <para>Reset the main administrator password of a subsidiary
+          bank.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para role="TEXT">If you are the Bank Group administrator, you have
+    several further functions under Bank Maintenance, as follows.</para>
+
+    <para role="TEXT">You use <emphasis role="bold">User Profile</emphasis>,
+    <emphasis role="bold">User Permission</emphasis>, <emphasis
+    role="bold">User Authentication</emphasis>, <emphasis role="bold">Bank
+    Matrix</emphasis> and <emphasis role="bold">Bank Alerts</emphasis> to
+    carry out the same tasks for users at the subsidiary banks in your group
+    as you do for users in your own bank by using the <emphasis
+    role="bold">Profiles</emphasis>, <emphasis
+    role="bold">Permissions</emphasis> and <emphasis
+    role="bold">Authentication</emphasis> functions under User Maintenance,
+    the <emphasis role="bold">Authorisation</emphasis> function under
+    Jurisdiction Maintenance, and the <emphasis
+    role="bold">Submission</emphasis> function under Alerts. See the
+    <emphasis>User Maintenance</emphasis>, <emphasis>Jurisdiction
+    Maintenance</emphasis>, and <emphasis>Alerts</emphasis> chapters for
+    details.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Bank Maintenance - Profiles</title>
+
+    <para role="TEXT">Manage your subsidiary banks.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of all the existing branches for your Bank Group. You can search the
+    list by entering search criteria in the <guilabel
+    moreinfo="none">Abbreviated Name</guilabel> and <guilabel
+    moreinfo="none">Name</guilabel> fields at the top of the page.</para>
+
+    <para role="TEXT">The list of existing branches has the following
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name that uniquely
+            identifies the branch. This is part of the login data that a user
+            at the branch must give to log into <xi:include
+            href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the branch.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify the details of the branch by clicking the
+    <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon, or delete it by clicking the <guibutton
+    moreinfo="none">Delete</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">A branch can be deleted only once. When you delete a
+    branch, a security check is performed to make sure that all its customers
+    have already been deleted. If thy have, then the branch and all its user
+    accounts (including the <literal moreinfo="none">bankadmin</literal> user)
+    are deleted from the system.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add a new
+    account</guibutton> button at the bottom of the list to add an
+    branch.</para>
+
+    <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+    moreinfo="none">Add</guibutton> display the same form, but in the case of
+    <guibutton moreinfo="none">Add</guibutton> it is blank and in the case of
+    <guibutton moreinfo="none">Edit</guibutton> it is preset with the existing
+    details of the branch. After entering the details, click <emphasis
+    role="bold">Save</emphasis> at the bottom of the form.</para>
+
+    <para role="TEXT">The form is as follows:</para>
+
+    <section role="ITEM">
+      <title>Profiles Form - Main details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Abbreviated name that uniquely
+              identifies the branch. This is part of the login data that a
+              user at the branch must give to log into <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. Maximum of 35
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of the branch. The default length
+              of this field is 35, configurable upto 200 characters based on
+              the property "maximum.allowed.company.name".</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guimenu moreinfo="none">SWIFT
+              Address</guimenu> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>SWIFT Address details of the bank
+              user</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> (line 1)</para></entry>
+
+              <entry valign="top"><para>Address of this branch. Up to 3 lines
+              of 35 characters each.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Treasury
+              Branch Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Reference ID that
+              associates a bank with a branch in the treasury back office.
+              Select the <guilabel>Treasury Branch Reference</guilabel>
+              (Treasury branch and branch name) from the dropdown list. You
+              must select the Treasury Branch Reference when you set up a bank
+              profile to allow the treasury transactions related to a branch
+              to be routed to the respective treasury branch. Alphanumeric,
+              maximum of 2 characters. Displayed only if the branch is
+              available.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guimenu moreinfo="none">Postal
+              Address</guimenu> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_tab.gif"
+                               role="CHAR_ACTION" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Postal Address details of the bank
+              user</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Street
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The street name (and Number) for the
+              Customer's Postal Address.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none"> Post
+              Code</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Customer's Post code. Maximum of 16
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">
+              Town</guilabel></para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Customer's Town. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none"> Country
+              Subdivision</guilabel></para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Customer's Country Subdivision (State,
+              Province, etc.). </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none"> Country
+              Code</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Customer's country code. Maximum of 2
+              characters. Click the magnifying glass icon to display and
+              select from a list of Country Codes. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Additional
+              Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Additional Reference for the bank. Up
+              to 34 characters. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Treasury
+              Branch Reference</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Reference ID that
+              associates a bank with a branch in the treasury back office.
+              Select the <guilabel>Treasury Branch Reference</guilabel>
+              (Treasury branch and branch name) from the dropdown list. You
+              must select the Treasury Branch Reference when you set up a bank
+              profile to allow the treasury transactions related to a branch
+              to be routed to the respective treasury branch. Alphanumeric,
+              maximum of 2 characters. Displayed only if the branch is
+              available.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para><guilabel moreinfo="none">Liquidity
+              Financial Institution</guilabel></para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Select the applicable Liquidity
+              Financial Institution from the dropdown.<note>
+                  <para>This field is available on portal only when
+                  <property>liqidity.back.office.ktp</property> is set to
+                  'False'.</para>
+                </note></para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Profiles Form - Type and Preferences</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Time
+              Zone</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Time zone area for the
+              Bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Correspondence Language</guilabel>
+              </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Bank language, driving the <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> pages language that
+              the bank middle-office users will access. This language is also
+              used to define the date and number format presented by default
+              to the bank users.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Base
+              Currency</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Base currency code of the bank (three
+              alphabetic characters). This currency is defaulted to the
+              currency of the bank group. Click the magnifying glass icon to
+              select the currency code.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Profiles Form - Other Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Contact
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Name of usual contact
+              within the branch. Maximum of 35 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Contact
+              Number</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Phone number. Maximum of 24
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Fax</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Fax number. Maximum of 24
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Telex</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Telex number. Maximum of 24
+              characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">BIC/SWIFT
+              Code</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) SWIFT address. Maximum of
+              11 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">E-mail</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Email address. Maximum of
+              255 characters.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Web
+              Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>(Optional) Web address (URL). Maximum
+              of 40 characters.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Bank Maintenance - Permissions</title>
+
+ <section condition="TITLE=Bank Maintenance - Permissions;ACCESS=BGM_06" role="ITEM">
+   
+    <para role="TEXT">Manage a branch's permissions.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of all the existing branches for your Bank Group. You can search the
+    list by entering search criteria in the <guilabel
+    moreinfo="none">Abbreviated Name</guilabel> and <guilabel
+    moreinfo="none">Name</guilabel> fields at the top of the page.</para>
+
+    <para role="TEXT">The list of existing branches has the following
+    columns:</para>
+  </section>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name that uniquely
+            identifies the branch. This is part of the login data that a user
+            at the branch must give to log into <xi:include
+            href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the branch.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">You can modify a branch's permissions by clicking the
+    <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or view them in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">You cannot add or delete branches via this list - you
+    can only add or delete branches by using the <emphasis
+    role="bold">Profiles</emphasis> function.</para>
+
+    <para role="TEXT">When you click the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon, you get the following form.</para>
+
+    <note>
+      <para role="TEXT"><itemizedlist>
+          <listitem>
+            <para>This is a default set-up, since the subsidiary banks will be
+            most likely authorised to set up roles themselves.</para>
+          </listitem>
+
+          <listitem>
+            <para>Among the roles granted to a branch, you should include the
+            roles that the branch is in turn allowed to give to its own
+            customers. You should remember this when creating the subsidiary
+            banks</para>
+          </listitem>
+        </itemizedlist></para>
+    </note>
+
+    <para role="TEXT">The fields in this form are described in the following
+    sections.</para>
+
+    <section role="ITEM">
+      <title>Permissions Form - Bank Details</title>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Unique string of characters that
+              identifies the bank in <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> (it also part of
+              the bank's user identification through the login screen of
+              <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of the bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Address</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Up to 3 lines of 35 characters each
+              for the address of this bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Contact
+              Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Name of usual contact within the
+              branch. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Permissions Form - Roles for Bank Users</title>
+
+      <para role="TEXT">This section defines the roles the bank will be
+      allowed to grant to its users.</para>
+
+      <para role="TEXT">The bank's administrator will have these roles
+      available when creating the bank users' profiles.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Lower
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Shows the list of roles currently
+              granted to the bank for its users.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Upper
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Show the list of remaining roles that
+              could be granted to the bank.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Add</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Grant the roles selected in the list
+              of available roles (<guilabel>Upper Section</guilabel>) to the
+              bank.</para><para>The selected roles will then be moved to the
+              list of roles granted to the bank (<guilabel>lower
+              Section</guilabel>).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Remove</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Remove the roles selected in the list
+              of roles currently granted to the bank (<guilabel>Lower
+              Section</guilabel>).</para><para>The selected roles will then be
+              moved back to the list of available roles (<guilabel>Upper
+              Section</guilabel>).</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Permissions Form - Roles for Customers Users</title>
+
+      <para role="TEXT">This section defines the roles the bank will be
+      allowed to grant to its customer companies.</para>
+
+      <para role="TEXT">The bank administrator will have these roles available
+      when assigning the roles to be made available to a customer.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Lower
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Shows the list of roles currently
+              granted to the customer for its users.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Upper
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Show the list of remaining roles that
+              could be granted to the customer.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Add</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Grant the roles selected in the list
+              of available roles (<guilabel>Upper Section</guilabel>) to the
+              customer.</para><para>The selected roles will then be moved to
+              the list of roles granted to the customer (<guilabel>lower
+              Section</guilabel>).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Remove</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Remove the roles selected in the list
+              of roles currently granted to the customer (<guilabel>Lower
+              Section</guilabel>).</para><para>The selected roles will then be
+              moved back to the list of available customer (<guilabel>Upper
+              Section</guilabel>).</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Permissions Form - Entity Roles</title>
+
+      <para role="TEXT">This section defines the roles the bank will be
+      allowed to grant to its customer's entities.</para>
+
+      <para role="TEXT">The bank administrator will have these roles available
+      when assigning the roles to be made available to a customer.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Lower
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Shows the list of roles currently
+              granted to the customer for its Entities.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Upper
+              Section</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Show the list of remaining roles that
+              could be granted to the customer.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Add</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Grant the roles selected in the list
+              of available roles (<guilabel>Upper Section</guilabel>) to the
+              customer for its Entities.</para><para>The selected roles will
+              then be moved to the list of roles granted to the customer for
+              its Entities (<guilabel>lower
+              Section</guilabel>).</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Remove</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Remove the roles selected in the list
+              of roles currently granted to the customer for its Entities
+              (<guilabel>Lower Section</guilabel>).</para><para>The selected
+              roles will then be moved back to the list of available customer
+              for its Entities (<guilabel>Upper
+              Section</guilabel>).</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">After entering the details, click <emphasis
+      role="bold">Save</emphasis> at the bottom of the form.</para>
+
+      <note role="TEXT">
+        <para>Whenever the bank permissions are saved, the list of
+        authorisation levels (users are granted an authorisation level that
+        defines the maximum transaction amount they can release) made
+        available to the bank is updated with the newest authorisation levels
+        that may have been added in the system.</para>
+      </note>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Bank Maintenance - Bank Alerts</title>
+
+    <para role="TEXT">This section allows the Bank Group Administrator to view
+    and maintain Alerts for Banks.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of all the existing alerts for your bank. You can search the list by
+    entering search criteria in the <guilabel moreinfo="none">Abbreviated
+    Name</guilabel> and <guilabel moreinfo="none">Name</guilabel> fields at
+    the top of the page.</para>
+
+    <para role="TEXT">The list of existing alerts has the following
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none"> Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name that uniquely
+            identifies the Bank. This is part of the login data that a user at
+            the company must give to log into <xi:include
+            href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the Bank.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">Unlike most functions in <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, this function has a second
+    level of list. When you click in the <guilabel moreinfo="none">Abbreviated
+    Name</guilabel> column, you are presented with a list of the selected
+    company's alerts. You can search the list by entering search criteria in
+    the <guilabel moreinfo="none">Last Name, First Name </guilabel> and
+    <guilabel moreinfo="none">Login</guilabel> fields at the top of the page.
+    Wildcard's can be used to filter out more selectively the records
+    returned.</para>
+
+    <para role="TEXT">When the bank group administrator selects this option, a
+    list of all the existing Bank Alerts in the system is returned under the
+    form of a searchable and sortable list of items.</para>
+
+    <para role="TEXT">The list of the Alerts has the following columns:</para>
+
+    <para role="TEXT"><informaltable>
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Product</guilabel> </para></entry>
+
+              <entry valign="top"><para>Products for which the alert is to be
+              sent. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Sub
+              product</guilabel> </para></entry>
+
+              <entry valign="top"><para>Sub product for the selected
+              product.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para>Transaction types for which the alert
+              is to be sent. </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Product
+              Status</guilabel> </para></entry>
+
+              <entry valign="top"><para>Status of the product transaction when
+              an alert is to be sent.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Customer</guilabel> </para></entry>
+
+              <entry valign="top"><para>Customer ID submitting the
+              transaction</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Amount
+              </guilabel> </para></entry>
+
+              <entry valign="top"><para>Currency and amount greater than or
+              less than conditions that will trigger an alert.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">E-Mail
+              Address</guilabel> </para></entry>
+
+              <entry valign="top"><para>The person that should receive the
+              alert. </para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">You can modify a login by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, or delete it by
+    clicking the <guibutton moreinfo="none">Delete</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add
+    Alert</guibutton> button at the bottom of the list to add a new
+    alert.</para>
+
+    <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+    moreinfo="none">Add</guibutton> display the same form, but in the case of
+    <guibutton moreinfo="none">Add</guibutton> it is blank and in the case of
+    <guibutton moreinfo="none">Edit</guibutton> it is preset with the existing
+    details of the alerts configuration. <guilabel>Correspondence
+    Language</guilabel> and <guilabel>Email Address</guilabel> fields appear
+    on selecting <guilabel>Custom Recipient</guilabel>. After entering the
+    details, click <emphasis role="bold">Save</emphasis> at the bottom of the
+    form.</para>
+
+    <para>The form is as follows:</para>
+
+    <section role="ITEM">
+      <title>Add Alert Form</title>
+
+      <para role="TEXT">When you select this option, you are presented with
+      the following sub form. After entering the details, click <emphasis
+      role="bold">Save</emphasis> at the bottom of the form.</para>
+
+      <note role="TEXT">
+        <para>Click <emphasis role="bold">Save</emphasis> when you have made
+        your changes. If you simply navigate away from the page, your changes
+        will be lost, even though you have clicked <emphasis
+        role="bold">OK</emphasis> on the sub-form(s) where you made the
+        changes and they are shown on the list within the form.</para>
+      </note>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="1.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Product</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Products for which the alert is to be
+              sent. Select from the dropdown list. Select wildcard to mean all
+              products.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Sub
+              Product</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Sub Products of the selected Product,
+              for which the alert is to be sent. Select from the dropdown
+              list. Select wildcard to mean all sub products.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Transaction types for which the alert
+              is to be sent. Select from the dropdown list.:
+              <literal>New</literal>, <literal>Amend</literal>,
+              <literal>Message</literal>, <literal>Reporting</literal>. Select
+              wildcard to mean all types.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Product
+              Status</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The current status of the product for
+              which the alert is to be sent. Select from the dropdown list
+              (for example, Rejected, Pending, New, and so on.). Select
+              wildcard to mean all statuses.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Customer</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Customer for which the alert is to be
+              sent. Click the magnifying glass icon to select from a list of
+              valid customers. Mandatory field if present. Select wildcard to
+              mean all companies.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <emphasis
+              role="bold"><guilabel>Amount</guilabel></emphasis>
+              </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Select : <literal>Less Than</literal>,
+              or <literal>Greater Than</literal>, and the currency and amount
+              to determine the conditions under which an alert should be sent.
+              Select asterisk if you want to send an alert regardless of the
+              amount</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Recipient</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_radio.gif"
+                               role="CHAR_RADIO" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Select the recipient to receive the
+              alert. Options are:<programlisting format="linespecific"><guilabel
+                    moreinfo="none">Input User</guilabel>
+<guilabel moreinfo="none">Control User</guilabel>
+<guilabel moreinfo="none">Release User</guilabel>
+<guilabel moreinfo="none">Custom Recipient</guilabel> - (When selected, Language / Locale and Email Address fields are made available)
+</programlisting></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Language /
+              Locale</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_arrow.gif"
+                               role="CHAR_ARROW" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Select the Recipient Language from the
+              dropdown menu. Only available if Recipient is selected as Custom
+              Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Email
+              Address</guilabel> </para></entry>
+
+              <entry valign="top"><para><inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif"
+                               role="CHAR_EXCLA" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject></para></entry>
+
+              <entry valign="top"><para>Email address of the Recipient. Only
+              available if Recipient is selected as Custom
+              Recipient.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+
+              <entry valign="top"/>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guibutton
+              moreinfo="none">Ok</guibutton> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Click to add the new alert to the
+              list.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guibutton
+              moreinfo="none">Cancel</guibutton> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_action.gif"
+                               role="CHAR_ACTION" width="3mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Click to abandon creating the alert,
+              and close the sub-form.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <section role="ITEM">
+        <title>Add Alert Form - Action Buttons</title>
+
+        <para role="TEXT">The operations that can be performed from this form
+        are listed below. They appear at the bottom of the page. For each of
+        them, a popup window will appear to confirm the choice.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry nameend="c2" namest="c1"
+                valign="top"><para>Operation</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Save</guiicon> </para></entry>
+
+                <entry valign="top">Save the new alert definition. <note
+                    role="TEXT">
+                    <para>Remember to click <emphasis
+                    role="bold">Save</emphasis> when the changes have been
+                    made. Navigating away from the page will lose the changes,
+                    even if the <emphasis role="bold">OK</emphasis> on the
+                    sub-form(s) where the changes were made, has been clicked,
+                    and they are shown on the list within the form.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Cancel</guiicon> </para></entry>
+
+                <entry valign="top"><para>Leave the current page and return to
+                the System Features menu.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="middle"><para> <guiicon
+                moreinfo="none">Help</guiicon> </para></entry>
+
+                <entry valign="top"><para>Open a popup window displaying the
+                online help pages.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Bank Maintenance - User Profile</title>
+
+    <para role="TEXT">This section allows the Bank Group Administrator to view
+    and maintain Users for Banks.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of all the existing customer company accounts for your bank. You can
+    search the list by entering search criteria in the <guilabel
+    moreinfo="none">Abbreviated Name</guilabel> and <guilabel
+    moreinfo="none">Name</guilabel> fields at the top of the page.</para>
+
+    <para role="TEXT">The list of existing customer accounts has the following
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para><guilabel moreinfo="none"> Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name that uniquely
+            identifies the Bank. This is part of the login data that a user at
+            the company must give to log into <xi:include
+            href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the Bank.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">Unlike most functions in <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, this function has a second
+    level of list. When you click in the <guilabel moreinfo="none">Abbreviated
+    Name</guilabel> column, you are presented with a list of the selected
+    company's Users. You can search the list by entering search criteria in
+    the <guilabel moreinfo="none">Last Name, First Name </guilabel> and
+    <guilabel moreinfo="none">Login</guilabel> fields at the top of the page.
+    Wildcard's can be used to filter out more selectively the records
+    returned.</para>
+
+    <para role="TEXT">When the bank group administrator selects this option, a
+    list of all the existing Bank User IDs in the system is returned under the
+    form of a searchable and sortable list of items.</para>
+
+    <para role="TEXT">The list of the Bank's User IDs has the following
+    columns:</para>
+
+    <para role="TEXT"><informaltable>
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Last Name,
+              First Name</guilabel> </para></entry>
+
+              <entry valign="top"><para>First Name and Last Name of the
+              user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Login</guilabel> </para></entry>
+
+              <entry valign="top"><para>Login Id used by the user to log into
+              <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. This login Id
+              uniquely identifies a user account within the
+              Bank.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">You can modify a Login by clicking the <guiicon
+    moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column, view it in
+    non-editable mode by clicking the <guibutton>View</guibutton>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" role="ICON_POPUP"
+                     width="4.5mm"/>
+        </imageobject>
+      </inlinemediaobject> icon, or delete it by clicking the <guibutton
+    moreinfo="none">Delete</guibutton> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_trash.gif" role="ICON_TRASH"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon.</para>
+
+    <para role="TEXT">Click the <guibutton moreinfo="none">Add a new
+    user</guibutton> button at the bottom of the list to add a new user
+    login.</para>
+
+    <para role="TEXT"><guiicon moreinfo="none">Edit</guiicon> and <guibutton
+    moreinfo="none">Add</guibutton> display the same form, but in the case of
+    <guibutton moreinfo="none">Add</guibutton> it is blank (except that the
+    <emphasis role="bold">Currency</emphasis> is set to your company's base
+    currency and the <emphasis role="bold">Type</emphasis> and <emphasis
+    role="bold">Product</emphasis> fields are set to wildcard) and in the case
+    of <guibutton moreinfo="none">Edit</guibutton> it is preset with the
+    existing details of the authorisation. After entering the details, click
+    <emphasis role="bold">Save</emphasis> at the bottom of the form.</para>
+
+    <para>The form is as follows:</para>
+
+    <section role="ITEM">
+      <title>Bank User Account Form - Main Details</title>
+
+      <para role="TEXT">The Main Details section of the form is as follows:
+      <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Company</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Reminder of the Bank's abbreviated
+                name that is part of the user identification in <xi:include
+                href="../entities_en.xml" xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Login
+                Id</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Login Id that the user will use to
+                log into <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. This identifies
+                the user uniquely within the company. Maximum of 32
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Password</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>(Present only for <emphasis
+                role="bold">Add</emphasis>.) Default password for the user.
+                <note>
+                    <para><orderedlist>
+                        <listitem>
+                          <para>The password policy, which defines the maximum
+                          and minimum length of the password, the characters
+                          accepted, and the combination of characters, is set
+                          up in the system by your administrator.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>This field is not displayed if the
+                          auto-password generation feature is enabled for your
+                          Bank.</para>
+                        </listitem>
+                      </orderedlist></para>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Confirm
+                Password</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>(Present only for <emphasis
+                role="bold">Add</emphasis>.) Retype the default password.
+                </para><note>
+                    <para>This field is not displayed if the auto-password
+                    generation feature is enabled for your Bank.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">First
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>First name of the user. Maximum of
+                35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Last
+                Name</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Last name of the user. Maximum of 35
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Employee
+                No</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Enter Users Employee
+                Number.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Department</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para>Department of the user. Up to 3
+                lines of 35 characters each. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para>Address of the user. Up to 3 lines
+                of 35 characters each. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Post
+                Code</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Postal code of the user's address.
+                Up to 16 characters. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Status</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Select from the dropdown list:
+                <literal>Inactive</literal> or <literal>Active</literal>. This
+                is useful to temporarily inactivate and disable the user's
+                access to <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>. Only available
+                when editing an existing user.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Bank User Account Form - Preferences</title>
+
+      <para role="TEXT">This section defines the user preferences used to
+      customise the user's <xi:include href="../entities_en.xml"
+      xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      pages:<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Time
+                Zone</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Time zone area for the user.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Language</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Language to be used on the
+                <xi:include href="../entities_en.xml" xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/> pages for the
+                user. Select from the dropdown list:
+                <literal>English</literal> or <literal>French</literal>. This
+                also determines the date and number format presented to the
+                user. Defaults to the company's language.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Base
+                Currency</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Preferred currency code (three
+                alphabetic characters) for the user. Defaults to the Bank's
+                base currency. Click the magnifying glass icon to select the
+                currency code.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Bank User Account Form - Other Details</title>
+
+      <para role="TEXT">This section defines additional data about the
+      user:<informaltable>
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Contact
+                Number </guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>(Optional) Phone number. Maximum of
+                24 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Fax</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>(Optional) Fax number. Maximum of 24
+                characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">E-mail</guilabel></para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Email address. Maximum of 255
+                characters.</para><note>
+                    <para>This field is mandatory if the
+                    security.profile.email.required property is enabled for
+                    your Bank.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Bank User Account Form - Authorisation Level</title>
+
+      <para role="TEXT">This section defines the authorisation assigned to the
+      user. <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel
+                moreinfo="none">Authorisation Level</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Select the authorisation level of
+                the user from the dropdown list. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Bank User Account Form - Roles</title>
+
+      <para role="TEXT">This section defines the roles to be assigned to the
+      user. Each role has been set up with the appropriate system privileges
+      to perform that role. The top window shows the roles that are available
+      to be assigned to the user, while the bottom window displays roles that
+      have been assigned to the user:<informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*"/>
+
+            <colspec colname="c2" colwidth="1.0*"/>
+
+            <colspec colname="c3" colwidth="6.0*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para>Field</para></entry>
+
+                <entry valign="top"><para>Type</para></entry>
+
+                <entry valign="top"><para>Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Upper
+                Section</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>List of roles that could be assigned
+                to the user. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Lower
+                Section</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>List of roles that are assigned to
+                the user.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para><guilabel
+                moreinfo="none">Add</guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Attach the roles selected in the
+                list of available roles (<guilabel>Upper Section</guilabel>)
+                to the user. To select multiple items on a Windows-based PC,
+                hold down <emphasis role="bold">Ctrl</emphasis> while
+                selecting them. </para><para>The selected roles are moved to
+                the list of roles granted to the user (<guilabel>Lower
+                Section</guilabel>).</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para> <guilabel moreinfo="none">Remove
+                </guilabel> </para></entry>
+
+                <entry valign="top"><para> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm"/>
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para>Remove the roles selected from the
+                list of roles currently granted to the user (<guilabel>Lower
+                Section</guilabel>).</para><para>The selected entities are
+                moved back to the list of available roles (<guilabel>Upper
+                Section</guilabel>).</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Bank User Account Form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the bottom of the page. For each of
+      them, a pop up window will appear to confirm the choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1"
+              valign="top"><para>Operation</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top">Save the new user profile in draft
+              status.</entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Submit</guiicon> </para></entry>
+
+              <entry valign="top">Save the user new Profile and submit
+              it.<note>
+                  <para>The submit action displays the password on a popup if
+                  the Bank is configured for a combination of the
+                  auto-password generation and display the auto-generated
+                  password feature. If Maker-Checker is enabled for your Bank,
+                  you'll need to have Checker privileges to Submit and to view
+                  the password.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para>Leave the current page and return to
+              the System Features menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para>Open a pop up window displaying the
+              online help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Bank Maintenance - Authentication</title>
+
+    <note role="TEXT">
+      <para>Access to this module must be given with care, and only to the
+      password administrator.</para>
+    </note>
+
+    <para role="TEXT">Reset the main administrator password of a
+    branch.</para>
+
+    <para role="TEXT">This is especially useful whenever a bank administrator
+    has forgotten his or her password. It is also used to activate the initial
+    administrator user if this was not created when the branch was created on
+    the system.</para>
+
+    <para role="TEXT">When you select this option, you are presented with a
+    list of all the existing branches for your Bank Group. You can search the
+    list by entering search criteria in the <guilabel
+    moreinfo="none">Abbreviated Name</guilabel> and <guilabel
+    moreinfo="none">Name</guilabel> fields at the top of the page.</para>
+
+    <para role="TEXT">The list of existing branches has the following
+    columns:</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.0*"/>
+
+        <colspec colname="c2" colwidth="8.0*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Field</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <guilabel moreinfo="none">Abbreviated
+            Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Abbreviated name that uniquely
+            identifies the branch. This is part of the login data that a user
+            at the branch must give to log into <xi:include
+            href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <guilabel
+            moreinfo="none">Name</guilabel> </para></entry>
+
+            <entry valign="top"><para>Name of the branch.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para role="TEXT">Unlike most functions in <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, this function has a second
+    level of list. When you click in the <guilabel moreinfo="none">Abbreviated
+    Name</guilabel> column, you are presented with a list of the selected
+    bank's users. You can search the list by entering search criteria in the
+    <guilabel moreinfo="none">Last Name, First Name </guilabel> and <guilabel
+    moreinfo="none">Login</guilabel> fields at the top of the page. Wildcard's
+    can be used to filter out more selectively the records returned.</para>
+
+    <para role="TEXT">When the bank group administrator selects this option, a
+    list of all the existing Bank Users in the system is returned under the
+    form of a searchable and sortable list of items.</para>
+
+    <para role="TEXT">The list of the Bank's Users has the following
+    columns:</para>
+
+    <para role="TEXT"><informaltable>
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c2" colwidth="8.0*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Last Name,
+              First Name</guilabel> </para></entry>
+
+              <entry valign="top"><para>First Name and Last Name of the
+              user.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Login</guilabel> </para></entry>
+
+              <entry valign="top"><para>Login Id used by the user to log into
+              <xi:include href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. This login Id
+              uniquely identifies a user account within the
+              Bank.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+
+    <para role="TEXT">You can modify a bank administrator's password by
+    clicking the <guiicon moreinfo="none">Edit</guiicon> <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                     width="4mm"/>
+        </imageobject>
+      </inlinemediaobject> icon in the right-hand column.</para>
+
+    <section role="ITEM">
+      <title>Authentication Form - User Details</title>
+
+      <para role="TEXT">When you click the <guiicon
+      moreinfo="none">Edit</guiicon> <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_edit.gif" role="ICON_EDIT"
+                       width="4mm"/>
+          </imageobject>
+        </inlinemediaobject> icon, you get the following form. After entering
+      the details, click <emphasis role="bold">Submit</emphasis> at the bottom
+      of the form. This resets the bank administrator password, and activates
+      or re-activates the bank administrator user if it has not been created
+      or has been deactivated.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="3">
+          <colspec colname="c1" colwidth="3.3*"/>
+
+          <colspec colname="c2" colwidth="1.2*"/>
+
+          <colspec colname="c3" colwidth="5.3*"/>
+
+          <thead>
+            <row>
+              <entry valign="top"><para>Field</para></entry>
+
+              <entry valign="top"><para>Type</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Company</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Branch's abbreviated name. This is
+              part of the login data that a user at the branch must give to
+              log into <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Login
+              ID</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>The login Id used by the bank
+              administrator user to log into <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. Uniquely
+              identifies the administrator account within a branch. Normally
+              <literal>bankadmin</literal>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Name</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_info.gif" width="4mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Administrator user's full name,
+              normally <literal>administrator</literal>.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel
+              moreinfo="none">Password</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>New password. <note>
+                  <para><orderedlist>
+                      <listitem>
+                        <para>The password policy, which defines the maximum
+                        and minimum length of the password, the characters
+                        accepted, and the combination of characters, is set up
+                        in the system by your administrator.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para>This field is not displayed if the auto-password
+                        generation feature is enabled for your Bank.</para>
+                      </listitem>
+                    </orderedlist></para>
+                </note></para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para> <guilabel moreinfo="none">Confirm
+              Password</guilabel> </para></entry>
+
+              <entry valign="top"><para> <inlinemediaobject>
+                  <imageobject>
+                    <imagedata fileref="../images/char_excla.gif" width="2mm"/>
+                  </imageobject>
+                </inlinemediaobject> </para></entry>
+
+              <entry valign="top"><para>Retype new password. </para><note>
+                  <para>This field is not displayed if the auto-password
+                  generation feature is enabled for your Bank.</para>
+                </note></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Authentication Form - Action Buttons</title>
+
+      <para role="TEXT">The operations that can be performed from this form
+      are listed below. They appear at the bottom of the page. For each of
+      them, a pop up window will appear to confirm the choice.</para>
+
+      <informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*"/>
+
+          <colspec colname="c3" colwidth="6.0*"/>
+
+          <thead>
+            <row>
+              <entry nameend="c2" namest="c1"
+              valign="top"><para>Operation</para></entry>
+
+              <entry valign="top"><para>Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Save</guiicon> </para></entry>
+
+              <entry valign="top">Save the new authentication in draft
+              status.</entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Submit</guiicon> </para></entry>
+
+              <entry valign="top">Save the new password. The changes take
+              effect the next time the user logs into <xi:include
+              href="../entities_en.xml" xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/>. When the password
+              is changed, the password expiry date is computed and stored, and
+              the counter of invalid login attempts is reset. The user is also
+              re-activated if previously inactive.<note>
+                  <para>The submit action displays the password on a popup if
+                  the Bank is configured for a combination of the
+                  auto-password generation and display the auto-generated
+                  password feature. If Maker-Checker is enabled for your Bank,
+                  you'll need to have Checker privileges to Submit and to view
+                  the password.</para>
+                </note></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Cancel</guiicon> </para></entry>
+
+              <entry valign="top"><para>Leave the current page and return to
+              the System Features menu.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="middle"><para> <guiicon
+              moreinfo="none">Help</guiicon> </para></entry>
+
+              <entry valign="top"><para>Open a pop up window displaying the
+              on-line help pages.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+</chapter>

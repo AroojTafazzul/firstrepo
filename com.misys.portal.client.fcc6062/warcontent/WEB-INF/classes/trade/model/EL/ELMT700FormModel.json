@@ -1,0 +1,385 @@
+{
+  "screen": "ExportLetterOfCreditScreen",
+  "isAccordionView": "true",
+  "elGeneralDetails": {
+    "customerReference": {
+      "name": "customerReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "showLabel": false
+        }
+      ]
+    },
+    "entity": {
+      "name": "entity",
+      "type": "input-dropdown",
+      "required": true,
+      "readonly": false,
+      "options": [],
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "showLabel": false
+        }
+      ]
+    },
+    "advisingBankNameList": {
+              "name": "advisingBankNameList",
+              "type": "input-dropdown",
+              "options": [],
+              "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+              "styleClass": [
+                "issueBankName"
+              ],
+              "required": true,
+              "readonly": false,
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "view",
+                  "fieldValueType": "view-mode",
+                  "style": "bankViewOptions",
+                  "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_bank_zero",
+                  "showLabel": false
+                },
+                {
+                  "option": "TEMPLATE",
+                  "required": false
+                }
+              ]
+            },
+    "issuerReferenceList": {
+              "name": "issuerReferenceList",
+              "options": [],
+              "type": "input-dropdown",
+              "addInDynamicPhrases": true,
+              "styleClass": [
+                "issuerRef",
+                "margin-all-side"
+              ],
+              "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+              "required": true,
+              "readonly": false,
+              "showValue": true,
+              "applicableScreens": [
+                {
+                  "tnxTypeCode": "03",
+                  "mode": "view",
+                  "fieldValueType": "view-mode",
+                  "style": "bankViewOptions",
+                  "layout": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+                  "showLabel": false
+                },
+                {
+                  "option": "TEMPLATE",
+                  "required": false
+                }
+              ]
+            },
+		"subTnxTypeCode": {
+			"name": "subTnxTypeCode",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": "subTnxTypeCode",
+			"hidden": true
+		},
+            
+    "id": "ElMT700GeneralDetailsComponent",
+    "helpId": "GD"
+  },
+  
+   "elUploadMT700": {
+  "applicableSections": [{
+      "productCode": "EL",
+      "tnxTypeCode": "01"
+    }, {
+      "productCode": "EL",
+      "tnxTypeCode": "03"
+    }, {
+	"tnxTypeCode": "01",
+	"option": "TEMPLATE",
+	"showTemplate": false,
+	"productCode": "EL"
+    }],
+    "tnxAmt": {
+			"name": "tnxAmt",
+			"type": "input-text",
+			"layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+			"styleClass": "subTnxTypeCode",
+			"hidden": true
+		},
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "btndisable": true,
+      "previewScreen": false
+    },
+    "attachmentsMessage": {
+      "itemId": "attachmentsMessage",
+      "name": "attachmentsMessage",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "noteForAttachments"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "elMT700fileUploadTable": {
+      "name": "elMT700fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12"
+    },
+    "validateMT700Button": {
+      "name": "validateMT700Button",
+      "type": "rounded-button",
+      "styleClass": [
+        "primaryButton"
+      ],
+      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper",
+      "btndisable": true,
+      "previewScreen": false,
+      "rendered": false
+    },
+    "successMessageMT700": {
+      "itemId": "successMessageMT700",
+      "name": "successMessageMT700",
+      "type": "text",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12",
+      "styleClass": [
+        "successMessage"
+      ],
+      "rendered": false,
+      "previewScreen": false,
+       "matIcon": "done"
+    },
+    "failedMessageMT700": {
+      "itemId": "failedMessageMT700",
+      "name": "failedMessageMT700",
+      "type": "text",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12",
+      "styleClass": [
+        "failedMessage"
+      ],
+      "rendered": false,
+      "previewScreen": false,
+       "matIcon": "priority_high"
+    },
+     "view": {
+      "name": "view",
+      "type": "rounded-button",
+      "styleClass": [
+        "primaryButton"
+      ],
+      "layoutClass": "p-col-8 p-md-8 p-lg-8 p-sm-12 p-grid p-justify-end viewBtn",
+      "btndisable": true,
+      "previewScreen": true,
+      "rendered": false
+    },
+    "attachmentsMT" : {
+        "name": "attachmentsMT",
+        "rendered": false,
+        "type": "json-obj",
+        "previewScreen": false
+    },
+    "attachmentsList": {
+      "name": "attachmentsList",
+      "type": "input-text",
+      "hidden": true
+    },
+      "noOfAttachments": {
+      "name": "noOfAttachments",
+      "type": "input-text",
+      "hidden": true
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    
+    "id": "ElMT700UploadDetailsComponent",
+    "helpId": "MT"
+  },
+  
+  
+   "elFileUploadDetails": {
+    "applicableSections": [{
+      "productCode": "EL",
+      "tnxTypeCode": "01"
+    }, {
+      "productCode": "EL",
+      "tnxTypeCode": "03"
+    }, {
+	"tnxTypeCode": "01",
+	"option": "TEMPLATE",
+	"showTemplate": false,
+	"productCode": "EL"
+    }],
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "btndisable": true,
+      "previewScreen": false
+    },
+    "attachmentsMessage": {
+      "itemId": "attachmentsMessage",
+      "name": "attachmentsMessage",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "noteForAttachments"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "fileUploadTable": {
+      "name": "fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12"
+    },
+    "attachments" : {
+        "name": "attachments",
+        "rendered": false,
+        "type": "json-obj",
+        "previewScreen": false
+    },
+    "attachmentsList": {
+      "name": "attachmentsList",
+      "type": "input-text",
+      "hidden": true
+    },
+      "noOfAttachments": {
+      "name": "noOfAttachments",
+      "type": "input-text",
+      "hidden": true
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    
+    "id": "ElFileUploadDetailsComponent",
+    "helpId": "AT"
+  }
+  
+}

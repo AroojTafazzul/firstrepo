@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef  ordered="y" huge="N" forceDisplaySearch='y' default_order="bill_id"
+	help="LIST_HELP_INQUIRY" page="100" source="loaniq_borrower_bills" data_key="bill_id">
+	
+	<column name="bill_id" align="left" width="15%" loca_key="billId" columnFilterType="input-multiselect" />
+	<column name="custReference" align="left" width="15%" loca_key="borrowerRef" columnFilterType="input-multiselect" />
+	<column name="billDate" align="left" width="15%" loca_key="billDate" columnFilterType="input-multiselect" />
+	<column name="billDueDate" align="left" width="15%" loca_key="billDueDate" columnFilterType="input-multiselect" />
+	<column name="curr_code" align="left" width="10%" loca_key="ccy" columnFilterType="input-multiselect" />
+	<column name="total_amount" align="right" width="12%" loca_key="amount" columnFilterType="input-multiselect" />	
+	<column name="bill_type" hidden="y"/>	
+	<column name="action" align="right" width="10%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+	 		<parameter name="billId" column="bill_id"/>
+			<parameter name="BILL_VIEW_ACTION_NAME" value="BILL_VIEW"/>
+		</url>
+	</column>
+	<!-- candidates -->	
+	<column name="bill_date" hidden="y"/>
+	<column name="bill_dueDate" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<parameter
+		input="y" 
+		name="due_date"
+		loca_key="LN_DUE_DATE"
+		type="range"
+		default="default"/>		
+	
+	<parameter name="borrowerRef" loca_key="borrowerRef" type="AvailableCustomerReference"
+		input="y" productCode="LN"/>
+		
+	<parameter name="export_list" file_name="billsListing" type="export"/>
+	
+	<candidate name="loanbill">
+		<filter>
+			<criteria>
+				<column name="bill_dueDate" />
+				<operator type="like" />
+				<value type="parameter">
+					due_date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="custReference" />
+				<operator type="like" />
+				<value type="parameter">
+					borrowerRef
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" help="LIST_HELP_INQUIRY" default_order="calculationDate" default_order_type="d" page="25" js_binding="misys.binding.feesandbilling.feesandbilling"
+source="fee_inquiry">
+
+	<column name="customerId" align="center" width="10em" loca_key="CUSTOMER_ID"/>
+	<column name="prodDesc" align="center" width="8%" loca_key="PRODUCTCODE"/>
+	<column name="feeDesc" align="center" width="12em" loca_key="FEE_DESCRIPTION"/>
+	<column name="feeCcy" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="feeAmount" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="revisedAmount" align="right" width="10%" loca_key="CALC_AMOUNT"/>
+	<column name="txnRfnNo" align="center" width="12%" loca_key="TRANSACTION_REF"/>
+	<column name="calculationDate" align="center" width="10%" loca_key="TRANSACTION_DATE"/>
+	<column name="invoiceOnDate" align="center" width="10%" loca_key="SETTLEMENT_DATE"/>
+	<column name="feeStatus" align="center" width="9%" loca_key="FEE_STATUS" sort='n'/>
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="bank"
+		size="20"
+		max_length="35"
+		loca_key="BANK"
+		input="y"
+		default=""
+		type="entitybank"
+		mandatory="true" />
+	<parameter
+		name="customerId"
+		size="20"
+		max_length="35"
+		loca_key="CUSTOMER_ID"
+		input="y"
+		default=""
+		type="CustomerReference" 
+		mandatory="true" />
+	<parameter
+		name="product"
+		type="AvailableFeeProduct"
+		loca_key="PRODUCTCODE"
+		input="y"
+		default="*"/>
+	<parameter
+		name="create_date"
+		type="range"
+		input="y"
+		range_from_label="TRANSACTION_DATE_FROM"
+		range_to_label="TRANSACTION_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="AmountRange"
+		type="AmountRange"
+		input="y"
+		range_from_label="AmountFrom"
+		range_to_label="AmountTo"
+		default=""/>
+
+	<parameter
+		name="feeStatus"
+		type="AvaliableFeeStatus"
+		loca_key="FEE_STATUS"
+		input="y"
+		multiple_values="C,NC,I,NI,W"
+		default=""/>
+		
+	<parameter
+		name="export_list"
+		file_name="feeEnquiry"
+		type="export">
+	</parameter>		
+	
+	<!-- candidates -->	
+	<candidate name="feeInquiryDetails">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bank"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bank
+				</value>
+			</criteria>
+			<criteria>
+				<column name="customerId"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customerId
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prodDesc"/>
+				<operator type="like"/>
+				<value type="parameter">
+					product
+				</value>
+			</criteria>
+			<criteria>
+				<column name="calculationDate"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					create_date@from
+				</value>
+			</criteria>
+			<criteria>
+			<column name="calculationDate"/>
+			<operator type="infOrEqual"/>
+				<value type="parameter">
+					create_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="feeAmount"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountRange@fromAmount
+				</value>
+			</criteria>
+				<criteria>
+				<column name="feeAmount"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountRange@toAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="feeStatus"/>
+				<operator type="like"/>
+				<value type="parameter">
+					feeStatus
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

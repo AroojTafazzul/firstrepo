@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef  ordered="y" help="LIST_HELP_INQUIRY" page="100" source="loaniq_onGoingFee" forceDisplaySearch='y' default_order="period" default_order_type="d" js_binding="misys.binding.loan.facility_ongoing_fee_details">
+	
+	<column name="period" align="center" width="6em" loca_key="XSL_HEADER_FEE_PERIOD" />
+	<column name="start_date" align="center" width="10%" loca_key="LN_START_DATE" sort = "n" >
+		<script>
+			var start_date = row.getColumnValue("start_date");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+start_date+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="end_date" align="center" width="20%" loca_key="LN_END_DATE" sort = "n" >
+		<script>
+			var end_date = row.getColumnValue("end_date");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+end_date+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="due_date" align="center" width="4em" loca_key="LN_DUE_DATE" sort = "n" >
+		<script>
+			var due_date = row.getColumnValue("due_date");
+			value = com.misys.portal.common.tools.LoanUtils.convertApiDateToFccDate(""+due_date+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="amount_due" align="center" width="9em" loca_key="LN_AMOUNT_DUE" sort = "n" >
+		<script>
+			var amount_due = row.getColumnValue("amount_due");
+			var fac_ccy = row.getColumnValue("fac_ccy");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+amount_due+"",""+fac_ccy+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="paid_to_date_amount" align="center" width="9em" loca_key="LN_PAID_TO_DATE" sort = "n" >
+		<script>
+			var paid_to_date_amount = row.getColumnValue("paid_to_date_amount");
+			var fac_ccy = row.getColumnValue("fac_ccy");
+			value = com.misys.portal.loan.loaniq.LoanIQAdapter.getFormatedAmount(""+paid_to_date_amount+"",""+fac_ccy+"",""+language+"");
+			value;
+		</script>
+	</column>
+	<column name="feeRID" hidden="y"/>
+	<column name="fac_ccy" hidden="y"/>
+	
+	<parameter
+		name="due_date"
+		type="range"
+		input="y"
+		range_from_label="LOAN_DUE_DATE_FROM"
+		range_to_label="LOAN_DUE_DATE_TO"
+		default="blank"/>
+	
+	<parameter
+		name="export_list"
+		file_name="loanfeeongoingrecords"
+		type="export"/>
+		
+	<parameter name="fee_RID" input="y" size="35"
+		max_length="40" type="feeRID" />
+		
+	<parameter name="fac_ccy" type="feeRID" />
+
+</listdef>

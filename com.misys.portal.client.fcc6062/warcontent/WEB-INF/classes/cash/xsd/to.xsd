@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  	xmlns:sch="http://www.ascc.net/xml/schematron"  	elementFormDefault="qualified">
+	<xs:include schemaLocation="common.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for SW. XML validation 
+			Copyright (c) 2000-2004 NEOMAlogic (http://www.neomalogic.com), All 
+			Righ Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/mtp/interfaces/xsd/common.xsd"/>
+	<xs:element name="to_tnx_record">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="brch_code">
+					<xs:annotation>
+						<xs:documentation>Branch code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="ref_id">
+					<xs:annotation>
+						<xs:documentation>Letter of credit reference 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_ref_id">
+					<xs:annotation>
+						<xs:documentation>Back office attributed reference 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_tnx_id">
+					<xs:annotation>
+						<xs:documentation>Bank transaction ID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="cust_ref_id">
+					<xs:annotation>
+						<xs:documentation>Customer attributed reference 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_id">
+					<xs:annotation>
+						<xs:documentation>Transaction id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="company_id">
+					<xs:annotation>
+						<xs:documentation>Id of the company that initiated 	the letter of credit.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- minOccurs=0 because the company can possibly be not be provided when bank initiated transaction -->
+				<xs:element minOccurs="0" ref="company_name">
+					<xs:annotation>
+						<xs:documentation>Name of the company that 	initiated the letter of 	credit.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_type_code">
+					<xs:annotation>
+						<xs:documentation>In order to identify the type of 	transaction applied to one file during a 	particular event of its life (and hence 	attached to a transaction id), we introduce the 	notion of transaction type 	code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="sub_tnx_type_code">
+					<xs:annotation>
+						<xs:documentation>In some cases, an additional code 	is required to further define the type of the 	transaction. This is the case for the amendment 	of an Import LC or a Banker's Guarantee where 	the transaction type code is AMEND, but where 	the system needs to know more precisely the 	type of amendment in order to prepare the 	display of its details accordingly. It is also 	the case for the creation of such an Import LC 	if it is initiated through the Upload 	feature.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" maxOccurs="1" ref="prod_stat_code">
+					<xs:annotation>
+						<xs:documentation>The product status code is in	charge of indicating which is the functional 	status currently born by the transaction file. 	Thanks to this code, we can know if the 	transaction initiation has been approved by the 	bank and into which state the record has been 	updated.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_stat_code">
+					<xs:annotation>
+						<xs:documentation>During the course of a 	transaction input by the customer, control and 	finally submission to the bank for processing, 	and subsequently input and eventually control 	and release of the reporting by the bank 	officer, the transaction record is going 	through several stages</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Sub Transaction Status Code</xs:documentation>
+						</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" maxOccurs="1" ref="product_code">
+					<xs:annotation>
+						<xs:documentation>Product code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sub_product_code" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Sub Product code.</xs:documentation>
+						</xs:annotation>
+				</xs:element>
+				<xs:element maxOccurs="1" minOccurs="0" ref="inp_user_id">
+					<xs:annotation>
+						<xs:documentation>Inputter user 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="inp_dttm">
+					<xs:annotation>
+						<xs:documentation>Input date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="ctl_user_id">
+					<xs:annotation>
+						<xs:documentation>Controller user 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="ctl_dttm">
+					<xs:annotation>
+						<xs:documentation>Control date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="release_user_id">
+					<xs:annotation>
+						<xs:documentation>Releaser user 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="release_dttm">
+					<xs:annotation>
+						<xs:documentation>Release date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_inp_user_id">
+					<xs:annotation>
+						<xs:documentation>Back office inputter 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_inp_dttm">
+					<xs:annotation>
+						<xs:documentation>Back office input 	date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_ctl_user_id">
+					<xs:annotation>
+						<xs:documentation>Back office controller 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_ctl_dttm">
+					<xs:annotation>
+						<xs:documentation>Back office control 	date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_release_user_id">
+					<xs:annotation>
+						<xs:documentation>Back office release user 	id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_release_dttm">
+					<xs:annotation>
+						<xs:documentation>Back office release 	date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_val_date">
+					<xs:annotation>
+						<xs:documentation>Transaction value 	date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="appl_date">
+					<xs:annotation>
+						<xs:documentation>Application 	date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" maxOccurs="1" ref="iss_date">
+					<xs:annotation>
+						<xs:documentation>Issue date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="exp_date">
+					<xs:annotation>
+						<xs:documentation>Expiry date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_cur_code">
+					<xs:annotation>
+						<xs:documentation>Transaction currency 	code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="tnx_amt">
+					<xs:annotation>
+						<xs:documentation>Transaction 	amount.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="to_cur_code">
+					<xs:annotation>
+						<xs:documentation>Transfer Order currency code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="to_amt">
+					<xs:annotation>
+						<xs:documentation>Transfer Order amount.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="to_liab_amt">
+					<xs:annotation>
+						<xs:documentation>Transfer Order liability</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="abbv_name">
+					<xs:annotation>
+						<xs:documentation>Beneficiary abbreviated 	name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="name">
+					<xs:annotation>
+						<xs:documentation>Beneficiary 	name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="address_line_1">
+					<xs:annotation>
+						<xs:documentation>Beneficiary first address 	line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="address_line_2">
+					<xs:annotation>
+						<xs:documentation>Beneficiary second address 	line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="dom">
+					<xs:annotation>
+						<xs:documentation>Beneficiary 	domiciliation.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="reference">
+					<xs:annotation>
+						<xs:documentation>Beneficiary 	reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="entity">
+					<xs:annotation>
+						<xs:documentation>Entity</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="fee_act_no">
+					<xs:annotation>
+						<xs:documentation>Fee account number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="fwd_contract_no">
+					<xs:annotation>
+						<xs:documentation>Foreward contract number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_act_no">
+					<xs:annotation>
+						<xs:documentation>Applicant act number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_act_name">
+					<xs:annotation>
+						<xs:documentation>Applicant act name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="applicant_act_cur_code">
+					<xs:annotation>
+						<xs:documentation>Applicant act currency code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="open_chrg_brn_by_code">
+					<xs:annotation>
+						<xs:documentation>open charge brn by code : 01=APPLICANT, 02=BENEFICIARY, 03=DRAWEE, 04=DRAWER, 05=SHARED, 06=CREDIT_ACCT, 07=OTHER.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="adv_send_mode">
+					<xs:annotation>
+						<xs:documentation>adv send mode : 01=SWIFT, 02=TELEX, 03=COURIER, 04=REGISTERED_POST, 05=EMAIL, 98=DONTSEND.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="payement_day">
+					<xs:annotation>
+						<xs:documentation>Payment day</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="next_payement_date">
+					<xs:annotation>
+						<xs:documentation>Next payment date</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="periode">
+					<xs:annotation>
+						<xs:documentation>Periode Code : ANNUAL, SEMI_ANNUAL, QUARTERLY, MONTHLY, FORTNIGHTLY, WEEKLY, DAILY, ONCE</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="pay_date">
+					<xs:annotation>
+						<xs:documentation>Payment date Code : PRECEDING, SUCCEEDING, MODIFIED, DEFAULT</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="first_payement_date">
+					<xs:annotation>
+						<xs:documentation>First payment date</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="final_payement_date">
+					<xs:annotation>
+						<xs:documentation>Final payment date</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="final_payement_amt">
+					<xs:annotation>
+						<xs:documentation>Final payment Amount</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="first_payement_amt">
+					<xs:annotation>
+						<xs:documentation>First payment Amount</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="verify_payement">
+					<xs:annotation>
+						<xs:documentation>Verify payment</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="add_SI">
+					<xs:annotation>
+						<xs:documentation>add SI code :  N=No, Y=Yes</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="authorize_SI">
+					<xs:annotation>
+						<xs:documentation>authorize SI code :  N=No, Y=Yes</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="suppress_confirmation">
+					<xs:annotation>
+						<xs:documentation>suppress_confirmation code :  N=No, Y=Yes</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="suppress_payment">
+					<xs:annotation>
+						<xs:documentation>suppress payment code :  N=No, Y=Yes</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="transaction_code">
+					<xs:annotation>
+						<xs:documentation>transaction code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="standing_order_text">
+					<xs:annotation>
+						<xs:documentation>standing_order_text</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="account_owner_ref">
+					<xs:annotation>
+						<xs:documentation>account_owner_ref</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="processing_days">
+					<xs:annotation>
+						<xs:documentation>processing days</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="usual_id">
+					<xs:annotation>
+						<xs:documentation>usual id</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="issuing_bank">
+					<xs:annotation>
+						<xs:documentation>Parent node for the issuing bank 	information</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="bo_comment">
+					<xs:annotation>
+						<xs:documentation>Back office 	comment.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="free_format_text">
+					<xs:annotation>
+						<xs:documentation>Used as a zone of communication 	between the client and the 	bank.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element minOccurs="0" ref="attachments"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

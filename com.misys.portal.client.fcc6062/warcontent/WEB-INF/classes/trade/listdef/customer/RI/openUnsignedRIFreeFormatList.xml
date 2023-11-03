@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" identifier="ref_id" crossPageSelection="y">
+	
+	<batch type="submit">
+		<parameter name="SCREEN" value="RI_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="RI_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="40%" loca_key="ENTITY"/>
+	<column name="drawer_name" align="left" width="60%" loca_key="DRAWER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="drawer_name"
+		loca_key="DRAWER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+	<parameter
+		name="user_name"
+		loca_key="USER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+		
+	<!-- candidates -->	
+	<candidate name="received_letter_of_indemnity">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawer_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					drawer_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter or="y">
+		<criteria>
+			<column name="full_name" computation="sum">
+				<column name="Inputter@first_name"/>	
+				<column name="Inputter@last_name"/>
+			</column>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+	</filter>
+	
+	<filter>
+		<businesscriteria type="isInquire"/>
+	</filter>
+</listdef>

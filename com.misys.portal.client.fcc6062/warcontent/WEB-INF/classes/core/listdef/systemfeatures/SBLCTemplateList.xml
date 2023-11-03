@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="account_id" page="50" source="SBLCTemplate">
+
+	<column name="companyid" loca_key="COMPANY_ID" hidden="y"/>
+	<column name="featureid" loca_key="FEATURE_ID" hidden="y"/>
+	<column name="standby_issued_id" align="center" width="11em" loca_key="STANDBY_ISSUED_ID">
+		<url>
+			<parameter name="SCREEN" value="SI_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="COMPANY_ID" column="companyid"/>
+			<parameter name="FEATURE_ID" column="featureid"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_SCRATCH"/>
+		</url>
+	</column>
+	<column name="entity_name_applicant" loca_key="entity_name_applicant"/>
+	<column name="bank" loca_key="BANK" hidden="y"/>
+	<column name="entity" loca_key="ENTITY"/>
+	<column name="description" loca_key="DESCRIPTION"/>
+	<column name="standby_issued_type" loca_key="STANDBY_ISSUED_TYPE"/>
+	<column name="doc_id" loca_key="DOC_ID"/>
+	
+	<!-- parameters -->
+		
+	<!-- candidates -->	
+	<candidate name="SBLCTemplate">
+	</candidate>
+</listdef>

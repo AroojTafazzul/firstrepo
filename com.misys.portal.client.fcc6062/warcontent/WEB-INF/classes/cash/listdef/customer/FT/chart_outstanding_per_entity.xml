@@ -1,0 +1,24 @@
+<listdef page='25'>
+	<name>Payments per Entity</name>
+	<description>Payments per Entity</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='product_code' hidden='y'/>
+	<column name='amt' hidden='y'/>
+	<column name='cur_code' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<candidate name='FT'/>
+	<group graph='bar'>
+		<column name='entity'/>
+		<aggregate type='sum' cur='EUR'>
+			<column name='amt'/>
+			<description locale='en'>Total (EUR)</description>
+			<description locale='fr'>Total (EUR)</description>
+		</aggregate>
+		<!-- aggregate type='count'>
+			<column name='ref_id'/>
+			<description locale='en'>Number of Payments</description>
+			<description locale='fr'>Nombre de Paiments</description>
+		</aggregate-->
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

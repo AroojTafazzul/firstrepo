@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="customer" scope="system_features">
+	<name>module_CSFProfile</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<staticParam>menuaction</staticParam>
+	<action>
+		<actionCode>OpenGeneralCSF</actionCode>
+		<class>CustomerSystemFeaturesPortlet</class>
+		<method>openGeneralModule</method>
+		<permission>cust_sy_access</permission>
+		<operation>-</operation>
+		<option>-</option>
+		<menuaction>-</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenSaveProfileCSF</actionCode>
+		<class>CustomerSystemFeaturesPortlet</class>
+		<method>saveProfile</method>
+		<permission>no_permission</permission>
+		<operation>SAVE_PROFILE</operation>
+		<option>PROFILE_MAINTENANCE</option>
+		<menuaction>OpenChangeProfileCSF</menuaction>
+	</action>
+	<action>
+		<actionCode>OpenChangeProfileCSF</actionCode>
+		<class>CustomerSystemFeaturesPortlet</class>
+		<method>changeProfile</method>
+		<permission>no_permission</permission>
+		<operation>-</operation>
+		<option>PROFILE_MAINTENANCE</option>
+		<menuaction>OpenChangeProfileCSF</menuaction>
+		<favourite>true</favourite>
+	</action>
+	<action>
+		<actionCode>RejectTransactions</actionCode>
+		<permission>no_permission</permission>
+		<method>rejectMultipleTransaction</method>
+	</action>
+</module>

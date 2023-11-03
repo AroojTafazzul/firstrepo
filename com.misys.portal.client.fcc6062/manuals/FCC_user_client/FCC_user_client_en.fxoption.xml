@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title><xi:include href="../entities_en.xml" xpointer="ent_FX_Option"
+  xmlns:xi="http://www.w3.org/2001/XInclude" /> Module</title>
+
+  <para role="TEXT">The <xi:include href="../entities_en.xml" xpointer="ent_FX_Option"
+  xmlns:xi="http://www.w3.org/2001/XInclude" /> module enables you, on behalf
+  of your company, to arrange FX options.</para>
+
+  <para role="TEXT">For basic features common to all modules, such as basic terminology
+  and the use of lists and forms, see chapter
+  <emphasis>Introduction</emphasis>. For descriptions of functions, see
+  chapter <emphasis>Functions</emphasis>.</para>
+
+  <para role="TEXT">This chapter gives detailed descriptions of the input forms used by
+  this module, and describes any features specific to this module.</para>
+
+  <section role="ITEM">
+    <title>FX Options</title>
+
+    <para role="TEXT">This section contains brief descriptions of the types of FX Options
+    models supported by <xi:include href="../entities_en.xml"
+    xpointer="ent_applisump" xmlns:xi="http://www.w3.org/2001/XInclude" />.
+    Unless otherwise stated, all options are European style.</para>
+
+    <section role="ITEM">
+      <title>Digital</title>
+
+      <para role="TEXT">For a call, if on expiration the FX is greater than the strike,
+      the payoff is the notional. If the FX on expiration is less than the
+      strike on expiration, the payoff is zero. For a put, if on expiration
+      the FX is less than the strike, the payoff is the notional. If the FX on
+      expiration is greater than the strike on expiration, the payoff is
+      zero.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Single Barrier</title>
+
+      <para role="TEXT">Up-and-in calls and puts; Down-and-in calls and puts; Up-and-out
+      calls and puts; Down-and-out calls and puts.</para>
+
+      <para role="TEXT">An up-and-in call comes with a barrier set above the current spot
+      FX (the upper barrier). The option becomes a vanilla call when the
+      underlying FX crosses the barrier. If the barrier is never crossed
+      during the life of the option, it expires with a payoff of zero. An
+      up-and-out call comes with a barrier set above the current spot FX (the
+      upper barrier). The option becomes worthless (out) if the barrier is
+      crossed during the life of the option. Otherwise, it expires giving
+      payoff identical to a vanilla call. Others are similar.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Double Barrier</title>
+
+      <para role="TEXT">Knock-in calls and puts; Knock-out calls and puts.</para>
+
+      <para role="TEXT">A double barrier option comes with two barriers. One is above the
+      current spot (upper barrier) and the other below the current spot (lower
+      barrier). A knock-in option becomes a vanilla option when the relevant
+      FX crosses one of the barriers. If the barrier is never crossed during
+      the life of the option, it expires with a payoff of zero. A knock-out
+      call option becomes worthless (out) if either barrier is crossed during
+      the life of the option. Otherwise, it expires giving a payoff identical
+      to a vanilla option. Summit supports exponential growth (decay)
+      barriers. The decay constants can be entered in the exotic window. Note
+      that the upper barrier at time<emphasis> T</emphasis> with nonzero upper
+      decay constant is given by:</para>
+
+      <figure>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="../images/pic_barrier.gif" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+
+  <section condition="TITLE=FX Option - Initiation;PERM=fp_access;ACCESS=FP_01"
+           id="FP_fp_initiation_form" role="SECTION">
+    <title>"Create a New FX Option" Form</title>
+
+    <para role="TEXT">This is the detailed description of the input form displayed by the
+    <guimenuitem>Enter FX Option &gt; New Trade</guimenuitem> function.</para>
+
+    <section role="SECTION">
+      <title>General Details</title>
+
+      <informaltable frame="all" role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2357*" />
+
+          <colspec colname="column-2" colwidth="6499*" />
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+              role="bold">Field</emphasis> </para></entry>
+
+              <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+              role="bold">Description</emphasis> </para></entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>System
+              ID</guilabel></para></entry>
+
+              <entry colsep="1" rowsep="1"><para role="TEXT">Identification number of the
+              trade. Automatically generated by the system. Read only field.
+              (Example: EP1102000812)</para></entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Template
+              ID</guilabel></para></entry>
+
+              <entry colsep="1" rowsep="1"><para role="TEXT">Identification number of the
+              template.</para></entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Customer
+              Reference</guilabel></para></entry>
+
+              <entry colsep="1" rowsep="1"><para role="TEXT">Name/number of the
+              Customer.</para></entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Application
+              Date</guilabel></para></entry>
+
+              <entry colsep="1" rowsep="1"><para role="TEXT">Today’s date. Automatically
+              generated by the system. Read only field. The format is
+              DD/MM/YYYY (Example: 01/12/2010)</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <section role="SECTION">
+        <title>Applicant Details</title>
+
+        <informaltable frame="all" role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="column-1" colwidth="2357*" />
+
+            <colspec colname="column-2" colwidth="6499*" />
+
+            <tbody>
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+                role="bold">Field</emphasis></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+                role="bold">Description</emphasis></para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Name</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Required. Default is the
+                login company. Read only field.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="SECTION">
+        <title>Bank Details</title>
+
+        <informaltable frame="all" role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="column-1" colwidth="2357*" />
+
+            <colspec colname="column-2" colwidth="6499*" />
+
+            <tbody>
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+                role="bold">Field</emphasis></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+                role="bold">Description</emphasis></para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Name</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Required. Default is
+                <emphasis role="bold">Bank of New York Mellon
+                Group</emphasis>. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="SECTION">
+      <title>FX Options Details</title>
+
+      <section role="SECTION">
+        <title>Trade Details</title>
+
+        <informaltable frame="all" role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="column-1" colwidth="2357*" />
+
+            <colspec colname="column-2" colwidth="6499*" />
+
+            <tbody>
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Field</emphasis> </para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Description</emphasis> </para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Trade
+                Date</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Date of the trade. Click on
+                the field and select the date from the
+                calendar.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Counterparty</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Required. Name of a
+                counterparty to be associated with the trade. Select from the
+                dropdown list.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Portfolio</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Required. Name of the
+                portfolio to be associated with the trade. Select from the
+                dropdown list.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Currency
+                Pair</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Currency pair in the form
+                XY, which is converted to X/Y in market conventional notation.
+                Select from the dropdown list.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Style</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Determines the dates on
+                which the option may be exercised. Select from the dropdown
+                list: <literal>European</literal>,
+                <literal>American</literal>, or
+                <literal>Bermudan</literal>.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Settlement
+                Method</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Select from the
+                following:</para><para role="TEXT"><emphasis role="bold">None
+                </emphasis>(default)</para><para role="TEXT"><emphasis
+                role="bold">Cash</emphasis></para><para role="TEXT"><emphasis
+                role="bold">Physical</emphasis> </para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Expiration
+                Date</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">The expiration date.
+                Regarded as the end of the option. <xi:include
+                href="../entities_en.xml" xpointer="ent_applisump"
+                xmlns:xi="http://www.w3.org/2001/XInclude" /> regards the life
+                of the option as being the number of days between <emphasis
+                role="bold">As of date</emphasis> and the <emphasis
+                role="bold">Expire</emphasis> date. Thus, it is always an
+                integer.</para><para role="TEXT"><emphasis role="bold">Tip:</emphasis> In
+                the <emphasis role="bold">Expire</emphasis> date field, you
+                can enter a generic date, used to calculate the expiry date as
+                follows: O/N = Over Night, 1D = 1 day, 2W = 2 weeks, 3M = 3
+                months, etc. Determines if Short Date or Long Date
+                calculations are applied.</para><para role="TEXT">The following field
+                displays the number of days between the <emphasis
+                role="bold">As of date</emphasis> and the expiration
+                date.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Delivery
+                date</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">The delivery date. In
+                theory, when a vanilla option is exercised, a long position of
+                the spot trade is created. To realize the profit, a short
+                position is entered in such a way that on the delivery date
+                (usually the spot day from the date of exercise), the profit
+                is realized in the money currency. The pricing model always
+                takes into account the effect of this delay in profit
+                realization, and performs appropriate discounting (using money
+                currency zero rates).</para><para role="TEXT"><emphasis
+                role="bold">Tip</emphasis><emphasis role="bold">:</emphasis>In
+                the <emphasis role="bold">Delivery </emphasis>date field, you
+                can enter a generic date, used to calculate the deliverydate
+                as follows: O/N = Over Night, 1D = 1 day, 2W = 2 weeks, 3M = 3
+                months, etc.</para><para role="TEXT">The following field displays the
+                number of days between the <emphasis role="bold">Spot
+                date</emphasis> and the <emphasis
+                role="bold">Delivery</emphasis> date.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Buy/Sell</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Select one of the option
+                buttons:</para><para role="TEXT"><emphasis role="bold">Buy</emphasis>
+                indicates that you are to purchase the option, and therefore
+                will pay the option premium.</para><para role="TEXT"><emphasis
+                role="bold">Sell</emphasis> indicates that you are to sell the
+                option, and therefore will receive the option
+                premium.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Call/Put</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Select one of the option
+                buttons:</para><para role="TEXT"><emphasis role="bold">Put</emphasis>
+                gives the holder the right to sell a stated amount of the
+                underlying asset by a specified date for a specified
+                price.</para><para role="TEXT"><emphasis role="bold">Call </emphasis>gives
+                the holder the right to buy a stated amount of the underlying
+                asset by a specified date for a specified
+                price.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Put
+                Amount</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Amount of the put.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Call
+                Amount</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Amount of the call. If you
+                have selected the <guilabel>Put</guilabel> option button, this
+                field precedes the <guilabel>Put Amount</guilabel> field on
+                the form.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1"
+                rowsep="1"><para role="TEXT"><guilabel>Strike</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Strike value expressed as
+                percentage with four decimal places.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="SECTION">
+        <title>Fee Details</title>
+
+        <informaltable frame="all" role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="column-1" colwidth="2357*" />
+
+            <colspec colname="column-2" colwidth="6499*" />
+
+            <tbody>
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Field</emphasis> </para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Description</emphasis> </para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Add
+                Fee</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Click this button to open
+                the Add Fee window.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="SECTION">
+        <title>Premium</title>
+
+        <informaltable frame="all" role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="column-1" colwidth="2357*" />
+
+            <colspec colname="column-2" colwidth="6499*" />
+
+            <tbody>
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Field</emphasis> </para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Description</emphasis> </para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Premium
+                Type</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Method by which the given
+                percentage must be applied, to calculate the cash value of the
+                premium and determine the <guilabel>Premium Amount</guilabel>
+                currency. This is the settlement amount expressed as a
+                percentage of the Main Currency notional on the spot day from
+                the <emphasis role="bold">As Of Date</emphasis>. This
+                percentage appears in the <emphasis role="bold">Premium settle
+                %</emphasis> field, following the <emphasis
+                role="bold">Premium settle</emphasis> option.</para><para role="TEXT">Use
+                this option to enter the premium as a currency amount or
+                percentage. The premium information initially derived is
+                consistent in terms of amount, currency, and settlement date.
+                You can change any or all of these values, in which case you
+                must ensure the consistency of the data. For example, changing
+                the currency from the Main Currency (left leg of the deal) to
+                the Money Currency (right leg of the deal) will automatically
+                change the<emphasis role="bold"> Premium settle</emphasis>
+                option setting, but will not automatically convert the
+                amount.</para><para role="TEXT">See <emphasis>Table 5 - Premium
+                Types</emphasis> in chapter <emphasis>Tables</emphasis> for an
+                explanation of the options.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Premium
+                Amount</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">The value of the option,
+                expressed in the main currency on the spot day from the
+                <emphasis role="bold">As of date</emphasis>.</para><para role="TEXT">The
+                following field displays the currency in which premium is
+                paid/received. Market convention (and the system default) is
+                always the Main currency.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Premium
+                Percentage</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">The value of the option,
+                expressed in the main currency on the spot day from the
+                <emphasis role="bold">As of date</emphasis>, expressed in
+                percentage.</para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Premium
+                Date</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Date on which the premium
+                is paid.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="SECTION">
+        <title>Products</title>
+
+        <informaltable frame="all" role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="column-1" colwidth="2357*" />
+
+            <colspec colname="column-2" colwidth="6499*" />
+
+            <tbody>
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Field</emphasis> </para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT"> <emphasis
+                role="bold">Description</emphasis> </para></entry>
+              </row>
+
+              <row>
+                <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Product
+                Type</guilabel></para></entry>
+
+                <entry colsep="1" rowsep="1"><para role="TEXT">Indicates valid FX Option
+                financial products. Select from the dropdown list:
+                <literal>Single Barrier</literal>, <literal>Double
+                Barrier</literal>, <literal>Digital</literal>,
+                <literal>Digital Single Touch Barrier</literal>,
+                <literal>Digital Double Touch
+                Barrier</literal>.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section role="SECTION">
+      <title>Instructions for the Bank Only</title>
+
+      <informaltable frame="all" role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2357*" />
+
+          <colspec colname="column-2" colwidth="6499*" />
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+              role="bold">Field</emphasis></para></entry>
+
+              <entry colsep="1" rowsep="1"><para role="TEXT"><emphasis
+              role="bold">Description</emphasis></para></entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1"><para role="TEXT"><guilabel>Other
+              Information</guilabel></para></entry>
+
+              <entry colsep="1" rowsep="1"><para role="TEXT">Field in which you can
+              communicate any other information to the bank.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+</chapter>

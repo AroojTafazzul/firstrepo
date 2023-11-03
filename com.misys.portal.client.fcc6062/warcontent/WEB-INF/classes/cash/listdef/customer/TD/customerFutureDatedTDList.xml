@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="20"  identifier="ref_id" data_key="ref_id">
+	<batch type="cancel">
+		<parameter name="SCREEN" value="TD_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_CANCEL"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="MODE_CODE" binding_code="OPTION_CANCEL"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	<column name="ref_id" align="left" width="15%" loca_key="REFERENCEID">
+		<url candidate="term_deposit">
+			<parameter name="SCREEN" value="TD_SCREEN"/>
+			<parameter name="PARENT_REFERENCE_ID" column="CrossReference@ref_id"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_CANCEL"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_CANCEL"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>		
+	</column>
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="td_type" align="left" width="10%" loca_key="depositType" columnFilterType="input-multiselect" showCode="y" isColumnSortDisabled="y" isCodeField="y" codeId="depositType"/>
+	<column name="account@bank_abbv_name" align="left" width="12%"  loca_key="BANK_NAME" columnFilterType="input-multiselect"/>
+	<column name="value_date" align="left" width="10%" loca_key="VALUE_DATE"/>
+	<column name="tenor" align="center" width="10%" loca_key="TENOR" clubbed="y" isColumnSortDisabled="y" columnFilterType="input-multiselect"/>	
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="tnx_amt" align="right" width="12%" loca_key="AMOUNT"/>
+	<column name="interest" align="left" width="10%" loca_key="INTEREST" columnFilterType="input-multiselect"/>
+	<column name="maturity_date" type="Date" align="left" width="10%" loca_key="MATURITY_DATE"/>
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code" />
+			<parameter name="PRODUCT_STAT_CODE" column="prod_stat_code" />
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code" />
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code" />
+			<parameter name="ACTION_FILTER" value="VEAR" />
+			<parameter name="ACTION_CANCEL" value="CANCEL" />
+		</url>
+	</column>
+	
+	<!-- hidden columns -->
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y"/>
+	<column name="prod_stat_code" hidden="y" showCode="y"/>
+	<column name="sub_product_code" hidden="y" showCode="y"/>
+	<column name="tnx_type_code" hidden="y" showCode="y"/>
+	<column name="tnx_stat_code" hidden="y" showCode="y"/>
+	<column name="sub_tnx_stat_code" hidden="y" showCode="y"/>
+	<column name="value_date_term_number" hidden="y"/>
+	<column name="value_date_term_code" hidden="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="ObjectDataString@num_of_days" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		default=""
+		input="y"/>	
+	<parameter
+		name="bo_ref_id"
+		size="64"
+		loca_key="BO_REF"
+		input="y"
+		default=""/>	
+	<parameter
+		name="value_date"
+		size="64"
+		loca_key="VALUE_DATE"
+		input="y"
+		type="range"
+		default="blank"/>		
+	<parameter
+		name="transfer_date"
+		type="range"
+		input="n"
+		hidden="true"
+		range_from_label="TRANSFER_DATE_FROM"
+		range_to_label="TRANSFER_DATE_TO"
+		default="blank"/>	
+	<parameter
+		name="create_date"
+		type="range"
+		hidden="true"
+		input="n"
+		range_from_label="APPLICATION_DATE_FROM"
+		range_to_label="APPLICATION_DATE_TO"
+		default="blank"/>	
+    	<parameter
+		name="export_list"
+		file_name="inquiryTD"
+		type="export">
+	</parameter>
+	<!-- candidates -->	
+	<candidate name="term_deposit">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+		<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_PENDING
+				</value>
+			</criteria>
+			<criteria>
+			<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					create_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="appl_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					create_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="value_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					transfer_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="value_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					transfer_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="value_date"/>
+				<operator type="superior"/>
+				<value type="date">current</value>
+			</criteria>
+			<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_val_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					tnx_val_date@to
+				</value>
+			</criteria>
+		</filter>
+	</candidate>	
+	<filter or="y">
+			<criteria>
+				<column name="sub_tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N015_SENT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N015_STOPOVER
+				</value>
+			</criteria>
+	</filter>
+	<filter>
+			<criteria>
+				<column name="ObjectDataString@post_dated"/>
+				<operator type="equal"/>
+				<value type="code">N034_YES</value>
+			</criteria>
+		</filter>
+</listdef>

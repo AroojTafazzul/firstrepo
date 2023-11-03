@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="20" data_key="tnx_id">
+	
+	<column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="IR_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" />	
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF"/>	
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="beneficiary_name" align="left" width="14%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect" hidden="y"/>
+	<column name="remitter_name" align="left" width="14%" loca_key="REMITTER_NAME" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amt" align="right" width="14%" loca_key="AMOUNT" />
+	<column name="inp_dttm" align="center" width="10%" loca_key="LAST_MODIFY_DATE" hidden="y" />
+	<column name="sub_tnx_stat_code" align="left" width="12%" loca_key="SUB_TNX_STAT_CODE" columnFilterType="input-multiselect" showCode="y" isColumnSortDisabled="y">
+	<script>
+		if (value.equals("")){
+			var tnxStatCode = row.getColumnValue("tnx_stat_code");
+			var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+			
+			if ("01".equals(""+tnxStatCode+"")) {
+				if ("".equals(""+subTnxStatCode+"") || "01".equals(""+subTnxStatCode+"")){
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N015","01");
+				} 
+				else if("18".equals(""+subTnxStatCode+"")) {
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N015",subTnxStatCode);
+				}
+			} 
+		}
+		if(value.equals("18")) {
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N015","18");
+		}
+		if(value.equals("01")){
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N015","01");
+		}
+		value;
+		</script>
+	</column>
+	<column name="action" align="right" width="14%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_INCOMPLETE"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+		</url>
+	</column>
+	<column name="tnx_type_code" align="left" width="7%" loca_key="TRANSACTION_TYPE_CODE" hidden="y" showCode="y"/>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y"/>
+	<column name="sub_tnx_type_code" hidden="y" showCode="y"/>
+	<column name="action_req_code" hidden="y" showCode="y"/>
+	<column name="tnx_stat_code" hidden="y" showCode="y"/>
+	<column name="inp_dttm" align="center" hidden="y"/>
+	<column name="tnx_val_date" hidden="y"/> 
+	
+	<!-- parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="ref_id"
+		size="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		loca_key="BO_REF"
+		input="y"
+		default=""
+		/>	
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+		<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		input="y"
+		hidden="true"
+		/>
+	<parameter
+		name="remitter_name"
+		loca_key="REMITTER_NAME"
+		size="35"
+		input="y"
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		default=""
+		type="Currency"/>
+	<parameter
+		name="inp_dttm"
+		type="range"
+		loca_key="LAST_MODIFY_DATE"
+		input="y"
+		hidden="true"
+		default="blank"/>
+	
+	<parameter
+		name="export_list"
+		file_name="draftIRList"
+		type="export">
+	</parameter>
+	<parameter
+		name="sub_tnx_stat_code"
+    	size="12"
+    	max_length="20"
+    	loca_key="SUB_TNX_STAT_CODE"
+    	input="y"
+    	default=""
+    	multiple="y"
+    	type="AvailableTradeSubTnxStatus">
+	</parameter>
+		
+	<!-- candidates -->	
+	<candidate name="inward_remittance">
+		<filter>
+		<criteria>
+		<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+			<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+				<criteria>
+			<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+			<column name="beneficiary_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				beneficiary_name
+			</value>
+		</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			
+		    <criteria>
+				<column name="remitter_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					remitter_name
+				</value>
+			</criteria>
+			<criteria>
+			<column name="cur_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				cur_code
+			</value>
+		</criteria>
+		<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+			<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+		</criteria>
+			
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@to
+			</value>
+		</criteria>
+		<criteria>
+			<column name="sub_tnx_stat_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				sub_tnx_stat_code
+			</value>
+		</criteria>
+		</filter>
+	</candidate>
+	
+	
+	<filter or="y">
+		<criteria>
+			<column name="tnx_stat_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N004_INCOMPLETE
+			</value>
+		</criteria>
+	</filter>
+</listdef>

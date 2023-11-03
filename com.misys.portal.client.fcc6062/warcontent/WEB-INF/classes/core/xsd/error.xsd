@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Portal Interfaces Schema Copyright (c) 2000-2011 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for an Error. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Here we modify the 
+			additional fields type to be more restrictive and accept only a
+			limited set of fields. Also, the scope is set to transaction only.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:simpleType name="ErrorAdditionalFieldScopeType">
+		<xs:restriction base="AdditionalFieldScopeType">
+			<xs:enumeration value="transaction" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ErrorAdditionalFieldType" mixed="true">
+		<xs:complexContent>
+			<xs:restriction base="AdditionalFieldType">
+				<xs:attribute name="name" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:token">
+							<xs:enumeration value="total_record_found" />
+							<xs:enumeration value="total_record_expected" />
+							<xs:enumeration value="record_length_found" />
+							<xs:enumeration value="record_length_expected" />
+							<xs:enumeration value="column_count_found" />
+							<xs:enumeration value="column_count_expected" />
+							<xs:enumeration value="separator_expected" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="scope" use="required" type="ErrorAdditionalFieldScopeType" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="error">
+	    <xs:complexType>
+			<xs:sequence>
+				<xs:element name="error_id" type="positiveInteger" />
+				<xs:element minOccurs="0" ref="ref_id"/>
+                <xs:element minOccurs="0" ref="tnx_id"/>
+				<xs:element name="error_code" type="TwentyCharacters"/>
+	            <xs:element name="process" minOccurs="0" type="ThirtyFiveCharacters" nillable="true"/>
+				<xs:element name="gravity" minOccurs="0" type="ThirtyFiveCharacters" nillable="true"/>
+				<xs:element name="line_number" minOccurs="0" type="positiveInteger" nillable="true"/>
+				<xs:element name="column_number" minOccurs="0" type="positiveInteger" nillable="true"/>
+				<xs:element name="value" minOccurs="0" type="TwoThousandCharacters" nillable="true"/>
+				<xs:element name="additional_field" minOccurs="0" maxOccurs="unbounded" type="ErrorAdditionalFieldType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="errors">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="error" />
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+
+</xs:schema>
+

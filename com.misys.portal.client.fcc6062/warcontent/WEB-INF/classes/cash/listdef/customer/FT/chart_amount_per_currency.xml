@@ -1,0 +1,17 @@
+<listdef page='25'>
+	<name>Amount per Ccy.</name>
+	<description>Amount per Ccy.</description>
+	<column name='ref_id' hidden='y'/>
+	<column name='amt' hidden='y'/>
+	<column name='cur_code' hidden='y'/>
+	<column name='liab_amt' hidden='y'/>
+	<column name='entity' hidden='y'/>
+	<candidate name='FT'/>
+	<group graph='pie'>
+		<column name='cur_code'/>
+		<aggregate type='sum' >
+			<column name='amt'/>
+		</aggregate>
+	</group>
+	<executable_flag>Y</executable_flag>
+</listdef>

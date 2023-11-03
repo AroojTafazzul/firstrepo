@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="20" default_order="ref_id" default_order_type="d" data_key="ref_id">
+
+	<column name="ref_id" align="left" width="15%" loca_key="REFERENCEID" columnFilterType="input-multiselect">
+		<!-- JavaScript Pass back -->
+        <js-pass-back keyName="column">
+            <array-element index="0" column="ref_id"/>
+            <array-element index="1" column="drawer_name"/>
+            <array-element index="2" column="amt"/>
+            <array-element index="3" column="entity"/>
+            <array-element index="4" column="appl_date"/>
+        </js-pass-back>
+	</column>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="drawer_name" align="left" width="15%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amt" align="right" width="12%" loca_key="AMOUNT" columnFilterType="input-multiselect"/>
+	<column name="appl_date" align="left" width="12%" loca_key="CREATION_DATE" columnFilterType="input-multiselect"/>
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		type="Currency"
+		loca_key="CURCODE"/>
+	<parameter
+		name="current_date_value"
+		hidden="true"/>
+
+	<!-- candidates -->	
+	<candidate name="export_collection_master">
+		<filter>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_EXPIRE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="different"/>
+				<value type="code">
+					N005_EXPIRED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

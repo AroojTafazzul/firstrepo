@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" help="LIST_HELP_INQUIRY" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.openaccount.listdef_in_invoicefinancing_request" identifier="ref_id" crossPageSelection="y">
+
+	<batch type="save">	
+		<parameter name="SCREEN" value="IN_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_IN_FINANCE_REQUEST"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<icon loca_key="ACTION_USER_SUBMIT" image="/content/images/pic_form_save.gif" permission="fscm_financing_access"/>
+		<javascript url="misys._config.submitOpenAccount('01')"/>
+	</batch>
+	
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url candidate="invoice_master">
+			<parameter name="SCREEN" value="IN_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="IN_FINANCE_REQUEST"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+		</url>
+	</column>	
+	 <column name="entity" align="left" width="30%" loca_key="ENTITY"/>
+	 <column name="seller_name" align="left" width="30%" loca_key="ENTITY_NAME_SELLER"/>
+	<column name="issuer_ref_id" align="left" width="30%" loca_key="INVOICE_REFERENCE_LABEL"/>
+	<column name="buyer_name" align="left" width="30%" loca_key="BUYER_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="base_ccy"  hidden="y"/>
+	<column name="liab_amt" align="right" width="10em" loca_key="GRID_INVOICE_OUTSTANDING_AMOUNT"/>
+	<column name="amt" paramCur="base_ccy" align="right" width="10em" loca_key="GRID_INVOICE_OUTSTANDING_AMOUNT_BASE_CCY"/>
+	<column name="eligibility_flag" align="center" width="10%" loca_key="ELIGIBILITY_STATUS" sort="n"/>
+	<column name="iss_date" align="center" width="6em" loca_key="ISS_DATE"/>
+	<column name="due_date" align="center" width="6em" loca_key="INVOICE_DUE_DATE"/>
+
+	<column name="MyParty@ObjectDataClob@conditions_03" hidden="y"/> 
+	<column name="product_code" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="16"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="seller_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_SELLER"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="issuer_ref_id"
+		size="15"
+		max_length="34"
+		loca_key="INVOICE_REFERENCE_LABEL"
+		input="y"
+		default=""/>
+	<parameter
+		name="buyer_name"
+		loca_key="BUYER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+
+	<parameter
+		name="export_list"
+		file_name="financeIN"
+		type="export">
+	</parameter>
+	<parameter
+		name="due_date"
+		type="range"
+		input="y"
+		range_from_label="INVOICE_DUE_DATE_FROM"
+		range_to_label="INVOICE_DUE_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="eligibility_flag"
+		type="EligibilityStatus"
+		loca_key="ELIGIBILITY_STATUS"
+		input="y"
+		multiple_values="E,P,N"/>
+	<parameter
+		name="base_ccy"
+		input="y"
+		size="3"		
+		max_length="3"
+		loca_key="BASE_CURCODE"
+		type="CounterCurrency"/>
+
+	<!-- candidates -->	
+	<candidate name="invoice_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="eligibility_flag"/>
+				<operator type="like"/>
+				<value type="parameter">
+					eligibility_flag
+				</value>
+			</criteria>
+			<criteria>
+				<column name="issuer_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					issuer_ref_id
+				</value>
+			</criteria>
+			  
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					seller_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="buyer_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					buyer_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="due_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">due_date@from</value>
+			</criteria>
+			<criteria>
+				<column name="due_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">due_date@to</value>
+			</criteria>
+		</filter>	
+	</candidate>
+	
+	<filter>
+		<criteria>
+			<column name="base_ccy"/>
+			<operator type="like"/>
+			<value type="parameter">
+				base_ccy
+			</value>
+		</criteria>
+		<criteria>
+			<column name="fscm_programme_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N084_INVOICE_FINANCING_PROGRAMME
+			</value>
+		</criteria>
+		<criteria>
+			<column name="finance_requested_flag"/>
+			<operator type="equal"/>
+			<value type="code">
+					N086_NO
+				</value>
+		</criteria>
+	</filter>	
+	<group loca_key="TOTAL_INVOICE_AMOUNT_GROUP_SUMMARY" align="left">
+		<column name="base_ccy"/>
+		<aggregate type='sum' align="right" name='amt'>
+			<column name='amt'/>
+		</aggregate>
+	</group>
+</listdef>

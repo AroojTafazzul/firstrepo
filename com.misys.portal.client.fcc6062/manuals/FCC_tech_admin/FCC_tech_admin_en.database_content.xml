@@ -1,0 +1,1416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Initial Database Content</title>
+
+  <section>
+    <title>Overview</title>
+
+    <para><xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> is delivered as a configured
+    package that includes some default database data. Some of them are
+    mandatory data items required by the system and that should therefore not
+    be deleted or amended.</para>
+
+    <para>Additional data are part of the default set-up of the <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> instance and are therefore
+    proposed in order to ease the initial deployment and user administration
+    tasks. The main type of such data is the ones related to the jurisdiction
+    maintenance.</para>
+
+    <para>Below list of file are provided in the initial database
+    package.</para>
+
+    <programlisting>1.permissionRoleValues.sql
+2.jurisdictionValues.sql
+3.masterCurrencyValues.sql
+4.rateValues.sql
+5.codeValues.sql
+6.bankCurrencyValues.sql
+7.psmlValues.sql
+8.a.parameterValues.sql
+8.c.MS_SQL_View.sql
+8.c.ORACLE_View.sql
+8.d.MS_SQL_parameterValues.sql
+8.d.ORACLE_parameterValues.sql
+post.1.bankParameterValues.sql
+1.ORACLE_dashBoardValues.sql
+</programlisting>
+  </section>
+
+  <section>
+    <title>Default Roles and Permission</title>
+
+    <para>The <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> jurisdiction is based on
+    <wordasword>permissions</wordasword> that are granted or not to users via
+    the <wordasword>roles</wordasword>.</para>
+
+    <para>A SQL script is provided and delivered together with the portal in
+    order to reset these permissions and initial roles data: for further
+    details on these parameters, you may refer to <filename
+    moreinfo="none">1.permissionRoleValues.sql</filename></para>
+
+    <para><systemitem>System Permissions</systemitem></para>
+
+    <para>These basic permissions are checked before granting access to the
+    various features of the portal. They are considered strictly as system
+    data, and hence are set up in the database at the installation
+    time.</para>
+
+    <para>Following is a sample snapshot of the existing permissions:</para>
+
+    <programlisting format="linespecific">-- Add default permissions : user management permisions from 40 to 99
+insert into gtp_permission (permission_id, permission) 
+values (47,'modify_role');
+
+... ... ... values (60,'sy_user_access');
+... ... ... values (61,'sy_user_add');
+... ... ... values (62,'sy_user_update');
+... ... ... values (63,'sy_user_delete');
+... ... ... values (64,'sy_user_authentication');
+... ... ... values (65,'sy_user_deparment');
+
+... ... ... values (70,'sy_bank_access');
+... ... ... values (71,'sy_bank_add');
+... ... ... values (72,'sy_bank_update');
+... ... ... values (73,'sy_bank_delete');
+... ... ... values (74,'sy_bank_authentication');
+
+... ... ... values (80,'sy_customer_access');
+... ... ... values (81,'sy_customer_add');
+... ... ... values (82,'sy_customer_update');
+... ... ... values (83,'sy_customer_delete');
+... ... ... values (84,'sy_customer_authentication');
+... ... ... values (85,'sy_customer_access');
+... ... ... values (86,'sy_customer_update);
+... ... ... values (87,'sy_customer_bank_access');
+
+-- Alert Admin permissions from 90 to 99
+... ... ... values (90,'sy_alert_access');
+... ... ... values (91,'sy_alert_save);
+... ... ... values (92,'sy_bank_alert_access');
+... ... ... values (93,'sy_bank_alert_save);
+... ... ... values (94,'sy_alert_email');
+
+<!-- CRM permissions from 100 to 149
+... ... ... values (100, 'add_project');
+... ... ... values (101, 'add_faq');
+... ... ... values (102, 'add_topic');
+... ... ... values (103, 'add_question');
+... ... ... values (104, 'add_answer');
+... ... ... values (105, 'update_project');
+... ... ... values (106, 'update_faq');
+... ... ... values (107, 'update_topic');
+... ... ... values (109, 'update_question');
+... ... ... values (110, 'update_answer');
+... ... ... values (111, 'view_project');
+... ... ... values (112, 'view_faq');
+... ... ... values (113, 'view_topic');
+... ... ... values (114, 'view_question');
+... ... ... values (115, 'view_answer');
+... ... ... values (116, 'delete_project');
+... ... ... values (117, 'delete_faq');
+... ... ... values (118, 'delete_topic');
+... ... ... values (119, 'delete_question');
+... ... ... values (120, 'delete_answer'); -->
+
+-- Help Admin permission from 130 to 139
+... ... ... values (130, 'admin_help');
+
+-- Common transaction permisiosns from 200 to 399
+... ... ... values (200, 'lc_access');
+... ... ... values (201, 'lc_save');
+... ... ... values (203, 'lc_upload');
+... ... ... values (204, 'lc_backtoback');
+... ... ... values (206, 'lc_purged_maintain');
+... ... ... values (207, 'lc_unsigned_maintain');
+... ... ... values (208, 'lc_rejected_maintain');
+
+... ... ... values (210, 'sg_access');
+... ... ... values (211, 'sg_save'); 
+... ... ... values (216, 'sg_purged_maintain');
+... ... ... values (217, 'sg_unsigned_maintain');
+... ... ... values (218, 'sg_rejected_maintain');
+
+... ... ... values (220, 'tf_access');
+... ... ... values (221, 'tf_save'); 
+... ... ... values (226, 'tf_purged_maintain');
+... ... ... values (227, 'tf_unsigned_maintain');
+... ... ... values (228, 'tf_rejected_maintain');
+
+... ... ... values (230, 'el_access');
+... ... ... values (231, 'el_save'); 
+... ... ... values (236, 'el_purged_maintain');
+... ... ... values (237, 'el_unsigned_maintain');
+
+... ... ... values (240, 'mc_access');
+... ... ... values (245, 'batch_submission');
+
+... ... ... values (260, 'bg_access');
+... ... ... values (261, 'bg_save'); 
+... ... ... values (266, 'bg_purged_maintain');
+... ... ... values (267, 'bg_unsigned_maintain');
+... ... ... values (268, 'bg_rejected_maintain');
+
+... ... ... values (270, 'ec_access');
+... ... ... values (271, 'ec_save');
+... ... ... values (273, 'ec_direct');
+... ... ... values (274, 'ec_regular'); 
+... ... ... values (276, 'ec_purged_maintain');
+... ... ... values (277, 'ec_unsigned_maintain');
+... ... ... values (278, 'ec_rejected_maintain');
+
+... ... ... values (280, 'ic_access');
+... ... ... values (281, 'ic_save'); 
+... ... ... values (286, 'ic_purged_maintain');
+... ... ... values (287, 'ic_unsigned_maintain');
+
+... ... ... values (290, 'si_access');
+... ... ... values (291, 'si_save'); 
+... ... ... values (293, 'si_standard'); 
+... ... ... values (294, 'si_backtoback');
+... ... ... values (295, 'si_freeformat'); 
+... ... ... values (296, 'si_purged_maintain');
+... ... ... values (297, 'si_unsigned_maintain');
+... ... ... values (298, 'si_rejected_maintain');
+
+... ... ... values (300, 'sr_access');
+... ... ... values (301, 'sr_save'); 
+... ... ... values (306, 'sr_purged_maintain');
+... ... ... values (307, 'sr_unsigned_maintain');
+
+... ... ... values (320, 'ft_access');
+... ... ... values (321, 'ft_save');
+... ... ... values (323, 'ft_internal');
+... ... ... values (324, 'ft_outgoing'); 
+... ... ... values (326, 'ft_purged_maintain');
+... ... ... values (327, 'ft_unsigned_maintain');
+... ... ... values (328, 'ft_rejected_maintain');
+
+-- Event permissions from 400 to 449
+... ... ... values (400, 'event_access');
+... ... ... values (401, 'event_admin');
+
+-- Additional System Feature permissions from 450 to 499
+... ... ... values (450,'sy_phrases_admin');
+... ... ... values (451,'sy_beneficiary_admin');
+... ... ... values (452,'sy_bank_admin');
+... ... ... values (453,'sy_account_admin');
+-- Access to the bank <xi:include href="../entities_en.xml"
+        xpointer="ent_System_F" xmlns:xi="http://www.w3.org/2001/XInclude"/> menu
+... ... ... values (460,'bank_sy_access');
+-- Access to the customer <xi:include href="../entities_en.xml"
+        xpointer="ent_System_F" xmlns:xi="http://www.w3.org/2001/XInclude"/> menu
+... ... ... values (461,'cust_sy_access');
+-- Access to the jurisdiction submenu
+... ... ... values (462,'sy_jurisdiction_access');
+-- Access to the data submenu
+... ... ... values (463,'sy_data_access');
+
+-- Report Designer permissions from 470 to 479
+... ... ... values (470,'sy_bank_report_save');
+... ... ... values (471,'sy_bank_report_execute');
+... ... ... values (472,'sy_cust_report_save');
+... ... ... values (473,'sy_cust_report_execute');
+
+-- Access to the audit permissions from 500 to 519
+... ... ... values (500,'audit_access');
+
+-- News permissions from 520 to 539
+... ... ... values (520,'news_maintenance');
+
+-- Access to Middle Office from 600 to 750
+... ... ... values (600, 'tradeadmin_access');
+... ... ... values (601, 'tradeadmin_create_reporting');
+
+... ... ... values (610, 'tradeadmin_lc_access');
+... ... ... values (611, 'tradeadmin_lc_create_reporting');
+
+... ... ... values (620, 'tradeadmin_sg_access');
+... ... ... values (621, 'tradeadmin_sg_create_reporting');
+
+... ... ... values (630, 'tradeadmin_tf_access');
+... ... ... values (631, 'tradeadmin_tf_create_reporting');
+
+... ... ... values (640, 'tradeadmin_el_access');
+... ... ... values (641, 'tradeadmin_el_create_reporting');
+... ... ... values (642, 'tradeadmin_el_create_freeformat_reporting');
+
+... ... ... values (650, 'tradeadmin_bg_access');
+... ... ... values (651, 'tradeadmin_bg_create_reporting');
+
+... ... ... values (660, 'tradeadmin_ec_access');
+... ... ... values (661, 'tradeadmin_ec_create_reporting');
+
+... ... ... values (670, 'tradeadmin_ic_access');
+... ... ... values (671, 'tradeadmin_ic_create_reporting');
+
+... ... ... values (680, 'tradeadmin_si_access');
+... ... ... values (681, 'tradeadmin_si_create_reporting');
+
+... ... ... values (690, 'tradeadmin_sr_access');
+... ... ... values (691, 'tradeadmin_sr_create_reporting');
+... ... ... values (692, 'tradeadmin_sr_create_freeformat_reporting');
+
+... ... ... values (700, 'tradeadmin_ft_access');
+... ... ... values (701, 'tradeadmin_ft_create_reporting');  
+
+... ... ... values (735, 'tradeadmin_batch_submission');
+... ... ... values (739, 'tradeadmin_maintain);</programlisting>
+
+    <para><emphasis role="strong"><systemitem>System
+    Roles</systemitem></emphasis></para>
+
+    <para>Three <wordasword>roles</wordasword> are also mandatory in the
+    database, and should not be deleted nor updated. They are given to the
+    customer's company administrator or bank administrator when a company or
+    bank is created, so that the administrator has the minimum required
+    permissions to start performing its administrative tasks.</para>
+
+    <para>Customer <literal>admin</literal> user:</para>
+
+    <programlisting format="linespecific">-- Role for Customer Administrator (<xi:include
+        href="../entities_en.xml" xpointer="ent_System_F"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> permissions)
+insert into gtp_role (role_id, rolename, roledest, roletype, owner_id) values (10, 'sy_admin_user', '03', '01', 0);
+insert into gtp_role_permission (role_id,permission_id)
+  select gtp_role.role_id, gtp_permission.permission_id
+   from gtp_role, gtp_permission
+   where gtp_role.rolename = 'sy_admin_user' and gtp_permission.permission in ('
+        cust_sy_access', '
+        sy_user_update', '
+        sy_user_access');</programlisting>
+
+    <para>Bank <literal>bankadmin</literal> user:</para>
+
+    <programlisting format="linespecific">-- Role for Bank Administrator (<xi:include
+        href="../entities_en.xml" xpointer="ent_System_F"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> permissions)
+insert into gtp_role (role_id, rolename, roledest, roletype, owner_id) values (11, 'sy_bank_admin_user', '01', '01', 0);
+insert into gtp_role_permission (role_id,permission_id)
+  select gtp_role.role_id, gtp_permission.permission_id
+   from gtp_role, gtp_permission
+   where gtp_role.rolename = 'sy_bank_admin_user'
+   and gtp_permission.permission in ('bank_sy_access', 'sy_user_access', '
+        sy_user_update');</programlisting>
+
+    <para>Bank group <literal>bankadmin</literal> user:</para>
+
+    <programlisting format="linespecific">-- Default Roles for Bank Group Administrator (<xi:include
+        href="../entities_en.xml" xpointer="ent_System_F"
+        xmlns:xi="http://www.w3.org/2001/XInclude"/> permissions)
+insert into gtp_role (role_id, rolename, roledest, roletype, owner_id) values (12, 'sy_bank_group_admin_user, '02', '01', 0');
+insert into gtp_role_permission (role_id,permission_id)
+  select gtp_role.role_id, gtp_permission.permission_id
+   from gtp_role, gtp_permission
+   where gtp_role.rolename = 'sy_bank_group_admin_user'
+   and gtp_permission.permission in ('bank_sy_access', 'sy_user_access', 'sy_user_update','sy_jurisdiction_access', 'modify_role');</programlisting>
+  </section>
+
+  <section>
+    <title>Default Roles to Bank Group</title>
+
+    <para>A few sample roles are also proposed and delivered with <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>. They are typical example of
+    roles (and thus typical user profiles, seen as groups of basic
+    permissions) that should ease the initial administration and user creation
+    tasks.</para>
+
+    <para>A SQL script is provided and delivered together with the portal in
+    order to assign default roles to default bank group administrator, for
+    further details on these default roles, you may refer to <filename
+    moreinfo="none">2.jurisdictionValues.sql</filename>.</para>
+
+    <para>An annex of the functional bank administrator manual is listing more
+    in details the permissions as well as the default roles provided with the
+    system upon its installation.</para>
+  </section>
+
+  <section>
+    <title>Currency Table</title>
+
+    <para>Besides the jurisdiction data items seen above, <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> also needs to be loaded with
+    the currency codes that are going to be available to the Web users
+    throughout the various phases of the transaction handling within the
+    system.</para>
+
+    <para>You may refer to the <emphasis>Technical Reference
+    documentation</emphasis> for further details on the data model associated
+    with those currencies. The technical administrator should keep in mind
+    that only the following information is mandatory when inserting a new
+    currency in the database:</para>
+
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.7*"/>
+
+        <colspec colname="c2" colwidth="7.2*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Column</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">ISO_CODE</database> </para></entry>
+
+            <entry valign="top"><para>This is the actual 3-digits code for the
+            currency. E.g. <literal>EUR</literal> for the Euro,
+            <literal>USD</literal> for the United States Dollar,
+            etc</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">NAME</database> </para></entry>
+
+            <entry valign="top"><para>Up to 35 characters to give a name to
+            the currency. This resource is not localized and thus will not be
+            translated for the language of each user when presented with the
+            list of available currency. Therefore the usual standard
+            descriptions should be used.</para> <para>Note that this name will
+            be what the customer sees and a very consistent naming convention
+            should therefore chosen across all currencies (e.g. all in upper
+            case).</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">DECIMAL_NUMBER</database> </para></entry>
+
+            <entry valign="top"><para>This is a numeric representing the
+            number of decimals used to express amount in this currency. E.g. 0
+            decimal for <literal>JPY</literal>, 2 for
+            <literal>USD</literal>.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para>When the functional administrator of the portal asks the technical
+    administrator to add a new currency definition within <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>, a new record will have to be
+    inserted accordingly in the <database
+    moreinfo="none">GTP_MASTER_CURRENCY</database> table.</para>
+
+    <para>Among the scripts provided together with the standard distribution
+    of the portal, one of them is providing a sample sets of such SQL
+    statements with frequently used currency definitions. Their form is the
+    following:</para>
+
+    <programlisting format="linespecific">insert into gtp_master_currency(ISO_CODE, NAME, DECIMAL_NUMBER) values ('USD', 'UNITED STATES DOLLAR', 2); </programlisting>
+
+    <para>Default currency script is provided for those currency static data
+    in: <filename moreinfo="none">3.masterCurrencyValues.sql</filename></para>
+  </section>
+
+  <section>
+    <title>Currency Exchange Rates</title>
+
+    <para>The other database items not available through the Web interface and
+    that therefore require a maintenance to be performed by the technical
+    administrator (or most likely done through automated scripts under his
+    responsibility) are also related to the currencies and involve their
+    exchange rates. The frequency of refresh for this table will most likely
+    be determined by the functional administrator as well as the constraints
+    imposed by the source of those rates.</para>
+
+    <para>The currency exchange rates are currently used within <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> to compare an amount
+    expressed in one currency against another one, in order to check the
+    validity of a transaction against the customer's authorisation matrix.
+    Only the middle rates are used for this conversion.</para>
+
+    <para>The <database moreinfo="none">GTP_XCH_RATES</database> table is used
+    to define those rates. This base currency against which each other
+    currencies will be expressed will most likely be the local currency of the
+    site managing the instance of <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>. The
+    structure of this table is the following:</para>
+
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.4*"/>
+
+        <colspec colname="c2" colwidth="7.5*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Column</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">ISO_CODE</database> </para></entry>
+
+            <entry valign="top"><para>This is the 3-digits code for the
+            currency whose rates are detailed.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">BASE_ISO_CODE</database> </para></entry>
+
+            <entry valign="top"><para>The base currency against which the
+            exchange rates are expressed.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">PATY_VAL</database> </para></entry>
+
+            <entry valign="top"><para>This is the standard parity of the
+            currency towards the base currency, as known by the dealing room
+            providing the rates. It is a number representing a power of 2.
+            </para> <para>For instance, if the base currency is
+            <literal>USD</literal> and the currency studied is
+            <literal>IDR</literal> bearing a parity of 100 against the US
+            Dollar, it means that 100 <literal>IDR</literal> are equivalent to
+            x <literal>USD</literal> where x is the rate found in the related
+            column (see below).</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">BUY_TT_RATE</database> </para></entry>
+
+            <entry valign="top"><para>A number on 12 positions (including a
+            maximum of 8 decimals) to indicate the Buy rate for the
+            currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">MID_TT_RATE</database> </para></entry>
+
+            <entry valign="top"><para>The Middle rate for the currency. This
+            is the only value, which is currently used within <xi:include
+            href="../entities_en.xml" xpointer="ent_appli"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>. It helps the system
+            build an adequate comparison between the amount of transaction
+            (expressed in any currency) and the maximum amount found in the
+            authorisation matrix (possibly in another
+            currency).</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">SELL_TT_RATE</database> </para></entry>
+
+            <entry valign="top"><para>Same as above but dedicated to the Sell
+            rate of the currency.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">EURO_RATE</database> </para></entry>
+
+            <entry valign="top"><para>This column contains 0 if the currency
+            is known as OUTside of the Euro zone. If it is a so-called IN
+            currency, it contains the amount of this currency found in 1 Euro.
+            For instance, for <literal>FRF</literal> ISO code, the column will
+            contain <literal moreinfo="none">6,55957</literal> since <literal
+            moreinfo="none">1 <literal>EUR</literal></literal> is equivalent
+            to <literal moreinfo="none">6,55957 FRF</literal>.</para>
+            <para>Note that for such IN currencies, the Buy, Middle and Sell
+            rates will then contain not the rates between the currency and the
+            base currency, but between the Euro and the base currency. The
+            same applies to the parity column, which will be the one between
+            the Euro and the base currency.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <programlisting format="linespecific">insert into gtp_xch_rates (brch_code, bank_abbv_name, iso_code, base_iso_code, paty_val, buy_tt_rate, 
+    mid_tt_rate, sell_tt_rate, euro_rate) values ('00001', '*', 'ADP', 'SGD', '1', 0.0107, 0.0107, 0.0107, 0); </programlisting>
+
+    <para>Default script is provided for those rates in: <filename
+    moreinfo="none">4.rateValues.sql</filename></para>
+  </section>
+
+  <section>
+    <title>Country Codes</title>
+
+    <para>It is required to be loaded with the currency codes that are going
+    to be available to the Web users throughout the various phases of the
+    transaction handling within the system.</para>
+
+    <para>The country codes are currently used within <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> to select the country of a
+    benefiicary/counterpaty/buyer/seller or bank.</para>
+
+    <para>The <database moreinfo="none">GTP_CODE_DATA</database> table is used
+    to define those country codes. The structure of this table is the
+    following:</para>
+
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.4*"/>
+
+        <colspec colname="c2" colwidth="7.5*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Column</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">CODE_ID</database> </para></entry>
+
+            <entry valign="top"><para>This value represents Business
+            code.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">LONG_DESC</database> </para></entry>
+
+            <entry valign="top"><para>Country name in full
+            form.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">LANGUAGE</database> </para></entry>
+
+            <entry valign="top">Language of the country.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">CODE_VAL</database> </para></entry>
+
+            <entry valign="top"><para>2 digit country code. For example, Hong
+            Kong - 'HK'.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">COMPANY_ID</database> </para></entry>
+
+            <entry valign="top"><para>Company id to which the country code
+            supports.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">PRODUCT_CODE</database> </para></entry>
+
+            <entry valign="top"><para>Product code to which country code
+            supports.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">SUB_PRODUCT_CODE</database> </para></entry>
+
+            <entry valign="top">Sub product code to which country code
+            supports.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <programlisting>insert into gtp_code_data (brch_code, company_id, product_code, code_id, code_val, short_desc, long_desc, in_use_flag, 
+    wild_card_ind, language, sub_product_code) values ('00001', '*', '*', 'C006', 'AF', '', 'Afghanistan', 'Y', '1000', '*', '*');
+    </programlisting>
+
+    <para>Default script is provided for those country codes in: <filename
+    moreinfo="none">5.codeValues.sql</filename></para>
+  </section>
+
+  <section>
+    <title>Bank Currency Codes</title>
+
+    <para>It is required to be loaded with the bank currency codes that are
+    going to be supported per bank in the system.</para>
+
+    <para>The <database moreinfo="none">GTP_BANK_CURRENCY</database> table is
+    used to define those currency codes per bank basis. The structure of this
+    table is the following:</para>
+
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.4*"/>
+
+        <colspec colname="c2" colwidth="7.5*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Column</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">BANK_ABBV_NAME</database> </para></entry>
+
+            <entry valign="top"><para>This value represents Business
+            code.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">ISO_CODE</database> </para></entry>
+
+            <entry valign="top"><para>Country name in full
+            form.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <programlisting>insert into gtp_bank_currency (bank_abbv_name, iso_code) values ('*', 'adp');</programlisting>
+
+    <para>Default script is provided for those country codes in: <filename
+    moreinfo="none">6.bankCurrencyValues.sql</filename></para>
+  </section>
+
+  <section>
+    <title>Default PSML</title>
+
+    <para>Through default script in <filename
+    moreinfo="none">2.jurisdictionValues.sql</filename> will contain a default
+    bank, 'MISYSBANK' which need to be replaced with Client bank group. For
+    that bank group PSML information script need to be executed. Replace the
+    'MISYSBANK' with client bank group name and execute the sript provided in
+    this file.</para>
+
+    <para>The <database moreinfo="none">GTP_USER_PROFILE</database> table is
+    used to store the PSML records. The structure of this table is the
+    following:</para>
+
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="c1" colwidth="2.4*"/>
+
+        <colspec colname="c2" colwidth="7.5*"/>
+
+        <thead>
+          <row>
+            <entry valign="top"><para>Column</para></entry>
+
+            <entry valign="top"><para>Description</para></entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">PSML_ID</database> </para></entry>
+
+            <entry valign="top"><para>Unique PSML id.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">COMPANY_NAME</database> </para></entry>
+
+            <entry valign="top"><para>Company name to which the PSML belongs
+            to.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">LANGUAGE</database> </para></entry>
+
+            <entry valign="top">Language of the company country.</entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">PAGE</database> </para></entry>
+
+            <entry valign="top"><para>PSML file name.</para></entry>
+          </row>
+
+          <row>
+            <entry valign="top"><para> <database
+            moreinfo="none">PROFILE</database> </para></entry>
+
+            <entry valign="top"><para>PSML content for the
+            company.</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para>This default PSML script is provided for MISYSBANK in : <filename
+    moreinfo="none">7.psmlValues.sql</filename></para>
+  </section>
+
+  <section>
+    <title>Parameter setup</title>
+
+    <para>There are few functional scenarios where bank wants to configure the
+    valid dropdown values, imposing validation rules, necessary dynamic
+    information. Though this parameter script bank will be able to set up the
+    required information which can be configuring dropdown values of an
+    dropdown box or related to product or system features of portal through
+    this scripts. Below are the different functional scenarios as
+    follows</para>
+
+    <note>
+      <para>Before executing/configuring parameter sql scripts replace the
+      default bank abbreviation name 'DEMOBANK' with client bank abbreviation
+      name and execute.</para>
+    </note>
+
+    <itemizedlist>
+      <listitem>
+        <para>General parameters. Used to setup values which are not tied with
+        bank. For below functional scenarios bank configure these
+        parameters.</para>
+
+        <itemizedlist>
+          <listitem>
+             Auto Generated Documents - Used to configure style sheet file name, generated file name, attachment title, content type as defined by N033, auto-generated document code N107 and language. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>  INSERT INTO GTP_LARGE_PARAM_KEY (PARAM_ID, BRCH_CODE, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7,
+ KEY_8, KEY_9, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20, PARM_ID, WILD_CARD_IND) 
+VALUES (GTP_PARAM_SEQ.NEXTVAL, '00001', '*', 'EC', 'DEMOBANK', '03', '01', '02', '03', 'en', '01', 'Y', 'N', '**', '**', '**',
+ '**', '**', '**', '**', '**', '**', '**', 'P243', '1111111111111111111110' );
+</programlisting>
+
+             
+
+            <programlisting>INSERT INTO GTP_LARGE_PARAM_DATA (PARAM_ID, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, DATA_6) 
+VALUES (GTP_PARAM_SEQ.CURRVAL, '/trade/xsl/fo/ec_coverletter.xsl', 'coverletter.pdf', 'Cover Letter', 'application/pdf',
+ '05', 'en'); </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             IBAN codes - Used to configure IBAN character country codes and character currency code. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>insert into gtp_param_data (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND,
+DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, 
+DATA_17, DATA_18, DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) 
+values('00001', 'P301', '**', 'AD', 'ALL', '**', '**', '**', '**', '**', '**', '**', '**', 'Y', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Bulk permissions. Used to configure the permissions for bulk transaction types. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9,
+WILD_CARD_IND, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16,
+DATA_17, DATA_18, DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) VALUES ('00001', 'P120',
+'*', 'BK', 'MPTPT', '**', '**', '**', '**', '**', '**', '**', '**', 'bk_mptpt_access', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**',
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Account Type description. Used to configure the account product types supporting in portal and their description. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P311', '*', 'CORSAV',
+'CS', '**', '**', '**', '**', '**', '**', '**', '**', '02', 'Corporate Savings Account', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Biller category. Used to configure Biller category code and description. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>Insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1,
+ DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18,
+ DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P304', '*', 
+'Telephone', '**', '**', '**', '**', '**', '**', '**', '**',  '1011111111111111111111', 'Telephone Bills', '**', '**', '**', '**', '**', '**', 
+ '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**'); </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Paper Instruments country codes. Used to configure valid country codes for paper instrument demand draft tranaction.Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_CODE_DATA (CODE_ID, LONG_DESC, LANGUAGE, CODE_VAL, BRCH_CODE, COMPANY_ID, IN_USE_FLAG, PRODUCT_CODE, SHORT_DESC, WILD_CARD_IND, 
+SUB_PRODUCT_CODE ) VALUES ('C006', 'Thailand', '*', 'TH', '00001', '*', 'Y', 'FT', null, '1000', 'PIDD' );</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Cheque number range. - Used to configure cheque number range of any non zero positive number. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND,
+DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17,
+DATA_18, DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) VALUES ('00001', 'P996', '**',
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '11111', '100', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**',
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**' );</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Cheque book request. - Used to configure Number of Cheque Books Request Minimum, Maximum configuration. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1,
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) VALUES ('00001', 'P997', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '11111', '1', '10', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**' );</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Clearing Codes. - Used to configure Clearing Codes. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>
+            INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, DATA_2, DATA_3, 
+            DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, DATA_19, DATA_20, KEY_10, KEY_11,
+            KEY_12, KEY_13, KEY_14,  KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) VALUES ('00001', 'P300', '**', 'AT', 'DKR', 'BLZ', 'AT', '**', '**', '**', '**', '**', 
+            '11110000000000000000', 'Austrian Bankleitzahl', 'Y', '5 numeric without spaces', '^[0-5]{5}$', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+            '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             News Maintenance Screen -- Layout Data. - Used to configure news deafult styleSheet for displaying the new to cusutomer. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>
+            insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, 
+            DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17,
+            KEY_18, KEY_19, KEY_20) values ('00001', 'P254', '*', 'display-news-default.xsl', '**', '**', '**', '**', '**', '**', '**', '**', '**', 'NEWS_STYLE_SHEET_DEFAULT', '**', '**', '**', '**', 
+            '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Remittance Description and Remittance code. To retrieve remittance description for product MT103 and MT202. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>
+             insert into GTP_CODE_DATA (CODE_ID, LONG_DESC, LANGUAGE, CODE_VAL, PRODUCT_CODE, SUB_PRODUCT_CODE, BRCH_CODE, COMPANY_ID, IN_USE_FLAG, SHORT_DESC, WILD_CARD_IND) values 
+             ('C007', 'Remittance Description', '*', 'Remittance Code', '*', '*', '00001', '*', 'Y', null, '1000');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             To populate product type in Beneficiary Upload Dropdown. Below is the sample script that will demonstrate configuration. 
+
+            <programlisting>
+             INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5,
+             DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, 
+             KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) VALUES ('00001', 'P955', '*', 'TPT', '**', '**', '**', '**', '**', '**', '**', '**', '**', 'TPT', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Used to configure Collaboration for both Cash and Trade products. Below is the sample script that will demonstrate configuration. 
+
+            <programlisting>
+             INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_10, WILD_CARD_IND, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5)
+             VALUES ('00001', 'P216', '*', 'FT', 'INT', '**', '**', '**', '**', '**', '**', '**', '**', '*', 'Y', 'Y', '**', '', '');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Used to configure Bulk payroll upload types. 
+
+            <programlisting>
+             INSERT INTO GTP_PARAM_DATA ( BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+             VALUES ('00001','P119','*','DEMOBANK','UPINT','PAYMT','PCSV','**','**','**','**','**','**','Internal Payment','no_permission','Portal_CSV','**','CSV','Y','N','Y','N','N','N','**','**','Y','N','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Used to configure Bulk payroll upload types. 
+
+            <programlisting>
+             INSERT INTO GTP_PARAM_DATA ( BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+             VALUES ('00001','P119','*','DEMOBANK','UPINT','PAYMT','PCSV','**','**','**','**','**','**','Internal Payment','no_permission','Portal_CSV','**','CSV','Y','N','Y','N','N','N','**','**','Y','N','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             source configuration for P120. 
+
+            <programlisting>
+			Insert into GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P120','*','BK','ULINT','**','**','**','**','**','**','**','**','bk_ulint_access','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');
+            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Configuring P760 (Email Alert Customisation,Data_3 here is Folder Path for Image to be included in mail,This path is just a sample please replace this with the path of the folder which is there on server where your application is deployed and contains image(s) to be attached ). 
+
+            <programlisting>
+			Insert into GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P760','*','*','01','*','*','*','*','*','**','**','1001000000000000000000','SUBMISSION_ALERT_SUBJECT_BANK','SUBMISSION_ALERT_BODY_BANK_HTML','D://templates//images','Y','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');            </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Configuring P750 (configure Limit screen Product type code, Product Template). 
+
+            <programlisting>
+			INSERT INTO GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P750','2','MISYSBANK','*','**','**','**','**','**','**','**','1111111111111111111111','Y','Y','Y','**','**','**','**',null,null,'**',null,'**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');           </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Configuring P751(configure Products Applicable for Facility and Limit). 
+
+            <programlisting>
+			INSERT INTO GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P751','*','*','BG','*','**','**','**','**','**','**','11100000000000000000',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,'**','**','**','**','**','**','**','**','**','**','**');        </programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Configuring P761(configure the type of input source for the web service. The source can be ERP,SSO etc. This parameter enables client to control the usage of web service for specific users or actions) 
+
+            <programlisting>
+			INSERT INTO GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			 values ('00001','P761','*','*','*','*','*','*','*','*','**','**','1000000001111111111111','Y','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Configuring P763 (configure the message sequence of incoming TMA messages, for which an IO event should be generated). 
+
+            <programlisting>
+			INSERT INTO GTP_PARAM_DATA ( BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20 ) 
+			VALUES ( '00001', 'P763', '*', 'IO', 'ESTABLISHMENT', '001', '010', '018', '019', '**', '**', '**', '1111100000000000000000', '019:001:018:010', 'Y', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury SPOT Value Date. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND,PREFERRED_ORDER) 
+			VALUES ('C035','CASH','en','CASH','FX','*','00001','*','Y','CASH','1000',1);</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury FORWARD Value Date. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND,PREFERRED_ORDER) 
+			VALUES ('C036','Date','en','dt','FX','*','00001','*','Y','Date','1000',1);</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury WINDOW FORWARD Option Date. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND,PREFERRED_ORDER) 
+			VALUES ('C037','Date','en','dt','FX','*','00001','*','Y','Date','1000',1);</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury WINDOW FORWARD Value Date. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND,PREFERRED_ORDER) 
+			VALUES ('C038','Date','en','dt','FX','*','00001','*','Y','Date','1000',1);</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             FX SPLIT. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND) 
+			VALUES ('C039','Payment Split','en','93','FX','*','00001','*','Y','Payment Split','1000');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             FT Request date-term-options. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND,PREFERRED_ORDER) 
+			VALUES ('C041','Date','en','dt','FT','*','00001','*','Y','Date','1000',1);</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury TD Request Start date-term-options. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND,PREFERRED_ORDER) 
+			VALUES ('C043','Date','en','dt','TD','*','00001','*','Y','Date','1000',1);</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury TD Request value-date-static-options. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND) 
+			VALUES ('C044','SPOT','en','SPOT','TD','*','00001','*','Y','SPOT','1000');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury TD Request Maturity date-term-options. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND,PREFERRED_ORDER) 
+			VALUES ('C045','Date','en','dt','TD','*','00001','*','Y','Date','1000',1);</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Treasury TD ACTION_DETAILS - options. 
+
+            <programlisting>
+			INSERT INTO GTP_CODE_DATA (CODE_ID,LONG_DESC,LANGUAGE,CODE_VAL,PRODUCT_CODE,SUB_PRODUCT_CODE,BRCH_CODE,COMPANY_ID,IN_USE_FLAG,SHORT_DESC,WILD_CARD_IND) 
+			VALUES ('C046','Rollover','en','ROLLOVER','TD','*','00001','*','Y','Rollover','1000');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             P347 Configuration for fetching the adress_type based on product. 
+
+            <programlisting>
+			--Default 
+			INSERT into GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P347','*','*','**','**','**','**','**','**','**','**','**','PA','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');
+			
+			--Trade Products
+			INSERT into GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P347','*','SI','**','**','**','**','**','**','**','**','**','SA','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');
+
+			--Cash Products
+			INSERT into GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P347','*','FT','INT','**','**','**','**','**','**','**','**','CA','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');
+			
+			--License
+			INSERT into GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) 
+			values ('00001','P347','*','LS','**','**','**','**','**','**','**','**','**','PA','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');		             
+
+			--Loan
+			INSERT into GTP_PARAM_DATA (BRCH_CODE,PARM_ID,COMPANY_ID,KEY_1,KEY_2,KEY_3,KEY_4,KEY_5,KEY_6,KEY_7,KEY_8,KEY_9,WILD_CARD_IND,DATA_1,DATA_2,DATA_3,DATA_4,DATA_5,DATA_6,DATA_7,DATA_8,DATA_9,DATA_10,DATA_11,DATA_12,DATA_13,DATA_14,DATA_15,DATA_16,DATA_17,DATA_18,DATA_19,DATA_20,KEY_10,KEY_11,KEY_12,KEY_13,KEY_14,KEY_15,KEY_16,KEY_17,KEY_18,KEY_19,KEY_20) values ('00001','P347','*','LN','**','**','**','**','**','**','**','**','**','PA','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**','**');
+			
+			</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Database specific script can be found in 8.d.ORACLE_parameterValues.sql for oracle and 8.d.MS_SQL_parameterValues.sql for MSSQL db. Below is the example for one of license product mapping entry in 8.d.ORACLE_parameterValues.sql. you can refer these files for details. 
+
+            <programlisting>
+			--License Product mapping - default values
+			INSERT INTO GTP_LARGE_PARAM_KEY (PARAM_ID, BRCH_CODE, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20, PARM_ID, WILD_CARD_IND) 
+			VALUES (GTP_PARAM_SEQ.NEXTVAL, '00001', '*', 'IML',  '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 'P051', '**' );
+        </programlisting>
+
+             
+          </listitem>
+          
+             <listitem>
+             Database specific script can be found in 1.ORACLE_dashBoardValues.sql for oracle and 1.MS_SQL_dashBoardValues.sql for MSSQL db. Below is the example for one of  entry in 8.d.ORACLE_parameterValues.sql. you can refer these files for details. 
+
+            <programlisting>
+			--GTP_WIDGET_DETAILS mapping - default values
+			Insert into GTP_WIDGET_DETAILS (WIDGET_ID,WIDGET_COLUMN,WIDGET_ROW,WIDGET_SELECTOR,WIDGET_NAME,PERMISSION_NAME,DASHBOARD_CATEGORY,WIDGET_CONFIG) values (1,3,3,'accountBalanceComponent','accountBalance','account_balance_access','cash', EMPTY_BLOB());
+        </programlisting>
+
+             
+          </listitem>
+          
+        </itemizedlist>
+
+        <note>
+           This default script is provided in : 
+
+          <filename moreinfo="none">8.a.parameterValues.sql</filename>
+
+           
+        </note>
+      </listitem>
+
+      <listitem>
+        <para>Bank specific parameters. Used to setup values which are tied
+        with bank. For below functional scenarios bank configure these
+        parameters.</para>
+
+        <itemizedlist>
+          <listitem>
+             Term Deposit Types. Used to configure Term Deposit types for a particular bank. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P653', '*', 'DEMOBANK',
+'1', '**', '**', '**', '**', '**', '**', '**', '**', 'FIXED_DEPOSIT', 'GTD', 'TDS', '1',  'W', 'HKD', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             TD Maturity Instruction. Used to configure Term Deposit Maturity Instructions for a particular bank in association with deposit type.Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P654', '*', 'DEMOBANK',
+'1', '**', '**', '**', '**', '**', '**', '**', '**', '*', 'TDC', 'Auto Renewal of Principal and Interest', '01', 'N', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             TD No.of days before Maturity. Used to configure the number of day before maturity an TD Update/Withdrwal is valid to perform. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P657', '*', 'DEMOBANK', 
+'TD', '**', '**', '**', '**', '**', '**', '**', '**', 'Y', '3', 'Y', '3', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Contact help desk related email setup. Used to configure recipient email address, topic description and language. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4,KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5,DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15,DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14,KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P320', '*', '1',
+'DEMOBANK', '**', '**', '**', '**', '**', '**', '**', '**', 'customerservice@demobank.com', 'Customer Service Enquiry','en', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**','**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Recurring payment enablement. Used to configure the products with sub product code to enable the recurring payment. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14,  KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P659', '**', 
+'DEMOBANK','FT', 'TPT', '**', '**', '**', '**', '**', '**', '**', 'Y', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Recurring start date configuration. Used to configure minmum and maximum offset for start date. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14,  KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P658', '**', 
+'DEMOBANK','FT', 'TPT', '**', '**', '**', '**', '**', '**', '**', '10', '30', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Recurring frequency. Used to configure recurring frequency details like daily, weekly, monthly, exact, last day of the month or both, transfer limit. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14,  KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P660', '**', 
+'DEMOBANK','DAILY', '**', '**', '**', '**', '**', '**', '**', '11111', 'N', 'N', '365', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Delivery Modes For Cashier Order, Demand Draft, Cheque Book. Used to configure delivery modes options per product in association with sub product code. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14,  KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P999', '**', 
+'DEMOBANK', 'CQBKR', '**', '**', '**', '**', '**', '**', '**', '**', 'Y', 'Y', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             FX parameters setup. Used to configure whether fx enabled for a product in association with sub product, what are currency supporting for board rate and contract options, if supporting what are minimum and maximum amounts, number of contracts supporting, whether amount utilize indicator is enabled, whether tolerance enabled, if enabled what is the tolerance percentage. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P316', '400', 
+'FX_ASSIGN_PRODUCTS', 'FT', 'DOM', '**', '**', '**', '**', '**', '**', '**', 'Y', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');
+insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, 
+DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, 
+DATA_18, DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P316', '400',
+'FX_BOARD_RATE', 'AUD', '**', '**', '**', '**', '**', '**', '**', '**', '0', '40000', 'Y', '**', '**', '**', '**', '**', '**', '**', '**', '**',
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');
+insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P316', '400', 
+'FX_CONTRACT_OPT', 'AUD', '**', '**', '**', '**', '**', '**', '**', '**', '0', '999999999', 'Y', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');
+insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P316', '400', 
+'FX_NBR_CONTRACT', 'FT', 'DOM', '**', '**', '**', '**', '**', '**', '**', '3', 'Y', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');
+insert into GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P316', '400', 
+'FX_TOLERANCE_RATE', 'FT', 'DOM', '**', '**', '**', '**', '**', '**', '**', 'N', '0', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Bulk Mapper. Used to configure whether bulk transaction is manual or upload, bulk type, payroll type, ft type, description. Below is the sample script will demonstrate configuration. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) values ('00001', 'P340', '*', 'DEMOBANK', 
+'M', 'PAYMT', '**', 'TPT', '**', '**', '**', '**', '**', 'MPTPT', 'Bulk Manual Payment Third party transfer', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Transaction charges. Used to configure Subscription Package or *,Standard Charge Currency, amount, Special Charge Currency, amount, Special Charge Expiry, waive indicator, Waiver Expirty. Below is the sample script will demonstrate configuration. If subscription package is not enabled then KEY_1 should be *. 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA( BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3,KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, WILD_CARD_IND, DATA_1, 
+DATA_2, DATA_3, DATA_4, DATA_5, DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12, DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, 
+DATA_19, DATA_20, KEY_10, KEY_11, KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20) VALUES ('00001', 'P117', 'DEMOBANK', 
+(SELECT PACKAGE_ID FROM GTP_SUB_PACKAGE WHERE SUBSCRIPTION_DESCRIPTION = '**'), 'FT', 'DOM', '**', '**', '**', '**', '**', '**', '0', 'SGD', '2', 
+'**', '**', '**', 'N', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 
+'**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+
+          <listitem>
+             Calendar alert Schedule Jobs- Parameter data for Calendar alert Schedule Jobs P600.Below is the Sample script 
+
+            <programlisting>INSERT INTO GTP_PARAM_DATA (BRCH_CODE, PARM_ID, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9,KEY_10, WILD_CARD_IND, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5, 
+            DATA_6, DATA_7, DATA_8, DATA_9, DATA_10, DATA_11, DATA_12,DATA_13, DATA_14, DATA_15, DATA_16, DATA_17, DATA_18, DATA_19, DATA_20)VALUES ('00001', 'P600', '2', '1', 'MilestonesScheduler', '**', '**', 
+            '**', '**', '**', '**', '**', '**', '100111111111','29/11/2013', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**');</programlisting>
+
+             
+          </listitem>
+        </itemizedlist>
+
+        <note>
+           This default script is provided in : 
+
+          <filename moreinfo="none">post.1.bankParameterValues.sql</filename>
+
+           
+        </note>
+      </listitem>
+
+      <listitem>
+         Parameters related to account assignment to products in association with sub product, sql script will differ from datbase to database. For account assignment to products in association with sub product below are the parameters configured by bank. 
+
+        <itemizedlist><listitem>Product/Subproduct enablement for an account.
+        Below is the sample script will demonstrate configuration.</listitem>
+        <programlisting>#For Oracle
+INSERT INTO GTP_LARGE_PARAM_KEY (PARAM_ID, BRCH_CODE, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_10, KEY_11, 
+KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20, PARM_ID, WILD_CARD_IND) VALUES (GTP_PARAM_SEQ.NEXTVAL, '00001', '*', 'CUR',  
+'CA', '*', 'SGD', '01', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', 'P312', '**' );
+INSERT INTO GTP_LARGE_PARAM_DATA (PARAM_ID, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5) VALUES (GTP_PARAM_SEQ.CURRVAL, 'INT', 'Y', 'Y', '', 'FT');
+
+#For MS Sql
+INSERT INTO GTP_LARGE_PARAM_KEY (PARAM_ID, BRCH_CODE, COMPANY_ID, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_10, KEY_11, 
+KEY_12, KEY_13, KEY_14, KEY_15, KEY_16, KEY_17, KEY_18, KEY_19, KEY_20, PARM_ID, WILD_CARD_IND) VALUES ((select next_id from gtp_id_table where 
+table_name='GTP_PARAM_SEQ'), '00001', '*', 'CUR',  'CA', '*', 'SGD', '01', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**', '**',
+'**', '**', '**', 'P312', '**' );
+INSERT INTO GTP_LARGE_PARAM_DATA (PARAM_ID, DATA_1, DATA_2, DATA_3, DATA_4, DATA_5)VALUES ((select next_id from gtp_id_table where 
+table_name='GTP_PARAM_SEQ'), 'INT', 'Y', 'Y', '', '');
+update gtp_id_table set next_id = next_id +1 where table_name='GTP_PARAM_SEQ';
+</programlisting> <para>The <database moreinfo="none">GTP_PARA_DATA</database>
+        table is used to store when parameter have single set of values and
+        <database moreinfo="none">GTP_LARGE_PARAM_KEY</database> and <database
+        moreinfo="none">GTP_LARGE_PARAM_DATA</database> tables used when
+        parameters have more than one set of values. As </para> <database
+        moreinfo="none">GTP_LARGE_PARAM_KEY</database> and <database
+        moreinfo="none">GTP_LARGE_PARAM_DATA</database> make use of sequences
+        the scripts to insert the values to this table is Database
+        specific.</itemizedlist>
+
+         
+
+        <note>This default script is provided in : <filename
+        moreinfo="none">8.XXX_parameterValues.sql</filename> .XXX represents
+        database name for example, ORACLE, MS_SQL etc.</note>
+
+         
+      </listitem>
+    </itemizedlist>
+  </section>
+</chapter>

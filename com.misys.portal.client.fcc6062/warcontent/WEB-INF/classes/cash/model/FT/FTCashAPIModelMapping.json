@@ -1,0 +1,23 @@
+{
+    "entity": "entity",
+	"fundTransferType":"ft_type",
+	"createFromOptions":"template_id",
+	"templateSelection":"template_id",
+	"accountFrom": "applicant_act_no",
+	"accountTo":{"write_api_field": "counterparty_act_no",
+    "read_api_field": {
+      "type": "complex",
+      "section": "counterparties",
+      "field": {
+        "type": "complex",
+        "section": "counterparty",
+        "field": "counterparty_act_no"
+      }
+      }
+    },
+	"chargeCurrency":"ft_cur_code",
+	"chargeAmount":"ft_amt",
+	"date":"iss_date",
+	"customerReferenceView":"applicant_reference",
+	"transactionRemarks":"TRANSFER_PURPOSE"
+}

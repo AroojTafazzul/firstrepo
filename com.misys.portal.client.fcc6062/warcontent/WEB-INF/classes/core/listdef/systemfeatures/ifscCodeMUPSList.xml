@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="key_1" default_order_type="d" page="20" >
+	
+	<column name="key_1" align="left" width="25%" loca_key="IFSC_CODE" columnFilterType="input-multiselect">
+	<js-pass-back keyName="column">
+            <array-element index="0" column="key_1"/>
+            <array-element index="1" column="key_2"/>
+            <array-element index="2" column="data_1"/>
+            <array-element index="3" column="data_2"/>
+            <array-element index="4" column="data_3"/>
+            <array-element index="5" column="data_4"/>
+            <array-element index="6" column="data_5"/>
+        </js-pass-back>
+    </column>
+	<column name="key_2" align="left" width="10%" loca_key="NEFT" hidden="y"/>
+	<column name="key_3" align="left" width="40%" loca_key="RTGS" hidden="y"/>
+	<column name="data_1" align="left" width="25%" loca_key="BANK_NAME"/>
+	<column name="data_2" align="left" width="25%" loca_key="BANK_ADDRESS"/>
+	<column name="data_3" align="left" width="25%" loca_key="BANK_CITY"/>
+	<column name="data_4" align="left" width="25%" loca_key="ADDRESS_LINE1" hidden="y"/>
+	<column name="data_5" align="left" width="25%" loca_key="ADDRESS_LINE2" hidden="y"/>
+	
+	
+	<!-- <column name="parm_id" hidden="y"/>
+	<parameter name="parm_id" hidden="y"/> -->
+	
+	<parameter
+		name="key_1"
+		loca_key="IFSC_CODE"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="data_1"
+		loca_key="BANK_NAME"
+		input="y"
+		default=""/>
+	<parameter
+		name="data_3"
+		loca_key="BANK_CITY"
+		input="y"
+		default=""/>
+	
+	<!-- candidates -->
+	<candidate name="paramData">
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="parm_id"/>
+			<operator type="like"/>
+			<value type="string">
+				P701
+			</value>
+		</criteria>
+		<criteria>
+			<column name="key_1"/>
+			<operator type="like"/>
+			<value type="parameter">
+				key_1
+			</value>
+		</criteria>
+		<criteria>
+			<column name="data_1"/>
+			<operator type="like"/>
+			<value type="parameter">
+				data_1
+			</value>
+		</criteria>
+			<criteria>
+			<column name="data_3"/>
+			<operator type="like"/>
+			<value type="parameter">
+				data_3
+			</value>
+		</criteria>
+	</filter>
+</listdef>

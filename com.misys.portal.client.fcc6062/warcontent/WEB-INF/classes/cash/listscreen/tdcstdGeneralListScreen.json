@@ -1,0 +1,99 @@
+{
+	"productcode": "N001_TD",
+	"enableMultipeDownloadFormat": true,
+	"buttons": [
+		{
+			"buttonName": "initiateTDButton",
+			"permission": "td_cstd_save",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=TD&subProductCode=CSTD&tnxTypeCode=01&mode=INITIATE"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "draft",
+			"listdefName": "/cash/listdef/customer/TD/customerDraftTDList",
+			"permission": "td_cstd_save",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "uaPendingApproval",
+			"listdefName": "/cash/listdef/customer/TD/customerPendingClientTDList",
+			"permission": "td_cstd_access",
+			"index": 1,
+			"selected": "true",
+			"severalSubmit": "td_cstd_approve",
+			"commentsRequired": "true",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "tdFutureDated",
+			"listdefName": "/cash/listdef/customer/TD/customerFutureDatedTDList",
+			"permission": "td_cstd_access",
+			"index": 2,
+			"selected": "",
+			"severalSubmit": "td_postdated_transaction_cancel",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "cancel",
+			        "type": "submit",
+			        "styleClass": "primaryButton batchCancelButton",
+			        "localizationKey": "cancel"
+		      	}
+			]
+		},
+		{
+			"tabName": "uaPendingBankApproval",
+			"listdefName": "/cash/listdef/customer/TD/customerPendingBankTDList",
+			"permission": "td_cstd_access",
+			"index": 3,
+			"selected": ""
+		},
+		{
+			"tabName": "live",
+			"listdefName": "/cash/listdef/customer/TD/customerLiveTDList",
+			"permission": "td_cstd_access",
+			"index": 4,
+			"selected": ""
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/cash/listdef/customer/TD/customerRejectedTDList",
+			"permission": "td_cstd_access",
+			"index": 5,
+			"selected": ""
+		},
+		{
+			"tabName": "purged",
+			"listdefName": "/cash/listdef/customer/TD/customerOtherTDList",
+			"permission": "td_cstd_access",
+			"index": 6,
+			"selected": "",
+			"severalSubmit": "td_purged_maintain",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "delete",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "delete"
+		      	}
+			]
+		}
+	]
+}

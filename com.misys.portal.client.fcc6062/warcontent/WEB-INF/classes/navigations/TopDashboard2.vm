@@ -1,0 +1,372 @@
+## Sample.
+#set ($LoginScreen = $config.getConfiguration().getString("screen.login"))
+#set ($LogoutScreen = $config.getConfiguration().getString("action.logout"))
+#set ($browserclose = $config.getConfiguration().getString("intermediate.screen.browser.close"))
+#set ($dashboardList = $gtpapp.getListOfDashBoards())
+#set ($language = $gtpapp.getLanguage())
+#set ($message = $l10n.getGTPString($language,"WELCOME_MESSAGE"))
+#set ($skiplink = $l10n.getGTPString($language,"SKIPTO_CONTENT"))
+#set ($welcome = $l10n.getGTPString($language,"MAINMENU_WELCOMEMSG"))
+#set ($manageProfile = $l10n.getGTPString($language,"MANAGE_PROFILE"))
+#set ($myPendingText = $l10n.getGTPString($language,"MODULE_MY_PENDING"))
+#set ($skipmenulink = $l10n.getGTPString($language,"SKIPTO_MENU"))
+#set ($login = $l10n.getGTPString($language,"LOGIN"))
+#set ($logout = $l10n.getGTPString($language,"LOGOUT"))
+#set ($lastLogin = $l10n.getGTPString($language,"HOME_PAGE_HEADER_LAST_LOGIN"))
+#set ($user = $l10n.getString($language,"USER"))
+#set ($home = $l10n.getString($language,"HOME"))
+#set ($contextPath = $gtpapp.getContextPath())
+#set ($servletPath = $gtpapp.getServletPath())
+#set ($mainMenu = $gtpapp.getMainMenu("main"))
+#set ($version = $gtpapp.getVersion())
+#set ($contactHelpDesk = $l10n.getGTPString($language,"HOME_PAGE_CONTACT_HELPDESK"))
+#set ($loginWithoutLogout = $l10n.getGTPString($language,"LOGIN_SESSIONS_MSG_ON_BROWSER_CLOSE"))
+#set ($ajaxtoken = $securityUtils.generateSecurityToken($data))
+#set ($browserExit = $securityUtils.isBrowserExit())
+#set ($languages = $gtpapp.getLanguages())
+#set ($png = ".png")
+#set ($LogoFile = "/content/images/demobank/dashboard2_logo.png")
+#set ($showCommonHeader = $gtpapp.isCommonHeader())
+
+#if ($data.User.hasLoggedIn())
+	## MPS-20110 : Prevent persistent XSS issues with the user name 
+	#set ($userFirstName = $securityUtils.encodeHTML($data.User.getFirstName()))
+	#set ($userLastName = $securityUtils.encodeHTML($data.User.getLastName()))
+	#set ($userLastLogin = $gtpapp.getLastLogin())
+	#set ($bookmarkMenu = $gtpapp.getBookmarkMenu())
+	#set ($hasMyPendingPermission = $security.hasPermission($data,"todo_list_access"))
+	#set ($hasHelpDeskPermission = $security.hasPermission($data,"se_ctchp_access"))
+	##
+	## This is the top navigation bar displayed for a logged in user
+	#set ($companyType = $data.User.getCompanyType())
+	#if ($companyType == "03" || $companyType == "06")
+		#set ($featuresScreen = "CustomerSystemFeaturesScreen")
+	#else
+		#set ($featuresScreen = "BankSystemFeaturesScreen")
+	#end
+	#set ($myPendingLink = "$contextPath$servletPath/screen/MessageCenterScreen?option=TODO&operation=LIST_SUBMIT")
+	#set ($portalBot = $config.getConfiguration().getBoolean("portalChatBot.enable") && ($companyType == "03" || $companyType == "06"))
+	#set ($smartPortal = $config.getConfiguration().getBoolean("smartPortal.enabled") && ($companyType == "03" || $companyType == "06"))
+	#if($smartPortal == true)
+		#if ($data.User.getTemp("DashboardPSML"))
+			#set ($userSelectedPSML = $data.User.getTemp("DashboardPSML"))			
+		#else
+		    #set ($userSelectedPSML = $gtpapp.getDefaultDashBoard())
+		#end
+		
+		#set ($userSelectedTheme = $data.User.getPerm("theme_color"))
+		#set ($userSelectedText = $data.User.getPerm("text_color"))
+		#set ($userSelectedFontType = $data.User.getPerm("font_type"))
+		#set ($userSelectedFontSize = $data.User.getPerm("font_size"))	
+	#end
+
+<div class="contentWrapper" style="min-height: calc(100vh - 7.4em);">
+	<!-- BEGIN WELCOME BAR  -->
+	<script type="text/javascript">
+		dojo.ready(function(){
+			expandPalette = function() {
+				var color_ele = document.getElementById('color_palette');
+				if (!color_ele.classList.contains("expanded")) {
+					color_ele.className += ' expanded';
+					console.log(color_ele.className);
+				} else {
+					color_ele.classList.remove("expanded");
+				}
+				
+			}		
+			updateTheme = function(themColor, txtColor ) {console.log("in updateTheme");
+				
+				document.documentElement.style.setProperty('--main-bg-color', themColor);
+				document.documentElement.style.setProperty('--main-text-color', txtColor);
+			}
+			
+			updateFont = function(font_type) {
+				console.log('radio clicked',font_type.value);
+				document.documentElement.style.setProperty('--main-font-family',font_type.value);
+			}
+			
+			updateFontSize = function(font_size) {
+				console.log('radio size',font_size.value);
+				document.documentElement.style.setProperty('--main-font-size',font_size.value+'px');
+			} 	
+			
+			dojo.addOnLoad(function(){
+			
+			
+				if(dojo.query('.logo')[0]){
+		  			dojo.attr(dojo.query('.logo')[0] ,'id','dashboard-logo');
+		  		}
+				setTimeout(function(){
+					var menubar = dijit.byId("portalMenuBar");
+					if(menubar)
+					{
+						menubar.set('isActive',true);
+						dojo.connect(menubar,"onBlur",fncActivate);
+						misys.animate("fadeIn", dojo.byId("portalMenuBar"));
+					}
+					if(dojo.byId("bookmarkMenu"))
+					{
+						misys.toggleClassInlineBlock("bookmarkMenu",true);
+					}
+				},100);
+				
+	    		if('$userSelectedPSML')
+				document.getElementById('DashboardPSML').value = '$userSelectedPSML';
+				console.log('UserPSML:','$userSelectedPSML');
+				
+				if('$userSelectedTheme')
+				document.documentElement.style.setProperty('--main-bg-color', '$userSelectedTheme');
+				console.log('User Selected Theme : ' , '$userSelectedTheme');
+				
+				if('$userSelectedText')
+				document.documentElement.style.setProperty('--main-text-color', '$userSelectedText');
+				console.log('User Selected Text : ' , '$userSelectedText');
+				
+				if('$userSelectedFontType')
+				document.documentElement.style.setProperty('--main-font-family', '$userSelectedFontType');
+				console.log('User Selected Font type : ' , '$userSelectedFontType');
+				
+				if('$userSelectedFontSize')
+				document.documentElement.style.setProperty('--main-font-size', '$userSelectedFontSize');
+				console.log('User Selected Font Size : ' , '$userSelectedFontSize');
+				
+			});
+			
+			fncActivate = function(){
+				this.set('isActive',true);
+			};
+			#if ($gtpapp.isTopElementToBeFocussed())
+				window.isTopElementToBeFocussed = true;				
+			#else 
+				window.isTopElementToBeFocussed = false;
+			#end
+			
+			#if($gtpapp.isTopElementFirstH1())
+			 	window.isTopElementFirstH1 = true;	
+			#else
+				window.isTopElementFirstH1 = false;	
+			#end
+			
+			#if($gtpapp.isAccessibilityEnabled())
+			 	window.isAccessibilityEnabled = true;	
+			#else
+				window.isAccessibilityEnabled = false;	
+			#end
+			
+		});
+	</script>
+  #if($showCommonHeader)
+	#parse("navigations/CommonHeader.vm")
+  #else	
+	<!-- version: $version -->
+	
+	#if($gtpapp.isAccessibilityEnabled())
+	<header class="header">
+	#else
+	<div class="header">
+	#end
+	  <div class="panel2">
+	  	
+	  	<!--
+	  	<a href='$link' id="dashboardLogo" class="logo" style="background-image:url('$contextPath$LogoFile');background-repeat: no-repeat;background-size: 170px 45px;height:50px;width:90px;"></a>
+	  	-->
+	  	
+		#if ($gtpapp.isAccessibilityLinksEnabled())
+			<a id="skipToContent" href="#" onclick = "getLink(this)" title="$skiplink">$skiplink</a>
+		#end
+		<script>
+			function getLink(a){
+			if(dojo.query("#LoanProductOverview")[0])
+			{
+				a.href = '#LoanProductOverview';
+			}
+			else if(dojo.query("#DashboardPortlet")[0])
+			{
+				a.href = '#DashboardPortlet';
+			}
+			else
+			{
+				a.href = '#GTPRootPortlet';
+			}
+			}
+		</script>
+			  		  	
+	  	<a href='$link' class="logo" style="height:50px;width:90px;">
+	  		<img style="height:66px;width:170px;" alt="Go to Digital Connect" src='$contextPath$LogoFile'>
+	  	</a>
+	  	
+	  	
+	  	<!--<div class="corpLending">Corporate Lending</div>-->
+		 	
+	  	<div class="headerRight">
+	  		<div class="headerContent">
+				<button id="idDropBtn" class="dropbtn" tabindex="-1">
+					<img id="user-Icon" alt="User icon" src="$contextPath/content/images/loan/Icon_Person.png" style="margin-right: 6px" />
+					$userFirstName $userLastName 
+				</button>
+			</div>
+		<td><span>			
+		<div>
+		  	<img style="position:relative;top:50px;right:-685px;height:30px;" onclick="expandPalette();" src="$contextPath/content/images/settings.png?v=$version" /> 
+		</div>
+		<div id="color_palette" class="color_changer">	
+				<div class="color_changer_row">
+					<div class="color_changer_row">
+						<h4>Font Style:</h4>
+						<select onchange="updateFont(this);">
+						    <option value="Montserrat">Montserrat</option>
+						    <option value="sans-serif">sans-serif</option>
+						    <option value="MS UI Gothic">MS UI Gothic</option>
+						</select>
+						<select onchange="updateFontSize(this);">
+						    <option value="10">small</option>
+						    <option value="15">medium</option>
+						    <option value="18">big</option>
+						</select>					
+					</div>
+				
+				<h4>Choose your Theme</h4>
+				<div style="background-color:#F34E36" class="color_tile" data-color="red"  onclick='updateTheme("#F34E36","#fff")'></div>
+				<div style="background-color:#B5D947" class="color_tile" data-color="green" onclick='updateTheme("#B5D947","#fff")'></div>
+			
+				<div style="background-color:#9d6fc8" class="color_tile" data-color="purple" onclick='updateTheme("#9d6fc8","#fff")'></div>
+				<div style="background-color:#4abcdd" class="color_tile" data-color="blue" onclick='updateTheme("#4abcdd","#fff")'></div>
+				
+				<div style="background-color:#1abc9c" class="color_tile" data-color="turquoise" onclick='updateTheme("#1abc9c","#fff")'></div>
+				<div style="background-color:#C61C72" class="color_tile" data-color="pink" onclick='updateTheme("#C61C72","#fff")'></div>
+				
+				<div style="background-color:#f4a622" class="color_tile" data-color="orange"></div>
+				<div style="background-color:#2ecc71" class="color_tile" data-color="emerald"></div>
+			</div>
+		</div></span> 
+		</td>
+		<td>			
+		<select id="DashboardPSML" onchange="misys.post({action:'$link', params : [{name:'PSML', value:document.getElementById('DashboardPSML').value}]})">	  		 
+	 		#foreach ($dashboardName in $dashboardList)
+			    <li><option value="$dashboardName">$dashboardName</option></li>
+			#end
+		</select>
+		</td>	
+			
+			<!-- Dropdown for languages has been added as part of 5.4 upgrade START
+							<style>
+								.languagesImage { background-image: url('$contextPath/content/images/languages.png'); background-repeat: no-repeat; width: 28px; height:28px; }
+								.demobank .languagesMenu .dijitDropDownButton .dijitButtonNode { border:none; background-image: none; background-color: transparent; box-shadow:none; } 
+		     					.demobank .languagesMenu .dijitArrowButtonInner { display: none; }
+		     					.languagesToolTip { width:200px; text-decoration:none; size:0.8em;}
+		     					.languagesToolTip a { cursor: pointer; }
+		     					.languagesToolTip .currentLang { font-weight: bold; }  
+							</style>
+							<td><span id='languagesMenu' class='widgetContainer languagesMenu'>
+								<div dojoType='dijit.form.DropDownButton' iconClass="languagesImage" showLabel="false">
+									<span class="dijitHidden"></span>
+									<div dojoType='dijit.TooltipDialog' class="languagesToolTip">
+										<ul>
+											#foreach ($lang in $languages)
+												#if ($gtpapp.isLanguageImagesEnabled())
+													#if ($lang == $language) 
+			   											<li class="currentLang"><img src='$contextPath/content/mobile/content/images/flags/$lang$png?v=$version' title='$l10n.getDecode($language, 'N061', $lang)' alt='$l10n.getDecode($language, 'N061', $lang)'></img>&nbsp;$l10n.getDecode($language, 'N061', $lang)</li>
+			   										#else
+			   											<li><a onclick="fncChangeLanguage('$lang')"><img src='$contextPath/content/mobile/content/images/flags/$lang$png?v=$version' alt='$l10n.getDecode($language, 'N061', $lang)' title='$l10n.getDecode($language, 'N061', $lang)'></img>&nbsp;$l10n.getDecode($language, 'N061', $lang)</a></li>
+			   										#end
+			   									#else
+			   										#if ($lang == $language) 
+			   											<li class="currentLang" alt='$l10n.getDecode($language, 'N061', $lang)' title='$l10n.getDecode($language, 'N061', $lang)'>$l10n.getDecode($language, 'N061', $lang)</li>
+			   										#else
+			   											<li><a onclick="fncChangeLanguage('$lang')" alt='$l10n.getDecode($language, 'N061', $lang)' title='$l10n.getDecode($language, 'N061', $lang)'>$l10n.getDecode($language, 'N061', $lang)</a></li>
+			   										#end
+			   									#end 
+			   								#end
+			   							</ul>
+									</div>
+								</div>
+							</span>
+							<script>
+								function fncChangeLanguage(lang) {
+									var urlCurrent = document.location.href;
+									var urlChangeLanguage = '$contextPath$servletPath/screen/AjaxScreen/action/ChangeLanguageAction?language=';
+									urlChangeLanguage = urlChangeLanguage + lang;
+									dojo.xhrPost({
+										url: urlChangeLanguage,
+										handleAs: "json",
+										// The success handler
+										load: function(jsonData) {
+												window.location.replace(urlCurrent); 
+											}
+										});
+								}
+							</script>
+							</td>
+							
+							<td>
+							<div id="openweathermap-widget" style="/*background: linear-gradient(to bottom, #004F9E 0%, #000066 100%);border-radius:5px;padding:8px 20px*/">
+								
+								<span><img id="imgHldr" height="52" width="52" src="" alt="weather"/></span>
+								<span id="weather_val" style="font-size:50px;"></span>
+							</div>
+							<div>
+								<span id="weather_desc" style="font-weight:bold;position:relative;left:60px;"></span>
+							</div>
+							<script>								
+								var url_weather = 'http://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$long&appid=c3aa265f26b720000e99b40e83e9d929&units=imperial';
+							
+								var xhttp = new XMLHttpRequest();
+								xhttp.onreadystatechange = function() {
+								    if (this.readyState == 4 && this.status == 200) {
+								       // Typical action to be performed when the document is ready:
+								       console.log(xhttp);
+								       var resp = JSON.parse(xhttp.responseText);
+								       console.log(resp.main.temp);
+								       document.getElementById('weather_desc').innerHTML += resp.weather[0].description.toUpperCase();
+								       document.getElementById('imgHldr').src = 'http://openweathermap.org/img/w/'+resp.weather[0].icon+'.png';
+								       document.getElementById('weather_val').innerHTML += resp.main.temp +  "&#8457";
+								    }
+								};
+								xhttp.open("GET", url_weather, true);
+								xhttp.send();
+								
+							</script>
+							</td>
+			-->
+			
+					
+			<!--<button class="homepageButtons" onclick="document.location.href='$link.setAction($LogoutScreen)'">$logout</button> -->
+			<!--MPG-6642 start-->
+			<td><button class="homepageButtons" id="saveDashboard" dojoType="dijit.form.Button">Save Dashboard</button></td> 
+			<td><button  class="homepageButtons" dojoType="dijit.form.Button" onclick="misys.post({action:'$link.setAction($LogoutScreen)', params : [{name:'commonToken', value:'$ajaxtoken'}]})">$logout</button></td>
+
+			<!--MPG-6642 end-->
+	    </div>
+	  </div>
+	  <!--
+	  <div class="panel1">
+	  	<a href='$link'>
+	  		<img class="menubarImg" src="$contextPath/content/images/demobank/home.gif" alt="$home"/></a>
+	  $mainMenu $bookmarkMenu</div>
+	  -->
+	</header>
+
+ 	<input type="hidden" id="_token" value="$ajaxtoken" />
+ 	<input type="hidden" id="_dashboardpositions"/>
+  #end 	
+#else
+	##
+	## This is the top navigation bar displayed for the anonymous user, i.e. they are not logged in
+	##
+	<!-- BEGIN WELCOME BAR -->
+	<header class="header">
+		<div class="panel2">
+			<div class="header-panel-top">
+				<a href='$link' class="logo" style="background-image:url('$contextPath$LogoFile');background-repeat: no-repeat;background-size: 170px 45px;height:50px;width:200px;"></a>
+			</div>
+			<div class="header-panel-strip">
+			</div>
+			<div class="header-panel-bottom">
+			</div>
+		</div>
+	#if($gtpapp.isAccessibilityEnabled())
+	</header>
+	#else
+	</div>
+	#end
+#end

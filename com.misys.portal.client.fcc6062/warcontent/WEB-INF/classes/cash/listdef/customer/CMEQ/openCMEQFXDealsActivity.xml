@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="dealNo" default_order_type="d" page="50" 
+		 viewer="SimpleTable" subscribe_topic="CMEQFXDealsByDay" source="opics">
+		 
+	<column name="dealNo" align="center" width="10%" loca_key="DEALNO"/>
+	<column name="seq" align="center" width="5%" loca_key="SEQ"/>
+	<column name="description" align="center" width="15%" loca_key="DESCRIPTION"/>
+	<column name="currency" align="center" width="10%" loca_key="CUR_CODE"/>
+	<column name="amount" align="right" width="10%" loca_key="AMOUNT"/>
+	<column name="counterCurrency" align="center" width="5%" loca_key="CTR"/>
+	<column name="dealDate" align="center" width="10%" loca_key="DEALDATE"/>
+	<column name="instruction" align="center" width="10%" loca_key="INSTRUCTION"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="value_date"
+		input="n"/>
+	<parameter
+		name="currency"
+		input="n"/>
+	<parameter
+		name="customer"
+		input="n"/>
+	<parameter
+		name="start_date"
+		input="n"/>
+	<parameter
+		name="customer_group"
+		input="n"/>
+	<parameter
+		name="opicslist"
+		type="hidden"
+		default="FXACTIVITY"/>	
+
+	
+	<!-- candidates -->	
+	<candidate name="account_statement_line">
+		<filter>
+			<criteria>
+				<column name="value_date"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					value_date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="currency"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					currency
+				</value>
+			</criteria>
+			<criteria>
+				<column name="customer"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer
+				</value>
+			</criteria>
+			<criteria>
+				<column name="start_date"/>
+				<operator type="like"/>
+				<value type="parameter">
+					start_date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="customer_group"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer_group
+				</value>
+			</criteria>
+			<criteria>
+				<column name="opicslist"/>
+				<operator type="like"/>
+				<value type="parameter">
+					opicslist
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

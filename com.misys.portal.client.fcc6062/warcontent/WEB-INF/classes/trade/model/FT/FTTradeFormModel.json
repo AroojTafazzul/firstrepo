@@ -1,0 +1,923 @@
+{
+  "screen": "TradeFundTransferScreen",
+    "isAccordionView": "true",
+  "ftTradeGeneralDetails": {
+    "ftType": {
+      "name": "ftType",
+      "type": "text",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false,
+      "hidden": true
+    },
+    "transferType": {
+      "name": "transferType",
+      "type": "text",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false
+    },
+    "transferTypeOptions": {
+      "name": "transferTypeOptions",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "TTPT",
+          "TINT"
+        ]
+      },
+      "defaultValue": "TTPT",
+      "type": "select-button",
+      "styleClass": "request toggle-chip",
+      "layoutClass": "p-grid p-col-12 p-md-12 p-lg-12 p-sm-12"
+    },
+      "templateName": {
+      "name": "templateName",
+      "type": "input-text",
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+      "styleClass": "margin-side",
+      "maxlength": 20,
+      "rendered": false,
+      "required": false
+    },
+    "templateDescription": {
+      "name": "templateDescription",
+      "type": "narrative-textarea",
+      "swift": false,
+      "fieldSize": 65,
+      "maxRowCount": 4,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "rows": 1,
+      "cols": 65,
+      "allowedCharCount": 200,
+      "maxlength": 200,
+      "layoutClass": "p-col-9 p-md-9 p-lg-9 p-sm-12",
+      "styleClass": "indented-text-area-field-65",
+      "rendered": false
+    },
+    "transMode": {
+      "name": "modeofTransmission",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false
+    },
+    "transmissionModeOptions": {
+      "name": "transmissionModeFund",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "01"
+        ],
+        "icon": "fa fa-check-circle fa-2x",
+        "matIcon": "check_circle"
+      },
+      "defaultValue": "01",
+      "type": "select-button",
+      "styleClass": [
+        "transmission"
+      ],
+      "layoutClass": "p-grid p-col-12 p-md-12 p-lg-12 p-sm-12"
+    },
+    "space9": {
+      "noofspacers": "1",
+      "prefix": "nine",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "createFrom": {
+      "name": "createFrom",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ],
+      "previewScreen": false
+    },
+    "createFromOptions": {
+      "name": "createFromOptions",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "template"
+        ],
+        "crossIcon": "cancel"
+      },
+      "type": "select-button",
+      "styleClass": "createform toggle-chip",
+      "layoutClass": "p-grid p-col-12 p-md-12 p-lg-12 p-sm-12",
+      "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "edit",
+          "rendered": false
+        }
+      ],
+      "previewScreen": false
+    },
+      "templateSelection": {
+      "name": "templateSelection",
+      "type": "text",
+      "layoutClass": "p-grid p-col-3 p-md-6 p-lg-3 p-sm-6",
+      "styleClass": [
+        "templateSelectionStyle"
+      ],
+      "rendered": false,
+      "previewScreen": false,
+      "clubbedHeaderText": "templateSelection",
+      "clubbedList": [
+        "fetchedTemplate"
+      ]
+    },
+    "fetchedTemplate": {
+      "name": "fetchedTemplate",
+      "type": "input-text",
+      "layoutClass": "p-grid p-col-4 p-md-6 p-lg-4 p-sm-6",
+      "styleClass": [
+        "templateSelectionValueStyle"
+      ],
+      "maxlength": 20,
+      "rendered": false,
+      "previewScreen": false,
+      "clubbed": true
+    },
+    "removeLabelTemplate": {
+      "itemId": "removeLabelTemplate",
+      "name": "removeLabelTemplate",
+      "type": "text",
+      "layoutClass": "p-grid p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "removeLabelTemplateStyle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "references": {
+      "name": "reference",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false
+    },
+    "transfereeReference": {
+      "name": "transfereeReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "applicableValidation": [
+      {
+        "characterValidation": "Swift_X",
+        "messageKey": "invalidSwiftRegex"
+	    }
+	  ],
+      "maxlength": 64,
+      "required": true
+    },
+    "customerReference": {
+      "name": "customerReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ]
+    },
+    "subProductCode": {
+      "name": "subProductCode",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+      "styleClass": "subProductCode",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "transferer": {
+      "prefix": "transferer",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "fullAddress"
+      ],
+      "applicableScreens": [
+        {
+          "option": "TEMPLATE",
+          "requiredFields": []
+        }
+      ],
+      "requiredFields": [
+        "entity",
+        "name",
+        "address1"
+      ],
+      "fieldsNotApplicable": [
+        "country",
+        "address4"
+      ]
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "orderingAct": {
+      "name": "orderingAct",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-8 p-md-8 p-lg-8 p-sm-8 leftwrapper",
+      "styleClass": [
+        "orderingAct"
+      ],
+      "required": true
+    },
+    "orderingAccount": {
+      "name": "orderingAccount",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+      "styleClass": "orderingAccount",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "orderingCurrency": {
+      "name": "orderingCurrency",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+      "styleClass": "orderingCurrency",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "beneficiary": {
+      "prefix": "beneficiary",
+      "sectionType": "beneficiaryModel",
+      "hideFields": [     
+     
+      ],
+      "requiredFields": [
+        "entity",
+        "address1"
+      ],
+      "fieldsNotApplicable": [      	
+        "name",
+        "address4",
+        "country",
+        "fullAddress"
+      ],
+       "dynamicCriteria": {
+		        "dependControl": "transferTypeOptions",
+		        "dependSection": "ftTradeGeneralDetails",
+		        "requiredValue": "TTPT",
+		        "presentSection": "ftTradeGeneralDetails"
+		      }
+    },
+    "space10": {
+      "noofspacers": "2",
+      "prefix": "ten",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "beneficiaryAct": {
+      "name": "beneficiaryAct",
+      "type": "input-text",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-grid p-col-8 p-md-8 p-lg-8 p-sm-8 leftwrapper",
+      "styleClass": [
+        "beneficiaryAct"
+      ],
+      "required": true
+    },
+    "beneficiaryAccount": {
+      "name": "beneficiaryAccount",
+      "type": "input-text",
+      "layoutClass": "p-col-8 p-md-8 p-lg-8 p-sm-8 leftwrapper",
+      "styleClass": "beneficiaryAccount",
+      "hidden": true,
+      "previewScreen": false,
+      "dynamicCriteria": {
+		        "dependControl": "transferTypeOptions",
+		        "dependSection": "ftTradeGeneralDetails",
+		        "requiredValue": "TTPT",
+		        "presentSection": "ftTradeGeneralDetails"
+		      }
+    },
+    "beneficiaryCurrency": {
+      "name": "beneficiaryCurrency",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+      "styleClass": "beneficiaryCurrency",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "space13": {
+      "noofspacers": "1",
+      "prefix": "thirteen",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "chargeType": {
+      "name": "chargeType",
+      "type": "text",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": true,
+      "groupChildren": [
+      	"chargeOptions"
+      ],
+      "dynamicCriteria": {
+		        "dependControl": "transferTypeOptions",
+		        "dependSection": "ftTradeGeneralDetails",
+		        "requiredValue": "TTPT",
+		        "presentSection": "ftTradeGeneralDetails"
+		      }
+    },
+    "chargeOptions": {
+      "name": "chargeOptions",
+      "source": "codeData",
+      "options": [
+        {
+          "value": "01",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 leftwrapper padding_zero"
+        },
+        {
+          "value": "02",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+        },
+        {
+          "value": "03",
+          "valueStyleClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero"
+        }
+      ],
+      "defautValue": "01",
+      "type": "input-radio",
+      "styleClass": [
+        "issuance_radio p-grid"
+      ],
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "rendered": false,
+       "grouphead": "chargeType" 
+    },
+    "transferDetail": {
+      "name": "transferDetail",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": true,
+       "groupChildren": [
+       "currency",
+        "executionDate",
+       "paymentDetalsTransferee"   
+      ]
+    },
+    "space3": {
+      "noofspacers": "1",
+      "prefix": "three",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "transfereeAct": {
+      "name": "transfereeAct",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-grid p-col-8 p-md-8 p-lg-8 p-sm-8 leftwrapper",
+      "styleClass": [
+        "transfereeAct"
+      ],
+      "required": true
+    },
+    "transfereeAccount": {
+      "name": "transfereeAccount",
+      "type": "input-text",
+      "layoutClass": "p-col-8 p-md-8 p-lg-8 p-sm-8 leftwrapper",
+      "styleClass": "orderingAccount",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "transfereeCurrency": {
+      "name": "transfereeCurrency",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper",
+      "styleClass": "orderingCurrency",
+      "hidden": true,
+      "previewScreen": false
+    },
+    "space4": {
+      "noofspacers": "1",
+      "prefix": "four",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "chargeCurrency": {
+      "name": "currency",
+      "type": "input-dropdown-filter",
+      "options": {},
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 chargeAmt",
+      "styleClass": [
+        "no-margin-multiselect"
+      ],
+      "required": true,
+      "clubbedHeaderText": "amount",
+      "clubbedList": [
+        "currency",
+        "amount"
+      ],
+      "clubbed": true,
+      "previewValueAttr": "shortName",
+       "grouphead": "transferDetail"
+    },
+    "chargeAmount": {
+      "name": "amount",
+      "type": "fcc-currency",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 leftwrapper",
+      "styleClass": [
+        "amt"
+      ],
+      "required": true,
+      "clubbed": true,
+      "maxlength": 15,
+      "grouphead": "transferDetail"
+    },
+    "space5": {
+      "noofspacers": "1",
+      "prefix": "five",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "transfereeDescription": {
+      "name": "transfereeDescription",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 35
+    },
+    "executionDate": {
+      "name": "executionDate",
+      "type": "input-date",
+      "grouphead": "transferDetail",
+      "layoutClass": "p-col-12 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "required": true
+    },
+    "forwardContract": {
+      "name": "forwardContract",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-lg-6 p-md-6 p-sm-6 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 64,
+      "rendered": true,
+      "dynamicCriteria": {
+					"dependControl": "forwardContract",
+					"dependSection": "ftTradeGeneralDetails",
+					"hideIfEmpty": true,
+					"presentSection": "ftTradeGeneralDetails"
+				}
+    },
+    "space7": {
+      "noofspacers": "1",
+      "prefix": "seven",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "paymentDetalsTransferee": {
+      "name": "paymentDetalsTransferee",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "rows": 4,
+      "cols": 35,
+      "fieldSize": 35,
+      "maxRowCount": 4,
+      "rowCount": 0,
+      "swift": false,
+      "enteredCharCount": 0,
+      "allowedCharCount": 140,
+      "maxlength": 140,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "indented-text-area-field-65"
+      ],
+      "applicableValidation": [
+	      {
+	        "characterValidation": "Swift_X",
+	        "messageKey": "invalidSwiftRegex"
+	      }
+      ],
+      "directive": true,
+      "phraseEnabled": true,
+      "grouphead": "transferDetail"
+    },
+    "space8": {
+      "noofspacers": "2",
+      "prefix": "eight",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "bankIssuanceType": {
+      "name": "bankDetailsType",
+      "options": [],
+      "type": "select-button",
+      "styleClass": [
+        "bank-select"
+      ],
+      "previewScreen": false,
+      "layoutClass": "p-col-12"
+    },
+    "bankNameHeader": {
+      "name": "bankNameHeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false
+    },
+    "bankNameList": {
+      "name": "bankNameList",
+      "type": "input-dropdown",
+      "options": [],
+      "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+      "styleClass": [
+        "issueBankName"
+      ],
+      "required": true,
+      "groupHeaderText": "issuingBank",
+      "groupChildren": [
+        "bankNameList",
+        "issuerReferenceList"
+      ]
+    },
+    "issuerReferenceHeader": {
+      "name": "issuerReferenceHeader",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false
+    },
+    "issuerReferenceList": {
+      "name": "issuerReferenceList",
+      "options": [],
+      "type": "input-dropdown",
+      "showValue": true,
+      "styleClass": [
+        "issuerRef",
+        "margin-all-side"
+      ],
+      "layoutClass": "p-grid p-col-5 p-md-5 p-lg-5 p-sm-5 leftwrapper",
+      "required": true,
+      "grouphead": "bankNameList"
+    },
+    "accountWithBank": {
+      "name": "accountWithBank",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableValidation": [
+	      {
+	        "characterValidation": "Swift_X",
+	        "messageKey": "invalidSwiftRegex"
+	      }
+      ],
+      "previewScreen": false
+    },
+    "advswiftCode": {
+      "name": "advisingswiftCode",
+      "type": "input-text",
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+      "styleClass": [
+        "margin-all-side"
+      ],
+      "required": false,
+      "rendered": true,
+      "grouphead": "advisingBankHeader"
+    },
+    "advisingBankIcons": {
+      "name": "advisingBankIcons",
+      "type": "icon",
+      "iconName": "search",
+      "rendered": true,
+      "layoutClass": "layoutIcon",
+      "styleClass": "iconStyle",
+      "parentStyleClass": "parentIconStyle",
+      "previewScreen": false
+    },
+    "advisingBank": {
+      "prefix": "advisingBank",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "header",
+        "entity",
+        "fullAddress",
+        "country",
+        "address4"
+      ],
+      "rendered": true,
+      "subSectionGroup": [
+        "advisingswiftCode",
+        "prefix"
+      ]
+    },
+    "payThroughBank": {
+      "name": "payThroughBank",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "applicableValidation": [
+      {
+        "characterValidation": "Swift_X",
+        "messageKey": "invalidSwiftRegex"
+	    }
+	  ],
+      "previewScreen": false
+    },
+    "advThroughswiftCode": {
+      "name": "advThroughswiftCode",
+      "type": "input-text",
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+      "styleClass": [
+        "margin-all-side"
+      ],
+      "required": false,
+      "rendered": true,
+      "grouphead": "adviceThroughHeader"
+    },
+    "advThroughBankIcons": {
+      "name": "advThroughBankIcons",
+      "type": "icon",
+      "iconName": "search",
+      "rendered": true,
+      "layoutClass": "layoutIcon",
+      "styleClass": "iconStyle",
+      "parentStyleClass": "parentIconStyle",
+      "previewScreen": false
+    },
+    "adviceThrough": {
+      "prefix": "adviceThrough",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "header",
+        "entity",
+        "fullAddress",
+        "country",
+        "address4"
+      ],
+      "rendered": true,
+      "subSectionGroup": [
+        "advThroughswiftCode",
+        "prefix"
+      ]
+    },
+    "bankInstructions": {
+      "name": "bankInstructions",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": true,
+        "groupChildren": [
+       "feeAct"
+      ]
+    },
+    "feeAct": {
+      "name": "feeAct",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 rightwrapper",
+      "styleClass": "feeAct",
+      "grouphead": "bankInstructions"
+    },
+    "otherInst": {
+      "name": "otherInst",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "rows": 5,
+      "cols": 65,
+      "fieldSize": 50,
+      "maxRowCount": 27,
+      "rowCount": 0,
+      "swift": false,
+      "enteredCharCount": 0,
+      "allowedCharCount": 845,
+      "maxlength": 845,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "indented-text-area-field-65"
+      ],
+      "directive": true,
+      "phraseEnabled": true
+    },
+    "id": "ftTradeGeneralDetailsComponent",
+    "helpId": "GD"
+  },
+  "ftTradeLicenseDetails": {
+  "applicableSections": [{
+      "tnxTypeCode": "01",
+	  "option": "TEMPLATE",
+	  "showTemplate": false,
+	  "productCode": "FT"
+    }],
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "linkLicenseButton": {
+      "itemId": "linkLicense",
+      "name": "linkLicense",
+      "type": "rounded-button",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "browseButton"
+      ],
+      "previewScreen": false
+    },
+    "linkedLicenses": {
+      "name": "linkedLicenses",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "linkedLicenses",
+      "hidden": true
+    },
+    "license": {
+      "name": "license",
+      "type": "edit-table",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "subControlsDetails": [
+        {
+          "REF_ID": {
+            "name": "REF_ID",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "BO_REF_ID": {
+            "name": "BO_REF_ID",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "BO_REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "LS_NUMBER": {
+            "name": "LS_NUMBER",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "LS_NUMBER",
+            "renderd": false
+          }
+        },
+        {
+          "currency": {
+            "name": "currency",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "currency",
+            "renderd": false
+          }
+        },
+        {
+          "amount": {
+            "name": "amount",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "amount",
+            "renderd": false
+          }
+        }
+      ],
+      "data": [],
+      "columns": [],
+      "options": [],
+      "previewScreen": true,
+      "OverDrawStatus": false,
+      "tnsAmountStatus": false,
+      "message1": "",
+      "message2": "",
+      "rendered": false
+    },
+    "licenseUploadError": {
+      "name": "licenseUploadError",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": "licenseUploadError",
+      "rendered": false
+    },
+    "id": "FtTradeLicenseDetailsComponent",
+    "helpId": "LD"
+  },
+  "ftTradeFileUploadDetails": {
+      "applicableSections": [{
+      "tnxTypeCode": "01",
+	  "option": "TEMPLATE",
+	  "showTemplate": false,
+	  "productCode": "FT"
+    }],
+    "space11": {
+      "noofspacers": "2",
+      "prefix": "eleven",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "btndisable": true,
+      "previewScreen": false
+    },
+    "fileUploadTable": {
+      "name": "fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12"
+    },
+    "attachments": {
+      "name": "attachments",
+      "rendered": false,
+      "type": "json-obj",
+      "previewScreen": false
+    },
+    "space12": {
+      "noofspacers": "1",
+      "prefix": "twelve",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "ftTradeFileUploadDetailsComponent",
+    "helpId": "AT"
+  }
+}

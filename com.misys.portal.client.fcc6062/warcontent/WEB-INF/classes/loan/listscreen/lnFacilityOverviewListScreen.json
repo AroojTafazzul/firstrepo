@@ -1,0 +1,94 @@
+{
+	"productcode" : "N001_LN",
+	"tabs": [{
+			"tabName": "draft",
+			"listdefName": "/loan/listdef/customer/LN/lnFacilityOverviewDraft",
+			"permission": "ln_save",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "uiPendingApproval",
+			"listdefName": "/loan/listdef/customer/LN/lnFacilityOverviewPendingClient",
+			"permission": "ln_access",
+			"index": 1,
+			"selected": "true",
+			"severalSubmit": "ln_approve",
+			"commentsRequired": "true",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "uiPendingBankApproval",
+			"listdefName": "/loan/listdef/customer/LN/lnFacilityOverviewPendingBank",
+			"permission": "ln_access",
+			"index": 2,
+			"selected": ""
+		},
+		{
+			"tabName": "live",
+			"listdefName": "/loan/listdef/customer/LN/lnFacilityOverviewActive",
+			"permission": "ln_access",
+			"index": 3,
+			"selected": "",
+			"displayInputSwitch": {
+				"display": "true",
+				"label": "multiSelectionForRollover",
+				"infoLabel": "rolloverCriteriaInfo",
+				"listdefName":"/loan/listdef/customer/LN/customerActiveLNRPNList",
+				"disableHeaderCheckbox": "true",
+				"filterParams" : {
+					"pricing_option": "",
+					"bo_facility_name": "",
+					"cur_code": "",
+					"repricing_date": "",
+					"borrower_reference": ""
+				}
+			}
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/loan/listdef/customer/LN/lnFacilityOverviewRejected",
+			"permission": "ln_access",
+			"index": 4,
+			"selected": "",
+			"severalSubmit": "ln_rejected_maintain",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "deleteClear",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "deleteClear"
+		      	}
+			]
+		},
+		{
+			"tabName": "other",
+			"listdefName": "/loan/listdef/customer/LN/lnFacilityOverviewOther",
+			"permission": "ln_access",
+			"index": 5,
+			"selected": ""
+		}
+	],
+	"bottomButtons": [
+		{
+			"buttonName": "rollover",
+			"buttonClass": "primaryButton", 
+			"permission": "bk_lnrpn_save",
+			"routerLink": "productScreen?productCode=BK&subProductCode=LNRPN&tnxTypeCode=01&mode=INITIATE&option=BK_LOAN_REPRICING"
+		}
+	]
+}

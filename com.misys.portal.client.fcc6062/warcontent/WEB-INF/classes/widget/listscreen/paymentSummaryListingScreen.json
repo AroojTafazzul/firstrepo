@@ -1,0 +1,92 @@
+{
+	"TabHeader":"PAYMENTS_OVERVIEW",
+	"showPopup": false,
+	"actionPopup" : true,
+	"TabLists": [
+		{
+            "tabName": "Summary",
+			"tabSelector": "paymentOverviewSummaryComponent",
+			"TabConfig": [],
+			"permission": "fcm_summary_widget_access",
+			"index": 0,
+			"selected": ""
+        },
+		{
+            "tabName": "upcomingPayments",
+			"tabSelector": "upcomingPaymentsComponent",
+			"TabConfig": [],
+			"permission": "upcoming_payments_access",
+			"index": 0,
+			"selected": ""
+        },
+		{
+			"tabName": "TOP_BENEFICIARIES",
+			"tabSelector": "listdefCommonComponent",
+			"showFilter": "false",
+			"TabConfig": [
+			{
+					"listdefName": "core/listdef/customer/MC/topBeneficiariesList",
+                    "downloadIconEnabled": "true",
+                    "paginator": "false",
+                    "passBackEnabled": "true",
+                    "checkBoxPermission": "false",
+                    "groupsDownloadIconEnabled": "true",
+                    "appendTabNameDownloadHeader": "true"
+			}
+			
+			],
+			"permission": "top_beneficiaries_widget_access",
+			"index": 1,
+			"selected": "",
+			"hyperlinks": [
+				{
+					"hyperlinkName": "VIEW_PAYMENTS_LIST",
+					"routerLink": "productListing?option=PAYMENTS&category=FCM",
+					"source" : "internal"
+				}
+			         ],
+			"switches": [
+							{
+								"switchName": "NO_OF_INSTRUMENTS",
+								"index": 0,
+								"selected": "true",
+								"orderType": "d",
+								"values": "count"
+							},
+							{
+								"switchName": "amount",
+								"index": 1,
+								"selected": "",
+								"orderType": "d",
+								"values": "amount"
+							}
+						]
+		},
+		{
+			"tabName": "FAVORITE_BENEFICIARIES",
+			"tabSelector": "listdefCommonComponent",
+			"TabConfig": [
+				{
+					"listdefName": "core/listdef/customer/MC/favoriteBeneficiariesList",
+                    "downloadIconEnabled": "true",
+                    "appendTabNameDownloadHeader": "true",
+                    "paginator": "true",
+                    "passBackEnabled": "true",
+                    "checkBoxPermission": "false",
+                    "groupsDownloadIconEnabled": "true"
+				}
+			],
+			"permission": "favorite_beneficiaries_widget_access",
+			"index": 2,
+			"selected": "",
+			"hyperlinks": [
+				{
+					"hyperlinkName": "VIEW_BENEFICIARIES_LIST",
+					"routerLink": "productListing?option=BENEFICIARY_MASTER_MAINTENANCE_MC&category=FCM",
+					"permission": "fcm_access_beneficiary_file_upload_mc",
+					"source" : "internal"
+				}
+			]
+		}
+	]
+}

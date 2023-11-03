@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="100" default_order="ref_id" default_order_type="d" js_binding="misys.binding.loan.ln_tnxdropdown_validation_list" help="LIST_HELP_EDIT_TRANSACTIONS">
+
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	
+	
+	
+	
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="LN_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>			
+		</url>
+	</column>
+	<column name="entity" align="left" width="10%" loca_key="ENTITY"/>
+	<column name="bo_deal_name" align="left" width="20%" loca_key="DEAL"/>
+	<column name="bo_facility_name" align="center" width="15%" loca_key="FACILITY">
+	<script>
+	var productCode = row.getColumnValue("product_code");
+		if(("BK".equals(""+productCode+"")))
+		{   
+				value = row.getColumnValue("ObjectDataString@bulk_facility_name");
+		}
+		value;
+	</script>
+	</column>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="full_name" align="center" width="20%" loca_key="USER_NAME">
+		<script>
+			var displayStyle = com.misys.portal.core.util.JetspeedResources.getInt("username.display.style.mode",0);
+			var firstName = row.getColumnValue("Inputter@first_name");
+			var lastName = row.getColumnValue("Inputter@last_name");
+			value = lastName + ", " + firstName;
+			if(displayStyle == 1)
+			{
+				value = firstName + " " + lastName;
+			}
+			value;
+		</script>
+	</column>
+		
+	<column name="appl_date" align="center" width="6em" loca_key="APPL_DATE"/>
+	<column name="transaction_type" align="center" width="15%" loca_key="LOAN_TRANSACTION_TYPE">
+	<script>
+			var tnxTypeCode = row.getColumnValue("tnx_type_code");
+			var subTnxTypeCode = row.getColumnValue("sub_tnx_type_code");
+			
+			if(!("".equals(""+tnxTypeCode+"")))
+			{
+			  if("01".equals(""+tnxTypeCode+"") &amp;&amp; "97".equals(""+subTnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LOAN_REPRICING");
+				}
+				else if("01".equals(""+tnxTypeCode+"") &amp;&amp; "B1".equals(""+subTnxTypeCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "SWINGLINE");
+				}
+			  else
+				{
+					value = com.misys.portal.common.localization.Localization.getGTPString(language, "LOAN_DRAWDOWN");
+				}					
+			}
+			
+			value;
+		</script>
+	</column>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="ObjectDataString@bulk_facility_name" hidden="y"/>
+
+	<!-- Parameters -->
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="bo_deal_name"
+		size="35"
+		max_length="40"
+		loca_key="DEAL"
+		input="y"
+		default=""/>
+	<parameter
+		name="bo_facility_name"
+		size="35"
+		max_length="35"
+		loca_key="FACILITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="user_name"
+		loca_key="USER_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+	<parameter
+	    name="tnx_type_code_dropdown"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    type="AvailableLoanTransactionType"
+	    input="y"
+	    multiple_values="01:40,01:97,01:B1"
+	    />
+	 <parameter
+	    name="tnx_type_code_parameter"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    input="y"
+	    size="35"
+		max_length="40"
+	     />
+	<parameter
+	    name="sub_tnx_type_code_parameter"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    input="y"
+	    size="35"
+		max_length="40"
+	    />
+	 <parameter
+	    name="sub_product_code_parameter"
+	    loca_key="LOAN_TRANSACTION_TYPE"
+	    input="y"
+	    size="35"
+		max_length="40"
+	    /> 	
+
+	
+	<!-- Candidates -->
+	
+	<!-- pending files -->
+	<candidate name="loan">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_INCOMPLETE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						sub_tnx_type_code_parameter
+					</value>
+			</criteria>
+
+		</filter>
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						sub_tnx_type_code_parameter
+					</value>
+			</criteria>
+			
+		</filter>	
+		
+	</candidate>
+	<!-- pending files -->
+	<candidate name="bulk_loan">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_INCOMPLETE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="child_product_code"/>
+				<operator type="equal"/>
+					<value type="code">
+						N001_LN
+					</value>		
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						sub_tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="different"/>
+					<value type="parameter">
+						sub_product_code_parameter
+					</value>
+			</criteria>
+		</filter>
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="child_product_code"/>
+				<operator type="equal"/>
+					<value type="code">
+						N001_LN
+					</value>		
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="equal"/>
+					<value type="parameter">
+						sub_tnx_type_code_parameter
+					</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code"/>
+				<operator type="different"/>
+					<value type="parameter">
+						sub_product_code_parameter
+					</value>
+			</criteria>
+		</filter>
+
+	</candidate>
+	
+<!-- 	in progress files -->
+	<candidate name="bulk_loan">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_INPROGRESS
+				</value>
+			</criteria>
+			<criteria>
+				<column name="child_product_code"/>
+				<operator type="equal"/>
+					<value type="code">
+						N001_LN
+					</value>		
+			</criteria>
+		</filter>
+	</candidate>
+	
+	
+	
+	<!-- in progress files -->
+	<candidate name="loan">
+		<filter>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_INPROGRESS
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<!-- Common filters -->
+	<filter>
+		<criteria>
+			<column name="ref_id"/>
+			<operator type="like"/>
+			<value type="parameter">
+				ref_id
+			</value>
+		</criteria>
+		<criteria>
+			<column name="entity"/>
+			<operator type="like"/>
+			<value type="parameter">
+				entity
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bo_deal_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				bo_deal_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="cur_code"/>
+			<operator type="like"/>
+			<value type="parameter">
+				cur_code
+			</value>
+		</criteria>
+	</filter>
+	
+	<filter and="y">
+		<criteria>
+			   <column name="bulk_ref_id"/>
+			   <operator type="isNull"/>
+			</criteria>
+		</filter>
+	
+	<filter or="y">
+		<criteria>
+			<column name="Inputter@last_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="Inputter@first_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+	</filter>
+	<filter or = "y">
+		<criteria>
+			<column name="bo_facility_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				bo_facility_name
+			</value>
+		</criteria>
+		<criteria>
+			<column name="ObjectDataString@bulk_facility_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				bo_facility_name
+			</value>
+		</criteria>
+	</filter>
+	
+	<filter>
+		<businesscriteria type="isNew"/>
+	</filter>
+</listdef>

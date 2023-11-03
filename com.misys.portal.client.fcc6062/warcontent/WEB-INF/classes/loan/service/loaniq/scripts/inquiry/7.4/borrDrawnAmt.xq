@@ -1,0 +1,1 @@
+declare function borrDrawnAmt($facId,$borrCustId){{LIQ.XQ.UTIL.SET("facDrawnAmt",0)}{for $ost in /Outstanding[LIQ.XQS.EQUAL(@facilityId,$facId)][LIQ.XQS.EQUAL(@borrowerId,$borrCustId)][LIQ.XQS.EQUAL(@objectStateCode,"LRELS")] return {LIQ.XQ.UTIL.SET("facDrawnAmt",LIQ.XQ.UTIL.ADD($facDrawnAmt,$ost/ost/facilityCurrencyCurrentAmount))}}{$facDrawnAmt}};

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" hideSearch="true">
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID"/>
+	<column name="Counterparty@counterparty_act_no" align="right" width="10em" loca_key="ACCOUNTNUMBER"/>
+	<column name="Counterparty@counterparty_name" align="right" width="10em" loca_key="BENEFICIARY_NAME"/>
+	<column name="ft_cur_code" align="center" width="3em" loca_key="CUR_CODE"/>
+	<column name="ft_amt" align="right" width="10em" loca_key="AMOUNT">
+		<script>
+		if(com.misys.portal.security.GTPSecurity.isCustomer(rundata))
+		{
+			if (!value.equals(""))
+			{
+				var bulkType = parameters.get("bk_type");
+				if("PAYRL".equals(""+bulkType+""))
+				{
+					var payrollType = parameters.get("payroll_type");
+					var permission = "bk_payrl_amount_access_"+payrollType;
+					var entity = row.getColumnValue("entity")+"";
+					var company_id =row.getColumnValue("company_id")+"";
+					if( !com.misys.portal.common.security.GTPSecurityCheck.hasPermission(rundata, permission.toLowerCase(), entity, company_id))
+					{
+					  value = "";
+					}
+				}
+			}
+		}
+			value;
+		</script>
+	</column>
+	<column name="bulk_ref_id" align="center" width="6em" loca_key="BULK_REF_ID"></column>
+	<column name="entity" align="center" width="6em" loca_key="ENTITY"/>
+	<column name="product_code" align="center" width="6em" loca_key="PRODUCTCODE"/>
+	<column name="product_type" align="center" width="13%" loca_key="PRODUCT_TYPE">
+		<script>
+			if(value.equals(""))
+			{
+				var subProductCode = row.getColumnValue("sub_product_code").toString();
+				if(("PIDD").equals(""+subProductCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N047",subProductCode+"_BK");
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N047",subProductCode);
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="appl_date" align="center" width="6em" loca_key="REPORT_APPLICATION_DATE"/>
+	<column name="iss_date" align="center" width="6em" loca_key="REPORT_TRANSFER_DATE"/>
+	
+	<!-- Transactions in the bulk will have one the status, show a meaning full status rather than tnx_stat_code 
+	     because a transaction in bulk may not mean anything having status like incomplete,acknowledged. Mainly useful when 
+	     Bulk from Upload is accessed to view transactions in the bulk, in that case bulk may have error transactions -->
+	<column name="tnx_stat_code" align="right" width="13%" loca_key="STATUS" sort="n">
+		<script>
+			if(value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				if(("07").equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getString(language,"TRANSACTION_BULK_STATUS_IN_VALID");
+				} else {
+					value = com.misys.portal.common.localization.Localization.getString(language,"N004_"+tnxStatCode);
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="prod_stat_code" align="right" width="13%" loca_key="PRODUCT_STATUS" sort="n">
+		<script>
+			if(value.equals(""))
+			{
+				var prodStatCode = row.getColumnValue("prod_stat_code");
+			}
+			value;
+		</script>
+	</column>
+	
+	<column name="tnx_stat_code" hidden="y"/>
+	 <column name="prod_stat_code" hidden="y"/>
+	<column name="sub_product_code" hidden="Y"/>
+	<column name="bulk_ref_id" hidden="y"/>
+	<column name="bulk_tnx_id" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="company_id" hidden="y"/>
+	
+	<parameter name="bulk_ref_id" />
+	<parameter name="bulk_tnx_id" />
+	<parameter name="bk_type" />
+	<parameter name="payroll_type" />
+	<candidate name="fundtransfer_in_bulk">
+		<filter>
+			<criteria>
+				<column name="bulk_ref_id"/>
+				<operator type="equal"/>
+				<value type="parameter">bulk_ref_id</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+</listdef>

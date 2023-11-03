@@ -1,0 +1,135 @@
+{
+	"common":	[
+					{
+						"actionName":"APPROVE",
+						"permissions": [],
+						"permissionSuffix":["approve"],
+						"url":"/reviewScreen",
+						"urlQueryParams": {
+											"tnxid":{
+														"readFromTransaction": true,
+														"field": "TRANSACTION_ID"		
+													},
+											"referenceid":{
+																"readFromTransaction": true,
+																"field": "REFERENCE_ID"		
+														  },				
+											"action":"approve",
+											"mode":"view",
+											"productCode":{
+																"readFromTransaction": true,
+																"field": "PRODUCT_CODE"		
+														  },
+											"subProductCode":{
+																"readFromTransaction": true,
+																"field": "SUB_PRODUCT_CODE"		
+														  },	
+											"operation":"LIST_INQUIRY"
+										  },
+						"urlScreenType": "ANGULAR",		
+						"urlType":"Internal",
+						"urlLoadType":"",
+						"tnxStatus": [
+										{
+											"operation": "IS",
+											"applicableValues": ["N004_UNCONTROLLED"]
+										}
+									 ],
+						"subTnxStatus": [],						
+						"productStatus": [],
+						"tnxType": [],
+						"subTnxType": [],
+						"actionRequired": []
+					},
+					{
+						"actionName":"RETURN",
+						"permissions": [],
+						"permissionSuffix":["approve"],
+						"url":"/productScreen?productCode=SI&tnxTypeCode=01&mode=INITIATE",
+						"urlScreenType": "ANGULAR",		
+						"urlType":"Internal",
+						"urlLoadType":"",
+						"tnxStatus": [
+										{
+											"operation": "IS",
+											"applicableValues": ["N004_UNCONTROLLED"]
+										}
+									 ],
+						"subTnxStatus": [],						
+						"productStatus": [],
+						"tnxType": [],
+						"subTnxType": [],
+						"actionRequired": []
+					},
+					{
+						"actionName":"VIEW",
+						"permissions": [],
+						"permissionSuffix":["access"],
+						"url":"/view",
+						"urlQueryParams": {
+											"tnxid":{
+														"readFromTransaction": true,
+														"field": "TRANSACTION_ID"		
+													},
+											"referenceid":{
+																"readFromTransaction": true,
+																"field": "REFERENCE_ID"		
+														  },				
+											"tnxTypeCode": {
+																"readFromTransaction": true,
+																"field": "TRANSACTION_TYPE_CODE"		
+														   },
+                                            "eventTnxStatCode": {
+																"readFromTransaction": true,
+																"field": "TRANSACTION_STAT_CODE"		
+														   },
+											"mode":"view",
+											"productCode":{
+																"readFromTransaction": true,
+																"field": "PRODUCT_CODE"		
+														  },
+											"subProductCode":{
+																"readFromTransaction": true,
+																"field": "SUB_PRODUCT_CODE"		
+														  },	
+											"operation":"PREVIEW"
+										  },
+						"urlScreenType": "ANGULAR",		
+						"urlType":"Internal",
+						"urlLoadType":"",
+						"tnxStatus": [
+										{
+											"operation": "IS",
+											"applicableValues": ["N004_UNCONTROLLED"]
+										}
+									 ],
+						"subTnxStatus": [],						
+						"productStatus": [],
+						"tnxType": [],
+						"subTnxType": [],
+						"actionRequired": []
+					}
+			],
+	"SI":	[
+				{
+					"actionName":"DETAILS",
+					"permissions":["si_access"],
+					"permissionSuffix":[],
+				    "url":"https://finastraintranet.omniacloud.net/start",
+					"urlQueryParams": {},
+					"urlType":"External",
+					"urlScreenType":"",
+					"tnxStatus": [
+									{
+										"operation": "IS",
+										"applicableValues": ["N004_UNCONTROLLED"]
+									}
+								 ],
+					"subTnxStatus": [],					
+					"productStatus": [],
+					"tnxType": [],
+					"subTnxType": [],
+					"actionRequired": []	
+				}
+			]
+}

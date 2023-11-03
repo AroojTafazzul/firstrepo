@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for an exchange rate. XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="exchange_rate_records">
+	    <xs:complexType>
+	        <xs:sequence>
+	            <xs:element minOccurs="0" maxOccurs="unbounded" name="exchange_rate_record" type="exchange_rate_recordType"/>
+	        </xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+	<xs:complexType name="exchange_rate_recordType">
+		<xs:sequence>
+			<xs:element ref="brch_code" minOccurs="0" />
+			<xs:element name="bank_abbv_name" type="xs:string"/>
+			<xs:element name="iso_code" type="currency" />
+			<xs:element name="base_iso_code" type="currency" />
+			<xs:element name="paty_val" type="positiveInteger" />
+			<xs:element name="buy_tt_rate" type="xs:decimal" />
+			<xs:element name="mid_tt_rate" type="xs:decimal" />
+			<xs:element name="sell_tt_rate" type="xs:decimal" />
+			<xs:element name="euro_in_currency" type="YesNo" />
+			<xs:element name="euro_rate" type="xs:decimal" minOccurs="0" />
+			<xs:element name="update_date" type="Date" minOccurs="0" />
+			<xs:element name="start_value_date" type="Date" minOccurs="0" />
+			<xs:element name="end_value_date" type="Date" minOccurs="0" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" ref="additional_field"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

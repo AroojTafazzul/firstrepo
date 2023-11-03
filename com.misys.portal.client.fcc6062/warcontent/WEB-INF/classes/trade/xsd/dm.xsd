@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Misys Trade Portal Interfaces Schema Copyright (c) 2000-2010 Misys
+	(http://www.misys.com) All Rights Reserved.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for DM. XML validation 
+			Copyright (c) 2000-2004 NEOMAlogic (http://www.neomalogic.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/common.xsd"/>
+	<xs:element name="dm_tnx_record">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element minOccurs="0" ref="brch_code">
+						<xs:annotation>
+							<xs:documentation>Branch code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="ref_id">
+						<xs:annotation>
+							<xs:documentation>Identifier of the document 
+								folder</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Back office reference for 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cust_ref_id">
+						<xs:annotation>
+							<xs:documentation>Customer internal reference for 
+								the folder</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="company_id">
+						<xs:annotation>
+							<xs:documentation>Identifier of the 
+								Company</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="company_name">
+						<xs:annotation>
+							<xs:documentation>Company name</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="prod_stat_code">
+						<xs:annotation>
+							<xs:documentation>New 03, Updated 
+								07</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="product_code">
+						<xs:annotation>
+							<xs:documentation>Fixed to DM</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="appl_date">
+						<xs:annotation>
+							<xs:documentation>Date of application of the 
+								document folder</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="prep_date">
+						<xs:annotation>
+							<xs:documentation>Date of folder creation, keyed by 
+								the user</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="amd_no">
+						<xs:annotation>
+							<xs:documentation>Not Used</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="type">
+						<xs:annotation>
+							<xs:documentation>Not used. Planned for future 
+								potential document folder type definition: 
+								export presentation ?</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="parent_bo_ref_id">
+						<xs:annotation>
+							<xs:documentation>Bank reference for the potential 
+								EL or SR transaction that initiated this 
+								document preparation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="parent_ref_id">
+						<xs:annotation>
+							<xs:documentation>Identifier of the potential 
+								parent EL or SR</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="parent_product_code">
+						<xs:annotation>
+							<xs:documentation>EL or SR when the document 
+								preparation has been initiated from an EL or an 
+								SR</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_id">
+						<xs:annotation>
+							<xs:documentation>Unique transaction 
+								id</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_tnx_id"/>
+					<xs:element minOccurs="0" ref="tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>New 01, Update 02, Amend 03, 
+								Purge 17</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_type_code">
+						<xs:annotation>
+							<xs:documentation>UPLOAD, 
+								GENERATION</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Incomplete 01, Uncontrolled 02, 
+								Controlled 03</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="sub_tnx_stat_code">
+						<xs:annotation>
+							<xs:documentation>Sub Transaction Status Code</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_val_date"/>
+					<xs:element minOccurs="0" ref="tnx_cur_code">
+						<xs:annotation>
+							<xs:documentation>Transaction 
+								currency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="tnx_amt">
+						<xs:annotation>
+							<xs:documentation>Transaction 
+								amount</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="counterparty_name">
+						<xs:annotation>
+							<xs:documentation>Counterparty name (consignee 
+								name)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="counterparty_address_line_1">
+						<xs:annotation>
+							<xs:documentation>Counterparty address (consignee 
+								address)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="counterparty_address_line_2">
+						<xs:annotation>
+							<xs:documentation>Counterparty address (consignee 
+								address)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="counterparty_dom">
+						<xs:annotation>
+							<xs:documentation>Counterparty address (consignee 
+								address)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="counterparty_country">
+						<xs:annotation>
+							<xs:documentation>Counterparty country (consignee 
+								country)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="counterparty_reference">
+						<xs:annotation>
+							<xs:documentation>Counterparty reference (consignee 
+								reference)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cur_code">
+						<xs:annotation>
+							<xs:documentation>Total currency as defined in the 
+								document folder</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="dm_amt">
+						<xs:annotation>
+							<xs:documentation>Total amount as defined in the 
+								document folder</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="pres_ref_id">
+						<xs:annotation>
+							<xs:documentation>Presentation 
+								reference</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="eucp_flag"/>
+					<xs:element minOccurs="0" ref="eucp_version"/>
+					<xs:element minOccurs="0" ref="eucp_presentation_place"/>
+					<xs:element minOccurs="0" ref="eucp_reference"/>
+					<xs:element minOccurs="0" ref="free_format_text">
+						<xs:annotation>
+							<xs:documentation>Text added to a document 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="inp_user_id"/>
+					<xs:element minOccurs="0" ref="inp_dttm"/>
+					<xs:element minOccurs="0" ref="ctl_user_id"/>
+					<xs:element minOccurs="0" ref="ctl_dttm"/>
+					<xs:element minOccurs="0" ref="release_user_id"/>
+					<xs:element minOccurs="0" ref="release_dttm"/>
+					<xs:element minOccurs="0" ref="bo_inp_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office, for 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_inp_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office, for 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office, for 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_ctl_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office, for 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_user_id">
+						<xs:annotation>
+							<xs:documentation>Back office, for 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_release_dttm">
+						<xs:annotation>
+							<xs:documentation>Back office, for 
+								presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="bo_comment">
+						<xs:annotation>
+							<xs:documentation>Used for instance for the bank 
+								acceptance of a presentation</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="note">
+						<xs:annotation>
+							<xs:documentation>Some "post-it" remarks Not 
+								used</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" ref="data">
+						<xs:annotation>
+							<xs:documentation>The full XML folder template 
+								data</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="unbounded" 
+						ref="additional_field"/>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="CountryOfOrigin"/>
+				<xs:element minOccurs="0" ref="CountryOfDestination"/>
+				<xs:element minOccurs="0" ref="purchaseOrderReference"/>
+				<xs:element minOccurs="0" ref="commercialInvoiceReference"/>
+				<xs:element minOccurs="0" ref="documentaryCreditReference"/>
+				<xs:element minOccurs="0" 
+					ref="exportDocumentaryCreditReference"/>
+				<xs:element minOccurs="0" ref="exporterReference"/>
+				<xs:element minOccurs="0" ref="Shipper"/>
+				<xs:element minOccurs="0" ref="Consignee"/>
+				<xs:element minOccurs="0" ref="BillTo"/>
+				<xs:element minOccurs="0" ref="Buyer"/>
+				<xs:element minOccurs="0" ref="RoutingSummary"/>
+				<xs:element minOccurs="0" ref="Incoterms"/>
+				<xs:element minOccurs="0" ref="AdditionalInformation"/>
+				<xs:element minOccurs="0" ref="TermsAndConditions"/>
+				<xs:element minOccurs="0" ref="PaymentTerms"/>
+				<xs:element minOccurs="0" ref="LineItemDetails"/>
+				<xs:element minOccurs="0" maxOccurs="unbounded" 
+					ref="GeneralChargesOrDiscounts"/>
+				<xs:element minOccurs="0" ref="Totals"/>
+				<xs:element minOccurs="0" ref="PackingDetail"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CountryOfDestination" type="countryName"/>
+	<xs:element name="CountryOfOrigin" type="countryName"/>
+	<xs:element name="Shipper">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="organizationName"/>
+				<xs:element ref="addressLine1"/>
+				<xs:element ref="addressLine2"/>
+				<xs:element ref="addressLine3"/>
+				<xs:element ref="organizationReference"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Consignee">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="organizationName"/>
+				<xs:element ref="addressLine1"/>
+				<xs:element ref="addressLine2"/>
+				<xs:element ref="addressLine3"/>
+				<xs:element ref="organizationReference"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BillTo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="organizationName"/>
+				<xs:element ref="addressLine1"/>
+				<xs:element ref="addressLine2"/>
+				<xs:element ref="addressLine3"/>
+				<xs:element ref="organizationReference"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Buyer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="organizationName"/>
+				<xs:element ref="addressLine1"/>
+				<xs:element ref="addressLine2"/>
+				<xs:element ref="addressLine3"/>
+				<xs:element ref="organizationReference"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RoutingSummary">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="transportService"/>
+				<xs:element ref="transportType"/>
+				<xs:element ref="departureDate"/>
+				<xs:element ref="PlaceOfLoading"/>
+				<xs:element ref="PlaceOfDischarge"/>
+				<xs:element ref="PlaceOfDelivery"/>
+				<xs:element ref="transportReference"/>
+				<xs:element ref="vesselName"/>
+				<xs:element ref="PlaceOfReceipt"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GeneralChargesOrDiscounts">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="chargeType"/>
+				<xs:element ref="chargeAmount"/>
+				<xs:element ref="chargeCurrencyCode"/>
+				<xs:element ref="rate"/>
+				<xs:element ref="chargeReportingAmount"/>
+				<xs:element ref="chargeReportingCurrencyCode"/>
+				<xs:element ref="chargeDescription"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Incoterms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="incotermsCode"/>
+				<xs:element ref="incotermsPlace"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TermsAndConditions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="clause"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PaymentTerms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="line"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LineItemDetails">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Item"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Item">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="itemNumber"/>
+				<xs:element ref="productIdentification"/>
+				<xs:element ref="productName"/>
+				<xs:element ref="purchaseOrderReference"/>
+				<xs:element ref="exportLicenseReference"/>
+				<xs:element ref="baseCurrencyCode"/>
+				<xs:element ref="basePrice"/>
+				<xs:element ref="baseUnitOfMeasureCode"/>
+				<xs:element ref="itemQuantity"/>
+				<xs:element ref="itemQuantityUnitOfMeasureCode"/>
+				<xs:element ref="rate"/>
+				<xs:element ref="totalPrice"/>
+				<xs:element ref="totalCurrencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PlaceOfDelivery" type="locationName"/>
+	<xs:element name="PlaceOfDischarge" type="locationName"/>
+	<xs:element name="PlaceOfLoading" type="locationName"/>
+	<xs:element name="PlaceOfReceipt" type="locationName"/>
+	<xs:element name="Totals" type="Total"/>
+	<xs:complexType name="Total">
+		<xs:sequence>
+			<xs:element ref="Total"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Total">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="totalAmount"/>
+				<xs:element ref="totalCurrencyCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PackingDetail">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Package"/>
+				<xs:element ref="totalNetWeightValue"/>
+				<xs:element ref="totalNetWeightUnitCode"/>
+				<xs:element ref="totalGrossWeightValue"/>
+				<xs:element ref="totalGrossWeightUnitCode"/>
+				<xs:element ref="totalNetVolumeValue"/>
+				<xs:element ref="totalNetVolumeUnitCode"/>
+				<xs:element ref="totalGrossVolumeValue"/>
+				<xs:element ref="totalGrossVolumeUnitCode"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Package">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="numberOfPackages"/>
+				<xs:element ref="typeOfPackage"/>
+				<xs:element ref="marksAndNumbers"/>
+				<xs:element ref="heightValue"/>
+				<xs:element ref="widthValue"/>
+				<xs:element ref="lengthValue"/>
+				<xs:element ref="dimensionUnitCode"/>
+				<xs:element ref="netWeightValue"/>
+				<xs:element ref="grossWeightValue"/>
+				<xs:element ref="weightUnitCode"/>
+				<xs:element ref="grossVolumeValue"/>
+				<xs:element ref="volumeUnitCode"/>
+				<xs:element ref="productName"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AdditionalInformation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="line"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dm_amt" type="amount"/>
+	<xs:element name="parent_bo_ref_id" type="TwentyCharacters"/>
+	<xs:element name="parent_product_code">
+		<xs:simpleType>
+			<xs:restriction base="xs:token">
+				<xs:pattern value=".{0}|EL|SR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="parent_ref_id" type="TwentyCharacters"/>
+	<xs:element name="prep_date" type="Date"/>
+	<xs:element name="pres_ref_id" type="TwentyCharacters"/>
+	<xs:element name="note" type="xs:string"/>
+	<xs:element name="organizationName" type="xs:string"/>
+	<xs:element name="organizationReference" type="xs:string"/>
+	<xs:element name="addressLine1" type="ThirtyFiveCharacters"/>
+	<xs:element name="addressLine2" type="ThirtyFiveCharacters"/>
+	<xs:element name="addressLine3" type="ThirtyFiveCharacters"/>
+	<xs:element name="baseCurrencyCode" type="currency"/>
+	<xs:element name="basePrice" type="xs:string"/>
+	<xs:element name="baseUnitOfMeasureCode" type="ThirtyFiveCharacters"/>
+	<xs:element name="chargeAmount" type="xs:string"/>
+	<xs:element name="chargeCurrencyCode" type="currency"/>
+	<xs:element name="chargeDescription" type="xs:string"/>
+	<xs:element name="chargeReportingAmount" type="xs:string"/>
+	<xs:element name="chargeReportingCurrencyCode" type="currency"/>
+	<xs:element name="chargeType" type="ThirtyFiveCharacters"/>
+	<xs:element name="clause" type="ThirtyFiveCharacters"/>
+	<xs:element name="commercialInvoiceReference" type="ThirtyFiveCharacters"/>
+	<xs:complexType name="countryName">
+		<xs:sequence>
+			<xs:element ref="countryName"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="countryName" type="ThirtyFiveCharacters"/>
+	<xs:element name="departureDate" type="Date"/>
+	<xs:element name="documentaryCreditReference" type="ThirtyFiveCharacters"/>
+	<xs:element name="exportDocumentaryCreditReference" 
+		type="ThirtyFiveCharacters"/>
+	<xs:element name="exportLicenseReference" type="ThirtyFiveCharacters"/>
+	<xs:element name="exporterReference" type="ThirtyFiveCharacters"/>
+	<xs:element name="incotermsCode" type="incotermsCode"/>
+	<xs:element name="incotermsPlace" type="xs:string"/>
+	<xs:element name="itemNumber" type="ThirtyFiveCharacters"/>
+	<xs:element name="itemQuantity" type="xs:string"/>
+	<xs:element name="itemQuantityUnitOfMeasureCode" 
+		type="ThirtyFiveCharacters"/>
+	<xs:element name="line" type="xs:string"/>
+	<xs:complexType name="locationName">
+		<xs:sequence>
+			<xs:element ref="locationName"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="locationName" type="ThirtyFiveCharacters"/>
+	<xs:element name="productIdentification" type="ThirtyFiveCharacters"/>
+	<xs:element name="productName" type="ThirtyFiveCharacters"/>
+	<xs:element name="purchaseOrderReference" type="ThirtyFiveCharacters"/>
+	<xs:element name="rate" type="xs:string"/>
+	<xs:element name="totalAmount" type="xs:string"/>
+	<xs:element name="totalCurrencyCode" type="currency"/>
+	<xs:element name="totalGrossVolumeUnitCode" type="xs:string"/>
+	<xs:element name="totalGrossVolumeValue" type="xs:string"/>
+	<xs:element name="totalGrossWeightUnitCode" type="xs:string"/>
+	<xs:element name="totalGrossWeightValue" type="xs:string"/>
+	<xs:element name="totalNetVolumeUnitCode" type="xs:string"/>
+	<xs:element name="totalNetVolumeValue" type="xs:string"/>
+	<xs:element name="totalNetWeightUnitCode" type="xs:string"/>
+	<xs:element name="totalNetWeightValue" type="xs:string"/>
+	<xs:element name="totalPrice" type="xs:string"/>
+	<xs:element name="transportReference" type="xs:string"/>
+	<xs:element name="transportService" type="xs:string"/>
+	<xs:element name="transportType" type="xs:string"/>
+	<xs:element name="vesselName" type="xs:string"/>
+	<xs:element name="numberOfPackages" type="xs:string"/>
+	<xs:element name="typeOfPackage" type="xs:string"/>
+	<xs:element name="marksAndNumbers" type="xs:string"/>
+	<xs:element name="heightValue" type="xs:string"/>
+	<xs:element name="widthValue" type="xs:string"/>
+	<xs:element name="lengthValue" type="xs:string"/>
+	<xs:element name="dimensionUnitCode" type="xs:string"/>
+	<xs:element name="netWeightValue" type="xs:string"/>
+	<xs:element name="grossWeightValue" type="xs:string"/>
+	<xs:element name="weightUnitCode" type="xs:string"/>
+	<xs:element name="grossVolumeValue" type="xs:string"/>
+	<xs:element name="volumeUnitCode" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Misys Portal - SDK Ant Buildfile
+	Copyright (c) 2000-2013 Misys (http://www.misys.com) All Rights Reserved. 
+ -->
+<project 
+	name="Portal Build Script for clients"
+	default="client-portal"
+	basedir="."
+	xmlns:antcontrib="antlib:net.sf.antcontrib">
+
+	<description>
+	    This is the ANT file dedicated to build the EAR and resources files
+		ready to be deployed.
+    </description>
+
+	<!-- import build configuration -->
+	<property file="build.properties" />
+
+	<!-- import standard targets -->
+	<import file="common-build.xml" />
+	
+	<property name="workspace.dir" value ="${basedir}/../.." description="Path to the workspace directory."/>
+	
+	<!-- Code generation targets -->
+
+	<target name="refreshlocal" if="eclipse.refreshLocal" description="Refresh workspace after code generation.">
+		<eclipse.refreshLocal resource="${project.portal.name}/src" depth="infinite"/>
+	</target>
+	
+	<target name="cleanAll" depends="generateURLAliases,refreshlocal" description="Clean all generated resources.">
+		<delete file="${workspace.dir}/${project.portal.name}/src/com/misys/portal/common/resources/URLAliasesResourceProvider.java" />
+	</target>
+
+	<target name="generateAll" depends="generateURLAliases,refreshlocal" description="Generate all resources."/>
+
+	<target name="generateURLAliases"
+	        description="Generates the URL aliases class, standard + specific keys">
+		<xslt in="${workspace.dir}/${project.portal.name}/warcontent/WEB-INF/classes/core/urlaliases.xml"
+		      out="${workspace.dir}/${project.portal.name}/src/com/misys/portal/common/resources/URLAliasesResourceProvider.java"
+		      style="${workspace.dir}/${project.portal.name}/build/urls2URLAliasesResourceProvider.xsl">
+			<param name="specific_file" expression="client_urlaliases.xml" />
+		</xslt>
+	</target>
+
+   	<!--                       		    -->
+	<!-- PORTAL SPECIFICS RESOURCE SETS -->
+	<!--                       	 	    -->
+	<patternset id="client.config.patternset">
+		<include name="font/**" />
+	</patternset>
+	<patternset id="core.config.patternset">
+		<include name="font/**" />
+	</patternset>
+	<patternset id="client.content.patternset">
+		<exclude name="xml/**"  />
+		<exclude name="html/**" if="exclude.staticcontent"/>
+		<exclude name="js/**" if="exclude.staticcontent"/>
+		<exclude name="js-src/**" />
+		<exclude name="images/**" if="exclude.staticcontent"/>
+		<exclude name="specimen/**" if="exclude.staticcontent"/>
+		<exclude name="mtp.javascript.example.js" if="exclude.staticcontent"/>
+		<exclude name="mtp.form.example.xsl" if="exclude.staticcontent"/>
+		<exclude name="psml/**" />
+	</patternset>
+	
+	<patternset id="core.content.patternset">
+		<exclude name="xml/**" />
+		<exclude name="html/**" if="exclude.staticcontent" />
+		<exclude name="js/**" if="exclude.staticcontent" />
+		<exclude name="js-src/**" />
+		<exclude name="psml/**" />
+		<exclude name="images/**" if="exclude.staticcontent"/>
+		<exclude name="images/demobank/**" if="exclude.staticcontent" />
+		<exclude name="images/old/**" if="exclude.staticcontent" />
+		<exclude name="specimen/**" if="exclude.staticcontent" />
+		<exclude name="mtp.javascript.example.js" if="exclude.staticcontent" />
+		<exclude name="mtp.form.example.xsl" if="exclude.staticcontent" />
+	</patternset>
+	<patternset id="core.resources.patternset">
+		<include name="default/**.xml" />
+		<include name="master_registry.xml" />
+		<include name="meridianInstallation.properties" />
+		<include name="ESAPI.properties" />
+		<include name="collaboration/**" />
+		<include name="core/**" />
+		<include name="cash/**" />
+		<include name="client/**" />
+		<include name="mostactiveaccounts/**"/>
+		<include name="recenttransactions/**"/>
+		<include name="accountSummaryWidget/**"/>
+		<include name="loan/**" />
+		<include name="beneficiaries/**" />
+		<include name="payments/**" />
+		<include name="opics/**" />
+		<include name="seamlessfx/**" />
+		<include name="axis/**" />
+		<include name="axis2-web/**" />
+		<include name="openaccount/**" />
+		<include name="retro/**" />
+		<include name="trade/**" />
+		<include name="layouts/**" />
+		<include name="macros/**" />
+		<include name="navigations/**" />
+		<include name="psml/**" />
+		<include name="screens/**" />
+		<include name="swift/**" />
+		<include name="tsu/**" />
+		<include name="gms/**" />
+		<include name="genericapi/**"/>
+		<include name="schematron/**"/>
+		<include name="fcm/**"/>
+		<include name="openapi/**"/>
+		<include name="xml/**" />
+		<include name="GlobalMacros.vm" />
+		<include name="treasury/**" />
+		<include name="mobile/**"/>
+		<include name="feesandbilling/**"/>
+		<include name="ux/**"/>
+		<include name="widget/**"/>
+		<include name="modernDashboard/**"/>
+		<include name="beneficiary/**" />
+		<include name="paymentsbulk/**" />
+		<include name="compass.cfg/**"/>
+	</patternset>
+	<patternset id="client.resources.patternset">
+		<include name="core/**" />
+		<include name="cash/**" />
+		<include name="trade/**" />
+		<include name="loan/**" />
+		<include name="treasury/**" />
+		<include name="default/**" />
+		<include name="client/**" />
+		<include name="client_registry.xml" />
+		<include name="navigations/**" />
+		<include name="psml/**" />
+	</patternset>
+	
+	
+	<patternset id="client.webinf.patternset">
+		<include name="**" />
+	</patternset>
+	 
+	<!-- ====================
+		  CORE LIBRARIES
+	     ==================== -->
+	<fileset id="core.lib" dir="${webapp.docroot.dir}/WEB-INF/lib">
+		<include name="*.jar" />
+	</fileset>
+	<!-- ====================
+		  CORE services
+	     ==================== -->
+	<fileset id="core.services" dir="${webapp.docroot.dir}/WEB-INF/services">
+		<include name="*.*" />
+	</fileset>
+	<patternset id="js.cvs">
+		<include name="**/CVS/"/>
+	</patternset>
+	 <patternset id="client.js.delete">
+	 	<include name="misys/themes/old-themes/"/>
+	 	<include name="misys/themes/misys/"/>
+	 	<include name="misys/themes/ceylan/"/>
+	 	<include name="misys/themes/_testCommon.js"/>
+	 	<include name="misys/themes/themeTester.html"/>
+	 </patternset>
+	<tstamp>
+	     <format property="TODAY" pattern="yyyy-MM-dd" />
+	 </tstamp>
+	
+	<target name="client-portal" depends="generateURLAliases,war,ear" description="generates a client Portal delivery." />
+	
+	<!-- ==============================
+		  appdata-clean: clean appdata
+		 ============================== -->
+	<target name="appdata-clean">
+		<delete dir="${target.appdata.profil.dir}" />
+	</target>
+	
+	<!-- =====================================================================
+          appdata-copy: Copy all files for appdata
+         ===================================================================== -->
+	<target name="appdata-copy">
+		<mkdir dir="${target.appdata.profil.dir}" />
+		<mkdir dir="${target.appdata.profil.dir}/appdata/logs" />
+		<mkdir dir="${target.appdata.profil.dir}/appdata/cache" />
+		<!--
+		 remember, you can copy from client specific directories
+		   - ${client.config.dir}
+		   - ${client.content.dir}
+		   - ${client.templates.dir}
+		   
+		 or from default directories
+		   - ${config.dir}
+		   - ${content.dir}
+		   - ${templates.dir}
+		 -->
+		<!-- default config -->
+		<echo>The client appdata dir ${client.appdata.dir} </echo>
+		<echo>The target.appdata.profil.dir dir ${target.appdata.profil.dir} </echo>
+		<copy todir="${target.appdata.profil.dir}/appdata/config">
+			<fileset dir="${client.appdata.dir}/config">
+				<include name="a11y.properties" />
+				<include name="audit.properties" />
+				<include name="configuration.xml" />
+				<include name="ibexconfig.xml" />
+				<include name="ehcache.xml"/>
+				<include name="log4j2.xml" />
+				<include name="interfaces/*.xml" />
+				<include name="interfaces/*.properties" />
+				<include name="turbine.properties" />
+				<include name="torque.properties" />
+				<include name="portal.properties" />
+				<include name="beneficiaries/beneficiaries.properties" />
+				<include name="environment.properties" />
+				<include name="client.properties" />
+				<include name="services.xml" />
+				<include name="fusion_banking_sso.properties"/>
+				<include name="audit/*.properties" />
+				<!-- product specific properties goes here -->
+				<include name="opics/opics.properties" />
+				<include name="loan/loan.properties" />
+				<include name="seamlessfx/seamlessfx.properties" />
+				<include name="payment/payment.properties"/>
+				<include name="liquidity/liquidity.properties" />
+				<include name="feesandbilling/feesandbilling.properties" />
+				<include name="portal_online_help.cpm.xml" />
+				<include name="compass.cfg.xml" />
+				<include name="flyway.properties" />
+				<include name="font/**"/>
+				<include name="gms/**"/>
+				<include name="ktp/**"/>
+				<include name="restapi.properties" />
+				<include name="finshare.properties" />
+				<include name="language_mapping.properties"/>
+				<include name="sso.properties" />
+				<include name="cashManagement.properties" />
+				<include name="restapi-request-param.properties" />
+				<include name="azure-restapi.properties"/>
+				<include name="fcc_els.properties" />
+			</fileset>
+		</copy>
+		
+		<fixcrlf srcdir="${target.appdata.profil.dir}/appdata" includes="**/*.*" eol="${line.feed}" />
+		<zip destfile="${target.dir}/appdata.zip">
+          <fileset dir="${target.dir}/appdata">
+          </fileset>	  
+	  	</zip>
+	</target>	
+	
+	<target name="merge">
+		<loadfile property="text" srcFile="${srcFile}">
+			<filterchain>
+				<deletecharacters chars="\r"/>
+			</filterchain>
+		</loadfile>
+		
+		<antcontrib:for list="${text}" delimiter="&#x0a;" param="line">
+			<sequential>
+				<antcontrib:propertyregex property="key" input="@{line}" regexp="^(.*)=(.*)$" select="\1" override="true" />
+				<antcontrib:propertyregex property="value" input="@{line}" regexp="^(.*)=(.*)$" select="\2" override="true" />
+
+				<replaceregexp file="${destFile}"
+					match="^${key}[ \t]*=.*$"
+					replace="${key}=${value}"
+					byline="true" />
+			</sequential>
+		</antcontrib:for>
+	</target>
+
+	<target name="ear" depends="war" description="Generates an EAR file.">
+		<ear destfile="${target.dir}/${ear.name}" appxml="${client.dir}/build/ear/META-INF/application.xml" manifest="${client.dir}/build/MANIFEST.MF">
+			<!-- add the WAR file -->
+			<fileset dir="${target.dir}">
+				<include name="${war.name}"/>
+			</fileset>
+			<!-- add the META-INF folder -->
+			<fileset dir="${client.dir}/build/ear">
+				<!-- included via the appxml property -->
+				<exclude name="META-INF/application.xml" />
+				<!-- included via the manifest property -->
+				<exclude name="META-INF/MANIFEST.MF" />
+				<include name="META-INF/**" />
+			</fileset>	    		
+		</ear>
+	</target>	
+	
+	<!-- ============================
+		Manifest Generation for EAR   
+		============================ -->
+	<manifest id="manifest" file="MANIFEST.MF" >
+	     <attribute name="Implementation-Version" value="${delivery.version}" />
+		 <attribute name="Implementation-Vendor" value="Misys" />
+		 <attribute name="Built-Date" value="${TODAY}" />
+	</manifest>
+</project>

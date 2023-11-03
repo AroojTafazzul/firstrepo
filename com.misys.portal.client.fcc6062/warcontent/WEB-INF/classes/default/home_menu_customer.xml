@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+	Copyright (c) 2000-2011 Misys (http://www.misys.com),
+   	All Rights Reserved. 
+-->
+<menus id="menu_customer">
+
+	<menu id="main">
+		<entry title="MODULE_CASH_MANAGEMENT" permission="ktp_cash_menu_access" ref="ktp_cash_management"/>
+		<entry title="MODULE_ACCOUNT_SERVICES" permission="no_permission" ref="balances_and_transactions"/>
+		<entry title="MODULE_CASH_SERVICES" permission="no_permission" ref="orders"/>
+		<entry title="MODULE_FSCM_SERVICES" permission="no_permission" ref="finance_supply_chain_mgmt"/>
+		<entry title="MODULE_TRADE_SERVICES" permission="no_permission" ref="trade_finance"/>
+		<entry title="MODULE_LOAN_SERVICES" permission="ln_access" ref="loan"/>
+		<entry title="MODULE_FX_SERVICES" permission="no_permission" ref="fx_services"/>
+		<entry title="MODULE_SECURE_EMAIL" permission="no_permission" ref="secure_email"/>
+		<entry title="MODULE_ADMINISTRATION_SERVICES" permission="no_permission" ref="services"/>
+		<entry title="MENU_DM_INQUIRY" permission="no_permission" ref="inquiry"/>
+		<entry title="MENU_DIGITAL_INTERFACE" permission="no_permission" ref="digital_interface"/>
+	</menu>
+	
+	<menu id="ktp_cash_management">
+		<entry title="MENU_CASH_MANAGEMENT1" screen="CASHINQUIRY_SCREEN" permission="ktp_cash_accounts_access"/>
+			<parameter name="option" value="ACCOUNT_BALANCES_HOME_ACTION"/>
+		<entry title="MENU_CASH_MANAGEMENT2" screen="CASHINQUIRY_SCREEN" permission="ktp_cash_loans_access"/>
+			<parameter name="option" value="LOANS_HOME_ACTION"/>
+		<entry title="MENU_CASH_MANAGEMENT3" screen="CASHINQUIRY_SCREEN" permission="ktp_cash_conventions_access"/>
+			<parameter name="option" value="STRUCTURE_CENTRALIZATION_HOME_ACTION"/>
+	</menu>
+	
+	<menu id="digital_interface">
+		<entry screen="PRODUCT_LISTING_SCREEN" title="MENU_PAYMENTS" permission="fcm_access_payments" modernUx="true">
+			<parameter name="option" value="PAYMENTS"/>
+			<parameter name="operation" value="ADD_FEATURES"/>
+			<parameter name="category" value="FCM"/>
+		</entry>	 
+ 		<entry screen="PRODUCT_LISTING_SCREEN" title="MENU_BENEFICIARY" permission="fcm_access_customer_beneficiary_mc" modernUx="true">
+ 			<parameter name="option" value="BENEFICIARY_MASTER_MAINTENANCE_MC"/>
+			<parameter name="category" value="FCM"/>
+		</entry>
+		<entry screen="PRODUCT_LISTING_SCREEN" title="MENU_BULK_BENEFICIARY" permission="fcm_access_payments" modernUx="true">
+			<parameter name="option" value="BENEFICIARY_BULK_UPLOAD"/>
+			<parameter name="operation" value="ADD_FEATURES"/>
+			<parameter name="category" value="FCM"/>
+		</entry>
+		<entry screen="UDE_SCREEN" title="EXTERNAL_URL" permission="no_permission" modernUx="fcm_access_customer_beneficiary_mc" isDeepLinking ="true">
+ 			<parameter name="securityType" value="SSO"/>
+ 			<parameter name="deepLinkingUrlKey" value="iframe_url"/>
+ 			<parameter name="deepLinkingProductProcessor" value="FCC"/>
+		</entry>
+		<entry title="PAYMENTS_OVERVIEW" screen="AB_SCREEN" permission="payments_overview_menu_access" modernUx="true"/>
+	</menu>
+	
+	<menu id="fcm-main">
+		<entry title="MODULE_ACCOUNT_SERVICES" permission="no_permission" ref="fcm_balances_and_transactions"/>
+		<entry title="MODULE_CASH_SERVICES" permission="no_permission" ref="fcm_orders"/>
+		<entry title="MODULE_FSCM_SERVICES" permission="no_permission" ref="finance_supply_chain_mgmt"/>
+		<entry title="MODULE_TRADE_SERVICES" permission="no_permission" ref="trade_finance"/>
+		<entry title="MODULE_LOAN_SERVICES" permission="ln_access" ref="loan"/>
+		<entry title="MODULE_FX_SERVICES" permission="no_permission" ref="fx_services"/>
+		<entry title="MODULE_SECURE_EMAIL" permission="no_permission" ref="secure_email"/>
+		<entry title="MODULE_ADMINISTRATION_SERVICES" permission="no_permission" ref="fcm_services"/>
+		<entry title="MENU_DM_INQUIRY" permission="no_permission" ref="inquiry"/>
+		<entry title="MENU_DIGITAL_INTERFACE" permission="no_permission" ref="digital_interface"/>
+	</menu>
+	
+	<menu id="inquiry">
+		<entry title="MODULE_BALANCES_TRANSACTIONS"  screen="MC_SCREEN" permission="sy_account_service_maintain_access"/>
+		<entry screen="SE_SCREEN" title="MODULE_SECURE_EMAIL_GENERIC_FILE_UPLOAD" permission="se_uload_access">
+			<parameter name="option" value="FILE_UPLOAD_HOME_ACTION"/>
+		</entry>
+		<entry title="MODULE_MY_PENDING_LIST" screen="MC_SCREEN" permission="todo_list_access" description="pendingApproval">
+			<parameter name="operation" value="LIST_SUBMIT"/>
+			<parameter name="option" value="TODO"/>
+		</entry>
+		<entry title="MODULE_TRANSACTION_NOTIFICATIONS" screen="MC_SCREEN" permission="mc_access" description="transactionNotification">
+			<parameter name="operation" value="LIST_REPORT"/>
+		</entry>
+		<entry title="MODULE_PENDING_TRANSACTIONS" screen="MC_SCREEN" permission="mc_access" description="transactionInProgress">
+			<parameter name="operation" value="LIST_PENDING"/>
+		</entry>
+		<entry title="MODULE_TRANSACTION_SEARCH" screen="MC_SCREEN" permission="mc_access" description="transactionSearch">
+			<parameter name="operation" value="LIST_PENDING_ACK"/>
+		</entry>
+		<entry title="MODULE_ACTION_REQUIRED" screen="MC_SCREEN" permission="mc_action_required_access" description="actionRequired">
+			<parameter name="operation" value="ACTION_REQUIRED"/>
+		</entry>
+	</menu>
+	<menu id="loan">
+		<entry title="N001_LN"  screen="LN_SCREEN" permission="ln_access"/>
+		<entry title="MODULE_LOAN_FACILITY"  screen="LN_SCREEN" permission="ln_access"/>
+		<entry title="MODULE_LOAN_DEALS"  screen="LN_SCREEN" permission="ln_deal_summary_access"/>
+		<entry title="MODULE_FEE_PAYMENT"  screen="LN_SCREEN" permission="bk_blfp_access"/>
+		<entry title="N001_DT"  screen="DT_SCREEN" permission="se_lncds_access"/>
+		<entry title="N001_BL"  screen="BL_SCREEN" permission="ln_bill_access"/>
+		<entry title="MODULE_LOAN_INITIATE_DROWDOWN" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="initiateDrowdown"/>
+			<parameter name="OPTION" value="GENERAL"/>
+		</entry>
+		<entry title="MODULE_LOANS_PENDING_APPROVAL" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="uiPendingApproval"/>
+			<parameter name="OPTION" value="GENERAL"/>
+		</entry>
+		<entry title="MODULE_LOANS_PENDING_BANK_APPROVAL" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="uiPendingBankApproval"/>
+			<parameter name="OPTION" value="GENERAL"/>
+		</entry>
+		<entry title="MODULE_LOANS_LIVE" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="live"/>
+			<parameter name="OPTION" value="GENERAL"/>
+		</entry>
+		<entry title="MODULE_LOANS_REJECTED" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="rejected"/>
+			<parameter name="OPTION" value="GENERAL"/>
+		</entry>
+		<entry title="MODULE_LOANS_OTHERS" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="other"/>
+			<parameter name="OPTION" value="GENERAL"/>
+		</entry>
+		<entry title="MODULE_FACILITIES_ACTIVE" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="active"/>
+			<parameter name="OPTION" value="FACILITYLIST"/>
+		</entry>
+		<entry title="MODULE_FACILITIES_EXPIRED" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="expired"/>
+			<parameter name="OPTION" value="FACILITYLIST"/>
+		</entry>
+		<entry title="MODULE_FACILITIES_MATURED" screen="PRODUCT_LISTING_SCREEN" permission="ln_access" navMenu="false">
+			<parameter name="productCode" value="LN"/>
+			<parameter name="operation" value="matured"/>
+			<parameter name="OPTION" value="FACILITYLIST"/>
+		</entry>
+		
+	</menu>
+	
+	<menu id="balances_and_transactions">
+		<!-- <entry title="MODULE_BALANCES_TRANSACTIONS"  screen="MC_SCREEN" permission="sy_account_service_maintain_access"/> -->
+		<!-- <entry title="MODULE_BALANCES"  screen="AB_SCREEN" permission="ab_account_summary_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry> -->
+		<entry title="ALL_ACCOUNTS"  screen="AB_SCREEN" permission="ab_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry>
+		<entry title="DEPOSITACCOUNTS"  screen="AB_SCREEN" permission="deposit_accounts_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry>
+		<entry title="LOANACCOUNTS"  screen="AB_SCREEN" permission="loan_accounts_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry>
+		<entry title="MODULE_STATEMENTS"  screen="AB_SCREEN" permission="ab_account_statement_access">
+			<parameter name="operation" value="LIST_STATEMENTS"/>
+		</entry>
+		<!-- <entry title="MODULE_ACCOUNTS"  screen="AB_SCREEN" permission="ab_account_details_access">
+			<parameter name="operation" value="LIST_FEATURES"/>			
+			<parameter name="option" value="ENTITY_ACCOUNTS_LIST"/>			
+		</entry> -->
+		<entry title="MODULE_FEES_AND_BILLING"  screen="FB_SCREEN" permission="fb_access"/>
+		<entry title="MODULE_TIME_DEPOSIT" screen="TD_SCREEN" permission="td_cstd_access" modernUx="false"/>
+		<entry title="MODULE_LOAN" screen="LN_SCREEN" permission="ln_inquiry_access">
+			<parameter name="operation" value="LOAN_SUMMARY"/>
+			<parameter name="option" value="LOAN"/>			
+		</entry>
+		<entry title="MODULE_CASH_FLOW_FORECASTING" permission="ab_cashforecastinginquiry"/>
+		<entry title="MODULE_CASH_MANAGEMENT" screen="CMEQ_SCREEN" permission="cmeq_access"/>
+		<entry title="MODULE_REGIONAL_ACCOUNT_VIEW" screen="AB_SCREEN" permission="regional_acct_view">
+			<parameter name="operation" value="OPERATION_REGIONALACCTVIEW"/>
+		</entry>
+	</menu>
+	
+	<menu id="fcm_balances_and_transactions">
+		<!-- <entry title="MODULE_BALANCES_TRANSACTIONS"  screen="MC_SCREEN" permission="sy_account_service_maintain_access"/> -->
+		<!-- <entry title="MODULE_BALANCES"  screen="AB_SCREEN" permission="ab_account_summary_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry> -->
+		<entry title="ALL_ACCOUNTS"  screen="AB_SCREEN" permission="ab_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry>
+		<entry title="DEPOSITACCOUNTS"  screen="AB_SCREEN" permission="deposit_accounts_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry>
+		<entry title="LOANACCOUNTS"  screen="AB_SCREEN" permission="loan_accounts_access">
+			<parameter name="operation" value="LIST_BALANCES"/>
+		</entry>
+		<entry title="MODULE_STATEMENTS"  screen="AB_SCREEN" permission="ab_account_statement_access">
+			<parameter name="operation" value="LIST_STATEMENTS"/>
+		</entry>
+		<!-- <entry title="MODULE_ACCOUNTS"  screen="AB_SCREEN" permission="ab_account_details_access">
+			<parameter name="operation" value="LIST_FEATURES"/>			
+			<parameter name="option" value="ENTITY_ACCOUNTS_LIST"/>			
+		</entry> -->
+		<entry title="MODULE_FEES_AND_BILLING"  screen="FB_SCREEN" permission="fb_access"/>
+		<entry title="MODULE_LOAN" screen="LN_SCREEN" permission="ln_inquiry_access">
+			<parameter name="operation" value="LOAN_SUMMARY"/>
+			<parameter name="option" value="LOAN"/>			
+		</entry>
+		<entry title="MODULE_CASH_FLOW_FORECASTING" permission="ab_cashforecastinginquiry"/>
+		<entry title="MODULE_CASH_MANAGEMENT" screen="CMEQ_SCREEN" permission="cmeq_access"/>
+		<entry title="MODULE_REGIONAL_ACCOUNT_VIEW" screen="AB_SCREEN" permission="regional_acct_view">
+			<parameter name="operation" value="OPERATION_REGIONALACCTVIEW"/>
+		</entry>
+	</menu>
+
+	<menu id="orders">
+		<entry title="MODULE_TRANSFER" screen="FT_SCREEN" permission="cash_ft_access" />
+		<entry title="MODULE_REMITTANCE" screen="FT_SCREEN" permission="ft_remittance_access">
+			<parameter name="option" value="REMITTANCE"/>
+		</entry>
+		<entry title="MODULE_BILL_PAYMENT" screen="BP_SCREEN" permission="ft_bill_access">
+			<parameter name="option" value="BILL"/>
+		</entry>
+		<entry title="MODULE_DDA" screen="DDA_SCREEN" permission="ft_dda_access">
+			<parameter name="option" value="DDA"/>
+		</entry>
+		<entry title="MODULE_PAPER_INSTRUMENTS" screen="FT_SCREEN" permission="ft_paperinstrument_access">
+			<parameter name="option" value="PI"/>
+		</entry>
+		<entry title="MODULE_CASHIER_ORDER" screen="FT_SCREEN" permission="se_chequeservices_access" modernUx="true">
+			<parameter name="tnxtype" value="01"/>
+			<parameter name="option" value="COCQI"/>
+		</entry>
+		<entry title="MOUDLE_CHEQUE_SERVICES" screen="FT_SCREEN" permission="se_chequeservices_access">
+			<parameter name="option" value="CQS"/>
+		</entry>
+		<entry title="MODULE_BULK_SERVICES" screen="BK_SCREEN" permission="bk_access" />
+		<entry title="MODULE_LIQUIDITY_KTP_SERVICES" screen="KTP_SCREEN" permission="access_ktp_mc" />
+		<entry title="MODULE_LIQUIDITY_SERVICES" screen="LIQUIDITY_SCREEN" permission="liquidity_access" />
+		<entry title="MODULE_TIME_DEPOSIT" screen="TD_SCREEN" permission="td_cstd_access" modernUx="true"/>
+		<entry title="MODULE_CM" screen="CM_SCREEN" actioncode="OpenCM" permission="cash_cm_access">
+			<parameter name="option" value="CM_CUST_PROGRAM"/>
+		</entry>
+	</menu>
+	
+	<menu id="fcm_orders">
+		<entry title="MODULE_FCM" screen="FCM_SCREEN" actioncode="OpenFcm" permission="fcm_access">
+			<parameter name="option" value="FCM_CUST_PROGRAM"/>
+			<parameter name="window" value="parent"/>
+		</entry>
+	</menu>
+
+	<menu id="finance_supply_chain_mgmt">
+		<entry screen="PO_SCREEN" title="N001_PO" permission="po_access" />
+		<entry screen="SO_SCREEN" title="N001_SO" permission="so_access" />
+		<entry screen="FINSHARE_SCREEN" title="MODULE_FINSHARE" actioncode="OpenFinshare" permission="finshare_access">
+			<parameter name="option" value="FINSHARE_CUST_PROGRAM"/>
+		</entry>
+		<entry title="MODULE_INVOICE" screen="IN_SCREEN" permission="in_access" />
+		<entry title="MODULE_INVOICE_PAYABLE" screen="IP_SCREEN" permission="ip_access" />
+		<entry title="MODULE_CREDIT_NOTE" screen="CN_SCREEN" permission="cn_access" />
+	 	<entry screen="IO_SCREEN" title="N001_IO" permission="io_access"/>
+		<entry screen="EA_SCREEN" title="N001_EA" permission="ea_access"/>
+		<entry title="MODULE_CREDIT_NOTE_CR" screen="CR_SCREEN" permission="cr_access" />
+	</menu>
+
+	<menu id="trade_finance">
+		<entry screen="LC_SCREEN" title="N001_LC" permission="lc_access"/>
+		<entry screen="EL_SCREEN" title="N001_EL" permission="el_access"/>
+		<entry screen="IC_SCREEN" title="N001_IC" permission="ic_access"/>
+		<entry screen="EC_SCREEN" title="N001_EC" permission="ec_access"/>
+		<entry screen="IU_SCREEN" title="N001_IU" permission="bg_access"/>
+		<entry screen="RU_SCREEN" title="N001_RU" permission="br_access"/>
+		<entry screen="BG_SCREEN" title="N001_BG" permission="bg_access"/>
+		<entry screen="BR_SCREEN" title="N001_BR" permission="br_access"/>
+		<entry screen="TF_SCREEN" title="N001_TF" permission="tf_access"/>
+		<entry screen="SG_SCREEN" title="N001_SG" permission="sg_access"/>
+		<entry screen="PO_SCREEN" title="N001_PO" permission="po_access"/>
+		<entry screen="SI_SCREEN" title="N001_SI" description="MODULE_SI_DESCRIPTION" permission="si_access"/>
+		<entry screen="SR_SCREEN" title="N001_SR" description="MODULE_SR_DESCRIPTION" permission="sr_access"/>
+		<entry screen="IR_SCREEN" title="N001_IR" description="MODULE_INWARD_REMITTANCE" permission="ir_access"/>
+		<!-- <entry title="MODULE_INWARD_REMITTANCE" screen="IR_SCREEN" permission="ir_access" /> -->
+		<entry screen="SO_SCREEN" title="N001_SO" permission="so_access" />
+		<!-- <entry title="MODULE_FACTORING" screen="FA_SCREEN" permission="fa_access"/> -->
+<!-- 		<entry title="MODULE_DOCUMENT_MANAGEMENT" permission="no_permission"> -->
+<!-- 			<parameter name="href" value=""/> -->
+<!-- 		</entry> -->
+		<entry title="MODULE_TRADE_TRANSFER" screen="FT_TRADE_SCREEN" permission="trade_ft_access" />
+		<entry title="MODULE_LETTER_OF_INDEMNITY" screen="LI_SCREEN" permission="li_access" />
+		<entry screen="IO_SCREEN" title="N001_IO" permission="io_access"/>
+		<entry screen="EA_SCREEN" title="N001_EA" permission="ea_access"/>
+		<entry screen="LS_SCREEN" title="N001_LS" permission="ls_access"/>
+	</menu>
+
+	<menu id="secure_email">
+		<entry title="MODULE_SECURE_EMAIL_NEW_MESSAGE" permission="disabled">
+		</entry>
+		<entry title="MODULE_SECURE_EMAIL_REQUEST_FOR_DRAFT" permission="disabled">
+		</entry>
+		<entry title="MODULE_SECURE_EMAIL_STATEMENT_AND_REPORT_REQUEST" permission="disabled">
+		</entry>		
+	</menu>
+	
+	<menu id="services">
+		<entry screen="CSF_SCREEN" title="MENU_CHANGE_ENTITIES" permission="access_customer_entity_mc">
+			<parameter name="option" value="CUSTOMER_ENTITY_MAINTENANCE_MC"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_JURISDICTION" permission="access_customer_authorisation_mc">
+			<parameter name="option" value="JURISDICTION_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_USER" permission="access_customer_user_mc">
+			<parameter name="option" value="USER_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_DATA" permission="sy_data_access">
+			<parameter name="option" value="DATA_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_PAYEE_REGISTRATION" permission="access_customer_billp_mc">
+			<parameter name="option" value="PAYEE_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_ALERT" permission="sy_alert_access">
+			<parameter name="option" value="ALERT_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_REPORT_DESIGNER" permission="sy_report_parameter_maintain">
+			<parameter name="option" value="REPORT_DESIGNER_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_AUDIT_ACTION" permission="audit_access">
+			<parameter name="option" value="AUDIT_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_CORPTREASURER_ACTION" permission="customer_admin_pbi_access">
+			<parameter name="option" value="CORPTREASURER_ACTION"/>
+		</entry>
+	</menu>
+	
+	<menu id="fcm_services">
+		<entry screen="CSF_SCREEN" title="MENU_CHANGE_ENTITIES" permission="access_customer_entity_mc">
+			<parameter name="option" value="CUSTOMER_ENTITY_MAINTENANCE_MC"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_JURISDICTION" permission="access_customer_authorisation_mc">
+			<parameter name="option" value="JURISDICTION_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_USER" permission="access_customer_user_mc">
+			<parameter name="option" value="USER_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_DATA" permission="sy_data_access">
+			<parameter name="option" value="DATA_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_PAYEE_REGISTRATION" permission="access_customer_billp_mc">
+			<parameter name="option" value="PAYEE_MAINTENANCE_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_MAINTAIN_ALERT" permission="sy_alert_access">
+			<parameter name="option" value="ALERT_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_REPORT_DESIGNER" permission="sy_report_parameter_maintain">
+			<parameter name="option" value="REPORT_DESIGNER_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_AUDIT_ACTION" permission="audit_access">
+			<parameter name="option" value="AUDIT_HOME_ACTION"/>
+		</entry>
+		<entry screen="CSF_SCREEN" title="MENU_FCMCORPTREASURER_ACTION" permission="customer_admin_pbi_access">
+			<parameter name="option" value="FCMCORPTREASURER_ACTION"/>
+		</entry>
+	</menu>
+	
+	<menu id= "fx_services">
+		<entry screen="FX_SCREEN" title="TOPMENU_FX_TREASURY_DEALS" description="" actioncode="" permission="fx_access" />
+		<entry screen="FT_TREASURY_SCREEN" title="TOPMENU_FT_TREASURY_TRANSFERS" description="" actioncode="" permission="treasury_ft_access" />
+		<entry screen="TD_TRTD_SCREEN" title="TOPMENU_TRTD_TREASURY_DEPOSITS" description="" actioncode="" permission="treasury_td_access" />
+		<!-- <entry screen="FX_SCREEN" title="TOPMENU_FX_SPOT" description="" actioncode="InitFXSpot" submenu="" permission="fx_spot_access"/>
+		<entry screen="FX_SCREEN" title="TOPMENU_FX_FORWARD" description="" actioncode="InitFXForward" submenu="" permission="fx_fwd_access"/>
+		<entry screen="FX_SCREEN" title="TOPMENU_FX_WINDOW_FORWARD" description="" actioncode="InitFXWindowForward" permission="fx_wfwd_access" /> -->
+        <!-- <entry screen="FX_SCREEN" title="TOPMENU_FX_INQUIRY" description="" actioncode="InquiryFXTransactions" submenu="" permission="no_permission"/> -->
+    </menu>	
+</menus>

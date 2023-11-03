@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<article lang="en">
+  <articleinfo>
+    <title>
+      <xi:include href="../entities_en.xml" xpointer="ent_appli"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </title>
+
+    <subtitle>Release Notes</subtitle>
+
+    <releaseinfo>Release <xi:include href="../entities_en.xml"
+    xpointer="ent_portal_version"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/><xi:include
+    href="../entities_en.xml" xpointer="ent_patch_version"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/></releaseinfo>
+
+    <xi:include href="../entities_en.xml" xpointer="ent_corpauthor"
+                xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+    <legalnotice>
+      <title>Copyright</title>
+
+      <para>© <?dbtimestamp format="Y"?> Finastra International Limited, or a
+      member of the Finastra group of companies (“Finastra”). All Rights
+      Reserved. Confidential - Limited Distribution to Authorized Persons
+      Only, pursuant to the terms of the license agreement by which you were
+      granted a license from Finastra for the applicable software or services
+      and this documentation. Republication or redistribution, in whole or in
+      part, of the content of this documentation or any other materials made
+      available by Finastra is prohibited without the prior written consent of
+      Finastra. The software and documentation are protected as published or
+      unpublished works and constitute a trade secret of Finastra
+      International Limited, or a member of the Finastra group of companies,
+      Head Office: 4 Kingdom Street, Paddington, London W2 6BD, United
+      Kingdom.</para>
+    </legalnotice>
+
+    <legalnotice>
+      <title>Trademarks</title>
+
+      <para>Finastra trademarks used in document and their respective
+      sub-brands, and the logos used with some of these marks, are trademarks
+      or registered trademarks of Finastra International Limited, or a member
+      of the Finastra group of companies (“Finastra”) in various countries
+      around the world. All other brand and product names are trademarks,
+      registered trademarks, or service marks of their respective owners,
+      companies, or organizations, may be registered, and should be treated
+      appropriately.</para>
+    </legalnotice>
+
+    <legalnotice>
+      <title>Disclaimer</title>
+
+      <para>Finastra does not guarantee that any information contained herein
+      is and will remain accurate or that use of the information will ensure
+      correct and faultless operation of the relevant software, services or
+      equipment. This document contains information proprietary to Finastra.
+      Finastra does not undertake mathematical research but only applies
+      mathematical models recognized within the financial industry. Finastra
+      does not guarantee the intrinsic theoretical validity of the calculation
+      models used.</para>
+
+      <para>THE INFORMATION CONTAINED IN THIS DOCUMENT AND THE GENERAL
+      GUIDANCE OF FINASTRA STAFF DOES NOT TAKE THE PLACE OF QUALIFIED
+      COMPLIANCE PERSONNEL OR LEGAL COUNSEL WITHIN YOUR INSTITUTION. FINASTRA
+      CANNOT RENDER LEGAL, ACCOUNTING OR OTHER PROFESSIONAL SERVICES TO YOUR
+      INSTITUTION. THE INFORMATION CONTAINED HEREIN IS GENERAL IN NATURE AND
+      DOES NOT CONSTITUTE LEGAL ADVICE OR A LEGAL OPINION. CONSULT YOUR LEGAL
+      COUNSEL FOR LEGAL ADVICE SPECIFIC TO YOUR SITUATION OR CIRCUMSTANCES OR
+      TO ANSWER ANY LEGAL QUESTIONS. YOUR FINANCIAL INSTITUTION IS SOLELY
+      RESPONSIBLE FOR CONFIGURING AND USING THE SOFTWARE OR SERVICES IN A WAY
+      THAT MEETS POLICIES, PRACTICES, AND LAWS APPLICABLE TO YOUR INSTITUTION,
+      INCLUDING, WITHOUT LIMITATION: (1) OPTIONS AND SELECTIONS MADE ON
+      PROMPTS; (2) ENTRIES IN THE SOFTWARE PROGRAM; (3) PROGRAM SETUP; AND (4)
+      DOCUMENTS PRODUCED BY THE SOFTWARE OR SERVICES. IT IS THE OBLIGATION OF
+      THE CUSTOMER TO ENSURE THAT RESPONSIBLE DECISIONS ARE TAKEN WHEN USING
+      FINASTRA PRODUCTS. INFORMATION IN THIS DOCUMENT IS SUBJECT TO CHANGE
+      WITHOUT NOTICE AND DOES NOT REPRESENT A COMMITMENT ON THE PART OF
+      FINASTRA.</para>
+    </legalnotice>
+
+    <legalnotice>
+      <title>Feedback</title>
+
+      <para>Do you have comments about our guides and online help? Please
+      address any comments and questions to your local Finastra
+      representative.</para>
+
+      <para>Need more information? Read more about our products at <ulink
+      url="http://www.finastra.com">http://www.finastra.com</ulink> or contact
+      your local Finastra office at <ulink
+      url="http://www.finastra.com/contact">http://www.finastra.com/contact</ulink>.</para>
+    </legalnotice>
+
+    <legalnotice>
+      <title>Release month and year</title>
+
+      <para>
+        <?dbtimestamp format="B Y"?>
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <!-- Add the next release patch/drop section here and name it incrementally. For example, Release 5.4.0.1 -->
+
+  <section>
+    <title>Introduction</title>
+
+    <para>This document provides release information on Enhancements, Fixed
+    Defects, Outstanding Issues, Deployment, Property and Configuration File
+    Updates, Interface File Updates, Localization Updates, Build Package
+    Updates and Parameter Updates for <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> Release
+    <xi:include href="../entities_en.xml" xpointer="ent_portal_version1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+  </section>
+
+  <section>
+    <title>Enhancement</title>
+
+    <para>The following section provides information on new features and
+    enhancements in the release <xi:include href="../entities_en.xml"
+    xpointer="ent_portal_version1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>.<informaltable>
+        <tgroup cols="3">
+          <colspec align="center" colwidth="180*"/>
+
+          <colspec colwidth="589*"/>
+
+          <colspec colwidth="231*"/>
+
+          <thead>
+            <row>
+              <entry align="center">Jira Id</entry>
+
+              <entry align="center">Description</entry>
+
+              <entry align="center">Product</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>MPS-63704</entry>
+
+              <entry>Data type for sequence index (SEQ_IDX) field is updated
+              from 'INT' to 'LONG' which allows a field length up to 18
+              digits. Sequence Index field is used in the generation of
+              Account Statements.</entry>
+
+              <entry>Cash</entry>
+            </row>
+
+            <row>
+              <entry>MPSSC-20581</entry>
+
+              <entry>Only those currencies that are associated to a borrower
+              in the Facility will be allowed to repricing in Initiate
+              Repricing screen.If a currency configuration is not provided for
+              a borrower, in such cases the currencies associated to the
+              facility will be allowed for the repricing. The related
+              properties are provided in loan.properties.</entry>
+
+              <entry>Loan</entry>
+            </row>
+
+            <row>
+              <entry>MPSSC-20234 &amp; MPSSC-20235</entry>
+
+              <entry><xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> Loan portal enables
+              the banks to filter list of remittance instructions based on the
+              payment methods. Only those remittance instructions with payment
+              methods configured in database will be displayed to corporate
+              users in Loan Initiate Repricing screen. A new configuration is
+              added in loan.properties file to enable this enhancement. A new
+              parameter (P780) is introduced to control the behavior of this
+              feature.</entry>
+
+              <entry>Loan</entry>
+            </row>
+
+            <row>
+              <entry>MPSSC-20239</entry>
+
+              <entry><xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude"/> Loan portal enables
+              a corporate user to send the net cashflow flag to back office.
+              Earlier, FCC net cashflow flag was not sent to back office when
+              cashflow checkbox is not checked which resulted in back office
+              picking default values configured in back office system.</entry>
+
+              <entry>Loan</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+  </section>
+
+  <section>
+    <title>Fixed Defects</title>
+
+    <para>This section lists the defects fixed in the current version of
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+
+    <informaltable>
+      <tgroup cols="7">
+        <colspec colwidth="93*"/>
+
+        <colspec align="center" colwidth="110*"/>
+
+        <colspec colwidth="232*"/>
+
+        <colspec colwidth="186*"/>
+
+        <colspec colwidth="137*"/>
+
+        <colspec colwidth="116*"/>
+
+        <colspec colwidth="126*"/>
+
+        <thead>
+          <row>
+            <entry align="center">SFDC</entry>
+
+            <entry align="center">Jira Id</entry>
+
+            <entry align="center">Summary</entry>
+
+            <entry align="center">Replication Steps</entry>
+
+            <entry align="center">Impact Area</entry>
+
+            <entry align="center">Resolution</entry>
+
+            <entry align="center">Product</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>02281160</entry>
+
+            <entry>MPS-63753</entry>
+
+            <entry>Homepage Line Spacing Issues</entry>
+
+            <entry>1. Login as either bank or customer user 2. Observe that on
+            Homepage there are line spacing issues</entry>
+
+            <entry>Impacts Homepage of bank and customer user</entry>
+
+            <entry>Changes done to show proper spacing at Bank and Customer
+            Homepage.</entry>
+
+            <entry>FCC Dashboard</entry>
+          </row>
+
+          <row>
+            <entry>01965064</entry>
+
+            <entry>MPS-60181</entry>
+
+            <entry>The state of custom checkboxes is not announced</entry>
+
+            <entry>1. Enable the Accessibility feature 2. Navigate to any
+            transaction listing screen with checkboxes 3. Check/Uncheck the
+            checkbox of a transaction and verify whether the details of the
+            selection is announced</entry>
+
+            <entry>Impacts all screens which list transactions with
+            checkboxes.</entry>
+
+            <entry>Added proper description for announcing correct status of
+            checkbox in each row of all listing screens.</entry>
+
+            <entry>1. Login to portal as Customer user 2. Navigate to Cash
+            Services-&gt;Bulk Services-&gt;Initiation-&gt;From Scratch 3. Add
+            more than one Transfers in the Bulk 4. FCC assigns Bulk reference
+            to batch and individual references to each transfer transaction.
+            5. Submit the Bulk 6. FCC send the Individual Transactions to GPP.
+            7. GPP can process the individual transactions successfully 8. FCC
+            is not passing Bulk Reference in transfer message and GPP is not
+            displaying the same</entry>
+          </row>
+
+          <row>
+            <entry>02282429</entry>
+
+            <entry>MPS-64130</entry>
+
+            <entry>User unable to login to Local Service when the following
+            properties are enabled:<programlisting>contentlength.enabled = true
+additional.headers = true</programlisting></entry>
+
+            <entry>1. Set the following properties to "True"
+            <property>contentlength.enabled</property> and
+            <property>additional.headers</property> .2. Login to Local
+            Service</entry>
+
+            <entry>Impacts Local Service login</entry>
+
+            <entry>1. Updated the headers as NamedValue 2.Added HttpClient jar
+            3. Updated startup.bat</entry>
+
+            <entry>
+              <productname>Local Service</productname>
+            </entry>
+          </row>
+
+          <row>
+            <entry>02268470</entry>
+
+            <entry>MPS-63902</entry>
+
+            <entry>All entities are displayed in report execution for a user
+            who is assigned with only a single entity.</entry>
+
+            <entry>1.Login as customer user 2.Navigate to Administration
+            &gt;Report designer &gt; Create 2. Do not select any entity during
+            creation of report. 3.User creating this report is assigned with
+            only one entity. 4. Save the report and run it. 5.User sees all
+            the transactions related to multiple entities in the report which
+            is not expected behavior as user is assigned to only one
+            entity.</entry>
+
+            <entry>Impacts Report Designer</entry>
+
+            <entry>Report execution for user will be consistent with respect
+            to the number of entities he is assigned to.</entry>
+
+            <entry>Trade</entry>
+          </row>
+
+          <row>
+            <entry>02279630</entry>
+
+            <entry>MPS-63737</entry>
+
+            <entry>Calendar alerts for Export Collection causes an SQL
+            error</entry>
+
+            <entry>1. Setup a customer with an Export Collection alert in
+            alerts maintenance, any type of alert can be chosen 2. Observe
+            whether an SQL error is recorded in the logs.</entry>
+
+            <entry>Impacts Calendar Alerts</entry>
+
+            <entry>Removed the applicant_ abbv_name from the query</entry>
+
+            <entry>Trade <productname>Export Collection</productname></entry>
+          </row>
+
+          <row>
+            <entry>02278417</entry>
+
+            <entry>MPS-65192</entry>
+
+            <entry>Error received in report execution when migrated from FCC
+            version 4.1 to FCC version 5.5</entry>
+
+            <entry>
+              <para>1. Use migrated DB from 4.1 to 5.5 2. Login as Customer
+              user 3. Execute version 4.1 report.</para>
+            </entry>
+
+            <entry>Impacts Report Designer migration</entry>
+
+            <entry>FCC will now handle the width in em. Once report is edited,
+            the same width will be stored as percent.By default the width in
+            v5.5 will be in percent</entry>
+
+            <entry>System Features</entry>
+          </row>
+
+          <row>
+            <entry>02279831</entry>
+
+            <entry>MPS-63703</entry>
+
+            <entry>LC amendment print does not open the PDF document</entry>
+
+            <entry>1. Login as customer user 2. Navigate to Import Letter of
+            Credit &gt; LC amendment &gt; From Existing LC 3. Open one
+            transaction - click Save and open the print option to export 4.
+            Download and open the PDF, it gives error - Failed to load PDF
+            document</entry>
+
+            <entry>Impacts LC Amendment PDF download</entry>
+
+            <entry>For Narrative section, check is not handled properly, so
+            handled the proper check</entry>
+
+            <entry>Trade <productname>Import Letter of
+            Credit</productname></entry>
+          </row>
+
+          <row>
+            <entry>02277684</entry>
+
+            <entry>MPS-63619</entry>
+
+            <entry>Unable to open exported PDF for SI Amendments</entry>
+
+            <entry>1. Login as Customer user 2. Create an issue event for
+            StandBy LC 2. Create an amendment event for the same with
+            Narrative details 3. Submit the SI Amendment and open - Review and
+            Print Details 4. Export the PDF from the popup 5. Open the PDF, an
+            error is displayed - Failed to open PDF</entry>
+
+            <entry>Impacts SI Amendments PDF download</entry>
+
+            <entry>Updated the code for handling Narrative details</entry>
+
+            <entry>Trade <productname>Issued StandBy LC</productname></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section>
+    <title>Outstanding Issues</title>
+
+    <para>This section lists the outstanding issues in this
+    release.<informaltable>
+        <tgroup cols="3">
+          <colspec align="center" colwidth="180*"/>
+
+          <colspec colwidth="589*"/>
+
+          <colspec colwidth="231*"/>
+
+          <thead>
+            <row>
+              <entry align="center">Jira Id</entry>
+
+              <entry align="center">Description</entry>
+
+              <entry align="center">Product</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry/>
+
+              <entry>No action is happening on clicking of OK button at
+              repricing add new loan screen for particular scenario</entry>
+
+              <entry>Loan</entry>
+            </row>
+
+            <row>
+              <entry>MPS-63724</entry>
+
+              <entry>Proper error should be shown for edit transaction for
+              loan amount field</entry>
+
+              <entry>Loan</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable></para>
+  </section>
+
+  <section>
+    <title>Browser to Operating System Compatibility Matrix</title>
+
+    <para>The matrix lists browser compatibility with various Operating
+    Systems(OS).</para>
+
+    <para>T - Tested</para>
+
+    <para>S - Supported</para>
+
+    <informaltable role="TEXT">
+      <tgroup cols="10">
+        <colspec colname="c2" colwidth="81*"/>
+
+        <colspec colname="c3" colwidth="101*"/>
+
+        <colspec colwidth="84*"/>
+
+        <colspec colwidth="88*"/>
+
+        <colspec colwidth="98*"/>
+
+        <colspec colname="c9" colwidth="136*"/>
+
+        <colspec colwidth="125*"/>
+
+        <colspec colwidth="116*"/>
+
+        <colspec colwidth="110*"/>
+
+        <colspec colwidth="61*"/>
+
+        <thead>
+          <row>
+            <entry valign="top">
+              <para>Browser Name</para>
+            </entry>
+
+            <entry valign="top">
+              <para>Applicable Version</para>
+            </entry>
+
+            <entry valign="top">Windows 7</entry>
+
+            <entry valign="top">Windows 8.1</entry>
+
+            <entry valign="top">Windows 10</entry>
+
+            <entry valign="top">
+              <para>macOS 10.12 (Sierra)</para>
+            </entry>
+
+            <entry valign="top">macOS 10.13 (High Sierra)</entry>
+
+            <entry valign="top">macOS 10.14 (Mojave)</entry>
+
+            <entry valign="top">OSX EL Captain</entry>
+
+            <entry valign="top">iOS (iPad)</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry valign="top">
+              <para>Chrome</para>
+            </entry>
+
+            <entry valign="top">
+              <para>86</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">T</entry>
+
+            <entry valign="top">
+              <para>S</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top">
+              <para>Firefox</para>
+            </entry>
+
+            <entry valign="top">
+              <para>82</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">T</entry>
+
+            <entry valign="top">
+              <para>S</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top">
+              <para>Microsoft Edge</para>
+            </entry>
+
+            <entry valign="top">
+              <para>44</para>
+            </entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">
+              <para/>
+            </entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top">
+              <para>Internet Explorer</para>
+            </entry>
+
+            <entry valign="top">
+              <para>9</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">
+              <para/>
+            </entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top">
+              <para>Internet Explorer</para>
+            </entry>
+
+            <entry valign="top">
+              <para>10</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">
+              <para/>
+            </entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top">
+              <para>Internet Explorer</para>
+            </entry>
+
+            <entry valign="top">
+              <para>11</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">T</entry>
+
+            <entry valign="top">
+              <para/>
+            </entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+          </row>
+
+          <row>
+            <entry valign="top">
+              <para>Safari</para>
+            </entry>
+
+            <entry valign="top">
+              <para>13</para>
+            </entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top">
+              <para>S</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+          </row>
+
+          <row>
+            <entry valign="top">
+              <para>Safari</para>
+            </entry>
+
+            <entry valign="top">
+              <para>12.1</para>
+            </entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top"/>
+
+            <entry valign="top">
+              <para>S</para>
+            </entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top">S</entry>
+
+            <entry valign="top"/>
+
+            <entry valign="top">S</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+
+  <section>
+    <title>Deployment</title>
+
+    <para>This patch deployment is an incremental upgrade from release
+    <xi:include href="../entities_en.xml"
+    xpointer="ent_portal_previous_version1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> to release <xi:include
+    href="../entities_en.xml" xpointer="ent_portal_version1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+
+    <warning>
+      <para>Before upgrading, backup your database and current application
+      data folders.</para>
+    </warning>
+
+    <para>Following is the deployment procedure to upgrade from release
+    <xi:include href="../entities_en.xml"
+    xpointer="ent_portal_previous_version1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> to release <xi:include
+    href="../entities_en.xml" xpointer="ent_portal_version1"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>:</para>
+
+    <note>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>For a new database installation and setup of application
+            (deployment and redeployment of EAR), refer to the Installation
+            Guide.</para>
+          </listitem>
+
+          <listitem>
+            <para>This is a FCC Portal CORE release and does not include
+            customer specific customizations. This CORE release needs to be
+            merged with customer specific customizations, as required.</para>
+          </listitem>
+
+          <listitem>
+            <para>Customers receiving customized release should refer to
+            deployment section of corresponding release notes for any customer
+            specific changes</para>
+          </listitem>
+
+          <listitem>
+            <para>It is advised to run the scripts from the Database specific
+            SQL tools for example, SQL Developer for Oracle, IBM DataStudio
+            for DB2. For DB2 it is advised to set the appropriate
+            language/code page so that there will not be any
+            truncation.</para>
+          </listitem>
+
+          <listitem>
+            <para>The open API related script updates are added in each of the
+            below listed database scripts.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+
+    <note>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>The below migration scripts needs to be applied for the
+            below tables manually only for those databases which have been
+            created (Initialized) post FCC 6.0 release (i.e., 6.0, 6.0.0.1,
+            6.0.0.2). Databases migrated from 5.x to the latest version need
+            not execute the same.</para>
+          </listitem>
+
+          <listitem>
+            <para>For Oracle: <programlisting>	
+						ALTER table GTP_PERMISSION drop column OBJECTDATA;
+						ALTER table GTP_ROLE drop column OBJECTDATA;
+						ALTER table GTP_GROUP drop column OBJECTDATA; 
+
+						ALTER TABLE GTP_ROLE ADD  OBJECTDATA LONG RAW null; 
+						ALTER TABLE GTP_PERMISION ADD  OBJECTDATA LONG RAW null;
+						ALTER TABLE GTP_GROUP ADD  OBJECTDATA LONG RAW null; 
+					</programlisting></para>
+
+            <para>For DB2: <programlisting>				
+							ALTER table GTP_PERMISSION drop column OBJECTDATA;
+							ALTER table GTP_ROLE drop column OBJECTDATA;
+							ALTER table GTP_GROUP drop column OBJECTDATA ; 
+ 
+							ALTER TABLE GTP_ROLE ADD OBJECTDATA VARCHAR(2000) for bit data;
+							ALTER TABLE GTP_PERMISION ADD OBJECTDATA VARCHAR(2000) for bit data;
+							ALTER TABLE GTP_GROUP ADD  OBJECTDATA VARCHAR(2000) for bit data;
+					</programlisting></para>
+
+            <para>For MYSQL: <programlisting>			
+							ALTER table GTP_PERMISSION drop column OBJECTDATA;
+							ALTER table GTP_ROLE drop column OBJECTDATA;
+							ALTER table GTP_GROUP drop column OBJECTDATA; 
+ 
+							ALTER TABLE GTP_PERMISSION MODIFY OBJECTDATA longblob;
+							ALTER TABLE GTP_GROUP MODIFY OBJECTDATA longblob;
+							ALTER TABLE GTP_ROLE MODIFY OBJECTDATA longblob;
+					</programlisting></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+
+    <para>For DB2:<itemizedlist>
+        <listitem>
+          <para>
+            <filename>MP_V<xi:include href="../entities_en.xml"
+            xpointer="ent_portal_version1"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>_dml_db2.sql</filename>
+          </para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para>For MSSQL (Including MSSQL 2016 and above):<note>
+        <para>All the customers using MSSQL must upgrade to MSSQL2016 or
+        above, if using any older versions of MSSQL. Before upgrading, convert
+        the sequences maintained in gtp_id_table. A sample utility script is
+        shared for migrating to sequences in the SQL file,
+        MP_V5.5.6.1_ddl_mssql.sql. Run this script only when no sequences are
+        being used in the MSSQL.</para>
+      </note><itemizedlist>
+        <listitem>
+          <para>
+            <filename>MP_V<xi:include href="../entities_en.xml"
+            xpointer="ent_portal_version1"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>_dml_mssql.sql</filename>
+          </para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para>For MySQL:<itemizedlist>
+        <listitem>
+          <para>
+            <filename>MP_V<xi:include href="../entities_en.xml"
+            xpointer="ent_portal_version1"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>_dml_mysql.sql</filename>
+          </para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para>For ORACLE:<itemizedlist>
+        <listitem>
+          <para>
+            <filename>MP_V<xi:include href="../entities_en.xml"
+            xpointer="ent_portal_version1"
+            xmlns:xi="http://www.w3.org/2001/XInclude"/>_dml_oracle.sql</filename>
+          </para>
+        </listitem>
+      </itemizedlist></para>
+
+    <important>
+      <para>The following is the deployment procedure for Loan IQ
+      scripts:</para>
+
+      <para>For Loan IQ, the Scripts are packaged as a part of Fusion
+      Corporate Channels delivery under FBCC_LoanIQ_Scripts.zip. Extract the
+      zip and find the files under folders scripts\inquiry and scripts\events
+      and place the combined scripts under Loan IQ’s installation respective
+      folders of Server and Client (client is optional).</para>
+
+      <para>For Loan IQ 7.5, refer to the scripts under 7.5 directory in the
+      same location mentioned above.</para>
+
+      <para>This release is verified against the following version of Loan IQ:
+      <varname>7.5.1.4-HF2</varname></para>
+
+      <para>There is a new trigger (Event trigger for loan inactivation by
+      batch) to be set in Loan IQ, the details of trigger are provided in the
+      <filename>FCC_integration_loan_IQ_en.pdf</filename>.</para>
+
+      <para>For detailed deployment instructions, please follow Loan IQ
+      Integration Guide FCC_integration_loan_IQ_en.pdf</para>
+    </important>
+
+    <important>
+      <para>The following are the relevant versions of Opics and SFX</para>
+
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>This release is verified against the following version of
+            Opics: 4.6.2.0 and 4.2.9.0.<note>
+                <para>Opics integration is updated with password encryption,
+                for detailed information refer
+                <filename>FCC_integration_opics_en</filename> guide.</para>
+              </note></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+      <para>SFX <itemizedlist>
+          <listitem>
+            <para>Version: 3.1.3</para>
+          </listitem>
+
+          <listitem>
+            <para>Build : ad2ecb685fe</para>
+          </listitem>
+        </itemizedlist></para>
+    </important>
+
+    <note>
+      <para>This release requires jdk1.8 and above for installation</para>
+    </note>
+  </section>
+
+  <section>
+    <title>Property and Configuration File Updates</title>
+
+    <para>This section lists the updates made in Property files and
+    Configuration files.</para>
+
+    <para>The below properties are added in loan.properties file
+    <programlisting>
+# For the availability of Remittance Instruction section in Repricing screen below property key should be configured to 'true'.
+# LoanIQ7.1 and earlier versions will not support Remittance Instruction. 
+# Default value is [true]; Allowed values are [true/false/mandatory]. 
+# Find the behavior of property when set with different values.
+# mandatory : Remittance instructions are displayed in Initiate Repricing Screen. Selection of remittance instruction is mandatory.
+# true : Remittance instruction grid is displayed in Initiate Repricing Screen. Selection of remittance instruction is not mandatory.
+# false : Remittance instruction grid is not displayed in Initiate Repricing Screen and selection of remittance instruction is not possible.
+remittance.instruction.section.required.for.repricing = true
+
+#Property to show only borrower currencies instead of all facility currencies
+ show.only.associated.borrower.currency = false
+#Property to decide whether main facility currency needs to hide or not
+ hide.main.facility.currency = false</programlisting></para>
+  </section>
+
+  <section>
+    <title>Interface File Updates</title>
+
+    <para>This section lists the updates made in Interface files.</para>
+
+    <para>This section has no updates in this release.</para>
+  </section>
+
+  <section>
+    <title>Localization Updates</title>
+
+    <para>The following section describes about the localization changes made
+    for the current release.</para>
+
+    <para>The below entry is modified in core_en.properties file
+    <programlisting>XSL_REPORT_DISPCOLDETAILS_WIDTH = Width (%):</programlisting></para>
+
+    <para>The below entries are added/modified in common.js file
+    <programlisting>ErrorForMandatoryRemittance : Please choose a Remittance instruction for disbursement of funds.
+currencyValidationError: Unable to proceed as the currency has not been configured. Kindly reachout to your Relationship Manager.</programlisting></para>
+  </section>
+
+  <section>
+    <title>Build Package Updates</title>
+
+    <para>This section lists the build package and library changes
+    made.</para>
+
+    <para>This section has no updates in this release.</para>
+  </section>
+
+  <section>
+    <title>Parameter Updates</title>
+
+    <para>This section lists the updates made in parameters.xml.</para>
+
+    <para>Parameter Id: "P780"</para>
+
+    <para>Key: ALLOWED_PAYMENT_METHODS</para>
+
+    <para>Usage: List of Payment Methods methods used for filtering out
+    remittance instructions in Drawdown, Repricing and Increase
+    Screens.</para>
+
+    <para>Table Name: GTP_LARGE_PARAM_KEY AND GTP_LARGE_PARAM_DATA</para>
+
+    <para>Below are required key and data columns for configuring this
+    parameter.<programlisting>KEY_1 - bank_abbv_name, DATA_1 - Allowed Payment Method</programlisting></para>
+  </section>
+
+  <section>
+    <title>Reference Documents</title>
+
+    <para>This section provides details for reference documents for
+    configuration of property files, interfaces files, localisation files,
+    parameters and customisation using the SDK. You can find these documents
+    in the <filename>/Docs</filename> folder of your deliverable.</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Property file information - FCC_tech_admin_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Interfaces file information - FCC_tech_admin_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Localisation file information - FCC_tech_admin_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Parameters information - FCC_tech_admin_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>SDK Documentation - FCC_installation_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Integration of Cash with MHUB -
+        FCC_integration_cash_services_MHUB_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Integration with Loan IQ - FCC_integration_loan_IQ_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Integration with Opics - FCC_integration_opics_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Integration with TI -
+        FCC_integration_trade_innovation_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Interfaces Migration - FCC Interfaces Migration Guide.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Integration with Fusion SeamlessFX -
+        FCC_integration_SeamlessFX_en.pdf</para>
+      </listitem>
+
+      <listitem>
+        <para>Integration with FCM - FCC_integration_FCM_en.pdf</para>
+      </listitem>
+    </orderedlist>
+  </section>
+
+  <para id="TOTALPAGE"/>
+</article>

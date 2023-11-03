@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="50" default_order="ref_id" help="LIST_HELP_REPRICING" huge="y"
+	default_order_type="d" js_binding="misys.binding.loan.ln_repricing_list" forceDisplaySearch='y'>
+
+	<column name="product_code" hidden="y" />
+	<column name="bo_deal_name" hidden="y" />
+	<column name="bo_deal_id" hidden="y" />
+	<column name="bo_facility_id" hidden="y" />
+	<column name="borrower_reference" hidden="y" />
+
+	<batch type="repricing_operation" permission="ln_save">
+		<parameter name="SCREEN" value="CURRENT" />
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_BATCH" />
+		<parameter name="PRODUCT_CODE" column="product_code" />
+		<parameter name="REFERENCE_ID" column="ref_id" />
+	</batch>
+
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID" a11ySelectionContext="y"/>
+	<column name="entity" align="left" width="10em" loca_key="ENTITY" />
+	<column name="bo_deal_name" align="center" width="15em" loca_key="DEAL" />
+	<column name="bo_facility_name" align="center" width="20em" loca_key="FACILITY" />
+	<column name="bo_ref_id" align="center;white-space:pre" width="10em" loca_key="LN_REPRICE_GRID_HEADER_LOAN_ALIAS" />
+	<column name="fac_cur_code" align="right" width="16em" loca_key="LN_FACILITY_CURRENCY" />
+	<column name="cust_ref_id" align="left" width="10em" loca_key="CUST_REFERENCE" />
+	<column name="pricing_option" align="center" width="10em" loca_key="LN_PRICING_OPTION" />
+	<!--<column name="allInRate" align="center" width="10em" loca_key="LN_ALL_IN_RATE"/> -->
+	<!--<column name="borrower_reference" align="center" width="15%" loca_key="BORROWER_REF"/> -->
+
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE" />
+	<column name="ln_liab_amt" align="right" width="15em" loca_key="CURRENT_OUTSTANDING_AMT" a11ySelectionContext="y"/>
+	<column name="fx_rate" align="right" width="16em" loca_key="LN_FX_RATE">
+		<script>
+			var fxConversionRate = row.getColumnValue("fx_conversion_rate");
+			var facilityCurrency = row.getColumnValue("fac_cur_code");
+			var loanCurrency = row.getColumnValue("cur_code");
+			if (!("".equals(""+fxConversionRate+"")) &amp;&amp; !("".equals(""+facilityCurrency+"")) &amp;&amp; !((""+loanCurrency+"").equals(""+facilityCurrency+"")))
+			{
+				value = com.misys.portal.loan.loaniq.LoanIQAdapter.formatFXConversionRateValues(""+fxConversionRate+"",""+language+"");
+			}
+			value;
+		</script>
+	</column>
+	<column name="effective_date" align="right" width="8em" loca_key="EFFECTIVE_DATE" a11ySelectionContext="y"/>
+	<column name="repricing_frequency" align="right" width="8em" loca_key="LN_REPRICING_FREQUENCY" a11ySelectionContext="y"/>
+	<column name="repricing_date" align="right" width="10em" loca_key="LN_REPRICING_DATE" a11ySelectionContext="y"/>
+	<column name="show_interest" width="10em" loca_key="SHOW_INTEREST_DUE_AMT">
+		<url popup="y">
+			<parameter name="REFERENCE_ID" column="ref_id" />
+			<parameter name="ENTITY" column="entity" />
+			<parameter name="DEAL_NAME" column="bo_deal_name" />
+			<parameter name="FACILITY_NAME" column="bo_facility_name" />
+			<parameter name="LOAN_ALIAS" column="bo_ref_id" />
+			<parameter name="OPTION_CODE" value="INTEREST_DETAILS" />
+			<parameter name="PRODUCT_CODE" value="LN" />
+		</url>
+	</column>
+
+	<column name="status" hidden="y" />
+	<column name="is_auto_rollover_enabled" hidden="y" />
+	<column name="fx_conversion_rate" hidden="y" />
+	<column name="intend_notice_validation" hidden="y" />
+	<column name="ln_access_type" hidden="y" />
+
+
+	<!-- parameters -->
+	<parameter
+		name="borrowerid"
+		size="20" 
+		max_length="20" 
+		loca_key="BORROWER_REF" 
+		input="y" 
+		type="AvailableCustomerReference"
+		productCode="LN" 
+		default="" />
+
+	<!-- <parameter -->
+	<!-- 	name="bo_deal_name" -->
+	<!-- 	size="35" -->
+	<!-- 	max_length="40" -->
+	<!-- 	loca_key="DEAL" -->
+	<!-- 	input="y" -->
+	<!-- 	default=""/> -->
+
+	<parameter
+		name="bo_deal_id"
+		size="35" 
+		max_length="40"
+		loca_key="DEAL" 
+		type="AvailableDealForCustomer" 
+		input="y" 
+		default="" />
+
+	<parameter
+		name="bo_facility_id"
+		size="35" 
+		max_length="40"
+		loca_key="FACILITY" 
+		type="AvailableFacilityForDeal" 
+		input="y" 
+		default="" />
+
+	<parameter
+		name="facility_pricing_option"
+		size="35"
+		max_length="40" 
+		loca_key="PRICING_OPTION" 
+		type="AvailablePricingOptionForFacility"
+		input="y" 
+		default="" />
+
+	<parameter
+		name="deal_currency"
+		size="5" 
+		max_length="3"
+		loca_key="CURCODE" 
+		type="DealCurrency" 
+		input="y" />
+
+	<parameter
+		name="repricing_date"
+		type="range" 
+		input="y"
+		range_from_label="LOAN_REPRICING_DATE_FROM" 
+		range_to_label="DATETO_LABEL"
+		default="blank" />
+
+	<parameter name="is_auto_rollover" 
+		input="y" 
+		size="35"
+		max_length="40" 
+		loca_key="DEAL" 
+		type="autoRollOver" />
+
+	<parameter name="intend_notice_validation_flag" 
+		input="y"
+		size="35" 
+		max_length="40" 
+		loca_key="DEAL" 
+		type="intendNoticeDaysValidation" />
+
+	<parameter name="pricing_option_field" 
+		input="y" 
+		size="35"
+		max_length="40" 
+		loca_key="DEAL" 
+		type="intendNoticeDaysValidation" />
+
+	<parameter name="repricing_to_date_field" 
+		input="y" 
+		size="35"
+		max_length="40" 
+		default="blank" 
+		type="range" />
+
+
+	<!-- candidates -->
+	<candidate name="loan_master">
+		<filter>
+			<criteria>
+				<column name="borrower_reference" />
+				<operator type="equalMandatory" />
+				<value type="parameter">
+					borrowerid
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_deal_id" />
+				<operator type="equal" />
+				<value type="parameter">
+					bo_deal_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_facility_id" />
+				<operator type="equal" />
+				<value type="parameter">
+					bo_facility_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="pricing_option" />
+				<operator type="equal" />
+				<value type="parameter">
+					facility_pricing_option
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code" />
+				<operator type="equal" />
+				<value type="parameter">
+					deal_currency
+				</value>
+			</criteria>
+			<criteria>
+				<column name="is_auto_rollover_enabled" />
+				<operator type="different" />
+				<value type="parameter">
+					is_auto_rollover
+				</value>
+			</criteria>
+			<criteria>
+				<column name="repricing_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					repricing_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="repricing_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					repricing_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code" />
+				<operator type="different" />
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code" />
+				<operator type="different" />
+				<value type="code">
+					N005_CLOSED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ln_liab_amt" />
+				<operator type="superior" />
+				<value type="string">0@USD</value>
+			</criteria>
+			<criteria>
+				<column name="repricing_date" />
+				<operator type="supOrEqual" />
+				<value type="date">current</value>
+			</criteria>
+			<criteria>
+				<column name="under_repricing" />
+				<operator type="equal" />
+				<value type="code">
+					N034_NO
+				</value>
+			</criteria>
+			<criteria>
+				<column name="sub_product_code" />
+				<operator type="different" />
+				<value type="code">
+					N047_LOAN_SWINGLINE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="status" />
+				<operator type="equal" />
+				<value type="code">
+					N020_ACTIVE
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ln_access_type" />
+				<operator type="different" />
+				<value type="string">B</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<businesscriteria type="hasNoPendingAmendmentTransactions"></businesscriteria>
+		<businesscriteria type="hasNoPendingInquireTransactions"></businesscriteria>
+	</filter>
+
+</listdef>

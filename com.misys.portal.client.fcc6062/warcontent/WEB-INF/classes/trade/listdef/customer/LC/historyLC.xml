@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="release_dttm" default_order_type="d" page="200">
+	
+	<!-- columns -->
+	<column name="release_dttm" align="center" width="6em" loca_key="RELEASE_DTTM">
+		<url>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULL"/>
+		</url>
+	</column>
+
+	<column name="full_type" computation="sum" align="center" width="60%" loca_key="TYPE">
+		<column name="tnx_type_code"/>
+		<column name="sub_tnx_type_code"/>
+	</column>
+	<column name="tnx_stat_code" align="center" width="40%" loca_key="STATUS" sort="n"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="tnx_amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	
+	<column name="ref_id" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	
+
+	<!-- parameters -->
+	<parameter
+		name="referenceid"
+		loca_key="REFERENCEID"/>
+
+	<parameter
+		name="export_list"
+		file_name="pendingLC"
+		type="export"/>
+
+	<!-- candidates -->	
+	<candidate name="letter_of_credit">
+			<filter>
+				<criteria>
+					<column name="ref_id"/>
+					<operator type="equal"/>
+					<value type="parameter">
+						referenceid
+					</value>
+				</criteria>
+			</filter>
+	</candidate>
+	
+</listdef>

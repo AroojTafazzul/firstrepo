@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="cheque_no" default_order_type="d" page="5"  source="GenericInputSource" hideSearch="true" 
+permission="ab_access" parentNodePath="CheckStatus/cheque" serviceClass="com.misys.portal.common.chequeinquiry.DemoChequeStatusInquiryService"
+invokingMethod="getChqstatusListdef">
+
+	<column name="entity" align="left" width="12%" loca_key="ENTITY"/>
+	<column name="account_no" align="left" width="12%" loca_key="ACCOUNT_NO" columnFilterType="input-multiselect"/>
+	<column name="trans_date" align="left" width="12%" loca_key="TRANS_DATE" columnFilterType="input-multiselect"/>
+	<column name="cheque_no" align="left" width="12%" loca_key="CHEQUE_NO"/>
+	<column name="cheque_status" align="left" width="12%" loca_key="CHEQUE_STATUS" columnFilterType="input-multiselect"/>
+	
+	
+	<parameter name="entity" input="y" loca_key="ENTITY" type="EntityFilter" options= "{}" hidden="false"
+		layoutClass="p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero"
+    	styleClass="margin-side" rendered="true" required="true"/>
+	<parameter name="cheque_status" size="2" max_length="2" input="y" loca_key="CHEQUE_STATUS" type="" rendered="true" />
+	<parameter name="account_no" input="y" loca_key="ACCOUNT_NO" type="AccountNoFilter" options= "{}" hidden="false"
+		layoutClass="p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero"
+    	styleClass="margin-side" rendered="true" required="true"/>
+    <parameter name="chequeno_header" input="y" loca_key="chequeno_header" type="HeaderFilter"  hidden="false"
+		layoutClass="p-col-12 p-md-12 p-lg-12 p-sm-12 leftwrapper padding_zero"
+    	styleClass="margin-side" rendered="true"/>
+    <parameter name="chequeno" size="200" max_length="200" input="y" type="ChequeNoFilter"
+		loca_key="CHEQUE_NO" layoutClass="p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"  defaultRadioValue="01" options= "{}" styleClass="issuance_radio p-grid" hidden="false" rendered="true"/>
+	<parameter name="cheque_no" input="y" loca_key="cheque_number" hidden="false" rendered="true"
+		layoutClass="p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero" type="ChequeFrom"
+		styleClass="margin-side" maxlength="20"/>
+	<parameter name="spacer" input="y" loca_key="spacer" hidden="false" rendered="false"
+		layoutClass="p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero" type="spacer"
+		styleClass="margin-side"/>	
+	<parameter name="chequeno_from" input="y" loca_key="chequeno_from" hidden="false" rendered="false" type="ChequeFrom"
+		layoutClass="p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero"
+		styleClass="margin-side" maxlength="20"/>
+	<parameter name="chequeno_to" input="y" loca_key="chequeno_to" hidden="false" rendered="false" type="ChequeFrom"
+		layoutClass="p-col-6 p-md-6 p-lg-6 p-sm-12 padding_zero"
+		styleClass="margin-side" maxlength="20"/>
+	<parameter name="cheque_numbers" input="y" loca_key="cheque_numbers" hidden="false" rendered="false" type="ChequeFrom"
+		layoutClass="p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+		styleClass="margin-side"/>
+	<parameter name="cheque_type" input="y" loca_key="cheque_type" type="EntityFilter" options= "{}" hidden="true"
+		layoutClass="p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero"
+    	styleClass="margin-side" rendered="false"/>
+
+	 
+	
+	
+	<!-- Candidates -->	
+	<candidate name="GenericInquiry">
+	<filter>
+			<criteria>
+				<column name="cheque_no"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					cheque_no@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cheque_no"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					cheque_no@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cheque_no"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					cheque_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cheque_no"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cheque_no@multiple
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity" />
+				<operator type="equal" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cheque_type" />
+				<operator type="equal" />
+				<value type="parameter">
+					cheque_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_no" />
+				<operator type="equal" />
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+	</filter>		
+	</candidate>
+</listdef>

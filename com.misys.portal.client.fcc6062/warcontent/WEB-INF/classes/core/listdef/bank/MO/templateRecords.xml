@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="template_id" default_order_type="d" page="200">
+
+	<column name="template_id" align="left" width="20%" loca_key="REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="TRADEADMIN_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_TEMPLATE"/>
+			<parameter name="TEMPLATE_ID" column="template_id"/>
+   			<parameter name="PRODUCT_CODE" column="product_code"/>
+   			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+   			<parameter name="CREATOR_ID" column="company_id"/>
+		</url>
+	</column>
+	<column name="customer_name" align="left" width="30%" loca_key="COMPANY"/>
+    <column name="template_description" align="left" width="40%" loca_key="DESCRIPTION"/>
+	
+  <column name="product_code" hidden="y"/>
+  <column name="sub_product_code" hidden="y"/>
+  <column name="company_id" hidden="y"/>  
+  <column name="action" width="10%">
+		<url action="y">
+			<parameter name="SCREEN" value="TRADEADMIN_SCREEN"/>
+			<parameter name="TEMPLATE_ID" column="template_id"/>
+      <parameter name="PRODUCT_CODE" column="product_code"/>
+		</url>
+	</column>
+
+	<!-- parameters -->
+	<parameter
+		name="template_id"
+		size="12"
+		max_length="20"
+		loca_key="REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="company"
+		loca_key="COMPANY"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="template_description"
+		loca_key="DESCRIPTION"
+		size="30"
+		max_length="30"
+		input="y"/>
+	<!-- candidates -->	
+	<candidate name="template_letter_of_credit">
+		<filter>
+			<criteria>
+				<column name="template_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					template_id
+				</value>
+			</criteria>
+      <criteria>
+        <column name="customer_name"/>
+        <operator type="like"/>
+        <value type="parameter">
+          company
+        </value>
+      </criteria>
+			<criteria>
+				<column name="template_description"/>
+				<operator type="like"/>
+				<value type="parameter">
+					template_description
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

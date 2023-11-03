@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" help="LIST_HELP_MAINTAIN" default_order="ref_id" default_order_type="d" page="50" identifier="tnx_id" crossPageSelection="y">
+	
+	<batch type="delete">
+		<parameter name="SCREEN" value="EC_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_TRANSACTION_DELETE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_REJECTED"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	<column name="action" width="3em">
+		<url action="y">
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_STAT_CODE" column="tnx_stat_code"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_FULLORSUMMARY"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="SCREEN" column="product_code"/>
+		</url>
+	</column>
+	<column name="ref_id" align="center" width="11em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="40%" loca_key="ENTITY"/>
+	<column name="drawer_name" align="left" width="30%" loca_key="ENTITY_NAME_DRAWER"/>
+	<column name="drawee_name" align="left" width="60%" loca_key="DRAWEE_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM"/>
+	<column name="prod_stat_code" align="center" width="6em" loca_key="STATUS"/>
+	
+	<column name="tnx_id" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="drawer_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_DRAWER"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="drawee_name"
+		loca_key="DRAWEE_NAME"
+		size="35"
+		max_length="35"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="currency"/>
+	<!-- candidates -->	
+	<candidate name="export_collection">
+		<filter>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_REJECTED
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_type_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N002_NEW
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_ACKNOWLEDGED
+				</value>
+			</criteria>
+		</filter>
+		
+	</candidate>
+	<candidate name="export_collection">
+	<filter>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_FAILED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawer_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					drawer_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="drawee_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					drawee_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			</filter>
+</listdef>

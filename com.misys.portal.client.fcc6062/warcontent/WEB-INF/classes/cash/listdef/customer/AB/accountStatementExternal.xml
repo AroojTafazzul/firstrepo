@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="line@post_date" default_order_type="d" page="50" hideSearch="true">
+    <column name="line@post_date" align="center" width="10%" loca_key="POST_DATE_HEADER"/>
+    <column name="line@value_date" align="center" width="10%" loca_key="VALUE_DATE_HEADER"/>    
+	<column name="line@description" align="left" width="35%" loca_key="ACCOUNT_DESCRIPTION_HEADER"/>
+	<column name="line@deposit" align="right" width="15%" loca_key="DEPOSIT"/>	
+	<column name="line@withdrawal" align="right" width="15%" loca_key="WITHDRAWAL"/>
+					
+	<column name="account_id" hidden="y"/>
+	<column name="account@account_no" hidden="y"/>
+	<column name="account@owner_type" hidden="y"/>	
+	<column name="line@cust_ref_id" hidden="y"/>
+	<column name="line@bo_ref_id" hidden="y"/>
+	<column name="line@line_id" hidden="y"/>
+	<column name="line@supplementary_details" hidden="y"/>
+	<column name="account@iso_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		hidden="true"/>
+	<parameter
+		name="account_id"
+		hidden="true"/>
+	<parameter name="bic_code" hidden="true" />	
+	<parameter
+		name="create_date"
+		hidden="true"/>	
+	<parameter
+		name="create_date2"
+		hidden="true"/>	
+	<parameter name='export_list' file='AccountStatement' type='export'
+	file_name='AccountStatement' hidden="true"/>
+		
+
+	<!-- Candidates -->	
+	<candidate name="AccountStatement"> 
+		<filter>
+			<criteria>
+				<column name="EntityAccount@entity@abbv_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account@account_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account@iso_code" />
+				<operator type="equal" />
+				<value type="parameter">
+					bic_code
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="line@post_date"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					create_date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="line@post_date"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					create_date2
+				</value>
+			</criteria>
+		</filter>
+	</candidate>	
+	
+	
+	    <aggregate type='sum' align="right" name="line@deposit" loca_key="CURRENT_ACCOUNT_STATEMENT_SUMMARY">
+			<column name='line@deposit'/>
+		</aggregate>	
+		<aggregate type='sum' align="right" name="line@withdrawal" loca_key="CURRENT_ACCOUNT_STATEMENT_SUMMARY">
+			<column name='line@withdrawal'/>
+		</aggregate>
+
+
+</listdef>

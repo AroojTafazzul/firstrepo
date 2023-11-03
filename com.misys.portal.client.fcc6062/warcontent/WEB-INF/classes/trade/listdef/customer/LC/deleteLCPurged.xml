@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" help="LIST_HELP_MAINTAIN" default_order="ref_id" default_order_type="d" page="50" identifier="ref_id" crossPageSelection="y">
+	
+	<batch type="delete">
+		<parameter name="SCREEN" value="LC_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_TRANSACTION_DELETE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_EXISTING"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+	</batch>
+
+	<column name="ref_id" align="center" width="11em" loca_key="REFERENCEID"/>
+	<column name="entity" align="left" width="40%" loca_key="ENTITY"/>
+	<column name="beneficiary_name" align="left" width="60%" loca_key="BENEFICIARY_NAME"/>
+	<column name="cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="amt" align="right" width="10em" loca_key="AMOUNT"/>
+	<column name="liab_amt" align="right" width="10em" loca_key="OS_AMOUNT"/>
+	
+	<column name="prod_stat_code" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"/>
+
+	<!-- candidates -->	
+	<candidate name="letter_of_credit_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="beneficiary_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N005_PURGED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

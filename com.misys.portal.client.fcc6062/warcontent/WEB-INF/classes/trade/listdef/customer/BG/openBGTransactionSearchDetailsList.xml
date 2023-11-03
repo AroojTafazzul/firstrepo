@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xsl:stylesheet [
+  <!ENTITY nbsp "&#160;">
+]>
+<listdef ordered="y" default_order="tnx_id" default_order_type="d" page="10" search_columns="2">
+	
+	<!-- Columns -->
+
+	<column name="ref_id" hidden="y"/>
+	<column name="entity" hidden="y"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="tnx_type_code" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y"/>
+	<column name="ObjectDataNumber@counterparty_nb" hidden="y"/>
+	<column name="counterparty_name" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="prod_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="tnx_cur_code" hidden="y"/>
+	<column name="tnx_amt" hidden="y"/>
+	<column name="product_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("product_code");
+			value;
+    </script>		
+	</column>
+	<column name="sub_product_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("sub_product_code");
+			value;
+    </script>		
+	</column>
+	<column name="sub_tnx_stat_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("sub_tnx_stat_code");
+			value;
+    </script>		
+	</column>
+	<column name="prod_stat_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("prod_stat_code");
+			value;
+    </script>		
+	</column>
+	<column name="tnx_stat_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("tnx_stat_code");
+			value;
+    </script>		
+	</column>
+	<column name="tnx_type_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("tnx_type_code");
+			value;
+    </script>		
+	</column>
+	<column name="sub_tnx_type_code_val" hidden="y">
+	<script>
+			value =row.getColumnValue("sub_tnx_type_code");
+			value;
+    </script>		
+	</column>
+	<column name="bo_ref_id" hidden="y" />
+	<column name="amount" hidden="y" >
+		<script>
+			var tnx_cur_code = row.getColumnValue("tnx_cur_code");
+			var tnx_amt = row.getColumnValue("tnx_amt");
+
+			if(!"".equals(""+tnx_cur_code+"") &amp;&amp; !"".equals(""+tnx_amt+"") &amp;&amp; tnx_amt !=null)
+			{
+				value = tnx_cur_code + " " + com.misys.portal.common.tools.Utils.getFormattedAmount(tnx_amt.getValue(),tnx_cur_code.toString());
+			}
+			else
+			{
+				value = "-" ;
+			}
+			value;
+		</script>
+	</column>
+	
+	<parameter
+		name="ref_id"
+		size="14"
+		max_length="20"
+		loca_key="REFERENCEID"
+		default="*"
+		input="y"
+		search_column="2"/>
+	<!-- candidate -->	
+	<candidate name="issued_undertaking" >
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+		</filter>	
+ 	</candidate>
+ 	<candidate name="banker_guarantee" >
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+		</filter>	
+ 	</candidate>
+ 	<filter or="y">
+	<criteria>
+	<column name="sub_tnx_stat_code"/>
+	<operator type="different"/>
+	<value type="code">
+	N015_CUSTOMER_DELETED
+	</value>
+	</criteria>
+	<criteria>
+	<column name="sub_tnx_stat_code"/>
+	<operator type="different"/>
+	<value type="code">
+	N015_REJECTED_CLEARED
+	</value>
+	</criteria>
+	<criteria>
+	<column name="sub_tnx_stat_code"/>
+	<operator type="isNull"/>
+	</criteria>
+</filter>
+ </listdef>

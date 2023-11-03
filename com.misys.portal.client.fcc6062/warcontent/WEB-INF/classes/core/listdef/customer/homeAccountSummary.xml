@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="acct_name"  default_order_type="a" js_binding="misys.binding.cash.account_summary">
+
+	<column name="bank_abbv_name" align="center" width="20%" loca_key="BANKNAME"/>
+	<column name="acct_name" align="left" width="25%" loca_key="ACCOUNT">
+		 <script>
+	                        if("05".equals(row.getColumnValue("owner_type").toString()))
+		                        {
+		
+		
+		        var nameConfig = com.misys.portal.core.util.JetspeedResources.getBoolean("show.externalaccont.name", true);
+		
+		        var acctName = row.getColumnValue("acct_name");
+		
+		        var acctNo = row.getColumnValue("account_no");
+		
+		        var currCode = row.getColumnValue("cur_code");
+		
+		        var desc = row.getColumnValue("description");
+		
+		        if(nameConfig == true)
+		                {
+		                        value = " "+currCode+" "+" "+acctNo+" "+" "+acctName+" ";
+		                }
+		                else
+		                {
+		                        value = " "+currCode+" "+" "+acctNo+" "+" "+desc+" ";
+		                }
+		
+		                }
+	
+		
+		         value;
+		        </script>
+		
+		<url>
+			<parameter name="SCREEN" value="AB_SCREEN"/>
+			<parameter name="OPERATION_CODE" value="LIST_STATEMENTS"/>
+			<parameter name="FEATURE_ID" column="account_id"/>
+			<parameter name="ENTITY" parameter="entity"/>
+		</url>
+	</column>
+	<column name="account_type" align="center" width="15%" loca_key="ACCOUNTTYPE">
+		<script>
+			if("05".equals(row.getColumnValue("owner_type").toString()))
+			{
+				value = com.misys.portal.common.localization.Localization.getGTPString(language, "EXTERNAL_ACCOUNT");
+			}
+			else
+			{
+				value = com.misys.portal.common.localization.Localization.getGTPString(language, "N068_"+row.getColumnValue("account_type"));
+			}
+			value;
+		</script>
+	</column>
+	<column name="cur_code" align="center" width="10%" loca_key="CURCODE"/>
+	<column name="account_no" align="center" width="25%" loca_key="ACCOUNTNUMBER">
+		<url>
+			<parameter name="SCREEN" value="AB_SCREEN"/>
+			<parameter name="OPERATION_CODE" value="LIST_STATEMENTS"/>
+			<parameter name="FEATURE_ID" column="account_id"/>
+			<parameter name="ENTITY" parameter="entity"/>
+		</url>
+	</column>
+	<column name="amount" align="right" width="25%" loca_key="BALANCE">
+		<script>
+			if("04".equals(row.getColumnValue("account_type").toString()) || "05".equals(row.getColumnValue("account_type").toString()))
+			{
+				balnc = row.getColumnValue("principal_amount");
+			}
+			else
+			{
+				balnc = row.getColumnValue("RunningStatement@LedgerBalance@amt");
+			}
+			balnc = balnc.value;
+			value = com.misys.portal.common.tools.ConvertTools.bigDecimalToAmountString(balnc,""+row.getColumnValue("cur_code"));
+			value;
+		</script>
+	</column>	
+	<column name="RunningStatement@AvailableBalance@amt" hidden="y"/>
+	<column name="RunningStatement@LedgerBalance@convertedAmt" hidden="y"/>	
+	<column name="RunningStatement@AvailableBalance@value_date" hidden="y"/>	
+	<column name="account_no" hidden="y"/>
+	<column name="account_id" hidden="y"/>
+	 <column name="description" hidden="y"/>
+	<column name="RunningStatement@AvailableBalance@convertedAmt" hidden="y"/>
+	<column name="principal_amount" hidden="y"/>
+	<column name="owner_type" hidden="y"/>
+	<column name="RunningStatement@LedgerBalance@amt" hidden="y"/>
+	<column name="account_type_id" hidden="y">
+		<script>
+			value = row.getColumnValue("account_type");
+			value;
+		</script>
+	</column>
+	
+	<!-- parameters -->
+	 <!--<parameter
+		name="entity"
+		hidden="true"/>
+	<parameter
+		name="account_no"
+		hidden="true"/>
+	<parameter
+		name="account_type"
+		hidden="true"/> -->
+		
+	<!-- Candidates -->	
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+					View STMT
+	   			</value>
+			</criteria>	
+			<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+					Y
+	   			</value>
+			</criteria>	
+			<criteria>
+				<column name="account_type"/>
+				<operator type="different"/>
+				<value type="code">
+					N068_SETTLEMENT_ACCOUNT
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<!-- <group loca_key="ACCOUNT_TYPE_INFO" align="left">
+		<column name="account_type"/>
+	</group> -->
+
+</listdef>

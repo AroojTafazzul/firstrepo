@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="line@line_id"
+	default_order_type="a" page="50" source="com.misys.portal.report.processor.AccountStatementInputSource" hideSearch="true">
+	<column name="line@post_date" align="center" width="10%"
+		loca_key="TRANSACTION_DATE">
+		<script>
+			if(row.getColumnValue("line@post_date")!= null)
+			{
+			value = com.misys.portal.report.tools.AccountPostingsTools.getDateFromTimeStamp(row, "line@post_date");
+			}
+			value;
+		</script>
+	</column>
+	<column name="line@value_date" align="center" showTime="y"
+		width="10%" loca_key="VALUE_DATE_HEADER" hidden="n">
+		<script>
+			if(row.getColumnValue("line@value_date")!= null)
+			{
+			value = com.misys.portal.report.tools.AccountPostingsTools.getDateFromTimeStamp(row, "line@value_date");
+			}
+			value;
+		</script>
+	</column>
+	<column name="time" align="center" width="10%" loca_key="TRANSACTION_TIMESTAMP">
+		<script>
+			if(row.getColumnValue("line@post_date")!= null)
+			{
+			value = com.misys.portal.report.tools.AccountPostingsTools.getTimeFromDate(row, "line@post_date");
+			}
+			value;
+		</script>
+	</column>
+	<column name="line@description" align="left" width="25%"
+		loca_key="ACCOUNT_DESCRIPTION" />
+	<column name="line@deposit" align="right" width="15%" loca_key="DEPOSIT" />
+	<column name="line@withdrawal" align="right" width="15%"
+		loca_key="WITHDRAWAL" />
+	<column name="line@runbal_booked" align="right" width="15%"
+		loca_key="BALANCE" />
+
+	<column name="account_id" hidden="y" />
+	<column name="account@account_no" hidden="y" />
+	<column name="EntityAccount@entity@abbv_name" hidden="y" />
+	<column name="account@owner_type" hidden="y" />
+	<column name="line@cust_ref_id" hidden="y" />
+	<column name="line@bo_ref_id" hidden="y" />
+	<column name="line@cheque_number" hidden="y" />
+	<column name="line@branch_teller" hidden="y" />
+	<column name="line@reference_1" hidden="y" />
+	<column name="line@reference_2" hidden="y" />
+	<column name="line@reference_3" hidden="y" />
+	<column name="line@reference_4" hidden="y" />
+	<column name="line@reference_5" hidden="y" />
+	<column name="line@line_id" hidden="y" />
+
+	<!-- parameters -->
+	<parameter name="entity" hidden="true" />
+	<parameter name="account_no" hidden="true" />
+	<parameter name="create_date" type="range" hidden="true" />
+	<parameter name='export_list' file='AccountStatement' type='export'
+		file_name='AccountStatement' hidden="true" />
+
+	<!-- Candidates -->
+	<candidate name="AccountStatement">
+		<filter>
+			<criteria>
+				<column name="EntityAccount@entity@abbv_name" />
+				<operator type="equal" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account@account_no" />
+				<operator type="equal" />
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="line@post_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					create_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="line@post_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					create_date@to
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+	<aggregate type='sum' align="right" name="line@deposit"
+		loca_key="CURRENT_ACCOUNT_STATEMENT_SUMMARY">
+		<column name='line@deposit' />
+	</aggregate>
+	<aggregate type='sum' align="right" name="line@withdrawal"
+		loca_key="CURRENT_ACCOUNT_STATEMENT_SUMMARY">
+		<column name='line@withdrawal' />
+	</aggregate>
+
+</listdef>

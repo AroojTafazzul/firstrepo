@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y"  default_order="group_id" default_order_type="d" page="100">
+
+<!-- If order of columns is changed, change corresponding viewerjson for this listdef -->
+	
+	<column name="account@bank_abbv_name" align="left" width="12%" loca_key="BANK_NAME" columnFilterType="input-multiselect"/>
+	<column name="account@UserAccount@EntityAccount@entity@abbv_name" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="account@acct_name" align="left" width="12%" loca_key="ACCOUNT_NAME"/>
+	<column name="account@account_no" align="left" width="12%" loca_key="ACCOUNT_NO"/>
+	<column name="account_type" align="left" width="12%" loca_key="ACCOUNT_TYPE" columnFilterType="input-multiselect"/>
+	<column name="account@cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/> 
+	<column name="account@RunningStatement@AvailableBalance@amt" align="right" width="12%" loca_key="BALANCE"/> 
+	<column name="account@RunningStatement@AvailableBalance@convertedAmt" paramCur="account_ccy" align="right" width="12%" loca_key="EQUIVALENT_OPENING_BALANCE" showAbbvAmt="y"/>
+	<column name="group_id" hidden="y"/>
+	<column name="account_id" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter name="account_type" hidden="true" />
+	<parameter name="group_id" input="y" type="" hidden="true" />
+	<parameter name="actv_flag" hidden="true" />
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+	<!-- <parameter name="account_ccy" hidden="true"/> -->
+	<parameter
+		name="account_ccy"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="ACCOUNT_CCY"
+		default=""
+		type="Currency"
+		hidden="true"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		default=""
+		multiple="y"
+		type="Currency"/>	
+
+	<!-- Candidates -->	
+	<candidate name="GroupAccounts">
+		<filter>
+		<criteria>
+				<column name="group_id" />
+				<operator type="equal" />
+				<value type="parameter">
+					group_id
+				</value>
+		</criteria>
+		<criteria>
+				<column name="account@UserAccount@EntityAccount@entity@abbv_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+		</criteria>
+		<criteria>
+				<column name="account_type"/>
+				<operator type="in"/>
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account@cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account@actv_flag"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					actv_flag
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+</listdef>

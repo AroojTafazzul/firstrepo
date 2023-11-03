@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" page="50" default_order="account_no" default_order_type="a">
+	<column name="UserAccount@EntityAccount@entity@abbv_name" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="account_no" align="center" width="25%" loca_key="ACCOUNTNUMBER">
+		<url candidate="account">
+			<parameter name="SCREEN" value="TD_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_EXISTING_OPEN"/>
+			<parameter name="ACCOUNT_ID" column="account_id"/>
+			<parameter name="ENTITY_ABBV_NAME" column="UserAccount@EntityAccount@entity@abbv_name"/>
+		</url>
+	</column>
+	<column name="acct_name" align="center" width="25%" loca_key="ACCOUNT_NAME"/>
+	<column name="cur_code" align="center" width="25%" loca_key="CURCODE"/>
+	<column name="principal_amount" align="center" width="25%" loca_key="AMOUNT"/>
+	<column name="account_id" hidden="y" />
+
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""/>
+	<parameter
+		name="account_no"
+		size="14"
+		max_length="35"
+		loca_key="ACCOUNTNUMBER"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="acct_name"
+		size="14"
+		max_length="20"
+		loca_key="ACCOUNT_NAME"
+		input="y"
+		default="">
+	</parameter>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		type="Currency"
+		loca_key="CURCODE"/>
+
+	<!-- candidates -->	
+	<candidate name="Account">
+		<filter>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name" />
+				<operator type="like" />
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_no"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="acct_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					acct_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_type"/>
+				<operator type="equal"/>
+				<value type="code">
+					N068_TERM_DEPOSIT_ACCOUNT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="actv_flag"/>
+				<operator type="equal"/>
+				<value type="code">
+					N034_YES
+				</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+					product
+	   			</value>
+			</criteria>	
+			<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+					TD:CSTD
+	   			</value>
+			</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

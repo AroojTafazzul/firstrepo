@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <listdef page="5" hideSearch="true" source="GenericInputSource" category="fcm"
+	drilldownEnabled ="false" parentNodePath="allTabsList/data" customInterfaceService="paymentsListing" customComponentName="getPaymentApprovalSummary" filterParam ="PENDINGMYAPPROVAL" 
+	ordered="y" default_order="packageName" default_order_type="d">
+<!-- PENDINGAPPROVAL -->
+
+	<column alias="clientName"  isClubbedField="y" clubbedFieldsList="clientName,clientCode" isColumnSortDisabled="y"
+      align="left" width="22%" loca_key="clientNameCode" separator="ENTER" columnFilterType="input-multiselect"/>
+    
+    <column name="clientName" align="left" width="12%" loca_key="clientName" hidden="y"/>  
+	<column name="clientCode" align="left" width="12%" loca_key="clientCode" hidden="y"/>
+	
+	
+	<column alias="clientTotalBatchCount"  isClubbedField="y" clubbedFieldsList="clientTotalBatchCount,clientTotalInstrumentCount" isColumnSortDisabled="y"
+      align="left" width="14%" loca_key="packageTotalBatchcount" separator="SPACE" columnFilterType="input-multiselect"/>
+      
+      
+      <column name="clientTotalBatchCount" align="left" width="12%" loca_key="totalAmt" hidden="y"/>
+      <column name="clientTotalInstrumentCount" align="left" width="12%" loca_key="totalAmt" hidden="y"/>
+	<!--<column name="packageTotalBatchcount" align="left" width="14%" loca_key="packageTotalBatchcount"  />  -->
+	
+	<column name="clientTotalAmount" align="right" width="12%" loca_key="totalAmt"  />
+	
+	<column name="paymentReferenceList" align="left" width="12%" loca_key="" hidden="y"  />
+	<column name="action" align="right" width="12%" loca_key="ACTIONS">
+	<url fcmAction="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_FOR_PAYMENTS_APPROVALREJECT">
+	<parameter name="package" column="packageName"/>
+	</url>
+	</column>
+
+</listdef>
+

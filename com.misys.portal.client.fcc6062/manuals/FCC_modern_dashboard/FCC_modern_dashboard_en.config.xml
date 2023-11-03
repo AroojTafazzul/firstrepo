@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Configuration</title>
+
+  <section role="ITEM">
+    <title>Properties File</title>
+
+    <section>
+      <title>Overview</title>
+
+      <para><productname id="ent_appli">Fusion Corporate
+      Channels</productname> is customisable through dedicated property files
+      stored under the <filename moreinfo="none">./config</filename> directory
+      under the root of the webapp directory tree:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><filename>fcc_ux.properties</filename> is the master
+          configuration file for Modern Dashboard customization. It specifies
+          the other properties files to be loaded. The path to these
+          properties files must be adjusted.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Naming Conventions</title>
+
+      <para>Configuration files use property-value pairs. Some standard
+      prefixes are applied to properties to classify them:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><literal>.url</literal> when the property is a URL</para>
+        </listitem>
+
+        <listitem>
+          <para><literal>.file</literal> when the property is a file</para>
+        </listitem>
+
+        <listitem>
+          <para><literal>.directory</literal> when the property is a
+          directory.</para>
+        </listitem>
+
+        <listitem>
+          <para><literal>.classname</literal> when the property is a qualified
+          Java class name.</para>
+        </listitem>
+
+        <listitem>
+          <para><literal>.interval</literal> when the property is a time
+          interval in seconds</para>
+        </listitem>
+      </itemizedlist>
+
+      <note>
+        <para><itemizedlist>
+            <listitem>
+              <para>All the file names path follow the Unix naming conventions
+              (even if the application server is running on Windows), and are
+              given relative to the webapp root.</para>
+            </listitem>
+
+            <listitem>
+              <para>The comment lines start with the character
+              <literal>#</literal>.</para>
+            </listitem>
+          </itemizedlist></para>
+      </note>
+    </section>
+
+    <section>
+      <title>fcc_ux.properties</title>
+
+      <para>This is the configuration file for Modern Dashboard.</para>
+
+      <para><literal>Description:</literal> Property to enable angular based
+      Modern Dashboard.<programlisting>#Property to enable angular
+enable.fccui = false</programlisting></para>
+
+      <para><literal>Description:</literal> Property to configure start day of
+      the week to get calendar events list of the corresponding week.
+      <programlisting>#this date is to configure start day of the week to get calendar events list of the corresponding week.  
+calendarevents.week.start.day = SUNDAY</programlisting></para>
+
+      <para><literal>Description:</literal> Property to configure start day of
+      the week to get calendar events list of the corresponding week.
+      <programlisting>#this date is to configure start day of the week to get calendar events list of the corresponding week.  
+calendarevents.week.start.day = SUNDAY</programlisting></para>
+
+      <para><literal>Description:</literal> Property to set default recent
+      notification day count.<programlisting>#this is default recent notification day count
+recent.notification.day.count = 3</programlisting></para>
+    </section>
+  </section>
+</chapter>

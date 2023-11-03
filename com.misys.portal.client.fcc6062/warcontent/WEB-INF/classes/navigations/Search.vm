@@ -1,0 +1,35 @@
+#set ($language = $gtpapp.getLanguage())
+#set ($contextPath = $gtpapp.getContextPath())
+#set ($servletPath = $gtpapp.getServletPath())
+#set ($menus = $search.getAllMenuItemsFromDb($data))
+
+<div>
+	<input type="text" id="searchInput" onkeyup="searchInpOnKeyup()" onfocus="searchInpOnFocus()" onBlur="searchInpOnBlur()" placeholder=" Global Search" title="Product Search"></input>
+	<div class="menulist">
+		<ul id="menuUL">
+			#foreach( $menu in $menus )
+				<li style="display: none">
+					<a href="$contextPath$servletPath/$search.getUrl($menu)">
+						$search.getSearchLocale($language,$menu)
+					</a>
+				</li>
+			#end
+		</ul>
+	</div>
+	<div id="transIDdiv">
+		
+	</div>
+	<div id="actionULTrade">
+		<ul>
+			<li>$l10n.getGTPString($language,"FCC_SEARCH_SUPPORTED_ACTIONS")</li>
+			<li>$l10n.getGTPString($language,"FCC_SEARCH_ACTION_AMENDMENT")</li>
+			<li>$l10n.getGTPString($language,"FCC_SEARCH_ACTION_MESSAGE_TO_BANK")</li>
+		</ul>
+	</div>
+	<div id="actionUL">
+		<ul>
+			<li>$l10n.getGTPString($language,"FCC_SEARCH_SUPPORTED_ACTIONS")</li>
+			<li>$l10n.getGTPString($language,"FCC_SEARCH_ACTION_MESSAGE_TO_BANK")</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Introduction</title>
+
+  <section role="ITEM">
+    <title>Document Information</title>
+
+    <para role="TEXT">This document provides an in-depth description of the
+    <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> Release <xi:include
+    href="../entities_en.xml" xpointer="ent_portal_version"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> front-end for users at a bank
+    site, working in Bank Trade Services. The functions available cover the
+    set of modules offered in the application to enable banks to review the
+    transactional messages sent by their clients, export them in PDF format,
+    reply to them or generate reporting messages based on existing transaction
+    records.</para>
+
+    <para role="TEXT">New transactions can also be created such as the
+    notification of Export Letters of Credit (Commercial and Standby) to
+    beneficiaries or Import Documentary Collections to drawees.</para>
+
+    <para role="TEXT">The following modules are covered in this manual:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para role="TEXT"><application>Middle-Office</application></para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT"><application>Change Profile</application></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section role="ITEM">
+    <title>Audience</title>
+
+    <para role="TEXT">This manual is addressed to a user at a bank, and
+    describes the end-user functions in the bank user interface.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Terminology</title>
+
+    <para role="TEXT">A <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> system
+    is used by two types of organisation: banks, and companies that are
+    customers of banks. The latter are referred to as "customers" or "clients"
+    - these two terms are used interchangeably.</para>
+
+    <para role="TEXT">In addition, the term "bank group" is used to mean a
+    site with overriding authority over the system, such as a bank's head
+    office.</para>
+
+    <para role="TEXT">A member of the staff of a client or bank is called a
+    "user". A user with special administrator privileges is called an
+    "administrator".</para>
+
+    <para role="TEXT">A <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> system
+    has two different user interfaces: for a user at a client, and for a user
+    at a bank or bank group.</para>
+
+    <para role="TEXT">The client interface has a section called <emphasis
+    role="bold">Services</emphasis>, and the bank interface has a section
+    called <emphasis role="bold">System Features</emphasis>, containing
+    functions for administering and configuring the <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> system. The rest of the
+    interface contains end-user functions. Which functions are available to a
+    given user depends on that user's privileges.</para>
+
+    <section role="ITEM">
+      <title>Products and Transactions</title>
+
+      <para role="TEXT">The financial products that a bank can provide, such
+      as letters of credit, standby letters of credit, shipping guarantees,
+      loans, and so on, are referred to as "products".</para>
+
+      <para role="TEXT">The communications between bank and client about an
+      individual instance of a product typically consist of a sequences of
+      messages. For example, the communications regarding a letter of credit
+      would typically consist of:</para>
+
+      <orderedlist>
+        <listitem>
+          <para role="TEXT">The client's initial request</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">The bank's formal response</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Possibly a request from the client to amend the
+          request</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">The bank's formal response to the amendment
+          request</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Possibly a free-format message from the client to
+          the bank containing further discussion</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">The bank's response to the free-format
+          message</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Possibly further free-format messages between the
+          client and the bank</para>
+        </listitem>
+      </orderedlist>
+
+      <para role="TEXT">These individual messages are called "transactions" or
+      "transaction events". Those sent by the bank in reply to a client
+      message are called "reporting messages" (because the bank is "reporting
+      back" - they should not be confused with reports produced using the
+      Report Designer module). The whole set of messages concerning one
+      instance of a individual product is called a "file" (this represents a
+      "file of documents" and should not be confused with the files that can
+      be uploaded containing details of a transaction).</para>
+
+      <para role="TEXT">The initial request from the client is often called
+      the "initiation" of the file.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>System ID</title>
+
+      <para role="TEXT">When a new file is created - for example, a client
+      user creates a new Letter of Credit request - <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> gives it a unique reference
+      number called its System ID. This is used throughout the system to
+      identify it.</para>
+
+      <para role="TEXT"><inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/CLIENT_systemid.gif"/>
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para role="TEXT">The System ID consists of a 2 charactered Product code
+      describing the type of transaction, followed by the year and month and a
+      unique number allocated to this transaction file.</para>
+
+      <para role="TEXT">The following table describes the products each
+      product code represents.<informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c2" colwidth="1.7*"/>
+
+            <colspec colname="c3" colwidth="6.2*"/>
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Product
+                Code</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT">BG</para></entry>
+
+                <entry valign="top"><para role="TEXT">Banker's
+                Guarantee</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">BK</para></entry>
+
+                <entry valign="top"><para role="TEXT">Bulk
+                Services</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">EC</para></entry>
+
+                <entry valign="top"><para role="TEXT">Export Documentary
+                Collection</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">EL</para></entry>
+
+                <entry valign="top"><para role="TEXT">Export Letter of Credit
+                (notifications)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">FD</para></entry>
+
+                <entry valign="top"><para role="TEXT">Fixed
+                Deposit</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">FT</para></entry>
+
+                <entry valign="top"><para role="TEXT">Fund
+                Transfer</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">IC</para></entry>
+
+                <entry valign="top"><para role="TEXT">Import Documentary
+                Collection (notifications)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">IN</para></entry>
+
+                <entry valign="top"><para role="TEXT">Invoice</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">IP</para></entry>
+
+                <entry valign="top"><para role="TEXT">Invoice
+                Payable</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">LC</para></entry>
+
+                <entry valign="top"><para role="TEXT">Import Letter of
+                Credit</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">SE</para></entry>
+
+                <entry valign="top"><para role="TEXT">Cheque
+                Services</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">SG</para></entry>
+
+                <entry valign="top"><para role="TEXT">Guarantee, usually
+                referred to as Shipping Guarantee</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">SI</para></entry>
+
+                <entry valign="top"><para role="TEXT">Issued Standby Letter Of
+                Credit</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">SR</para></entry>
+
+                <entry valign="top"><para role="TEXT">Received Standby Letter
+                Of Credit (notifications)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT">TF</para></entry>
+
+                <entry valign="top"><para role="TEXT">Trade Financing, for the
+                Import and Export Financing requests (encompassing the
+                <type>Import Loans</type>, <type>Export Pre-Financing</type>,
+                <type>Trust Receipt</type>, etc.)</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Permissions</title>
+
+    <para role="TEXT">Which fuctions and facilities you, as a Bank user, have
+    access to, and what you can do in each section, depends on permissions
+    granted you by your Bank's <xi:include href="../entities_en.xml"
+    xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    administrator.</para>
+
+    <para role="TEXT">Your permissions are often referred to as
+    <emphasis>privileges</emphasis>, <emphasis>authority</emphasis> or
+    <emphasis>authorisation</emphasis>. These four terms are used
+    interchangeably, but should not be confused with
+    <emphasis>authentication</emphasis>, which means your login ID and
+    password.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Date and Amount Formats</title>
+
+    <para role="TEXT">When entering a date in a date field, two formats are
+    available. You can enter it in the form
+    <replaceable>DD/MM/YYYY</replaceable> or <replaceable>DDMMYY</replaceable>
+    if your locale is for instance France, or in the form
+    <replaceable>MM/DD/YYYY</replaceable> or <replaceable>MMDDYY</replaceable>
+    if your locale is for instance the USA..</para>
+
+    <para role="TEXT"><informalexample>
+        <para role="TEXT">For example, entering <literal
+        moreinfo="none">180401</literal> produces a display of <literal
+        moreinfo="none">18/04/2001</literal>, which in a French locale
+        corresponds to 18th April 2001.</para>
+      </informalexample></para>
+
+    <para role="TEXT">When you enter an amount, the system automatically
+    formats the value entered according to the currency selected. You can
+    either enter the amount using the decimal and group delimiters of your
+    locale (for example, respectively [,] and [space] for France, or [.] and
+    [,] for Singapore), or directly as a series of digits.</para>
+
+    <para role="TEXT"><informalexample>
+        <para role="TEXT">For example, <literal
+        moreinfo="none">123456.00</literal> in a Singaporean locale produces a
+        display of <literal moreinfo="none">123,456.00</literal> if the
+        currency involved is associated with 2 decimal places.</para>
+      </informalexample></para>
+  </section>
+
+  <section role="ITEM">
+    <title>Forward and Back Browser Buttons Behaviour</title>
+
+    <para role="TEXT">When you use a Browser's Forward and Back buttons, the
+    browser's default behaviour is displayed and <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> doesn't provide any
+    customised messages.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Antivirus Scanning Service</title>
+
+    <para role="TEXT">This service provides an interface from <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> to an antivirus scanner of
+    your company's choice. You can scan any attachment for viruses before
+    uploading it from any transaction screen in <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/>.</para>
+
+    <note>
+      <para role="TEXT">This service is enabled by the <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> Administrator.</para>
+    </note>
+  </section>
+
+  <section role="ITEM">
+    <title>Common Features</title>
+
+    <para role="TEXT">Many options, when selected, display a page that lists
+    relevant records. These list pages have some things in common:</para>
+
+    <para role="TEXT"><itemizedlist>
+        <listitem>
+          <para role="TEXT">You can enter search criteria in a group of fields
+          at the top of the page and click <guibutton
+          role="bold">Search</guibutton> , to make the list show only records
+          that match these criteria. These fields represent the most important
+          fields in the record, as do the columns in the table.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">You can use wildcards in these fields. The
+          wildcard character is an asterisk (*). You can use it anywhere in a
+          field.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">On pages where the list might be very long - for
+          example, if there are many transactions - the list is not displayed
+          until you have entered the search criteria and clicked <guibutton
+          role="bold">Search</guibutton>. In these cases, enter an asterisk in
+          any of the search fields to get the entire list.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">If a company has entities defined in its profile,
+          then a column and a search criterion field for <emphasis
+          role="bold">Entity</emphasis> appear in addition to the columns and
+          fields mentioned in the individual descriptions below.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">You can click the triangular icons in the heading
+          of a column to sort the display on that column in ascending or
+          descending order.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">There may be a column where you can click to open
+          the individual record for viewing or editing. These are described in
+          the sections for the individual options.</para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+
+  <section role="ITEM">
+    <title>The <xi:include href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> Bank Home Page</title>
+
+    <para role="TEXT">Once logged in, the Bank Home page will be
+    displayed.</para>
+
+    <para role="TEXT">Each of the sections of the <xi:include
+    href="../entities_en.xml" xpointer="ent_appli"
+    xmlns:xi="http://www.w3.org/2001/XInclude"/> Bank Home page are listed
+    here:</para>
+
+    <orderedlist>
+      <listitem>
+        <para role="TEXT">The <xi:include href="../entities_en.xml"
+        xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        Banner</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">The Tool bar</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Recent Applications</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Pending Counterparties Applications</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Navigation lists</para>
+      </listitem>
+    </orderedlist>
+
+    <para role="TEXT">In many cases, there are multiple methods of navigating
+    to specific functions or options. Some of these methods will be discussed
+    in this guide.</para>
+
+    <section role="ITEM">
+      <title>The Banner</title>
+
+      <para role="TEXT">The <xi:include href="../entities_en.xml"
+      xpointer="ent_appli" xmlns:xi="http://www.w3.org/2001/XInclude"/> banner
+      is the same on every page, with the Finastra or bank's logo on the left
+      hand side.</para>
+
+      <para role="TEXT">To its right side are the following details available
+      on the banner:<itemizedlist>
+          <listitem>
+            <para><constant>Bank Business Date and Timezone</constant> - This
+            is available only when the property show.bank.datetime is set to
+            'true'. The user can set this property to true when the bank
+            timezone and user timezone are different.</para>
+          </listitem>
+
+          <listitem>
+            <para><constant>Last login details</constant></para>
+          </listitem>
+        </itemizedlist></para>
+
+      <para>The banner header is followed by the following three
+      sections:<itemizedlist>
+          <listitem>
+            <para>The user login name and bank name.</para>
+          </listitem>
+
+          <listitem>
+            <para>Manage profile link (followed by your login name and bank
+            name) that allows the user profile, Password, and Security
+            questions to be changed.</para>
+          </listitem>
+
+          <listitem>
+            <para>Languages Select Box- Allows the user to change the language
+            of FCC.</para>
+          </listitem>
+
+          <listitem>
+            <para>Logout button to log out of the <productname>Fusion
+            Corporate Channels</productname>.</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <para role="TEXT">As the banner is displayed on all pages, these options
+      can be selected at any time.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>The Tool bar</title>
+
+      <para role="TEXT">Below the banner on the Home page, is the Tool bar.
+      The Tool bar is displayed on all pages of the <xi:include
+      href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> Client Portal.</para>
+
+      <para role="TEXT">The Tool bar provides the Home button
+      <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_home.gif" width="5mm"/>
+          </imageobject>
+        </inlinemediaobject>. Click on this button while displaying any page
+      in the <xi:include href="../entities_en.xml" xpointer="ent_appli"
+      xmlns:xi="http://www.w3.org/2001/XInclude"/> to return the user to the
+      Home page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Welcome Message</title>
+
+      <para role="TEXT">Beneath the toolbar, is the Welome Message from the
+      Bank.</para>
+
+      <para role="TEXT">This may change depending on the bank's
+      definitions.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Recent Applications</title>
+
+      <para role="TEXT">In the center of the screen, below the Tool bar, is a
+      list of transactions that have been completed by the client but not yet
+      actioned by the bank. Click in the System ID of each one to process,
+      approve or reject them.</para>
+
+      <para role="TEXT">These are grouped according to the entities assigned
+      to the user's company, and provide an immediate summary of outstanding
+      amounts for each transaction that has been entered into. Clicking on any
+      of the list headings will allow the list to be sorted according to that
+      column value.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Recent Counterparties Activation</title>
+
+      <para role="TEXT">Below the Recent Applications is a list of all pending
+      activations for registered counterparties. The are additional parties
+      associated with Client transactions. Click on each Counterparty ID to
+      process them.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Navigation List</title>
+
+      <para role="TEXT">At the bottom on the left hand side of the page, is
+      the navigation list.</para>
+
+      <para role="TEXT">This list shows the functions, features and facilities
+      the user is authorised to use. Note that not all the items shown here
+      will be available. This document describes <emphasis
+      role="bold">Middle-Office</emphasis> functions only.</para>
+    </section>
+  </section>
+</chapter>

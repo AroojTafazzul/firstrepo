@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef viewer="SimpleTable" selection_mode="single" ordered="y" huge="y" help="LIST_HELP_INQUIRY" default_order="date" default_order_type="d" page="50" 
+		 subscribe_topic="CMEQFXDealsPosition" source="opics">
+	
+	<onSelectionChangedScript>"dojo.publish('CMEQFXDealsByDay', [{ currency : \"" + parameters.get("currency").getValue() +"\",value_date : " + row.getColumnValue("date") +
+	",customer : \"" + parameters.get("customer").getValue() + "\",start_date: \""+ parameters.get("start_date").getValue() + "\"}])"</onSelectionChangedScript>
+	<onSelectionClearedScript>dojo.publish('CMEQFXDealsByDay', [{}])</onSelectionClearedScript>
+
+	<column name="date" align="center" width="20%" loca_key="VALUEDATE"/>	
+	<column name="purchase" align="right" width="20%" loca_key="PURCHASE"/>
+	<column name="sales" align="right" width="20%" loca_key="SALE"/>
+	<column name="net" align="right" width="20%" loca_key="NET"/>
+
+	
+	
+	<!-- parameters -->
+	<parameter
+		name="currency"
+		input="n"/>
+	<parameter
+		name="customer"
+		input="n"/>
+	<parameter
+		name="start_date"
+		input="n"/>
+	<parameter
+		name="opicslist"
+		type="hidden"
+		default="FXBYDAY"/>	
+
+	<!-- candidates -->	
+	<candidate name="account_balance">
+		<filter>
+			<criteria>
+				<column name="currency"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					currency
+				</value>
+			</criteria>
+			<criteria>
+				<column name="customer"/>
+				<operator type="like"/>
+				<value type="parameter">
+					customer
+				</value>
+			</criteria>
+			<criteria>
+				<column name="start_date"/>
+				<operator type="like"/>
+				<value type="parameter">
+					start_date
+				</value>
+			</criteria>
+			<criteria>
+				<column name="opicslist"/>
+				<operator type="like"/>
+				<value type="parameter">
+					opicslist
+				</value>
+			</criteria>
+		</filter>	
+	</candidate>
+
+</listdef>

@@ -1,0 +1,85 @@
+{
+for $f in /Facility[LIQ.XQS.EQUAL(@id, "%FACILITY_ID%")]
+return
+
+<facility>
+  <deal>
+    <id>{$f/fac/dealId}</id>
+    <name>{$f/fac/dealName}</name>
+  </deal>
+
+  <id>{$f/fac/id}</id>
+  <name>{$f/fac/name}</name>
+  <fcn>{$f/fac/fcn}</fcn>
+  <type>{$f/fac/type}</type>
+  <subtype>{$f/fac/subtype}</subtype>
+  <cusip>{$f/fac/cusip}</cusip>
+  <isin>{$f/fac/isin}</isin>
+
+  <agreementDate>{LIQ.XQ.FORMAT_DATE("%d/%m/%Y", $f/fac/agreementDate)}</agreementDate>
+  <effectiveDate>{LIQ.XQ.FORMAT_DATE("%d/%m/%Y", $f/fac/effectiveDate)}</effectiveDate>
+  <expiryDate>{
+    for $date in $f/fac/expirationDate return {
+      LIQ.XQ.FORMAT_DATE("%d/%m/%Y", $f/fac/expirationDate)
+  }}</expiryDate>
+  <maturityDate>{LIQ.XQ.FORMAT_DATE("%d/%m/%Y", $f/fac/maturityDate)}</maturityDate>
+
+  <mainCurrency>{$f/fac/currency}</mainCurrency>
+  <globalLimitAmount>{$f/fac/globalAvailableAmount}</globalLimitAmount>
+  <globalOutstandingAmount>{$f/fac/globalCurrentOutstandingAmount}</globalOutstandingAmount>
+  <globalAvailableAmount>{$f/fac/globalAvailToDrawAmount}</globalAvailableAmount>
+
+  {
+  for $fb in /FacilityBorrower[LIQ.XQS.EQUAL(@facilityId, $f/fac/id)]/DealBorrower[LIQ.XQS.EQUAL(@customerId, "%BORROWER_ID%")]
+  return
+  <borrower>
+    <id>{$fb/dbr/customerId}</id>
+    <name>{$fb/dbr/name}</name>
+    <limitAmount>{$fb/fbd/globalCurrentAmount}</limitAmount>
+    
+    {
+    for $fbcl in /FacilityBorrowerCurrencyLimit[LIQ.XQS.EQUAL(@borrowerId, $fb/fbd/id)]
+    return
+    <currencyLimit>
+      <currency>{$fbcl/bcl/currencyCode}</currency>
+      <limitAmount>{$fbcl/bcl/privateLimit}</limitAmount>
+      <limitCurrency>{$fbcl/bcl/limitCurrency}</limitCurrency>
+    </currencyLimit>
+    }
+
+    {
+    for $brtl in /BorrowerRiskTypeLimit[LIQ.XQS.EQUAL(@borrowerId, $fb/fbd/id)]
+    return
+    <riskTypeLimit>
+      <riskType>{$brtl/brl/riskType}</riskType>
+      <limitAmount>{$brtl/brl/limit}</limitAmount>
+      <loan>{LIQ.BO.GetCodeTableEntry($brtl/brl/riskType, "Risk Type", "loanIndicator")}</loan>
+    </riskTypeLimit>
+    }
+    
+	{
+	for $o in /Outstanding[LIQ.XQS.EQUAL(@facilityId, $f/fac/id)][LIQ.XQS.EQUAL(@borrowerId, $fb/fbd/customerId)]
+	return
+	<outstanding>
+  	  <amount>{$o/ost/facilityCurrencyCurrentAmount}</amount>
+	  <riskType>{$o/ost/riskType}</riskType>
+	</outstanding>
+	}
+  </borrower>
+  }
+
+  {
+  for $ipo in /InterestPricingOption[LIQ.XQS.EQUAL(@dealId, $f/fac/dealId)]
+  return
+  <pricingOption>
+    <id>{$ipo/ipo/option}</id>
+    <outstandingType>{LIQ.BO.GetCodeTableEntry($ipo/ipo/option, "Pricing Option Name", "outstandingType")}</outstandingType>
+    {
+    for $porf in /PricingOptionRepricingFrequency[LIQ.XQS.EQUAL(@option, $ipo/ipo/option)][LIQ.XQS.EQUAL(@dealId, $f/fac/dealId)]
+    return
+    <repricingFrequency>{$porf/rpf/frequencyCode}</repricingFrequency>
+    }
+  </pricingOption>    
+  }
+</facility>
+}

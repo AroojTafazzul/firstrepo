@@ -1,0 +1,938 @@
+{
+  "screen": "FinancingRequestScreen",
+  "isAccordionView": "true",
+  "tfGeneralDetails": {
+    "requestType": {
+      "name": "requestTypeTF",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "previewScreen": false
+    },
+    "requestOptions": {
+      "name": "requestOptionsTF",
+      "source": "codeData",
+      "options": {
+        "value": [
+          "01",
+          "02",
+          "03"
+        ],
+        "icon": "fa fa-check-circle fa-2x",
+        "matIcon": "check_circle"
+      },
+      "defaultValue": "01",
+      "type": "select-button",
+      "styleClass": [
+        "transmission"
+      ],
+      "layoutClass": "p-grid p-col-12",
+      "previewScreen": false
+    },
+    "transactionDetails": {
+      "name": "transactionDetails",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "infoIcons": {
+      "name": "infoIcons",
+      "type": "icon",
+      "iconName": "info",
+      "rendered": true,
+      "layoutClass": "layoutIcon",
+      "styleClass": "infoicon",
+      "parentStyleClass": "parentIconStyle",
+      "previewScreen": false
+    },
+    "selectLCMessage": {
+      "itemId": "selectLCMessage",
+      "name": "selectLCMessage",
+      "type": "text",
+      "layoutClass": "p-grid p-col-3 select-msg-width",
+      "styleClass": [
+        "hintForBackToBack"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-grid p-col-3 p-md-3 p-lg-3 p-sm-3 browse-button-margin",
+      "btndisable": false,
+      "previewScreen": false
+    },
+    "typeOfProduct": {
+      "name": "typeOfProduct",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": false,
+      "previewScreen": false,
+      "rendered": false
+    },
+    "tfCardDetails": {
+      "name": "tfCardDetails",
+      "type": "mat-card",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "parentStyleClass": "p-col-9",
+      "rendered": false,
+      "previewScreen": true,
+      "showViewLink": true,
+      "showRemoveLink": false,
+      "fields" : ["bo_ref_id", "applicant_name", "beneficiary_name",  "ref_id", "iss_date", "exp_date", "drawer_name",
+      				"ic_cur_code", "ic_amt", 
+      				"ec_amt", "ec_cur_code",
+      				"lc_amt", "lc_available_amt", "lc_cur_code", "bo_tnx_id"],
+      "clubbedFieldsList" : [
+       {
+          "clubbedHeaderText": "ic_amt",
+          "clubbedFields": ["ic_cur_code", "ic_amt"]
+        },
+        {
+          "clubbedHeaderText": "ec_amt",
+          "clubbedFields": ["ec_cur_code", "ec_amt"]
+        },
+        {
+          "clubbedHeaderText": "lc_amt",
+          "clubbedFields": ["lc_cur_code", "lc_amt"]
+        },
+        {
+          "clubbedHeaderText": "lc_available_amt",
+          "clubbedFields": ["lc_cur_code", "lc_available_amt"]
+        }
+      ],
+      "dynamicCriteria": {
+        "dependControl": "requestOptionsTF",
+        "dependSection": "tfGeneralDetails",
+        "requiredValues": ["01", "02", "03"],
+        "presentSection": "tfGeneralDetails"
+      }
+    },
+    "parentReference": {
+      "name": "parentReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "rendered": true,
+      "previewScreen": true,
+       "dynamicCriteria": {
+		 "dependControl": "parentReference",
+		 "dependSection": "tfGeneralDetails",
+		 "hideIfEmpty": true,
+		 "presentSection": "tfGeneralDetails"
+		} 
+    },
+    "parentTnxId": {
+        "name": "parentTnxId",
+        "type": "input-text",
+        "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+        "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 16,
+      "rendered": false
+      },
+    "financingInstructions": {
+      "name": "financingInstructions",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "financingInstructionTitle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "customerReferenceLabel": {
+      "name": "customerReferenceView",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "finType": {
+      "name": "finType",
+      "type": "text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "customerReferenceValue": {
+      "name": "customerReference",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "rendered": true
+    },
+    "relatedReferenceLabel": {
+      "name": "relatedReferenceView",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "relatedReference":{
+      "name": "relatedReference",
+        "type": "input-text",
+        "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+        "styleClass": [
+          "margin-side"
+        ],
+        "maxlength": 16,
+        "rendered": false,
+        "previewScreen": true,
+        "dynamicCriteria": {
+		 "dependControl": "relatedReference",
+		 "dependSection": "tfGeneralDetails",
+		 "hideIfEmpty": true,
+		 "presentSection": "tfGeneralDetails"
+		}   
+        
+        },
+    "typeOfFinancing": {
+      "name": "typeOfFinancing",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "typeOfFinancingList": {
+      "name": "typeOfFinancingList",
+      "type": "input-dropdown",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "margin-side",
+      "required": true,
+      "source": "codeData",
+      "options": {
+        "value": [
+          "01",
+          "02",
+          "03",
+          "04"
+        ]
+      },
+		"previewScreen": true,
+		"clubbedHeaderText": "typeOfFinancing",
+		"clubbedList": [
+			 "typeOfFinancingList",
+			 "otherSubProductText"
+			],
+		"dynamicCriteria": {
+		"dependControl": "typeOfFinancingList",
+		"dependSection": "tfGeneralDetails",
+		"requiredValues": ["EBEXP", "EDIEC", "IBCLC", "ILNIC", "ITRPT", "OTHER"],
+		"presentSection": "tfGeneralDetails"
+		}      
+    },
+    "space4": {
+      "noofspacers": "1",
+      "prefix": "four",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "sectionType": "spacerModel"
+    },
+ 	"financingSubproductType": {
+      "name": "financingSubproductType",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [ 
+        "otherSubProductStyle"
+       ],
+       "rendered": false
+       },   
+    
+	"otherSubProductText": {
+      "name": "otherSubProductText",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [ 
+        "otherSubProductStyle"
+       ],
+      "maxlength": 32,
+	  "clubbed": true,
+	  "dynamicCriteria": {
+	    "dependControl": "typeOfFinancingList",
+		"dependSection": "tfGeneralDetails",
+		"requiredValues": ["IOTHF", "EOTHF"],
+		"presentSection": "tfGeneralDetails"
+		}      
+    },
+    "requestedIssueDate": {
+      "name": "requestedIssueDate",
+      "type": "text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "tenor": {
+      "name": "tenor",
+      "type": "text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "requestedIssueDateSelect": {
+      "name": "requestedIssueDateSelect",
+      "type": "input-date",
+      "layoutClass": "p-col-12 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "required": true
+    },
+    "tenorDays": {
+      "name": "inputDays_D",
+      "type": "input-text",
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "required": true,
+      "rendered": true
+    },
+    "maturityDate": {
+      "name": "maturityDate",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "maturityDateSelect": {
+      "name": "maturityDateSelect",
+      "type": "input-date",
+      "layoutClass": "p-col-12 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 29,
+      "rendered": true,
+      "required": true
+    },
+    "descriptionOfGoodsText": {
+      "name": "descOfGoodsText",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "descriptionOfGoods": {
+      "name": "descOfGoodsHeader",
+      "type": "narrative-textarea",
+      "swift": false,
+      "fieldSize": 35,
+      "maxRowCount": 4,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "rows": 1,
+      "cols": 35,
+      "allowedCharCount": 140,
+      "maxlength": 140,
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-6 leftwrapper padding_zero",
+      "styleClass": [
+        "indented-text-area-field-35"
+      ],
+      "rendered": true,
+      "phraseEnabled": true
+    },
+    "id": "TfGeneralDetailsComponent",
+    "helpId": "GD"
+  },
+  "tfApplicantFinancingBankDetails": {
+    "applicant": {
+      "prefix": "applicant",
+      "sectionType": "applicantModel",
+      "hideFields": [
+        "entity",
+        "fullAddress",
+        "address4"
+      ],
+       "applicableScreens": [
+        {
+          "tnxTypeCode": "03",
+          "mode": "view",
+          "fieldValueType": "view-mode",
+          "showLabel": false
+        }
+        ],
+      "requiredFields": [
+        "name",
+        "address1"
+      ],
+      "fieldsNotApplicable": [
+        "country"
+      ]
+    },
+    "tfBankDetails": {
+      "name": "tfBankDetails",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": true,
+      "previewScreen": true,
+      "groupHeaderText": "tfBankDetails",																                     		                     
+	  "groupChildren":[
+		"bankNameList",
+		"issuerReferenceList"
+	]
+    },
+    "bankNameList": {
+      "name": "bankNameList",
+      "type": "input-dropdown",
+      "options": [],
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "issueBankName"
+      ],
+      "required": true,
+      "grouphead": "tfBankDetails"																                     		                 
+    },
+    "issuerRef": {
+      "name": "issuersReference",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "issuerReferenceList": {
+      "name": "issuerReferenceList",
+      "options": [],
+      "type": "input-dropdown",
+      "styleClass": [
+        "issuerRef",
+        "margin-all-side"
+      ],
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "required": true,
+       "showValue": true,
+      "grouphead": "tfBankDetails"														                     		                     
+    },
+    "space": {
+      "noofspacers": "3",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space1": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "TfApplicantFinancingBankComponent",
+    "helpId": "AF"
+  },
+  "tfAmountDetails": {
+    "finAmount": {
+      "name": "finAmount",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "billAmountValueTitle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "finCurCode": {
+      "name": "finCurCode",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "billAmountValueTitle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "tnxAmount": {
+      "name": "tnxAmount",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "billAmountValueTitle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "tnxCurCode": {
+      "name": "tnxCurCode",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "billAmountValueTitle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "billamt": {
+          "name": "billamt",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "billAmountValueTitle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+      },
+      "billamtcurCode": {
+      "name": "billamtcurCode",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "billAmountValueTitle"
+      ],
+      "rendered": false,
+      "previewScreen": false
+      },
+    "billAmountLabel": {
+      "name": "billAmountLabel",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "billAmountValue": {
+      "name": "billAmountValue",
+      "type": "text",
+      "layoutClass": "p-col-3 p-md-3 p-lg-3 p-sm-3",
+      "styleClass": [
+        "billAmountValueTitle"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "billCurrency": {
+      "name": "billCurrency",
+      "type": "input-text",
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 widthForCur chargeAmt",
+      "styleClass": [
+        "no-margin-multiselect"
+      ],
+      "clubbed": true,
+      "rendered": true,
+      "previewScreen": true,
+      "dynamicCriteria": {
+	    "dependControl": "requestOptionsTF",
+		"dependSection": "tfGeneralDetails",
+		"requiredValues": ["01", "02"],
+		"presentSection": "tfGeneralDetails"
+		}  
+    },
+    "billAmount": {
+      "name": "billAmount",
+      "type": "input-text",
+      "feildType": "amount",
+      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12 leftwrapper widthForCur",
+      "styleClass": [
+        "amt"
+      ],
+      "clubbedHeaderText": "billAmount",
+      "clubbedList": [
+        "billCurrency",
+        "billAmount"
+      ],
+      "rendered": true,
+      "previewScreen": true,
+      "dynamicCriteria": {
+	     "dependControl": "requestOptionsTF",
+		"dependSection": "tfGeneralDetails",
+		"requiredValues": ["01", "02"],
+		"presentSection": "tfGeneralDetails"
+		}   
+    },  
+    "space1": {
+      "noofspacers": "1",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "requestedPercentValue": {
+      "name": "requestedPercentValue",
+      "type": "input-text",
+      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 6,
+      "rendered": false,
+      "previewScreen": true
+    },
+    "requestedPercent": {
+      "name": "requestedPercent",
+      "type": "input-text",
+      "layoutClass": "p-col-4 p-md-4 p-lg-4 p-sm-12",
+      "styleClass": [
+        "margin-side"
+      ],
+      "maxlength": 6,
+      "rendered": false,
+      "previewScreen": false
+    },
+    "financingAmount": {
+      "name": "financingAmount",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "lcheader"
+      ],
+      "rendered": false,
+      "previewScreen": false
+    },
+    "chargeCurrency": {
+      "name": "currency",
+      "type": "input-dropdown-filter",
+      "options": {},
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 chargeAmt",
+      "styleClass": [
+        "no-margin-multiselect"
+      ],
+      "required": true,
+      "clubbedHeaderText": "prevrequestedAmount",
+      "clubbedList": [
+        "currency",
+        "amount"
+      ],
+      "clubbed": true,
+      "previewValueAttr": "shortName"
+    },
+    "chargeAmount": {
+      "name": "amount",
+      "type": "fcc-currency",
+      "maxlength":15,
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 leftwrapper",
+      "styleClass": [
+        "amt"
+      ],
+      "required": true,
+      "previewScreen": true,
+      "clubbed": true
+    },
+    "additionalDetailsLabel": {
+      "name": "additionalDetailsLabel",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "additionalDetails": {
+      "name": "additionalDetails",
+      "type": "narrative-textarea",
+      "swift": false,
+      "fieldSize": 35,
+      "maxRowCount": 4,
+      "enteredCharCount": 0,
+      "rowCount": 0,
+      "rows": 1,
+      "cols": 35,
+      "allowedCharCount": 140,
+      "maxlength": 140,
+      "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": [
+        "indented-text-area-field-35"
+      ],
+      "required": true,
+      "rendered": true,
+      "phraseEnabled": true
+    },
+    "id": "TfAmountDetailsComponent",
+    "helpId": "AD"
+  },
+  "tfInstructionsToBank": {
+  	 "applicableSections": [{
+	      "tnxTypeCode": "01",
+	      "productCode": "TF"
+	    }],
+    "tfbankInstructions": {
+      "name": "tfbankInstructions",
+      "type": "text",
+      "styleClass": "subheader-title",
+      "rendered": false,
+      "previewScreen": false
+    },
+    "principalAct": {
+      "name": "principalAct",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 leftwrapper",
+      "styleClass": "principalAct"
+    },
+    "space7": {
+      "noofspacers": "1",
+      "prefix": "seven",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12"
+    },
+    "feeAct": {
+      "name": "feeAct",
+      "type": "input-dropdown",
+      "options": [],
+      "defaultValue": "",
+      "layoutClass": "p-col-5 p-md-5 p-lg-5 p-sm-12 rightwrapper",
+      "styleClass": "feeAct"
+    },
+    "otherInst": {
+      "name": "otherInst",
+      "type": "narrative-textarea",
+      "rendered": true,
+      "rows": 5,
+      "cols": 65,
+      "fieldSize": 50,
+      "maxRowCount": 485,
+      "rowCount": 0,
+      "swift": false,
+      "enteredCharCount": 0,
+      "allowedCharCount": 31525,
+      "maxlength": 31525,
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "otherInst"
+      ],
+      "directive": true,
+      "phraseEnabled": true
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "TfInstructionsToBankComponent",
+    "helpId": "IB"
+  },
+  "tfLicenseDetails": {
+    "linkLicense": {
+      "name": "linkLicense",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12",
+      "previewScreen": false
+    },
+	"linkedLicenses": {
+      "name": "linkedLicenses",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "linkedLicenses",
+      "hidden": true
+    },
+    "license": {
+      "name": "license",
+      "type": "edit-table",
+      "layoutClass": "p-col-12",
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "subControlsDetails": [
+        {
+          "REF_ID": {
+            "name": "REF_ID",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "BO_REF_ID": {
+            "name": "BO_REF_ID",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "BO_REF_ID",
+            "renderd": false
+          }
+        },
+        {
+          "LS_NUMBER": {
+            "name": "LS_NUMBER",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "LS_NUMBER",
+            "renderd": false
+          }
+        },
+         {
+          "currency": {
+            "name": "currency",
+            "type": "text",
+            "editStatus": false,
+            "styleClass": "currency",
+            "renderd": false
+          }
+        },
+        {
+          "amount": {
+            "name": "amount",
+            "type": "text",
+            "editStatus": true,
+            "styleClass": "amount",
+            "renderd": false
+          }
+        }
+      ],
+      "data": [],
+      "columns": [],
+      "options": [],
+      "OverDrawStatus": false,
+      "tnsAmountStatus": false,
+      "message1": "",
+      "message2": "",
+      "previewScreen": true,
+      "rendered": false
+    },
+    "licenseUploadError": {
+      "name": "licenseUploadError",
+      "type": "text",
+      "layoutClass": "p-col-12",
+      "styleClass": "licenseUploadError",
+      "rendered": false
+    },
+    "id": "TfLicenseDetailsComponent",
+    "helpId": "LS"
+  },
+  "tfAttachmentDetails": {
+    "applicableSections": [{
+	      "tnxTypeCode": "01",
+	      "productCode": "TF"
+	    }],
+    "space3": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "fileMaxLimits": {
+      "name": "fileMaxLimits",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileExtnText": {
+      "name": "fileExtnText",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "fileMaxLimits"
+      ],
+      "previewScreen": false
+    },
+    "fileDragDrop": {
+      "name": "fileUploadDragDrop",
+      "type": "fileUpload-dragdrop",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "DragDropArea"
+      ],
+      "previewScreen": false
+    },
+    "browseButton": {
+      "name": "browseButton",
+      "type": "rounded-button",
+      "styleClass": [
+        "browseButton"
+      ],
+      "layoutClass": "p-col-2 p-md-2 p-lg-2 p-sm-12 margin-left-radio",
+      "btndisable": true,
+      "previewScreen": false
+    },
+    "fileUploadTable": {
+      "name": "fileUploadTable",
+      "columns": [],
+      "label": "hideControl",
+      "defaultValue": "specialPayment",
+      "type": "input-table",
+      "rendered": true,
+      "data": [],
+      "styleClass": [
+        "fileUploadTable"
+      ],
+      "layoutClass": "p-col-12"
+    },
+    "attachments": {
+      "name": "attachments",
+      "rendered": false,
+      "type": "json-obj",
+      "previewScreen": false
+    },
+    "space1": {
+      "noofspacers": "2",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "id": "TfAttachmentDetailsComponent",
+    "helpId": "AT"
+  }
+}

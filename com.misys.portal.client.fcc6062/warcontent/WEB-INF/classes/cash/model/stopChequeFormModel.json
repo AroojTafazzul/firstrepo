@@ -1,0 +1,190 @@
+{
+  "screen": "FundTransferScreen",
+    "isAccordionView": "true",
+    "showPreviewDateField": "false",
+  "stopChequeRequestGeneralDetails": {
+    "entity": {
+			"name": "Entity",
+			"type": "input-dropdown-filter",
+			"options": {
+				
+			},
+			"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper filter_dropdown_msg",
+			"styleClass": [
+				"applicant_bene_entity_class"
+			],
+			"previewValueAttr": "shortName"
+	},
+	"applicantActId": {
+		"name": "applicantActId",
+		"type": "input-text",
+		"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+		"styleClass": "newLCAmtStyle",
+	    "hidden": true,
+		"previewScreen": false
+	},
+	"chequeType": {
+		"name": "chequeType",
+		"type": "input-text",
+		"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+		"styleClass": "newLCAmtStyle",
+	    "hidden": true,
+		"previewScreen": false
+	},
+	"applReference": {
+	"name": "applReference",
+	"type": "input-text",
+	"layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 rightwrapper padding_zero",
+	"styleClass": "newLCAmtStyle",
+    "hidden": true,
+	"previewScreen": false
+	},
+	"accountNumber": {
+		"name": "accountNumber",
+		"type": "input-dropdown",
+		"options": {
+			
+		},
+	  "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      "styleClass": "margin-side",
+      "previewValueAttr": "number"
+	},
+    "noOfCheques": {
+      "name": "noOfCheques",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "subheader-title"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "noOfChequesOptions": {
+	      "name": "noOfChequesOptions",
+	      "source": "codeData",
+	      "codeID" : "C100",
+	      "options": [ ],
+	      "defautValue": "",
+	      "type": "input-radio",
+	      "styleClass": [
+	        "radiocontainer p-grid"
+	      ],
+	      "showLabel": true,
+	      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+	    },
+	    
+     "chequeNumber": {
+      "name": "chequeNumber",
+      "type": "input-text",
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+      "styleClass": "margin-side",
+      "maxlength": 20,
+      "rendered": false,
+      "required": false,
+      "dynamicCriteria": {
+        "dependControl": "noOfChequesOptions",
+        "dependSection": "stopChequeRequestGeneralDetails",
+        "requiredValue": "01",
+        "presentSection": "stopChequeRequestGeneralDetails"
+      }
+    },
+    
+    "chequeNumberFrom": {
+      "name": "chequeNumberFrom",
+      "type": "input-text",
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+      "styleClass": "margin-side",
+      "maxlength": 20,
+      "rendered": false,
+      "required": false,
+      "dynamicCriteria": {
+        "dependControl": "noOfChequesOptions",
+        "dependSection": "stopChequeRequestGeneralDetails",
+        "requiredValue": "03",
+        "presentSection": "stopChequeRequestGeneralDetails"
+      }
+    },
+    
+    "chequeNumberTo": {
+      "name": "chequeNumberTo",
+      "type": "input-text",
+      "layoutClass": "p-md-6 p-lg-6 p-sm-12 leftwrapper",
+      "styleClass": "margin-side",
+      "maxlength": 20,
+      "rendered": false,
+      "required": false,
+      "dynamicCriteria": {
+        "dependControl": "noOfChequesOptions",
+        "dependSection": "stopChequeRequestGeneralDetails",
+        "requiredValue": "03",
+        "presentSection": "stopChequeRequestGeneralDetails"
+      }
+    },
+    
+    "chequeNumberSequence": {
+      "name": "chequeNumberSequence",
+      "type": "input-text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": "margin-side",
+      "rendered": false,
+      "required": false,
+      "dynamicCriteria": {
+        "dependControl": "noOfChequesOptions",
+        "dependSection": "stopChequeRequestGeneralDetails",
+        "requiredValue": "02",
+        "presentSection": "stopChequeRequestGeneralDetails"
+      }
+    },
+    
+    "space1": {
+      "noofspacers": "1",
+      "prefix": "one",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "stopChequeReason": {
+		"name": "stopChequeReason",
+		"type": "input-dropdown",
+		"options": {
+			
+		},
+		 "layoutClass": "p-col-6 p-md-6 p-lg-6 p-sm-12 leftwrapper padding_zero",
+      	"styleClass": "margin-side",
+		"previewValueAttr": "shortName"
+	},
+	"space2": {
+      "noofspacers": "1",
+      "prefix": "two",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+	"chequeNote": {
+      "name": "chequeNote",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "noteStyle"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "space3": {
+      "noofspacers": "1",
+      "prefix": "three",
+      "sectionType": "spacerModel",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero"
+    },
+    "chequeNoteMessage": {
+      "name": "chequeNoteMessage",
+      "type": "text",
+      "layoutClass": "p-col-12 p-md-12 p-lg-12 p-sm-12 padding_zero",
+      "styleClass": [
+        "noteMessageStyle"
+      ],
+      "rendered": true,
+      "previewScreen": false
+    },
+    "id": "StopChequeRequestGeneralDetailsComponent",
+    "helpId": "GD"
+  }
+}

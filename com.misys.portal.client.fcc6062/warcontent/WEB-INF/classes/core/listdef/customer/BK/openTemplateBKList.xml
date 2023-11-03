@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="template_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc">
+
+	<column name="template_id" align="left" width="20%" loca_key="REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="BK_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_TEMPLATE"/>
+			<parameter name="TEMPLATE_ID" column="template_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+		</url>
+	</column>
+	<column name="entity" align="left" width="20%" loca_key="ENTITY"/>
+	<column name="applicant_name" align="left" width="20%" loca_key="ENTITY_NAME_APPLICANT"/>
+	<column name="template_description" align="left" width="30%" loca_key="DESCRIPTION"/>
+	<column name="sub_product_code" align="center" width="10em" loca_key="SUBPRODUCTCODE" />
+	<column name="bk_cur_code" align="center" width="4em" loca_key="CURCODE"/>
+	<column name="action" width="6em">
+		<url action="y">
+			<parameter name="SCREEN" value="BK_SCREEN"/>
+			<parameter name="TEMPLATE_ID" column="template_id"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+		</url>
+	</column>
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+
+	<!-- parameters -->
+	<parameter
+		name="template_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		type="entity"/>
+	<parameter
+		name="applicant_name"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY_NAME_APPLICANT"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="template_description"
+		loca_key="DESCRIPTION"
+		size="20"
+		max_length="200"
+		input="y"/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"/>
+	<!-- candidates -->	
+	<candidate name="template_bulk">
+		<filter>
+			<criteria>
+				<column name="template_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					template_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="template_description"/>
+				<operator type="like"/>
+				<value type="parameter">
+					template_description
+				</value>
+			</criteria>
+			<criteria>
+					<column name="bk_cur_code"/>
+					<operator type="like"/>
+					<value type="parameter">
+						cur_code
+					</value>
+				</criteria>
+		</filter>
+	</candidate>
+</listdef>

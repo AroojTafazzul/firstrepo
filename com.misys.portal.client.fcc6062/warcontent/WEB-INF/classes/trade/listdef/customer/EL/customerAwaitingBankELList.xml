@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="20" data_key="tnx_id">
+
+	<column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE">
+		<url>
+			<parameter name="SCREEN" value="LC_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE_CODE" binding_code="MODE_DRAFT"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" columnFilterType="input-multiselect"/>	
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF"/>
+	<column alias="event" align="left" width="12%" loca_key="event" columnFilterType="input-multiselect" isColumnSortDisabled="y" isClubbedField="y" clubbedFieldsList="tnx_type_code, sub_tnx_type_code"/>
+	<column name="tnx_type_code" showCode="y" isColumnSortDisabled="y" isCodeField="y" codeId="N002" hidden="y"/>
+	<column name="sub_tnx_type_code" showCode="y" isColumnSortDisabled="y" hidden="y" isCodeField="y" codeId="N003"/>	
+	<column name="iss_date" align="left" width="12%" loca_key="ISS_DATE"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="beneficiary_name" align="left" width="14%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect" hidden="y"/>
+	<column name="applicant_name" align="left" width="14%" loca_key="applicant" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="8%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="tnx_amt" align="right" width="12%" loca_key="AMOUNT" columnFilterType="input-multiselect"/>
+	<column name="last_ship_date" align="left" width="12%" loca_key="lastshipmentDate" hidden="y"/>
+	<column name="exp_date" align="left" width="12%" loca_key="EXP_DATE" columnFilterType="input-multiselect"/>
+	<column name="rolling_renewal_flag" align="left" width="12%" loca_key="rolling_renewal_flag" hidden="y"/>
+	<column name="ntrf_flag" align="left" width="12%" loca_key="ntrf_flag" hidden="y"/>
+	<column name="inp_dttm" align="center" width="10%" loca_key="LAST_MODIFY_DATE" hidden="y"/>
+	<column name="status" align="center" width="12%" loca_key="STATUS" hidden="y">
+		<script>
+			if (value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+				
+				if("05".equals(""+tnxStatCode+"") || "06".equals(""+tnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004","03");
+				}
+				else if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+""); 
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_CONTROLLED"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+			<parameter name="ACTION_USER_AUDIT" value="USER_AUDIT"/>
+		</url>
+	</column>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y"/>
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="INP_DTTM" hidden="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"  showCode="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""/>
+	<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="20"
+		loca_key="BO_REF"
+		input="y"
+		default=""/>
+	<parameter
+		name="tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="TRANSACTION_TYPE_CODE"
+		input="y"
+		multiple="y"
+		default=""
+		hidden="true"
+		isCodeField="y"
+		codeId="N002"/>
+	<parameter
+		name="sub_tnx_type_code"
+		size="12"
+		max_length="20"
+		loca_key="SUB_TRANSACTION_TYPE_CODE"
+		input="y"
+		multiple="y"
+		default=""
+		isCodeField="y"
+		codeId="N003"
+		hidden="true"/>
+	<parameter
+		name="event"
+		size="12"
+		max_length="20"
+		loca_key="event"
+		input="y"
+		multiple="y"
+		default=""
+		isClubbed="y"
+		type="TnxTypeSubTnxType"
+		clubbedFieldsList="tnx_type_code,sub_tnx_type_code"/>
+		
+    <parameter
+		name="iss_date"
+		type="range"
+		loca_key="ISS_DATE"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="entity"
+		size="35"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+	<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		max_length="35"
+		input="y"
+		multiple="y"
+		hidden="true"
+		config_maxLength=""
+		type="Beneficiary"
+		/>
+	<parameter
+		name="applicant_name"
+		loca_key="applicant"
+		size="35"
+		max_length="35"
+		input="y"
+		config_maxLength=""
+		type="Applicant"
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		type="Currency"
+		multiple="y"/>
+	<parameter
+		name="amt"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="AMOUNT"/>
+	<parameter
+		name="last_ship_date"
+		type="range"
+		loca_key="lastshipmentDate"
+		input="y"
+		hidden="true"
+		default="blank"/>
+	<parameter
+		name="exp_date"
+		type="range"
+		loca_key="EXP_DATE"
+		input="y"
+		default="blank"/>
+	<parameter
+		name="rolling_renewal_flag"
+		loca_key="rolling_renewal_flag"
+		input="y"
+		hidden="true"
+		default=""
+		/>
+	<parameter
+		name="ntrf_flag"
+		loca_key="ntrf_flag"
+		input="y"
+		hidden="true"
+		default=""
+		/>
+	<parameter
+		name="inp_dttm"
+		type="range"
+		loca_key="LAST_MODIFY_DATE"
+		input="y"
+		hidden="true"
+		default="blank"/>
+	<parameter
+		name="prod_stat_code"
+        size="12"
+        max_length="20"
+        loca_key="PRODUCT_STAT_CODE"
+        input="y"
+        default=""
+        multiple="y"
+        hidden="true"
+        type="AvailableTradeProductStatus"
+		/>
+	<parameter
+		name="export_list"
+		file_name="awaitingBankApprovalELList"
+		type="export"/>
+	<!-- candidates -->	
+	<candidate name="export_letter_of_credit">
+		<filter>
+		<criteria>
+				<column name="beneficiary_name" />
+				<operator type="in" />
+				<value type="parameter">
+					beneficiary_name
+				</value>
+			</criteria>
+			<criteria>
+			<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="in"/>
+			<value type="parameter">
+				tnx_type_code
+			</value>
+		</criteria>
+		<criteria>
+				<column name="sub_tnx_type_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					sub_tnx_type_code
+				</value>
+			</criteria>
+		
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="applicant_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+			<column name="exp_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				exp_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="exp_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				exp_date@to
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@to
+			</value>
+		</criteria>
+		<criteria>
+			<column name="iss_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				iss_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="iss_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				iss_date@to
+			</value>
+		</criteria>
+		<criteria>
+				<column name="rolling_renewal_flag"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					rolling_renewal_flag
+				</value>
+			</criteria>
+			<criteria>
+				<column name="ntrf_flag"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					ntrf_flag
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					prod_stat_code
+				</value>
+			</criteria>
+			<criteria>
+			<column name="last_ship_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				last_ship_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="last_ship_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				last_ship_date@to
+			</value>
+		</criteria>
+		<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					inp_dttm@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					inp_dttm@to
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	
+	<filter or="y">
+		<criteria>
+			<column name="full_name" computation="sum">
+				<column name="Inputter@first_name"/>	
+				<column name="Inputter@last_name"/>
+			</column>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+	</filter>
+	
+		<filter or="y">
+	<criteria>
+      <column name="tnx_stat_code"/>
+      <operator type="equal"/>
+      <value type="code">
+        N004_CONTROLLED
+      </value>
+    </criteria>        
+	</filter>
+	
+  
+  <filter or="y">
+   <criteria>
+      <column name="sub_tnx_stat_code"/>
+      <operator type="different"/>
+      <value type="code">
+        N015_TNX_NACK
+      </value>
+    </criteria>
+    <criteria>
+	<column name="sub_tnx_stat_code"/>
+	<operator type="isNull"/>
+	</criteria>
+  </filter>
+	
+
+	
+</listdef>

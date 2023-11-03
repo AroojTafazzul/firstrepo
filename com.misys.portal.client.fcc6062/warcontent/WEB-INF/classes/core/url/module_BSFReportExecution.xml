@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="bank" scope="system_features">
+	<name>module_BSFReportExecution</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<methodParam>reportid</methodParam>
+	<methodParam>templateid</methodParam>
+	<staticParam>menuaction</staticParam>
+	<action>
+		<actionCode>ReportExecutionBSF</actionCode>
+		<class>ReportDesignerListPortlet</class>
+		<method>openExistingExecutableReportsList</method>
+		<permission>sy_bank_report_execute</permission>
+		<operation>REPORT_EXECUTE</operation>
+		<option>EXISTING</option>
+		<reportid>-</reportid>
+		<templateid>-</templateid>
+		<menuaction>ReportExecutionBSF</menuaction>
+	</action>
+	<action>
+		<actionCode>ExecuteReportBSF</actionCode>
+		<class>ReportDesignerPortlet</class>
+		<method>executeReport</method>
+		<permission>sy_bank_report_execute</permission>
+		<operation>REPORT_EXECUTE</operation>
+		<option>EXISTING</option>
+		<reportid>%</reportid>
+		<templateid>-</templateid>
+		<menuaction>ReportExecutionBSF</menuaction>
+	</action>
+	<!--action>
+		<actionCode>ExecuteTemplateReportBSF</actionCode>
+		<class>ReportDesignerPortlet</class>
+		<method>executeReport</method>
+		<permission>sy_bank_report_execute</permission>
+		<operation>REPORT_EXECUTE</operation>
+		<option>EXISTING</option>
+		<reportid>-</reportid>
+		<templateid>%</templateid>
+		<menuaction>ReportExecutionBSF</menuaction>
+	</action-->
+</module>

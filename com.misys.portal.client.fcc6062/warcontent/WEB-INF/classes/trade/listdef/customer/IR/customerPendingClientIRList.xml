@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="inp_dttm" default_order_type="d" page="20" data_key="tnx_id">
+	
+	<batch type="submit">
+		<parameter name="SCREEN" value="IR_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INQUIRE"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		<parameter name="VERSION" column="version"/>
+	</batch>
+
+	<column name="ref_id" align="left" width="15%" loca_key="CHANNEL_REFERENCE"/>
+	<column name="cust_ref_id" align="left" width="14%" loca_key="customerRef" />	
+	<column name="bo_ref_id" align="left" width="14%" loca_key="BO_REF"/>
+	<column name="entity" align="left" width="12%" loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="beneficiary_name" align="left" width="14%" loca_key="BENEFICIARY_NAME" columnFilterType="input-multiselect" hidden="y"/>
+	<column name="remitter_name" align="left" width="14%" loca_key="REMITTER_NAME" columnFilterType="input-multiselect"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="amt" align="right" width="14%" loca_key="AMOUNT" />
+	<column name="version" align="left" width="12%" loca_key="VERSION" hidden="y" />
+	<column name="tnx_type_code" showCode="y" isColumnSortDisabled="y" isCodeField="y" codeId="N002" hidden="y"/> 
+	<column name="full_name"  align="left" width="10%" loca_key="INP_USER" columnFilterType="input-multiselect" hidden="y">
+		 <script>
+                    var refId = row.getColumnValue("ref_id");
+                     var tnxID = row.getColumnValue("tnx_id");
+                    if(refId!= null || tnxID!= null)
+					{
+						value = com.misys.portal.common.tools.Utils.getInputUser(""+refId+"",""+tnxID+"");
+					}
+                    value;
+                    
+             </script>
+	</column>
+	<column name="last_controller" align="left" width="10%" loca_key="CTL_USER" columnFilterType="input-multiselect" hidden="y">
+             <script>
+                    var refId = row.getColumnValue("ref_id");
+                     var tnxID = row.getColumnValue("tnx_id");
+                    if(refId!= null || tnxID!= null)
+					{
+						value = com.misys.portal.common.tools.Utils.getLastController(""+refId+"",""+tnxID+"");
+					}
+                    value;
+                    
+             </script>
+     </column>
+	<column name="action" align="right" width="14%" loca_key="ACTION">
+		<url action="y">
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="SUB_PRODUCT_CODE" column="sub_product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+			<parameter name="TRANSACTION_STAT_CODE" business_code="N004_UNCONTROLLED"/>
+			<parameter name="ACTION_FILTER" value="VEAR"/>
+			<parameter name="ACTION_USER_AUDIT" value="USER_AUDIT"/>
+		</url>
+	</column>
+
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y" showCode="y"/>
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<column name="inp_dttm" align="center" hidden="y"/>
+	<column name="tnx_val_date" hidden="y"/>
+	<column name="sub_tnx_type_code" hidden="y" showCode="y"/>
+	<!-- parameters -->
+	<parameter
+		name="tnx_val_date"
+		type="AvailableTimeFrames"
+		loca_key="TIME_FRAMES"
+		input="y"
+		default="blank"/>
+	
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="35"
+		loca_key="CHANNEL_REFERENCE"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="cust_ref_id"
+		size="64"
+		loca_key="customerRef"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="bo_ref_id"
+		size="20"
+		max_length="35"
+		loca_key="BO_REF"
+		input="y"
+		default=""
+		/>
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+	<parameter
+		name="beneficiary_name"
+		loca_key="BENEFICIARY_NAME"
+		size="35"
+		input="y"
+		hidden="true"
+		/>
+	<parameter
+		name="remitter_name"
+		loca_key="REMITTER_NAME"
+		size="20"
+		input="y"
+		/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		default=""
+		type="Currency"/>
+		<parameter
+		name="export_list"
+		file_name="pendingClientIRList"
+		type="export">
+	</parameter>
+		
+	<!-- candidates -->	
+	<candidate name="inward_remittance">
+		<filter>
+		<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bo_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bo_ref_id
+				</value>
+			</criteria>
+			<criteria>
+			<column name="beneficiary_name"/>
+			<operator type="like"/>
+			<value type="parameter">
+				beneficiary_name
+			</value>
+		</criteria>
+			<criteria>
+			<column name="cust_ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					cust_ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+			<column name="last_controller"/>
+				<operator type="like"/>
+				<value type="parameter">
+					last_controller
+				</value>
+			</criteria>
+			<criteria>
+			<column name="full_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					full_name
+				</value>
+			</criteria>
+				
+			 <criteria>
+				<column name="remitter_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					remitter_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+			<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@from
+			</value>
+		</criteria>
+		<criteria>
+			<column name="tnx_val_date"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				tnx_val_date@to
+			</value>
+		</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

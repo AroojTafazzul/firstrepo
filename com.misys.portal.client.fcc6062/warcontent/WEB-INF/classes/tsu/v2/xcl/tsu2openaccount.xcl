@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xcl name="tsu2openaccount">
+	<target>
+	
+		<!-- ********************************************** -->
+		<!-- Build a Map do retrieve stylesheet(s) to apply -->
+		<!-- ********************************************** -->
+
+		<setVariable name="mapping"><map/></setVariable>
+		
+		<!-- 001 - Acknowledgement -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.001.001.03</const></name>
+			<value>
+				<array><const>Acknowledgement-PO.xsl</const></array>
+				<array><const>Acknowledgement-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 006 - Amendment Acceptance Notification -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.006.001.03</const></name>
+			<value>
+				<array><const>AmendmentAcceptanceNotification-PO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 010 - BaselineMatchReport -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.010.001.03</const></name>
+			<value>
+				<array><const>BaselineMatchReport.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 011 - BaselineReport -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.011.001.03</const></name>
+			<value>
+				<array><const>BaselineReport.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 013 - DataSetMatchReport -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.013.001.03</const></name>
+			<value>
+				<array><const>DataSetMatchReport-PO.xsl</const></array>
+				<array><const>DataSetMatchReport-SO.xsl</const></array>
+				<array><const>DataSetMatchReport-IN.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 017 - Forward DataSet Submission Report  -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.017.001.03</const></name>
+			<value>
+				<array><const>ForwardDataSetSubmissionReport-PO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 018 - Full Push Through Report  -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.018.001.03</const></name>
+			<value>
+				<array><const>FullPushThroughReport-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+		
+		<!-- 021 - MisMatch Acceptance Report  -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.021.001.03</const></name>
+			<value>
+				<array><const>MisMatchAcceptanceNotification-IN.xsl</const></array>
+				<array><const>MisMatchAcceptanceNotification-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 023 - MisMatch Rejection Report  -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.023.001.03</const></name>
+			<value>
+				<array><const>MisMatchRejectionNotification-IN.xsl</const></array>
+				<array><const>MisMatchRejectionNotification-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- 025 - Status Change Notification  -->
+		<put>
+			<name><const>urn:iso:std:iso:20022:tech:xsd:tsmt.025.001.03</const></name>
+			<value>
+				<array><const>StatusChangeNotification-PO.xsl</const></array>
+				<array><const>StatusChangeNotification-SO.xsl</const></array>
+			</value>
+			<mapValue><getVariable name="mapping"/></mapValue>
+		</put>
+
+		<!-- Extract xml namespace to drive transformations -->
+		<!-- TSU message type (+ submission_type ?) -->
+		<setVariable name="namespace"><xpath path="namespace-uri(/*)"/></setVariable>
+		<!--<setVariable name="namespace"><getVariable name="environment_TSU_MESSAGE_DEFAULT_NAMESPACE"/></setVariable>-->
+
+		<!-- Process input -->
+		<string>
+			<call><name><getVariable name="namespace"/></name></call>
+		</string>
+	</target>
+
+	<!-- 001 - Acknowledgement -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.001.001.03">
+		<call name="transform"/>
+	</rule>
+	
+	<!-- 006 - Amendment Acceptance Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.006.001.03">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 010 - BaselineMatchReport -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.010.001.03">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 011 - BaselineReport -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.011.001.03">
+		<!-- Do nothing -->
+		<!--<call name="transform"/>-->
+	</rule>
+
+	<!-- 013 - DataSetMatchReport -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.013.001.03">
+		<!-- Do nothing -->
+		<!--<call name="transform"/>-->
+	</rule>
+	
+	<!-- 015 - Delta Report  -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.015.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 016 - Error Report  -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.016.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 017 - Forward DataSet Submission Report  -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.017.001.03">
+		<call name="transform"/>
+	</rule>
+	
+	<!-- 018 - Full Push Through Report  -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.018.001.03">
+		<call name="transform"/>
+	</rule>
+	
+	<!-- 021 - MisMatch Acceptance Report  -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.021.001.03">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 023 - MisMatch Rejection Report  -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.023.001.03">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 025 - Status Change Notification  -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.025.001.03">
+		<call name="transform"/>
+	</rule>
+
+	<!-- 024 - Action Reminder -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.024.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 028 - Status Change Request Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.028.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 030 - Status Change Request Rejection Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.030.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 032 - Status Extension Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.032.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 034 - Status Extension Rejection Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.034.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 036 - Status Extension Request Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.036.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 037 - Status Report -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.037.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 040 - Timeout Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.040.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 041 - Transaction Report -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.041.001.03">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 045 - Forward Intent To Pay Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.045.001.01">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 046 - Intent To Pay Report -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.046.001.01">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 048 - Special Notification -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.048.001.01">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 051 - Transaction Report -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.051.001.01">
+		<!-- Do nothing -->
+	</rule>
+
+	<!-- 052 - Transaction Report -->
+	<rule name="urn:iso:std:iso:20022:tech:xsd:tsmt.052.001.01">
+		<!-- Do nothing -->
+	</rule>
+	
+	
+	<rule name="transform">
+		<call name="applyXSLs">
+			<get>
+				<name><getVariable name="namespace"/></name>
+				<value><getVariable name="mapping"/></value>
+			</get>
+		</call>
+	</rule>
+	
+	<!-- Apply an XSLT stylesheet -->
+	<rule name="applyXSLs">
+		<test>
+			<predicate><equals><const>0</const><length><sourceValue/></length></equals></predicate>
+			<else>
+				<call name="setXSL"><sourceValue/></call>
+				<dump/>
+			</else>
+		</test>
+	</rule>
+	
+	<!-- Set xsl property in the interfaces environment-->
+	<rule name="setXSL">
+		<java><const>environment.setEntry("xslname", "/config/swift/v2/OpenAccount/</const><sourceValue/><const>")</const></java>
+	</rule>
+</xcl>

@@ -1,0 +1,171 @@
+{
+	"productcode": "N001_SE",
+	"enableMultipeDownloadFormat": true,
+	"buttons": [
+		{
+			"buttonName": "viewChequeStatus",
+			"permission": "se_cqbkr_access",
+			"buttonClass": "tertiaryButton",
+			"filterDialogEnable": "true",
+			"routerLink": ""
+		},
+		{
+			"buttonName": "stopCheque",
+			"permission": "se_cqs_save",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=SE&subProductCode=COCQS&tnxTypeCode=01&mode=INITIATE"
+		},
+		{
+			"buttonName": "requestChequeBook",
+			"permission": "se_cqbkr_save",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=SE&subProductCode=CQBKR&tnxTypeCode=01&mode=INITIATE"
+		}
+	],
+	"TabHeader":"CHEQUES",
+	"TabLists": [
+		{
+			"tabName": "chequeBookRequest",
+			"tabSelector": "listdefCommonComponent",
+			"showFilter": "true",
+			"TabConfig": [
+				{
+					"colFilterIconEnabled": "true",
+					"downloadIconEnabled": "true",
+					"paginator": "true",
+					"showFilterSection": "true",
+					"passBackEnabled": "false",
+					"checkBoxPermission": "true"
+				}
+			],
+			"tabs": [
+					{
+						"tabName": "draft",
+						"listdefName": "/trade/listdef/customer/SE/customerDraftSeCqbkrList",
+						"permission": "se_cqbkr_save",
+						"index": 0,
+						"selected": "true"
+					},
+					{
+						"tabName": "uaPendingApproval",
+						"listdefName": "/trade/listdef/customer/SE/customerPendingClientSeCqbkrList",
+						"permission": "se_cqbkr_access",
+						"index": 1,
+						"selected": "true",
+						"severalSubmit": "se_cqbkr_approve",
+						"commentsRequired": "true",
+						"buttonList": [
+							{
+						        "name": "return",
+						        "type": "submit",
+						        "styleClass": "secondaryButton rejectButton",
+						        "localizationKey": "return"
+					      	},
+					      	{
+						        "name": "approve",
+						        "type": "submit",
+						        "styleClass": "primaryButton approveButton",
+						        "localizationKey": "approve"
+					      	}
+						]
+					},
+					{
+						"tabName": "uaPendingBankApproval",
+						"listdefName": "/trade/listdef/customer/SE/customerPendingBankSeCqbkrList",
+						"permission": "se_cqbkr_access",
+						"index": 2,
+						"selected": ""
+					},
+					{
+						"tabName": "completed",
+						"listdefName": "/trade/listdef/customer/SE/customerLiveSeCqbkrList",
+						"permission": "se_cqbkr_access",
+						"index": 3,
+						"selected": ""
+					},
+					{
+						"tabName": "rejected",
+						"listdefName": "/trade/listdef/customer/SE/customerRejectedSeCqbkrList",
+						"permission": "se_cqbkr_access",
+						"index": 4,
+						"selected": ""
+					}
+			],
+			"permission": "se_cqbkr_access",
+			"index": 0,
+			"selected": ""
+		},
+		{
+			"tabName": "stopChequeRequest",
+			"tabSelector": "listdefCommonComponent",
+			"showFilter": "true",
+			"TabConfig": [
+				{
+					"colFilterIconEnabled": "true",
+					"downloadIconEnabled": "true",
+					"paginator": "true",
+					"showFilterSection": "true",
+					"passBackEnabled": "false",
+					"checkBoxPermission": "true"
+				}
+			],
+			"tabs": [
+					{
+						"tabName": "draft",
+						"listdefName": "/trade/listdef/customer/SE/customerDraftSeCocqsList",
+						"permission": "se_cqs_save",
+						"index": 0,
+						"selected": "true"
+					},
+					{
+						"tabName": "uaPendingApproval",
+						"listdefName": "/trade/listdef/customer/SE/customerPendingClientSeCocqsList",
+						"permission": "se_cqs_access",
+						"index": 2,
+						"selected": "true",
+						"severalSubmit": "se_cqs_approve",
+						"commentsRequired": "true",
+						"buttonList": [
+							{
+						        "name": "return",
+						        "type": "submit",
+						        "styleClass": "secondaryButton rejectButton",
+						        "localizationKey": "return"
+					      	},
+					      	{
+						        "name": "approve",
+						        "type": "submit",
+						        "styleClass": "primaryButton approveButton",
+						        "localizationKey": "approve"
+					      	}
+						]
+					},
+					{
+						"tabName": "uaPendingBankApproval",
+						"listdefName": "/trade/listdef/customer/SE/customerPendingBankSeCocqsList",
+						"permission": "se_cqs_access",
+						"index": 3,
+						"selected": ""
+					},
+					{
+						"tabName": "completed",
+						"listdefName": "/trade/listdef/customer/SE/customerCompletedSeCocqsList",
+						"permission": "se_cqs_access",
+						"index": 4,
+						"selected": ""
+					},
+					{
+						"tabName": "rejected",
+						"listdefName": "/trade/listdef/customer/SE/customerRejectedSeCocqsList",
+						"permission": "se_cqs_access",
+						"index": 5,
+						"selected": ""
+					}
+			],
+			"permission": "se_cqs_access",
+			"index": 1,
+			"selected": ""
+		}
+	]
+	
+}

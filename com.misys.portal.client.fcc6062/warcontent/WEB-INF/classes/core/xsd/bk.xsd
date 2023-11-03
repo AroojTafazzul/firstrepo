@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation xml:lang="en"> Schema W3C for BK (Transaction Bulk). XML validation 
+			Copyright (c) 2000-2011 Misys (http://www.misys.com), All 
+			Rights Reserved. </xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="http://www.misys.com/portal/interfaces/xsd/ft.xsd">
+		<xs:annotation>
+			<xs:documentation>This also includes error.xsd and common.xsd</xs:documentation>
+		</xs:annotation>
+	</xs:include>
+	<xs:element name="bk_tnx_record">
+		<xs:annotation>
+			<xs:documentation>Transaction Bulk Business Rules</xs:documentation>
+			<xs:appinfo>
+				<!-- BK - Check transaction type code -->
+				<sch:pattern name="BK - Check the transaction type code" xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bk_tnx_record">
+						<sch:assert test="tnx_type_code = '01' or tnx_type_code = '03'">
+							The transaction type code <value-of select="tnx_type_code"/> is not authorised.
+							Should be 01 (new) or 03 (amend).
+						</sch:assert>
+					</sch:rule>
+				</sch:pattern>
+				<!-- ***************** -->
+				<!-- BK Business Rules -->
+				<!-- ***************** -->
+				<!-- BK New record - Mandatory fields -->
+				<sch:pattern name="BK New - Mandatory fields " xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bk_tnx_record">
+						<sch:report test="tnx_type_code = '01' and
+									((not(company_name) or company_name = '')
+									or (not(tnx_stat_code) or tnx_stat_code = '')
+									or (not(product_code) or product_code = '')
+									or (not(value_date) or value_date = '')
+									or (not(appl_date) or appl_date = '')
+									or (not(applicant_name) or applicant_name = '')
+									or (not(applicant_address_line_1) or applicant_address_line_1 = '')
+									or (not(applicant_act_no) or applicant_act_no = '')
+									or (not(bk_cur_code) or ft_cur_code = '')
+									or (not(bk_total_amt) or bk_total_amt = '')
+									or (not(issuing_bank/abbv_name) or issuing_bank/abbv_name = '')">
+							Some mandatory elements are missing. The elements company_name, tnx_stat_code, product_code,
+							value_date, appl_date, applicant_name, applicant_address_line_1, applicant_act_no,
+							bk_cur_code, bk_total_amt, issuing_bank/abbv_name are mandatory when the 
+							transaction type code = '01' (new) 						
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<!-- BK New - unauthorized fields -->
+				<sch:pattern name="BK New - Not authorised fields " xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bk_tnx_record">
+						<sch:report test="tnx_type_code = '01' and
+									(ref_id 
+									or bo_ref_id 
+									or tnx_id 
+									or company_id 
+									or imp_bill_ref_id 
+									or inp_user_id 
+									or inp_dttm 
+									or ctl_user_id 
+									or ctl_dttm 
+									or release_user_id 
+									or release_dttm 
+									or bo_inp_user_id 
+									or bo_inp_dttm 
+									or bo_ctl_user_id 
+									or bo_ctl_dttm 
+									or bo_release_user_id 
+									or bo_release_dttm 
+									or bo_comment 
+									or charges)">
+							An unauthorized element is defined. The elements ref_id, bo_ref_id, tnx_id, company_id, 
+							imp_bill_ref_id, inp_user_id, inp_dttm, ctl_user_id, ctl_dttm, release_user_id, 
+							release_dttm, bo_inp_user_id, bo_inp_dttm, bo_ctl_user_id, bo_ctl_dttm, 
+							bo_release_user_id, bo_release_dttm, bo_comment and charges are forbidden with transaction
+							type code = '01' (new)
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+				<!-- BK New - Constraints -->
+				<sch:pattern name="BK New - Check that the value date must is equal or greater than the application date" xmlns:sch="http://www.ascc.net/xml/schematron">
+					<sch:rule context="/bk_tnx_record">
+						<sch:report test="tnx_type_code = '01' and
+								(number(concat(concat(substring(appl_date,7,4), substring(appl_date,4,2)), substring(appl_date,1,2))) &lt;
+								number(concat(concat(substring(value_date,7,4), substring(value_date,4,2)), substring(value_date,1,2))))">
+							The value date must be equal or greater than the application date.
+						</sch:report>
+					</sch:rule>
+				</sch:pattern>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="brch_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Branch code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Reference id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office attributed reference 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_tnx_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office attributed reference 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bulk_ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bulk Reference id. Not used for Bulk (nesting bulks is not possible).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bulk_tnx_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bulk Transaction id. Not used for Bulk (nesting bulks is not possible).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="cust_ref_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Customer attributed reference 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="company_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Id of the company that initiated 
+								the BK.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="company_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Name of the company that 
+								initiated the BK.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_type_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction type 
+								code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sub_tnx_type_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction sub type 
+								code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="prod_stat_code">
+					<xs:annotation>
+						<xs:documentation>Product status 
+								code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_stat_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction status 
+								code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sub_tnx_stat_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Sub Transaction Status Code</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="product_code">
+					<xs:annotation>
+						<xs:documentation>Product code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sub_product_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Sub Product code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="child_product_code" type="product_code" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Product code of the underlying transactions in the bulk.
+							Only one product type is allowed in the bulk at a time.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="child_sub_product_code" type="FiveCharacters" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Sub Product code of the underlying transactions in the bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bk_type" type="FiveCharacters" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Type of the bulk</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:element ref="inp_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Inputter user 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="inp_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Input date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ctl_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Controller user 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ctl_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Control date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="release_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Releaser user 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="release_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Release date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_inp_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office inputter 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_inp_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office input 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_ctl_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office controller 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_ctl_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office control 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_release_user_id" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office release user 
+								id.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_release_dttm" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office release 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_val_date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction value 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="appl_date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Transaction Bulk application 
+								date.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="upload_file_id" type="TwentyCharacters" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Id of the uploaded file that generated the Bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+		
+				<xs:element name="record_number" type="positiveInteger" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Number of transactions in the Transaction Bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="value_date">
+					<xs:annotation>
+						<xs:documentation>This is the execution date of the 
+								bulk as requested by the 
+								customer.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bk_cur_code" type="currency" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The currency of the 
+								Transaction Bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bk_highest_amt" type="amount" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The amount of the highest 
+							transaction in the bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bk_total_amt" type="amount" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The total amount of the 
+							transactions in the bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bk_fin_cur_code" type="currency" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The currency of the 
+								Financed Bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="bk_fin_amt" type="amount" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The total financed amount of the 
+							invoices in the bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+						
+				<xs:element ref="bk_repay_date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>This is the date selected by customer 
+						when all finances in the bulk will be repaid.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bk_repaid_cur_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bulk Repaid currency code.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bk_repaid_amt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bulk repaid amount (equal to the sum of repay amount of each invoice).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="description" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>A description attached 
+							to the Bulk</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_cur_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bulk currency 
+								code (same as bk_cur_code).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tnx_amt" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bulk 
+								amount (same as bk_total_amt).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_act_no" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The account number for 
+								the Transaction Bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_act_cur_code" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The account currency for 
+								the Transaction Bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_act_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The account name for 
+								the Transaction Bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_act_description" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The applicant account description</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_abbv_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The abbreviated name of the 
+								applicant also known as the ordering 
+								customer.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Applicant name.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_address_line_1" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Applicant first address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_address_line_2" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Applicant second address 
+								line.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_dom" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Applicant 
+								domicile.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_country" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Applicant 
+								country.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="applicant_reference" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Applicant 
+								reference.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="entity" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Entity</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="issuing_bank" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Parent node for the issuing bank 
+								information</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="narrative_additional_instructions" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>A narrative for additional 
+								instructions.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="bo_comment" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Back office 
+								comment.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="free_format_text" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Used as a zone of communication 
+								between the client and the 
+								bank</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="product_file_set" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>List of transactions in this Bulk.
+							Only ft_tnx_record currently.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="charges" minOccurs="0"/>
+				<xs:element ref="attachments" minOccurs="0"/>
+				<xs:element ref="cross_references" minOccurs="0"/>
+				<xs:element ref="additional_field" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>List of additional fields for this file.
+						It might be also used to provide additional information from external 
+						systems regarding information on how to process the bulk.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="errors" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>List of possible errors in this bulk.
+							Available for uploaded bulks only. To be used for bulk level 
+							errors only.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="interest_payment" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Used as loan interest Payment Indicator for repricing</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="borrower_settlement_ind" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Used as loan borrower settlement Indicator for repricing</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="deal_name" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>deal Name</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="adjust_payment_options" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Adjust Payment Options for repricing</xs:documentation>
+					</xs:annotation>
+				</xs:element>													
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="product_file_set">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ft_tnx_record" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

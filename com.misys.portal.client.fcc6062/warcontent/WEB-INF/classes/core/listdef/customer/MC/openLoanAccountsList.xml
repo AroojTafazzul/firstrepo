@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="modified_dttm" default_order_type="d" page="10" data_key="account_id">
+
+	<column name="bank_abbv_name" align="left" width="12%"  loca_key="BANK_NAME" columnFilterType="input-multiselect"/>
+	<column name="UserAccount@EntityAccount@entity@abbv_name" align="left" width="12%" groupedColumn="entity" groupedValues = "y"  loca_key="ENTITY" columnFilterType="input-multiselect"/>
+	<column name="UserAccount@EntityAccount@UserEntity@default_entity" align="left" width="12%"  loca_key="DEFAULT_ENTITY" hidden="y" />
+    <column name="acct_name" align="left" width="12%" loca_key="ACCOUNT_NAME"/>
+    <column name="account_no" align="left" width="12%" loca_key="ACCOUNT_NO"/>
+	<column name="cur_code" align="left" width="10%" loca_key="CURCODE" columnFilterType="input-multiselect"/>
+	<column name="nickname" align="left" width="12%" loca_key="NICKNAME" hidden="y"/>
+	<column name="interest_rate_debit" align="left" width="12%" loca_key="INTEREST_RATE"/>
+	<column name="principal_amount" align="right" width="12%" loca_key="PRINCIPAL_AMOUNT"/>
+	<column name="convertedPrincipal_amount" align="right" width="14%" paramCur="account_ccy" loca_key="EQUIVALENT_PRINCIPAL_AMOUNT"/>
+	<column name="account_id" hidden="y"/>
+	<column name="action" align="right" width="14%" loca_key="ACTIONS">
+    <url action="y" actionName="ACTIONS_LIST" actionValue="LIST_WIDGET_ACTIONS_LOAN_ACCOUNTS">
+	   	<parameter name="ACCOUNT_NO" column="account_no"/>
+		<parameter name="ENTITY" column="UserAccount@EntityAccount@entity@abbv_name"/>
+    </url>
+	</column>
+	
+	<!-- additional object data attributes, hidden by default -->
+	<column name="ObjectDataString@MonthlyRepayment" hidden="y"/>
+	<column name="ObjectDataString@NextPaymentDate" hidden="y"/>
+	<column name="ObjectDataString@NumberOfDaysOverdue" hidden="y"/>
+	<column name="ObjectDataString@OutstandingAmount" hidden="y"/>
+	<column name="ObjectDataString@OverdueAmount" hidden="y"/>
+	<column name="ObjectDataString@PaymentAccountNo" hidden="y"/>
+	<column name="ObjectDataString@RepaymentDate" hidden="y"/>
+	<column name="ObjectDataString@bank_account_type" hidden="y"/>	
+	<column name="modified_dttm" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter name="account_type" size="2" max_length="2" input="y" loca_key="ACCOUNT_TYPE" type="string" hidden= "true"/>
+	<parameter name="account_no" size="50" max_length="50" input="y" default="" multiple="y" loca_key="Account Number" type="AccountNo"/>	
+	<parameter
+		name="nickname"
+		size="20"
+		max_length="75"
+		loca_key="NICKNAME"
+		input="y"
+		default=""
+		type=""/>
+	<parameter 
+		name="bank_abbv_name" 
+		size="2" 
+		max_length="2"
+		input="y" 
+		loca_key="BANK_NAME" 
+		type="" />
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		default=""
+		multiple="y"
+		type="Entity"/>
+	<parameter
+		name="cur_code"
+		input="y"
+		size="3"
+		max_length="3"
+		loca_key="CURCODE"
+		multiple="y"
+		type="Currency"/>
+	<parameter
+		name="account_ccy"
+		input="y"
+		size="3"
+		max_length="3"
+		hidden= "false"
+		loca_key="ACCOUNT_CCY"
+		type="AccountType"/>
+
+	<!-- candidates -->
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="account_type" />
+				<operator type="equal" />
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_no" />
+				<operator type="in" />
+				<value type="parameter">
+					account_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="nickname" />
+				<operator type="equal" />
+				<value type="parameter">
+					nickname
+				</value>
+			</criteria>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name"/>
+				<operator type="in"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="in"/>
+				<value type="parameter">
+					cur_code
+				</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+				    View STMT
+				</value>
+		</criteria>
+		<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+				    Y
+				</value>
+		</criteria>
+		</filter>
+	</candidate>
+
+</listdef>

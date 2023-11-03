@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bank_abbv_name" default_order_type="d" page="50" js_binding="misys.binding.cash.account_summary" hideSearch="true" permission="ab_current_account_summary_access">
+
+<!-- If order of columns is changed, change corresponding viewerjson for this listdef -->
+	<column name="bank_abbv_name" align="center" width="15%" loca_key="BANKNAME"/>
+	<column name="acct_name" align="center" width="35%" loca_key="ACCOUNT"/>		
+	<column name="account_type" align="center" loca_key="AB_ACCOUNT_TYPE" hidden="y"/>
+	<column name="cur_code" align="center" width="5%" loca_key="CURCODE"/>
+	<column name="RunningStatement@LedgerBalance@amt" hidden="Y" loca_key="LEDGER_BALANCE"/>	
+	<column name="RunningStatement@AvailableBalance@amt" hidden="Y" loca_key="OPENING_BALANCE"/>
+	<column name="RunningStatement@ReservedBalance@amt" hidden="Y" loca_key="RESERVED_BALANCE"/>	
+	<column name="RunningStatement@LedgerBalance@convertedAmt" paramCur="account_ccy" loca_key="EQUIVALENT_LEDGER_BALANCE" hidden="y"/>	
+	<column name="RunningStatement@ReservedBalance@convertedAmt" paramCur="account_ccy" hidden="Y" loca_key="EQUIVALENT_RESERVED_BALANCE"/>	
+	<column name="RunningStatement@AvailableBalance@convertedAmt" paramCur="account_ccy" hidden="Y" loca_key="EQUIVALENT_OPENING_BALANCE"/>
+	
+	<column name="RunningStatement@AvailableBalance@value_date" hidden="y"/>	
+	<column name="account_no" hidden="y"/>
+	<column name="account_id" hidden="y"/>	
+	<column name="owner_type" hidden="y"/>	
+	<column name="UserAccount@EntityAccount@entity@abbv_name" hidden="y"/>
+	<column name="bank_id" hidden="y"/>	
+	<column name="branch_no" hidden="y"/>		
+	<column name="UserAccount@EntityAccount@nick_name" hidden="y"/>
+	<column name="principal_amount" align="right" width="20%" loca_key="PRINCIPAL_AMOUNT"/>
+	<column name="convertedPrincipal_amount" align="right" width="25%" paramCur="account_ccy" loca_key="EQUIVALENT_PRINCIPAL_AMOUNT"/>
+	<column name="nickname" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		hidden="true"/>
+	<parameter
+		name="account_no"
+		hidden="true"/>
+	<parameter
+		name="account_id"
+		hidden="true"/>
+	<!-- This currency field is not a search criteria, but a parameter currency for the equivalent amount-->
+	<parameter
+		name="account_ccy"
+		hidden="true"/>
+	<parameter
+		name="owner_type"
+		hidden="true"/>
+	<parameter name='export_list' file='AccountSummary' type='export'
+		file_name='accountSummary' hidden="true"/>
+	<parameter
+		name="bank_abbv_name"
+		hidden="true"
+		/>
+		
+	<!-- Candidates -->	
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="bank_abbv_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					bank_abbv_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_id"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>			
+			<criteria>
+				<column name="account_type"/>
+				<operator type="equal"/>
+				<value type="code">
+					N068_LOAN_ACCOUNT
+				</value>
+			</criteria>
+			<criteria>
+				<column name="owner_type"/>
+				<operator type="equal"/>
+				<value type="code">
+					N081_CUSTOMER
+				</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+					View STMT
+	   			</value>
+			</criteria>	
+			<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+					Y
+	   			</value>
+			</criteria>			
+		</filter>
+	</candidate>
+
+	<group loca_key="LOAN_ACCOUNT_GROUP_SUMMARY" align="left">
+		<column name="account_type"/>
+		<aggregate type='sum' align="right" name='convertedPrincipal_amount'>
+			<column name='convertedPrincipal_amount'/>
+		</aggregate>
+	</group>
+
+</listdef>

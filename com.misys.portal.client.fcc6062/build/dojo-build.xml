@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+====================================================================== 
+
+ Build file for Dojo release
+                                                                                  
+====================================================================== 
+ -->
+<project name="Dojo" default="dojo-build" basedir=".">
+	<description>
+	    This is the ANT file dedicated to build Dojo
+    </description>
+
+
+	<property file="dojo-build.properties" />
+
+
+	<target name="dojo-clean">
+		<description>
+		Cleans all generated files and empties generated folders
+		</description>
+		<echo>Deleting ${javascript.release.dir}</echo>
+		<delete dir="${javascript.release.dir}" />
+    </target>
+
+	
+	<target name="dojo-build" depends="dojo-clean, client-javascript-copy, lint">
+		<description>
+		Build, compress and obfuscates the Dojo layers and custom code/css.
+		</description>
+		
+		<echo>Building, validating, compressing and obfuscating the Dojo layers and custom JavaScript code.</echo>
+		
+		<java dir="${javascript.src.dir}/util/buildscripts" classname="org.mozilla.javascript.tools.shell.Main" fork="true">
+			<jvmarg value="-Xms128m"/>
+			<jvmarg value="-Xmx256m"/>
+			<classpath>
+				<pathelement location="${javascript.src.dir}/util/shrinksafe/js.jar" />
+				<pathelement location="${javascript.src.dir}/util/shrinksafe/shrinksafe.jar" />
+			</classpath>
+			<arg value="build.js"/>
+            <arg value="profileFile=${workspace.dir}/${project.portal.name}/build/mtp.profile.js" />
+            <arg value="releaseName=."/>
+            <arg value="releaseDir=${javascript.release.dir.relative}"/>
+            <arg value="copyTests=false" />
+            <arg value="action=release" />
+            <arg value="optimize=shrinksafe" />
+            <arg value="layerOptimize=shrinksafe" />
+            <arg value="cssOptimize=comments" />
+            <arg value="version=${delivery.version}" />
+            <arg value="stripConsole=normal" />
+        	<arg value="localeList=en-us,en-gb,fr-fr,de-de,pt-br,zh-cn,th-th,ar-ar" />
+		</java>
+		
+		<!-- Remove ECMA5 Strict Mode string -->
+		<replace dir="${javascript.release.dir}/misys" token='"use strict";' value="">
+		</replace>
+		<replace dir="${javascript.release.dir}/dojo/" token='"use strict";' value="">
+			<include name="**/misys*.js"/>
+		</replace>
+    </target>
+
+	<target name="lint">
+	  <description>
+	  	Performs the lint validation across all custom JavaScript code (excluding the Localization which will not validate).
+	  	     
+        This step is necessary to guarantee that the JS compression and obfuscation runs properly; the
+        build will fail if this step does not finish.
+         
+        You can exclude a file from the validation by adding the following comment at the top
+         
+           /*jsl:ignoreall*/
+           
+        You can exclude parts of a file by enclosing the code in the following comments
+         
+          /*jsl:ignore*/
+          (code)
+          /*jsl:end*/
+          
+         You can tell lint to ignore an intentional empty statement by adding the comment as below
+           
+           while (!hasResponse()) {
+             /*jsl:pass*/
+           }
+           
+         Finally, you can mark an intentional fallthru with the comment
+         
+           switch (i) {
+              case 1:
+                break;
+              case 2:
+                /*jsl:fallthru*/
+              case 3:
+                break;
+           }
+	  </description>
+		
+	  <echo>
+	  Validating the custom JavaScript code and build profile, with LINT.
+	  	
+	  Location: ${javascript.src.dir}
+	  	
+	  You should also run the JavaScript unit tests in your browser, using the URL
+	  	
+	  http://localhost:8080/content/js-src/misys/tests/runTests.html
+	  </echo>
+	
+      <condition property="jsl.bin" value="jsl.exe" else="jsl">
+        <os family="windows" />
+      </condition>
+
+	  <exec executable="${workspace.dir}/${project.portal.name}/build/jsl/${jsl.bin}" resolveexecutable="true" failonerror="true" dir="${javascript.src.dir}">
+	   <arg line="-conf ${workspace.dir}/${project.portal.name}/build/jsl/jsl.mtp.conf -process ${javascript.src.dir}/misys/*.js +recurse" />
+	  </exec>
+	  <exec executable="${workspace.dir}/${project.portal.name}/build/jsl/${jsl.bin}" resolveexecutable="true" failonerror="true" dir="${javascript.src.dir}">
+	    <arg line="-conf ${workspace.dir}/${project.portal.name}/build/jsl/jsl.mtp.conf -process ${workspace.dir}/${project.portal.name}/build/mtp.profile.js" />
+	  </exec>
+	  <exec executable="${workspace.dir}/${project.portal.name}/build/jsl/${jsl.bin}" resolveexecutable="true" failonerror="true" dir="${javascript.src.dir}">
+	   <arg line="-conf ${workspace.dir}/${project.portal.name}/build/jsl/jsl.mtp.conf -process ${client.content.dir}/js-src/*.js +recurse" />
+	  </exec>
+		
+	</target>
+	
+	<target name="checkstyle">
+		<description>
+		Optional target that evaluates our custom code against the Dojo style guidelines. Once the task has completed, open the following 
+		link to view the report
+		 	
+		http://localhost:8080/content/js-src/util/checkstyle/checkstyleReport.html
+		 
+		You may have to refresh and restart your server.
+		</description>
+		<echo>
+		Checking the Misys custom code for Dojo style violations ... 
+		
+		(Once complete, open the following link for the results: 
+		  http://localhost:8080/content/js-src/util/checkstyle/checkstyleReport.html
+		You may have to refresh and restart your server.)
+	    </echo>
+        <exec dir="${javascript.src.dir}/util/checkstyle/" executable="java">
+            <arg line="-Xms256m" />
+            <arg line="-Xmx256m" />
+            <arg line="-classpath ${javascript.src.dir}/util/shrinksafe/js.jar;${javascript.src.dir}/util/shrinksafe/shrinksafe.jar" />
+            <arg line="org.mozilla.javascript.tools.shell.Main"/>
+            <arg line="runCheckstyle.js" />
+            <arg line="dir=misys" />
+        </exec>
+	</target>
+	
+	<target name="initialiseTheme">
+	 <description>
+		Retrieve the standard tundra theme, copying those bits we need into the js-src directory and changing all
+	 	references to .tundra to .${project.name}
+		        
+		This target should be run whenever a new release of Dojo/Dijit/Dojox is copied into the js-src directory.
+	 </description>
+	 	
+     <echo>Retrieving tundra and modifying for custom theme ... </echo>
+     <delete dir="${theme.dir}/tundra-src"/>
+     <mkdir dir="${theme.dir}/tundra-src"/>
+
+     <!-- First, copy over all the required resources  -->
+     <copy file="${tundra.dir}/Common.css" todir="${theme.dir}/tundra-src"/>
+     <copy file="${tundra.dir}/Dialog.css" todir="${theme.dir}/tundra-src"/>
+     <copy file="${tundra.dir}/Editor.css" todir="${theme.dir}/tundra-src"/>
+	 <copy file="${tundra.dir}/Tree.css" todir="${theme.dir}/tundra-src"/>
+     <copy file="${tundra.dir}/Calendar.css" todir="${theme.dir}/tundra-src"/>
+     <copy file="${tundra.dir}/ProgressBar.css" todir="${theme.dir}/tundra-src"/>
+     <copy file="${tundra.dir}/TitlePane.css" todir="${theme.dir}/tundra-src"/>
+    
+     <!-- Form elements -->
+     <mkdir dir="${theme.dir}/tundra-src/form"/>
+     <copy file="${tundra.dir}/form/Common.css" todir="${theme.dir}/tundra-src/form"/>
+     <copy file="${tundra.dir}/form/Checkbox.css" todir="${theme.dir}/tundra-src/form"/>
+     <copy file="${tundra.dir}/form/Button.css" todir="${theme.dir}/tundra-src/form"/>
+     <copy file="${tundra.dir}/form/RadioButton.css" todir="${theme.dir}/tundra-src/form"/>
+    
+     <!-- Layout elements -->
+     <mkdir dir="${theme.dir}/tundra-src/layout"/>
+     <copy file="${tundra.dir}/layout/BorderContainer.css" todir="${theme.dir}/tundra-src/layout"/>
+     <copy file="${tundra.dir}/layout/ContentPane.css" todir="${theme.dir}/tundra-src/layout"/>
+     <copy file="${tundra.dir}/layout/TabContainer.css" todir="${theme.dir}/tundra-src/layout"/>
+    
+     <!-- Images -->
+     <mkdir dir="${theme.dir}/tundra-src/images"/>
+     <copy todir="${theme.dir}/tundra-src/images">
+      <fileset dir="${tundra.dir}/images"/>
+     </copy>
+
+     <!-- Do a global find replace of .tundra for whatever the theme is  -->
+     <replace dir="${theme.dir}" value=".${project.name}">
+      <include name="**/*.css"/>
+      <replacetoken>.tundra</replacetoken>
+     </replace>
+    </target> 
+
+	<!-- Copy client Javascript resources (including themes and locales) -->
+	<target name="client-javascript-copy">
+		<copy todir="${javascript.src.dir}" failonerror="false" overwrite="true">
+			<fileset dir="${client.content.dir}/js-src">
+				<include name="**" />
+			</fileset>
+		</copy>
+	</target>
+	
+</project>

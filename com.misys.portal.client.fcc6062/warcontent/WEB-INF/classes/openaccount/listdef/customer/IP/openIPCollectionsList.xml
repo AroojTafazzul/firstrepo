@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="a" js_binding="misys.binding.openaccount.listdef_ip_collections" page="50">	
+	 <column name="ref_id" align="center" width="12%" loca_key="REFERENCEID">
+		<url candidate="invoice_payable_master">
+			<parameter name="SCREEN" value="IP_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_INVOICE_SETTLE"/>
+			<parameter name="OPTION_CODE" binding_code="IP_COLLECTIONS"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+		    <parameter name="PRODUCT_CODE" column="product_code"/>
+		</url>
+	</column>
+	 <column name="entity" align="left" width="10%" loca_key="ENTITY"/>
+	 <column name="seller_name" align="left" width="12%" loca_key="SELLER_NAME"/>
+	 <column name="fscm_prog@program_name" align="center" width="10%" loca_key="PROGRAM_NAME"/>	
+	 <column name="cur_code" align="center" width="3%" loca_key="CURCODE"/>
+	 <column name="total_net_amt" align="right" width="10%" loca_key="INVOICE_AMOUNT"/>	
+	 <column name="liab_total_net_amt" align="right" width="10%" loca_key="OUTSTANDING_AMOUNT"/> 
+	 <column name="iss_date" align="center" width="6%" loca_key="INVOICE_DATE"/>
+	 <column name="due_date" align="center" width="6%" loca_key="INVOICE_DUE_DATE"/>
+	 <column name="prod_stat_code" align="center" width="12%" loca_key="STATUS">
+		<script>
+		if(value.equals(""))
+		{
+			var prodStatCode = row.getColumnValue("prod_stat_code");
+			value = com.misys.portal.common.localization.Localization.getDecode(language,"N005",prodStatCode.toString());
+		}
+		value;
+		</script>
+	 </column>
+
+	<column name="product_code" hidden="y"/>
+	<column name="sub_product_code" hidden="y"/>
+	<column name="program_id" hidden="y"/>  		
+	<!-- parameters -->
+	<parameter
+		name="ref_id"
+		size="12"
+		max_length="16"
+		loca_key="REFERENCEID"
+		input="y"
+		default=""/>	
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="seller_name"
+		size="35"
+		max_length="35"
+		loca_key="SELLER_NAME"
+		input="y"
+		default=""/>
+	<parameter
+		name="fscm_program_name"
+		loca_key="PROGRAM_NAME"
+		size="16"
+		max_length="35"
+		input="y"
+		type="FscmProgramCollection"/>
+	<parameter
+		name="cur_code"
+		loca_key="CURCODE"
+		size="3"
+		max_length="3"
+		input="y"
+		type="Currency"/>
+	<parameter
+		name="AmountRange"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="InvoiceAmountFrom"
+		range_to_label="InvoiceAmountTo"/>	
+	<parameter
+		name="AmountOutstandingSettlementRange"
+		type="AmountRange"
+		input="y"
+		default="blank"
+		range_from_label="OutstandingSettlementAmountFrom"
+		range_to_label="OutstandingSettlementAmountTo"/>	
+	<parameter
+		name="iss_date"
+		type="range"
+		input="y"
+		range_from_label="INVOICE_DATE_FROM"
+		range_to_label="INVOICE_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="due_date"
+		type="range"
+		input="y"
+		range_from_label="INVOICE_DUE_DATE_FROM"
+		range_to_label="INVOICE_DUE_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="prod_stat_code"
+		type="AvaliableProductStatus"
+		size="20"
+		loca_key="STATUS"
+		input="y"
+		multiple_values="46,47,E1,E5"/>
+
+	<candidate name="invoice_payable_master">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">ref_id</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">entity</value>
+			</criteria>
+			<criteria>
+				<column name="seller_name"/>
+				<operator type="like"/>
+				<value type="parameter">seller_name</value>
+			</criteria>
+			<criteria>
+				<column name="fscm_prog@program_name"/>
+				<operator type="like"/>
+				<value type="parameter">fscm_program_name</value>
+			</criteria>
+			<criteria>
+				<column name="cur_code"/>
+				<operator type="like"/>
+				<value type="parameter">cur_code</value>
+			</criteria>	
+			<criteria>
+			<column name="total_net_amt"/>
+			<operator type="supOrEqual"/>
+			<value type="parameter">
+				AmountRange@fromAmount
+			</value>
+		</criteria>
+		<criteria>
+			<column name="total_net_amt"/>
+			<operator type="infOrEqual"/>
+			<value type="parameter">
+				AmountRange@toAmount
+			</value>
+		</criteria>
+			<criteria>
+				<column name="total_net_amt"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					AmountOutstandingSettlementRange@fromAmount
+				</value>
+			</criteria>
+			<criteria>
+				<column name="total_net_amt"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					AmountOutstandingSettlementRange@toAmount
+				</value>
+			</criteria>	
+			<criteria>
+				<column name="iss_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					iss_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="iss_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					iss_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="due_date" />
+				<operator type="supOrEqual" />
+				<value type="parameter">
+					due_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="due_date" />
+				<operator type="infOrEqual" />
+				<value type="parameter">
+					due_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="prod_stat_code"/>
+				<operator type="like"/>
+				<value type="parameter">prod_stat_code</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter or="y">
+		<criteria>
+			 <column name="prod_stat_code"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N005_ELIGIBLE
+					</value>
+					<value type="code">
+						N005_NOT_ELIGIBLE
+					</value>
+					<value type="code">
+						N005_INVOICE_PART_SETTLED
+					</value>
+					<value type="code">
+						N005_INVOICE_PART_SETTLED_CREDIT_NOTES
+					</value>
+					<value type="code">
+						N005_AMENDED
+					</value>
+				</value>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			 <column name="eligibility_flag"/>
+				<operator type="in"/>
+				<value type="vector">
+					<value type="code">
+						N085_ELIGIBLE
+					</value>
+					<value type="code">
+						N085_NOT_ELIGIBLE
+					</value>
+				</value>
+		</criteria>
+	</filter>
+	<filter or="y">
+	 <criteria>
+			<column name="collection_req_flag"/>
+			<operator type="equal"/>
+			<value type="code">N428_NO </value>
+		</criteria> 
+		<criteria>
+        	<column name="collection_req_flag"/>
+            <operator type="isNull"/>
+      	</criteria> 
+	</filter>
+	<filter or="y">
+		 <criteria>
+        	<column name="finance_requested_flag"/>
+            <operator type="equal"/>
+            <value type="code">
+            	N086_NO
+            </value>
+      	</criteria>
+      	<criteria>
+        	<column name="finance_requested_flag"/>
+            <operator type="isNull"/>
+      	</criteria> 
+     </filter>
+</listdef> 

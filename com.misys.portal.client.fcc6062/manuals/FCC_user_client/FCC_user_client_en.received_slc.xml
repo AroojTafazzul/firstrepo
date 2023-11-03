@@ -1,0 +1,2442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section role="ITEM">
+  <title><xi:include href="../entities_en.xml" xpointer="ent_Received_S_L_C"
+  xmlns:xi="http://www.w3.org/2001/XInclude" /> Module</title>
+
+  <para role="TEXT">Just as the <xi:include href="../entities_en.xml"
+  xpointer="ent_Export_LC" xmlns:xi="http://www.w3.org/2001/XInclude" /> is
+  the beneficiary's view of the Letter of Credit, this <xi:include
+  href="../entities_en.xml" xpointer="ent_Received_S_L_C"
+  xmlns:xi="http://www.w3.org/2001/XInclude" /> (SR) module is the
+  beneficiary's view of the Standby LC.</para>
+
+  <para role="TEXT">Whereas the <xi:include href="../entities_en.xml"
+  xpointer="ent_Issued_S_LC" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  module is for use by the applicant, this module provides the beneficiary
+  with a notification of the terms issued in his favour, and a way to send
+  further transactional messages to his advising banks on those
+  records.</para>
+
+  <section role="ITEM">
+    <title>Overview</title>
+
+    <para role="TEXT">This <xi:include href="../entities_en.xml"
+    xpointer="ent_Received_S_L_C"
+    xmlns:xi="http://www.w3.org/2001/XInclude" /> module enables you, on
+    behalf of your company (the beneficiary), to receive notification of
+    Standby Letters of Credit, and subsequent amendments or updates, from the
+    Advising Bank. You can also send messages back to the bank for events that
+    require your approval in the ongoing transaction flow, or to initiate a
+    transfer.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Functions</title>
+
+    <para role="TEXT">The menu for this module has the following groups of
+    functions.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Transfer and
+        Assignment</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">As the primary beneficiary, transfer in full or
+          partially a Standby Letter of Credit to a second beneficiary.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Message to
+        Bank</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Send a free-format message to the Issuing
+          Bank.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">Pending SRs</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">View all existing SRs, that are not yet
+          complete.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">SR Inquiry</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Display lists of existing SRs, according to
+          specific search criteria.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><guimenuitem moreinfo="none">SR Maintenance</guimenuitem></term>
+
+        <listitem>
+          <para role="TEXT">Maintain Unsigned, Purged and Rejected SRs</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section condition="TITLE=Received Standby Export Letter of Credit - Transfer;PERM=sr_transfer;ACCESS=SR_TRANS"
+           role="TOPIC">
+    <title>SR Transfer &amp; Assignment</title>
+
+    <para role="TEXT">This section describes the <guimenuitem>Transfer and
+    Assignment</guimenuitem> part of the menu and the forms it uses.</para>
+
+    <section role="ITEM">
+      <title>Transfer Functions</title>
+
+      <para role="TEXT">This part of the menu contains several functions,
+      providing different ways to initiate a transfer of a Received Standby
+      Letter of Credit.</para>
+
+      <para role="TEXT"><variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Transfer</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Transfer part of an existing Received Standby
+              Letter of Credit to a second beneficiary. Only available if the
+              original Received Standby Letter of Credit is
+              transferable.</para>
+
+              <para role="TEXT">This can only be done for a Received Standby
+              Letter of Credit that your company (the main beneficiary) has
+              received notification of from the Advising Bank. Therefore, this
+              function displays a list of such existing Received Standby
+              Letters of Credit that have not been not purged and are
+              transferable.</para>
+
+              <para role="TEXT">The second beneficiary is guaranteed to
+              receive payment provided he satisfies the terms laid down in the
+              transfer credit, irrespective of the actions of your own
+              company, the main beneficiary.</para>
+
+              <para role="TEXT">This action sends a message to the Advising
+              Bank, telling them of the transfer.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Assignment</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Assign part of the proceeds that you expect to
+              receive under an existing Standby Letter of Credit to a second
+              beneficiary.</para>
+
+              <para role="TEXT">This can only be done for a Standby Letter of
+              Credit that your company (the main beneficiary) has received
+              notification of from the Advising Bank. Therefore, this function
+              displays a list of such existing Standby Letters of Credit that
+              have not been not purged and are transferable.</para>
+
+              <para role="TEXT">The second beneficiary is only paid when your
+              company, the main beneficiary, receives funds under the Standby
+              Letter of Credit. .</para>
+
+              <para role="TEXT">This action sends a message to the Advising
+              Bank, telling them of the assignment.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit SR records that
+              you or another user have already created and saved, but not
+              submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit SR records that you or
+              another user have created, but have not been submitted due to
+              lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>Transfer and Assignment Form</title>
+
+      <para role="TEXT">The input form for transferring or assigning a
+      Received Standby Letter of Credit is as follows:</para>
+
+      <section role="TEXT">
+        <title>General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="5.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Full Transaction Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Icon at the right-hand
+                end of the <emphasis role="bold">General Details</emphasis>
+                title line.) Click to open a popup window to show full details
+                of the current Received Standby Letter of
+                Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude" /> for this
+                Received Standby Letter of Credit when the Advising Bank
+                created the notification.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Advising Bank's internal
+                reference number assigned by the bank's back office to this
+                Received Standby Letter of Credit. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Issue date of the
+                Received Standby Letter of Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Expiry date of the
+                Received Standby Letter of Credit.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="TEXT">
+        <title>Second Beneficiary/Assignment Details</title>
+
+        <para role="TEXT">This is how this part of the form looks in a
+        transfer. For an assignment, you enter the details of the assignee
+        instead of the second beneficiary.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="5.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Second Beneficiary Details</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name and address of the
+                second beneficiary. The individual fields are described below.
+                You can click the magnifying glass icon to set these fields
+                from a customer list that your company
+                maintains.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Name of second
+                beneficiary. Maximum of 35 characters.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> (line 1)</para></entry>
+
+                <entry valign="top"><para role="TEXT">Address of second
+                beneficiary. Maximum of 3 lines of 35 characters
+                each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="TEXT">
+        <title>Transfer Details</title>
+
+        <para role="TEXT">This is how this part of the form looks in a
+        transfer. For an assignment, you enter the details of the assignee
+        instead of the second beneficiary.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="5.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">Second Beneficiary Details</guimenu>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Details for the SI
+                transfer. The individual fields are described below.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Notify Amendments</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Notify for
+                amendments.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Substitute Invoice</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Substitute invoice.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">Advise
+                Mode</guilabel></entry>
+
+                <entry valign="top"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject></entry>
+
+                <entry valign="top">The advise mode. Select from the options
+                in the dropdown.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="TEXT">
+        <title>Advise Thru Bank</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="5.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Name</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click the magnifying
+                icon to select the Bank. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Address</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Bank address.
+                </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="TEXT">
+        <title>Amount Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="5.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Original LC Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Original Letter of
+                Credit Amount. </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Full Transfer / Transfer Amount</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Either put a tick in the
+                checkbox to indicate a full transfer, or enter the amount of
+                the transfer, which must be less than the original amount. The
+                currency code can't be updated. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="TEXT">
+        <title>Free Format Message</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="5.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT">Free Format Message
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">You can enter a message
+                to the Advising Bank. </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="TEXT">
+        <title>File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="3.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="5.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">File Upload Details</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text field and Browse
+                button, which you can optionally use to attach a file from
+                your local hard disk to give additional details pertaining to
+                this transfer request.</para><note>
+                    <para role="TEXT">The maximum size allowed for each file
+                    attachment is defined in a properties file of the
+                    system.</para>
+                  </note></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+  </section>
+
+  <section condition="TITLE=SR Message to Bank;PERM=sr_access;ACCESS=SR_02"
+           role="TOPIC">
+    <title>Message to Bank</title>
+
+    <para role="TEXT">This section describes the Message to Bank part of the
+    menu and the forms it uses.</para>
+
+    <section role="ITEM">
+      <title>Message to Bank Functions</title>
+
+      <para role="TEXT">This part of the menu contains several functions,
+      providing different ways to send a free-format message to the Advising
+      Bank.</para>
+
+      <para role="TEXT">Typical uses are to reply to notification of
+      discrepancies on your documents presented to the Advising Bank, or to
+      indicate that you accept an amendment to the terms of the underlying SR
+      initiated by the applicant.</para>
+
+      <para role="TEXT"><variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">From Existing
+            SR</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Create a message from an existing Received
+              Standby Letter of Credit.</para>
+
+              <para role="TEXT">This can only be done for an Received Standby
+              Letter of Credit that your company (the main beneficiary) has
+              received notification of from the Advising Bank. Therefore, when
+              you select this option, you are presented with a list of such
+              existing Received Standby Letters of Credit.</para>
+
+              <para role="TEXT">The list is not displayed until you have
+              entered search criteria and clicked <emphasis
+              role="bold">Search</emphasis>. To display all records, enter an
+              asterisk in any of the criteria fields.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Action
+            Required</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Displays any pending action required to
+              complete the forms.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Edit
+            Transactions</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review, complete and submit Message to Bank
+              records that you or another user have already created and saved,
+              but not submitted.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Retrieve
+            Unsigned</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Review and submit Message to Bank records that
+              you or another user have created, but have not been submitted
+              due to lack of authority.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section condition="TITLE=Received Standby Export Letter of Credit - Free Format;PERM=sr_access;ACCESS=SR_02"
+             role="TOPIC">
+      <title>Message to Bank Form - From Existing SR</title>
+
+      <para role="TEXT">This option allows you to communicate with customers
+      for any desired action for an existing SR. When selected, this option
+      will present a list of Message to Bank records. Click on the <emphasis
+      role="bold">Search Options</emphasis> link to display a list of search
+      criteria fields that can be used to filter. The list can be searched by
+      entering search criteria in the <emphasis role="bold">System Id, Entity,
+      Bank Ref., Applicant </emphasis>or <guilabel
+      moreinfo="none">Ccy</guilabel> fields. The list is not displayed until
+      you have entered search criteria and clicked <emphasis
+      role="bold">Search</emphasis>. To display all records, enter an asterisk
+      in any of the criteria fields.</para>
+
+      <para role="TEXT">The columns returned for the list of Existing SRs in
+      the Message to Bank records are described in the following table:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="8.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude" /> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity associated
+                with the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Applicant</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The name of the customer
+                applying for the SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Ccy</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Currency of the
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the SR.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The date of issue of the
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The expiry date of the
+                SR.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+
+      <para role="TEXT">The input form for you to enter the details of the
+      free-format message is as follows:</para>
+
+      <section role="ITEM">
+        <title>From Existing SR Form - General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">View Full Transaction Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button at the
+                right-hand side of the General Details title line.) Open a
+                popup window to show the full details of the current
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                that was generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude" /> for this
+                Received Standby Letter of Credit when it was
+                created.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this Received Standby Letter
+                of Credit when the bank acknowledged the original initiation
+                of the Received Standby LC.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Issue date of the
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Expiry date of the
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel> Message Type</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry><para role="TEXT">Select from the dropdown list:
+                <literal>Correspondence</literal> is the only option.
+                </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing SR Form - Instructions for the Bank Only</title>
+
+        <para role="TEXT">This section is available if the Bank has been
+        enabled for MT798.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Delivery mode</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Method you want to use
+                to send the message to the bank. Select from the dropdown
+                list: </para><para role="TEXT"><programlisting
+                format="linespecific">SWIFT 
+Telex
+Courier</programlisting><note>
+                    <orderedlist>
+                      <listitem>
+                        <para role="TEXT">If you select <type>SWIFT</type>,
+                        the system automatically checks upon submission that
+                        the SR application does not contain any illegal
+                        characters and that the narratives do not exceed the
+                        maximum length allowed by SWIFT. If a problem is
+                        found, you must correct those fields or switch to
+                        another method.</para>
+                      </listitem>
+                    </orderedlist>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Send Attachments by</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Choose the option by
+                which to send the attachments supporting the SR to the Bank.
+                Select from the dropdown list: </para><para
+                role="TEXT"><programlisting format="linespecific">SWIFTNet FileAct
+Fax Transfer
+Email Transfer
+Postal Delivery
+Courier Delivery</programlisting><note>
+                    <orderedlist>
+                      <listitem>
+                        <para role="TEXT">This dropdown appears only when the
+                        transaction is received from a Bank that is MT798
+                        enabled. For transactions received from non-MT798
+                        Banks, the dropdown will not be available.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT">This dropdown is enabled when you
+                        add a file in the <guilabel>File Upload
+                        Details</guilabel> section. For more information on
+                        adding a file, refer to the topic <emphasis>From
+                        Existing SR Form - File Upload
+                        Details</emphasis>.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT">This dropdown enables the
+                        <guilabel>FileAct</guilabel> checkbox described in the
+                        <emphasis>From Existing SR Form - File Upload
+                        Details</emphasis> topic when you select the
+                        <guilabel>SWIFTNet FileAct</guilabel> option.</para>
+                      </listitem>
+                    </orderedlist>
+                  </note></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing SR Form - Free Format Message</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Free Format Message</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank. Click the button to the right of this field, to
+                select predefined phrases. Up to 100 lines of 65 characters
+                each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing SR Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> (File Format
+                Icons)</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column doesn't have a header and
+                displays icons for the type of file. This button is displayed
+                once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Title</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the title of all
+                documents that have been uploaded for the SR. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> File
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the file names of all
+                documents that have been uploaded with the SR. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_downloadfile.gif"
+                                 role="ICON_LOCK" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                download the file to the local system. This button is
+                displayed once you have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_trash.gif"
+                                 role="ICON_LOCK" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                delete the uploaded file. This button is displayed once you
+                have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">FileAct</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click to select the
+                files for which the uploaded file data is to be transferred
+                using the FileAct messaging system. </para><note>
+                    <para role="TEXT">This checkbox appears when you select
+                    <guilabel>SWIFTNet FileAct</guilabel> from the
+                    <guilabel>Send Attachments</guilabel> dropdown field
+                    described in the <emphasis>From Scratch Form -
+                    Instructions for the Bank Only</emphasis> topic.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"></entry>
+
+                <entry valign="top"></entry>
+
+                <entry valign="top"></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                attach a file from your local system to give additional
+                details pertaining to this SR request. It will open the File
+                Details popup. Enter the title for the file upload and browse
+                to the location of the file, and select the file to
+                upload.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>From Existing SR Form - Action Buttons</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Name</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Save</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Click this button to save the current SR
+                details. The SR will be saved with a status of "Draft" and can
+                be updated and finalised at a later time.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Submit</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This option will submit the SR for
+                submission to the bank. If further Authorisations are
+                required, it will be held back with a status of "Unsigned"
+                until submitted by an authorising user.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Cancel</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button cancel
+                the update to the SR and to clear any details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Help</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">This button displays an
+                online help facility that describes the fields associated with
+                the SR form.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+
+    <section condition="TITLE=Received Standby Export Letter of Credit - Free Format;PERM=sr_access;ACCESS=SR_02"
+             role="TOPIC">
+      <title>Message to Bank Form - Action Required</title>
+
+      <para role="TEXT">When this function is selected, a list of existing
+      Received Standby Letter of Credit requiring an action to complete the
+      form is displayed.</para>
+
+      <para role="TEXT">The input form for you to enter the details in
+      free-format message for action required for the transaction. When
+      selected, this option will present a list of Message to Bank records
+      that requires an action from customers. Click on the <emphasis
+      role="bold">Search Options</emphasis> link to display a list of search
+      criteria fields that can be used to filter. The list can be searched by
+      entering search criteria in the <emphasis role="bold">System Id, Entity,
+      Bank Ref., Applicant </emphasis>or <guilabel
+      moreinfo="none">Ccy</guilabel> fields. The list is not displayed until
+      you have entered search criteria and clicked <emphasis
+      role="bold">Search</emphasis>. To display all records, enter an asterisk
+      in any of the criteria fields.</para>
+
+      <para role="TEXT">The columns returned for the list of SRs requiring
+      customer action are described in the following table:</para>
+
+      <para role="TEXT"><informaltable role="TEXT">
+          <tgroup cols="2">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="8.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude" /> for this file,
+                when it was initiated.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Entity</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The Entity associated
+                with the transaction.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Ref</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of record.
+                (New, etc.)</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Applicant</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The name of the customer
+                applying for the SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Ccy</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The currency of the
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Amount</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The amount of the SR.
+                </para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Event Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The external reference
+                for the transaction, if any.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Status</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The status (action
+                required) for the type of message.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Type</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT">The type of action
+                required message.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable></para>
+
+      <para role="TEXT">Click in the <emphasis role="bold">System
+      Id</emphasis> column to open a message for further editing.</para>
+
+      <para role="TEXT">The input form for you to enter the details of the
+      free-format message is as follows:</para>
+
+      <section role="ITEM">
+        <title>Action Required Form - General Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">View Full Transaction Details</guilabel>
+                </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">(Button at the
+                right-hand side of the General Details title line.) Open a
+                popup window to show the full details of the current Letter of
+                Credit.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">System Id</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Unique reference number
+                that was generated by <xi:include href="../entities_en.xml"
+                xpointer="ent_appli"
+                xmlns:xi="http://www.w3.org/2001/XInclude" /> for this SR when
+                it was created.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Bank Reference</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Reference assigned by
+                the Issuing Bank's back office to this Received Standby Letter
+                of Credit when the bank acknowledged the original initiation
+                of the SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Issue Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Issue date of the
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Expiry Date</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Expiry date of the
+                SR.</para></entry>
+              </row>
+
+              <row>
+                <entry><guilabel> Message Type</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry><para role="TEXT">Select from the dropdown list:
+                <literal>Accept</literal> or <literal>Reject</literal>.
+                </para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Action Required Form - Instructions for the Bank Only</title>
+
+        <para role="TEXT">This section is available if the Bank has been
+        enabled for MT798.</para>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Delivery mode</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Method you want to use
+                to send the message to the bank. Select from the dropdown
+                list: </para><para role="TEXT"><programlisting
+                format="linespecific">SWIFT 
+Telex
+Courier</programlisting><note>
+                    <orderedlist>
+                      <listitem>
+                        <para role="TEXT">If you select <type>SWIFT</type>,
+                        the system automatically checks upon submission that
+                        the SR application does not contain any illegal
+                        characters and that the narratives do not exceed the
+                        maximum length allowed by SWIFT. If a problem is
+                        found, you must correct those fields or switch to
+                        another method.</para>
+                      </listitem>
+                    </orderedlist>
+                  </note></para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Send Attachments by</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_arrow.gif"
+                                 role="CHAR_ARROW" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Choose the option by
+                which to send the attachments supporting the SR to the Bank.
+                Select from the dropdown list: </para><para
+                role="TEXT"><programlisting format="linespecific">SWIFTNet FileAct
+Fax Transfer
+Email Transfer
+Postal Delivery
+Courier Delivery</programlisting><note>
+                    <orderedlist>
+                      <listitem>
+                        <para role="TEXT">This dropdown appears only when the
+                        transaction is received from a Bank that is MT798
+                        enabled. For transactions received from non-MT798
+                        Banks, the dropdown will not be available.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT">This dropdown is enabled when you
+                        add a file in the <guilabel>File Upload
+                        Details</guilabel> section. For more information on
+                        adding a file, refer to the topic <emphasis>Action
+                        Required Form - File Upload Details</emphasis>.</para>
+                      </listitem>
+
+                      <listitem>
+                        <para role="TEXT">This dropdown enables the
+                        <guilabel>FileAct</guilabel> checkbox described in the
+                        <emphasis>From Existing SR Form - File Upload
+                        Details</emphasis> topic when you select the
+                        <guilabel>SWIFTNet FileAct</guilabel> option.</para>
+                      </listitem>
+                    </orderedlist>
+                  </note></para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Action Required Form - Free Format Message</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Free Format Message</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_excla.gif"
+                                 role="CHAR_EXCLA" width="2mm" />
+                    </imageobject>
+                  </inlinemediaobject> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Text of your message to
+                the bank. Click on the Phrases icon to the right of this
+                field, to select predefined phrases. Up to 100 lines of 65
+                characters each.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Action Required Form - File Upload Details</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Field</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> (File Format
+                Icons)</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column doesn't have a header and
+                displays icons for the type of file. This button is displayed
+                once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Title</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the title of all
+                documents that have been uploaded for the SR. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none"> File
+                Name</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_info.gif"
+                                 role="CHAR_INFO" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This column shows the file names of all
+                documents that have been uploaded with the SR. This button is
+                displayed once you have added a file.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_downloadfile.gif"
+                                 role="ICON_LOCK" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                download the file to the local system. This button is
+                displayed once you have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/icon_trash.gif"
+                                 role="ICON_LOCK" width="4mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                delete the uploaded file. This button is displayed once you
+                have added a file.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guimenu
+                moreinfo="none">FileAct</guimenu> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_check.gif"
+                                 role="CHAR_CHECK" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click to select the
+                files for which the uploaded file data is to be transferred
+                using the FileAct messaging system. </para><note>
+                    <para role="TEXT">This checkbox appears when you select
+                    <guilabel>SWIFTNet FileAct</guilabel> from the
+                    <guilabel>Send Attachments</guilabel> dropdown field
+                    described in the <emphasis>Action Required Form -
+                    Instructions for the Bank Only</emphasis> topic.</para>
+                  </note></entry>
+              </row>
+
+              <row>
+                <entry valign="top"></entry>
+
+                <entry valign="top"></entry>
+
+                <entry valign="top"></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Add a File</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"> <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject> </para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button to
+                attach a file from your local system to give additional
+                details pertaining to this SR request. It will open the File
+                Details popup. Enter the title for the file upload and browse
+                to the location of the file, and select the file to
+                upload.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+
+      <section role="ITEM">
+        <title>Action Required Form - Action Buttons</title>
+
+        <informaltable role="TEXT">
+          <tgroup cols="3">
+            <colspec colname="c1" colwidth="2.0*" />
+
+            <colspec colname="c2" colwidth="1.0*" />
+
+            <colspec colname="c3" colwidth="6.0*" />
+
+            <thead>
+              <row>
+                <entry valign="top"><para role="TEXT">Name</para></entry>
+
+                <entry valign="top"><para role="TEXT">Type</para></entry>
+
+                <entry valign="top"><para
+                role="TEXT">Description</para></entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Save</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">Click this button to save the current SR
+                details. The SR will be saved with a status of "Draft" and can
+                be updated and finalised at a later time.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><guilabel moreinfo="none">
+                Submit</guilabel></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top">This option will submit the SR for
+                submission to the bank. If further Authorisations are
+                required, it will be held back with a status of "Unsigned"
+                until submitted by an authorising user.</entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Cancel</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">Click this button cancel
+                the update to the SR and to clear any details.</para></entry>
+              </row>
+
+              <row>
+                <entry valign="top"><para role="TEXT"> <guilabel
+                moreinfo="none">Help</guilabel> </para></entry>
+
+                <entry valign="top"><para role="TEXT"><inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="../images/char_action.gif"
+                                 role="CHAR_ACTION" width="3mm" />
+                    </imageobject>
+                  </inlinemediaobject></para></entry>
+
+                <entry valign="top"><para role="TEXT">This button displays an
+                online help facility that describes the fields associated with
+                the SR form.</para></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Pending SRs</title>
+
+    <para role="TEXT">This function will display a list of all SRs records
+    that have not been approved to the bank. These can be edited or submitted
+    as required by any user with the appropriate authorities.</para>
+
+    <para role="TEXT">The list can be searched by entering search criteria in
+    the <emphasis role="bold">Entity, System ID, </emphasis>or <guilabel
+    moreinfo="none">Applicant</guilabel> fields.</para>
+
+    <para role="TEXT">To display all records, enter an asterisk in any of the
+    criteria fields.</para>
+
+    <para role="TEXT">There is a Download File button to download in CSV and
+    Spreadsheet (MS Excel_ format. The columns returned in the list of Pending
+    SRs are the following:<informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System ID</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> for this file,
+              when it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Entity that is related to
+              the SR transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Our
+              Ref</guilabel></entry>
+
+              <entry valign="top">The client's reference details.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Type</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The type of record. (New,
+              etc.) </para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the SR.
+              (Incomplete, Draft, Etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Applicant</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The SR
+              applicant.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Ccy</guilabel></entry>
+
+              <entry valign="top">The currency of the SR.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Amount</guilabel></entry>
+
+              <entry valign="top">The amount for this SR.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Input</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The last modified date for
+              this SR.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>Only Draft and Incomplete (unauthorised) entries can be
+    edited by clicking the <emphasis role="bold">edit</emphasis>
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_edit.gif" />
+        </imageobject>
+      </inlinemediaobject> icon in the left hand column of the entry.</para>
+
+    <para role="TEXT">Submitted entries may only be viewed using the View icon
+    <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" />
+        </imageobject>
+      </inlinemediaobject>.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>SR Inquiry</title>
+
+    <para role="TEXT">This function will display a list of all SR records that
+    have been submitted to the bank and accepted. These can only be
+    viewed.</para>
+
+    <para role="TEXT">The list can be searched by entering search criteria in
+    the <emphasis role="bold">Entity, System ID, Bank Reference, Our
+    Reference, Applicant </emphasis>or <guilabel
+    moreinfo="none">Ccy</guilabel> fields.</para>
+
+    <para role="TEXT">The list is not displayed until you have entered search
+    criteria and clicked <emphasis role="bold">Search</emphasis>. To display
+    all records, enter an asterisk in any of the criteria fields.</para>
+
+    <para role="TEXT">The columns returned in the list of Fixed deposits are
+    the following:</para>
+
+    <para role="TEXT"><informaltable role="TEXT">
+        <tgroup cols="2">
+          <colspec colname="c1" colwidth="2.0*" />
+
+          <colspec colname="c2" colwidth="8.0*" />
+
+          <thead>
+            <row>
+              <entry valign="top"><para role="TEXT">Field</para></entry>
+
+              <entry valign="top"><para role="TEXT">Description</para></entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">System ID</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Unique reference number
+              generated by <xi:include href="../entities_en.xml"
+              xpointer="ent_appli"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> for this file,
+              when it was initiated.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Entity</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">Entity that is related to
+              the SR transaction.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Bank
+              Ref.</guilabel></entry>
+
+              <entry valign="top">The reference number the bank uses to
+              identify this SR.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel moreinfo="none">Our
+              Ref</guilabel></entry>
+
+              <entry valign="top">The client's reference details.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Status</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The status of the SR.
+              (Incomplete, Draft, Etc.)</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Applicant</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The SR
+              beneficiary.</para></entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Ccy</guilabel></entry>
+
+              <entry valign="top">The currency of the SR.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><guilabel
+              moreinfo="none">Amount</guilabel></entry>
+
+              <entry valign="top">The amount for this SR.</entry>
+            </row>
+
+            <row>
+              <entry valign="top"><para role="TEXT"> <guilabel
+              moreinfo="none">Issue date</guilabel> </para></entry>
+
+              <entry valign="top"><para role="TEXT">The date the SR was
+              issued.</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>Click on the view <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_popup.gif" />
+        </imageobject>
+      </inlinemediaobject> and history <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../images/icon_file.gif" />
+        </imageobject>
+      </inlinemediaobject> icons on the left of each entry to view their
+    details.</para>
+  </section>
+
+  <section condition="TITLE=SR Maintenance;PERM=sr_access;ACCESS=SR_17"
+           role="TOPIC">
+    <title>SR Maintenance</title>
+
+    <para role="TEXT">This function is user to maintain SR records that were
+    created, but are no longer required in the system.</para>
+
+    <section role="ITEM">
+      <title>SR Maintenance - Options</title>
+
+      <para role="TEXT">The following options are available for SR
+      Maintenance:</para>
+
+      <para role="TEXT"><variablelist>
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Set Entity</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Set and associate an entity to SR
+              transactions.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Set
+            Reference</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">Associate a reference to SR
+              transactions.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Unsigned
+            SRs</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">List and optionally delete unsigned
+              (unauthorised) SR transactions.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Purged SRs</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">List and optionally delete SR transactions
+              that have been marked as <type>Purged</type> by the Bank's Trade
+              Services team.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><guimenuitem moreinfo="none">Rejected
+            SRs</guimenuitem></term>
+
+            <listitem>
+              <para role="TEXT">List and optionally delete rejected
+              transactions.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section role="ITEM">
+      <title>SR Maintenance - Set Entity</title>
+
+      <para role="TEXT">List all SRs and associate an Entity. Click the
+      <emphasis role="bold">Search Options</emphasis> link to display the
+      fields that can be used to filter the list. Only complete the fields
+      that are required for the filter.</para>
+
+      <para role="TEXT">Click <guimenu>Set Entity</guimenu> and then select
+      <guilabel>System ID</guilabel>. You can now set an entity for the SR by
+      clicking the search icon <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="../images/icon_glass.gif" />
+          </imageobject>
+        </inlinemediaobject> from the Entity field. Click the
+      <guibutton>Submit</guibutton> button to complete the changes.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>SR Maintenance - Set Reference</title>
+
+      <para role="TEXT">Assign a customer reference to a SR record that
+      currently has none.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of records that have no reference assigned. Click in the <emphasis
+      role="bold">System Id</emphasis> column to open a form where you can
+      assign a reference to the record.</para>
+
+      <para role="TEXT"><note>
+          <para role="TEXT">This action is not validated against the
+          Jurisdiction matrix. All transactions of the current files are
+          updated.</para>
+        </note></para>
+    </section>
+
+    <section role="ITEM">
+      <title>SR Maintenance - Unsigned SRs</title>
+
+      <para role="TEXT">List and optionally delete SR transactions that have
+      been marked as <type>Purged</type> by the Issuing Bank's Trade Services
+      team. You cannot initiate further amendments or messages on such a
+      transaction, and can only use its data for inquiry purposes. Click the
+      <emphasis role="bold">Search Options</emphasis> link to display the
+      fields that can be used to filter the list. Only complete the fields
+      that are required for the filter.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>SR Maintenance - Purged SRs</title>
+
+      <para role="TEXT">List and optionally delete Rejected
+      transactions.</para>
+
+      <para role="TEXT">When you select this option, you are presented with a
+      list of SR records that were submitted, but rejected by the bank and
+      have a status of "Not Processed". You cannot initiate further amendments
+      or messages on such a transaction, and can only use its data for inquiry
+      purposes. Click the <emphasis role="bold">Search Options</emphasis> link
+      to display the fields that can be used to filter the list. Only complete
+      the fields that are required for the filter.</para>
+
+      <para role="TEXT">You can delete one or more records in a single
+      operation placing a tick in the check box on the left of the entry, and
+      clicking the <emphasis role="bold">Delete selected
+      transactions</emphasis> button at the bottom of the page.</para>
+    </section>
+  </section>
+</section>

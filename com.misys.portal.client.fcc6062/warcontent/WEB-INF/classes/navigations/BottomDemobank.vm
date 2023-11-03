@@ -1,0 +1,533 @@
+## Sample.
+
+#if($data.getServletPath().contains("."))
+	#set($subdomainurl=$data.getServerName().substring(0, $data.getServerName().lastIndexOf(".")))
+#else
+	#set($subdomainurl="")
+#end 
+
+#set($footercopyright=".FOOTER_COPY_RIGHT")
+
+
+#set ($BottomLogoFile = $config.getConfiguration().getString("site.footer.logo"))
+#if($config.getConfiguration().getString("session.idle.timeout"))
+	#set ($idleSessionTimeOut = $config.getConfiguration().getString("session.idle.timeout"))
+#end
+#if($config.getConfiguration().getString("session.max.duration"))
+	#set ($sessionMaxDuration = $config.getConfiguration().getString("session.max.duration"))
+	#set ($sessionMaxDurationAlert = $config.getConfiguration().getString("session.max.duration.alert"))
+#end
+#set ($LogoutScreen = $config.getConfiguration().getString("action.logout"))
+#set ($contextPath = $gtpapp.getContextPath())
+#set ($servletPath = $gtpapp.getServletPath())
+#set ($language = $gtpapp.getLanguage())
+#set ($continue = $l10n.getGTPString($language,"XSL_ACTION_CONTINUE"))
+#set ($logout = $l10n.getGTPString($language,"LOGOUT"))
+#set ($ok = $l10n.getGTPString($language,"OK"))
+#set ($cancel = $l10n.getGTPString($language,"CANCEL"))
+#set ($idleSessionTimeoutHeading = $l10n.getGTPString($language,"IDLE_SESSION_DIALOG_HEADING"))
+#set ($backToHome = $l10n.getGTPString($language,"XSL_GO_TO_HOME_PAGE_BUTTON"))
+#set ($ok = $l10n.getGTPString($language,"OK"))
+#set ($cancel = $l10n.getGTPString($language,"CANCEL"))
+#set ($durationSessionTimeoutHeading = $l10n.getGTPString($language,"DURATION_SESSION_DIALOG_HEADING"))
+#set ($ssessionOverDialogHeading = $l10n.getGTPString($language,"SESSION_OVER_DIALOG_HEADING"))
+#set ($sessionMaxDurationOverDialogHeading = $l10n.getGTPString($language,"SESSION_MAX_DURATION_OVER_DIALOG_HEADING"))
+#set ($aboutUs = $l10n.getGTPString($language,"FOOTER_ABOUT_US"))
+#set ($contactUs = $l10n.getGTPString($language,"FOOTER_CONTACT_US"))
+#set ($help = $l10n.getGTPString($language,"FOOTER_HELP"))
+#set ($otherSites = $l10n.getGTPString($language,"FOOTER_OTHER_SITES"))
+#set ($impInfo = $l10n.getGTPString($language,"FOOTER_IMPORTANT_INFORMATION"))
+#set ($privacyAndSecurity = $l10n.getGTPString($language,"FOOTER_PRIVACY_SECURITY"))
+
+#if($config.getConfiguration().getString("dojo.css.subdomain.allowed") == "true")
+	#set ($copyRight = $l10n.getGTPString($language,"$subdomainurl$footercopyright"))	
+#else
+	#set ($copyRight = $l10n.getGTPString($language,"FOOTER_COPY_RIGHT"))
+#end
+
+#set ($version = $gtpapp.getVersion())
+#set ($saveAndContinue = $l10n.getGTPString($language,"CONTINUE_AFTER_SAVE"))
+#set ($continueWithoutSave = $l10n.getGTPString($language,"CONTINUE_WITHOUT_SAVE"))
+#set ($cancelSave = $l10n.getGTPString($language,"CANCEL_SAVE"))
+#set ($unsavedDataExists = $l10n.getGTPString($language,"UNSAVED_DATA_EXISTS"))
+#if($config.getConfiguration().getString("unsaved.data.alert.enabled"))
+	#set ($saveUnsavedDataBeforeNavigate = $config.getConfiguration().getString("unsaved.data.alert.enabled"))
+#else
+	#set ($saveUnsavedDataBeforeNavigate = "false")
+#end
+
+#set ($menuNavText = $l10n.getGTPString($language,"A11Y_NAV_INST"))
+#set ($tblNavText = $l10n.getGTPString($language,"A11Y_TBL_INST"))
+#set ($tblHeaderNavText = $l10n.getGTPString($language,"A11Y_TBL_HEAD_INST"))
+#set ($calendarNavText = $l10n.getGTPString($language,"A11Y_CAL_INST"))
+#set ($dropDownNavText = $l10n.getGTPString($language,"A11Y_DROPDOWN_INST"))
+#set ($dailogLinkText = $l10n.getGTPString($language,"A11Y_DIALOG_LINK_TEXT"))
+#set ($toggleBoxText = $l10n.getGTPString($language,"A11Y_TOGGLE_INST"))
+#set ($tablePageSizeNavText = $l10n.getGTPString($language,"A11Y_TABLE_PAGE_SIZE_INST"))
+#set ($tablePageNavText = $l10n.getGTPString($language,"A11Y_TABLE_PAGE_INST"))
+#set ($topMenuText = $l10n.getGTPString($language,"A11Y_TOP_NAV_INST"))
+#set ($languageMenuText = $l10n.getGTPString($language,"A11Y_LANGUAGE_MENU_INST"))
+#set ($bookMarMenuText = $l10n.getGTPString($language,"A11Y_BOOKMARK_INST"))
+
+#set ($fccenable = $defaultresource.getResource("ANGULAR_HOMEPAGE"))
+#set ($homeUrl = $defaultresource.getResource("HOME_URL"))
+#set ($logoFilePath = $defaultresource.getResource("SITE_HEADER_LOGO_KEY"))
+#set ($aboutUs = $defaultresource.getResource("FOOTER_ABOUT_US"))
+#set ($privacyPolicy = $defaultresource.getResource("FOOTER_PRIVACY_POLICY"))
+#set ($termsConditions = $defaultresource.getResource("FOOTER_TERMS_CONDITIONS"))
+#set ($cookiePolicy = $defaultresource.getResource("FOOTER_COOKIE_POLICY"))
+#set ($contactUs = $defaultresource.getResource("FOOTER_CONTACT_US"))
+#set ($homeUrlLocale = $l10n.getGTPString($language,"ANGULAR_FOOTER_FINASTRA_COM"))
+#set ($aboutUsLocale = $l10n.getGTPString($language,"ANGULAR_FOOTER_ABOUT_US"))
+#set ($privacyPolicyLocale = $l10n.getGTPString($language,"ANGULAR_FOOTER_PRIVACY_POLICY"))
+#set ($termsCondtnLocale = $l10n.getGTPString($language,"ANGULAR_FOOTER_TERMS_CONDITIONS"))
+#set ($cookiePolicyLocale = $l10n.getGTPString($language,"ANGULAR_FOOTER_COOKIE_POLICY"))
+#set ($contactUsLocale = $l10n.getGTPString($language,"ANGULAR_FOOTER_CONTACT_US"))
+#set ($copyRightBegin = $l10n.getGTPString($language,"ANGULAR_FOOTER_COPYRIGHT_BEGIN"))
+#set ($copyRightEnd = $l10n.getGTPString($language,"ANGULAR_FOOTER_COPYRIGHT_END"))
+#set ($redirectScreen = $gtpapp.getRedirectScreen())
+
+#if($fccenable == "true")
+	<style>
+		#footerHtml {
+		  position: relative;
+		  margin-top: 0em;
+		  clear: both;
+		  padding-top: 1.875em;
+		}
+		
+		.footerBody {
+		  display: -webkit-box;
+		  display: flex;
+		  flex-wrap: wrap;
+		  width: 100%;
+		  padding-top: 1.5em;
+		}
+		
+		.footerLogo {
+		  width: 100%;
+		}
+		
+		.logoImg {
+		  padding: 0.5em !important;
+		  outline: none !important;
+		}
+		
+		.logoImg img {
+		  max-width: 6.25em;
+		  max-height: 2.875em;
+		}
+		
+		.urlPortion {
+		  width: 100%;
+		}
+		
+		.footer-body {
+		  color: #c137a2;
+		  font-size: 1em;
+		  line-height: 1em;
+		  float: right;
+		  width: 100%;
+		  text-align: end;
+		}
+		
+		.footer-body a {
+		  color: #c137a2;
+		  font-weight: 400;
+		}
+		
+		.footer-body a:focus {
+		  outline: none;
+		}
+		
+		.footer-bottom {
+		  color: #6b6868 !important;
+		  font-size: 1em;
+		  line-height: 1em;
+		  text-align: center;
+		  margin-bottom: 0.5em;
+		  font-weight: 600;
+		}
+		
+		@media screen and (min-width: 992px) {
+		  .footer-body {
+		    width: auto !important;
+		  }
+		}
+		
+		@media screen and (max-width: 992px) {
+		  .footerLogo {
+		    text-align: center;
+		    width: 100% !important;
+		  }
+		  .urlPortion {
+		    width: 100% !important;
+		  }
+		  .footer-body {
+		    text-align: center !important;
+		    margin-top: 0.5em !important;
+		    margin-bottom: 0.5em !important;
+		  }
+		}
+		
+		@media (min-width: 768px) and (max-width: 992px) {
+		  .footer-body {
+		    width: 50% !important;
+		  }
+		}
+		
+		@media (min-width: 992px) and (max-width: 1200px) {
+		  .footer-body {
+		    text-align: center !important;
+		    width: auto !important;
+		  }
+		  .footerLogo {
+		    width: 20% !important;
+		  }
+		  .urlPortion {
+		    width: 80% !important;
+		  }
+		}
+		
+		@media screen and (min-width: 1200px) {
+		  .footerLogo {
+		    width: 20% !important;
+		  }
+		  .urlPortion {
+		    width: 80% !important;
+		  }
+		}
+		
+		@media screen and (min-width: 1200px) {
+		  .footer-body {
+		    width: auto;
+		    padding-left: 6%;
+		  }
+		  .logoImg img {
+		    margin-top: -17px;
+		    margin-bottom: 17px;
+		  }
+		}
+		
+		@media (min-width: 992px) and (max-width: 1200px) {
+		  .footer-body {
+		    width: auto;
+		    padding-left: 3%;
+		  }
+		  .logoImg img {
+		    margin-top: -17px;
+		    margin-bottom: 17px;
+		  }
+		}
+	</style>
+</div>
+	<footer id="footerHtml">
+		<div class="footerBody">
+			<div class="footerLogo">
+				<a href="$homeUrl" target="_blank" class="logoImg">
+					<img src='$contextPath$logoFilePath' alt="Galleria 1" />
+				</a>
+			</div>
+			<div class="urlPortion">
+				#if($contactUs || $contactUs != "")
+					<div class="footer-body">
+						<a href="$contactUs" target="_blank">$contactUsLocale</a>
+					</div>
+				#end
+				#if($cookiePolicy || $cookiePolicy != "")
+					<div class="footer-body">
+						<a href="$cookiePolicy" target="_blank">$cookiePolicyLocale</a>
+					</div>
+				#end
+				#if($termsConditions || $termsConditions != "")
+					<div class="footer-body">
+						<a href="$termsConditions" target="_blank">$termsCondtnLocale</a>
+					</div>
+				#end
+				#if($privacyPolicy || $privacyPolicy != "")
+					<div class="footer-body">
+						<a href="$privacyPolicy" target="_blank">$privacyPolicyLocale</a>
+					</div>
+				#end
+				#if($aboutUs || $aboutUs != "")
+					<div class="footer-body">
+						<a href="$aboutUs" target="_blank">$aboutUsLocale</a>
+					</div>
+				#end
+				#if($homeUrl || $homeUrl != "")
+					<div class="footer-body">
+						<a href="$homeUrl" target="_blank">$homeUrlLocale</a>
+					</div>
+				#end
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div>&#9400; $copyRightEnd</div>
+		</div>
+	</footer>
+	#if($redirectScreen == "classicUXHome")
+		##Timers for Session handling
+	#if($data.User.hasLoggedIn())
+		#if($idleSessionTimeOut)
+			#if($idleSessionTimeOut)
+				<input type="hidden" id="idleSessionTimeOutIndicator"></input>
+			#end
+			#if($sessionMaxDuration)
+				<input type="hidden" id="sessionMaxDurationIndicator"></input>
+			#end
+			#set ($presentTime = $gtpapp.getPresentTime())
+			#set ($loginTime = $data.User.getLastLogin().getTime())
+			<input type="hidden" id="logoutAction" value='$contextPath$servletPath/action/$LogoutScreen'></input>
+			<input type="hidden" id="loginAction" value='$contextPath$servletPath/screen/$LoginScreen'></input>
+			#if($config.getConfiguration().getString("action.logout.url"))
+				#set ($CustomLoginScreen = $config.getConfiguration().getString("action.logout.url"))
+				<input type="hidden" id="customLoginAction" value='$CustomLoginScreen'></input>
+			#end
+			<div class="widgetContainer">
+				<div class="hide" id="idleSessionDialogContainer">
+					<div id="idleSessionDialog" dojoType="misys.widget.Dialog" closeable="false">
+						<div id="idleSessionDialogContent" >
+							<b>$idleSessionTimeoutHeading</b></br>
+							<div id="idleSessionDialogButtons" style="text-align:center;">
+								<button id="sessionContinueButton" dojoType="dijit.form.Button">$continue</button>
+								<button id="sessionlogButton" dojoType="dijit.form.Button">$logout</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="hide" id="durationSessionDialogContainer">
+					<div id="durationSessionDialog" dojoType="misys.widget.Dialog">
+						<div id="durationSessionDialogContent">
+							<b>$durationSessionTimeoutHeading</b>
+							<div id="durationSessionDialogButtons" style="text-align:center;">
+								<button id="OkSessionButton" dojoType="dijit.form.Button">$ok</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="hide" id="sessionOverDialogContainer">
+					<div id="sessionOverDialog" dojoType="misys.widget.Dialog">
+						<div id="sessionOverDialogContent">
+							<b>$ssessionOverDialogHeading</b>
+							<div id="sessionOverDialogButtons" style="text-align:center;">
+								<button id="sessionOverButton" dojoType="dijit.form.Button">$backToHome</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="hide" id="sessionMaxDurationOverDialogContainer">
+					<div id="sessionMaxDurationOverDialog" dojoType="misys.widget.Dialog">
+						<div id="sessionMaxDurationOverDialogContent">
+							<b>$sessionMaxDurationOverDialogHeading</b>
+							<div id="sessionMaxDurationOverDialogButtons" style="text-align:center;">
+								<button id="sessionMaxDurationOverButton" dojoType="dijit.form.Button">$backToHome</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<!-- Start of Accessibilty navigation guides --> 
+			#if ($gtpapp.isAccessibilityEnabled())
+				<div id="navigation-instructions" class="sr-only">$menuNavText</div>
+				<div id="table-body-instructions" class="sr-only">$tblNavText</div>
+				<div id="table-head-instructions" class="sr-only">$tblHeaderNavText</div>
+				<div id="calendar-instructions" class="sr-only">$calendarNavText</div>
+				<div id="dropdown-instructions" class="sr-only">$dropDownNavText</div>
+				<div id="dialog-link-inst" class="sr-only">$dailogLinkText</div>
+				<div id="toggle-box-inst" class="sr-only">$toggleBoxText</div>
+				<div id="table-page-size-instructions" class="sr-only">$tablePageNavText</div>
+				<div id="table-page-instructions" class="sr-only">$tablePageNavText</div>
+				<div id="top-menu-instructions" class="sr-only">$topMenuText</div>
+				<div id="language-menu-instructions" class="sr-only">$languageMenuText</div>
+				<div id="bookmark-menu-instructions" class="sr-only">$bookMarMenuText</div>
+				<div id="date-instructions" class='sr-only'>$l10n.getGTPString($language,"DATE_FORMAT")</div>
+			#end
+			<!-- End of Accessibility navigation guide --> 		
+			
+			<script>
+				dojo.subscribe('ready',function(){
+					misys._config = misys._config || {};
+					dojo.mixin(misys._config,{
+					#if($idleSessionTimeOut)
+						idleSessionTimeOutTime : $idleSessionTimeOut,
+					#end
+					#if($sessionMaxDuration)
+						sessionMaxDurationTime : $sessionMaxDuration,
+						sessionMaxDurationTimeAlert : $sessionMaxDurationAlert,
+						stopIdleSessionTimer : false,
+					#end
+						saveUnsavedData : $saveUnsavedDataBeforeNavigate,
+						warningMessages : [],
+						loginTime : $loginTime,
+						presentTime : $presentTime				
+					});
+					misys.idleSessionTimer(0);
+					misys.durationSessionTimer(0);
+				});
+			</script>
+		#end
+	##Components for Unsaved Data Alert
+		#if($saveUnsavedDataBeforeNavigate == "true")
+			<div class="hide widgetContainer" id="unsavedDataDialogContainer">
+				<div id="unsavedDataDialog" dojoType="dijit.Dialog">
+					<div id="unsavedDataDialogContent">
+						<div>$unsavedDataExists</div>
+						<div id="unsavedDataDialogButtons" style="text-align:right;">
+							<button id="SaveContButton" dojoType="dijit.form.Button" onclick="misys.setUnsavedDataOption('save')">$saveAndContinue</button>
+							<button id="ContButton" dojoType="dijit.form.Button" onclick="misys.setUnsavedDataOption('nosave')">$continueWithoutSave</button>
+							<button id="CancelButton" dojoType="dijit.form.Button" onclick="misys.setUnsavedDataOption('notset')">$cancelSave</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		#end
+	#end
+	#end
+#else
+	#if($gtpapp.isAccessibilityEnabled())
+		<footer class="footer inside">
+	#else
+		<div class="footer inside">
+	#end
+		<!-- <div style="margin: 3px 5px 10px 0; text-align:right; font-size: 0.6em">Build: 4.2.0.0</div> -->
+		<div class="footerDiv2">
+			<span>$copyRight</span>
+			<span class="build-version">Build: $version</span>
+		</div>
+	#if($gtpapp.isAccessibilityEnabled())
+		</footer>
+	#else
+		</div>
+	#end	
+	
+	    <div id="footerright">
+				<span class="logofooter"></span>   
+	    </div>
+	</div>
+	##Timers for Session handling
+	#if($data.User.hasLoggedIn())
+		#if($idleSessionTimeOut)
+			#if($idleSessionTimeOut)
+				<input type="hidden" id="idleSessionTimeOutIndicator"></input>
+			#end
+			#if($sessionMaxDuration)
+				<input type="hidden" id="sessionMaxDurationIndicator"></input>
+			#end
+			#set ($presentTime = $gtpapp.getPresentTime())
+			#set ($loginTime = $data.User.getLastLogin().getTime())
+			<input type="hidden" id="logoutAction" value='$contextPath$servletPath/action/$LogoutScreen'></input>
+			<input type="hidden" id="loginAction" value='$contextPath$servletPath/screen/$LoginScreen'></input>
+			#if($config.getConfiguration().getString("action.logout.url"))
+				#set ($CustomLoginScreen = $config.getConfiguration().getString("action.logout.url"))
+				<input type="hidden" id="customLoginAction" value='$CustomLoginScreen'></input>
+			#end
+			<div class="widgetContainer">
+				<div class="hide" id="idleSessionDialogContainer">
+					<div id="idleSessionDialog" dojoType="misys.widget.Dialog" closeable="false">
+						<div id="idleSessionDialogContent" >
+							<b>$idleSessionTimeoutHeading</b></br>
+							<div id="idleSessionDialogButtons" style="text-align:center;">
+								<button id="sessionContinueButton" dojoType="dijit.form.Button">$continue</button>
+								<button id="sessionlogButton" dojoType="dijit.form.Button">$logout</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="hide" id="durationSessionDialogContainer">
+					<div id="durationSessionDialog" dojoType="misys.widget.Dialog">
+						<div id="durationSessionDialogContent">
+							<b>$durationSessionTimeoutHeading</b>
+							<div id="durationSessionDialogButtons" style="text-align:center;">
+								<button id="OkSessionButton" dojoType="dijit.form.Button">$ok</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="hide" id="sessionOverDialogContainer">
+					<div id="sessionOverDialog" dojoType="misys.widget.Dialog">
+						<div id="sessionOverDialogContent">
+							<b>$ssessionOverDialogHeading</b>
+							<div id="sessionOverDialogButtons" style="text-align:center;">
+								<button id="sessionOverButton" dojoType="dijit.form.Button">$backToHome</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="hide" id="sessionMaxDurationOverDialogContainer">
+					<div id="sessionMaxDurationOverDialog" dojoType="misys.widget.Dialog">
+						<div id="sessionMaxDurationOverDialogContent">
+							<b>$sessionMaxDurationOverDialogHeading</b>
+							<div id="sessionMaxDurationOverDialogButtons" style="text-align:center;">
+								<button id="sessionMaxDurationOverButton" dojoType="dijit.form.Button">$backToHome</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<!-- Start of Accessibilty navigation guides --> 
+			#if ($gtpapp.isAccessibilityEnabled())
+				<div id="navigation-instructions" class="sr-only">$menuNavText</div>
+				<div id="table-body-instructions" class="sr-only">$tblNavText</div>
+				<div id="table-head-instructions" class="sr-only">$tblHeaderNavText</div>
+				<div id="calendar-instructions" class="sr-only">$calendarNavText</div>
+				<div id="dropdown-instructions" class="sr-only">$dropDownNavText</div>
+				<div id="dialog-link-inst" class="sr-only">$dailogLinkText</div>
+				<div id="toggle-box-inst" class="sr-only">$toggleBoxText</div>
+				<div id="table-page-size-instructions" class="sr-only">$tablePageNavText</div>
+				<div id="table-page-instructions" class="sr-only">$tablePageNavText</div>
+				<div id="top-menu-instructions" class="sr-only">$topMenuText</div>
+				<div id="language-menu-instructions" class="sr-only">$languageMenuText</div>
+				<div id="bookmark-menu-instructions" class="sr-only">$bookMarMenuText</div>
+				<div id="date-instructions" class='sr-only'>$l10n.getGTPString($language,"DATE_FORMAT")</div>
+			#end
+			<!-- End of Accessibility navigation guide --> 		
+			
+			<script>
+				dojo.subscribe('ready',function(){
+					misys._config = misys._config || {};
+					dojo.mixin(misys._config,{
+					#if($idleSessionTimeOut)
+						idleSessionTimeOutTime : $idleSessionTimeOut,
+					#end
+					#if($sessionMaxDuration)
+						sessionMaxDurationTime : $sessionMaxDuration,
+						sessionMaxDurationTimeAlert : $sessionMaxDurationAlert,
+						stopIdleSessionTimer : false,
+					#end
+						saveUnsavedData : $saveUnsavedDataBeforeNavigate,
+						warningMessages : [],
+						loginTime : $loginTime,
+						presentTime : $presentTime				
+					});
+					misys.idleSessionTimer(0);
+					misys.durationSessionTimer(0);
+				});
+			</script>
+		#end
+	##Components for Unsaved Data Alert
+		#if($saveUnsavedDataBeforeNavigate == "true")
+			<div class="hide widgetContainer" id="unsavedDataDialogContainer">
+				<div id="unsavedDataDialog" dojoType="dijit.Dialog">
+					<div id="unsavedDataDialogContent">
+						<div>$unsavedDataExists</div>
+						<div id="unsavedDataDialogButtons" style="text-align:right;">
+							<button id="SaveContButton" dojoType="dijit.form.Button" onclick="misys.setUnsavedDataOption('save')">$saveAndContinue</button>
+							<button id="ContButton" dojoType="dijit.form.Button" onclick="misys.setUnsavedDataOption('nosave')">$continueWithoutSave</button>
+							<button id="CancelButton" dojoType="dijit.form.Button" onclick="misys.setUnsavedDataOption('notset')">$cancelSave</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		#end
+	#end
+#end

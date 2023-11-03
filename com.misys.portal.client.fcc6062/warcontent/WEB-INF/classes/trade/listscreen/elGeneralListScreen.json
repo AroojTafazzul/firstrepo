@@ -1,0 +1,89 @@
+{
+	"productcode": "N001_EL",
+	"buttons": [
+		{
+			"buttonName": "initiateELCMT700Button",
+			"permission": "el_swift_upload",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?productCode=EL&subProductCode=&tnxTypeCode=01&mode=INITIATE"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "live",
+			"listdefName": "/trade/listdef/customer/EL/customerLiveELList",
+			"permission": "el_access",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "draft",
+			"listdefName": "/trade/listdef/customer/EL/customerDraftELList",
+			"permission": "el_save",
+			"index": 1,
+			"selected": "false"
+		},
+		{
+			"tabName": "uaPendingActions",
+			"listdefName": "/trade/listdef/customer/EL/openPendingActionELList",
+			"permission": "el_save",
+			"index": 2,
+			"selected": "false"
+		},
+		{
+			"tabName": "uaPendingApproval",
+			"listdefName": "/trade/listdef/customer/EL/customerAwaitingClientELList",
+			"permission": "el_access",
+			"index": 3,
+			"selected": "false",
+			"severalSubmit": "el_approve",
+			"commentsRequired": "true",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "uaPendingBankApproval",
+			"listdefName": "/trade/listdef/customer/EL/customerAwaitingBankELList",
+			"permission": "el_access",
+			"index": 4,
+			"selected": "false"
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/trade/listdef/customer/EL/customerRejectedELList",
+			"permission": "el_access",
+			"index": 5,
+			"selected": "false"
+		},
+		{
+			"tabName": "closed",
+			"listdefName": "/trade/listdef/customer/EL/customerOthersELList",
+			"permission": "el_access",
+			"index": 6,
+			"selected": "false",
+			"severalSubmit": "el_purged_maintain",
+			"commentsRequired": "false",
+			"buttonList": [
+				{
+			        "name": "delete",
+			        "type": "submit",
+			        "styleClass": "primaryButton deleteButton",
+			        "localizationKey": "delete"
+		      	}
+			]
+			
+		}
+	]
+}

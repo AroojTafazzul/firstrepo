@@ -1,0 +1,71 @@
+{
+	"productcode": "BENE",
+	"enableMultipeDownloadFormat": true,
+	"buttons": [
+		{
+			"buttonName": "bulkUploadListing",
+			"permission": "access_beneficiary_file_upload_mc",
+			"buttonClass": "primaryButton",
+			"routerLink": "productListing?option=BENEFICIARY_FILE_UPLOAD_MC"
+		},
+		{
+			"buttonName": "createBeneficary",
+			"permission": "modify_customer_beneficiary_mc",
+			"buttonClass": "primaryButton",
+			"routerLink": "productScreen?option=BENEFICIARY_MASTER_MAINTENANCE_MC&operation=ADD_FEATURES"
+		}
+	],
+	"tabs": [
+		{
+			"tabName": "draft",
+			"listdefName": "/beneficiary/listdef/beneficiaryDraftList",
+			"permission": "modify_customer_beneficiary_mc",
+			"index": 0,
+			"selected": "true"
+		},
+		{
+			"tabName": "uaPendingApproval",
+			"listdefName": "/beneficiary/listdef/beneficiaryPendingApprovalList",
+			"permission": "access_customer_beneficiary_mc",
+			"index": 1,
+			"selected": "true",
+			"commentsRequired": "true",
+			"severalSubmit": "approve_customer_beneficiary_mc",
+			"buttonList": [
+				{
+			        "name": "return",
+			        "type": "submit",
+			        "styleClass": "secondaryButton rejectButton",
+			        "localizationKey": "return"
+		      	},
+		      	{
+			        "name": "approve",
+			        "type": "submit",
+			        "styleClass": "primaryButton approveButton",
+			        "localizationKey": "approve"
+		      	}
+			]
+		},
+		{
+			"tabName": "completed",
+			"listdefName": "/beneficiary/listdef/beneficiaryApprovedList",
+			"permission": "access_customer_beneficiary_mc",
+			"index": 2,
+			"selected": ""
+		},
+		{
+			"tabName": "inactive",
+			"listdefName": "/beneficiary/listdef/beneficiaryOthersList",
+			"permission": "access_customer_beneficiary_mc",
+			"index": 3,
+			"selected": ""
+		},
+		{
+			"tabName": "rejected",
+			"listdefName": "/beneficiary/listdef/beneficiaryRejectedList",
+			"permission": "access_customer_beneficiary_mc",
+			"index": 4,
+			"selected": ""
+		}
+	]
+}

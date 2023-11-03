@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="bank_abbv_name" default_order_type="a" page="50" js_binding="misys.binding.cash.account_summary" hideSearch="true" permission="ab_current_account_summary_access">
+
+<!-- If order of columns is changed, change corresponding viewerjson for this listdef -->
+	<column name="bank_abbv_name" align="center" width="15%" loca_key="BANKNAME"/>
+	<column name="acct_name" align="center" width="35%" loca_key="ACCOUNT">		
+		<script>
+		if (!value.equals(""))
+		{
+			var nameConfig = com.misys.portal.core.util.JetspeedResources.getBoolean("show.externalaccont.name", true);
+			var acctName = row.getColumnValue("acct_name");
+			var acctNo = row.getColumnValue("account_no");
+			var currCode = row.getColumnValue("cur_code");
+			var desc = row.getColumnValue("description");
+			
+			if(nameConfig == true)
+			{
+				if("05".equals(row.getColumnValue("owner_type").toString()))
+				{
+					value = " "+currCode+" "+" "+acctNo+" "+" "+acctName+" ";
+				}
+				else
+				{
+					value = " "+currCode+" "+" "+acctNo+" "+desc+" ";
+				}
+			}
+			else
+			{
+					value = " "+currCode+" "+" "+acctNo+" "+" "+desc+" ";
+			}
+		}	
+		 value;
+		</script> 
+	</column>		
+	<column name="account_type" align="center" loca_key="AB_ACCOUNT_TYPE" hidden="y"/>
+	<column name="cur_code" align="center" width="5%" loca_key="CURCODE"/>
+	<column name="RunningStatement@LedgerBalance@amt" align="right" width="10%" loca_key="LEDGER_BALANCE"/>	
+	<column name="RunningStatement@AvailableBalance@amt" align="right" width="10%" loca_key="OPENING_BALANCE"/>	
+	<column name="RunningStatement@ReservedBalance@amt" align="right" width="10%" loca_key="RESERVED_BALANCE"/>
+	<column name="RunningStatement@LedgerBalance@convertedAmt" paramCur="account_ccy" loca_key="EQUIVALENT_LEDGER_BALANCE" hidden="y"/>
+	<column name="RunningStatement@ReservedBalance@convertedAmt" paramCur="account_ccy" loca_key="EQUIVALENT_RESERVED_BALANCE" hidden="y"/>		
+	<column name="RunningStatement@AvailableBalance@convertedAmt" paramCur="account_ccy" align="right" width="15%" loca_key="EQUIVALENT_OPENING_BALANCE"/>
+	
+	<column name="RunningStatement@AvailableBalance@value_date" hidden="y"/>	
+	<column name="account_no" hidden="y"/>
+	<column name="account_id" hidden="y"/>	
+	<column name="description" hidden="y"/>
+	<column name="owner_type" hidden="y"/>	
+	<column name="UserAccount@EntityAccount@entity@abbv_name" hidden="y"/>
+	<column name="bank_id" hidden="y"/>	
+	<column name="branch_no" hidden="y"/>		
+	<column name="UserAccount@EntityAccount@nick_name" hidden="y"/>
+	<column name="nickname" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		hidden="true"/>
+	<parameter
+		name="account_no"
+		hidden="true"/>
+	<parameter
+		name="account_id"
+		hidden="true"/>
+	<!-- This currency field is not a search criteria, but a parameter currency for the equivalent amount-->
+	<parameter
+		name="account_ccy"
+		hidden="true"/>
+	<parameter
+		name="owner_type"
+		hidden="true"
+		/>
+	<parameter
+		name="account_type"
+		hidden="true"
+		/>
+	<parameter
+		name="bank_abbv_name"
+		hidden="true"
+		/>
+	<parameter
+		name="entity"
+		hidden="true"/>
+		
+	<parameter name='export_list' file='AccountSummary' type='export'
+		file_name='accountSummary' hidden="true"/>
+		
+	<!-- Candidates -->	
+	<candidate name="account">
+		<filter>
+			<criteria>
+				<column name="UserAccount@EntityAccount@entity@abbv_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					account_id
+				</value>
+			</criteria>	
+			<criteria>
+				<column name="owner_type"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					owner_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_type"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					account_type
+				</value>
+			</criteria>
+			<criteria>
+				<column name="bank_abbv_name"/>
+				<operator type="equal"/>
+				<value type="parameter">
+					bank_abbv_name
+				</value>
+			</criteria>
+			<criteria>
+				<column name="useraccount@context_key" />
+				<operator type="equal" />
+				<value type="string">
+					View STMT
+	   			</value>
+			</criteria>	
+			<criteria>
+				<column name="useraccount@context_value" />
+				<operator type="equal" />
+				<value type="string">
+					Y
+	   			</value>
+			</criteria>			
+		</filter>
+	</candidate>
+
+	<group loca_key="CURRENT_ACCOUNT_GROUP_SUMMARY" align="left">
+		<column name="account_type"/>
+		<aggregate type='sum' align="right" name='RunningStatement@AvailableBalance@convertedAmt'>
+			<column name='RunningStatement@AvailableBalance@convertedAmt'/>
+		</aggregate>
+	</group>
+</listdef>

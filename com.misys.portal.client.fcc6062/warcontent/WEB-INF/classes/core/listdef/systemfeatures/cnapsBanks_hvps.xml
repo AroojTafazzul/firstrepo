@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  ListDef xml for Cnaps_hvps Look Up
+		Page size is less than 10 for a dialog so specify the dimensions exactly
+ -->
+<listdef ordered="y" default_order="bank_code" default_order_type="a" page="5" dialog_type="swift_bic">
+	
+	<column name="bank_code" align="left" width="15%" loca_key="HEADER_BANK_CODE">
+		<!-- JavaScript Pass back -->
+		<js-pass-back>
+			<array-element index="0" column="bank_code"/>
+			<array-element index="1" column="bank_name"/>
+		</js-pass-back>
+	</column>
+	<column name="cnaps_bank_name" align="left" width="15%" loca_key="HEADER_BANK_NAME">
+	<script>
+			value = row.getColumnValue("bank_name");
+			value;
+		</script>
+	</column>
+	
+	<!-- Hidden Fields -->
+	<column name="bank_name" hidden="y"/>
+	<column name="type" hidden="y"/>
+	<column name="address" hidden="y"/>
+	<column name="postCode" hidden="y"/>
+	<column name="parentId" hidden="y"/>
+	<column name="inst_id_name" hidden="y"/>
+	<column name="inst_id_value" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter name="bankCode" size="10"	max_length="14" loca_key="HEADER_BANK_CODE" input="y" default=""/>
+	<parameter name="bankName" size="20" max_length="35" loca_key="HEADER_BANK_NAME" input="y" default=""/>
+	
+	<!-- candidates -->
+	<candidate name="bankData">
+		<filter>
+			<criteria>
+				<column name="bank_code"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bankCode
+				</value>
+			</criteria>
+			<criteria>
+				<column name="cnaps_bank_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					bankName
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter>
+		<criteria>
+			<column name="type"/>
+			<operator type="like"/>
+			<value type="string">
+				02
+			</value>
+		</criteria>
+		<criteria>
+			<column name="id"/>
+			<operator type="like"/>
+			<value type="string">
+				CNP%
+			</value>
+		</criteria>
+		<criteria>
+			<column name="bank_code_prefix"/>
+			<operator type="not in"/>
+			<value type="vector">
+				<value type="string">989</value>
+				<value type="string">969</value>
+			</value>
+		</criteria>
+		<criteria>
+			<column name="effective_date"/>
+			<operator type="infOrEqual"/>
+			<value type="date">current</value>
+		</criteria>
+		<criteria>
+			<column name="expiry_date"/>
+			<operator type="superior"/>
+			<value type="date">current</value>
+		</criteria>
+	</filter>
+</listdef>

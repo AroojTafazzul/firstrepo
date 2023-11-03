@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<module domain="customer" scope="product">
+	<name>module_cancelPostDated_TD</name>
+	<bindingParam>operation</bindingParam>
+	<bindingParam>option</bindingParam>
+	<bindingParam>tnxtype</bindingParam>
+	<bindingParam>mode</bindingParam>
+	<methodParam>templateid</methodParam>
+	<methodParam>referenceid</methodParam>
+	<methodParam>featureid</methodParam>
+	<methodParam>tnxid</methodParam>
+	<staticParam>menuaction</staticParam>
+	<action>
+		<actionCode>OpenTDCancelPostDatedList</actionCode>
+		<class>TermDepositListPortlet</class>
+		<method>actionCodeListdef</method>
+		<permission>td_postdated_transaction_cancel</permission>
+		<operation>-</operation>
+		<option>CANCEL</option>
+		<mode>-</mode>
+		<tnxid>-</tnxid>
+		<referenceid>-</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>14</tnxtype>
+		<menuaction>OpenTDCancelPostDatedList</menuaction>
+		<bookmarkable>true</bookmarkable>
+	</action>
+	<action>
+		<actionCode>OpenUnsignedCancelPostDatedTransaction</actionCode>
+		<class>TermDepositPortlet</class>
+		<method>openPendingTD</method>
+		<permission>td_postdated_transaction_cancel</permission>
+		<operation>-</operation>
+		<option>CANCEL</option>
+		<mode>UNSIGNED</mode>
+		<referenceid>%</referenceid>
+		<tnxid>%</tnxid>
+		<templateid>-</templateid>
+		<tnxtype>14</tnxtype>
+		<menuaction>OpenUnsignedCancelPostDatedTransactionList</menuaction>
+	</action>	
+	<!-- Cancel post dated transaction -->
+	<action>
+		<actionCode>CancelTDInitiation</actionCode>
+		<class>TermDepositPortlet</class>
+		<method>cancelPostDatedTD</method>
+		<permission>td_postdated_transaction_cancel</permission>
+		<operation>REJECT</operation>
+		<option>CANCEL</option>
+		<mode>UNSIGNED</mode>
+		<tnxid>%</tnxid>
+		<referenceid>%</referenceid>
+		<templateid>-</templateid>
+		<tnxtype>01</tnxtype>
+		<menuaction>openTDCancelPostDatedList</menuaction>
+		<bookmarkable>true</bookmarkable>
+	</action>
+	<!-- end -->
+</module>

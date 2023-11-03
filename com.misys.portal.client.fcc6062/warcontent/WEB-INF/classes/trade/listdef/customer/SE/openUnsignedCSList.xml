@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listdef ordered="y" default_order="ref_id" default_order_type="d" page="50" js_binding="misys.binding.common.listdef_mc" identifier="ref_id">
+	<batch type="submit">
+		<parameter name="SCREEN" value="FT_SCREEN"/>
+		<parameter name="OPERATION_CODE" binding_code="OPERATION_MULTIPLE_SUBMIT"/>
+		<parameter name="OPTION_CODE" binding_code="OPTION_REBUILD_LIST_PENDING"/>
+		<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+		<parameter name="PRODUCT_CODE" column="product_code"/>
+		<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+		<parameter name="REFERENCE_ID" column="ref_id"/>
+		<parameter name="TRANSACTION_ID" column="tnx_id"/>
+	</batch>
+	<column name="ref_id" align="center" width="10em" loca_key="REFERENCEID">
+		<url>
+			<parameter name="SCREEN" value="FT_SCREEN"/>
+			<parameter name="TRANSACTION_TYPE_CODE" business_code="N002_NEW"/>
+			<parameter name="MODE_CODE" binding_code="MODE_UNSIGNED"/>
+			<parameter name="OPTION_CODE" binding_code="OPTION_CHEQUESERVICES"/>
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+		</url>
+	</column>
+	<column name="entity" align="center" width="10%" loca_key="ENTITY"/>
+	<column name="sub_product_code" align="center" width="22%" loca_key="PRODUCT_SUBTYPE"/>
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="inp_dttm" align="center" width="6em" loca_key="LAST_MODIFY_DATE" />
+	<column name="tnx_id" hidden="y"/>
+	<column name="product_code" hidden="y"/>
+	<column name="applicant_act_no" align="center" width="22%" loca_key="ACCOUNTNUMBER"/>
+	<column name="full name" computation="sum" align="left" width="22%" loca_key="USER_NAME">
+		<column name="Inputter@first_name"/>	
+				<column name="Inputter@last_name"/>
+	</column>
+	<column name="Inputter@last_name" hidden="y"/>
+	<column name="Inputter@first_name" hidden="y"/>
+	<column name="tnx_stat_code" hidden="y"/>
+	<column name="sub_tnx_stat_code" hidden="y"/>		
+	<column name="status" align="left" width="25%" loca_key="STATUS" sort="n">
+		<script>
+			if (value.equals(""))
+			{
+				var tnxStatCode = row.getColumnValue("tnx_stat_code");
+				var subTnxStatCode = row.getColumnValue("sub_tnx_stat_code");
+				if(("99").equals(""+subTnxStatCode+"")|| ("").equals(""+subTnxStatCode+""))
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"");
+				}
+				else
+				{
+					value = com.misys.portal.common.localization.Localization.getDecode(language,"N004",""+tnxStatCode+"") +" ("+ com.misys.portal.common.localization.Localization.getDecode(language,"N015",""+subTnxStatCode+"")+")"; 
+				}
+			}
+			value;
+		</script>
+	</column>
+	<column name="ObjectDataString@pre_approved_status" align="center" width="5em" loca_key="PRE_APPROVED_STATUS"/>
+	<column name="users" width="3em" loca_key="USERS">
+		<url usersAction="y">
+		<!-- Mandatory:- REFERENCE_ID,TRANSACTION_ID,PRODUCT_CODE
+			 Optional :- TRANSACTION_TYPE_CODE -->
+			<parameter name="REFERENCE_ID" column="ref_id"/>
+			<parameter name="TRANSACTION_ID" column="tnx_id"/>
+			<parameter name="PRODUCT_CODE" column="product_code"/>
+			<parameter name="TRANSACTION_TYPE_CODE" column="tnx_type_code"/>
+		</url>
+	</column>
+	<column name="iss_date" align="center" width="6em" loca_key="EXECUTION_DATE"/>
+	
+	<column name="amt" hidden="y"/>
+	<column name="tnx_amt" hidden="y"/>
+	
+	<!-- parameters -->
+	<parameter
+		name="entity"
+		size="20"
+		max_length="35"
+		loca_key="ENTITY"
+		input="y"
+		type="Entity"
+		default=""/>
+	<parameter
+		name="ref_id"
+		size="20"
+		max_length="20"
+		loca_key="REFERENCEID"
+		default="*"
+		input="y"/>
+	<parameter
+		name="last_modified_date"
+		type="range"
+		input="y"
+		range_from_label="LAST_MODIFY_DATE_FROM"
+		range_to_label="LAST_MODIFY_DATE_TO"
+		default="blank"/>
+	<parameter
+		name="applicant_act_no"
+		size="20"
+		max_length="34"
+		loca_key="ACCOUNTNUMBER"
+		input="y"
+		type="AccountNo"
+		productType="SE:COCQS,SE:CQBKR,SE:COCQI"/>
+	<parameter
+		name="user_name"
+		loca_key="USER_NAME"
+		size="20"
+		max_length="70"
+		input="y"/>
+	
+	<!-- candidates -->
+	<filter or="y">
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N047_CQBKR
+			</value>
+		</criteria>
+		<criteria>
+			<column name="sub_product_code"/>
+			<operator type="equal"/>
+			<value type="code">
+				N047_COCQS
+			</value>
+		</criteria>
+	</filter>
+	<candidate name="secure_email">
+		<filter>
+			<criteria>
+				<column name="ref_id"/>
+				<operator type="like"/>
+				<value type="parameter">
+					ref_id
+				</value>
+			</criteria>
+			<criteria>
+				<column name="entity"/>
+				<operator type="like"/>
+				<value type="parameter">
+					entity
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="supOrEqual"/>
+				<value type="parameter">
+					last_modified_date@from
+				</value>
+			</criteria>
+			<criteria>
+				<column name="inp_dttm"/>
+				<operator type="infOrEqual"/>
+				<value type="parameter">
+					last_modified_date@to
+				</value>
+			</criteria>
+			<criteria>
+				<column name="account_name"/>
+				<operator type="like"/>
+				<value type="parameter">
+					applicant_act_no
+				</value>
+			</criteria>
+			<criteria>
+				<column name="tnx_stat_code"/>
+				<operator type="equal"/>
+				<value type="code">
+					N004_UNCONTROLLED
+				</value>
+			</criteria>
+		</filter>
+	</candidate>
+	<filter or="y">
+		<criteria>
+			<column name="full_name" computation="sum">
+				<column name="Inputter@first_name"/>	
+				<column name="Inputter@last_name"/>
+			</column>
+			<operator type="like"/>
+			<value type="parameter">
+				user_name
+			</value>
+		</criteria>
+	</filter>
+	<filter>
+		<criteria>
+			<column name="tnx_type_code"/>
+			<operator type="different"/>
+			<value type="code">
+				N002_IN_BULK
+			</value>
+		</criteria>
+	</filter>
+	
+	<filter>
+		<businesscriteria type="isNew"/>
+	</filter>
+</listdef>

@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter>
+  <title>Using Foreign Exchange Order module</title>
+
+  <info />
+
+  <para role="TEXT">This chapter describes the functions of Foreign Exchange Order module
+  and explains how to perform FX Order transactions using Opics Portal.</para>
+
+  <section role="ITEM">
+    <title>About FX Orders</title>
+
+    <para role="TEXT">The Foreign Exchange Order module helps you to perform the following
+    functions:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para role="TEXT">Create orders and enter trade rates at which orders are filled.
+        The orders are neither sent to the Bank nor executed. Users who
+        created these orders can only view them on Order Blotter for tracking
+        purpose.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Create non-market, market, position, stop-loss, or linked orders
+        for the Bank for tracking purpose.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Display FX orders that are currently outstanding and active or
+        non-active, that is, filled or rejected orders</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Modify FX Order deals.</para>
+
+        <note>
+          <para role="TEXT">: It is available if the status of an order is active,
+          active/linked, or pending.</para>
+        </note>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Update orders and resubmits them to the Bank
+        automatically.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Retrieve orders back from the current watching party within the
+        Bank for cancellation or amendment.</para>
+
+        <note>
+          <para role="TEXT">: It is available if the status of the order is active,
+          active/linked, or pending and the watching party is a Bank
+          location.</para>
+        </note>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Cancel orders and remove them from the list of orders currently
+        being watched.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Confirm and notify the Bank to accept the filled order
+        information.</para>
+
+        <note>
+          <para role="TEXT">: It is available if the status of an order is filled.</para>
+        </note>
+      </listitem>
+    </itemizedlist>
+
+    <para role="TEXT">The subsequent sections provides detailed explanation about FX order
+    transactions such as, deal capturing, pricing, position management, and
+    inquiries.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Creating a Foreign Exchange Order</title>
+
+    <para role="TEXT">In the portal <emphasis>Home page</emphasis>, click
+    <emphasis>Foreign Exchange Order </emphasis>and under <emphasis>FX
+    Orders</emphasis> select <emphasis>Add</emphasis> to create a new FX Order
+    contract.</para>
+
+    <para role="TEXT">The input form and its respective fields are described in the
+    following tables.</para>
+
+    <section role="ITEM">
+      <title>General Details</title>
+
+      <para role="TEXT">Specify the following under <emphasis>General Details</emphasis>
+      section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Customer Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the counterparty who creates the FX
+                order.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Bank Name</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the bank with whom the customer fills the FX
+                order.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Issuer’s Reference</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the issuer who processes the FX order.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+
+    <section role="ITEM">
+      <title>Contract Details</title>
+
+      <para role="TEXT">Specify the following under <emphasis>Contract Details</emphasis>
+      section.</para>
+
+      <informaltable frame="all">
+        <tgroup cols="2">
+          <colspec colname="column-1" colwidth="2668*" />
+
+          <colspec colname="column-2" colwidth="6080*" />
+
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Purchase/Sale</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies whether the order is a purchase or a sale of
+                the currency amount, or whether the customer placing the order
+                should sign a contact when the market rate reaches the trigger
+                rate.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Expiration Code</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates if the order expiration is full or
+                interim.</para>
+
+                <para role="TEXT">If you enter this field without specifying the
+                expiration date and time, it must be associated with a
+                location, on the Expiration Code Maintenance (EXPR) window, to
+                calculate the expiration date and time.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Expiration Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the date the entered order expires. The date
+                entered must be greater than the current database date +/-
+                server offset time.</para>
+
+                <para role="TEXT">This field is mandatory if the <emphasis>Expiration
+                Code</emphasis> is selected as <emphasis>Specific
+                Date/Time</emphasis>.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Expiration Time</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the time that the entered order
+                expires.</para>
+
+                <para role="TEXT">This field is mandatory if the <emphasis>Expiration
+                Code</emphasis> is selected as <emphasis>Specific
+                Date/Time</emphasis>.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Counter Currency</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the counter currency of the order.</para>
+
+                <para role="TEXT">You can click the magnifying glass icon to select the
+                counter currency from the existing list.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Currency Amount</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the order amount which is denominated in the
+                specified currency.</para>
+
+                <para role="TEXT">Amount is entered as a number (e.g.,
+                999999999999999.9999) or as an amount followed by a suffix
+                ('B' for billions, 'M' for millions or 'T' for thousands). For
+                example, one million is entered as '1000000' or as
+                '1M'.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Value Date</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the underlying FX deal’s settlement date to be
+                created, if the order is filled.</para>
+
+                <note>
+                  <para role="TEXT">: This field must be a valid business day in the deal
+                  currency.</para>
+                </note>
+
+                <para role="TEXT">Valid dates are:</para>
+
+                <itemizedlist>
+                  <listitem>
+                    <para role="TEXT"><guilabel>#Days</guilabel>: Number of days</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guilabel>#Weeks</guilabel>: Number of weeks</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guilabel>#Months</guilabel>: Number of
+                    months</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guilabel>#Years</guilabel>: Number of years</para>
+                  </listitem>
+
+                  <listitem>
+                    <para role="TEXT"><guilabel>SPOT</guilabel>: A two-day delivery
+                    transaction</para>
+                  </listitem>
+                </itemizedlist>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Market Order</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Select <emphasis>Yes</emphasis> if the order is
+                considered as a market order to be filled at the current
+                market price on submission, else select
+                <emphasis>No</emphasis>.</para>
+
+                <note>
+                  <para role="TEXT">: If this field is selected as
+                  <emphasis>Yes</emphasis> position triggers are not
+                  entered.</para>
+                </note>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Trigger Position</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates the position order trigger rate, the target
+                rate at which the order is filled.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Trigger Stop</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the stop order trigger rate, the target rate
+                at which the order is filled.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Trigger Limit</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Identifies the limit order trigger rate, the target rate
+                at which the order is filled.</para>
+              </entry>
+            </row>
+
+            <row>
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">
+                  <guilabel>Remarks</guilabel>
+                </para>
+              </entry>
+
+              <entry colsep="1" rowsep="1">
+                <para role="TEXT">Indicates a free-format text field that contains
+                additional information about the order.</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+
+      <para role="TEXT">Click <emphasis>Submit</emphasis> to create an FX Order and submit
+      it to the Bank for tracking purpose or click <emphasis>Save</emphasis>
+      to store the order without sending it, for future reference or
+      modification. To cancel the order entry click
+      <emphasis>Cancel</emphasis>.</para>
+
+      <para role="TEXT">If submitted to the Bank, the back-end calculates and offers the
+      applicable rate for the order. If saved, the order is stored as a draft
+      or a template where you or another user can continue working on the
+      order or submit it to the Bank.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Retrieve Draft</title>
+
+      <para role="TEXT">In the portal <emphasis>Home page</emphasis>, click
+      <emphasis>Foreign Exchange Order </emphasis>and under <emphasis>FX
+      Orders</emphasis> select <emphasis>Retrieve Draft</emphasis> to view a
+      list of saved FX orders that are not submitted. Click the
+      <emphasis>System ID</emphasis> of an order to make further modification
+      or for final submission.</para>
+    </section>
+
+    <section role="ITEM">
+      <title>Accepting or Rejecting Rate</title>
+
+      <para role="TEXT">On receiving the rate offered by the bank, you can click the
+      following buttons to decide the future of the FX order:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para role="TEXT">
+            <guibutton>Accept</guibutton>
+          </para>
+
+          <para role="TEXT">Completes the order and provides a visual confirmation of the
+          deal details along with the deal number assigned by the back-end
+          system. You can follow the given link to view or assign standing
+          instructions for the transaction.</para>
+
+          <tip>
+            <para role="TEXT">: Opics Plus can accept a price or a deal even after the
+            price has timed out or expired, if the price proves to be
+            beneficial for the bank</para>
+          </tip>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">
+            <guibutton>Reject</guibutton>
+          </para>
+
+          <para role="TEXT">Cancels the order. You can modify order details and resubmit a
+          request. The portal notifies the back-end system that the price is
+          rejected so that it can update the trader’s e-trading
+          blotter.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Sending Message to Bank</title>
+
+    <para role="TEXT">Opics Portal facilitates sending messages to the bank to modify an
+    existing FX order.</para>
+
+    <section role="ITEM">
+      <title>Modifying an Existing FX Order</title>
+
+      <para role="TEXT">Using Opics Portal, you can make certain modifications to an
+      existing FX order based on the type of transaction.</para>
+
+      <orderedlist>
+        <listitem>
+          <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click
+          <emphasis>Foreign Exchange</emphasis><emphasis>Order</emphasis> and
+          then under <emphasis>Message to Bank</emphasis>, click
+          <emphasis>From Existing</emphasis><emphasis>Order</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+          the FX order that needs to be modified and click
+          <emphasis>Search</emphasis>. A list of records is displayed for all
+          FX orders with the specified currency.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">Click the <emphasis>System ID</emphasis> of an order to open
+          the order for modification.</para>
+        </listitem>
+
+        <listitem>
+          <para role="TEXT">From the <emphasis>Action Details</emphasis> section, you can
+          select the <emphasis>Update Order</emphasis>, <emphasis>Cancel
+          Order</emphasis>, or <emphasis>Get Confirmation Letter</emphasis>
+          action.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para role="TEXT"><guibutton>Update Order</guibutton>: Allows you to make
+              changes to the order and resubmit an updated request.</para>
+            </listitem>
+
+            <listitem>
+              <para role="TEXT"><guibutton>Cancel Order</guibutton>: Sends a cancel
+              request for the order.</para>
+            </listitem>
+
+            <listitem>
+              <para role="TEXT"><guibutton>Get Confirmation Letter</guibutton>: Requests
+              for a confirmation letter of the order from the bank.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </orderedlist>
+
+      <section role="ITEM">
+        <title>To Update an Order</title>
+
+        <para role="TEXT">In <emphasis>Contract Details</emphasis> section, you can make
+        changes to the order and click <emphasis>Submit</emphasis> to send the
+        updated order.</para>
+      </section>
+
+      <section role="ITEM">
+        <title>To Cancel an Order</title>
+
+        <para role="TEXT">In <emphasis>Cancel Details</emphasis> section, specify the
+        reason for cancellation in <emphasis>Reason</emphasis> field and click
+        <emphasis>Submit</emphasis> to cancel the FX order.</para>
+      </section>
+
+      <section role="ITEM">
+        <title>To Get Confirmation Letter</title>
+
+        <para role="TEXT">Click <emphasis>Submit </emphasis>to request for a confirmation
+        letter of the order from the bank.</para>
+      </section>
+    </section>
+  </section>
+
+  <section role="ITEM">
+    <title>Performing an FX Order Inquiry</title>
+
+    <para role="TEXT">Opics Portal provides information about the status, the details, and
+    the history of orders initiated by the user. The list of orders is
+    confined to those orders entered on the current processing date.</para>
+
+    <para role="TEXT">You can make inquiries on FX orders as follows:</para>
+
+    <orderedlist>
+      <listitem>
+        <para role="TEXT">From the <emphasis>Main Menu</emphasis>, click <emphasis>Foreign
+        Exchange</emphasis><emphasis>Order</emphasis> and then click
+        <emphasis>Inquiry</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">In the <emphasis>Ccy</emphasis> field, specify the currency of
+        the order.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Select the <emphasis>Output Format</emphasis> to display on
+        <emphasis>Screen</emphasis>, or save the results in
+        <emphasis>CSV</emphasis> or <emphasis>Spreadsheet</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click <emphasis>Search</emphasis> to display the list of records
+        of FX orders with the specified currency.</para>
+      </listitem>
+
+      <listitem>
+        <para role="TEXT">Click the <emphasis>System ID</emphasis> of an order to view the
+        details of a particular order.</para>
+      </listitem>
+    </orderedlist>
+
+    <tip>
+      <para role="TEXT">: You can use wildcards in your search string. For example, type
+      *MYTEXT* to search for the items containing the MYTEXT string.</para>
+    </tip>
+
+    <para role="TEXT">Moreover, you can also filter or sort the information returned from
+    the portal on a multi or single column basis.</para>
+  </section>
+
+  <section role="ITEM">
+    <title>Performing Order Maintenance</title>
+
+    <para role="TEXT">Using Opics Portal, you can remove the Incomplete or
+    <emphasis>Unsigned Orders</emphasis>, that is, orders that are either
+    out-of-date or never submitted.</para>
+
+    <para role="TEXT">In the portal <emphasis>Home page</emphasis>, click
+    <emphasis>Foreign Exchange Order </emphasis>and under
+    <emphasis>Maintenance</emphasis> select <emphasis>Unsigned
+    Orders</emphasis> to view a list of incomplete FX orders. In the
+    <emphasis>Ccy</emphasis> field, specify the currency of orders and click
+    <emphasis>Search</emphasis> to view incomplete orders.</para>
+
+    <para role="TEXT">You can click to select one or more orders from the list and click
+    <emphasis>Delete selected transactions</emphasis> to remove the selected
+    orders. Conversely, you can again click the order to de-select it.</para>
+
+    <note>
+      <para role="TEXT">: Deleting incomplete orders require sufficient
+      authorization/permissions from the bank.</para>
+    </note>
+  </section>
+</chapter>
